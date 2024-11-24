@@ -340,7 +340,7 @@ $sin(A+B)=\frac{1}{q}sin(A)+\frac{1}{p}sin(B)$
 
 going back to the triangles, we can get the [[cosine]]s of A and B which give $cos(A)=\frac{1}{p}$ and $cos(B)=\frac{1}{q}$.
 If we substitute these in the original equation we get the final form of:
-$sin(A+B)=cos(B)sin(A)+cos(A)+sin(B)$
+$sin(A+B)=cos(B)sin(A)+cos(A)sin(B)$
 
 This is our new [[trigonometric identity]], even thought we worked out the proof for only [[acute angle]]s it works for every angle, the proof is just a bit more complicated.
 
@@ -349,10 +349,36 @@ $sin(\frac{\pi}{2}-A-B)=cos(-B)sin(\frac{\pi}{2}-A)+cos(\frac{\pi}{2}-A)sin(-B)$
 if we use the [[trigonometric identity]] we defined earlier:
 ![[Pasted image 20241111202110.png]]
 in the end we get:
-$cos(A+B)=cos(A)cos(B)+sin(A)sin(B)$
+$cos(A+B)=cos(A)cos(B)-sin(A)sin(B)$
 And this is a new [[trigonometric identity]] again.
 
 If you notice, we can now divide the first by the second, adjust the equation and we get the same [[trigonometric identity]] for the [[tangent]]:
 $tan(A+B)=\frac{tanA+tanB}{1-tanAtanB}$
 
 You can replace in these identities B with -B and use the previously defined [[trigonometric identity]] to get also the same rules for the differences
+
+![[activity 34]]
+##### [[double angle]] and [[half angle]] [[trigonometric identity]]
+
+This are easier than they seems if you know how to derive the [[angle sum identity]].
+You can take such identity and assume that you are adding A again for [[double angle]] and removing $\frac{A}{2}$ for [[half angle]]:
+
+double angle $sinA+B=sinAcosB+cosAsinB \rightarrow sinA+A=sinAcosA+cosAsinA \rightarrow sin2A=2sinAcosA$
+you can do the same for the others and get:
+$cosA+B=cosAcosB-sinAsinB \rightarrow cosA+A=cosAcosA-sinAsinA \rightarrow cos2A=cos^2A-sin^2A$
+$tan(A+A)=\frac{tanA+tanA}{1-tanAtanA} \rightarrow tan(2A)=\frac{2tanA}{1-tan^2A}$
+
+After looking at the [[double angle]] for cos, you might recall one of the previous [[trigonometric identity]] which stated that $cos^2A+sin^2A=1$. You can actually get the squared [[cosine]] or [[sine]] from this [[trigonometric identity]] and substitute in the [[double angle]] cos to get 2 new identities:
+$cos^2A=1-sin^2A \rightarrow cos2A=1-2sin^2A$
+$sin^2A=1-cos^2A \rightarrow cos2A=2cos^2A-1$
+
+finally, you can rearrange them to get the [[half angle]] identities:
+$2sin^2A=1-cos2A \rightarrow sin^2A=\frac{1}{2}(1-cos2A)$
+$2cos^2A=cos2A+1 \rightarrow cos^2A=\frac{1}{2}(cos2A+1)$
+on which you can divide A by 2 .
+![[activity 35]]
+
+![[activity 36]]
+
+
+

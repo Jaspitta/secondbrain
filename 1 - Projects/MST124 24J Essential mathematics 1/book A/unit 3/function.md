@@ -67,7 +67,7 @@ Another type of [[translate]] is when a [[function]] is scaled and it is called 
 Mathematically, it means multiply the function by a constant ([[vertical scaling]])and graphically it stretches the graph such that every point $m$ that is distant $n$ from the x-axis will be distant $cn$.
 If the constant $c$ is negative it can also change the orientation of the graph.
 Same type of concept can be applied to [[horizontal scaling]], this time however the terms $x$ are divided by a constant $c$, this means that the distance between the original x and the y-axes will increase to $cn$.
-Remember that in both cases, there is a change at the number 1, since 1 would leave the $x$ unchanged, above that will stretch it out and below stretch it in. Because of this, for every function, if you scale it horizontally of vertically by -1 you get the graph reflected on the y-axes or x-axes
+Remember that in both cases, there is a change at the number 1, since 1 would leave the $x$ unchanged, above that will stretch it out and below stretch it in. Because of this, for every function, if you scale it horizontally of vertically by -1 you get the graph reflected on the y-axes or x-axes, this is called [[reflecting]].
 It is also important to remember the difference in applying [[horizontal scaling]] and [[vertical scaling]]. With [[vertical scaling]] you multiply outside the x, so $y = x^2$ would be $y = cx^2$, with [[horizontal scaling]] you replace all the x arguments so $x^2$ become $(\frac{x}{c})^2$.
 Don't be fooled though, even [[vertical scaling]] can look like a multiplication, for example if $c=0.5$ than such vertical scaling will take the shape of $2x$ so $y=f(2x)$, the key is that the change is made **inside** the x not outside.
 

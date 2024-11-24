@@ -230,3 +230,27 @@
 - Anglesum identities forsineand cosine sin(A+B)=sinAcosB +cosA sinB cos(A+B)=cosAcosB − sinA sinB
 - Anglesum identity fortangent tan(A+B)= tanA +tanB 1 − tanAtanB
 - Anglediﬀerence identities sin(A−B)=sinAcosB − cosA sinB cos(A−B)=cosAcosB +sinA sinB tan(A−B)= tanA− tanB 1+ tanAtanB
+## New highlights added November 14, 2024 at 11:11 AM
+#### 4.5Double-angleand half-angleidentities
+- Double-angleidentities sin(2θ)=2 sin θ cos θ cos(2θ)=cos2 θ − sin2 θ tan(2θ)= 2tan θ 1 − tan2 θ
+- To obtain these, recall thatsin2 θ +cos2 θ =1,
+- Alternative double-angleidentities forcosine cos(2θ)= 1 − 2sin2 θ cos(2θ)= 2cos2 θ − 1
+- These alternative double-angle identities forcosine can be rearrangedinto the forms below. In these forms they are knownasthe half-angle identities.
+  Half-angleidentities sin2 θ = 1 ; 2(1 − cos(2θ)) cos2 θ = 1 2(1 +cos(2θ))
+- The description ‘half-angle’refersto the fact thatthese identities are sometimesstated with θ and2θ replaced by 1 2θ and θ,respectively, as follows: sin2 &1 2θ - cos2 &1 2θ - = 1 2(1 − cos θ) = 1 2(1 +cos θ).
+- once you’ve foundthe exact value ofthe sine, cosine or tangentofa particular acute angle,you canﬁnd the exact values of the othertwo trigonometric ratios forthe angle by sketchinga suitable right-angledtriangle,and using Pythagoras’theoremand the deﬁnitionsof sine,cosine and tangent
+#### 4.6Yet more trigonometric identities
+- Forexample,considerthe angle sum andangle diﬀerenceidentitiesfor sine: sin(A+B)=sinAcosB +cosA sinB sin(A−B)=sinAcosB − cosA sin B. Adding these gives sin(A+B)+ sin(A−B)=2 sinAcos B.
+- Thisidentity enables you to convert a productofa sine anda cosine on the right-hand side into the sum oftwo sinesonthe left-hand side
+- The newidentity above canbe rearrangedtogivea slightlydiﬀerent identity thathas some useful applications. Suppose thatyou let C = A+B and D = A− B.
+  Solvingthese equationsfor A and B,byﬁrstadding themand then subtracting them,gives A = C +D 2 and B = C −D 2 .
+  Substituting into the identity above gives sinC +sinD =2sin .
+  C +D 2 0 cos .
+  C −D 2 0
+- sinA +sinB =2sin sinA− sinB =2sin .
+  . A+B 2 A−B 2 cosA +cosB =2cos .
+  0 0 cos cos A+B 2 cosA− cosB = −2sin .
+  0 .
+  . A−B 2 A+B 2 cos A+B 2 0 .
+  0 0 A−B 2 sin .
+  0 A−B 2 0
