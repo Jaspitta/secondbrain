@@ -268,3 +268,39 @@
 - if a is positive as before but k is negative
 - quantity is said to decayexponentially,the function is calledan exponentialdecayfunction,and the graphiscalled an exponential decaycurve.
 - An example of areal-lifesituation thatcan oftenbemodelledbyan exponential decayfunction is the concentration of aprescription drug in a patient’sbloodstream.
+## New highlights added October 30, 2024 at 10:58 AM
+- e levelof radioactivity in asample of radioactive material,
+- e size of apopulation of organisms,
+- .If f is sucha function,and youstart with anyvalueof x and add anumbertoit, then the valueof f(x)is multiplied by afactor. Thisfactor doesn’tdependonthe valueof x thatyou started with, butonlyonthe number thatyou added.
+- Acharacteristicpropertyofexponential growth anddecay functions If f(x)= aekx,thenwhenever p units are addedtothe valueof x,the valueof f(x)ismultipliedby ekp.
+- Forany exponential function f,the factor by which f(x)ismultiplied whena particular amount is addedtothe valueof x is calleda growth factor or a decayfactor
+- The characteristicproperty of exponential growthand decayfunctionsin the boxabove gives us auseful waytodescribehow quicklya particular instanceofexponential growthordecayistakingplace.
+- Doublingand halvingperiods Supposethat f is an exponential growthfunction.Then p is the doublingperiod of f if wheneveryou add p to x,the valueof f(x) doubles.
+  Similarly,supposethat f is an exponential decayfunction.Then p is the halving period of f if wheneveryou add p to x,the valueof f(x)halves.
+- Strategy: To ﬁnda doublingorhalvingperiod If f(x)= aekx is an exponential growthfunction (so k> 0),thenthe doublingperiodof f is the solution p of the equation ekp =2;thatis, p =(ln 2)/k.
+  Similarly,if f(x)= aekx is an exponential decayfunction (so k< 0), then the halvingperiodof f is the solution p of the equation ekp = 1 (c) everycentury?
+  2 ; thatis, p =(ln 1 2)/k = −(ln2)/k.
+- doubling or halvingtime.Inthe particular case of radioactive decay, the halving time is usually calledthe half-life.
+### 5 Inequalities
+- Whereas an equation expressesthe fact thattwo quantities are equal, an inequality expressesthe fact thatone quantity is greater than, less than, greater thanorequal to,orlessthanorequal to,another quantity.
+#### 5.1 Terminology forinequalities
+- an inequality is the same as an equation,exceptthatinstead of an equals sign it containsone of the four inequality signs, <, ≤, > and ≥.
+- Inequalitysigns < is less than ≤ is less thanorequal to > is greater than ≥ is greater thanorequal to
+- Much of the terminology thatappliestoequationsalsoappliesto inequalities
+- the solutions of an inequality are the values of itsvariablesthat satisfy it
+- Mostinequalities have either inﬁnitely manysolutionsornosolutions
+- tospecify all the solutionsofaninequality is to state the set thattheyform. Thisset is calledthe solution set of the inequality.
+- 5.2 Rearranging inequalities
+#### 5.2 Rearranging inequalities
+- Rearranginginequalities Carryingout anyofthe following operationsonaninequality gives an equivalent inequality.
+  • Rearrange the expressionsonone or both sides.
+  • Swap the sides, provided you reverse theinequality sign.
+  • Do anyofthe following thingstobothsides: – addorsubtractsomething – multiply or divide by something that’spositive – multiply or divide by something that’snegative, provided you reverse theinequality sign.
+- When you’re rearranginganinequality,you shouldnot multiply or divide both sides by avariable,orbyanexpression containinga variable,unless youknowthatthe variable or expression takesonlypositivevalues or takes only negativevalues.
+#### 5.3 Linearinequalities
+- ,a linearinequalityinone unknown is the same as a linearequation
+#### 5.4 Quadratic inequalities
+- aninequality that’sthe same as aquadratic equation
+- get all the terms on onesideofthe inequality sign,leaving just the number zeroon the otherside
+- As youbecome more familiar with the methodinExample 13, youmight ﬁnd thatyou don’tneed to sketch the graph
+- youcan alwaysmakesurethatthe coeﬃcientof x2 is positive by,ifnecessary,multiplying the inequality through by −1
