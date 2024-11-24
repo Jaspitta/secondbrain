@@ -1,0 +1,2 @@
+It is a type of [[coding problem]] and [[coding pattern]] common in [[list problem]] that involves computing a new item from the items in the list incrementally as we go through the [[list]].
+The most common [[coding problem]] is calculating the sum of the items in a list of numbers

@@ -1,0 +1,5 @@
+It is a measure used in [[data analysis]] to show how spread out the data in a dataset is, dispersion itself is more of a concept like [[averages]] and there are different ways of measuring such characteristic.
+
+One type of dispersion is the [[interquartile range]] which goes well with the [[median]]. It measures the values that split the data into quarters (the median measure the value that split the data in two), the further the quartiles are from each other the more dispersion there is. The calculation is simple, you get the [[median]], split the list in two and get the [[median]] of each of the two lists to get the lower and higher quartiles. At this point to get the [[inner quartile]] you do [[higher quartile]] - [[lower quartile]] (it is not the same as the [[median]]).
+
+Another type is the [[standard deviation]]

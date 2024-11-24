@@ -1,0 +1,10 @@
+---
+aliases:
+  - CVG
+---
+It is a [[MEMS]] sensor that measures a change in [[electrical capacitance]] caused by the [[Coriolis force]] with the goal of detecting [[rotation]], unlike [[accelerometers]] which detects [[acceleration]].
+A [[Coriolis vibratory gyroscope|CVG]] is actually fairly similar to an [[accelerometers]] but with springs and sense fingers on multiple directions 
+![](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/170411727/j0iU5ebHk_AzY33kzfIywSwuf7ga1AQB2Tk6Bpyc6eQ-asse_V4Tgiyh.png)
+The mass in the inner frame is forced to resonate very fast, the inner frame is also attached with springs to the outer frame, movements of the inner once cause movements in the fingers that produce a change in [[capacitance]], just like in [[accelerometers]].
+All this component is attached to a disk inside the [[smartphone]], the disk is free to rotate, as we know, when the disk rotate, if the internal mass is resonating (as it should always do), it means that is is moving along the radius of a spinning disk and therefore produce a [[Coriolis force]] which can be measured (again, WTF, HOW THE HELL SOMEONE COME UP WITH THIS SHIT). To be precise, the [[Coriolis force]] produced by the mass inside the inner frame, cause the whole inner frame to move and that is the movement measured by the fingers. You can imagine that if the disk is spinning and the inner mass moves further away, it has to move faster, this causes the [[Coriolis force]], in the case of trying to move faster the [[inertia]] resist the acceleration and try to push the object back, this cause the whole inner frame to push back and move, this movement is detected by fingers as a difference in [[electrical capacitance]].
+![](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/170411727/F8sUR8zyH4JQJbwo5PZhKgkVjKCS-yBQO8WKc9nib6w-asse_NyOdWTg.png)

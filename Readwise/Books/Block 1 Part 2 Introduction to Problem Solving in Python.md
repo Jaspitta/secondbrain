@@ -1,10 +1,10 @@
-# Block 1 Part 2: Introduction to [[Problem Solving]] in [[Python]]
+# Block 1 Part 2: Introduction to [[problem solving]] in [[Python]]
 
 ![rw-book-cover](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/153302623/wSYx2X6JF1nJg4wKXULB6FES6SI_Zdlbm0qp7SqxC3k-cove_w31KWDX.jpg)
 
 ## Metadata
 - Author: [[The Open University]]
-- Full Title: Block 1 Part 2: Introduction to [[Problem Solving]] in [[Python]]
+- Full Title: Block 1 Part 2: Introduction to [[problem solving]] in [[Python]]
 - Category: #books
 - Summary: Block 1 Part 2 introduces [[Python]] [[programming]], highlighting it as a problem-solving process that requires thinking about a problem, [[decomposing]] it, and then writing code. [[Algorithms]] play a crucial role in [[programming]], providing a clear sequence of steps to follow. The text discusses the importance of decomposition in solving problems and the translation of [[algorithms]] into [[computer code]]. It also explains how to use iteration and loops to simplify program design and implementation in [[Python]], focusing on drawing shapes like squares and triangles.
 
@@ -34,7 +34,7 @@
 - This ability to reuse solutions is key ([View Highlight](https://read.readwise.io/read/01hsarweyptjt9aew17jajqxn7))
 - a key aspect of software construction ([View Highlight](https://read.readwise.io/read/01hsarxeada2f5sn1jjbg26f3j))
 - thrown up many tools and ideas ([View Highlight](https://read.readwise.io/read/01hsarxzeda1m8jhzj8vq0yfek))
-### 2.1 [[Problem solving]] using decomposition
+### 2.1 [[problem solving]] using decomposition
 #### 2.1.1 [[Algorithms]]
 - An [[algorithm]] tells us or a [[computer]] how to carry out a task ([View Highlight](https://read.readwise.io/read/01hsas18h5xyap2fbs9nqtyv66))
 - self-contained ([View Highlight](https://read.readwise.io/read/01hsas1wx6qe3vn221vfvsgpzx))

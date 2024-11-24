@@ -5,13 +5,27 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 13885338,
+  "lastSavedStatusID": 16724041,
   "currentSyncStatusID": 0,
-  "refreshBooks": false,
+  "refreshBooks": true,
   "booksToRefresh": [],
   "booksIDsMap": {
-    "Readwise/Books/Block 1 Part 4 Patterns, Algorithms and Programs 1.md": "39302811",
-    "Readwise/Books/Block 2 Part 1 Cloud Computing.md": "39512160"
+    "Readwise/Books/Block 2 Part 6 Location-Based Computing.md": "41147799",
+    "Readwise/Books/Block 2 Part 7 Dangerous Data.md": "41358416",
+    "Readwise/Books/Delitto E Castigo.md": "34365305",
+    "Readwise/Books/Bitcoin Case Study.md": "42562486",
+    "Readwise/Articles/ATE - XFIT0 canale-market-info-v1.md": "43516540",
+    "Readwise/Books/Block 3 Part 1 Data on Your Computer A Private Investigation!.md": "41845850",
+    "Readwise/Books/Block 3 Part 2 My Python Project.md": "42321479",
+    "Readwise/Books/Block 3 Part 3 Cryptography The Secret of Keeping Secrets.md": "42453040",
+    "Readwise/Books/Block 3 Part 4 Going Dark.md": "42616765",
+    "Readwise/Books/Block 3 Part 5 IT and the Law.md": "43127356",
+    "Readwise/Books/Block 3 Part 6 Free Speech and the Internet.md": "43299556",
+    "Readwise/Articles/Mst124-Refresh-Roots-and-Surds.md": "43719290",
+    "Readwise/Articles/16mst124-refresh-right-angled-triangles.dvi.md": "43918335",
+    "Readwise/Articles/MST124 Unit 1.md": "44310050",
+    "Readwise/Books/The Beginning After the End Book 10 Retribution.md": "32098963",
+    "Readwise/Articles/MST124 Unit 2.md": "44761327"
   },
   "reimportShowConfirmation": true
 }

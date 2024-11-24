@@ -1,0 +1,6 @@
+This type of communication is concerned with making it possible for devices and [[smartphone|smartphones]] to connect and communicate all over the world.
+The basic idea is to have small [[networks]] where moving [[smartphone|smartphones]] connect and disconnect, these small networks talk to each other to manage the transitions and make even longer range communications possible via cabled nets.
+The basic principles of these type of [[networks]] remained the same, single devices connect to a [[base station]] via [[radio waves]], the base station coordinates what is called a [[cell]] (a small network basically) and also route traffic outside if necessary.
+Even if the base principles remained the same, the demand grew exponentially over the years and the older technologies have been replaced by much newer and sophisticated once.
+
+Due to the incredible demand, the new generation of communication technology is already being planned. In particular the latest and greatest is [[5G]], which promise to deliver incredible speeds, higher coverage and lower power consumptions

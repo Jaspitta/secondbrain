@@ -1,0 +1,7 @@
+in [[Python]] data is represented as [[data object]], the programmer writes [[programming expression]] and the [[interpreter]] evaluate the expressions to objects.
+
+In [[Python]] [[data object]] are made of [[object id]] which is a unique number identifier you can get with `id()`, [[object type]] that you can get with `type()` and [[object value]].
+The situation is slightly different for [[list]], a list is a collection of [[data object]], to each an [[object label]] or [[object reference]] is attached. In the case of lists, the labels are progressive integers, therefore they are referred to as indexes and the single [[data object]] are referred to as elements.
+
+In the python interpreter, variables are created with an [[assignment expression]] made of `label = expression`. When the interpreter meet such an assignment it evaluate the [[programming expression]], check if there is a [[data object]] with such [[object reference|object label]], if there is such label is detached and assigned to the new object, otherwise it is assigned directly.
+The key concept of the label metaphor is the fact that the [[python interpreter]] uses a [[object reference]] approach, to be more technical [[Python]] is [[pass by reference]]. Therefore if you pass an [[object reference]] to a new [[data object]] and than use that reference to change what is inside the object, any other [[data object]] that has an [[object reference]] to such object will see the same change reflected, not because the change is duplicated but because they actually are referencing the same value

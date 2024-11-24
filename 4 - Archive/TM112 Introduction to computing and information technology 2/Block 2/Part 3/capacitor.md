@@ -1,0 +1,2 @@
+It is an [[electrical device]] used in tons of hardware and applications.
+A capacitor is made of two layers of conducting material placed very close but not in contact, when [[voltage]] is applied, the device can store and hold some of that voltage even if current is removed after. If, when the capacitor is charged, another conducting material is placed close to the capacitor, it will cause some of the held charge to be transferred into the other material

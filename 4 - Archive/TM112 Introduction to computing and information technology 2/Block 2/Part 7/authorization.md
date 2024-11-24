@@ -1,0 +1,1 @@
+In [[cyber security]] it is the process of providing access based on the verified identity via your [[authentication]]

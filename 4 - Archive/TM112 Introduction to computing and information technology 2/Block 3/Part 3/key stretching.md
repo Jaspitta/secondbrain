@@ -1,0 +1,2 @@
+It is a security measure used with [[hashing]] that simply slow down significantly the time required to calculate an hash.
+This makes [[brute force attack]] virtually impossible, the only drawback is that is a site needs to legitimately calculate many hashes per second it can result in a significant slow in time.

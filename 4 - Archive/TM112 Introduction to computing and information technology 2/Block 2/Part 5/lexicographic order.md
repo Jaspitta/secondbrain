@@ -1,0 +1,2 @@
+It is a way of ordering text, you are probably familiar with it since it is what is used in dictionaries.
+Most [[programming language]] resort to this type of ordering when performing operations on strings, this can lead to some confusing at first behavior where ``'9.5' < '19'`` is false because following the [[lexicographic order]] 9 is bigger than 1 and therefore there is no need to continue the check.f

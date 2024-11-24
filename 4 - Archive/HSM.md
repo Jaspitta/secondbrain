@@ -1,0 +1,4 @@
+---
+aliases:
+  - hardware security module
+---

@@ -1,0 +1,1 @@
+It is an operation used to [[generate a list]] and therefore [[list generation]] problems that generate a list starting from another list. It has a corresponding [[coding pattern]] called [[list transformation]] and is achieved by transforming each element from an input list into an element into an output list.

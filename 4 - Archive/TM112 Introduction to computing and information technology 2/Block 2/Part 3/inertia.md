@@ -1,0 +1,1 @@
+The resistance that an object with mass produce when its motion is subject to change

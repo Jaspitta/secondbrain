@@ -4,15 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "9b9492fc113ae8bd",
+        "id": "c601e457954dd9e2",
         "type": "tabs",
         "children": [
           {
-            "id": "81f00e67ce45007c",
+            "id": "6530237e0bb3e77a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/function.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
         ]
@@ -65,7 +70,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 309.5
   },
   "right": {
     "id": "fd793acf787cae94",
@@ -81,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/function.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/function.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/function.md"
+              }
             }
           }
         ]
@@ -143,53 +152,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "81f00e67ce45007c",
+  "active": "6530237e0bb3e77a",
   "lastOpenFiles": [
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/Cloud Service Agreement.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud risks.md",
-    "2 - Areas/financial/stocks/WBD.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud service type.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud layer.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/virtual machine.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud backup.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/types of cloud.md",
-    "4 - Archive/cloud computing definition standard.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/cases pattern.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3/inside a CPU.excalidraw.md",
-    "Readwise/Books/Block 2 Part 1 Cloud Computing.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3/programming languages and virtualisation.excalidraw.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3/instructions types and execution.excalidraw.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3/Moving and managing data at lower levels.excalidraw.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud computing.md",
-    "4 - Archive/mother of all demos.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/utility computing.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/sequence generation problem.md",
-    "4 - Archive/do while loop.md",
-    "4 - Archive/problem type.md",
-    "4 - Archive/else if statement.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/boolean operators.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/boolean expression.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/borderline values.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/Drawing ' 2024-04-04 07.50.00.excalidraw.md",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4",
-    "2 - Areas/financial/stocks",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3",
-    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 2",
-    "1 - Projects/TM111 introduction to computing and information technology/Block 1/Part 2",
-    "1 - Projects/TM111 introduction to computing and information technology/Block 1/tma01",
-    "1 - Projects/TM111 introduction to computing and information technology/Block 1",
-    "1 - Projects/TM111 introduction to computing and information technology",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 7.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/function.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 5.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/set.md",
+    "Pasted Image 20241019185833_908.png",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/inequality.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 4.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 3.md",
+    "Pasted Image 20241019182347_261.png",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 2.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 1.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 30.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 29.md",
+    "Readwise/Articles/MST124 Unit 2.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 28.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 27.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/quadratic.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 26.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 25.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 24.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 23.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 22.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 21.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 18.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/activity 17.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/b slide on parabola.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2/point of intersection.md",
+    "4 - Archive/y-interceps.md",
+    "Pasted Image 20241008174403_422.png",
+    "Pasted Image 20241008172516_695.png",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 2",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A",
+    "1 - Projects/MST124",
+    "1 - Projects/MST124 24J Essential mathematics 1/preparation/Untitled/Untitled",
+    "1 - Projects/MST124 24J Essential mathematics 1/preparation/exponentials and logarithms",
+    "1 - Projects/MST124 24J Essential mathematics 1/preparation",
+    "1 - Projects/MST124 24J Essential mathematics 1",
+    "4 - Archive/TM112 Introduction to computing and information technology 2/Block 3/Part 6",
+    "1 - Projects/TM111 introduction to computing and information technology/Block 1/tma01/Question 2.d.png",
+    "Pasted image 20231016115146.png",
+    "Pasted image 20231014153038.png",
     "' Excalidraw/Scripts/Downloaded/Set Stroke Width of Selected Elements.svg",
     "' Excalidraw/Scripts/Downloaded/Scribble Helper.svg",
-    "' Excalidraw/Scripts/Downloaded/Palette loader.svg",
-    "' Excalidraw/Scripts/Downloaded/Organic Line.svg",
-    "' Excalidraw/Scripts/Downloaded/Normalize Selected Arrows.svg",
-    "' Excalidraw/Scripts/Downloaded/Mindmap format.svg",
-    "' Excalidraw/Scripts/Downloaded/GPT-Draw-a-UI.svg",
-    "' Excalidraw/Scripts/Downloaded/ExcaliAI.svg",
-    "' Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
-    "' Excalidraw/Scripts/Downloaded/Convert selected text elements to sticky notes.svg"
+    "' Excalidraw/Scripts/Downloaded/Palette loader.svg"
   ]
 }

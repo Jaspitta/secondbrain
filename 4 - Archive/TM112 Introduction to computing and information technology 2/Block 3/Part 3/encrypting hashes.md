@@ -1,0 +1,2 @@
+An extra security measure taken to secure [[password files]] other than [[hashing]], [[salting]], [[key stretching]] and more is [[encryption]].
+The file is simply [[encrypted]] and stored in an [[HSM]] which is a special device designed to be impossible to store the [[encryption key]] out of it, the only way to get is is to stole the device itself

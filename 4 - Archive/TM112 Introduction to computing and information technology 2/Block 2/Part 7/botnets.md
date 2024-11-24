@@ -1,0 +1,5 @@
+A specific type of [[malware]] that infects a machine and than tries to spread as much as possible to others. Infected machines are called zombies and the net is called botnet or zombie army.
+
+Initially they where of the [[client-server botnet]] type where machines are under control of a primary server (sometimes more than one). With time, having commands coming from a few machines became vulnerable to be tracked, therefore [[peer to peer botnet]]s are born. Each infected zombie hold a list of piers, some machine called [[botnet commander]]s introduced a [[command]] and such is distributed to all the piers.
+
+The damages that a botnet can do are of the most varied type but often they are some time of [[email spam]] where the zombies send emails, [[click fraud]] to simulate interaction with ads, [[brute force decryption]] via the zombies, [[bitcoin mining]] and [[DoS attack]]s.

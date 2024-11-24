@@ -1,0 +1,2 @@
+a form a [[location-based services]], used to detect when something crosses a boundary.
+Used a lot for parcel tracking, it creates a [[geofence]], which is an area of interest for the [[location-based services]] and define some actions when a device moves in or out of the area.

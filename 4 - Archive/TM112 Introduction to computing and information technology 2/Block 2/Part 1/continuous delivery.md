@@ -1,0 +1,1 @@
+Continuously developing, testing your software and releasing it into production if the tests are passed working in close contact with the operations team in a [[DevOps]] methodology

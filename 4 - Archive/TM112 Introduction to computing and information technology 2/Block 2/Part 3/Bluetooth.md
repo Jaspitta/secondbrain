@@ -1,0 +1,2 @@
+It is a [[short-range wireless communication]] technology, often used to connect auxiliary devices. It has a range of about 10 meters, speed of 24 Mbps, encryption with a pairing process, works in the 2.4 GHz band and is for point to point communication.
+In particular cases it can be used for creating a network of up to 8 devices

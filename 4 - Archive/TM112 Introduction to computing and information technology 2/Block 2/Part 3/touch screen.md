@@ -1,0 +1,2 @@
+In general, such hardware relies on the ability to detect a touch and convert it into electrical signal.
+There are many ways to detect the interaction, disruption in a grid of infrared rays, acoustic waves, cameras, vibration sensors and more. The most common is changes in electrical properties via the older [[resistive touch]] or the now standard [[capacitive touch]]

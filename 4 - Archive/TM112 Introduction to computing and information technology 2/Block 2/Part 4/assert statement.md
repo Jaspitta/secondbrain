@@ -1,0 +1,2 @@
+It is a [[statement]] used when writing [[code tests]] in many [[programming language]]. Depending on the the language it can take slightly different forms but in the case of [[Python]] it is made by the [[keyword]] `assert` followed by a [[programming expression]] that is usually a [[boolean expression]].
+When an [[assert statement]] evaluate to True, nothing happens, however, when it evaluates to False, the execution of the program stops and an [[Assertion error]] is printed on the screen

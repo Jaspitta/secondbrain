@@ -1,0 +1,2 @@
+The older standard of [[touch screen]] technology to detect interaction with a screen. It works by having to conducting layers one on top of the other slightly separated, the pressure of the finger force them to make contact and cause an electrical resistance.
+It works with gloves on, it very cheap and resistant to water, however it has the problem that you need to press down with the finger and this cause damage over time.

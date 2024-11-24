@@ -1,0 +1,3 @@
+it is the counter part of a [[soft delete]] and a file is "properly" deleted by actually getting dereferenced by the [[File Allocation Table]].
+
+Remember, like we said in describing the [[file system]], even a [[hard delete]]is not an effective delete, the content is still there, unreferenced, until it is overwritten in an [[HDD]] or recycled by a [[TRIM]] in an [[SSD]] and therefore can be potentially recovered with [[file carving]].

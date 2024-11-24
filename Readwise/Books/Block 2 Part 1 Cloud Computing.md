@@ -116,3 +116,110 @@
 - the kind of cloud computing that you are most likely to be familiar with as an individual ([View Highlight](https://read.readwise.io/read/01hvqxe2vzs7810s249b1k7bzg))
 - many SaaS contracts include automatic control of the version of the software ([View Highlight](https://read.readwise.io/read/01hvqxfc30qj7tbg1m0xbmafyc))
 #### 1.2.3 User issues in the cloud
+- there are important issues that cloud users need to consider ([View Highlight](https://read.readwise.io/read/01hvrx4ewjdsp9s3zc5fk7vvrm))
+##### Downtime and uptime
+- time during which the cloud services are not available ([View Highlight](https://read.readwise.io/read/01hvrxe0qp57c9xneaqvfx1fkp))
+- danger that ([View Highlight](https://read.readwise.io/read/01hvrxefkabdt5x7633h6vd2sj))
+- they may be overwhelmed ([View Highlight](https://read.readwise.io/read/01hvrxepgzay57yv913n7rbsbx))
+- Unscheduled outages ([View Highlight](https://read.readwise.io/read/01hvrxetknc47355nm72ehv0jz))
+- scheduled downtime ([View Highlight](https://read.readwise.io/read/01hvrxf1z760xf8gw1gmp39fkm))
+- a lost internet connection ([View Highlight](https://read.readwise.io/read/01hvrxf93tceq00pmfs3ec0d33))
+- Uptime is the time during which the cloud services are available ([View Highlight](https://read.readwise.io/read/01hvrxfjqpxd2z85q3cq8jx4r5))
+##### Security
+- storing data and important files on external clouds and moving them across networks always opens up risks ([View Highlight](https://read.readwise.io/read/01hvrxr25mg2mbzxrj5g48a1fy))
+- multi-tenancy aspect ([View Highlight](https://read.readwise.io/read/01hvrxrktd79pt5ss23nea1drq))
+- misconfiguration or malicious hacker ([View Highlight](https://read.readwise.io/read/01hvrxtx4r33r0eyp0w71kcwgc))
+- intruders and terrorism ([View Highlight](https://read.readwise.io/read/01hvrxtnzw5ngf9javkv9z3kyr))
+##### Vendor lock-in
+- cloud providers are providing more support for businesses ([View Highlight](https://read.readwise.io/read/01hvry41kfqfg29b50rr1qktfc))
+- switching cloud providers is becoming more common ([View Highlight](https://read.readwise.io/read/01hvry47fefmcgs7879wgcz2q6))
+##### Limited control
+- the customer has very little control ([View Highlight](https://read.readwise.io/read/01hvrye870a3kkr9saecwz4xnd))
+##### Jurisdiction
+- You might think that if data is on a server in a particular country, then it is subject to the laws of that country, but in fact this has been robustly challenged ([View Highlight](https://read.readwise.io/read/01hvs6wkmvzxebd1zm2c490sh6))
+- Microsoft won ([View Highlight](https://read.readwise.io/read/01hvs6xn14gqr1535gapp8p355))
+- lack of clear rules ([View Highlight](https://read.readwise.io/read/01hvs6y6petetagb9n1k44wne7))
+- business might be compromised if their customers can’t rely on the privacy ([View Highlight](https://read.readwise.io/read/01hvs6yn98320ka9exbzq0z5k3))
+- Russia have localisation laws ([View Highlight](https://read.readwise.io/read/01hvsayqteb03tckxntjs3b6b7))
+- the International Communication Privacy Act (ICPA), which will create a clear legal framework ([View Highlight](https://read.readwise.io/read/01hvsb07jy6we230tt59h4k6p4))
+##### Service level agreements and charging for the cloud
+- transparency ([View Highlight](https://read.readwise.io/read/01hvsb8vnx4hsmafb5g5v87kcb))
+- is achieved is through a cloud service agreement (CSA) ([View Highlight](https://read.readwise.io/read/01hvsb91wz7hnh4293vt9tvbqy))
+- no set format ([View Highlight](https://read.readwise.io/read/01hvsb986kb99bjbnkhpab3ayv))
+- acceptable use policy (AUP) and a service level agreement (SLA). ([View Highlight](https://read.readwise.io/read/01hvsb9qchgte3gz3cgzw4q313))
+- describes the overall relationship between the customer and provider ([View Highlight](https://read.readwise.io/read/01hvsbac2zxnxz75k4a0yp7c9x))
+- who is responsible for what ([View Highlight](https://read.readwise.io/read/01hvsbam2vhzv8mkb5hd0spgsz))
+- SLA describes what the cloud user can expect in terms of availability and performance ([View Highlight](https://read.readwise.io/read/01hvsbby347g8asxg0zf4610h5))
+##### Billing
+- pay for what they use ([View Highlight](https://read.readwise.io/read/01hvsbvw11ydyxcyyeqfvwksc2))
+- the CSA should lay down the kinds of costs that the cloud user should expect ([View Highlight](https://read.readwise.io/read/01hvsbytrfbx0hm8m6gp1zj6nj))
+- a lack of bandwidth can lead to strained networks ([View Highlight](https://read.readwise.io/read/01hw0ndn6ph40mvwtxmmxsge9m))
+- that latency is the measure of how long it takes a packet of data to travel ([View Highlight](https://read.readwise.io/read/01hw0ne3wvvre5sc9ydqnhsvf1))
+- he ‘response time’ includes the time it takes for a ‘send’ action by the user to reach the server plus the time taken for the server to process the action, plus the time taken for the response to appear back in the user’s web browser ([View Highlight](https://read.readwise.io/read/01hw0nn3j2e16ghyzqr2d2280r))
+- target response time that is less than 200 milliseconds ([View Highlight](https://read.readwise.io/read/01hw0npf1448w99431mm2vj1d9))
+- new technologies and services are being developed to reduce latency ([View Highlight](https://read.readwise.io/read/01hw0nwb8mgx5rza9gwyyv6rq7))
+- servers close to their consumers’ ([View Highlight](https://read.readwise.io/read/01hw0nwh3m82et7tpc3y4ghs3j))
+- cache frequently used data ([View Highlight](https://read.readwise.io/read/01hw0nwqs7923exrytphf5d1bv))
+- dedicated direct network ([View Highlight](https://read.readwise.io/read/01hw0nwzqvzp64gy7fkeb2w6hs))
+- move some of the computing power closer to the end user’s device ([View Highlight](https://read.readwise.io/read/01hw0nxpfj2nbk6p5gketqr6n9))
+- a technology called fog computing (sometimes called edge computing) ([View Highlight](https://read.readwise.io/read/01hw0ny0j2rvphbejhrz1wd51c))
+- fog computing can provide reduced latency and response time, and therefore an increased data transfer rate, which is ideal for real-time processing ([View Highlight](https://read.readwise.io/read/01hw0nz4beeahvxe04fyta89ps))
+#### 1.3.4 New awareness of green computing
+- the environmentally responsible and eco-friendly use of computers ([View Highlight](https://read.readwise.io/read/01hw0pjmk6fm2n7fyyfwqreh3m))
+- designed to be run efficiently ([View Highlight](https://read.readwise.io/read/01hw0pk032z3aysghp0ynvakd1))
+- debates as to whether cloud computing is green or not, and how it could be made greener ([View Highlight](https://read.readwise.io/read/01hw0pkh7b7sf6rnktm59c3ajz))
+##### Energy consumption
+- data centres consume a lot of energy ([View Highlight](https://read.readwise.io/read/01hw0pswvkpcvg7wdsg7vx1r7j))
+##### Carbon emissions
+- Cloud providers also suggest that working on the cloud from home reduces a business’s carbon footprint ([View Highlight](https://read.readwise.io/read/01hw0rzpaanjd795r6m2hdwkan))
+- overall carbon emissions might increase because individuals working at home use more total energy in lighting and heating ([View Highlight](https://read.readwise.io/read/01hw0s159qs7y0ke8pgbjt4g40))
+- the ‘tipping point’ depends on how a person commutes to the office, and how far ([View Highlight](https://read.readwise.io/read/01hw0s30jgdqjxnbhgyrrd8ke8))
+##### Water usage
+- data centres need clean water of a quality that is similar to that used for drinking water ([View Highlight](https://read.readwise.io/read/01hw0s6w5z37e4vkhhamhcq74h))
+##### Monitoring energy and water usage
+- pressure to monitor the effective use of power and water ([View Highlight](https://read.readwise.io/read/01hw0s9zwnc1ce0vjv0t8m1xr3))
+- Two of the indexes used to measure ([View Highlight](https://read.readwise.io/read/01hw0se8j6cycv386y8txzvwah))
+- PUE is the ratio of the total amount of energy used ([View Highlight](https://read.readwise.io/read/01hw0sekcb88dsmxayvsgw67zg))
+- to the energy delivered to computing equipment ([View Highlight](https://read.readwise.io/read/01hw0senppb6md2bpqcs981c77))
+- WUE is the ratio of the annual water consumption ([View Highlight](https://read.readwise.io/read/01hw0shyxsbwwjj213v1g8n3zy))
+- o the energy delivered to computing equipment ([View Highlight](https://read.readwise.io/read/01hw0sj4gmk0m7gh30qwsdezrc))
+- PUE and WUE values are very dependent on the climate ([View Highlight](https://read.readwise.io/read/01hw0skg2anp9szav98axqmczg))
+- a warm location and/or a location with high humidity, it will usually require more energy to reduce the humidity, and more water to cool it ([View Highlight](https://read.readwise.io/read/01hw0sm17061frta5grgche7xd))
+##### Green computing and devices
+- manufacturing or disposing of devices ([View Highlight](https://read.readwise.io/read/01hw0sr25269p9gbfyydafcs6n))
+### 1.4 Reading about the cloud and other technologies
+#### 1.4.1 The cloud and the Internet of Things – a technical paper
+- a technical paper that describes how cloud computing and the Internet of Things (IoT) can, when integrated, generate new and powerful applications ([View Highlight](https://read.readwise.io/read/01hw34f2gmsh1nbf3egsvaqfn1))
+- read and make notes on academic papers ([View Highlight](https://read.readwise.io/read/01hw34hb9485th7j0gnr6dac6r))
+- reating a piece of writing based on the same paper ([View Highlight](https://read.readwise.io/read/01hw34hggc3adte71hgs1t2hc7))
+- although the conference paper has the same authors and a very similar name it may be different to the version in the journal ([View Highlight](https://read.readwise.io/read/01hw34kvexpcc08j407mvakc9r))
+- but rather summarises multiple primary research papers to give a sense of the consensus, debates and unanswered questions within a field at a snapshot in time, is referred to as a review paper (or a survey paper) ([View Highlight](https://read.readwise.io/read/01hw4r46f5xn4x32v9qjj7kbrp))
+#### 1.4.3 Careful reading and taking notes
+- If it is clear that the content of the paper, or parts of it, is relevant to the task at hand, a more careful and methodical second reading through the paper (or parts of it) is in order ([View Highlight](https://read.readwise.io/read/01hw5q7xndbte5q4tdw2kkxpta))
+- taking more careful notes is also a very personal thing ([View Highlight](https://read.readwise.io/read/01hw5q86tz5ya9kn0m2rsecdcm))
+- you may find in some instances that drawing a diagram or a mind map captures the ideas better than words ([View Highlight](https://read.readwise.io/read/01hw5q9db8ftknmbjw2xx9p9jm))
+- notes you take only have to work for you ([View Highlight](https://read.readwise.io/read/01hw5qa9qs605nd7tcm19dwwbc))
+- it is essential to write down (or otherwise keep) enough information to enable you to include proper citations and references ([View Highlight](https://read.readwise.io/read/01hw5qb72ej5fn4mm7frvvsn3z))
+- note any other sources that the author has cited that might be useful background or extension reading. ([View Highlight](https://read.readwise.io/read/01hw5qbpj1r6w4xr1n95j6xw1b))
+- it is a good idea to note how you accessed the paper in the first place ([View Highlight](https://read.readwise.io/read/01hw5qce2rkbgbcdh12zytfmvh))
+#### 1.4.4 Assessing the quality of a paper
+- make sure that you have also captured the URL or that you have a copy saved in a sensible location on your hard drive ([View Highlight](https://read.readwise.io/read/01hw5qcz4qa45j9eecrmh6vvpq))
+- it is always important to assess the quality of any source ([View Highlight](https://read.readwise.io/read/01hw5rkgajpn0fe785mbx4zb97))
+- ‘peer-reviewed journal’ appeared after the title of the paper. This means that the journal in which it was published has a panel of academic experts who reviewed the paper before deciding whether it should be accepted for publication ([View Highlight](https://read.readwise.io/read/01hw5rpsm8b7kdnwy1sd3q6t1s))
+- in computing, unlike some other subjects, presenting a paper at a refereed conference can be considered as academically respectable as having a paper accepted by a peer-reviewed journal ([View Highlight](https://read.readwise.io/read/01hw5rr4wcgxeqbfpxqrwnyabr))
+- You should be wary of any academic publication that is not peer-reviewed ([View Highlight](https://read.readwise.io/read/01hw5rqv2zvpwwfr01gk1xyvtz))
+- One measure is the number of times that the paper has been referred to by other people ([View Highlight](https://read.readwise.io/read/01hw62rbjzyecbh49zpwdk5tbv))
+### 1.5 Writing about the cloud and other technologies
+#### 1.5.1 Writing reports
+- It is important that you carefully read any such accompanying instructions when you are asked to write a report ([View Highlight](https://read.readwise.io/read/01hw7a01rjsvd4neampxmchz19))
+- aim to develop more general report-writing skills ([View Highlight](https://read.readwise.io/read/01hw7a0ehdsb0r50xrtjafsfrx))
+- an assignment question is not the place to go off topic or indulge in flights of fancy, however brilliantly ([View Highlight](https://read.readwise.io/read/01hw7a1b94rjw0s4shahcpg74m))
+- You may also be asked to demonstrate that you have ‘read around’ the subject by including a Bibliography section that lists any other sources (in addition to the ones you have directly referenced) that you have used to help you write your report ([View Highlight](https://read.readwise.io/read/01hw7a54gve00zvaed3mww3140))
+#### 1.5.2 Know what the marks are for
+- the students are given the marking guidance ([View Highlight](https://read.readwise.io/read/01hw7aaqs1abv4zerfzcs5sb13))
+- you will almost always be given a word count for a report. This is to encourage you to think about the level of detail required ([View Highlight](https://read.readwise.io/read/01hw7aecpqy8aptp4hqw0dwaaa))
+#### 1.5.3 Look at your work objectively
+- It is very hard to look at your own writing in a critical way ([View Highlight](https://read.readwise.io/read/01hw7afvnb3f2egh0bmy4yxmxd))
+- practise reading and critically evaluating articles in reputable online IT journals or other publications ([View Highlight](https://read.readwise.io/read/01hw7age9qrv970nagemaf1yhe))
+- Regardless of the quality of your writing, your tutor will always try hard to give you credit for your understanding of the relevant module materials ([View Highlight](https://read.readwise.io/read/01hw7ajh3bj08avhn9byhebv70))
+#### 1.5.4 Reflection

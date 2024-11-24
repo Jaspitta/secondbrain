@@ -1,0 +1,2 @@
+A way of performing [[localisation]] is using the [[ip address]] of a computer. Such location may not be very meaningful and translate to simply the locations of the [[ISP]]'s servers.
+Regardless, the country should be correct and therefore it is sometimes used to block/allow access to some services based on the country.

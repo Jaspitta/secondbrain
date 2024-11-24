@@ -1,0 +1,2 @@
+In the context of [[cyber security]] spear phishing is the act of using private information to [[blackmail]] specific people and get access to systems or even more info.
+When such an attack is performed on senior managers in a company it is called [[whaling]]

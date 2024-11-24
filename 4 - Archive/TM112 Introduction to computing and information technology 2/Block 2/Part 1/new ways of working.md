@@ -1,0 +1,3 @@
+The cloud brought many changes to the way [[developers]] and teams in general do their work.
+The biggest changes comes from the shifts in how applications and [[software releases]] are managed. The old model introduced few, big updates with major changes to the product, in the new way of working the main idea is to have continuous small changes being developed and brought to production.
+This new way of working is called [[continuous delivery]] and it embody the ability to be flexible and move fast particularly using a [[DevOps]] approach.

@@ -1,0 +1,9 @@
+It is a series of techniques used to determine a locations starting from [[cell-tower]] locations and using some [[localisation]] strategy.
+
+Most countries are portioned into [[mobile phone]] [[cell areas]] like postcodes areas. Each [[cell-tower]] has a unique [[Cell ID]] which contains also the [[latitude]] and [[longitude]] (approximated) of the [[cell-tower]] and it is transmitted to every device.
+By knowing the location of the cell-tower and the strength of the signal every device can make an ==estimate== of its current location even without using [[global positioning system|GPS]].
+In these estimations, the position of the device is said to be the position of the [[cell-tower]] coming from the [[Cell ID]], which means that sometimes it is not very accurate. However, the smaller the range of transmission of the tower the more accurate the position will be, for this reason it can be particularly helpful in big cities where there might be lots of [[cell-tower]] and buildings possibly blocking the signal from [[GPS]].
+Another way to increase the precision is to detect the location of multiple [[cell-tower]] and use [[triangulation]] or [[trilateration]] to get a more precise measure of the location one might be in.
+
+As much as these techniques can be used by your phone to understand where it is, they can also be used by the [[network provider]] to understand where you are.
+When you go around your device connect and disconnect from multiple [[cell-tower]] which can also talk to each others to exchange information, each connection include an identifier for the device as well as signal strength, round-trip time and the antenna used (usually each tower has 3 antennas covering 120deg each). It is easy to see how all these information can be used to calculate your location and your movements.

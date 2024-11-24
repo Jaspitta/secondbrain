@@ -1,0 +1,2 @@
+A [[smartphone operating system]] developed in California and acquired by [[google]] in 2005 and that is today the most used in the world.
+It is based on the [[linux]] [[OS]] and therefore is open source, the full project is known as [[Android Open Source Project]], however [[google]] added components like the [[Google Play Store]] which is closed source, so if you want to use such services as a manufacturer you still need to pay a license

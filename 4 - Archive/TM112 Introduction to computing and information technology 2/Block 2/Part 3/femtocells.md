@@ -1,0 +1,1 @@
+Very small [[base station]] to cover a smaller but hard to reach area

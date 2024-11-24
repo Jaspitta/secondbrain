@@ -1,0 +1,3 @@
+One of the [[technologies that have been driven by and have driven cloud computing]], maybe the most impactful one.
+It is an amalgamation of development and operations since the two teams have to work in tandem to support the new [[continuous delivery]] model.
+Many [[cloud providers]] now support DevOps since it became so popular by providing tools for continuous development and delivery, in these environments the cloud become a cost effective platform for production, development and testing to really complete the circle.

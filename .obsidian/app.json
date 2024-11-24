@@ -27,5 +27,6 @@
     "readwise-official:readwise-official-reimport-file",
     "editor:toggle-keyboard",
     "command-palette:open"
-  ]
+  ],
+  "vimMode": true
 }

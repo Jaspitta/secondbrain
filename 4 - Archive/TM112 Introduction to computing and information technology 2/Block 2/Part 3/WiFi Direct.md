@@ -1,0 +1,1 @@
+It is a variation of the regular [[wifi]] we all know and love. It is made for [[point to point communication]]. It works in the same frequency as [[wifi]] (2,4-5 GHz), it goes up to several hundred Mbps, it has a range that works for a house and uses [[WPA2]] encryption

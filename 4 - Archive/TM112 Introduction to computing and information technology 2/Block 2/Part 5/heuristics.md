@@ -1,0 +1,2 @@
+They are rules of thumb we can use to help us love a problem in a way or another.
+The great [[George Pólya]] described over 50 of them, some of the most important are: break a problem in smaller pieces, try to love a simpler version, do not give up, look for patterns, work backwards... etc.
