@@ -1,0 +1,1 @@
+The branch of mathematics that investigate geometry problems using coordinates and equations

@@ -1,0 +1,1 @@
+The collection of all points that satisfy a property

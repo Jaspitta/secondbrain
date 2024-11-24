@@ -92,7 +92,7 @@
   "library2": {
     "type": "excalidrawlib",
     "version": 2,
-    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.6.7",
+    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.3.0",
     "libraryItems": [
       {
         "status": "unpublished",
@@ -967,7 +967,7 @@
   "longPressDesktop": 500,
   "longPressMobile": 500,
   "isDebugMode": false,
-  "rank": "Bronze",
+  "rank": "Silver",
   "fontAssetsPath": "Excalidraw/CJK Fonts",
   "loadChineseFonts": false,
   "loadJapaneseFonts": false,
