@@ -237,11 +237,11 @@ $sinB=\frac{h}{c} \rightarrow h=csinB$
 
 Therefore we can rewrite it saying $bsinC=csinB \rightarrow \frac{b}{sinB}=\frac{c}{sinC}$
 In fact this can be done with any of the angles, and if we do the same for A at the end we get the [[sin rule]] that $\frac{b}{sinB}=\frac{c}{sinC}=\frac{a}{sinA}$
-![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 23]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 4/activity 23]]
 
-![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 24]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 4/activity 24]]
 
-![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 25]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 4/activity 25]]
 
 ##### [[cosine rule]]
 
@@ -256,9 +256,9 @@ Considering that $cosC=\frac{y}{b} \rightarrow y=bcosC$ and substituting into th
 The letters used normally are not the same that we have in this triangle but they do not matter as long as they are respected, the final rule is $a^2=b^2+c^2-2bccos A$.
 If in the rule A is a [[right angle]], the cos is 0 so you get the [[pythagoras theorem]] so the [[cosine rule]] is a more general rule.
 
-![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 27]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 4/activity 27]]
 
-![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 28]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 4/activity 28]]
 
 ##### decision making
 
@@ -279,7 +279,7 @@ Now that we saw [[trigonometric raio]]s and more we can also solve the case in w
 It might be difficult in words but it is easy looking at the drawing, we know that $sin\theta=\frac{h}{a} \rightarrow h=asin\theta$.
 We can rewrite the classic formula as $\frac{1}{2}*b*asin\theta$
 
-![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 29]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 4/activity 29]]
 
 ##### [[angle of inclination]]
 
@@ -295,7 +295,7 @@ Not coincidentally this is the same as [[tangent]], so for a straight line with 
 If we consider the point P on the [[unit circle]] and we draw the usual triangle, we know that the y is the [[sine]] and the x is the [[cosine]].
 If this is the case, we can define the hypothenuse in them, since the length of it is one we get $(sin\theta)^2+(cos\theta)^2 = 1^2$ and this is a new [[trigonometric identity]].
 
-![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 32]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 4/activity 32]]
 
 We can look at the graphs of [[sine]], [[cosine]] and [[tangent]] to deduce a few extra [[trigonometric identity]].
 First of all the [[trigonometric function]]s are periodic so we can say that:
@@ -322,7 +322,7 @@ $sec\theta=\frac{hyp}{adj}, \ \ \ \ cosecant\theta=\frac{hyp}{opp}, \ \ \ \ cota
 And the graphs are the reflection on the y=x axes which is weird: 
 ![[Pasted image 20241111172024.png]]
 
-![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 33]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 4/activity 33]]
 
 We can also start form the identity $sin^2\theta+cos^2\theta=1$ and manipulate it by dividing for $cos^2\theta$ or $sin^2\theta$ to get respectively:
 $tan^2\theta+1=sec^2\theta$
@@ -378,7 +378,7 @@ $2cos^2A=cos2A+1 \rightarrow cos^2A=\frac{1}{2}(cos2A+1)$
 on which you can divide A by 2 .
 ![[activity 35]]
 
-![[activity 36]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 4/activity 36]]
 
 
 
