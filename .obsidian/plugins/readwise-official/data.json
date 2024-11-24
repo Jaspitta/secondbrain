@@ -4,8 +4,8 @@
   "frequency": "0",
   "triggerOnLoad": true,
   "isSyncing": false,
-  "lastSyncFailed": true,
-  "lastSavedStatusID": 16890962,
+  "lastSyncFailed": false,
+  "lastSavedStatusID": 17101624,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
@@ -26,7 +26,10 @@
     "Readwise/Articles/MST124 Unit 1.md": "44310050",
     "Readwise/Books/The Beginning After the End Book 10 Retribution.md": "32098963",
     "Readwise/Articles/MST124 Unit 2.md": "44761327",
-    "Readwise/Articles/MST124 Unit 3.md": "45093469"
+    "Readwise/Articles/MST124 Unit 3.md": "45093469",
+    "Readwise/Books/Critica Della Ragion Demoniaca.md": "45548520",
+    "Readwise/Articles/MST124 Unit 4.md": "45572422"
   },
-  "reimportShowConfirmation": true
+  "reimportShowConfirmation": true,
+  "failedBooks": []
 }

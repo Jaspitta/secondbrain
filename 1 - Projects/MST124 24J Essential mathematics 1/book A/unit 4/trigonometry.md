@@ -289,3 +289,70 @@ If we have a [[straight-line equation]] we know that it has a [[gradient]] and t
 If we try to draw the [[unit circle]] on a graph and consider a point P on it, connecting it with the origin will give you a [[straight-line equation]].
 Since the point P have coordinates x, y and the line touches the origin the [[gradient]] has formula $gradent = \frac{y}{x}$.
 Not coincidentally this is the same as [[tangent]], so for a straight line with [[angle of inclination]] $\theta$ we have $gradient = tan\theta$ 
+
+##### more [[trigonometric identity]]
+
+If we consider the point P on the [[unit circle]] and we draw the usual triangle, we know that the y is the [[sine]] and the x is the [[cosine]].
+If this is the case, we can define the hypothenuse in them, since the length of it is one we get $(sin\theta)^2+(cos\theta)^2 = 1^2$ and this is a new [[trigonometric identity]].
+
+![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 32]]
+
+We can look at the graphs of [[sine]], [[cosine]] and [[tangent]] to deduce a few extra [[trigonometric identity]].
+First of all the [[trigonometric function]]s are periodic so we can say that:
+$sin(\theta+2\pi)=sin\theta$
+$cos(\theta+2\pi)=cos\theta$
+$tan(\theta+\pi)=tan\theta$
+
+Also from the graph we can easily notice that:
+$sin(-\theta)=-sin(\theta)$
+$cos(-\theta)=cos(\theta)$
+$tan(-\theta)= -tan(\theta)$
+
+In a similar way, you can [[translate]] the graph of [[cosine]] to the left by $\frac{\pi}{2}$ and reflect it on the y axes to get the graph of [[sine]], so we can say that:
+$cos(-\theta+\frac{\pi}{2})=sin\theta$
+therefore
+$sin(-\theta+\frac{\pi}{2})=cos\theta$
+(I do not understand why the textbook does it so weirdly, the same thing can be obtained by simply [[translate]] to the right by $\frac{\pi}{2}$).
+
+##### [[cosecant]], [[secant]] and [[cotangent]]
+
+guess what they are, the [[inverse]] or [[reciprocal]] to their regular counter parts so $ratiocant=\frac{1}{otherRatio}$...
+$sec\theta=\frac{hyp}{adj}, \ \ \ \ cosecant\theta=\frac{hyp}{opp}, \ \ \ \ cotangent\theta=\frac{adj}{opp}$
+
+And the graphs are the reflection on the y=x axes which is weird: 
+![[Pasted image 20241111172024.png]]
+
+![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 33]]
+
+We can also start form the identity $sin^2\theta+cos^2\theta=1$ and manipulate it by dividing for $cos^2\theta$ or $sin^2\theta$ to get respectively:
+$tan^2\theta+1=sec^2\theta$
+$1+cot^2\theta=cosec^2\theta$
+
+##### [[angle sum identity]]
+![[angle sum in sin identity proof.excalidraw]]
+
+Start with 2 [[right angled triangle]]s, assume they have a base of 1, hypothenuse of p and q and angle of A and B.
+Now smoosh them together and get the area of each individually with the formula in [[area of triangle]].
+We know that the area of the two together is the area of the whole, so we can write the equation:
+$\frac{1}{2}pqsin(A+B)=\frac{1}{2}p1sin(A)+\frac{1}{2}q1sin(B)$
+we can now multiply everything by 2 and divide by pq to get:
+$sin(A+B)=\frac{1}{q}sin(A)+\frac{1}{p}sin(B)$
+
+going back to the triangles, we can get the [[cosine]]s of A and B which give $cos(A)=\frac{1}{p}$ and $cos(B)=\frac{1}{q}$.
+If we substitute these in the original equation we get the final form of:
+$sin(A+B)=cos(B)sin(A)+cos(A)+sin(B)$
+
+This is our new [[trigonometric identity]], even thought we worked out the proof for only [[acute angle]]s it works for every angle, the proof is just a bit more complicated.
+
+This does not stop here, we can use the previous identities to rewrite it in the [[cosine]] form, in particular we want to replace A with $\frac{\pi}{2}-A$ and B with $-B$ (This because we know the rule works for all angles):
+$sin(\frac{\pi}{2}-A-B)=cos(-B)sin(\frac{\pi}{2}-A)+cos(\frac{\pi}{2}-A)sin(-B)$
+if we use the [[trigonometric identity]] we defined earlier:
+![[Pasted image 20241111202110.png]]
+in the end we get:
+$cos(A+B)=cos(A)cos(B)+sin(A)sin(B)$
+And this is a new [[trigonometric identity]] again.
+
+If you notice, we can now divide the first by the second, adjust the equation and we get the same [[trigonometric identity]] for the [[tangent]]:
+$tan(A+B)=\frac{tanA+tanB}{1-tanAtanB}$
+
+You can replace in these identities B with -B and use the previously defined [[trigonometric identity]] to get also the same rules for the differences
