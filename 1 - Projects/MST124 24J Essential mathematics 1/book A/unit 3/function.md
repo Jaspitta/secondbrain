@@ -95,8 +95,14 @@ Remember that $f^{-1}$ is not the same as $f(x)^{-1}$, this is called a [[recipr
 We can take the original function, use a [[domain]] in which it is a [[one-to-one function]] and take the inverse of that. Such functions are called [[restriction]]s and the process is called [[function restriction]].
 
 Another type of [[function]]s are [[exponential function]]s which for is $f(x)= b^x$ where b is a positive constant not 1. b is called the [[base]] of the exponential function. Remember that $b^0$ is always 1, so all [[function]] of this type will have to pass by (0,1). In relation to [[logarithm]]s, $f(x)=b^x$ can also be written as $f(x)=e^{kx}$ where $k=\ln{b}$ because $e^{\ln{b}}=b$ and therefore $b^x=e^{{(\ln{b}})^x}$.
+This means that the resulting function id $f(x)=e^x$ with [[horizontal scaling]], given by $f(kx)$ with $c=\frac{1}{k}$, this is because we said that the base function for [[horizontal scaling]] is $f(\frac{x}{c})$ so $f(kx)=f(\frac{x}{c}) \rightarrow kx=\frac{x}{c} \rightarrow ckx=x \rightarrow ck=1 \rightarrow c=\frac{1}{k}$.
 The closer b get to 1, the flatter the [[curve]] will be because at 1 you get a flat line, since every [[exponential function]] passes by (0, 1) and the curvature change with b, there is b at which in (0,1) the [[gradient]] is exactly 1. Such number is $e$ and the [[function]] $f(x)=e^x$ is called [[the exponential function]] which has [[gradient]] of exactly 1 and (0,1).
 Remember that $e$ is an irrational number like $\pi$.
 Related to [[exponential function]] there are [[logarithmic function]]s which have the form $f(x)=\log_{b}x$ where $b$ is the [[base]] and a positive constant different from 1. If you put them into relation, the [[logarithmic function]] is the [[inverse function]] of the [[exponential function]] (and vice versa of course).
 Being [[inverse function]]s, the graph of one is the reflection on $y=x$ of the other so:
 ![[Pasted image 20241026133417.png]]
+
+#### Growth or Decay factor in exponential functions
+
+An interesting property of [[exponential function]]s is that if you have such a function and you get the result for x and than for x + c where c is a constant, $f(x) \rightarrow f(x+c)$ the second function will be the first one multiplied by a factor independent from x but only dependent on $c$. So if for example $f(1) = 5\ \  and\ \  f(5) = 15$ it means that $f(20)$ will be $f(16) * 3$ because it is the same gap c. This factor is called [[growth factor]] or [[decay factor]].
+Using this logic we can define a number p that $e^{kp} = 2$, so p is the number that if added to x double or halves the value of the function depending if it represent growth of decay. This number is also called the [[doubling period]] or [[halving period]] and when the function refers to time it can be called [[half-life]]

@@ -132,3 +132,139 @@
 - There’s anotherfairlysimple change thatyou canmaketothe rule of a function,which causesits graphtobetranslated horizontally
 - Todothis, youreplaceeachoccurrenceofthe input variable x in the right-hand side of the rule of the function by an expression of the form x − c
 - let’sthink aboutwhathappens whenyou translatethe graphofa particular function to the rightby c units
+## New highlights added October 29, 2024 at 2:14 PM
+- Translations of graphs Supposethat f is afunction and c is aconstant.Toobtain the graph of: • y = f(x)+ c,translatethe graphof y = f(x)upby c units (the translation is down if c is negative) • y = f(x − c), translatethe graphof y = f(x)tothe rightby c units (the translation is to the left if c is negative).
+- y = f(x − c)+ d, and the originalgraphistranslated to the rightby c units andupby d units.
+#### 2.2 Scalingthe graphs of functions vertically
+- n when youmultiplythe right-hand side of itsrulebya constant.The new function thatyou obtain is calleda constant multiple
+- The eﬀectsthatyou sawinActivity22are called verticalscalings. Scaling agraph vertically by a factor of c meansthe following.
+- If c is positive,thenmoveeachpointonthe graphvertically,inthe direction away from the x-axis,until it’s c timesasfar from the x-axis
+- If c is negative, then move each pointonthe graphvertically,inthe direction away from the x-axis,until it’s |c| timesasfar from the x-axis as it wasbefore,
+- If c is zero, then move each pointonthe graphvertically untilitlies on the x-axis.
+- Vertical scalings of graphs Supposethat c is aconstant.Toobtain the graphof y = cf(x), scale the graphof y = f(x)vertically by afactorof c.
+- Youcan combineverticalscalings of graphs with vertical and/or horizontal translationsofgraphs
+- When youcombine vertical scalingsand translationsinthisway,the order in which youcarry outthe changestothe rule of the function does often matter.
+- Thistells youthe following enlightening fact:the graphofany quadratic function is the same basicshape as the graphof y = x2,but scaled vertically,and thentranslated horizontally and/or vertically.
+#### 2.3 Scalingthe graphs of functions horizontally
+- you replaceeachoccurrenceofthe input variable x in the right-hand side of the rule of the function by an expression of the form x/c,where c is aconstant
+- e called horizontal scalings. Scaling agraph horizontally by a factor of c meansthe following.
+- If c is positive,thenmoveeachpointonthe graphhorizontally,inthe direction away from the y-axis,until it’s c timesasfar from the y-axis as it wasbefore.
+  • If c is negative, then move each pointonthe graphhorizontally,inthe direction away from the y-axis,until it’s |c| timesasfar from the y-axis as it wasbefore,and thenreﬂect it in the y-axis.
+  • If c is zero, then move each pointonthe graphhorizontally untilitlies on the y-axis.
+- Horizontal scalings of graphs Supposethat c is anon-zeroconstant.Toobtain the graphof y = f x , c scale the graphof y = f(x)horizontally by afactorof c.
+- Reﬂectionsofgraphsinthe coordinate axes To obtain the graphof y = −f(x), reﬂect the graphof y = f(x)inthe x-axis.
+  To obtain the graphof y = f(−x), reﬂect the graphof y = f(x)inthe y-axis.
+### 3 Morenew functions from old functions
+#### 3.1 Sums, diﬀerences,products andquotientsof functions
+- The sum of f and g hasthe rule h(x)= f(x)+ g(x).
+- There are two diﬀerences of f and g,withrules h(x)= f(x) − g(x) and h(x)= g(x) − f(x).
+- The product of f and g hasthe rule h(x)= f(x)g(x).
+- There are two quotients of f and g,withrules h(x)= f(x) g(x) and h(x)= g(x) f(x) .
+- 3.2 Composite functions
+#### 3.2 Composite functions
+- oapplyone function afterthe other.
+- dwhose domain is the largestset of real numberstowhich youcan applythe process, is calleda compositefunction
+- n,orjust composite,
+- te,of f and g.It’sdenoted by g ◦ f (the symbol ◦ is read as ‘circle’)
+- Compositefunctions Supposethat f and g are functions. The compositefunction g ◦ f is the function whose rule is (g ◦ f)(x)= g(f(x)), andwhose domain consists of all the values x in the domain of f such that f(x)isinthe domain of g.
+- The processofforming acompositefunction from twofunctionsiscalled composing the functions
+#### 3.3 Inverse functions
+- Anotherway to think of the inversefunction f−1 of afunction f is that f−1 ‘undoes’
+- If youreverse the directionsofall the arrows in the fullversion of this mapping diagram, then the new diagram thatyou get isn’tthe mapping diagramofa function
+- Afunction forwhich this doesn’t happen,and which therefore does have an inversefunction,issaid to be one-to-one.
+- One-to-one functions Afunction f is one-to-one if forall values x1 and x2 in itsdomain suchthat x1 .= x2, f(x1) .= f(x2).
+- ifyou draw anyhorizontal linethatcrossesthe graphofthe function,thenitcrossesit exactlyonce,
+- Ifyou candrawa horizontallinethatcrosses agraphmore thanonce, then the graphisn’tthe graphofa one-to-one
+- Onlyone-to-one functionshaveinverse functions.
+- Afunction thathas an inversefunction is said to be invertible.
+- If f is anyone-to-one function,thenthe domain of f−1 is the imageset of the original function f
+- Inversefunctions Supposethat f is aone-to-one function,withdomain A andimage set B.Thenthe inverse function,orsimply inverse,of f,denoted by f−1,isthe function with domain B whose rule is given by f−1(y)= x, where f(x)= y.
+  The imageset of f−1 is A.
+- Strategy: To ﬁndthe ruleofthe inversefunction of aone-to-one function f • Write y = f(x)and rearrange thisequation to express x in terms of y.
+  • Usethe resulting equation x = f−1(y)towritedownthe rule of f−1.(Usually,changethe input variable from y to x.)
+- .Rememberthattofully specify the function f−1,you alsohavetoindicate itsdomain,
+- If afunction is either increasing on itswhole domain,ordecreasing on itswhole domain,thenitisone-to-one andsohas an inversefunction.
+- Ifa function f hasan inversefunction f−1,then f−1 alsohas an inversefunction,namely f.In otherwords, f and f−1 are inverses of each other
+- Forany pair of inversefunctions f and f−1, (f−1 ◦ f)(x)= x, forevery value x in the domain of f,and (f ◦ f−1)(x)= x, forevery value x in the domain of f−1.
+- When you’re workingwiththe notation f−1,where f is afunction,it’s importanttoappreciatethatit doesn’t mean the function g with rule g(x)=(f(x))−1; thatis, g(x)= 1 f(x) .
+- Thisfunction g is calledthe reciprocal
+- Graphs of inversefunctions
+- for anypair of inversefunctions f and f−1,ifyou swap the coordinates of anypointonthe graphof f,thenyou’llget the coordinates of apointonthe graphof f−1,and vice versa
+- Thegraphs of apair of inversefunctionsare the reﬂectionsofeach otherinthe line y = x (when the coordinateaxes have equal scales).
+##### Functionsthataren’tone-to-one
+- Startingwiththe function f that’snot one-to-one,wespecify anew function thathas the same rule as f,but asmallerdomain.
+- • the newfunction is one-to-one and therefore hasaninverse
+- the imageset of the new function is the same as the imageset of the originalfunction
+- Afunction that’sobtained from anotherfunction f by keepingthe rule the same but removing some numbersfrom the domain is calleda restriction
+- When youwanttorestrictthe domain of afunction thatisn’tone-to-one to enable youtoﬁnd an inversefunction,there’s alwaysmore thanone possibility
+- o
+### 4 Exponential functions andlogarithms
+#### 4.1 Exponential functions
+- An exponentialfunction is afunction whose rule is of the form f(x)= bx,
+- The number b is calledthe base number,orjust base
+- Noticethat f(0)=20 =1,which explainswhy the y-interceptis1.
+##### Theexponentialfunction
+- In Activity 41 youshouldhavefound thatthe valueof b that gives a gradient of 1at(0, 1) seemstobeabout 2.7.
+- special number,usually denotedbythe letter e,whose ﬁrst fewdigitsare 2.718 28 .
+- So the exponential function with the rule f(x)= ex hasthe special property thatits gradient is exactly 1atthe point(0, 1)
+- referredtoas the exponentialfunction.
+- ex is sometimeswrittenasexpx,orexp(x).
+- The useofthe letter e forthe base of the exponential function was introduced by Leonhard Euler (see page 214).
+#### 4.2 Whatisa logarithm?
+- The ﬁrst thing to remember aboutlogarithmsisthatwheneveryou’re workingwiththem, you’re alwaysusing logarithmstoa particular base
+- Let’sstart by considering logarithms to base 10, which are knownas commonlogarithms.
+- The logarithm to base 10 of anumber x
+- The logarithm to base 10 of anumber x is denotedbylog10 x
+- The logarithm to base b of anumber x,denoted by logb x,isthe powertowhich the base b must be raised to givethe number x.So the twoequations y =logb x and x = by
+- the base b must be positive andnot equal to 1
+- only positive numbershavelogarithms, but logarithms themselvescan be anynumber.
+- Logarithm of the number 1and logarithm of the base Forany base b, logb 1= 0 and logb b =1.
+- The mostcommon choices forthe base of logarithmsare 10, 2and e.
+- , logarithmsto base e turnout to be easier to work with in manywaysthanlogarithmsto anyother base.
+- Logarithmstobase e are called naturallogarithms
+- Natural logarithms
+- The naturallogarithm of anumber x,denoted by ln x,isthe power to which the base e must be raised to givethe number x.Sothe two equations y =lnx and x = ey are equivalent.
+- The natural logarithm of anumber x is sometimesdenoted by log x,rather thanbyln x or loge x.
+- wherever yousee the notation log x used, it’s importanttocheck itsmeaning
+#### 4.3 Logarithmic functions
+- A logarithmic function is afunction whose rule is of the form f(x)=logb x,
+- b is apositiveconstant,not equal to 1. The number b is calledthe base or base number
+- Graphs of logarithmic functions Thegraphofthe function f(x)=logb x,where b> 0and b .=1,has the following features.
+  • The graphliesentirely to the rightofthe y-axis.
+  • If b> 1, then the graphisincreasing, anditgetslesssteep as x increases.
+  • If 0 <b < 1, then the graphisdecreasing,and it gets less steep as x increases.
+  • The y-axis is an asymptote.
+  • The x-interceptis1.
+  • The closer the valueof b is to 1, the steeperisthe graph.
+#### 4.4 Logarithmlaws
+- These laws are reallyjust the same as the following three indexlaws
+- ThreeindexlawsfromUnit1 bmbn = bm+n bm bn = bm−n Here arethe three logarithm laws.
+  Threelogarithm laws logb x +logb y =logb (xy) logb x − logb y =logb (bm)n = bmn   x y r logb x =logb (xr)
+- the base b of the logarithmscan be anypositivenumber except1,the numbers x and y must be positive
+- r canbeany number
+- Solving exponential equations An exponentialequation is oneinwhich the unknownisinthe exponent, such as 5x =130.
+- Youcan solveexponential equationsbyusing the third of the three logarithm laws given earlierinthissubsectio
+- 1.53x =22.5 Take the natural logarithm of both sides.
+  ln(1.53x)=ln22.5 Usethe fact thatln(xr)= r ln x.
+  3x ln 1.5= ln 22.5
+- The crucial stepinthe methoddemonstrated in Example 9isto‘take logs of both sides’
+#### 4.5 Alternative form forexponential functions
+- Anyexponential function f(x)= bx,where b is apositiveconstant notequal to 1, canbewritteninthe alternative form f(x)= ekx, where k is anon-zeroconstant.The constant k is given by k =ln b.
+- An exponentialfunction is afunction whose rule is of the form f(x)= ekx,
+- .Thisalternative form is the onethat’s usually usedinuniversity-levelmathematics, as it turns outtobeeasierto work with,
+- The graphliesentirely abovethe x-axis.
+- If k> 0, then the graphisincreasing, anditgetssteeper as x increases.
+  • If k< 0, then the graphisdecreasing,and it gets less steep as x increases.
+- The x-axisisanasymptote
+- The y-interceptis1.
+- The closer the valueof k is to 0, the ﬂatteristhe graph.
+- The graphofevery exponential function is ahorizontalscalingofthe graphofthe exponential function f(x)= ex.
+- It follows thatthe graphs of all logarithmic functionsare vertical scalings of each other
+#### 4.6 Exponential models
+- From your work in Subsection 2.2,you know thatthe graphofthe function f(x)= aekx is obtained by vertically scaling the graphofthe function g(x)= ekx
+- the function g(x)= ekx is itself obtained by horizontally scaling the graphofthe function h(x)= ex by afactorof1/k
+- Aquantitythatchanges in away thatcan be modelledbya function whose rule is of the form f(x)= aekx,where a and k are non-zero constants, is said to change exponentially
+- y is said to grow exponentially,the function is calledan exponentialgrowthfunction,and the graphiscalled an exponentialgrowthcurve.
+- if a is positive as before but k is negative
+- quantity is said to decayexponentially,the function is calledan exponentialdecayfunction,and the graphiscalled an exponential decaycurve.
+- An example of areal-lifesituation thatcan oftenbemodelledbyan exponential decayfunction is the concentration of aprescription drug in a patient’sbloodstream.
