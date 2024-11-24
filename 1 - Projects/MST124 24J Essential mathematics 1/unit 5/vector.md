@@ -50,3 +50,28 @@ Multiplication of [[vector|vectors]] can be done in two different ways but it is
 There are many ways of using [[vector|vectors]] for real life scenarios, of the most commons is to express the [[displacement]] or [[velocity]] of an object. To do this however we need a [[direction]], there are also many ways of expressing this but a common one is a [[compass bearing]], that is the angle of the direction compared to north measured clockwise (the north can be magnetic, true or on a map).
 
 ![[activity_30_31]]
+![[activity_32_33]]
+
+##### [[vector as component]]
+
+[[vector component|vector components]] are an alternative way to represent [[vector|vectors]] that makes them easier to work with in many cases.
+You start by choosing a [[two dimensional coordinates]] system or [[three-dimensional coordinates]] system and define the so called [[unit vector|unit vectors]], these are simply vector parallel to the axes with [[magnitude]] of 1.
+The base concept is that every [[vector]] can be expressed as the sum of [[scalar multiple|scalar multiples]] of the [[unit vector|unit vectors]].
+If you have a vector $\textbf{v}$, and unit vectors i and j (suppose a two dimensional system but it is the same for a three dimensional one), you can say that $\textbf{v}=a\textbf{i}+b\textbf{j}$, this is called the [[component form]] where a and b are the [[scalar multiple]] and are called the i component and j component respectively.
+Since the [[unit vector]] are per definition made of a single unit and in the same direction of each axes they express the component of the original vector in each of the axes, hence the name [[vector component]].
+There is a different way to write the [[component form]] of a vector $\begin{pmatrix}a \\ b\end{pmatrix}$
+![[activity_34_35]]
+Finally, you can also write [[vector component]] as [[column vector]] with the original letter and avoid the bold like this $\textbf{a}=a_1i+a_2j=\begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$.
+
+When vectors are expressed as [[component form]], there is the possibility to carry out [[vector algebra]] in a different way.
+For example, if you have 2 vectors **a** and **b**, and you want to get the vector **a+b**, you can simply add the components of the two [[vector|vectors]] $\textbf{a}+\textbf{b}=a_1i+a_2j+b_1i+b_2j=(a_1+b_1)i+(a_2+b_2)j$ represented by: 
+![[sum_vec_components]]
+
+In [[column notation]] you have $\textbf{a}=\begin{pmatrix}a_1 \\ a_2 \end{pmatrix}$ $\textbf{b}=\begin{pmatrix}b_1 \\ b_2 \end{pmatrix}$ and $\textbf{a}+\textbf{b}=\begin{pmatrix} a_1 + b_1 \\ a_2 + b_2 \end{pmatrix}$
+The best part is that, regardless of the notation you use, the rule stated above apply to a [[sum of vectors]] for as many [[vector|vectors]] as you want.
+
+You can immagine a very similar situation when it comes to [[subtraction of vectors]]. At the end of the day you simply add the [[negative vector]] so $\textbf{a}-\textbf{b}=a_1i+a_2j-b_1i-b_2j=(a_1-b_1)i+(a_2-b_2)j$
+In [[column notation]] you have $\textbf{a}=\begin{pmatrix}a_1 \\ a_2 \end{pmatrix}$ $\textbf{b}=\begin{pmatrix}b_1 \\ b_2 \end{pmatrix}$ and $\textbf{a}-\textbf{b}=\begin{pmatrix} a_1 - b_1 \\ a_2 - b_2 \end{pmatrix}$
+![[activity_36_37]]
+
+
