@@ -45,3 +45,18 @@
 - the equation x2 + y2 − 4x +2y +9 =0. Rearrangingthisequation by completing the squaresgives (x − 2)2 +(y +1)2 = −4.
 - the equation (x − 5)2 +(y − 3)2 =0 is satisﬁedonlyby the single point(5, 3) andhence is notthe equation of a circle
 - e
+## New highlights added November 20, 2024 at 11:26 AM
+- Youhaveseen thatwhen you substitute a particular value of x into the equation of a circle andsolve for y,you obtain two, one orno solutions. If thereare two solutions, thenone of them gives a pointonthe tophalf of the circle,and the othergives a pointonthe bottomhalf.Ifthere is only one solution,then itgives the pointatthe extreme left or rightofthe circle.Ifthere are no solutions, thenthere is no pointonthe circle with thatvalue of x.
+- The equation of acircle,such as (x − 1)2 +(y − 5)2 =9, x (3) is said to be in implicit form,because it doesn’texpress either of the two variables x and y explicitly in terms of the othervariable.
+- By contrast, an equation such as y =3x2 +2, which expressesthe variable y explicitly as a function of the other variable x,issaid to be in explicit form
+#### 2.2The circle through threepoints
+- ifyou choose anytwo points, then there isexactly one straightlinethatpassesthrough both of them.Thisisnot true of circles
+- if youchoosea third point, then as longasthe three points do notall lie on the same straightline, thereisonlyone circle
+- Consider three points A, B and C,asillustrated in Figure 13. To ﬁnd the equation of the circle passing through them,all you need to do is ﬁnd the coordinates of the centre,
+- The centreofthe circle is equidistant from A, B and C.Inparticular, it is equidistant from A and B,soitlieson the perpendicular bisector of AB.
+  Similarly,itisequidistant from B and C
+- Strategy: To ﬁnd the equation of the circle passingthroughthree points 1. Find the equation of the perpendicular bisector of the line segment thatjoinsany pair of the three points.
+  2. Find the equation of the perpendicular bisector of the line segment thatjoinsa diﬀerent pair of the three points.
+  3. Find the pointofintersection of these twolines.Thisisthe centreofthe circle.
+  4. Find the radiusofthe circle,which is the distance from the centreto any of the three points.
+  Hencewrite downthe equation of the circle.
