@@ -23,6 +23,54 @@
             }
           },
           {
+            "id": "a8e25e2b85d354cc",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 29.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "activity 29"
+            }
+          },
+          {
+            "id": "a41f8215d8d00ae9",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/triangle rules decision tree.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "triangle rules decision tree"
+            }
+          },
+          {
+            "id": "9d56c9d70f2701d4",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 28.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "activity 28"
+            }
+          },
+          {
+            "id": "2f78037bd130cc46",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 27.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "activity 27"
+            }
+          },
+          {
             "id": "2f48b9655347a87d",
             "type": "leaf",
             "state": {
@@ -219,8 +267,13 @@
   },
   "active": "f40c16fbda958db5",
   "lastOpenFiles": [
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 25.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 29.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/trigonometry.md",
+    "Pasted image 20241110160213.png",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/triangle rules decision tree.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 28.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 27.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 25.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 24.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 23.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/basic not right triangle.md",
@@ -252,10 +305,6 @@
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 25.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 27.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 28.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 29.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 31.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 32.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 33.md",
     "Pasted image 20241026133417.png",
     "Pasted Image 20241024101432_330.png",
     "Pasted image 20241022150446.png",
@@ -263,7 +312,6 @@
     "Pasted Image 20241019185833_908.png",
     "Pasted Image 20241019182347_261.png",
     "Pasted Image 20241008174403_422.png",
-    "Pasted Image 20241008172516_695.png",
-    "1 - Projects/TM111 introduction to computing and information technology/Block 1/tma01/Question 2.d.png"
+    "Pasted Image 20241008172516_695.png"
   ]
 }

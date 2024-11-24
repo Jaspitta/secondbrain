@@ -243,3 +243,49 @@ In fact this can be done with any of the angles, and if we do the same for A at 
 
 ![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 25]]
 
+##### [[cosine rule]]
+
+The concept of the [[cosine rule]] is very similar to the [[sine rule]] but it has a different ending and can be used where the [[sine rule]] can not.
+We always start with the same concept of the non [[right angled triangle]] and draw h
+![[basic not right triangle]]
+
+However this time we proceed differently, we know that if the segment from C to h has a length and we call it y, therefore the other segment must be a - y and if we apply the [[pythagoras theorem]] we ca say that $b^2=y^2+h^2$ and $c^2=h^2+(a-y)^2 \rightarrow c^2=h^2+a^2+y^2-2ay$.
+We can replace the value of the first equation into the second since it contains the [[rhs]] and get $c^2=b^2+a^2-2ay$.
+Considering that $cosC=\frac{y}{b} \rightarrow y=bcosC$ and substituting into the previous [[equation]] we get $c^2=b^2+a^2-2abcosC$.
+
+The letters used normally are not the same that we have in this triangle but they do not matter as long as they are respected, the final rule is $a^2=b^2+c^2-2bccos A$.
+If in the rule A is a [[right angle]], the cos is 0 so you get the [[pythagoras theorem]] so the [[cosine rule]] is a more general rule.
+
+![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 27]]
+
+![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 28]]
+
+##### decision making
+
+At this point we know four main rules to work with angles and sides of triangles:
+- [[pythagoras theorem]]
+- [[trigonometric ratio]]s
+- [[sine rule]]
+- [[cosine rule]]
+
+which one you should use can be described in a tree:
+![[triangle rules decision tree]]
+
+##### [[area of triangle]]
+
+The classic formula for the area of a triangle is $b = \frac{1}{2} * b * h$.
+Now that we saw [[trigonometric raio]]s and more we can also solve the case in which we have only 2 sides and the angle between them:
+![[Pasted image 20241110160213.png]]
+It might be difficult in words but it is easy looking at the drawing, we know that $sin\theta=\frac{h}{a} \rightarrow h=asin\theta$.
+We can rewrite the classic formula as $\frac{1}{2}*b*asin\theta$
+
+![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 29]]
+
+##### [[angle of inclination]]
+
+The angle of inclination of a line is the angle that it makes with the x axes measured anti clock wise.
+If we have a [[straight-line equation]] we know that it has a [[gradient]] and that changes the inclination of the line so there must be a relation between the [[gradient]] and the [[angle of inclination]].
+
+If we try to draw the [[unit circle]] on a graph and consider a point P on it, connecting it with the origin will give you a [[straight-line equation]].
+Since the point P have coordinates x, y and the line touches the origin the [[gradient]] has formula $gradent = \frac{y}{x}$.
+Not coincidentally this is the same as [[tangent]], so for a straight line with [[angle of inclination]] $\theta$ we have $gradient = tan\theta$ 
