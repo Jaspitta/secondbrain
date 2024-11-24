@@ -60,3 +60,91 @@
   3. Find the pointofintersection of these twolines.Thisisthe centreofthe circle.
   4. Find the radiusofthe circle,which is the distance from the centreto any of the three points.
   Hencewrite downthe equation of the circle.
+## New highlights added November 22, 2024 at 9:40 AM
+### 3 Pointsofintersection
+- a pointwhere twolines intersect can befound by solvingthe equationsofthe lines simultaneously. Youcan use a similar approachtoﬁnd points where alineand acurve, suchasa circle,intersect.
+#### 3.1Pointsofintersection of a lineand a curve
+- Youcan use similar methods to ﬁndthe points of intersection of aline and a parabola
+##### Supply anddemand
+- The lawofdemand statesthatthe lowerthe sellingprice ofthe goods, the more consumerswantto buy.
+  The lawofsupply statesthatthe lowerthe sellingprice ofthe goods, the less producerswantto produce.
+- The sellingpriceatwhich the supply of aparticular item from producersis equal to the demandfrom consumersiscalled the equilibrium price
+#### 3.2Pointsofintersection of twocircles
+- To ﬁnd the points of intersection of two circles, you need to solvetheir equationssimultaneousl
+#### 3.3Using thecomputerfor coordinate geometry
+### 4 Working in three dimensions
+#### 4.1Three-dimensionalcoordinates
+- we extend the usualtwo-dimensional Cartesian coordinate system, by introducinga third axis,the z-axis,
+- Althoughtwo-dimensional coordinatesystems are usually drawnwiththe positive direction of the y-axis pointing up, three-dimensional systems are usually drawnwiththe positive direction of the z-axis pointing up.
+- Thisplane isknown as the x, y-plane. Similarly,the plane thatcontains the x-and z-axes is the x, z-plane, andthe plane thatcontainsthe y-and z-axes is the y, z-plane. These
+- These three planes are known asthe coordinate planes.The positive direction of the z-axis is calledthe positive z-direction
+- The right-handed coordinatesystemisusually usedinpreferenceto the left-handed one.
+- The position of a pointinthree dimensionscan be speciﬁed by three coordinates x, y and z,
+#### 4.2The distance between twopointsin three dimensions
+- In the ﬁgure, the horizontalplane thatcontainsthe point A hasbeen shaded. Let C be the pointinthisplane thatliesdirectly below B,and let D be the pointinthe shadedplane such that AD is parallelto the x-axisand CD is parallelto the y-axis,asshown.
+- The distance AB is the length of the hypotenuse of the right-angled triangle with vertices A, B and C.So, by Pythagoras’theorem, AB2 = AC2 +BC2.
+  (6) Howeverthe length AC thatappears in thisequation is itself the length of the hypotenuse of the right-angledtriangle with vertices A, C and D.So, again by Pythagoras’theorem, AC2 = AD2 +DC2.
+- Usingthisequation to substitute for AC2 in equation (6)gives AB2 = AD2 +DC2 +BC2.
+- AB2 =(x2 − x1)2 +(y2 − y1)2 +(z2 − z1)2.
+- Distance formula(three dimensions) The distance between twopoints (x1,y1,z1)and (x2,y2,z2)is ' (x2 − x1)2 +(y2 − y1)2 +(z2 − z1)2.
+#### 4.3The equation of a sphere
+- . In three dimensions, the locusof points equidistant from a particular pointisa sphere.
+- If a sphere hascentre(a, b, c), and(x, y, z)isany pointonthe sphere,then the distance between these two points is equal to the radius
+- Thestandard formofthe equation of a sphere The sphere with centre(a, b, c)and radius r hasequation (x − a)2 +(y − b)2 +(z − c)2 = r2.
+- As with the equationsofcircles, the equationsofspherescan be writtenin forms otherthanthe standard form
+- x2 + y2 + z2 +2x − 6y − 4z +12 = 0.
+- Not every equation with terms in x2, y2, z2, x, y, z anda constant term represents asphere
+- if the coeﬃcients of x2, y2 and z2 are notall the same,then the equation does notrepresent a sphere.Similarly,the equation x2 + y2 + z2 = −1does notrepresent a sphere,because no point(x, y, x)satisﬁesthisequation.
+- Non-spherical objectsthatare represented by equationswithterms in x2, y2, z2, x, y, z anda constant term include ellipsoids and hyperboloids,as illustrated in Figure 27.
+### 5 Vectors
+- a type of mathematical object calleda vector.
+#### 5.1Whatisa vector?
+- Some mathematical quantities can’tbespeciﬁedjust by stating their size – instead you need to state a size and adirection
+- .The resulting quantity is calledthe velocity of the object.
+- , we often need to dealwithmovementintwo or three dimensions.
+- , displacement is the position of one pointrelative to another, whether in one, twoorthree dimensions.
+- o speed together with direction is called velocity.
+- Quantities,such asdisplacementand velocity,thathavebotha size anda direction are called vectors,or vector quantities
+- f avector quantity is force.The size of a vector is usually calledits magnitude.
+- quantitiesthathavesize but no direction are called scalars,or scalar quantities.
+- Any vector with non-zeromagnitude canbe represented by an arrow,
+- The length of the arrowrepresentsthe magnitude of the vector,
+- and the direction of the arrowrepresents the direction of the vector
+- three-dimensional vectors are representedby arrows in three-dimensional space
+- Once you’ve chosen a scale,any two arrows with the same length andthe same direction representthe same vector
+- Vectors are often denoted by lower-caseletters.We distinguish them from scalars by using abold typeface in typed text,and by underliningthemin handwrittentext
+- denoted by v in print, or handwrittenas v.
+- Remember to underline handwrittenvectors (and maketyped ones bold)inyourown work.
+- Vectors thatrepresent displacements are sometimescalled displacement vectors
+- The magnitude of a vector v is a scalar quantity.Itisdenoted by |v|,
+##### Equalvectors
+- two vectors are equal if they have the same magnitude andthe same direction.
+##### The zerovector
+- Zerovector The zerovector,denoted by 0 (bold zero),isthe vector whose magnitude is zero. It hasno direction.
+- The zero vector is handwrittenas0 (zero underlined).
+##### Additionofvectors
+- We write −−→ PQ+ −−→ QR = −→ PR.
+- .The general rule is calledthe triangle law for vectoradditio
+- The sumoftwo vectors is alsocalled their resultant or resultant vector.
+- Figure 34(c)gives an alternative way to add two vectors,the parallelogramlaw forvectoraddition,
+- Parallelogram lawfor vector addition To ﬁnd the sum of twovectors a and b,place their tails together,and complete the resulting ﬁguretoform a parallelogram. Then a + b is the vector formedby the diagonal of the parallelogram, startingfrom the point where the tails of a and b mee
+- Youcan addmore thantwo vectors together.Toadd several vectors,you place themall tipto tail,one afteranother
+- Note thatyou can’tadd a vector to a scalar. Expressionssuch as v + x, where v is a vector and x is a scalar, are meaningless.
+##### Negative of avector
+- Negative of a vector The negative of a vector a,denoted by −a,isthe vector with the same magnitude as a,but the opposite direction.
+- Forany points P and Q,the position vectors property that − −−→ PQ = −−→
+- If youadd any vector a to itsnegative −a,byplacing the twovectors tip to tail in the usualway,then you getthe zero vector.
+## New highlights added November 22, 2024 at 10:40 AM
+##### Subtractionofvectors
+- . Subtracting anumberisthe same as adding the negative
+- Vector subtraction To subtract b from a,add −b to a.
+  Thatis, a − b = a +(−b).
+##### Multiplicationofvectors by scalars
+- Youcan multiply vectors by scalars
+- Theresultant vector a + a hasthe same direction as a,but twicethe magnitude.We denoteitby 2a
+- , forany non-zero realnumber m, the scalar multiple ma of a is the vector
+- whose magnitude is |m| timesthe magnitude of a
+- thathas the same direction as a if m is positive,and the opposite direction if m is negative
+- Also, 0a = 0.
+- .A knot is aunitof speed often usedinmeteorology,and in air andmaritime navigation.Its usualabbreviation is kn,and 1kn = 1.852kmh−1.
+- the direction of awindisusually given as the direction from which it blows
