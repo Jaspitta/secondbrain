@@ -209,3 +209,37 @@ $$
 As you can imagine, they are [[equation]]s that contains at leas one [[trigonometric function]] it it.
 Simple once can be solved using the [[inverse function]] but for more complex once there are possibly infinite solutions as we saw from the [[trigonometric function]]s above so what you do is find the solutions between for example $[0, 2\pi]$ which are always 2 and state all the others solutions as adding multiples of $2\pi$ integers.
 So for any angle we have an equivalent +- solutions possible, much like [[quadratic]].
+
+
+```handwritten-ink
+{
+	"versionAtEmbed": "0.2.6",
+	"filepath": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 20.writing"
+}
+```
+
+```handwritten-ink
+{
+	"versionAtEmbed": "0.2.6",
+	"filepath": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 21.writing"
+}
+```
+
+##### [[sine rule]]
+
+Imagine a triangle with no right angled angles, you name the [[vertices]] (and angles) from A to C and the opposite sides as a to c.
+Even if you do not have a [[right angled triangle]], you can draw a line from a vertex to one the opposite sides and have 2 different [[right angled triangle]] with the new vertex h:
+![[basic not right triangle]]
+
+Now we can use what we know to define the sin of c and b:
+$sinC = \frac{h}{b} \rightarrow h=bsinC$
+$sinB=\frac{h}{c} \rightarrow h=csinB$
+
+Therefore we can rewrite it saying $bsinC=csinB \rightarrow \frac{b}{sinB}=\frac{c}{sinC}$
+In fact this can be done with any of the angles, and if we do the same for A at the end we get the [[sin rule]] that $\frac{b}{sinB}=\frac{c}{sinC}=\frac{a}{sinA}$
+![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 23]]
+
+![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 24]]
+
+![[1 - Projects/MST124 24J Essential mathematics 1/book A/unit 4/activity 25]]
+
