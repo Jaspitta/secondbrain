@@ -85,6 +85,14 @@ Remember that [[functions]] must map only one y to every x, therefore some funct
 [[function]]s that do have an [[inverse]] are called also [[one-to-one function]].
 One of the easiest ways to find the inverse is to either deduce it by head or to simply write the $f$ function in y so $x=...y...$ . and than rewrite it in form $f^{-1}(x) = ...x...$, remember also that functions that are always increasing or always decreasing for their domain are always [[one-to-one function]] and therefore [[invertible]].
 For [[quadratic function]]s it can be a bit trickier, what you need to do is keep in mind the domain, rearrange the function by finding the [[perfect square form]] and rooting everything. Once you have the term with $\pm$ you can try to see what fits better based on the domain.
-One way to verify that a function if the inverse of the other is by feeding the result of one into the other, since $f^{-1}$ gives x for $f(x)$ you can to $f^{-1} \circ f$ and you should get x (like walking in circle)
+One way to verify that a function if the inverse of the other is by feeding the result of one into the other, since $f^{-1}$ gives x for $f(x)$ you can to $f^{-1} \circ f$ and you should get x (like walking in circle).
+From a graph point of view, the [[inverse function]] appear as a reflection of the original one on the axes $y = x$ because for their properties if you give the output of one to the others you should get x, so if you give calculate y of $f$ and give it to $f^{-1}$ as x you will get a y that is equal to the x of $f$, it simple terms it means that if you have a point of $f$ and swap the x and y you get the corresponding point of $f^{-1}$.
 
+Remember that $f^{-1}$ is not the same as $f(x)^{-1}$, this is called a [[reciprocal]] and is the same as $\frac{1}{f(x)}$.
 
+[[function]]s that are not [[one-to-one function]] do not have an [[inverse]], but we can still take some actions to write an approximation of it.
+We can take the original function, use a [[domain]] in which it is a [[one-to-one function]] and take the inverse of that. Such functions are called [[restriction]]s and the process is called [[function restriction]].
+
+Another type of [[function]]s are [[exponential function]]s which for is $f(x)= b^x$ where b is a positive constant not 1. b is called the [[base]] of the exponential function. Remember that $b^0$ is always 1, so all [[function]] of this type will have to pass by (0,1).
+The closer b get to 1, the flatter the [[curve]] will be because at 1 you get a flat line, since every [[exponential function]] passes by (0, 1) and the curvature change with b, there is b at which in (0,1) the [[gradient]] is exactly 1. Such number is $e$ and the [[function]] $f(x)=e^x$ is called [[the exponential function]] which has [[gradient]] of exactly 1 and (0,1).
+Remember that $e$ is an irrational number like $\pi$.
