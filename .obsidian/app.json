@@ -28,5 +28,6 @@
     "editor:toggle-keyboard",
     "command-palette:open"
   ],
-  "vimMode": true
+  "vimMode": true,
+  "attachmentFolderPath": "./"
 }
