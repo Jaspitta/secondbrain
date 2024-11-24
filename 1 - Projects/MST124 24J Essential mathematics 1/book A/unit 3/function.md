@@ -72,3 +72,19 @@ It is also important to remember the difference in applying [[horizontal scaling
 
 Knowing [[translate]] and [[scaling]] of [[function graph]] can be an amazing too to have a better idea of what a curve will look like by imagining the standard one and than applying such techniques one by one to get to your curve.
 
+
+There are of course also ways to combine more functions together, in particular sum, minus, product and quotient.
+The resulting [[domain]] is the [[intersection]] of the two, except for the two quotient in which you also have to exclude the points that would make the [[denominator]] 0.
+We define the [[rule]] of these [[function]]s as the result of combining the two and simplifying.
+
+Functions can also be combined into [[composite function]]s where one [[function]] is chained to the other by feeding the result of the first to the second, assuming that the [[image set]] of the first and the [[domain]] of the second allows it.
+These functions have a special syntax that is $g \circ f$ where the order is reversed so here the result of $f$ is fed into $g$. In total you write $(g \circ f)(x)=g(f(x))$.
+
+There also exist the [[inverse function]] of a [[function]], called also [[inverse]] which is the reflection of the original where the [[domain]] become the [[image set]] and the [[image set]] become the [[domain]] compared to the starting one. This functions are denoted as $f^{-1}$ if for $f$ given x you get y, if you give y to $f^{-1}$ you get back x, therefore $f^{-1}$ undoes $f$.
+Remember that [[functions]] must map only one y to every x, therefore some functions do not have an [[inverse]], for example $x^2$ inverted might look like $\sqrt{x}$ but in the original function there are 2 x for every y (positive and negative squared) and therefore the [[inverse]] is not a [[function]] anymore.
+[[function]]s that do have an [[inverse]] are called also [[one-to-one function]].
+One of the easiest ways to find the inverse is to either deduce it by head or to simply write the $f$ function in y so $x=...y...$ . and than rewrite it in form $f^{-1}(x) = ...x...$, remember also that functions that are always increasing or always decreasing for their domain are always [[one-to-one function]] and therefore [[invertible]].
+For [[quadratic function]]s it can be a bit trickier, what you need to do is keep in mind the domain, rearrange the function by finding the [[perfect square form]] and rooting everything. Once you have the term with $\pm$ you can try to see what fits better based on the domain.
+One way to verify that a function if the inverse of the other is by feeding the result of one into the other, since $f^{-1}$ gives x for $f(x)$ you can to $f^{-1} \circ f$ and you should get x (like walking in circle)
+
+

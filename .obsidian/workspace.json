@@ -23,61 +23,102 @@
             }
           },
           {
-            "id": "95b6724bd22119e9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/function.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "function"
-            }
-          },
-          {
-            "id": "5f6436f94f4ce19d",
+            "id": "59fd21f752aa11c9",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 25.md"
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 37.md"
               },
               "icon": "excalidraw-icon",
-              "title": "activity 25"
+              "title": "activity 37"
             }
           },
           {
-            "id": "2fd6cd6ca1fe6c4e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/polinomial expression.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "polinomial expression"
-            }
-          },
-          {
-            "id": "08c3af83df1488d7",
+            "id": "4bbed3492b42d34d",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 16.md"
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 36.md"
               },
               "icon": "excalidraw-icon",
-              "title": "activity 16"
+              "title": "activity 36"
+            }
+          },
+          {
+            "id": "a92002325465ce61",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 33.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "activity 33"
+            }
+          },
+          {
+            "id": "7ec532e01ee7c7f0",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 31.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "activity 31"
+            }
+          },
+          {
+            "id": "ccf8a9deb6122fab",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 32.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "activity 32"
+            }
+          },
+          {
+            "id": "301951e47c9ef423",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 29.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "activity 29"
+            }
+          },
+          {
+            "id": "2315aa868ae35e6a",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 28.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "activity 28"
+            }
+          },
+          {
+            "id": "3fdb89fb3def4fbc",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 27.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "activity 27"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -224,10 +265,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "95b6724bd22119e9",
+  "active": "6530237e0bb3e77a",
   "lastOpenFiles": [
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/horizontal translation.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 37.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/function.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 36.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 33.md",
+    "4 - Archive/inverse function.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 32.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 31.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 29.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 28.md",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 27.md",
+    "Pasted Image 20241024101432_330.png",
+    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/horizontal translation.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 25.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 3/activity 24.md",
     "Pasted image 20241022150446.png",
@@ -244,15 +295,6 @@
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 23.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 22.md",
     "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 21.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 20.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 19.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 18.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 17.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 15.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 14.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 12.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 11.md",
-    "1 - Projects/MST124 24J Essential mathematics 1/book A/unit 1/activity 10.md",
     "Pasted image 20241020174309.png",
     "Pasted Image 20241019185833_908.png",
     "Pasted Image 20241019182347_261.png",
@@ -270,7 +312,6 @@
     "4 - Archive/TM112 Introduction to computing and information technology 2/Block 3/Part 6",
     "1 - Projects/TM111 introduction to computing and information technology/Block 1/tma01/Question 2.d.png",
     "Pasted image 20231016115146.png",
-    "Pasted image 20231014153038.png",
-    "' Excalidraw/Scripts/Downloaded/Set Stroke Width of Selected Elements.svg"
+    "Pasted image 20231014153038.png"
   ]
 }
