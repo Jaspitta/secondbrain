@@ -18,3 +18,5 @@
 ## New highlights added November 22, 2024 at 9:40 AM
 - Lo scrolling di cui parlo è quello in cui è il gesto in sé a diventare il contenuto di cui l’utente fruisce, poiché, diventando compulsivo, prescinde quasi completamente da ciò che scorre davanti agli occhi, non avendo neanche il tempo di elaborare quel che vediamo.
 - Tutto quello che viene espresso in un movimento “dall’interno all’esterno” è attivo o creativo, poiché aggiunge, al mondo esterno, qualche cosa che prima non c’era.
+## New highlights added November 24, 2024 at 1:23 PM
+- Oggi, le persone famose sono una miriade: figure semisconosciute, divengono idoli per nicchie più o meno grandi di persone, che si attaccano a loro non per la loro inarrivabile grandezza, ma proprio per la loro raggiungibilità.

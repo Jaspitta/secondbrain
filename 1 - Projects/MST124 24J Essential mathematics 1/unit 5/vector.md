@@ -74,4 +74,17 @@ You can immagine a very similar situation when it comes to [[subtraction of vect
 In [[column notation]] you have $\textbf{a}=\begin{pmatrix}a_1 \\ a_2 \end{pmatrix}$ $\textbf{b}=\begin{pmatrix}b_1 \\ b_2 \end{pmatrix}$ and $\textbf{a}-\textbf{b}=\begin{pmatrix} a_1 - b_1 \\ a_2 - b_2 \end{pmatrix}$
 ![[activity_36_37]]
 
+Using the properties of [[vector algebra]] it is easy to deduce how [[multiplication of vector by scalar]] might work when you are dealing with [[vector component|vector components]]. You simply multiply each component for the scalar so $m\textbf{a}=m(a_1i+a_2j)$
 
+##### [[position vector]]
+
+If you have any point P, the [[position vector]] is defined as $\overrightarrow{OP}$ where 0 is the origin. We can also describe the [[vector component|vector components]] and quickly realise that they are simply the coordinates of P, to be precise $\overrightarrow{OP}=x\textbf{i}+y\textbf{j}=\begin{pmatrix}x\\ y\end{pmatrix}$. If you have any [[vector]], it can be expressed as the sum of the [[position vector]] that makes it up, for a vector $\overrightarrow{AB}$ you have the two [[position vector|position vectors]] $\overrightarrow{OA}$  and $\overrightarrow{OB}$, since the direction is importante we have $\overrightarrow{AB}=\overrightarrow{OB}-\overrightarrow{OA}$ because:
+![[vec_as_origins]]
+
+You can also use this strategy to get a new way to find the [[midpoint]]. In the example above we can say the midpoint is the vector $\overrightarrow{AM}$ and has associated the [[position vector]] $\overrightarrow{OM}$, which is $\overrightarrow{OA}+\overrightarrow{AM}$ we know that $\overrightarrow{AM} = \frac{1}{2}\overrightarrow{AB}= \frac{1}{2}(\textbf{b}-\textbf{a})$, finally we can say $\overrightarrow{OM}=\textbf{a}+\frac{1}{2}(\textbf{b}-\textbf{a})=\frac{1}{2}a+\frac{1}{2}b=\frac{1}{2}(x_1i+y_1j+x_2i+y_2j)=\frac{x_1i+x_2i}{2}+\frac{y_1i+y_2i}{2}$ which is the formula we got  with the previous procedure of finding the [[midpoint]].
+
+![[activity_41_42]]
+
+##### from [[vector component]] to [[magnitude]]
+
+When you have a two dimensional vector and it's components, you know such components are its x and y properties. Therefore, you can easily deduce that they are usable to draw a right angle triangle with the actual [[vector]] and getting the [[magnitude]] is a matter of [[pythagoras theorem]] and this actually hold also for a [[three-dimensional coordinates]]

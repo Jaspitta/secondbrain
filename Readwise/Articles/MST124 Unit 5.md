@@ -148,3 +148,31 @@
 - Also, 0a = 0.
 - .A knot is aunitof speed often usedinmeteorology,and in air andmaritime navigation.Its usualabbreviation is kn,and 1kn = 1.852kmh−1.
 - the direction of awindisusually given as the direction from which it blows
+## New highlights added November 24, 2024 at 1:23 PM
+- When aship sailsin a current,oran aircraftﬂiesthrough awind, itsactual velocity is the resultant of the velocity thatitwould have if the wateror air were still, andthe velocity of the current or wind.
+- the direction in which the ship or aircraftis pointing – thisiscalled its heading,whenitisgiven as abearing– maybediﬀerent from the direction in which it is actually moving,which is calledits course.
+### 6 Component form of avector
+- alternative wayto represent andmanipulatevectors,which makes them easier to work with. Thisinvolves expressing themin terms of components.
+- there is an alternative wayto represent andmanipulatevectors,which makes them easier to work with
+- expressing themin terms of components.
+#### 6.1Representingvectorsusing components
+- youﬁrstintroducea system of coordinate
+- We denote the vectors of magnitude 1 inthe directionsofthe x-, y-and z-axes by i, j and k,respectively, as shown in Figure 41. These vectors are calledthe Cartesian unit vectors.Ingeneral, a unit vector
+- Every vector canbe expressedasthe sum of scalar multiplesofthe Cartesian unitvectors.
+- Componentformofa vector If v = ai + bj,then the expression ai + bj is calledthe component form of v.The scalars a and b are calledthe i-component and j-component,respectively, of v.
+- The components of a vector representthe ‘amountofthe vector’ in the positive direction of each axis.
+- Alternative component form of a vector The vector ai + bj canbe writtenas ( , a b The vector ai + bj + ck canbe writtenas .   a b c  . Avector writteninthisform is calleda column vector.
+- Notice that, in twodimensions, i = ( , 1 0 and j = ( ,
+- a = a1i + a2j = ( , a1 a2 or u = u1i + u2j + u3k =   u1 u2 u3  .
+#### 6.2Vector algebra using components
+- Addition of two-dimensional vectorsin component form If a = a1i + a2j and b = b1i + b2j,then a + b =(a1 + b1)i +(a2 + b2)j.
+  In column notation, if a = ( , a1 a2 Forexample, ( 2 3 , and b = ( , b1 b2 , then a + b = ( a1 + b1 a2 + b2 ,
+- The factsin the boxes aboveextend to sumsof more thantwo vectors.
+##### Negative of avectorincomponent form
+- Negative of a two-dimensional vector in componentform If b = b1i + b2j,then −b = −b1i − b2j.
+  In column notation, if b = ( , b1 b2 , then − b = ( −b1 −b2 , .
+- Subtractionofvectors in component form
+- By the properties of vector algebra, if a = a1i + a2j and b = b1i + b2j,then a − b =(a1i + a2j) − (b1i + b2j) =(a1 − b1)i +(a2 − b2)j.
+- Subtraction of two-dimensional vectorsin component form If a = a1i + a2j and b = b1i + b2j,then a − b =(a1 − b1)i +(a2 − b2)j.
+  In column notation, if a = ( , a1 a2 and b = ( , b1 b2 , then a − b = Asimilar fact holdsinthree dimensions.
+  ( a1 − b1 a2 − b2 ,
