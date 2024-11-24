@@ -69,6 +69,7 @@ If the constant $c$ is negative it can also change the orientation of the graph.
 Same type of concept can be applied to [[horizontal scaling]], this time however the terms $x$ are divided by a constant $c$, this means that the distance between the original x and the y-axes will increase to $cn$.
 Remember that in both cases, there is a change at the number 1, since 1 would leave the $x$ unchanged, above that will stretch it out and below stretch it in. Because of this, for every function, if you scale it horizontally of vertically by -1 you get the graph reflected on the y-axes or x-axes
 It is also important to remember the difference in applying [[horizontal scaling]] and [[vertical scaling]]. With [[vertical scaling]] you multiply outside the x, so $y = x^2$ would be $y = cx^2$, with [[horizontal scaling]] you replace all the x arguments so $x^2$ become $(\frac{x}{c})^2$.
+Don't be fooled though, even [[vertical scaling]] can look like a multiplication, for example if $c=0.5$ than such vertical scaling will take the shape of $2x$ so $y=f(2x)$, the key is that the change is made **inside** the x not outside.
 
 Knowing [[translate]] and [[scaling]] of [[function graph]] can be an amazing too to have a better idea of what a curve will look like by imagining the standard one and than applying such techniques one by one to get to your curve.
 
@@ -93,6 +94,9 @@ Remember that $f^{-1}$ is not the same as $f(x)^{-1}$, this is called a [[recipr
 [[function]]s that are not [[one-to-one function]] do not have an [[inverse]], but we can still take some actions to write an approximation of it.
 We can take the original function, use a [[domain]] in which it is a [[one-to-one function]] and take the inverse of that. Such functions are called [[restriction]]s and the process is called [[function restriction]].
 
-Another type of [[function]]s are [[exponential function]]s which for is $f(x)= b^x$ where b is a positive constant not 1. b is called the [[base]] of the exponential function. Remember that $b^0$ is always 1, so all [[function]] of this type will have to pass by (0,1).
+Another type of [[function]]s are [[exponential function]]s which for is $f(x)= b^x$ where b is a positive constant not 1. b is called the [[base]] of the exponential function. Remember that $b^0$ is always 1, so all [[function]] of this type will have to pass by (0,1). In relation to [[logarithm]]s, $f(x)=b^x$ can also be written as $f(x)=e^{kx}$ where $k=\ln{b}$ because $e^{\ln{b}}=b$ and therefore $b^x=e^{{(\ln{b}})^x}$.
 The closer b get to 1, the flatter the [[curve]] will be because at 1 you get a flat line, since every [[exponential function]] passes by (0, 1) and the curvature change with b, there is b at which in (0,1) the [[gradient]] is exactly 1. Such number is $e$ and the [[function]] $f(x)=e^x$ is called [[the exponential function]] which has [[gradient]] of exactly 1 and (0,1).
 Remember that $e$ is an irrational number like $\pi$.
+Related to [[exponential function]] there are [[logarithmic function]]s which have the form $f(x)=\log_{b}x$ where $b$ is the [[base]] and a positive constant different from 1. If you put them into relation, the [[logarithmic function]] is the [[inverse function]] of the [[exponential function]] (and vice versa of course).
+Being [[inverse function]]s, the graph of one is the reflection on $y=x$ of the other so:
+![[Pasted image 20241026133417.png]]
