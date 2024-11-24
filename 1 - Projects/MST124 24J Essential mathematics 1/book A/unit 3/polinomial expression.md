@@ -1,0 +1,2 @@
+An expression with a finite number of terms in the form $a^n$ where a is a number and n is a non-negative [[integer]].
+The highest n in the expression is called the [[polinomial degree]] and works the same for [[polinomial function]]

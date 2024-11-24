@@ -5,7 +5,7 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 16724041,
+  "lastSavedStatusID": 16783697,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
@@ -25,7 +25,8 @@
     "Readwise/Articles/16mst124-refresh-right-angled-triangles.dvi.md": "43918335",
     "Readwise/Articles/MST124 Unit 1.md": "44310050",
     "Readwise/Books/The Beginning After the End Book 10 Retribution.md": "32098963",
-    "Readwise/Articles/MST124 Unit 2.md": "44761327"
+    "Readwise/Articles/MST124 Unit 2.md": "44761327",
+    "Readwise/Articles/MST124 Unit 3.md": "45093469"
   },
   "reimportShowConfirmation": true
 }
