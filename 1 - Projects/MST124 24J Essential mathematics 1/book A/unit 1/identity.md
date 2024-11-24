@@ -1,0 +1,1 @@
+It is an [[equation]] that is satisfied by all possible values of it's variables
