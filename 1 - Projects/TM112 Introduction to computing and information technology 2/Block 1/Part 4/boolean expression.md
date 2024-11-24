@@ -1,0 +1,1 @@
+An expression that evaluates to true or false, usually evaluated with [[boolean operators]]

@@ -1,0 +1,1 @@
+Many questions are on the previous block and therefore algosriths but there are also some new topics. In particular, scientific notation, power attenuation, significat figures, calculations with exponents

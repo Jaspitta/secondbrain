@@ -1,0 +1,11 @@
+{
+  "obsidian-excalidraw-plugin:insert-link-to-element": [],
+  "editor:insert-wikilink": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "D"
+    }
+  ]
+}

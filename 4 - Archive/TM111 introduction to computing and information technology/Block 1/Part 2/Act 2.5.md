@@ -1,0 +1,5 @@
+
+First generation computers were using valves as switches, which required lots of power and maintainance. They were huge, super expensive and used basically only for military applications, the 2 famous once where the EINAC and the COLOSSUS
+With the second generation transistors are introduces, computers get a bit smaller and less expensive but still unpractical for small businesses so only used for military applications and scientific research. Transistors where much more reliable and less power hungry than valves plus easier to produce and this gave birth to the so called first minicomputers (the size of a wardrobe) affordable for small businesses (LEO) that used a screen and a keyboard.
+Third generation is where IC are born by basically integrating many transistors into a single silicon crystal, this made mass production even easier and cheaper plus computers more efficient and smaller. At this point the first terminals are born where many screens and keyboard where attached to a single computer and usually used for making people filling forms. Also floppy disks are born in this period from the necessity of storing data
+

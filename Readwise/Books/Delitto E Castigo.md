@@ -1,0 +1,24 @@
+# Delitto E Castigo
+
+![rw-book-cover](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/102132706/cover-cover.jpeg)
+
+## Metadata
+- Author: [[Fëdor Dostoevskij]]
+- Full Title: Delitto E Castigo
+- Category: #books
+
+## Highlights
+- è possibile commettere un’unica azione malvagia che permetta il realizzarsi di mille azioni buone di riscatto? ([View Highlight](https://read.readwise.io/read/01hfphvkg3qcbvbmrmf6kkqy5s))
+## New highlights added November 28, 2023 at 7:38 PM
+- coloro ai quali è consentito varcare qualsiasi ostacolo in vista del raggiungimento di una meta superiore, sono anche, necessariamente, uomini dotati di grande sensibilità, condannati a tristezza e sofferenza dal loro stesso alto sentire ([View Highlight](https://read.readwise.io/read/01hfw5bntxhqg0e92t5a4x9yna))
+- la povertà non è vizio, questa è una verità. So che anche l’ubriachezza non è virtù, e questo è ancor più vero. Ma la miseria, egregio signore, la miseria è un vizio. In povertà riuscite ancora a conservare la nobiltà di sentimenti in voi innati, ma in miseria invece mai nessuno ci riesce ([View Highlight](https://read.readwise.io/read/01hg6dj8g22n9ftzj7jgnft0vz))
+- la compassione era stata persino proibita dalla scienza, e che si stava già facendo così in Inghilterra, dove regna l’economia politica ([View Highlight](https://read.readwise.io/read/01hg7ja33c0mn9d26x265qf7b7))
+- e io tutto questo lo sento. Anche per questo bevo, perché nel bere cerco compassione e sentimenti… Bevo perché voglio soffrire di più!» ([View Highlight](https://read.readwise.io/read/01hg7jm2zw2d4m6gts39jg3k4d))
+## New highlights added February 13, 2024 at 6:50 PM
+- l’uomo “straordinario” ha il diritto ([View Highlight](https://read.readwise.io/read/01hpckcstfsycb31tfw07agntn))
+- allora Newton avrebbe avuto il diritto, e sarebbe persino stato obbligato a… *togliere di mezzo* questi dieci o cento uomini per render note le sue scoperte all’intera umanità. Da ciò d’altronde non consegue che Newton avesse il diritto di ammazzare chi voleva, il primo venuto, o di rubare ogni giorno al mercato ([View Highlight](https://read.readwise.io/read/01hpckdgdsw6wksz1sngt84cbq))
+- In una parola, io dimostro che tutte le persone, non solo quelle grandi, ma quelle che appena appena escono dalla norma, cioè persino quelle appena in grado di dire qualcosa di nuovo, devono, per la loro natura, essere dei delinquenti, in misura minore o maggiore, s’intende ([View Highlight](https://read.readwise.io/read/01hpckev67scprxwwk94nh4gdc))
+- A questo punto s’intende che le suddivisioni sono infinite, ma i tratti distintivi di entrambe le categorie sono abbastanza netti: la prima categoria, ovvero il materiale, parlando in termini generali consiste in persone per loro natura conservatrici, ammodo, che vivono nell’obbedienza e amano essere obbedienti. Secondo me sono persino costrette a essere obbedienti, perché tale è la loro destinazione, e in questo per loro non c’è assolutamente nulla di umiliante. Nella seconda categoria, invece, tutti violano la legge, sono dei distruttori, o sono inclini a esserlo, a seconda delle capacità. S’intende che i delitti di queste persone sono relativi, e dei più vari; perlopiù essi esigono, nelle forme più svariate, la distruzione del presente in nome di qualcosa di migliore. Ma se uno di questi uomini, per la sua idea, deve passare anche sopra un cadavere, attraverso il sangue, allora egli, dentro di sé, secondo coscienza, può, secondo me, darsi il permesso di passare attraverso il sangue, a seconda, naturalmente, della sua idea e della sua portata, vi prego di notarlo. Soltanto in questo senso nel mio articolo parlo di un loro diritto al delitto ([View Highlight](https://read.readwise.io/read/01hpckgsxz0s6928gem658wnb3))
+- I primi conservano il mondo e l’accrescono numericamente; i secondi muovono il mondo e lo conducono verso una meta ([View Highlight](https://read.readwise.io/read/01hpckh8xfzsadf14xqabtzhjp))
+- Ma a parer mio qui non ci può essere un pericolo significativo, e voi non avete davvero motivo di preoccuparvi, perché questi qui non vanno mai troppo lontano. Per divertimento, naturalmente, alle volte gli si può dare una frustatona, per ricordare loro il loro posto, ma niente di più; qui non occorre nemmeno un esecutore: si frustano da soli, perché sono molto morali ([View Highlight](https://read.readwise.io/read/01hpckkc6rxadrbq4cb46yfj0b))
+- Perché usare la parola *dovranno*? Qui non ci sono né permessi né proibizioni. Che soffra pure, se gli spiace per la vittima… La sofferenza e il dolore sono sempre obbligatori per una coscienza ampia e per un cuore profondo. Ho l’impressione che le persone autenticamente grandi debbano provare al mondo una grande tristezza» ([View Highlight](https://read.readwise.io/read/01hpckr3mebqesgzfff2tvw2jk))

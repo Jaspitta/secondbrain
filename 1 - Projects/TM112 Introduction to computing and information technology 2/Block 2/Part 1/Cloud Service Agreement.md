@@ -1,0 +1,3 @@
+The [[Acceptable Usage Policy]] describe what the customer should and should not do while the [[Service Level Agreement]] describe what the customer should expect in terms of service and the consequences of the [[cloud provider]] missing the expectations.
+
+One of the main [[cloud computing definition standard]] state that a [[cloud provider]] should offer pay per use as main payment form, this imply that the provider has to monitor all the usage and report the billing accordingly. One of the main points of the [[Cloud Service Agreement]] is that the provider should also clearly lay out and define how they will calculate the costs based on usage of each resource.

@@ -1,0 +1,2 @@
+There are many ways to include comments in your code.
+When it comes to comments dedicated to [[documentation|documentation]] you should always describe the non obvious and make sure that the comment is related to the code immediately below and not everything else

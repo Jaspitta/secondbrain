@@ -1,0 +1,195 @@
+{
+  "main": {
+    "id": "92161a791a5194c7",
+    "type": "split",
+    "children": [
+      {
+        "id": "9b9492fc113ae8bd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "81f00e67ce45007c",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b43a58838a13acd5",
+    "type": "split",
+    "children": [
+      {
+        "id": "c68bd7e3b72da93e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2867570bf6b29fee",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a239db9e72e10df2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "762262180103a622",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fd793acf787cae94",
+    "type": "split",
+    "children": [
+      {
+        "id": "ca697eebd759673a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f4a961df8338e94f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "515546de59260d8f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e2adcf0307be6750",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "29227b312d4a7b21",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "obisidian-note-linker:Note Linker": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "omnisearch:Omnisearch": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "81f00e67ce45007c",
+  "lastOpenFiles": [
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/Cloud Service Agreement.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud risks.md",
+    "2 - Areas/financial/stocks/WBD.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud service type.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud layer.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/virtual machine.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud backup.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/types of cloud.md",
+    "4 - Archive/cloud computing definition standard.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/cases pattern.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3/inside a CPU.excalidraw.md",
+    "Readwise/Books/Block 2 Part 1 Cloud Computing.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3/programming languages and virtualisation.excalidraw.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3/instructions types and execution.excalidraw.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3/Moving and managing data at lower levels.excalidraw.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/cloud computing.md",
+    "4 - Archive/mother of all demos.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1/utility computing.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2/Part 1",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 2",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/sequence generation problem.md",
+    "4 - Archive/do while loop.md",
+    "4 - Archive/problem type.md",
+    "4 - Archive/else if statement.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/boolean operators.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/boolean expression.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/borderline values.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4/Drawing ' 2024-04-04 07.50.00.excalidraw.md",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 4",
+    "2 - Areas/financial/stocks",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 3",
+    "1 - Projects/TM112 Introduction to computing and information technology 2/Block 1/Part 2",
+    "1 - Projects/TM111 introduction to computing and information technology/Block 1/Part 2",
+    "1 - Projects/TM111 introduction to computing and information technology/Block 1/tma01",
+    "1 - Projects/TM111 introduction to computing and information technology/Block 1",
+    "1 - Projects/TM111 introduction to computing and information technology",
+    "' Excalidraw/Scripts/Downloaded/Set Stroke Width of Selected Elements.svg",
+    "' Excalidraw/Scripts/Downloaded/Scribble Helper.svg",
+    "' Excalidraw/Scripts/Downloaded/Palette loader.svg",
+    "' Excalidraw/Scripts/Downloaded/Organic Line.svg",
+    "' Excalidraw/Scripts/Downloaded/Normalize Selected Arrows.svg",
+    "' Excalidraw/Scripts/Downloaded/Mindmap format.svg",
+    "' Excalidraw/Scripts/Downloaded/GPT-Draw-a-UI.svg",
+    "' Excalidraw/Scripts/Downloaded/ExcaliAI.svg",
+    "' Excalidraw/Scripts/Downloaded/Elbow connectors.svg",
+    "' Excalidraw/Scripts/Downloaded/Convert selected text elements to sticky notes.svg"
+  ]
+}

@@ -1,0 +1,2 @@
+The second graph y axis multiply by 10 the previous value every time incrementing more an more the size of each jump. The first increment by a fixed amount at each jump.
+The result is that the second is more readable as it gives a more visible representation of the ongoing change while the first looks like nothing has happened until the last moments

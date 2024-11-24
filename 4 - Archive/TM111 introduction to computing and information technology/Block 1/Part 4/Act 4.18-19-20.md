@@ -1,0 +1,3 @@
+The exact number of search queries the GFT project processed is not disclosed and perhaps not recorded but the estimations are in the range of hundreds of billions making it truly a big data project and one of the firsts at at his scale.
+Google claim to have picked 45 queries, thanks to a prior selection algorithm, to process and analysed them with a weekly aggregation, at the end of each week the number was normalized by dividing the number of queries by the number of search queries in a specific location.
+All this was done while retaining no personal data regarding the persons involved.

@@ -1,0 +1,2 @@
+Looks like there will be some math. There are a bit of conversions, from binary to hex to dec but also Hz to meters and frames to memory.
+There is a good emphasis on calculations of power attenuations with distances and a whole questions on writing a report on a gpt vs journalist article

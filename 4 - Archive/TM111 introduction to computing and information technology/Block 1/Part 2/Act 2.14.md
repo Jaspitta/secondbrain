@@ -1,0 +1,1 @@
+3 bits is 2^3 numbers so 8

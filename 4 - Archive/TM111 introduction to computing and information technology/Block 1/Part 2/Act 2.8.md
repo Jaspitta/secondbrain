@@ -1,0 +1,1 @@
+If Moores Made his prediction 1969 it means it was around the third to forth generation of computers. The bi change in this period was the appearance of CPUs as chip with many components all in the same plate

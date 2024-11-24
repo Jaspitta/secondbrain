@@ -1,0 +1,3 @@
+A cloud layer is a level that operates at a specific level of [[abstraction]]. In the world of [[cloud computing]] we mostly define 3 levels in a pyramidal order, the first one is the [[infrastructure layer]] where only the infrastructure hardware is abstracted away, the second is the [[platform layer]] where it exists an interface between infrastructure and application and you are are given what you need to run you programs without worrying about the infrastructure ([[middleware]]) and finally at the top we have the [[application layer]] where also the application is abstracted away.
+
+The layers we just described are the basic building concept for the different types of cloud services

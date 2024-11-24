@@ -1,0 +1,1 @@
+I mostly use YouTube to consume content but also read a lot when I can, to honest, I do not produce much media, I sometimes write notes but they are only for myself so thy are stored in my note taking app

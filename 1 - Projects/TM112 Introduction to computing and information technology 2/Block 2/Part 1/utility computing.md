@@ -1,0 +1,1 @@
+In the 1960s some companies offered a service (Sabre the most famous) that consisted in giving other companies the possibility to run programs and store data on their machine with a per user charge and access it via a terminal. This is [[cloud computing]] in the fucking 1960s holy shot

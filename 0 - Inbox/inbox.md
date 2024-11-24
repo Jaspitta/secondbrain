@@ -1,0 +1,8 @@
+- [ ] https://youtu.be/yeatOU5vVsA?si=8DlVQ0i4Rakv8un8
+- [ ] CS 50
+- [ ] Low level learning C course
+- [ ] Write a compiler in C
+- [ ] Rust course
+- [ ] Write a text editor in Rust
+- [ ] Write some web app fully in rust
+- [ ] Tool idea -> lambda that read from earnings whisperers er date, this will update a static page on 53 with the new info, it will have a calendar and also a log of the changes

@@ -1,0 +1,1 @@
+While your digital identity is how you present yourself online, your digital footprint is what you leave behind like posts and accounts. These things can have lasting impacts on both your personal and professional reputation. For these reasons, you should always be mindful of your audience before posting and keep track of the information you leave online

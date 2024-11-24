@@ -1,0 +1,17 @@
+{
+  "token": "xTvAL3o8yyyvBcE5Ts6FmYpRwLDlxn5uExelRmbtDEJPjCj0xR",
+  "readwiseDir": "Readwise",
+  "frequency": "0",
+  "triggerOnLoad": true,
+  "isSyncing": false,
+  "lastSyncFailed": false,
+  "lastSavedStatusID": 13885338,
+  "currentSyncStatusID": 0,
+  "refreshBooks": false,
+  "booksToRefresh": [],
+  "booksIDsMap": {
+    "Readwise/Books/Block 1 Part 4 Patterns, Algorithms and Programs 1.md": "39302811",
+    "Readwise/Books/Block 2 Part 1 Cloud Computing.md": "39512160"
+  },
+  "reimportShowConfirmation": true
+}
