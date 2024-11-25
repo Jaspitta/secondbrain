@@ -176,3 +176,29 @@
 - Subtraction of two-dimensional vectorsin component form If a = a1i + a2j and b = b1i + b2j,then a − b =(a1 − b1)i +(a2 − b2)j.
   In column notation, if a = ( , a1 a2 and b = ( , b1 b2 , then a − b = Asimilar fact holdsinthree dimensions.
   ( a1 − b1 a2 − b2 ,
+## New highlights added November 25, 2024 at 9:42 AM
+##### Multiplicationofvectors by scalars
+- Scalarmultiplication ofatwo-dimensional vector in componentform If a = a1i + a2j and m is a scalar, then ma = ma1i +ma2j.
+  In column notation, if a = ( , a1 a2 , then ma = ( ma1 ma2 ,
+##### Combiningvectoroperations
+#### 6.3Position vectors
+- If P is anypoint,
+- the positionvector of P is the displacementvector −−→ OP,where O is the origin
+- −−→ OP = xi + yj = ( , x y ,
+- f apointisdenoted by a capital letter, as is usual, then it’s often convenient to denote itsposition vector by the corresponding lower-case, bold (orunderlined)letter
+- −−→ AB = −−→ OB − −→ OA.
+- f the points A and B have position vectors a and b,respectively, then −−→ AB = b − a.
+- Midpoint formula interms of position vectors If the points A and B have position vectors a and b,respectively, then the midpointofthe line segment AB hasposition vector 1 2(a + b).
+#### 6.4Converting from component form to magnitude and direction, and viceversa
+- howto ﬁnd the magnitude anddirection of a two-dimensional vector from itscomponents,
+##### Finding the magnitude of avectorfromits components
+- If youdraw a right-angledtriangle whose hypotenuse is v,and whose two shorter sides are parallelto the axes,then the lengths of these twoshorter sidesare the magnitudes of the components of v
+- |v| = ' a2 + b2.
+- thisformulawill hold forany vector v = ai + bj,
+- Themagnitude of a two-dimensional vector in termsofits components The magnitude of the vector ai + bj is √ a2 + b2.
+- Themagnitude of a three-dimensional vector in termsofits components The magnitude of the vector ai + bj + ck is √ a2 + b2 + c2.
+- Finding the directionofa twodimensionalvectorfromits components
+- youcan specify the direction of atwo-dimensional vector by stating the angle (
+- Anothermethodofexpressing the direction of a two-dimensional vector, which is often usedwhen components are involved,istostate the angle measured from the positive x-direction to the direction of the vector.
+- measured anticlockwise,
+- ,you cansketcha right-angled triangle whose hypotenuse is the vector, andwhose shorter sidesare parallelto the axes.

@@ -87,4 +87,23 @@ You can also use this strategy to get a new way to find the [[midpoint]]. In the
 
 ##### from [[vector component]] to [[magnitude]]
 
-When you have a two dimensional vector and it's components, you know such components are its x and y properties. Therefore, you can easily deduce that they are usable to draw a right angle triangle with the actual [[vector]] and getting the [[magnitude]] is a matter of [[pythagoras theorem]] and this actually hold also for a [[three-dimensional coordinates]]
+When you have a two dimensional vector and it's components, you know such components are its x and y properties. Therefore, you can easily deduce that they are usable to draw a right angle triangle with the actual [[vector]] and getting the [[magnitude]] is a matter of [[pythagoras theorem]] and this actually hold also for a [[three-dimensional coordinates]].
+
+![[activity_44_45]]
+
+The reverse is fairly similar, sketch the vector, find an angle and use [[trigonometry]] to find the rest
+![[activity_46_47]]
+
+It is easy to deduce the formula of the [[vector component]] from the [[magnitude]], that is $v=|v|cos\theta i+ |v|sin\theta j$. It is easy to deduce it by drawing the [[right angled triangle]], or imagining the [[vector]] inside the [[unit circle]], in this case the x and y are necessarily [[cosine]] and [[sine]], how you only need to scale them back (the [[unit circle]] measure 1) by the [[magnitude]].
+
+![[activity_49_50]]
+
+##### [[scalar product of vectors]]
+
+The [[scalar product of vectors]] is as the name say a scalar so has no [[direction]]. The formula to calculate it is $a \bullet b=|a||b|cos\theta$.
+Due to the notation it is also called the [[scalar product of vectors|dot product]] and it is obtained as $|a|(magnitude\ of projection\ of\ a)$ or $|a|(magnitude\ of\ projection\ of\ a)$ when the [[angle]] is an [[acute angle]] and the negative when it is an [[octuse angle]]:
+
+![[scal_prod]]
+
+![[activity_51]]
+
