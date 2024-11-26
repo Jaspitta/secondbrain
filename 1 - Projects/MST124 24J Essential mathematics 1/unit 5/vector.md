@@ -105,5 +105,9 @@ Due to the notation it is also called the [[scalar product of vectors|dot produc
 
 ![[scal_prod]]
 
-![[activity_51]]
+![[activity_52_53]]
 
+This works even better with [[vector component|vector components]], in fact the scalar product of $a \bullet b$ where  $a=a_1i+a_2j$ and $b=b_1i+b_2j$ can be calculated as $a \bullet b = (a_1i+a_2j) \bullet (b_1i+b_2j)=a_1b_1(i \bullet i)+a_2b_2(j \bullet j)+a_1b_2(i\bullet j)+a_2b_1(j\bullet i)$, however, we know the [[unit vector]] i and j measure 1 and are perpendicular so $a_1b_1(1)+a_2b_2(1)+a_1b_2(0)+a_2b_1(0)=a_1b_1+a_2b_2$
+![[activity_52_53]]
+You can see that the formula of [[scalar product of vectors]] gives you a relation between such value, the [[magnitude]] of the [[vector|vectors]] and the [[angle between vectors]], this also means that if we have the scalar we can get the angle as a consequence and with [[vector component]] we can easily get that, to be precise $cos\theta=\frac{a\bullet b}{|a||b|}$
+![[activity_54_55]]
