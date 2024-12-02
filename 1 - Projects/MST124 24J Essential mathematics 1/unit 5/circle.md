@@ -3,7 +3,7 @@ A circle is defined as the [[locus]] of points that are [[equidistant]] from a p
 ##### [[equation of a circle]]
 It's equation can be deduced with the [[distance between points in a plane]]. If we draw a circle with center (a,b), every point P(x,y) on the circle will have the same distance, the [[radius]].
 If we try to get the distance of one of the points we get $d=\sqrt{(x-a)^2+(y-b)^2} \rightarrow d^2=(x-a)^2+(y-b)^2$.
-![[activity_5]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_5]]
 
 ![[activity_6]]
 
