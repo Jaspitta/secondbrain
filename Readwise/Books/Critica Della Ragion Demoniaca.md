@@ -20,3 +20,7 @@
 - Tutto quello che viene espresso in un movimento “dall’interno all’esterno” è attivo o creativo, poiché aggiunge, al mondo esterno, qualche cosa che prima non c’era.
 ## New highlights added November 24, 2024 at 1:23 PM
 - Oggi, le persone famose sono una miriade: figure semisconosciute, divengono idoli per nicchie più o meno grandi di persone, che si attaccano a loro non per la loro inarrivabile grandezza, ma proprio per la loro raggiungibilità.
+## New highlights added December 1, 2024 at 3:58 PM
+- per molti, l’essere umano impallidisce di fronte ai propri strumenti, ma non tanto perché gli strumenti siano davvero straordinari (lo sono, ma per motivi diversi rispetto a ciò che si racconta), quanto piuttosto perché l’idea della mente umana è povera e inaridita.
+- stiamo consegnando a un mondo inesistente, quello degli algoritmi, tutta la nostra autonomia intellettuale, biologica, psicologica e sociale, in cambio di una vita comoda, piacevole e senza spigoli che ci permetta di avvicinarci “insensibilmente alla morte”, come scriveva Pascal.
+- i custodi, al contrario, assumono la forma che decidiamo di dare loro, sono al nostro servizio, e per questo ne siamo intimamente responsabili.

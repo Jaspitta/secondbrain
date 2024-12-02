@@ -202,3 +202,37 @@
 - Anothermethodofexpressing the direction of a two-dimensional vector, which is often usedwhen components are involved,istostate the angle measured from the positive x-direction to the direction of the vector.
 - measured anticlockwise,
 - ,you cansketcha right-angled triangle whose hypotenuse is the vector, andwhose shorter sidesare parallelto the axes.
+## New highlights added December 1, 2024 at 3:58 PM
+##### Finding the components of atwo-dimensionalvectorfrom its magnitude anddirection
+- o ﬁrstsketchthe vector
+- sketcha right-angledtriangle
+- nﬁnd their signs by using the direction of the vector.
+- ere is a useful standard formulafor calculatingthe components of a vector from itsmagnitude anddirection,
+- Let u be the vector in the same direction as v,but with magnitude 1.
+- Hence u =cos θ i +sin θ j.Multiplying u by the magnitude of the vector v
+- v = |v|(cos θ i +sin θ j)= |v| cos θ i + |v| sin θ j,
+- Componentformofa two-dimensional vector in termsofits magnitude and its anglewith the positive x-direction If the two-dimensional vector v makes the angle θ with the positive x-direction,then v = |v| cos θ i + |v| sin θ j.
+#### 6.5Using vectors in component form
+- . It is ofteneasiertowritethe vectors in componentform, addthem inthisform, andthen ﬁnd the magnitude anddirection of the resultant vector.
+### 7 Scalarproductoftwo vectors
+- o multiply twovectors,called the scalar product
+#### 7.1Calculatingscalarproducts
+- The anglebetween twovectors a and b is the angle θ in the range 0 ≤ θ ≤ 180◦ between theirdirectionswhenthe vectors are placed tail-to-tail
+- Scalarproduct of two vectors The scalarproduct of the non-zerovectors a and b is a . b = |a||b| cos θ, where θ is the angle between a and b.
+  If a or b is the zerovector, then a . b =0.
+- The scalar product a . b of two vectors a and b is a scalar,since none of the quantities |a|, |b| andcos θ hasa direction
+- Whenyou are writinga scalar product, it is importanttomakesure thatthe dotbetween the vectors is clear.
+- dthe right-angledtriangle formedby drawing aline from the tipof a, perpendicular to b.The vector p in the diagram is calledthe projection of a on b.
+- f θ is an acute angle,then thisprojection has magnitude |a| cos θ,and hence a . b = |b|× (magnitude of projection of a on b).
+  Similarly,by considering the projection of b on a,you cansee that a . b = |a|× (magnitude of projection of b on a).
+- if two non-zerovectors are perpendicular, then theirscalar product is zero.
+- tifthe scalar productoftwo non-zerovectors is zero, then the vectors are perpendicular
+- the scalar productof a vector with itself is equal to the square of the magnitude of the vector
+- Properties of the scalarproduct The following propertieshold forall vectors a, b and c,and every scalar m.
+  1. Supposethat a and b are non-zero. If a and b are perpendicular, then a . b =0,and vice versa.
+  2. a . a = |a|2 3. a . b = b . a 4. a . (b + c)= a . b + a . c 5. (ma) . b = m(a . b)= a . (mb)
+##### Calculating scalar products from components
+- Scalarproduct of two-dimensional vectorsin terms of components If a = a1i + a2j and b = b1i + b2j,then a . b = a1b1 + a2b2.
+  In column notation, if a = ( , a1 a2 and b = ( , b1 b2 , then a . b = a1b1 + a2b2.
+#### 7.2Finding theanglebetween twovectors
+- Anglebetween two vectors The angle θ between anytwo non-zero vectors a and b is given by cos θ = a . b |a||b| , where 0 ≤ θ ≤ 180◦.
