@@ -64,3 +64,32 @@ You can see the previously calculated [[derivative|derivatives]] to notice that 
 
 This can be calculated by getting the value of $(x+h)^n$ but this can be difficult at time, also the rule stated above is not just for positive values but of all values (as long as they are in the [[domain]] of course).
 
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_7]]
+
+What happens however when you have a [[function]] with an exponent but also a constant in front? Normally, multiply a function by a constant, say from $f(x)=x^2$ to $f(x)=mx^2$ is called [[vertical scaling]] and it stretches the graph vertically or flip it for negative m.
+To understand what happens to the [[derivative]] think of what happens to the gradient of a line graph when you [[vertical scaling|vertically stretch it]].
+
+The answer is that it simply goes up by that amount, if you think of $f(x)=x$, the gradient is 1, when you [[vertical scaling]] it to say $f(x)=3x$ the gradient become 3.
+We know that lines are also [[curve]]s so such rule apply not only for lines but for all curves.
+Now that we know how the [[gradient]] changes, we know the [[derivative]] change the same way since it is in fact the [[gradient]]. This is called [[constant multiple rule]] and it states that $k(x)=af(x) \rightarrow k'(x)=af'(x)$ or $y=au \rightarrow \frac{dy}{dx}=a\frac{dy}{dx}$.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_9]]
+
+You also saw that for a function that is a constant like $f(x)=1$ is the same as $f(x)=x^0$ which $f'(x)=0x^-1$ which is $f'(x)=0$. If you combine it with [[constant multiple rule]] you find that for every [[function]] that correspond to a constant you have a [[derivative]] of 0, which make sense because the [[straight-line graph]] is a horizontal line which has [[gradient]] 0.
+
+##### [[sum rule]] of [[derivative|derivatives]]
+
+To start, think about what happens to the values of y when you sum two [[function]]s together, the answer is that the values are simply the sum of the two [[function]]s.
+The same thing happens to the [[gradient]] although it is harder to show or demonstrate, so in [[Lagrange notation]] $k(x)=f(x)+g(x) \rightarrow k'(x)=f'(x)+g'(x)$ or in [[Leibniz notation]] $y=u+v \rightarrow \frac{dy}{dx}=\frac{du}{dx}+\frac{dv}{dx}$.
+This also works for subtraction, because in reality they can be reduced to a [[sum rule]] and a [[constant multiple rule]] because $f'(x)-g'(x)=f'(x)+(-g'(x))$.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_11]]
+
+##### [[velocity]] of a fallen object
+
+After knowing what a [[displacement]], [[speed]] and [[displacement-time graph]] are we can use what we know now to work further on such graph.
+If we assume that there is no air resistance, we can plot the [[displacement-time graph]] of a falling object and realize that it is independent of the weight of the object itself.
+Knowing the [[gravitational pull]] of the planet, we know that the relation described in the [[displacement-time graph]] of a falling object is $s=-4.9t^2$ (if time in seconds and [[displacement]] in meters)where s is the [[displacement]], t is the time and the negative sing is because we take as reference the point the object start to fall from, therefore moving down gives it a negative sign.
+
+At this point we know the definition of [[derivative]] and that it is basically the [[rate of change]] of the [[rate of change]] of a graph or the [[rate of change]] of the [[gradient]] of a graph. Since the [[gradient]] describe how the y changes with the changes of x, in a [[displacement-time graph]] it means knowing how the [[displacement]] change in relation to the time, which is called the [[velocity]] as we say previously.
+Knowing the [[derivative]] of a [[displacement-time graph]] means that we know the [[velocity]] at any infinitely small point and therefore we can calculate the [[speed]] at any moment. Calculating the [[derivative]] of the equation above gives us $v=\frac{ds}{dt}=-9.8t$ which is the equation of the [[velocity]] of a free falling object ignoring air drag
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_12]]
