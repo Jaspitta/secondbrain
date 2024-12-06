@@ -34,7 +34,7 @@
   "matchThemeAlways": true,
   "matchThemeTrigger": true,
   "defaultMode": "normal",
-  "defaultPenMode": "never",
+  "defaultPenMode": "always",
   "penModeCrosshairVisible": true,
   "renderImageInMarkdownReadingMode": false,
   "renderImageInHoverPreviewForMDNotes": false,

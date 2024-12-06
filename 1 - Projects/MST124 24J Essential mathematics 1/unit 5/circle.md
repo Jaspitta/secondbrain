@@ -33,7 +33,7 @@ so to find the equation of a circle given three points:
 #####[[points of intersection of line and curve]]
 Just like the [[point of intersection]] of two lines, the same approach can be applied to a line and a curve (a [[circle]] is a curve) with the difference that you may find two results.
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_12]]
-![[activity_13]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_13]]
 #####[[points of intersection of two curves]]
 Another thing you can do, is find the [[points of intersection of two curves]], since a [[circle]] is a [[curve]] this include two circles.
 If you try to replace one equation in the other it becomes very hard to solve, what you want to do is use the [[solving equations simultaneously]] method with subtraction or addiction to remove one of the terms.

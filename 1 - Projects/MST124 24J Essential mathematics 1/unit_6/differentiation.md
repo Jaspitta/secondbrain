@@ -93,3 +93,27 @@ At this point we know the definition of [[derivative]] and that it is basically 
 Knowing the [[derivative]] of a [[displacement-time graph]] means that we know the [[velocity]] at any infinitely small point and therefore we can calculate the [[speed]] at any moment. Calculating the [[derivative]] of the equation above gives us $v=\frac{ds}{dt}=-9.8t$ which is the equation of the [[velocity]] of a free falling object ignoring air drag
 
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_12]]
+
+##### finding where [[function|functions]] are [[increasing function|increasing functions]] or [[decreasing function|decreasing functions]]
+
+We already met the definition of an [[increasing function]] or [[decreasing function]], and that is a [[function]] for which every point successive to another follow the defined increasing or decreasing rule.
+This can be deduced approximately by a graph, but never exactly. Since the [[derivative]] is nothing else than the [[gradient]] of the curve at any specific point, this can tell us if the [[function]] is [[increasing function]] or [[decreasing function]].
+So for an interval in which $f'$ is positive $f$ is increasing and vice versa
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_14]]
+
+![[activity_15]]
+
+Some functions, namely the once that are not always [[increasing function]] or [[decreasing function]], are likely to have a point where the [[gradient]] change and therefore in that specific point it has to be 0, these points are called [[stationary point|stationary points]].
+![[stationary_point]]
+
+Each [[stationary_point]] represent likely a change in the [[gradient]], therefore the part that comes before and after has to have an increasing or decreasing gradient opposite to the other. This means that such point is at the top or bottom of those two regions, depending on this we call it a [[local maximum]] or [[local minimum]], in the case of the graph above, the point on the right is a [[local minimum]] and the point on the left is a [[local maximum]]. A point where a [[function]] has a [[local maximum]] or [[local minimum]] is also called a [[turning point]].
+![[Pasted image 20241206120754.png]]
+These for example are not [[turning point|turning points]] but are [[stationary point|stationary points]] and in these cases they are also called [[horizontal point of inflection]].
+
+Since a [[stationary point]] is a point at which the [[gradient]] is 0 by definition, it is easy to find it with the tools we have now, all we need is to solve $f'(x)=0$
+![[activity_16]]
+
+In total, we can find the nature of a [[stationary point]] by following the [[first derivative test]] which states that:
+- if there is an open interval at which $f'$ is positive to the right and negative to the left, such point is a [[local minimum]]
+- if there is an open interval at which $f'$ is positive to the left and negative to the right, such point is a [[local maximum]]
+- if there is an open interval at which $f'$ is positive or negative to both left and right, such point is a [[horizontal point of inflection]]
