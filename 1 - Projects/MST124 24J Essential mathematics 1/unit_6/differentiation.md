@@ -117,3 +117,12 @@ In total, we can find the nature of a [[stationary point]] by following the [[fi
 - if there is an open interval at which $f'$ is positive to the right and negative to the left, such point is a [[local minimum]]
 - if there is an open interval at which $f'$ is positive to the left and negative to the right, such point is a [[local maximum]]
 - if there is an open interval at which $f'$ is positive or negative to both left and right, such point is a [[horizontal point of inflection]]
+![[activity_17]]
+
+There is another way of finding [[stationary point]]s, [[local maximum]]s and [[local minimum]]s, once you find a [[stationary point]] you choose two points before and after, fairly close, with no other [[stationary point]] in the middle and where the [[function]] is [[differentiable]].
+Then you find the value of the [[derivative]] of the [[function]] and you know that:
+- if the [[derivative]] of the points is positive on the left and negative on the right it is a [[local maximum]]
+- if the [[derivative]] of the points is negative on the left and positive on the right it is a [[local minimum]]
+- If the [[derivative]] of the points is positive or negative at both points it is a[[horizontal point of inflection]]
+![[activity_18]]
+

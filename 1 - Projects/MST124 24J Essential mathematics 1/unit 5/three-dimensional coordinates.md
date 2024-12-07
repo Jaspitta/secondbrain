@@ -16,7 +16,7 @@ The working is similar to [[distance between points in a plane]] but done twice 
 Given the two points, you can imagine a line going from one of the two down or up to form a [[right angled triangle]] with the other. Now the distance is the [[hypotenuse]] of these two points. However, the base of the triangle is a [[distance between points in a plane]]. What you can do is therefore imagine a line parallel to the [[x-axes]] and one parallel to the [[y-axes]] to form another [[right angled triangle]] of which you can get the [[hypotenuse]].
 So for the first triangle you have $AB^2=AC^2+BC^2$, AC is the base so for that you have $AC^2=AD^2+DC^2$ that you can combine in $AB^2=AD^2+DC^2+BC^2$ which become $AB^2=(x2-x1)^2+(y2-y1)^2+(z2-z1)^2$ which you can square:
 ![[distance_points_three_dimensional]]
-![[activity_19]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_19]]
 
 ##### [[sphere]]
 
