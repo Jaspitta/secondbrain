@@ -29,5 +29,5 @@ We know how to get the distance, so for a center in (a,b,c) the equation is $\sq
 ![[activity_20_21]]
 
 Just like the [[equation of a circle]], the [[equation of a sphere]] can be written in many forms, if you multiply and simplify you get the form $x^2+y^2+z^2-2ax-2by-2cz+a^2+b^2+c^2-r=0$.
-![[activity_22]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_22]]
 

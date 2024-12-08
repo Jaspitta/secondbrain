@@ -126,3 +126,19 @@ Then you find the value of the [[derivative]] of the [[function]] and you know t
 - If the [[derivative]] of the points is positive or negative at both points it is a[[horizontal point of inflection]]
 ![[activity_18]]
 
+##### [[second derivative]]
+
+Up to this point we saw the functioning and uses of getting the [[derivative]] of a [[function]], however, the result is also a [[function]] and as such it is [[differentiable]].
+When you get the [[derivative]] of the [[derivative]] it is called [[second derivative]] or [[second derivative|second derived function]] (technically the [[derivative]] is the [[derivative|first derivative]] but for convention it is called just [[derivative]]).
+The [[Lagrange notation]] is $f''(x)$ and the [[Leibniz notation]] is $\frac{d^2y}{dx^2}$, where the [[second derivative]] is possible the point is defined as [[twice-differentiable]].
+Technically you can keep going and get the [[third derivative]], [[forth derivative]] and so on, a [[function]] can even be infinitely [[differentiable]].
+![[activity_26_27]]
+
+
+One big connection that can be drawn between the [[second derivative]] and the original [[function]] is if the original [[function]] is concave up (u shaped) or concave down (n shaped). If you think about the [[derivative]], it tells us the gradient of the [[function]], when this is negative the function is decreasing and vice versa, the [[second derivative]] is the [[gradient]] of the [[gradient]], so when the [[second derivative]] is negative, the [[derivative]] is decreasing so the [[gradient]] of the function is decreasing making it a [[concave down]] or [[concave]], vice versa we say the [[function]] is [[concave up]] or [[concave up|convex]].
+
+##### [[second derivative test]]
+
+This knowledge can be used in the [[second derivative test]], we know that a [[function]] can be deduced to be [[concave up|convex]] or [[concave down|concave]] based on the [[second derivative]], and it is easy to imagine why at a [[stationary point]] the function is one of the two, if it is [[concave up|convex]] it is a [[local minimum]] and if it is [[concave down|concave]] it is a [[local maximum]].
+
+
