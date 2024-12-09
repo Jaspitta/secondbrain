@@ -43,7 +43,7 @@ Also multiplication holds similar rules as with [[real numbers]], adding two [[s
 
 Multiplication of [[vector|vectors]] can be done in two different ways but it is a bit more complicated, and division of vectors is not possible, regardless the basic algebra rules that we have defined already allow us to work with [[equation|equations]] that contains vectors, these are called [[vector equation|vector equations]]
 
-![[activity_28]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_28]]
 
 ##### working with [[vector|vectors]]
 

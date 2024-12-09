@@ -141,4 +141,4 @@ One big connection that can be drawn between the [[second derivative]] and the o
 
 This knowledge can be used in the [[second derivative test]], we know that a [[function]] can be deduced to be [[concave up|convex]] or [[concave down|concave]] based on the [[second derivative]], and it is easy to imagine why at a [[stationary point]] the function is one of the two, if it is [[concave up|convex]] it is a [[local minimum]] and if it is [[concave down|concave]] it is a [[local maximum]].
 
-
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_28]]
