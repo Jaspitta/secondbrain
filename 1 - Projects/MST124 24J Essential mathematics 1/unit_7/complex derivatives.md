@@ -22,6 +22,16 @@ you have that $f(x)=tanx\rightarrow f'(x)=sec^2x$, remember that $sec^2x=(secx)^
 
 ![[activity_2]]
 
+This can be confirmed using the [[quotient rule]]:
+$tanx=\frac{sinx}{cosx}\rightarrow f'(x)=\frac{cosx * cosx - sinx * (-sinx)}{cos^2x}=\frac{cos^2x+sin^2x}{cos^2x}$, from [[pythagoras theorem]] we know $cos^2x+sin^2x = 1$ so in the end $\frac{1}{cos^2x}$.
+
+The same can be said for the other [[trigonometric ratio]]s and get:
+- [[derivative of cosec]] $\frac{d}{dx}(cosecx)=-cosecx*cotx$
+- [[derivative of sec]] $\frac{d}{dx}(secx)=secx*tanx$
+- [[derivative of cot]] $\frac{d}{dx}(cotx)=-cosec^2x$
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_10]]
+
 ##### [[derivative of exp]]
 
 
@@ -70,3 +80,21 @@ If you consider this the overall quotient gets closer to $f'(x)g(x)+f(x)g'(x)$.
 
 The rule comes out to be $k'(x)=\frac{f'(x)g(x)-f(x)g'(x)}{(g'(x))^2}$ where $k(x)=\frac{f(x)}{g(x)}$.
 Remember to be careful about the order here because you have a - in the middle so the first term must be the [[derivative]] of the top with the bottom and the second must be the [[derivative]] of the bottom with the top
+
+![[activity_8_9]]
+
+[[chain rule]]
+
+The [[chain rule]], also called [[chain rule|composite rule]] or [[chain rule|function of a function rule]] is a rule that allows you to get the [[derivative]] of a [[function]] that is made of more functions inside.
+The first thing you need to do however is, recognize when this is the case and [[decompose]] the original [[function]].
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_11]]
+
+At this point you have the actual rule:
+	$\frac{dy}{dx}=\frac{dy}{du}\frac{du}{dx}$
+
+The proof is outside the scope but a concept is that, if you have a function made of two functions, the first grows of n every unit ([[gradient]]) and the second grows by m every unit ([[gradient]]), the resulting final function grows for both on every unit so $mn$.
+
+![[activity_12_13_14]]
+
+
+The reason why this is called the [[chain rule]] rule is that it is not limited to two functions but potentially can be done for n functions one inside the other where $\frac{dy}{dx}=\frac{dy}{du}\frac{du}{dv}\frac{dv}{dx}$ .
