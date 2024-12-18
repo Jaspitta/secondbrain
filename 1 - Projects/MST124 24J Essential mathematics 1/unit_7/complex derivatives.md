@@ -70,7 +70,7 @@ $k(x)=f(x)g(x)\rightarrow k'(x)=f(x)g'(x)+f'(x)g(x)$
 
 ![[activity_6_7]]
 
-The proof start from the [[difference quotient]] again, if $k(x)=f(x)g(x)$ than $\frac{k(x+h)-h}{k(x)}$ so we can say $\frac{f(x+h)g(x+h)-f(x)g(x)}{h}$.
+The proof start from the [[difference quotient]] again, if $k(x)=f(x)g(x)$ than $\frac{k(x+h)-k(x)}{h}$ so we can say $\frac{f(x+h)g(x+h)-f(x)g(x)}{h}$.
 At this point you can add and subtract $f(x)g(x+h)$ which is the difference of the two quotient and you get:
 $\frac{f(x+h)g(x+h)+f(x)g(x+h)-f(x)g(x+h)-f(x)g(x)}{h}$, which can become $(\frac{f(x+h)-f(x)}{h})g(x+h)+f(x)(\frac{g(x+h)-g(x)}{h})$
 Now, the first bracket is the [[difference quotient]] for $f(x)$ so as h gets closer to 0 it become $f'(x)$, the second big brackets does the same for $g'(x)$, $f(x)$ stay the same and $g(x+h)$ gets closer to $g(x)$.
@@ -79,6 +79,8 @@ If you consider this the overall quotient gets closer to $f'(x)g(x)+f(x)g'(x)$.
 ##### [[quotient rule]]
 
 The rule comes out to be $k'(x)=\frac{f'(x)g(x)-f(x)g'(x)}{(g'(x))^2}$ where $k(x)=\frac{f(x)}{g(x)}$.
+A way to get the proof is that if you have a function $k(x)=\frac{g(x)}{f(x)}=g(x)f(x)^{-1}$, you can differentiate this using the [[product rule]] $g'(x)f(x)^{-1}+g(x)\frac{d}{dx}(f(x)^{-1})$, you can now use the [[chain rule]] to get $g'(x)f(x)^{-1}+g(x)(-1f(x)^{-2})f'(x))$ and $\frac{g'(x)}{f(x)}-\frac{g(x)f'(x)}{f(x)^2}$ and arrange to the final formula.
+
 Remember to be careful about the order here because you have a - in the middle so the first term must be the [[derivative]] of the top with the bottom and the second must be the [[derivative]] of the bottom with the top
 
 ![[activity_8_9]]
@@ -98,3 +100,17 @@ The proof is outside the scope but a concept is that, if you have a function mad
 
 
 The reason why this is called the [[chain rule]] rule is that it is not limited to two functions but potentially can be done for n functions one inside the other where $\frac{dy}{dx}=\frac{dy}{du}\frac{du}{dv}\frac{dv}{dx}$ .
+
+##### combining [[differentiation]] rules
+
+Overall, you can now combine the [[differentiation]] you have met so far, remember that you should always differentiate from the outside to the inside, so when you apply the rule, you always apply them to the bigger structure first and only than to the inner one
+
+![[activity_17_18_19]]
+
+##### [[optimization problems]]
+
+These are problems that involves choosing the best option among a suite of possibilities, they can be [[maximization problems]] or [[minimisation problems]] if you are looking for the max or min value.
+
+- find the [[stationary point]]
+- find the value of the [[function]] at the [[stationary point]] and the end points of the domain
+- find the greatest or least

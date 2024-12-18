@@ -60,7 +60,9 @@ It is important to note that this is only possible because the point noted O is 
 
 ##### [[derivative]] of power [[function]]s
 
-You can see the previously calculated [[derivative|derivatives]] to notice that the [[derivative]] of a function $y=x^n$ is $\frac{d}{dx}(x^n)=nx^{n-1}$
+You can see the previously calculated [[derivative|derivatives]] to notice that the [[derivative]] of a function $y=x^n$ is $\frac{d}{dx}(x^n)=nx^{n-1}$.
+
+The proof can be derived using the [[chain rule]], if you have $x^n$ we can rewrite it as $e^{lnx^n}$ or $e^{nlnx}$ as per the [[logarithmic law]]. Now you can use the rule to differentiate that function, $e^{lnx^n}*n*\frac{1}{x}$ so $x^n*n*x^{-1}=nx^{n-1}$
 
 This can be calculated by getting the value of $(x+h)^n$ but this can be difficult at time, also the rule stated above is not just for positive values but of all values (as long as they are in the [[domain]] of course).
 
@@ -101,7 +103,7 @@ This can be deduced approximately by a graph, but never exactly. Since the [[der
 So for an interval in which $f'$ is positive $f$ is increasing and vice versa
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_14]]
 
-![[activity_15]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_15]]
 
 Some functions, namely the once that are not always [[increasing function]] or [[decreasing function]], are likely to have a point where the [[gradient]] change and therefore in that specific point it has to be 0, these points are called [[stationary point|stationary points]].
 ![[stationary_point]]
@@ -117,7 +119,7 @@ In total, we can find the nature of a [[stationary point]] by following the [[fi
 - if there is an open interval at which $f'$ is positive to the right and negative to the left, such point is a [[local minimum]]
 - if there is an open interval at which $f'$ is positive to the left and negative to the right, such point is a [[local maximum]]
 - if there is an open interval at which $f'$ is positive or negative to both left and right, such point is a [[horizontal point of inflection]]
-![[activity_17]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_17]]
 
 There is another way of finding [[stationary point]]s, [[local maximum]]s and [[local minimum]]s, once you find a [[stationary point]] you choose two points before and after, fairly close, with no other [[stationary point]] in the middle and where the [[function]] is [[differentiable]].
 Then you find the value of the [[derivative]] of the [[function]] and you know that:
