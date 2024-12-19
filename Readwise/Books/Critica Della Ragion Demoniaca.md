@@ -24,3 +24,10 @@
 - per molti, l’essere umano impallidisce di fronte ai propri strumenti, ma non tanto perché gli strumenti siano davvero straordinari (lo sono, ma per motivi diversi rispetto a ciò che si racconta), quanto piuttosto perché l’idea della mente umana è povera e inaridita.
 - stiamo consegnando a un mondo inesistente, quello degli algoritmi, tutta la nostra autonomia intellettuale, biologica, psicologica e sociale, in cambio di una vita comoda, piacevole e senza spigoli che ci permetta di avvicinarci “insensibilmente alla morte”, come scriveva Pascal.
 - i custodi, al contrario, assumono la forma che decidiamo di dare loro, sono al nostro servizio, e per questo ne siamo intimamente responsabili.
+## New highlights added December 19, 2024 at 9:40 AM
+- Una buona parte della nostra sofferenza dipende dalle aspettative che nutriamo nei confronti del futuro.
+- Cattivi ideologi (siano essi politici o guru di ogni tipo) sono sempre pronti ad approfittare di questa situazione, offrendo sicurezza in cambio di libertà.
+- L’*Urlo* di Munch è custode e non demone, perché non si sostituisce al nostro animo, non ci solleva dalla realtà della dimensione interiore, ma la amplifica attraverso un rispecchiamento dal quale ci è impossibile fuggire:
+- Il primo passo per saper usare questi custodi consiste nell’arrendersi all’incertezza, rendendosi conto che nulla potrà mai annullarla. Arrendersi al dolore, ammettendo che niente lo eliminerà mai. Arrendersi alla sofferenza, al fallimento, alla morte, comprendendo che la strada giusta non è quella di negare questi elementi essenziali, ma di dare loro un significato
+- La filosofia è l’atto di auto-precognizione per eccellenza: non prevede il futuro ma afferma il presente. Non ci proietta in avanti ma amplifica la nostra presenza nel qui e ora. Non ci ammorbidisce con promesse inattuabili ma ribadisce l’intranquillità dell’animo, che necessita sempre di cura, attenzione e amore.
+

@@ -5,7 +5,7 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 17511313,
+  "lastSavedStatusID": 17688570,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
@@ -30,7 +30,8 @@
     "Readwise/Books/Critica Della Ragion Demoniaca.md": "45548520",
     "Readwise/Articles/MST124 Unit 4.md": "45572422",
     "Readwise/Articles/MST124 Unit 5.md": "46004562",
-    "Readwise/Articles/MST124 Unit 6.md": "46410485"
+    "Readwise/Articles/MST124 Unit 6.md": "46410485",
+    "Readwise/Articles/MST124 Unit 7.md": "46820672"
   },
   "reimportShowConfirmation": true,
   "failedBooks": []

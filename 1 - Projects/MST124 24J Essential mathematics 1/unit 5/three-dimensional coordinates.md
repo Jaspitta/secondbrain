@@ -26,7 +26,7 @@ The answer is that you should be somewhat able to, we said for a [[circle]] the 
 If you apply the same principle to a [[three-dimensional coordinates]] system, you get a sphere.
 We saw how to get the [[distance between point in a three dimensional plane]] so you can apply that to get the equation, if any point has to be distant from the center [[radius]],  we can say the equation must be $d=r$.
 We know how to get the distance, so for a center in (a,b,c) the equation is $\sqrt{(x-a)^2+(y-b)^2+(z-c)^2}=r$. or also $(x-a)^2+(y-b)^2+(z-c)^2=r^2$.
-![[activity_20_21]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_20_21]]
 
 Just like the [[equation of a circle]], the [[equation of a sphere]] can be written in many forms, if you multiply and simplify you get the form $x^2+y^2+z^2-2ax-2by-2cz+a^2+b^2+c^2-r=0$.
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_22]]

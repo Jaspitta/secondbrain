@@ -114,3 +114,25 @@ These are problems that involves choosing the best option among a suite of possi
 - find the [[stationary point]]
 - find the value of the [[function]] at the [[stationary point]] and the end points of the domain
 - find the greatest or least
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_20_21]]
+
+When it comes to more real applications like those, the general strategy to solve should be:
+- identify the final quantity to measure and the formula that leads to it
+- identify the variable that can change and how they change
+- identify how those variable fit in the formula
+- deduce the equation that describe your quantity
+- get derivative and stationary points
+- work out which are [[local maximum]] or [[local minimum]]
+
+
+##### [[derivative of an inverse function]]
+
+if we suppose that y is [[inverse function]] of x it means that x is also a [[function]] and the [[derivative]] of a x to x is 1:
+$\frac{dx}{dx}=1$
+However, we can use the [[chain rule]] to rewrite it to say that $\frac{dx}{dx}=\frac{dx}{dy}\frac{dy}{dx}$ so it is equal to 1 so $\frac{dy}{dx}=\frac{1}{\frac{dx}{dy}}$.
+
+In words, we know that the [[derivative]] is the gradient of the function or the change in the [[gradient]] to be precise. If y is an [[invertible]] [[function]] of x, x is also a [[function]] of y, so if for every y increase, x increase by 2, you would expect that for every value of x, y increase by $\frac{1}{2}$.	
+
+
+
