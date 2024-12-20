@@ -134,5 +134,6 @@ However, we can use the [[chain rule]] to rewrite it to say that $\frac{dx}{dx}=
 
 In words, we know that the [[derivative]] is the gradient of the function or the change in the [[gradient]] to be precise. If y is an [[invertible]] [[function]] of x, x is also a [[function]] of y, so if for every y increase, x increase by 2, you would expect that for every value of x, y increase by $\frac{1}{2}$.	
 
+What this rule express, is the same as what we saw with the [[derivative of natural logarithm]], where it is plotted against the [[exponential function]] as it's inverse and therefore the [[rise]] and [[run]] are inverted, so the two [[gradient]] are the [[reciprocal]] of each other
 
 
