@@ -61,3 +61,19 @@ However, you saw that for negative values, the result is still positive x, so we
 
 ![[activity_37]]
 
+##### [[standard antiderivatives]]
+
+You can simply use the standard [[derivative]]s you know and deduce the [[standard antiderivatives]] so far.
+
+There are many others in the handbook
+
+| func          | anti      | der                          |
+| ------------- | --------- | ---------------------------- |
+| $cosx$        | $sinx$    | $sinx \rightarrow cosx$      |
+| $sinx$        | $cosx$    | $cosx\rightarrow -sinx$      |
+| $e^x$         | $e^x$     | $e^x\rightarrow e^x$         |
+| $\frac{1}{x}$ | $ln\|x\|$ | $lnx\rightarrow \frac{1}{x}$ |
+| $sec^2x$      | $tanx$    | $tanx\rightarrow sec^2x$     |
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_38]]
+
