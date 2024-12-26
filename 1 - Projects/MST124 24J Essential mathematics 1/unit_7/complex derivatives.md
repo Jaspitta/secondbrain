@@ -78,7 +78,7 @@ If you consider this the overall quotient gets closer to $f'(x)g(x)+f(x)g'(x)$.
 
 ##### [[quotient rule]]
 
-The rule comes out to be $k'(x)=\frac{f'(x)g(x)-f(x)g'(x)}{(g'(x))^2}$ where $k(x)=\frac{f(x)}{g(x)}$.
+The rule comes out to be $k'(x)=\frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2}$ where $k(x)=\frac{f(x)}{g(x)}$.
 A way to get the proof is that if you have a function $k(x)=\frac{g(x)}{f(x)}=g(x)f(x)^{-1}$, you can differentiate this using the [[product rule]] $g'(x)f(x)^{-1}+g(x)\frac{d}{dx}(f(x)^{-1})$, you can now use the [[chain rule]] to get $g'(x)f(x)^{-1}+g(x)(-1f(x)^{-2})f'(x))$ and $\frac{g'(x)}{f(x)}-\frac{g(x)f'(x)}{f(x)^2}$ and arrange to the final formula.
 
 Remember to be careful about the order here because you have a - in the middle so the first term must be the [[derivative]] of the top with the bottom and the second must be the [[derivative]] of the bottom with the top
