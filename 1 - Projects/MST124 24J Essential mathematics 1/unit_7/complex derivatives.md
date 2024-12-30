@@ -20,7 +20,7 @@ Another way to deduce it is by the fact that you can obtain the graph of the [[c
 
 you have that $f(x)=tanx\rightarrow f'(x)=sec^2x$, remember that $sec^2x=(secx)^2$ and that $sec=\frac{1}{cos}$ so technically $f'(x)=\frac{1}{(cosx)^2}$.
 
-![[activity_2]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_2]]
 
 This can be confirmed using the [[quotient rule]]:
 $tanx=\frac{sinx}{cosx}\rightarrow f'(x)=\frac{cosx * cosx - sinx * (-sinx)}{cos^2x}=\frac{cos^2x+sin^2x}{cos^2x}$, from [[pythagoras theorem]] we know $cos^2x+sin^2x = 1$ so in the end $\frac{1}{cos^2x}$.
