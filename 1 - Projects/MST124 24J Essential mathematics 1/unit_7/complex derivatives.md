@@ -68,7 +68,7 @@ $k(x)=f(x)g(x)\rightarrow k'(x)=f(x)g'(x)+f'(x)g(x)$
 
 ![[activity_4_5]]
 
-![[activity_6_7]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_6_7]]
 
 The proof start from the [[difference quotient]] again, if $k(x)=f(x)g(x)$ than $\frac{k(x+h)-k(x)}{h}$ so we can say $\frac{f(x+h)g(x+h)-f(x)g(x)}{h}$.
 At this point you can add and subtract $f(x)g(x+h)$ which is the difference of the two quotient and you get:
