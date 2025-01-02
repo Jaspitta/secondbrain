@@ -83,7 +83,7 @@ A way to get the proof is that if you have a function $k(x)=\frac{g(x)}{f(x)}=g(
 
 Remember to be careful about the order here because you have a - in the middle so the first term must be the [[derivative]] of the top with the bottom and the second must be the [[derivative]] of the bottom with the top
 
-![[activity_8_9]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_8_9]]
 
 [[chain rule]]
 
