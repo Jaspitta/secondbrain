@@ -14,4 +14,6 @@ Overall we say that for any [[continuous function]] $\int_{a}^{b}f(x)dx=A(b)-A(a
 
 It's worth mentioning that the [[signed area]] as the difference in the [[antiderivative]] can also be stated as $F(a)-F(b)=[F(x)]_{a}^{b}=\int_{a}^{b}f(x)dx$.
 
-![[1 - Projects/MST124 24J Essential mathematics 1/unit_8/activity_8_9]]
+![[activity_8_9_10_11_12_13_14]]
+
+Calculating the area of the function is not good only for itself but can also be used for problems related to [[rate of change]].
