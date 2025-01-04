@@ -16,4 +16,6 @@ It's worth mentioning that the [[signed area]] as the difference in the [[antide
 
 ![[activity_8_9_10_11_12_13_14]]
 
-Calculating the area of the function is not good only for itself but can also be used for problems related to [[rate of change]].
+One common real world application for [[the fundamental theorem of calculus]] is with [[velocity]]. We know that the velocity is the [[derivative]] of the [[displacement]] since it represent it's instantaneous [[rate of change]], therefore the [[displacement]] is the [[antiderivative]] or [[integral]] of the [[velocity]]. These means that if we have a graph for the [[velocity]] we can get the distance traveled by the object in a certain amount of time using [[the fundamental theorem of calculus]] and that is simply the [[signed area]] of the graph. That is because simply if $f(x)$ is the [[velocity]], it means that $F(x)$ is the [[displacement]] and we can plug this into the formula for [[the fundamental theorem of calculus]].
+
+![[activity_16_17]]

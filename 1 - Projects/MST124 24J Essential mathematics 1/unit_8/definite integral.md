@@ -28,3 +28,8 @@ Remember that $f(x),\ a$ and $b$ are all [[dummy variable]], you can replace the
 
 What the [[definite integral]] express is the [[signed area]], so for $\int_{a}^{b}f(x)dx$ we have that when we apply the formula of the [[signed area]] we have n rectangles with base $(b-a)/n$ which we denote as $w$. The endpoints nearest to a are $a+0w,\ a+1w,\ ...,\ a+(n-1)w$ and therefore the value of the signed area is $f(a+0w)*w+f(a+1w)*w,\ ...,\ f(a+(n-1)w)*w \rightarrow (f(a+0w)+f(a+1w),\ ...,\ f(a+(n-1)w))w$.
 As n gets larger, w gets smaller because there are more rectangles and the value therefore gets closer to the actual [[definite integral]] $\int_{a}^{b}f(x)dx$ in total we say $\int_{a}^{b}f(x)dx=\lim_{x\to\infty}(f(a+0w)+f(a+1w),\ ...,\ f(a+(n-1)w))w$
+
+##### [[integration by substitution]]
+
+At the core, it is the reverse of the [[chain rule]] for [[derivative]], so since the chain rule works with $\frac{dy}{dx}f(t) = (\frac{dy}{dx}f(t))*(\frac{dy}{dx}t)$, if you can recognize $t$ or a [[integral]] that has such form, you can deduce the result. To make it simpler the form of the [[integral]] should be $f(something)*derivative\ of\ something$ since that is the result of the [[derivative]].
+Once you recognize the something, you can rewrite the [[integral]] as $f(something)$ where something becomes say $u$ so $\int f(u)du$, now you find the [[integral]] of this [[function]] and lastly you replace the $u$ with the $something$, the opposite of what you do with the [[chain rule]].

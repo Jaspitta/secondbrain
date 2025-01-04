@@ -113,7 +113,7 @@ Each [[stationary_point]] represent likely a change in the [[gradient]], therefo
 These for example are not [[turning point|turning points]] but are [[stationary point|stationary points]] and in these cases they are also called [[horizontal point of inflection]].
 
 Since a [[stationary point]] is a point at which the [[gradient]] is 0 by definition, it is easy to find it with the tools we have now, all we need is to solve $f'(x)=0$
-![[activity_16]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_16]]
 
 In total, we can find the nature of a [[stationary point]] by following the [[first derivative test]] which states that:
 - if there is an open interval at which $f'$ is positive to the right and negative to the left, such point is a [[local minimum]]
@@ -126,7 +126,7 @@ Then you find the value of the [[derivative]] of the [[function]] and you know t
 - if the [[derivative]] of the points is positive on the left and negative on the right it is a [[local maximum]]
 - if the [[derivative]] of the points is negative on the left and positive on the right it is a [[local minimum]]
 - If the [[derivative]] of the points is positive or negative at both points it is a[[horizontal point of inflection]]
-![[activity_18]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_6/activity_18]]
 
 ##### [[second derivative]]
 
