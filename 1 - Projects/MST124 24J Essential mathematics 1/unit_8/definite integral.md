@@ -33,3 +33,8 @@ As n gets larger, w gets smaller because there are more rectangles and the value
 
 At the core, it is the reverse of the [[chain rule]] for [[derivative]], so since the chain rule works with $\frac{dy}{dx}f(t) = (\frac{dy}{dx}f(t))*(\frac{dy}{dx}t)$, if you can recognize $t$ or a [[integral]] that has such form, you can deduce the result. To make it simpler the form of the [[integral]] should be $f(something)*derivative\ of\ something$ since that is the result of the [[derivative]].
 Once you recognize the something, you can rewrite the [[integral]] as $f(something)$ where something becomes say $u$ so $\int f(u)du$, now you find the [[integral]] of this [[function]] and lastly you replace the $u$ with the $something$, the opposite of what you do with the [[chain rule]].
+
+The reason we can say that $\int f(u)\frac{du}{dx}dx=\int f(u)du$ is the following, say that we have $F(u)$ which is an [[antiderivative]] of $f(u)$, it means that $F'(u)=f(u)$, and in the same way $\int f(u)du=F(x)+c$. By the [[chain rule]] (because $u$ is a [[function]], say $g(x)$) $\frac{d}{dx}(F(u))=F'(u)*\frac{d}{dx}u$, and so $\frac{d}{dx}(F(u))=f(u)*\frac{d}{dx}u$. If we integrate both sides $\int \frac{d}{dx}(F(u))dx=\int f(u)*\frac{d}{dx}u\ dx$, $\int$ and $\frac{d}{dx}$ cancels out and so it become  $F(u)+c=\int f(u)*\frac{d}{dx}u\ dx$. We already saw before that $\int f(u)du=F(x)+c$ so we can replace to get the final answer $\int f(u)*\frac{d}{dx}u\ dx=\int f(u)du$
+
+![[activity_21_22_23_24_25_26_27_28_29_30]]
+
