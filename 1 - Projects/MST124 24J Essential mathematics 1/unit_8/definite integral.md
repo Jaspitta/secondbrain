@@ -38,3 +38,21 @@ The reason we can say that $\int f(u)\frac{du}{dx}dx=\int f(u)du$ is the followi
 
 ![[activity_21_22_23_24_25_26_27_28_29_30]]
 
+Of course, this is not limited to [[indefinite integral]] but it can be used for [[definite integral]] as well in the same exact way.
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_8/activity_32]]
+
+Sometimes you can use [[integration by substitution]] even when there is an extra factor outside the main one and it looks like the form is not $f(something)*\frac{d}{dx}something$. For example if you have $\int (x+1)(ax+1)^n$, where $a$ and $n$ are constants it may look like there is no way to use [[integration by substitution]] because there is an extra $x$.
+Sometimes however you can rewrite the term in $u$, so if $u=(ax+1)$, the [[derivative]] is $a$ and you can rewrite $x$ in terms of $u$ as $x=\frac{1}{a}(u-1)$, because the initial factor had $x+1$ you also have to add the +1. Now you can rewrite the initial [[integral]] in $u$, $\frac{1}{a}\int (\frac{1}{a}(u-1)+1)au^ndu$, the $a$ is added because it needs to satisfy the form of [[integration by substitution]] and the bigger part before is the $x+1$ expressed as u. Now you can multiply and solve the [[integral]] normally.
+
+![[activity_33]]
+
+##### [[integration by parts]]
+
+Like the [[integration by substitution]] is the reverse of the [[chain rule]] the [[integration by parts]] is the reverse of the [[product rule]].
+Suppose you have a function f and g where G is the [[antiderivative]] of g, if you apply the product rule to f and G you get $\frac{d}{dx}(f(x)G(x))=f(x)(\frac{d}{dx}G(x))+f'(x)G(x)$, we know that $\frac{d}{dx}G(x)$ can be written as $g(x)$ since we established it is the [[antiderivative]].
+If you adjust the initial equation now we get $f(x)g(x)=-f'(x)G(x)+\frac{d}{dx}(f(x)G(x))$, now if we integrate both sides we get  $\int f(x)g(x)dx=f(x)G(x))-\int f'(x)G(x)dx$.
+Basically it moves the problem to integrating $\int f'(x)G(x)dx$, so it makes sense only when you can find a $G(x)$ from $g(x)$ and the product is easier to integrate.
+When integrating with this method, be very careful to $f'(x)$ and $G(x)$, sometimes getting one of these may require more complex methods like [[chain rule]] or [[integration by substitution]] in itself, you can see the mistake I did below, sometimes it can even happen that in the [[integral]] you get into [[integration by parts]] you need to use again complex [[integral]] procedures.
+![[activity_34_35_36]]
+

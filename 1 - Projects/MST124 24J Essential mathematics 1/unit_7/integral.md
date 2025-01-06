@@ -29,9 +29,9 @@ Since the [[sum rule]] simply state that the [[derivative]] is the sum of the [[
 Working out the [[indefinite integral]] is something that we already covered, however, it is common when modeling real life situations that you need a specific [[antiderivative]] and not the generic one.
 You can work out such [[function]] when you have the value taken by it at a specific point.
 
-![[activity_31]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_31]]
 
-![[activity_32]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_32]]
 ![[activity_33_34]]
 
 ##### change in [[antiderivative]]

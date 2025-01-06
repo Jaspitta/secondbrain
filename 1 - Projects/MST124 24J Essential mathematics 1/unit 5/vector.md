@@ -60,7 +60,7 @@ The base concept is that every [[vector]] can be expressed as the sum of [[scala
 If you have a vector $\textbf{v}$, and unit vectors i and j (suppose a two dimensional system but it is the same for a three dimensional one), you can say that $\textbf{v}=a\textbf{i}+b\textbf{j}$, this is called the [[component form]] where a and b are the [[scalar multiple]] and are called the i component and j component respectively.
 Since the [[unit vector]] are per definition made of a single unit and in the same direction of each axes they express the component of the original vector in each of the axes, hence the name [[vector component]].
 There is a different way to write the [[component form]] of a vector $\begin{pmatrix}a \\ b\end{pmatrix}$
-![[activity_34_35]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_34_35]]
 Finally, you can also write [[vector component]] as [[column vector]] with the original letter and avoid the bold like this $\textbf{a}=a_1i+a_2j=\begin{pmatrix} a_1 \\ a_2 \end{pmatrix}$.
 
 When vectors are expressed as [[component form]], there is the possibility to carry out [[vector algebra]] in a different way.
