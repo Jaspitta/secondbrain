@@ -54,5 +54,5 @@ Suppose you have a function f and g where G is the [[antiderivative]] of g, if y
 If you adjust the initial equation now we get $f(x)g(x)=-f'(x)G(x)+\frac{d}{dx}(f(x)G(x))$, now if we integrate both sides we get  $\int f(x)g(x)dx=f(x)G(x))-\int f'(x)G(x)dx$.
 Basically it moves the problem to integrating $\int f'(x)G(x)dx$, so it makes sense only when you can find a $G(x)$ from $g(x)$ and the product is easier to integrate.
 When integrating with this method, be very careful to $f'(x)$ and $G(x)$, sometimes getting one of these may require more complex methods like [[chain rule]] or [[integration by substitution]] in itself, you can see the mistake I did below, sometimes it can even happen that in the [[integral]] you get into [[integration by parts]] you need to use again complex [[integral]] procedures.
-![[activity_34_35_36]]
+![[activity_34_35_36_37_38_39_40_41_42_43_44_45]]
 
