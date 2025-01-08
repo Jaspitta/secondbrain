@@ -94,3 +94,21 @@
 - Anotheradvantage of using the fundamental theoremofcalculus is thatit gives youan exact answer,ratherthananapproximate one.However, remember thatyou canuse the fundamental theorem ofcalculus only when you can ﬁnd a formulafor the antiderivativethatyou need.
 - As shown in the example,aconvenientway to carry outthese sortsof manipulationsisto manipulatethe expression inside the notation b a ... dx.Thisexpression is known asthe integrand.
 
+## New highlights added January 8, 2025 at 9:24 AM
+##### Integrands of the form xr ln x
+- Integrands of the form eax sin(bx) or eax cos(bx)
+- you must choose the same order (exponential before trigonometric,ortrigonometric before exponential) whenyou integrate by partsfor the second time.Ifyou don’t do that, thenthe equation thatyou’llobtain will reduceto 0 =0,which isn’thelpful
+#### 4.3Integration by partsfor deﬁniteintegrals
+- Integration byparts formula (Lagrange notation,alternative version)  f(x)g!(x)dx = f(x)g(x) −  f!(x)g(x)dx
+- Integration byparts formula (Leibniznotation)  u dv dx dx = uv −  v du dx dx
+### 5 Moreintegration
+- 5.1Trigonometric integrals
+- Threetrigonometricidentities sin2 θ = 1 2(1 − cos(2θ)) cos2 θ = 1 2(1 +cos(2θ)) sin(2θ)=2 sin θ cos θ
+#### 5.2Choosinga method of integration
+- Choosinga method for ﬁnding an integral
+- Is it a standard integral?
+- anyou rearrange the integral to express it as a sum of constant multiplesofsimpler integrals?
+- Canthe integrandbewritteninthe form f(something) × the derivativeofthe something,
+- Is the integrandofthe form f(x)g(x),
+- , canyou use trigonometric identities to rewrite itina form that’seasierto integrate?
+
