@@ -5,7 +5,7 @@ Finally the coordinates are $x1+\frac{x2-x1}{2}=\frac{x1+x2}{2}$ and same thing 
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_3]]
 
 From the [[straight-line graph]] you know two lines are [[perpendicular lines]] when the product of their [[gradient]] is -1 so the gradient of the line we are looking for will be $g of distance * g of bisector = -1 \rightarrow g of bisector=\frac{-1}{g of distance}$.
-![[activity_4]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_4]]
 
 There is an alternative way to find the equation of the [[perpendicular bisector]], we know the points on this line have the same distance from the two points we have (a,b)(c,d). So we can use the [[distance between points in a plane]] to set the equation:
 $\sqrt{(x-a)^2+(y-b)^2}=\sqrt{(x-c)^2+(y-d)^2}$ 
