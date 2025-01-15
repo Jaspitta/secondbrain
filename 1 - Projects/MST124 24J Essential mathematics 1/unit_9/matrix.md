@@ -20,3 +20,34 @@ We say that the double [[matrix]] is obtained when you sum to itself a [[matrix]
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_9/activity_4]]
 
 
+##### [[matrix multiplication]]
+
+In [[matrix multiplication]] you multiply each column of the first with each row of the first, in each of this multiplications you do a regular multiplication of each element and then sum the results.
+$$
+\begin{pmatrix}
+a&b&c\\
+d&e&f\\
+g&h&i
+\end{pmatrix}
+*
+\begin{pmatrix}
+j\\
+k\\
+l
+\end{pmatrix}
+=
+\begin{pmatrix}
+a*j+b*k+c*l\\
+d*j+e*k+f*l\\
+g*j+h*k+i*l
+\end{pmatrix}
+$$
+
+Of course, the same can be applied with more than one column, however the number of column of one must match the number of rows of the other [[matrix]], to be precise the second [[matrix]] must have as many rows as the columns of the first [[matrix]]. I case you had another column, the same thing would be repeated with the second column and another one would be added to the final [[matrix]]. So you can multiply a matrix only if they have sizes $m*n\ p*q$ where $n$ and $q$ are equal, and the final size of the [[matrix]] will be $m*q$.
+
+
+
+
+
+
+
