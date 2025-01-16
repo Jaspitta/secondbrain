@@ -45,9 +45,17 @@ $$
 
 Of course, the same can be applied with more than one column, however the number of column of one must match the number of rows of the other [[matrix]], to be precise the second [[matrix]] must have as many rows as the columns of the first [[matrix]]. I case you had another column, the same thing would be repeated with the second column and another one would be added to the final [[matrix]]. So you can multiply a matrix only if they have sizes $m*n\ p*q$ where $n$ and $q$ are equal, and the final size of the [[matrix]] will be $m*q$.
 
+Even thought [[matrix multiplication]] share some common characteristics with regular multiplication, they are not the same thing, for example [[matrix multiplication]] is not [[cummutative]] so $A*B$ is not the same as $B*A$, although it is true that $AB*C$ is the same as $A*BC$, so they are [[associative]].
+Same holds for [[scalar multiplication of matrix]], so $k(AB)=A(kB)=(kA)B$. [[matrix multiplication]] is also [[distributive]] with [[matrix addition]] so $A(B+C)=AB+AC$, and therefore you can also [[factorising]] as the inverse operation.
+![[activity_6_7_8_9_10]]
+
+##### [[matrix power]]
+
+Just like numbers, the power of a [[matrix]] is $A^2=AA$, however not all matrices can be raised to a power, this is because if the [[matrix]] has structure $m*n$, the $m=n$ is necessary for it to be possible to do [[matrix multiplication]].
 
 
 
 
+##### [[matrices and networks]]
 
-
+A [[network]] as we saw previously is a collection of objects interconnected physically or virtually, the biggest example today is the [[internet]].
