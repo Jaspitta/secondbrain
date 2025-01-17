@@ -53,9 +53,40 @@ Same holds for [[scalar multiplication of matrix]], so $k(AB)=A(kB)=(kA)B$. [[ma
 
 Just like numbers, the power of a [[matrix]] is $A^2=AA$, however not all matrices can be raised to a power, this is because if the [[matrix]] has structure $m*n$, the $m=n$ is necessary for it to be possible to do [[matrix multiplication]].
 
-
-
-
 ##### [[matrices and networks]]
 
 A [[network]] as we saw previously is a collection of objects interconnected physically or virtually, the biggest example today is the [[internet]].
+A [[network]] can also be represented as a [[network diagram]] where [[node]]s represents the actors and the lines connecting them are called [[arc]]s. An example could be :
+![[network_diagram_ex]]
+
+This represent the relation between the top [[node]]s and the bottom once, the [[arc]]s are labeled with letters that represent the relation itself, so if you give one unit to input one it will be distributed as $1x$ to C, $1y$ to D and $1z$ to E.
+
+This can also be represented as a [[matrix]] where we put in relation the input and output [[node]]s:
+$$
+\begin{array}{cc}
+&A&B\\
+C&x&u\\
+D&y&m\\
+E&z&n
+\end{array}
+$$
+So, if we where to input value of 5 for A and 7 for B It would be a multiplication with the [[matrix]] $\begin{array}{cc} 5\\7\end{array}$.
+
+A further thing you can do is combine two [[network]]s using [[matrix]], say you have another network represented by:
+![[{F2A609A4-4241-4774-8654-792C38D3BDA1}.png]]
+you get an overall result of :
+![[{11C735DF-3AFB-4FE3-A8E9-8AE269FE6354}.png]]
+however you can also simplify to the final network:
+![[{5D0F9D52-8EE9-4F4B-9CED-D72F6B024BF0}.png]]
+
+The second and third [[network]] are equivalent but we are missing the labels on the [[arc]]s so we need to get those. If you feed 1 unit to one of the top [[node]], you will get $1x$ to the middle node and than $(1x)y$ to the final one, where $x$ and $y$ are the labels of the arcs. There can be more than one route from one top node to the bottom one so you also need to sum the results together to get the final values you can write int he final version of the [[network]].
+There is however a different way to get the [[matrix]] of the final network from the two starting once, if you assume the input vector is $\begin{array}{cc} a\\b\end{array}$ and the output is $\begin{array}{cc} c\\d\end{array}$, and finally the middle result of input and first [[network]] is $\begin{array}{cc} u\\v\\w\end{array}$ you can rewrite the network as:
+$$
+\begin{array}{cc} u\\v\\w\end{array}=\begin{array}{cc} x&e\\y&g\\w&i\end{array} * \begin{array}{cc} a\\b\end{array}
+$$
+
+because the first network times the input gives the middle result and than the middle result times the second network gives the output:
+$$
+\begin{array}{cc} c\\d\\\end{array}=\begin{array}{cc} h&f&l\\o&p&q\end{array} * \begin{array}{cc} u\\v\\w\end{array}$$
+
+You can replace the middle node in the second equation with the first and solve to find that the result is simply the [[matrix multiplication]] of the two [[network]]s where the top network is the second matrix of the multiplication. When doing this always verify that each column has an output of 1 because if you put one on one side you should get a total of 1 on the other.
