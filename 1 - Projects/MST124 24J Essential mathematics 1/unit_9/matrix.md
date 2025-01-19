@@ -90,3 +90,46 @@ $$
 \begin{array}{cc} c\\d\\\end{array}=\begin{array}{cc} h&f&l\\o&p&q\end{array} * \begin{array}{cc} u\\v\\w\end{array}$$
 
 You can replace the middle node in the second equation with the first and solve to find that the result is simply the [[matrix multiplication]] of the two [[network]]s where the top network is the second matrix of the multiplication. When doing this always verify that each column has an output of 1 because if you put one on one side you should get a total of 1 on the other.
+A simpler way to write is that, if the first [[network]] is identified by [[matrix]] A, the second by [[matrix]] B, the input by $x$, the output by $y$ and the middle output by $z$ we can write that $z=Ax$ and $y=Bz$, if we substitute the $z$ in the second equation $y=BAx$ (remember that order is important) so the output is equal to the input fed to the [[matrix multiplication]] of the two [[networks]].
+![[activity_17_18]]
+
+
+##### [[identity matrix]]
+
+It is a [[matrix]] for which when another [[matrix]] is multiplied by, the result is the other matrix unchanged, just like multiplication of a number by 1. So, if you have a [[matrix]] A and one I, if AI is A and IA is A we say that I is an [[identity]] matrix.
+An [[identity matrix]] has to be a [[square matrix]] because it has to have the same [[columns]] and [[rows]] of the other matrix in order to be multiplied in both ways
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_9/activity_19]]
+
+They all have the same structure, a diagonal 1 from top left to bottom right:
+$$
+\begin{array}{cc} 1&0\\0&1\end{array}
+$$
+$$
+\begin{array}{cc} 1&0&0\\0&1&0\\0&0&1\end{array}
+$$
+etc..
+
+##### [[matrix inverse]]
+
+In regular [[arithmetic]] a reciprocal of number $a$ is the number $b$ such that $ab=1$, this concept is often used also for divisions because dividing by a number is the same as multiplying by the [[reciprocal]].
+In [[matrix]] if you have a matrix $A$ and there is a [[square matrix]] such that $AB=I$ and $BA=I$ where I is the [[identity matrix]] we call B the [[matrix inverse]] of A, the same concept a the [[reciprocal]] of a number since I has very similar properties to number 1.
+Remember also that if a [[matrix]] has an inverse, it has only 1 and is noted as $A^{-1}$
+
+To find the [[matrix inverse]] of a 2x2 matrix you can use the formula where the original matrix is $\begin{array}{cc} a&b\\c&d\end{array}$:$\frac{1}{ad-bc}\begin{array}{cc}d&-b\\-c&a\end{array}$ 
+which is possible only when $ad-bc \neq 0$, this term is called the [[determinat]] and when it is 0 the [[matrix inverse]] does not exist.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_9/activity_22]]
+
+You can also get the proof for the formula by multiply the [[matrix]] in it:
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_9/activity_22]]
+
+
+
+
+##### matrices for [[linear equation]]
+
+surprisingly, a [[matrix]] can also be used as an alternative method to [[substitution method]] or [[elimination method]] for solving [[linear equation]].
+
+You start by converting the equations into a [[matrix]], if you have $ax+by=e$ and $cx+dy=f$ you can write $\begin{array}{cc}ax&+by\\cx&+dy\end{array}=\begin{array}{c}e\\f\end{array}$  or $\begin{array}{cc}a&b\\c&d\end{array}*\begin{array}{cc}x\\y\end{array}=\begin{array}{c}e\\f\end{array}$.
+So the first [[matrix]] in the second form is called the [[coefficient matrix]].
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_9/activity_25]]
+

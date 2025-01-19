@@ -27,7 +27,7 @@ An alternative is the [[parallelogram law for vector addition]]
 Simply, given a [[vector]], the [[negative vector]] is the same with opposite [[direction]]. So what you have is that when you add a vector with it's [[negative vector]] the [[resultant]] is the [[zero vector]] you can say that $\textbf{a}+(\textbf{-a})=0$
 
 The [[negative vector]] if what you use when you want to do [[subtraction of vectors]], you do the same as [[sum of vectors]] but you add the [[negative vector]] instead
-![[activity_25]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_25]]
 
 ##### [[scalar multiple]]
 
