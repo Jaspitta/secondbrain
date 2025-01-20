@@ -133,3 +133,10 @@ You start by converting the equations into a [[matrix]], if you have $ax+by=e$ a
 So the first [[matrix]] in the second form is called the [[coefficient matrix]].
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_9/activity_25]]
 
+
+Now that we have the [[coefficient matrix]] we can use some algebra to find an alternative way to get the solution. If we consider the [[coefficient matrix]] of the equations as $A$, we can write it as $A\begin{array}{c}x\\y\end{array}=\begin{array}{c}e\\f\end{array}$ now, we calculate the [[determinat]] of A and if A has a [[matrix inverse]] we can write $A^{-1}A\begin{array}{c}x\\y\end{array}=A^{-1}\begin{array}{c}e\\f\end{array}$ , so $I\begin{array}{c}x\\y\end{array}=A^{-1}\begin{array}{c}e\\f\end{array}$ and therefore $\begin{array}{c}x\\y\end{array}=A^{-1}\begin{array}{c}e\\f\end{array}$, now we can calculate the right side of the equation and the result will be a [[two dimensional vector]] that represent the values of x and y.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_9/activity_26]]
+
+When the [[determinat]] is 0 we have two possibilities:
+The two equations are $ax+by=e$ and $cx+dy=f$, when the [[determinat]] is 0 the left side of the equations can be made equal and the right hand side is either the same (infinite solution) or different (no solutions).
+This is because if $ad-bc=0$ then $d=bc/a$ if we multiply the initial equations by $c/a$ we have $cx+\frac{bc}{a}y=ce/a$ we say that is $d$ so $cx+dy=ce/a$, we can notice the [[left hand side]] is the same and therefore the two equations have no solutions if $ce/a\neq f$  or infinite solutions if they match.

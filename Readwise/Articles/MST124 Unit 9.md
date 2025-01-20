@@ -59,3 +59,64 @@
 - , even in caseswhere both the products AB and BA are deﬁned, these twoproducts canbe diﬀerent matrices.
 
 
+## New highlights added January 20, 2025 at 9:25 AM
+- this property does hold in general: whenever A,B and C are matrices such thatthe products AB and BC are deﬁned, we have (AB)C = A(BC).
+- , matrix multiplication is associative.
+- ifthe matrix product AB exists, then, forany scalar k, A(kB)= (kA)B = k(AB).
+- :ifthe matrix product A(B+C)can be formed, then A(B+C)= AB+AC.
+- matrix multiplication is distributive over matrix addition.
+- Some properties of matrixmultiplication Thefollowingproperties hold forall matrices A, B and C forwhich the products andsumsmentioned are deﬁned.
+  • (AB)C = A(BC) • k(AB)=(kA)B = A(kB), for any scalar k • A(B+C)= AB+AC • (A+B)C = AC+BC
+- Matrix multiplication isnot commutative • There are matrices A, B such thatthe product AB exists but the product BA does not.
+  • Even when bothproducts are deﬁned, it canhappenthat AB '= BA
+##### Matrix powers
+### 2 Matrices andnetworks
+- Matrices canbeusedtorepresent andanalyse variousﬂowsin networks
+- A network is a collection of objectsconnected by links – eitherphysicalor abstrac
+#### 2.1Networks
+- a network diagram,
+- The dots in a network diagram are called nodes,and the lines are called arcs
+#### 2.2From networks to matrices
+#### 2.3Combining networks
+- Networkscan be combined by makingthe outputs from one network become the inputs to anothernetwork
+- In general, we regard twonetworksofthe type considered inthissection as equivalent if they have the same input andoutput nodes, andall choices of inputs produce the same outputs in both networks.
+- The conclusion of thisdiscussion is thatthe matrix thatrepresentsthe combined network in Figure 9 isthe productofthe matrices thatrepresent the originalnetworks.
+- Notice thatthe matrix representing the top network is the second matrix in the productthatrepresentsthe combined network.
+### 3 The inverse of amatrix
+- it is notpossibleto divide a matrix by anothermatrix.However thereisa way to manipulatematrices thatincertain situationsplays the role of division.
+#### 3.1Identitymatrices
+- .Anidentity matrix is amatrix thatbehaves like the number 1, in the sensethatifa matrix A is multipliedby anidentity matrix of an appropriatesizethen the resultis again A
+- • If A is anymatrix such thatthe product AI exists, then AI = A. • If A is anymatrix such thatthe product IA exists, then IA = A.
+  Any matrix I with these two properties is calledan identity matrix.
+- ,for everynatural number n,the n × n matrix thathas ones down the leading diagonal (the diagonal thatstartsatthe topleftelement and ends at the bottomrightelement), andzeros everywhere else,isan identity matrix.
+- Identity matrices An identity matrix is a square matrix I such that • forany matrix A forwhich the product AI is deﬁned, AI = A • forany matrix A forwhich the product IA is deﬁned, IA = A. Each identity matrix hasthe form        10 0 ··· 0 01 0 ··· 0 00 1 ··· 0 ...
+  ...
+  ...
+  . . .
+  ...
+        00 0 ··· 1  That is,ithas ones down the leadingdiagonal andzeros elsewhere.
+  .
+#### 3.2Matrix inverses
+- in the arithmetic of numbers, dividing by anumberisthe same as multiplyingbyits reciprocal
+- Let A be a square matrix.Ifthere is anothermatrix B of the same size with the property that AB = I and BA = I,
+- thenwesay that A is invertible andthat B is an inverse of A.
+- If amatrix A is invertible,thenithas exactlyone inverse
+- We usually write the inverseofaninvertiblematrix A as A−1.Sothe following factshold
+- Inverseofamatrix If A is an invertible matrix,then AA−1 = I and A−1A = I, where I is the identity matrix of the same size as A.
+- t follows from the deﬁnition of the inverseofa matrix thatif A is an invertible matrix,then not only is A−1 the inverseof A,but also A is the inverseof A−1.Inother words, A and A−1 are inverses of each other.
+- Inverses of 2 × 2matrices
+- Determinantofa2 × 2matrix Let A = .
+  ab cd / .Thenthe number ad − bc is calledthe determinant of A,and writtenasdetA.
+  If the determinantof A is notzero, then A is invertible.
+  If the determinantof A is zero, then A is notinvertible.
+- Amatrix thatdoesnot have an inverseiscalled a non-invertible
+- In some texts, non-invertible matrices are called singular matrices,
+- invertible matrices are called non-singular
+##### Determinantsand inverses of larger matrices
+### 4 Simultaneous linearequations and matrices
+#### 4.1Solving simultaneous linearequations in two unknowns
+- The 2 × 2 matrix thatappears in thisequation is calledthe coeﬃcient matrix of the simultaneous linearequations
+- Matrix form of simultaneous linearequations Thesimultaneouslinearequations ax + by = e cx + dy = f canbewrittenasthe matrix equation .
+  ab cd /. / x y The matrix .
+  = ab cd / . / e f .
+  is calledthe coeﬃcient matrix.

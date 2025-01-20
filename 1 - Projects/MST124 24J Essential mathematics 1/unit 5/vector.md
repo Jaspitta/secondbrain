@@ -34,7 +34,7 @@ The [[negative vector]] if what you use when you want to do [[subtraction of vec
 A scalar multiple is the product of a [[vector]] and a [[scalar]]. Simply put, the resulting is the same [[vector]] with [[magnitude]] multiplied by the [[scalar]] given, if the [[scalar]] is positive the vector maintains the [[direction]], if negative it gets reversed and it is written as $m\textbf{a}$ where m is the scalar
 
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_26]]
-![[activity_27]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_27]]
 
 ##### [[vector algebra]]
 
