@@ -120,3 +120,18 @@
   ab cd /. / x y The matrix .
   = ab cd / . / e f .
   is calledthe coeﬃcient matrix.
+## New highlights added January 25, 2025 at 12:05 AM
+- Strategy: To solvea pair of simultaneous linearequationsintwo unknownsusingmatrices Write the simultaneous linearequationsinmatrix form Ax = b, where A is the coeﬃcientmatrix, x is the corresponding vector of unknowns, and b is the vector whose components are the corresponding right-hand sides of the equations.
+  If the matrix A is invertible,thenthe solution is given by x = A−1b.
+#### 4.2Non–invertible coeﬃcientmatrices
+- . If it hasexactly one solution,then wesay thatithas a unique solution.
+- So,inconclusion,ifthe coeﬃcientmatrix hasdeterminantzero, then the equationshaveeithernosolution or inﬁnitely manysolutions.
+- Forapair of simultaneous linearequationsintwo unknowns: • if the determinantofthe coeﬃcientmatrix is non-zero, then this matrix is invertible andthe equationshavea uniquesolution • if the determinantofthe coeﬃcientmatrix is zero, then this matrix is notinvertible and the equationshaveno solution or inﬁnitely manysolutions.
+#### 4.3Simultaneous linearequations in more than two unknowns
+- canbe used toﬁnd a solution formore thantwo simultaneous equationsinmore thantwo unknowns
+- We’ll referto a collection of linearequationsin a given setofunknowns as a system of linearequations.
+- A solution to a systemoflinearequationsisanassignment of values to the unknowns thatmakes all the equationshold simultaneously.
+- Any systemof n linearequationsin n unknowns canbe writtenasa single matrix equation Ax = b,
+- where A is an n × n coeﬃcientmatrix, x is an n-dimensional vector whose components are the unknowns, and b is an n-dimensional vector
+- In fact using matrix inverses is notusually the mosteﬃcient way to solve systems of linearequations, but the methodhas theoreticalimportance.
+- if the determinantofthe coeﬃcientmatrix of a systemof n equations is non-zero, then thismatrix is invertible
