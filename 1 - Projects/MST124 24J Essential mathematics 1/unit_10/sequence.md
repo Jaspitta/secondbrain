@@ -16,4 +16,23 @@ This type of [[sequence]], the [[closed form sequence]], gives you a formula cal
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_3]]
 
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_4]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_5]]
 
+##### [[recurrence relation for sequence]]
+
+Another way to describe a [[sequence]] is by defining the next value based on the previous. For example a sequence where each value is twice the one before we saw can be written as $a_n=2^n$ but can also be described as $a_n=2a_{n-1}$ where the range now is $(n=2,3,4....)$.
+The second type of way to describe a sequence now is called [[recurrence relation]] and in particular a [[first-order recurrence relation]] since it involves only the previous value and one particularity is that they also need the first term, $a_1$, to be explicitly stated.
+So the [[recurrence sequence]] is described by a [[recurrence system]] which is the combination of the [[recurrence relation]], the range of n and the first [[term]].
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_6]]
+
+One particularity of [[recurrence system]] is that it can be used to describe some irrationals numbers to as many decimals of precision as you want
+
+##### [[arithmetic sequence]]
+
+It is simply a [[sequence]] that is defined by adding a fixed number to the previous [[term]], it can also be called [[arithmetic progression]]. The gap from one value to the other, or the fixed number, is called the [[common difference]].
+It always require a starting value to be specified, usually denoted by a and together with the [[common difference]] they make the [[parameters]] of the [[arithmetic sequence]].
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_8]]
+
+If d is 0, each term is equal to the first and the sequence is called a [[constant sequence]].
+When the [[arithmetic sequence]] described has a final term, you also need to find the last value of n that the [[sequence]] can accept. Because each step has distance d all you need to do is $N=\frac{last-first}{d}+1$ where N is the final value n can take and the +1 is because you also need to consider the first term.
