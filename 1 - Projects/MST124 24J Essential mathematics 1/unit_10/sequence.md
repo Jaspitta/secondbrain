@@ -36,3 +36,17 @@ It always require a starting value to be specified, usually denoted by a and tog
 
 If d is 0, each term is equal to the first and the sequence is called a [[constant sequence]].
 When the [[arithmetic sequence]] described has a final term, you also need to find the last value of n that the [[sequence]] can accept. Because each step has distance d all you need to do is $N=\frac{last-first}{d}+1$ where N is the final value n can take and the +1 is because you also need to consider the first term.
+
+Sometimes it is convenient to have an [[arithmetic]] sequence described with a [[recurrence relation]], but sometimes it might not be, luckily there is a way to describe such sequences as [[closed form formula]]. In general the form is $first+d(n-1)$ this is because the recurrence add d every time so starting from the first number we than add d for each step, the -1 is because the first element must not have d added.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_10]]
+
+##### [[geometric sequence]]
+
+It is a type of [[sequence]] where each number is obtained by multiplying for a constant each previous [[term]], exactly like [[arithmetic sequence]] but this time with multiplication and can also be called [[geometric progression]].
+The number that you multiply by is called the [[common ration]] and is obtained by dividing a term $\frac{x_n}{x_{n-1}}$ and together with the first value a they make the [[parameters]] of the sequence.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_11]]
+
+Just like [[arithmetic sequence]], a [[geometric sequence]] can be finite and sometimes you want to find the max value n can take knowing the last element of the [[sequence]]. We know that the last element is obtained with the first element multiplied with the [[common ration]] n-1 times so $last=first*r^{n-1}$. We can solve the equation $r^{n-1}=\frac{last}{first}\rightarrow (n-1)lnr=ln\frac{last}{first} \rightarrow n=1+\frac{ln\frac{last}{first}}{lnr}$.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_13]]
+
+Another way to describe a [[geometric sequence]] is with it's [[closed form formula]]. Since when we go from one [[term]] to the other we multiply, it means that at the term n we will have multiplied the [[common ration]] n-1 times (remove the first [[term]]) and we will have started from the initial term. So if the initial term is $a$ we have $x_n=a*r^{n-1}$
