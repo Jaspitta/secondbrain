@@ -50,3 +50,14 @@ Just like [[arithmetic sequence]], a [[geometric sequence]] can be finite and so
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_13]]
 
 Another way to describe a [[geometric sequence]] is with it's [[closed form formula]]. Since when we go from one [[term]] to the other we multiply, it means that at the term n we will have multiplied the [[common ration]] n-1 times (remove the first [[term]]) and we will have started from the initial term. So if the initial term is $a$ we have $x_n=a*r^{n-1}$
+
+##### [[graphs of sequence]]
+
+Since a sequence is simply a rule that gives a set of values starting from another it has much similarities with a [[function]].
+For this reason, just like a [[function]] you can plot the graph of a [[sequence]].
+In particular an [[arithmetic sequence]] will give you a [[straight-line graph]] since every point grows of the same amount and therefore the [[gradient]] remain constant, on the other hand a [[geometric sequence]] has a [[curve]] shaped graph because the graph of the [[derivative]] is a [[straight-line graph]].
+
+##### [[long-term behaviour of sequences]]
+
+Much like [[function]], when we analyse a [[sequence]] we can define it a [[increasing]] or [[decreasing]] based on if the next value is bigger or smaller than the previous. Some [[sequence]]s have a pattern that alternate in a range, we call those [[bounded sequence]].
+We an also say that a [[sequence]] become [[arbitrary large]] if it grows with no bound or [[arbitrary small]] if gets closer and closer to 0, in particular we say that $x_n$ tends to $0$ as $n$ tends to infinity. This can be extended to any number say L, a [[sequence]] can be of the type that $x_n \rightarrow L\ \ as\ \  n \rightarrow \infty$
