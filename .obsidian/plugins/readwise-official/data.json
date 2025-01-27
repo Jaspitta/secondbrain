@@ -5,7 +5,7 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 18305125,
+  "lastSavedStatusID": 18350664,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
@@ -33,7 +33,8 @@
     "Readwise/Articles/MST124 Unit 6.md": "46410485",
     "Readwise/Articles/MST124 Unit 7.md": "46820672",
     "Readwise/Articles/MST124 Unit 8.md": "47233061",
-    "Readwise/Articles/MST124 Unit 9.md": "47731888"
+    "Readwise/Articles/MST124 Unit 9.md": "47731888",
+    "Readwise/Articles/MST124 Unit 10.md": "48101958"
   },
   "reimportShowConfirmation": true,
   "failedBooks": []
