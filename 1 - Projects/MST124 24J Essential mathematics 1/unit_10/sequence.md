@@ -60,4 +60,8 @@ In particular an [[arithmetic sequence]] will give you a [[straight-line graph]]
 ##### [[long-term behaviour of sequences]]
 
 Much like [[function]], when we analyse a [[sequence]] we can define it a [[increasing]] or [[decreasing]] based on if the next value is bigger or smaller than the previous. Some [[sequence]]s have a pattern that alternate in a range, we call those [[bounded sequence]].
-We an also say that a [[sequence]] become [[arbitrary large]] if it grows with no bound or [[arbitrary small]] if gets closer and closer to 0, in particular we say that $x_n$ tends to $0$ as $n$ tends to infinity. This can be extended to any number say L, a [[sequence]] can be of the type that $x_n \rightarrow L\ \ as\ \  n \rightarrow \infty$
+We an also say that a [[sequence]] become [[arbitrary large]] if it grows with no bound or [[arbitrary small]] if gets closer and closer to 0, in particular we say that $x_n$ tends to $0$ as $n$ tends to infinity. This can be extended to any number say L, a [[sequence]] can be of the type that $x_n \rightarrow L\ \ as\ \  n \rightarrow \infty$.
+
+Since [[arithmetic sequence]]s result in a [[straight-line graph]] their long term behaviour is easy to describe. They have form $x_n=b+dn$ with $b=a-d$ and therefore if d greather than 0 they $x_n \rightarrow \infty\ \ as\ \  n \rightarrow \infty$, if d 0 it'a a constant and if d less than 0 $x_n \rightarrow \infty\ \ as\ \  n \rightarrow -\infty$.
+
+On the other hand [[geometric sequence]]s are more difficult to describe. They take the form $cr^n$ where $c=\frac{a}{r}$ so we can describe the behaviour of $r^n$. The are three special cases, when r is 0 the sequence is always 0, when 1 always 1 and when -1 it alternates between 1 and -1. When r is between 0 and 1 the sequence shrink slower and slower, when > 1 it grows steeper and steeper. Basically it behaves like the [[exponential function]].
