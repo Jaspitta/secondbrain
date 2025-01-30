@@ -62,6 +62,28 @@ In particular an [[arithmetic sequence]] will give you a [[straight-line graph]]
 Much like [[function]], when we analyse a [[sequence]] we can define it a [[increasing]] or [[decreasing]] based on if the next value is bigger or smaller than the previous. Some [[sequence]]s have a pattern that alternate in a range, we call those [[bounded sequence]].
 We an also say that a [[sequence]] become [[arbitrary large]] if it grows with no bound or [[arbitrary small]] if gets closer and closer to 0, in particular we say that $x_n$ tends to $0$ as $n$ tends to infinity. This can be extended to any number say L, a [[sequence]] can be of the type that $x_n \rightarrow L\ \ as\ \  n \rightarrow \infty$.
 
-Since [[arithmetic sequence]]s result in a [[straight-line graph]] their long term behavior is easy to describe. They have form $x_n=b+dn$ with $b=a-d$ and therefore if d greather than 0 they $x_n \rightarrow \infty\ \ as\ \  n \rightarrow \infty$, if d 0 it'a a constant and if d less than 0 $x_n \rightarrow \infty\ \ as\ \  n \rightarrow -\infty$.
+Since [[arithmetic sequence]]s result in a [[straight-line graph]] their long term behaviour is easy to describe. They have form $x_n=b+dn$ with $b=a-d$ and therefore if d greater than 0 they $x_n \rightarrow \infty\ \ as\ \  n \rightarrow \infty$, if d 0 it'a a constant and if d less than 0 $x_n \rightarrow \infty\ \ as\ \  n \rightarrow -\infty$.
 
-On the other hand [[geometric sequence]]s are more difficult to describe. They take the form $cr^n$ where $c=\frac{a}{r}$ so we can describe the behavior of $r^n$. The are three special cases, when r is 0 the sequence is always 0, when 1 always 1 and when -1 it alternates between 1 and -1. When r is between 0 and 1 the sequence shrink slower and slower, when > 1 it grows steeper and steeper. Basically it behaves like the [[exponential function]]. Something stranger happens when you have r < 0, if you think about it $-r^n = -1^n*2^n$ therefore the result is that the points have the same [[magnitude]] as before but alternated sign
+On the other hand [[geometric sequence]]s are more difficult to describe. They take the form $cr^n$ where $c=\frac{a}{r}$ so we can describe the behaviour of $r^n$. The are three special cases, when r is 0 the sequence is always 0, when 1 always 1 and when -1 it alternates between 1 and -1. When r is between 0 and 1 the sequence shrink slower and slower, when > 1 it grows steeper and steeper. Basically it behaves like the [[exponential function]]. Something stranger happens when you have r < 0, if you think about it $-r^n = -1^n*2^n$ therefore the result is that the points have the same [[magnitude]] as before but alternated sign
+
+##### [[summing a finite sequence]]
+
+We call the expression that express the sum of the [[term]]s in a [[sequence]] a [[series]], they can be a [[finite series]] or an [[infinite series]] if the corresponding [[sequence]] has a finite or infinite number of [[term]]s. 
+
+Starting from adding an [[arithmetic sequence]], this is called an [[arithmetic series]], you. can start by imagining a simple $1+2+3$, if you flip it and add it to itself in columns you get $4+4+4$ so $4*3=12$, that is twice the original because we added it twice so $6$ is the final answer. This happens because with the original sequence you add to the initial term an amount on each step, with the reverse you remove such amount to each [[term]]. So. the final formula is $\frac{1}{2}*(number\ \ of\ \ term)(first+last)$. If we rewrite this we can say. $\frac{1}{2}n(a_1+a_1+(n-1)d)=\frac{1}{2}n(2a+(n-1)d)$
+![[activity_22_23]]
+
+When you want to add a [[geometric sequence]] you have a [[geometric series]] and the process is similar but different. If. you take $1+2+2^2+2^3$ you can take the double of the sequence and get $2+2^2+2^3+2^4$,  assuming the first is $s$ and second is $2s$ you can subtract the second from the first and you get $s=2^4-1=15$. More in general we can say if $s=a+ar+ar^2....ar^{n-1}$ than $rs=ar+ar^2....ar^{n}$, if you subtract and simplify you get $s=\frac{a(1-r^n)}{1-r}$.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_24]]
+
+The [[sum of n squares]] is $1^2+2^2+3^2...n^2=\frac{1}{6}n(n+1)(2n+1)$
+The [[sum of n cubes]] is $1^3+2^3+3^3...n^3=\frac{1}{4}n^2(n+1)^2$
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_25]]
+
+##### [[sum of infinite series]]
+
+Consider a [[series]] $s=a1+a2...an$, now consider $s1=a1+a2$, $s2=a1+a2+a3$ and so on. We call the smaller s [[partial sum]] and s the [[sequence of partial sum]]. If the [[sequence of partial sum]] converge to a limit we call that the [[sum]], if it does not converge but grow to infinity the [[series]] does not have a [[sum]].
+
+Starting from [[infinite geometric series]], we can take the [[sequence]] $a+ar^2+ar^3...$, that is the [[sum]] of it's [[partial sum]]s, so the formula for the [[partial sum]] at [[term]] n is $sn=\frac{a(1-r^n)}{1-r}$. you can solve this equation once you have r and in the end you will get a term with $n$ as exponent, you can study how that term behave with n growing, if it converges to a number and if it does use it to solve the equation and understand where the whole equation converges. In general you can notice that if $-1<r<1$ the term $r^n \rightarrow 0$ so the equation simplify to $\frac{a}{1-r}$
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_26|activity_]]
+

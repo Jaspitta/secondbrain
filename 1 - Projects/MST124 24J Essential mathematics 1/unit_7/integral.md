@@ -12,7 +12,7 @@ The first problem is that any [[function]] like $f(x)=x^2+b$ will result in $f'(
 The working of an [[antiderivative]] is basically the reverse of the [[derivative]]. You know that for a [[function]] $f(x)=x^c$ the [[derivative]] is $f'(x)=cx^{c-1}$, so now you need to do the reverse.
 If you have a function $f(x)= x^c$, the [[antiderivative]] must be $F(x)=\frac{1}{c+1}x^{c+1}$, this way, if you have $f(x)=x^6 \rightarrow F(x)=\frac{1}{7}x^7$, in fact the [[derivative]] of the second gives the first and therefore the [[indefinite integral]] is $F(x)=\frac{1}{c+1}x^{c+1}+a$.
 One special case is where you have $f(x)=1$, the [[antiderivative]] is simply $x$ and the [[indefinite integral]] is $x+c$, this is because we saw that $x^0=1$ and therefore $f(x)=1=x^0\rightarrow F(x)=\frac{1}{0+1}x^{0+1}=x$
-![[activity_28_29]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_28_29]]
 
 ##### [[constant multiple rule for antiderivatives]]
 
