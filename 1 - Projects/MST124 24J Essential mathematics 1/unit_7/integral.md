@@ -22,7 +22,7 @@ Since the [[constant multiple rule]] allow for a constant to simply be carried o
 
 Since the [[sum rule]] simply state that the [[derivative]] is the sum of the [[derivative|derivatives]] of the single [[functions]], the same can be said in reverse, therefore $k(x)= f(x)+g(x)\rightarrow K(x)=F(x)+G(x)$.
 
-![[activity_30]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_30]]
 
 ##### finding one specific [[antiderivative]]
 

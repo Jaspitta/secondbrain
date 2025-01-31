@@ -87,3 +87,26 @@ Consider a [[series]] $s=a1+a2...an$, now consider $s1=a1+a2$, $s2=a1+a2+a3$ and
 Starting from [[infinite geometric series]], we can take the [[sequence]] $a+ar^2+ar^3...$, that is the [[sum]] of it's [[partial sum]]s, so the formula for the [[partial sum]] at [[term]] n is $sn=\frac{a(1-r^n)}{1-r}$. you can solve this equation once you have r and in the end you will get a term with $n$ as exponent, you can study how that term behave with n growing, if it converges to a number and if it does use it to solve the equation and understand where the whole equation converges. In general you can notice that if $-1<r<1$ the term $r^n \rightarrow 0$ so the equation simplify to $\frac{a}{1-r}$
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_26|activity_]]
 
+##### [[sigma notation]]
+
+It is just a fancy way to describe the [[series]] with a handy notation, what you write is $\sum_{k=p}^{m}n$ where $k=p$ is the first [[term]], $m$ is the number of [[term]]s (n) and $n$ is the [[closed form formula]] of the [[sequence]].
+For example something like $3^3+4^3+5^3....9^3$ is $\sum_{n=3}^{9}n^3$.
+Can be used to express [[sum formula]]s:
+- $\sum_{k=1}^{n}1=n$
+- $\sum_{k=1}^{n}k=\frac{1}{2}n(n+1)$
+- $\sum_{k=1}^{n}k^2=\frac{1}{6}n(n+1)(2n+1)$
+- $\sum_{k=1}^{n}k^3=\frac{1}{4}n^2(n+1)^2$
+
+You can also use this notations to works with multiple [[sum]]:
+- $\sum_{k=p}^{m}cn=c\sum_{k=p}^{m}n$ if $c$ is a constant
+- $\sum_{k=p}^{m}(n+-g)=\sum_{k=p}^{m}n+-\sum_{k=p}^{m}g$
+- $\sum_{k=p}^{m}(n+g)=\sum_{k=1}^{m}n-\sum_{k=1}^{p-1}n$ if $1<p<=q$
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_30]]
+
+
+when it come to [[infinite series]] the concept is exactly the same, instead of a number on $n$ you will have a $\infty$
+
+
+
+
