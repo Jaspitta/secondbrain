@@ -40,7 +40,7 @@ One peculiar thing to notice about the [[indefinite integral]] of a [[function]]
 This can be proved mathematically also $f(x)=x \rightarrow F(x)=\frac{1}{2}x^2+c$ and if you analyze a change, $F(a)-F(b)=\frac{1}{2}a^2+c-\frac{1}{2}b^2-c$, as you can see the c cancels out 
 
 
-![[activity_35_36]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_35_36]]
 
 ##### [[antiderivative of reciprocal]]
 

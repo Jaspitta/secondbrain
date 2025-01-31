@@ -107,6 +107,15 @@ You can also use this notations to works with multiple [[sum]]:
 
 when it come to [[infinite series]] the concept is exactly the same, instead of a number on $n$ you will have a $\infty$
 
+##### [[binomial theorem]]
+
+It is a formula to expand a [[power of a binomial]] so $(a+b)^n$. We know that $(a+b)^2=a^2+2ab+b^2$ so $(a+b)^3=(a+b)(a^2+2ab+b^2)=a^3+3a^2b+3ab^2+b^3$.
+You can notice that at every new $n$ you are multiplying the previous number by $(a+b)$ once more. Since every time you multiply by $a$ and than by $b$, you increase the power by 1, so each term will always have sum of the exponents equal to n, starting from $a^n$ than $a^{n-1}b$ up to $b^n$.
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_35_36|]]
+
+We can write the formula for the [[power of a binomial]] as the [[binomial expansion]] $(a+b)^n=C_0^na^n+C_1^na^{n-1}b....C_{n-1}^nab^{-1}+C_n^nb^n$
+
 
 
 
