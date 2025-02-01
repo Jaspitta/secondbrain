@@ -114,7 +114,15 @@ You can notice that at every new $n$ you are multiplying the previous number by 
 
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_35_36|]]
 
-We can write the formula for the [[power of a binomial]] as the [[binomial expansion]] $(a+b)^n=C_0^na^n+C_1^na^{n-1}b....C_{n-1}^nab^{-1}+C_n^nb^n$
+We can write the formula for the [[power of a binomial]] as the [[binomial expansion]] $(a+b)^n=C_0^na^n+C_1^na^{n-1}b....C_{n-1}^nab^{-1}+C_n^nb^n$.
+You now know how to deduce the [[power index]] quickly but what about the [[coefficient]]s $C$?.
+A [[factorial]] is the product of a number up to that number so $5!=1*2*3*4*5$ and $0!=1$. In general $n!=n(n-1)!$, written as a [[sequence]] we have $c_0=1$, $cn=nc_{n-1}$. The formula for a [[coefficient]] $k$ of the [[binomial]] $n$ is $C_k^n=\frac{n!}{k!(n-k)!}$, as long as $0<=k$.
+The reason for the formula is that, we can check it works for the edge values because when $k=0$ is evaluates to $1$ and when $k=n$ then $n-k=0$ so again it evaluates to 1. The other reason to check is that it is the sum of the two values above in the [[pascal triangle]], the two values above are $C^{n-1}_{k-1}$ and $C^{n-1}_k$, so we need to check that $C^n_k=C^{n-1}_{k-1} + C^{n-1}_k$, you can use the initial formula and simplify to in the end get the proof.
+
+![[activity_37_38]]
+The full [[binomial theorem]] can also be stated as [[sigma notation]]
+$(a+b)^n=\sum^n_{k=0}C^n_ka^{n-k}b^k=\sum^n_{k=0}\frac{n!}{k!(n-k)!}a^{n-k}b^k$
+![[activity_39_40_41_42]]
 
 
 
