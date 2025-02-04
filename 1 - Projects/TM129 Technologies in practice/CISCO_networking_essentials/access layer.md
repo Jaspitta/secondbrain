@@ -1,0 +1,1 @@
+it is the layer that gives access to other hosts and resources on the same [[network]] via [[ethernet]]
