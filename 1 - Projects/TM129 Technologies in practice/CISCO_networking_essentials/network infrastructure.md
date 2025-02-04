@@ -1,4 +1,6 @@
-It is the collection of devices that makes communication over a [[network]] possible. We mainly differentiate between [[intermediate device]] like [[router]]s and [[switch]]es, [[end devices]] like laptops and phones also called hosts and [[network media]] so the media like [[LAN]], [[WLAN]] or wireless.
+It is the collection of devices that makes communication over a [[network]] possible. We mainly differentiate between [[intermediate device]] like [[router]]s and [[switch]]es, [[end devices]] like laptops and phones also called hosts and [[network media]] are the media between the devices like [[utp wire]], [[coaxial cable]], [[fiber optic]] or [[wireless]].
+
+The choice of [[network media]] is mainly dictated by the requirements for distance, speed, cost, and environment
 
 Usually the most numerous devices are [[end device]]s, that includes also [[server]]s of course and to talk with each other they need to have a unique address each.
 

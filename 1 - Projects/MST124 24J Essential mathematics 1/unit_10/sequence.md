@@ -100,7 +100,7 @@ Can be used to express [[sum formula]]s:
 You can also use this notations to works with multiple [[sum]]:
 - $\sum_{k=p}^{m}cn=c\sum_{k=p}^{m}n$ if $c$ is a constant
 - $\sum_{k=p}^{m}(n+-g)=\sum_{k=p}^{m}n+-\sum_{k=p}^{m}g$
-- $\sum_{k=p}^{m}(n+g)=\sum_{k=1}^{m}n-\sum_{k=1}^{p-1}n$ if $1<p<=q$
+- $\sum_{k=p}^{m}(n)=\sum_{k=1}^{m}n-\sum_{k=1}^{p-1}n$ if $1<p<=q$
 
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_30]]
 
