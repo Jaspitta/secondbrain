@@ -1,0 +1,1 @@
+An address permanently etched onto a [[network interface card]]. Such address for source and destination is one of the most important fields of an [[ethernet frame]]
