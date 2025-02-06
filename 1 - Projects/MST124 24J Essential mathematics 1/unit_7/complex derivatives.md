@@ -66,7 +66,7 @@ However, the domain of the [[logarithmic function]] is $[0,\infty)$ , so the sam
 Unfortunately it is not as easy as multiply the [[derivative]], but it is also not that bad.
 $k(x)=f(x)g(x)\rightarrow k'(x)=f(x)g'(x)+f'(x)g(x)$
 
-![[activity_4_5]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_4_5]]
 
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_6_7]]
 
