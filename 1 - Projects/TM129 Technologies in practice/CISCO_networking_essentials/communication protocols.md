@@ -20,10 +20,10 @@ Some example of [[internet protocol]]s that could all be in the same message:
 - [[http]]: transfer of [[HTML]]
 
 Messages contains many protocols layers ([[layered model]]) usually in what is called a [[protocol stack]], for the [[TCP/IP]] model for example:
-- application: [[http]]
-- transport:[[TCP]] 
-- internet: [[IP]]
-- network access: [[ethernet protocol]]
+- application: [[http]] encode/decode and present data to the user
+- transport:[[TCP]] support communication across different devices through the network
+- internet: [[IP]] determine the best path for data through the network
+- network access: [[ethernet protocol]] control hardware and media that makes up the network
 This definition is what it is called a [[protocol model]] because it uses a protocol to define how something should be done at each layer. The alternative is a [[reference model]] which define the functions that should be completed at each layer but not how to. The most common [[reference model]] is the [[OSI model]](Open systems interconnection) by [[ISO]].:
 - 7 application: process to process communication
 - 6 presentation: representation of data for layer 7 services
