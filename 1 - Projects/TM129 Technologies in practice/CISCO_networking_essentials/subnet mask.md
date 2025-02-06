@@ -1,0 +1,1 @@
+It is the [[network component]] of an [[IPV4 addressing]] packet or address in general, it can be denoted as an IP or with [[slash notation]] so /n where n is the number of bit taken by the mask from left to right

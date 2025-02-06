@@ -1,0 +1,1 @@
+A special address used by a Windows client when a device can not get an [[ip address]] in other ways, the range is 169.254.0.0/16 to 169.254.255.254.
