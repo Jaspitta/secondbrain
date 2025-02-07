@@ -52,7 +52,18 @@ Now you can deduce that $z\overline{z}=|z|^2$ so $z=\frac{|z|^2}{\overline{z}}$,
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_17]]
 
 You can actually describe a [[complex numbers]] by it's [[magnitude|modulus]] and the direction as an angle in [[radian]], this is called the [[polar form]] and the direction part is called the [[argument]]. Since potentially there are an infinite number of angles that can describe a direction, the convention is that the angle should be described as $(-\pi,\pi]$ and is denoted as Arg(z).
+A number in it's [[polar form]] is described by it's [[magnitude|modulus]] and the direction, if we imagine a number that lies on the [[unit circle]] ([[modulus]] 1) but has the same direction, it will have coordinates $cos\theta, sin\theta$  and form $cos\theta+isin\theta$, therefore our number will have the same structure but with a modulus that is a factor of the one on the [[unit circle]], overall it will have structure $r(cos\theta+isin\theta)$ .
 
+Once you have the [[polar form]], all you need to do is calculate the values of sin and cos to get back the [[cartesian form]]
 
+![[activity_20]]
 
+Of course you can also go from [[cartesian form]] to [[polar form]] although it is a bit more difficult. First you get the modulus that will be your r. Than you understand in which quadrant your number lies based on the values of x and y, now you know it forms a triangle with two sides being the x and y coordinates, you can use the formula for the [[tangent]] to get the value of the angle with the [[real axis]] and finally use it to get the value of your [[argument]]
+![[Pasted image 20250207191930.png]]
+![[Pasted image 20250207192001.png]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_21]]
 
+While the [[cartesian form]] is more convenient for sums and subtraction the [[polar form]]  is better suited for multiplications and divisions.
+The multiplication of two [[complex numbers]] in [[polar form]] is $zw=rs(cos(\theta+\sigma)+isin(\theta+\sigma))$, the reason is simply the multiplication of the two polar forms that is than simplified using [[angle sum identity]].
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_22_23]]
