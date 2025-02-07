@@ -71,7 +71,7 @@ On the other hand [[geometric sequence]]s are more difficult to describe. They t
 We call the expression that express the sum of the [[term]]s in a [[sequence]] a [[series]], they can be a [[finite series]] or an [[infinite series]] if the corresponding [[sequence]] has a finite or infinite number of [[term]]s. 
 
 Starting from adding an [[arithmetic sequence]], this is called an [[arithmetic series]], you. can start by imagining a simple $1+2+3$, if you flip it and add it to itself in columns you get $4+4+4$ so $4*3=12$, that is twice the original because we added it twice so $6$ is the final answer. This happens because with the original sequence you add to the initial term an amount on each step, with the reverse you remove such amount to each [[term]]. So. the final formula is $\frac{1}{2}*(number\ \ of\ \ term)(first+last)$. If we rewrite this we can say. $\frac{1}{2}n(a_1+a_1+(n-1)d)=\frac{1}{2}n(2a+(n-1)d)$
-![[activity_22_23]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_22_23]]
 
 When you want to add a [[geometric sequence]] you have a [[geometric series]] and the process is similar but different. If. you take $1+2+2^2+2^3$ you can take the double of the sequence and get $2+2^2+2^3+2^4$,  assuming the first is $s$ and second is $2s$ you can subtract the second from the first and you get $s=2^4-1=15$. More in general we can say if $s=a+ar+ar^2....ar^{n-1}$ than $rs=ar+ar^2....ar^{n}$, if you subtract and simplify you get $s=\frac{a(1-r^n)}{1-r}$.
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_10/activity_24]]
