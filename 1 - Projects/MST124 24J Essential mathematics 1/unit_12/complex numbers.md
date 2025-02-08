@@ -67,3 +67,20 @@ While the [[cartesian form]] is more convenient for sums and subtraction the [[p
 The multiplication of two [[complex numbers]] in [[polar form]] is $zw=rs(cos(\theta+\sigma)+isin(\theta+\sigma))$, the reason is simply the multiplication of the two polar forms that is than simplified using [[angle sum identity]].
 
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_22_23]]
+
+Also division is possible with [[polar form]], remember that the reciprocal of a [[complex numbers]] is $\frac{1}{w}=\frac{\overline{w}}{|w|^2}$, so if you multiply this by another [[complex numbers]] say $z$ you get $\frac{z}{w}=\frac{\overline{w}z}{|w|^2}$ , replacing the [[polar form]] and simplifying with [[angle sum identity]] you get $\frac{z}{w}=\frac{r}{s}(cos(\theta-\sigma)+isin(\theta-\sigma))$, where $r$ and $s$ are the [[magnitude|modulus]] of $z$ and $w$.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_24]]
+
+##### [[de moivre's formula]]
+
+With the multiplication of [[polar form]] of [[complex numbers]] it is possible to also get to a formula for powers of [[complex numbers]].
+You know that when multiplying two [[complex numbers]] in [[polar form]] you add the angles and multiply the [[magnitude|modulus]], therefore if you repeat this n times like for powers you get $z^n=r^n(cos(n\theta)+isin(n\theta))$.
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_26]]
+
+##### [[polinomial equation]]
+
+They are simply [[equation]]s in the form of [[polinomial expression]]=0 and as introduced before, with [[complex numbers]] we now have the possibility to get at least one solution to ever possible [[polinomial equation]], even $x^2+1=0$.
+
+
+You learned that in a [[quadratic equation]] of the form $az^2+bz+c=0$ if the [[discriminant]] is negative there are no solutions, in reality every [[quadratic equation]] has at least one [[complex solution]], that is a solution that involves [[complex numbers]].
