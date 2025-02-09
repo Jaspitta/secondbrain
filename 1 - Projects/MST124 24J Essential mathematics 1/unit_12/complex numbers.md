@@ -84,3 +84,24 @@ They are simply [[equation]]s in the form of [[polinomial expression]]=0 and as 
 
 
 You learned that in a [[quadratic equation]] of the form $az^2+bz+c=0$ if the [[discriminant]] is negative there are no solutions, in reality every [[quadratic equation]] has at least one [[complex solution]], that is a solution that involves [[complex numbers]].
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_28_29]]
+
+Remember that when you solve a [[quadratic]] equation with [[discriminant]] < 0, you sill end with two [[complex solution]]s that are the [[complex conjugation]] of each other because of the +- part. Knowing this it is possible to take the reverse approach and from the solutions build back the simplest starting equation, if we have two solutions we know that the initial equation in this case was a [[quadratic equation]], therefore a multiplication of two expression and we have the two expressions in the solution. if the solutions are $z=a+-i$ , you can take each term and move it to the left side to get the expression as $=0$ form, this is because when $z$ is one of the roots we know the equations solves to 0 by definition, our final equation will be the multiplication of those factor so $(z-(a+i))(z-(a-i))=0$ 
+
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_30]]
+
+##### [[roots of complex numbers]]
+
+We say that an equation in the form $z^n=a$ is an [[nth root]] and it has n solutions, as long as $a\neq 0$ and n is a positive integer.
+We call solutions of the equations $z^n=1$ [[roots of unity]] where unity is the 1.
+
+In general, for a [[roots of unity]] we know that the [[magnitude|modulus]] of the solutions is 1 because $z^3=1$ than $|z^3|=1$, also $|z^3|=|zzz|=|z||z||z|=|z|^3$ so $|z|^3=1$. If the [[magnitude|modulus]] is 1, and we know it represents the distance from the origin on the [[complex plane]], it means that all the solutions lie on the [[unit circle]], we can use this information to help us find the solutions to an [[nth root]].
+
+if you have an [[nth root]], you can write it in [[polar form]], say $z^n=a$ you will have $a=u(cos\sigma+isin\sigma)$, if we take the generic term z you will have $z=r(cos\theta+isin\theta)$.
+Therefore we can write $(r(cos\theta+isin\theta))^n=u(cos\sigma+isin\sigma)$, thanks to [[de moivre's formula]] $r^n(cos(n\theta)+isin(n\theta))=u(cos\sigma+isin\sigma)$, if you compare the [[magnitude|modulus]] of the two numbers you have that $r^n=u$, if you compare the [[argument]] of the two side you have that $n\theta=\sigma$, however there are infinitely solutions technically for the same angles so $n\theta=\sigma+2m\pi$ so $\theta=\frac{\sigma+2m\pi}{n}$. The solutions are actually the angles of the expression just calculated, where m goes from 0 to n-1 (bigger multiples would simply repeat the previous angles).
+This let's you find the solution in [[polar form]], you can convert in [[cartesian form]] if you need to and on the [[complex plane]], the solutions lie on a circle with [[radius]] the [[magnitude|modulus]] of the initial number, we said $u$, cutting the circle in n equal sections, for example for $z^5=1$:
+![[Pasted image 20250209214234.png]]
+
+
+
