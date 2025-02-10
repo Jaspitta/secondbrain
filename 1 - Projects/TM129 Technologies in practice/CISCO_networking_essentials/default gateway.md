@@ -1,0 +1,7 @@
+A gateway in general is a way for traffic to leave a [[network]] and be forwarded to another [[network]], a [[router]] is a [[gateway]]. To know if a packet is destined out of the internal [[network]], a device does [[binary ending]] on the destination address and the network portion of the sending device.
+If a packet is destined for outside the [[network]], the sender has to also have the address of the [[default gateway]] configured (you saw it is automatic with [[Dynamic Host Configuration Protocol server]]).
+
+A [[default gateway]] or [[router]] can also be a [[Dynamic Host Configuration Protocol server]] client of a bigger outside network. It is common for home [[wireless router]]s to receive their [[IPV4 address]] from the [[Dynamic Host Configuration Protocol server]] of the [[ISP]].
+
+When you route outside your own network however, you will inevitably have the problem of using a [[private IPV4 address]] as either destination of source, which will not be routed by an [[ISP]] as it is for private use.
+[[Network Address Translation]] solves this problem, your [[router]] will hold a table in which your and other private addresses are paired with a corresponding [[public IPV4 address]], so before sending your packet it will replace the addresses in it with the corresponding [[public IPV4 address]]
