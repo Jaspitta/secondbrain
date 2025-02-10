@@ -32,7 +32,7 @@ You can work out such [[function]] when you have the value taken by it at a spec
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_31]]
 
 ![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_32]]
-![[activity_33_34]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_7/activity_33_34]]
 
 ##### change in [[antiderivative]]
 
