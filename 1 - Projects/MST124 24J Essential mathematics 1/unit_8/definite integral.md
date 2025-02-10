@@ -45,7 +45,7 @@ Of course, this is not limited to [[indefinite integral]] but it can be used for
 Sometimes you can use [[integration by substitution]] even when there is an extra factor outside the main one and it looks like the form is not $f(something)*\frac{d}{dx}something$. For example if you have $\int (x+1)(ax+1)^n$, where $a$ and $n$ are constants it may look like there is no way to use [[integration by substitution]] because there is an extra $x$.
 Sometimes however you can rewrite the term in $u$, so if $u=(ax+1)$, the [[derivative]] is $a$ and you can rewrite $x$ in terms of $u$ as $x=\frac{1}{a}(u-1)$, because the initial factor had $x+1$ you also have to add the +1. Now you can rewrite the initial [[integral]] in $u$, $\frac{1}{a}\int (\frac{1}{a}(u-1)+1)au^ndu$, the $a$ is added because it needs to satisfy the form of [[integration by substitution]] and the bigger part before is the $x+1$ expressed as u. Now you can multiply and solve the [[integral]] normally.
 
-![[activity_33]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_8/activity_33]]
 
 ##### [[integration by parts]]
 

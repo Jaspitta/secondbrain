@@ -102,6 +102,19 @@ if you have an [[nth root]], you can write it in [[polar form]], say $z^n=a$ you
 Therefore we can write $(r(cos\theta+isin\theta))^n=u(cos\sigma+isin\sigma)$, thanks to [[de moivre's formula]] $r^n(cos(n\theta)+isin(n\theta))=u(cos\sigma+isin\sigma)$, if you compare the [[magnitude|modulus]] of the two numbers you have that $r^n=u$, if you compare the [[argument]] of the two side you have that $n\theta=\sigma$, however there are infinitely solutions technically for the same angles so $n\theta=\sigma+2m\pi$ so $\theta=\frac{\sigma+2m\pi}{n}$. The solutions are actually the angles of the expression just calculated, where m goes from 0 to n-1 (bigger multiples would simply repeat the previous angles).
 This let's you find the solution in [[polar form]], you can convert in [[cartesian form]] if you need to and on the [[complex plane]], the solutions lie on a circle with [[radius]] the [[magnitude|modulus]] of the initial number, we said $u$, cutting the circle in n equal sections, for example for $z^5=1$:
 ![[Pasted image 20250209214234.png]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_33_34]]
+##### [[the fundamental theorem of algebra]]
+
+It states that every [[polinomial equation]] of degree $n>=1$ can be factorised as $a_n(z-z_1)(z-z_2)...(z-z_n)$ where the z are complex numbers and can be equal to each others.
 
 
+##### [[exponential form]]
+
+It is a form more concise compared to the [[polar form]] to represent [[complex numbers]].
+The key is the [[euler's formula]] which uses the meaning of $e^{i\theta}$ as $cos\theta+isin\theta$.
+The definition comes from [[taylor series]] which are outside of the mandatory material, so you will have to roll with only the formula this time.
+
+From that formula it is possible also to deduce the [[euler's equation]] because when $\theta=\pi$ we have $e^{i\theta}=-1$ so $e^{i\theta}+1=0$
+
+If we look at the first definition of the [[euler's formula]] you notice that it looks similar to a [[polar form]], in fact if $z=r(cos\theta+isin\theta)$ from the formula we can say $z=re^{i\theta}$
 
