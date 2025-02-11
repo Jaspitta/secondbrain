@@ -72,7 +72,7 @@ The best part is that, regardless of the notation you use, the rule stated above
 
 You can immagine a very similar situation when it comes to [[subtraction of vectors]]. At the end of the day you simply add the [[negative vector]] so $\textbf{a}-\textbf{b}=a_1i+a_2j-b_1i-b_2j=(a_1-b_1)i+(a_2-b_2)j$
 In [[column notation]] you have $\textbf{a}=\begin{pmatrix}a_1 \\ a_2 \end{pmatrix}$ $\textbf{b}=\begin{pmatrix}b_1 \\ b_2 \end{pmatrix}$ and $\textbf{a}-\textbf{b}=\begin{pmatrix} a_1 - b_1 \\ a_2 - b_2 \end{pmatrix}$
-![[activity_36_37]]
+![[1 - Projects/MST124 24J Essential mathematics 1/unit 5/activity_36_37]]
 
 Using the properties of [[vector algebra]] it is easy to deduce how [[multiplication of vector by scalar]] might work when you are dealing with [[vector component|vector components]]. You simply multiply each component for the scalar so $m\textbf{a}=m(a_1i+a_2j)$
 

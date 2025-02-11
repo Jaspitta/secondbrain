@@ -118,3 +118,14 @@ From that formula it is possible also to deduce the [[euler's equation]] because
 
 If we look at the first definition of the [[euler's formula]] you notice that it looks similar to a [[polar form]], in fact if $z=r(cos\theta+isin\theta)$ from the formula we can say $z=re^{i\theta}$
 
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_36_37]]
+
+Not only the [[exponential form]] is much shorter, it is also easier to work with for some operations, consider multiplying two [[complex numbers]] in this form $re^{i\theta}se^{i\sigma}=rse^{i(\theta+\sigma)}$, same thing for [[de moivre's formula]] $(re^{i\theta})^n=r^ne^{ni\theta}$ or divisions.
+The key is that you can easily apply [[index law]]s just like you are used to.
+![[1 - Projects/MST124 24J Essential mathematics 1/unit_12/activity_39]]
+
+
+Similarly, you know that $cos(-\theta) = cos(\theta)$ and $sin(-\theta)=-sin(\theta)$, so if $e^{i\theta}=cos\theta+isin\theta$, when you use $-\theta$ it becomes $cos\theta-isin\theta$ which if you notice is the [[conjugate]], so for $z=e^{i\theta}$ $\overline{z}=e^{-i\theta}$.
+
+Also, if you reverse the [[de moivre's formula]] you can deduce the following [[trigonometric identity]], $cos(n\theta)+isin(n\theta)=(cos\theta+isin\theta)^n$, when using this formulas, remember that it is usually useful to compare the [[real part]] on the [[left hand side]] to the [[real part]] on the [[rhs]] and same thing for the [[imaginary part]] (use c and s in bigger equations to facilitate).
+If you use [[exponential form]], it becomes even easier to derive the new [[trigonometric identity]], we know $e^{i\theta}=cos\theta+isin\theta$ and $e^{-i\theta}=cos\theta-isin\theta$, if you add the two equations and simplify $\frac{e^{i\theta}+e^{-i\theta}}{2}=cos\theta$ and if you subtract them you get $\frac{e^{i\theta}-e^{-i\theta}}{2i}=cos\theta$.
