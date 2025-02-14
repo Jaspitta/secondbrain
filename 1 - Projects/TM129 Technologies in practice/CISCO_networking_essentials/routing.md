@@ -1,0 +1,8 @@
+It is defined as the process of finding the best path to a destination and it is essential when moving packets between different [[network]]s.
+
+[[router]]s are the devices that actually perform the [[routing]], they operate at [[layer 3]] similarly to [[switch]] with tables but mostly with [[IPV4]] instead of [[MAC address]]. A [[router]] has a different [[network interface card]] on each port and each is connected to a different [[IP network]].
+
+Remember, when an host detect that the destination to send the packet to is on a different [[network]] it will have to go through a [[router]], in particular the host knows that it has to send the packet to the [[default gateway]], the [[layer 3]] of the packet remain unchanged but at the [[layer 2]] the host set the [[MAC address]] to the address of the [[default gateway]].
+The [[router]] receive the packet directed to him, clear the addresses at [[layer 2]], read the addresses at [[layer 3]], if the [[network component]] of the destination address match one of it's ports in the [[routing table]] (network ip to port) it replace the [[layer 2]] content with it's [[MAC address]] as source and the [[MAC address]] of the destination host (it might needs to initiate an [[ARP request]] to get it).
+
+If a packet get's to a router and there is no match on the [[routing table]] the packet will be dropped, usually a [[default route]] is set so that packets are sent there instead of being discarded completely, this route might actually be a different [[router]] that could have the match for such [[network]] in it's [[routing table]]

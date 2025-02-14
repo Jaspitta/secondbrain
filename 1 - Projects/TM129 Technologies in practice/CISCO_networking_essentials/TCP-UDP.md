@@ -1,0 +1,8 @@
+They both are [[layer 4]] [[transport]] protocols, at this layer data flows as bits and is split into chunks, each chunk has some additional info called a [[header]] which contains for example [[source port]] and [[destination port]]. This information has many purposes but one of them is to recognise to which communication they belong to.
+
+[[UDP]] is common for streaming and real time communication because it has less overheads, in real time communications single packets are much less important, even loosing one along the way will likely have no noticeable consequences. This will allows us to be less strict and move faster but be less reliable, there is no check for packet lost and no resend unless specifically asked. 
+
+[[TCP]] on the other hand is suited for communications that require a higher level of reliability, it make sure that all packets reach destination and if something goes missing it has to be retransmitted. Each chunk or [[segment]] in [[TCP]], has a [[sequence number]] in the [[header]] so that the receiver of the packets can make sure that all the [[segment]]s are received, order them and send back an acknowledgment that each packet got delivered, this is the main difference with [[UDP]].
+
+
+It is a common security flaw to leave a [[TCP-UDP]] connection open accidentally, you can use [[netstat]] to list protocols, local address, local port, fore
