@@ -1,0 +1,2 @@
+It is the table cached in a [[router]] to associate the [[ip address]] of a network with one of it's [[network interface card]].
+It can be populated dynamically with information provided by another [[router]] or manually.

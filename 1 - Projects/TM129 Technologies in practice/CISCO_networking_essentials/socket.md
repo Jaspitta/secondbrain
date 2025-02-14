@@ -1,0 +1,3 @@
+When sending a [[packet]] or to be precise a [[segment]] using [[TCP-UDP]], the [[segment]] is encapsulated in an [[IPV4 packet]] with the [[IPV4 address]] of source and destination. In the [[header]] of the [[segment]] the [[source port]] and [[destination port]] are also included, the combination of source ip address and source port or destination ip address and destination port is called a [[socket]].
+
+These are used to identify the server and the service being requested, a [[socket]] might look like this, 192.168.1.5:80
