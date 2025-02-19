@@ -5,7 +5,7 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 18715702,
+  "lastSavedStatusID": 18773651,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
@@ -35,7 +35,8 @@
     "Readwise/Articles/MST124 Unit 8.md": "47233061",
     "Readwise/Articles/MST124 Unit 9.md": "47731888",
     "Readwise/Articles/MST124 Unit 10.md": "48101958",
-    "Readwise/Articles/M140 Unit 12.md": "48429136"
+    "Readwise/Articles/M140 Unit 12.md": "48429136",
+    "Readwise/Books/MODERN VALUE INVESTING 25 Tools to Invest With a Margin of Safety in Today's Financial Environment.md": "48920454"
   },
   "reimportShowConfirmation": true,
   "failedBooks": []
