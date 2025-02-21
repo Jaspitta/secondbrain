@@ -11,3 +11,5 @@
 
 ## Highlights
 - Capable to clearly distinguish between stock price fluctuations and underlying business reality.
+## New highlights added February 19, 2025 at 7:23 PM
+- this moment in time, what few understand is that the huge increase in passive investment vehicles will become self-defeating because who is going to adjust market prices to new information if everybody invests in index funds?

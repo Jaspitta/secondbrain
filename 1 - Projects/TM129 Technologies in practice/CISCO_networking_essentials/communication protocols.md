@@ -33,6 +33,10 @@ This definition is what it is called a [[protocol model]] because it uses a prot
 - 2 data link: exchange data frame over a media
 - 1 physical: mechanical, electrical and functional connection for exchanging a bit
 
+In this model it is important to understand the [[encapsulation]] process in this mode, each layer add the [[header]] related to the [[protocol]] and pass the whole message to the next, the next will than take all the content including the headers, treat it as data and add it's own headers. This process continue for each layer, it start with the data produces by the user, [[application layer]] add it's headers, pass to [[presentation layer]], it takes the whole [[packet]], treat it as the payload, add it's headers, pass the whole [[packet]] forward and so forth.
+At each layer, the combination of data and header create the [[protocol data unit]] or [[PDU]]
+![[Pasted image 20250220100605.png]] 
+
 The [[TCP/IP]] translated to [[OSI model]] would be:
 - application: 7,6,5
 - transport: 4
