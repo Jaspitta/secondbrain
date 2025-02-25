@@ -1,3 +1,8 @@
+---
+aliases:
+  - layer 3
+---
+
 It is the [[layer 3]] of the [[OSI model]].
 
 It's function is to allow devices to exchange data across different [[network]]s, the most common implementations are [[IPV4]], [[IPV6]], [[Open Shortest Path First]] or  [[Internet Control Message Protocol]].
