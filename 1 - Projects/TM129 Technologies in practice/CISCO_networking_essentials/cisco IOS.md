@@ -21,4 +21,8 @@ command:
 - [[show ip route]]: show the routing table on the [[router]]
 - [[show protocol]]: extra information for [[layer 3]] interfaces ([[network layer]])
 - [[show version]]: software and hardware information of the [[router]]
+- [[show ip ssh]]: verify if router support ssh
+- [[ip ssh version 2]]: enable ssh 2
+- [[crypto key generate rsa]]: generate [[RSA key]]s
+
 
