@@ -1,0 +1,4 @@
+---
+aliases:
+- single-mode fiber
+---

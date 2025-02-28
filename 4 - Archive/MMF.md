@@ -1,0 +1,4 @@
+---
+aliases:
+- multimode fiber
+---

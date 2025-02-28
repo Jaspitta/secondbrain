@@ -1,0 +1,1 @@
+When a signal is propagated into a [[copper cable]] it creates a small magnetic field that can disrupt the signal in a cable next to it
