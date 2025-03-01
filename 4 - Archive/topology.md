@@ -1,0 +1,1 @@
+The arrangement or relationship structure of the devices in a [[network]]
