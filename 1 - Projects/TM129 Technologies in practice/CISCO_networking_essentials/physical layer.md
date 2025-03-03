@@ -32,7 +32,7 @@ It exists into two variations:
 
 The main usages are [[enterprise network]]s, [[fiber to home]], [[long-haul networks]] for connecting cities and [[submarine cable]].
 Of course it also has different connectors:
-- [[straight-tip connector]]: oldest
+- [[straight-tip connector]]: oldest with twist-on/off bayonet style connector
 - [[subscriber connector]]: very used for [[LAN]] and [[WAN]], also called [[squared connector]]
 - [[lucent connector simplex]]: smaller version of [[subscriber connector]]
 - [[duplex multimode connector]]: like a [[lucent connector simplex]] but support duplex

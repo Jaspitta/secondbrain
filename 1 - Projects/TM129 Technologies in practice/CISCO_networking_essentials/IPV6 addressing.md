@@ -23,3 +23,25 @@ Migrating to IPV6 is strongly advised but it does not have a deadline, the IETF 
 
 The format of this addresses is $x:x:x:x:x:x:x:x$ where each $x$ is made of 4 [[hexadecimal]] values so 16 bits, this is known as the [[preferred format]].
 To shorten the length leading 0 are omitted, so a [[hextet]] at say $00aa$ can be written as $aa$, also if a [[hextet]] is made of only 0 it can be fully omitted, and if there is more than one in a row they all are replaced by $::$, however this last technique can be used only once for the address otherwise it would be ambiguous
+
+There are tree types of addresses:
+- [[unicast]]: one to one, a source can only be [[unicast]], there are many types:
+	- [[global unicast]]: like a [[public IPV4 address]]
+	- [[link local]]: obtained statically or dynamically, unique on the [[local network]] or [[link]], ignored by [[router]]s but mandatory for every interface, are in the range of $fe80::/10$. The [[link local]] of the [[router]] become the [[default gateway]] and in between [[router]]s they use their [[link local]] to exchange [[routing protocol]] info. Configured with `ipv6 address address link-local` or when generated dynamically using [[EUI-64]] or random
+	- [[loopback]]: ::1/128
+	- [[unspecified]]: '::'
+	- [[unique local]]: from $fc00::/7$ to $fcff::/7$, not yet used, intended for devices that should be unreachable from outside
+	- [[embedded]]
+- [[multicast]]: one to many, prefix $ff00::/8$:
+	- [[well-known multicast]]: assigned addresses to for pre defined groups, $ff02::1$ for [[all-nodes]] equivalent of [[IPV4]] [[broadcast]], $ff02::2$ for [[all-routers]] like a [[broadcast]] but only for [[router]]s on the same network, used for [[Router Solicitation]] messages
+	- [[solicited-node multicast]]: special type of [[multicast]] [[all-nodes]] but can be filtered at [[layer 2]], so if the packet is not for you it does not get to [[network layer|layer 3]]
+- [[anycast]]: one to many, the address can be given to many devices, only the first will receive it though
+
+there is not actual [[broadcast]] address but there is a [[all-nodes]] address that gives the same functionality.
+
+[[IPV6]] also has a [[network prefix]], it is only represented with [[slash notation]], can go from 0 to 128 and the recommended size is 64 so half the address.
+
+To view info on you router [[IPV6 addressing]] you can use the command:
+- [[show ipv6 interface brief]]
+- [[show ipv6 route]]
+- [[ping]]
