@@ -1,3 +1,8 @@
+---
+aliases:
+  - cisco internetwork operating system
+---
+
 It is a [[CLI]] program that support [[cisco IOS command]]s to manage network devices, it essentially offers many utilities to make [[network configuration]] easier.
 
 The tool can be used in two modes:

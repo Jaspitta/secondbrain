@@ -29,3 +29,13 @@ S1#
 ```
 
 Even if a [[switch]] is a [[layer 2]] device it can still have an ip configuration, simply because of the necessity of connecting to it remotely for example. To do this the switch must have a [[switch virtual interface]], `ip default-gateway <ip-address>`
+
+Remember that all configurations can be also achieved with a [[console cable]] using the [[console port]] and [[storage port]]
+
+A cisco switch will load in [[RAM]] two files when booted:
+- [[IOS image file]]: stored in [[flash memory]], help with basic interactions with [[hardware]]
+- [[startup config file]]: stored in [[NVRAM]], initial configurations plus creation of the [[running config]] in [[RAM]]. Changes to the [[running config]] are not automatically reflected in [[NVRAM]], you nee to run `copy running-config startup-config`
+
+
+
+

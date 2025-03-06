@@ -1,13 +1,13 @@
 ```
 enable
 configure terminal
-hostname <[[hostname]]>
-enable secret [[password]]
+hostname <hostname>
+enable secret password
 line console 0
-password <[[password]]>
+password <password>
 login
 line vty 0 4
-password <[[password]]>
+password <password>
 login
 transport input all
 exit
