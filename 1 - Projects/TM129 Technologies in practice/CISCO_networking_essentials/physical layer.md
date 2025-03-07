@@ -33,7 +33,7 @@ It exists into two variations:
 The main usages are [[enterprise network]]s, [[fiber to home]], [[long-haul networks]] for connecting cities and [[submarine cable]].
 Of course it also has different connectors:
 - [[straight-tip connector]]: oldest with twist-on/off bayonet style connector
-- [[subscriber connector]]: very used for [[LAN]] and [[WAN]], also called [[squared connector]]
+- [[subscriber connector]]: very used for [[local area network|LAN]] and [[wide area network|WAN]], also called [[squared connector]]
 - [[lucent connector simplex]]: smaller version of [[subscriber connector]]
 - [[duplex multimode connector]]: like a [[lucent connector simplex]] but support duplex
 One cable can have different connectors at the different ends to interconnect different [[network]]s for example, these are called [[patch cords]]

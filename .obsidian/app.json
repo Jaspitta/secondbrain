@@ -29,5 +29,6 @@
     "command-palette:open"
   ],
   "vimMode": true,
-  "attachmentFolderPath": "./"
+  "attachmentFolderPath": "./",
+  "livePreview": false
 }
