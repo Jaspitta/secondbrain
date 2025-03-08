@@ -1,0 +1,1 @@
+A [[cyber attacks]] where the attacker copes informations from a target device unwillingly via [[bluetooth]]

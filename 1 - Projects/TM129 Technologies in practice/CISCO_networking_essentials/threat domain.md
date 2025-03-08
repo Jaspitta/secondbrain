@@ -1,0 +1,1 @@
+It is an area of control, authority or protection, something related to an organization that an attacker can exploit

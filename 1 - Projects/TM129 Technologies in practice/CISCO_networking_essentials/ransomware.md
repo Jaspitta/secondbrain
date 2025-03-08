@@ -1,0 +1,1 @@
+A type of [[malware]] that is designed to make the computer unusable until a ransom is paid

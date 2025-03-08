@@ -1,0 +1,1 @@
+A type of [[cyber attacks]] where the attacker inject scripts into a [[web application]], the user will then unknowingly run such code and since the browser access sensitive information like [[cookies]] this info is extracted and sent to the attacker

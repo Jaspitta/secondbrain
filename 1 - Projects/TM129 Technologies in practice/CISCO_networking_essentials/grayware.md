@@ -1,0 +1,1 @@
+A mobile application that usually does not carry [[malware]] but may act in undesirable ways by being very intrusive, tracking locations or similar, usually hiding such capabilities in the license agreement

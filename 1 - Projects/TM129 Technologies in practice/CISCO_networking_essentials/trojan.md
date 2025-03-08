@@ -1,0 +1,1 @@
+a program that attaches to a legitimate file and possibly remain dormant, it is usually invisible and do not self replicate but can than be activated when needed

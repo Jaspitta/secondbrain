@@ -1,0 +1,2 @@
+A type of [[cybersecurity threats]], where a sophisticated attack is carried out silently on persistently giving continuous access to systems and more.
+It is common to use [[algorithm attack]]s to generate unintended behaviour from legitimate software 

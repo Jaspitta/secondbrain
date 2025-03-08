@@ -1,0 +1,1 @@
+A type of [[cybersecurity threats]] that modify the [[operating system]], usually unknowingly, with the intent to install a [[backdoor]] for [[privilege escalation]]

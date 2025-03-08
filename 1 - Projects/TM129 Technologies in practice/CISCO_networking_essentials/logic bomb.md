@@ -1,0 +1,1 @@
+a type of [[malware]] that remain dormant until a specific situation occurs

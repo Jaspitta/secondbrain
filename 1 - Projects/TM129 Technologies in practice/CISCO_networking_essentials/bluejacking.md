@@ -1,0 +1,1 @@
+A [[cyber attacks]] where the attacker sends unauthorized message to another [[bluetooth]] device

@@ -1,0 +1,1 @@
+It is a special type of program that usually attaches to legitimate files and infect them with malicious code, it can be harmless or very destructive and can be dormant for as long as wanted

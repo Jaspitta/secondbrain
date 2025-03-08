@@ -1,0 +1,1 @@
+program that replicates and spread very fast in a network, can run by itself, without a user actually starting it and will usually significantly slow down systems
