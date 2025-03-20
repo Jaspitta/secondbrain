@@ -1,0 +1,1 @@
+mediation between the [[hardware]] and the [[software]]
