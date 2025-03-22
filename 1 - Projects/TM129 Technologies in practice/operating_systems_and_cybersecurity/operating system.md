@@ -15,3 +15,6 @@ Notice that a [[shell]] can be interpreted as simply another application program
 It is importa to distinguish [[application program]]s and [[utility program]]s, the former are extra software that is added by the user or similar while the ladder are pieces of software that are included in the [[operating system]] even though they do not aid at the core functioning of it like TaskManager or Settings on [[Windows]].
 
 Another important function of the [[operating system]] is [[multitasking]]. Different programs need to run at the same time, sharing the same [[hardware]] underneath, the [[operating system]] has to make sure that the resources are available to each program when needed and there is no interferences between them.
+Ensuring such standards is possible because the [[operating system]] has access full access to the resources and manages them for the [[application program]]s that run on top of it, such power is given by the [[CPU]] itself, in fact regular program run in what is called [[user mode]] while the [[operating system]] run in [[kernel mode]] which gives it such powers. To be precise only some parts of the [[operating system]] needs such privileges and they are in fact called the [[kernel]].
+![[Pasted image 20250321133903.png]]
+
