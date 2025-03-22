@@ -1,0 +1,1 @@
+It is a special [[instruction]], coming from an [[hardware signal]] that asks the [[CPU]] for attention, the [[CPU]] stops the current execution, enter [[kernel mode]], run a special [[interrupt routine]] and than switches back on the [[return instruction]]
