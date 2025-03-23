@@ -5,10 +5,11 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 19267640,
+  "lastSavedStatusID": 19335972,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
+  "failedBooks": [],
   "booksIDsMap": {
     "Readwise/Books/Block 2 Part 6 Location-Based Computing.md": "41147799",
     "Readwise/Books/Block 2 Part 7 Dangerous Data.md": "41358416",
@@ -36,8 +37,9 @@
     "Readwise/Articles/MST124 Unit 9.md": "47731888",
     "Readwise/Articles/MST124 Unit 10.md": "48101958",
     "Readwise/Articles/M140 Unit 12.md": "48429136",
-    "Readwise/Books/MODERN VALUE INVESTING 25 Tools to Invest With a Margin of Safety in Today's Financial Environment.md": "48920454"
+    "Readwise/Books/MODERN VALUE INVESTING 25 Tools to Invest With a Margin of Safety in Today's Financial Environment.md": "48920454",
+    "Readwise/Articles/þÿTopic 1 What Is an Operating System View as Single Page OU Online.md": "49778242",
+    "Readwise/Articles/þÿTopic 2 Structure of an Operating System View as Single Page OU Online.md": "49859805"
   },
-  "reimportShowConfirmation": true,
-  "failedBooks": []
+  "reimportShowConfirmation": true
 }

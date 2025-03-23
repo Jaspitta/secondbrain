@@ -54,3 +54,19 @@
 - If there is no probability that the company will go bankrupt, you have a margin of safety and can apply a CAPE ratio to the stock to get to the intrinsic value.
 - The problem is that the market might never recognize the mispricing, and the stock could fall even more. Therefore, apart from finding value in stocks, an investor has to also look for catalysts that are going to unlock that value.
 - it is extremely important to see what the middle management is doing because for them a $100 thousand or even $50 thousand purchase is very meaningful while if a CEO spends 10% of his salary on purchasing stocks it might not mean much.
+## New highlights added March 23, 2025 at 3:06 PM
+- Nevertheless, owning stocks of companies that have the potential to be taken over at a significant premium to the current price is always a plus that is often completely free.
+- In order to be categorized as a small cap value stock, a company has to have a market capitalization below $2.5 billion and its stock price has to trade below its book value (where possible, or have the lowest book value).
+- International money outflows can create huge pressure on a smaller stock market, especially if the financial markets aren’t that deep. Similarly, inflows can create huge booms.
+- A good start at looking for bargains is to use the country’s CAPE ratio which is usually available at starcapital.de.
+- Take advantage of sector cyclicality
+  The second place to look for bargains are sectors.
+- I had to look for companies that have volatile revenues and consequently volatile stock prices but stable business and a strong brand that creates value over the long term.
+- Further, something that is relatively easy with commodities is determining the future supply and demand and taking advantage of the usual cyclicality. High commodity prices lead to overinvestments that lead to higher supply and a collapse in prices. Consequently, lower prices limit new investments and sooner or later to a supply gap that often makes prices sky-rocket.
+- The safest option to look for when buying into a downward cycle is to find a company that has the lowest production costs and low debt.
+- Hyperbolic discounting describes the tendency people have to prefer a smaller reward that will come sooner rather than a larger reward that can come later.
+- the value a company will create in the future is discounted at a much higher discount rate than the value it will create in the short term.
+- When a growth company doesn’t meet the enormous growth expectations the market has placed on it but is still growing at a healthier pace, it is usually a time when a value investor can get the best of both worlds, growth and value.
+- The provision for pensions account shows the unfunded part of a company’s future pension obligations. The provisions are derived by comparing the fair value of the assets owned in the respective pension fund with the present value of the expected future liabilities.
+- The best approach to measuring intrinsic value is by using the three components method: past value, earnings value and return on invested capital.
+- A great way to analyze the management is to go and read an old annual report or to find an old investor presentation which can be found on the company’s investor relation site.

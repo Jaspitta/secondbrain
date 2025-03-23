@@ -2,7 +2,7 @@
   "onboardingTips": {
     "welcomeTipRead": true,
     "strokeLimitTipRead": true,
-    "lastVersionTipRead": "0.2.6"
+    "lastVersionTipRead": "0.3.4"
   },
   "customAttachmentFolders": true,
   "noteAttachmentFolderLocation": "note",
