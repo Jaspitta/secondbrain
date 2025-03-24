@@ -38,3 +38,42 @@
 - The figure also highlights three interfaces between the major layers. At the top, the API represents the access for developers of application programs to the user interface and other system libraries. The interface between user mode and kernel mode consists of system calls to the operating system kernel.
   Finally, the kernel communicates with the hardware through hardware interfaces.
 - None of these modules can be completely self-contained and there will be links among them – any module may need more memory or need to create processes
+## New highlights added March 24, 2025 at 10:28 AM
+- Linux has a monolithic kernel, which means that any routine inside the kernel can call on any other. Other operating systems have tried to achieve greater reliability and security by enforcing greater modularity. One approach has been to design a microkernel, which contains only the minimum essential elements
+- t and a special interprocess communication (IPC)
+- microkernels are inefficient
+- . Both macOS and Windows can be considered hybrid microkernels: they aim for similar design principles of strong modularisation and support low-level IPC, but much of the OS runs in kernel mode for efficiency.
+- A virtual file system (VFS) module now deals with as much of the common functionality as possible,
+- As far as possible, most operating system designers try to ensure that their OS will run on a wide variety of platforms or architectures
+- One way to make support for several architectures easier is to introduce another layer into the OS design immediately above the hardware. This is called a hardware abstraction layer or ‘architectural dependent code’
+- Only this part needs changing
+- makes virtualisation easier.
+- A related problem faced by OS designers is how to deal with the variety of hardware devices and peripherals that might be part of a computing system
+- For a more open system, it is necessary to add modules and device drivers dynamically to the kernel
+- Windows uses DLLs (dynamic-link libraries) to add kernel-mode drivers. Linux uses loadable modules with the extension .ko located in subdirectories of /lib/modules.
+- Linux commands that can be used to manage loadable kernel modules
+- lsmod (list modules) command lists all the currently loaded kernel modules. The modprobe (module probe) command can be used to load and unload modules,
+- On Linux, the GUI and windowing system is less tightly linked to the underlying OS than is the case with Windows and macOS, and there is considerable flexibility in the look and feel of the resulting GUI.
+- A Linux desktop environment depends on several underlying components, for example a window manager and a widget toolkit
+- g window system is responsible for keeping applications visually separate
+- The widget toolkit provides the buttons and controls that allow application developers to produce applications with a unified look and feel
+- The desktop environment itself enhances that by providing additional features such as a clipboard that works across applications.
+- Underlying most Linux desktop environments is usually the same basic display system, X11,
+- e X Window System, also known as X11
+- Overall it manages the communication between an application and the display and input devices.
+- Although X11 could be a complete GUI, its lack of features makes it most useful now as an underlying display protocol.
+- A project has been running for some years to develop an alternative to X11 called Wayland,
+- A multi-user system like Linux could run X11 for more than one user, but a typical configuration for a personal computer would be to boot directly (or via an initial log in prompt) to a single X11 session.
+- A session manager handles starting new applications for that user.
+- X11 handles the task of making sure that output from different applications is kept separate, but this can be done in several different ways and is the responsibility of another component, the window manager.
+- can be stacked over each other, and most window managers show overlapping stacked windows
+- tile the windows so that the display is divided up into non-overlapping windows.
+- A variant on a stacking window manager is a compositing window manager. Compositing relies on the ability of graphics hardware to merge images and produces a desktop where windows show transparency, drop shadows and other effects
+- X11 now delegates these operations direct to hardware
+- hat there are several places in which an individual user or a distro builder can customise the look
+- window manager
+- widget set
+- choices of colour, icons and fonts through themes.
+- The range of possible graphical interfaces on Linux is very large,
+- The default Raspberry Pi Desktop window manager is a customised version of LXDE, and the only session manager provided is Openbox
+- Experience has shown software designers that layering and modularisation are important techniques in designing and implementing robust and portable software, especially in complex cases such as operating systems.
