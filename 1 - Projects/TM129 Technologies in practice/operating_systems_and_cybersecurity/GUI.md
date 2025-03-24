@@ -17,3 +17,5 @@ The only in construction alternative is [[Wayland]]
 
 You can run a session of X11 for each user in a linux system but the common approach is to have one running at [[boot]] and letting a [[session manager]] handle the starting and stopping of new applications.
 
+
+

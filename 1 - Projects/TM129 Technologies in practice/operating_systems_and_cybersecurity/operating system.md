@@ -1,3 +1,8 @@
+---
+aliases:
+- OS
+---
+
 there is no black and white definition for an [[operating system]], in some sense we can say that it makes the [[hardware]] of a computer a usable system, we can however start with defining the main functions:
 - provide a [[user interface]] to load and run programs, sometimes a [[CLI]] or a [[GUI]]
 - manage storage
