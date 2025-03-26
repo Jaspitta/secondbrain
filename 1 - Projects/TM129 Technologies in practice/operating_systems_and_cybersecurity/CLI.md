@@ -21,6 +21,20 @@ ls -lt /var
 ls -tl /var
 man ls # open the manual for ls
 whatis ls
+cd
+tar --list --file=file.tar.gz # show the contents of a compressed archive
+tar --extract --verbose --file=file.tar.gz # extract the content of a compressed archive
+tree dir # show the tree of the directory
+sha256sum file # hash the file with sha-256 function
+tar --create --verbose --file=file.tar dir/ # create an archive from the dir/ directory
+diff -r ~/work/life ~/extract/life # check for differences in files content and directories
+gzip file # compress a file with gzip
+gunzip2
+bzip2 file # compress a file with bzip2
+bunzip2 file
+tar --create --verbose --gzip --file=file.tgz dir # archive and compress a directory
+tar --create --verbose --bzip2 --file=file.tbz dir # archive and compress a directory
+tar --extract --verbose --file=file # decompress and extract a file
 ```
 
 command syntax:
