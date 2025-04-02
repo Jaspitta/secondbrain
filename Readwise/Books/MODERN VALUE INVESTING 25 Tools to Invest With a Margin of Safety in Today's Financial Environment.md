@@ -70,3 +70,7 @@
 - The provision for pensions account shows the unfunded part of a company’s future pension obligations. The provisions are derived by comparing the fair value of the assets owned in the respective pension fund with the present value of the expected future liabilities.
 - The best approach to measuring intrinsic value is by using the three components method: past value, earnings value and return on invested capital.
 - A great way to analyze the management is to go and read an old annual report or to find an old investor presentation which can be found on the company’s investor relation site.
+## New highlights added March 31, 2025 at 8:19 AM
+- The important thing when looking at catalysts is to find investments where what can go wrong is limited, while the positive side is unlimited.
+- the Daimler Group has a Performance Phantom Share Plan (PPSP) outstanding (page 255 of 2016 annual report) where the management is compensated in cash, not shares.
+- The liabilities are also fair as the pension liability discount rate used is extremely low.

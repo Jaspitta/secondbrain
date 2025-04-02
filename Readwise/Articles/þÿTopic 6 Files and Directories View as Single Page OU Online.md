@@ -1,0 +1,80 @@
+# þÿTopic 6   Files and Directories: View as Single Page | OU Online
+
+![rw-book-cover](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/288416415/hq2CBABjwFFEhS-ziPIPQsG7wbgClq3-YtDs7ESPbtU-cove_k0JWYi6.png)
+
+## Metadata
+- Author: [[readwise.io]]
+- Full Title: þÿTopic 6   Files and Directories: View as Single Page | OU Online
+- Category: #articles
+- Summary: Operating systems use files and directories to manage data and programs on secondary storage. Users can navigate these hierarchical structures through commands, particularly in Linux, to find and organize their files. The organization of files and directories is crucial for the system's functionality and user experience.
+- URL: https://readwise.io/reader/document_raw_content/288416415
+
+## Highlights
+- Many graphical user interfaces are based on a metaphor that links computer files and paper-based files.
+- Files should be permanent
+- A file should have a name.
+- It should be possible to change the contents
+- o copy files, f
+- the owner of a file should be able to control access to it.
+- collect files together a
+- A file should be able to contain anything
+- f an operating system provides the basic services to support the foregoing requirements.
+- e simply treat files as a collection of a given number of bytes stored on secondary storage.
+- The low-level metaphor of a file as a stream of data and the ability to name things turns out to be so useful that Unix-like operating systems tend to treat many things as files by providing directories and names that respond to a consistent set of operations such as read and write.
+- /dev and /proc; these are not stored on secondary storage but provide information about the operating system.
+- Whenever a file is created, it needs to be given an identifying label
+- There will be some restrictions, which vary from operating system to operating system:
+- a list of the files it contains. Such a list is known as a directory.
+- directories also include some details about those files, a point I will consider below.
+- allow new directories to be created within an existing directory
+- o files can now have the same name as long as they are stored in different subdirectories
+- the subdirectories have a hierarchical organisation or tree structure
+- All the files and subdirectories on one particular disk or other secondary storage device emerge from the master or top-level directory for that device. This is called the root directory
+- each secondary storage device has its own root directory
+- The file system, however, needs to have a way of specifying the path to a file which doesn’t depend on the graphical user interface
+- done by writing out the path,
+- there is a one-to-one correspondence between the path and the graphical tree structure.
+- Writing out the full path name for a file is tedious and error-prone for long paths
+- On Windows, an absolute path starts with the drive letter, for example C:\Users\
+- On a Unix-like OS, all files exist in a single hierarchy starting at the root directory /
+- The directory is a key data structure in the file system because it connects the human-readable name of this file to its location on the disk, specified as a sector number.
+- the directory includes other information about the file. This is metadata
+- A directory entry will also record if it points to a normal file, a directory, or other special ‘file’.
+- n in a GUI file browser by selecting each file and choosing Properties
+- there are two reasons why the OS does need to know something about the file type.
+- distinction is between a file and a directory.
+- The operating system itself maintains directories
+- the OS treats files simply as bytes of data: it is applications that are
+- responsible for the contents of files.
+- directory entries do distinguish between ‘normal’ files and directories
+- An OS with a GUI does have a second reason to know what sort of content a file contains: it will need to show a characteristic icon and to launch the appropriate program when the user clicks to open a file.
+- . Linux GUIs generally rely on the MIME type, which in practice relies on the file extension.
+- MIME (Multipurpose Media Mail Extensions) types were introduced to handle file types as files are transferred across the internet
+- (IANA) is responsible for official MIME types,
+- image/jpg, text/html, and video/mp4.
+- MIME type is a metadata label that accompanies a file,
+- e file associations are maintained by the GUI, for example Windows stores file associations in the system registry (discussed in a later topic), and Linux uses configuration files in /usr/share/applications.
+- On a Unix-family OS, all files are organised in a single hierarchy, starting at the root directory /. On Windows, each device has its own hierarchy, starting with the drive letter
+- Windows system makes a clear distinction among groups of files collected in three main directories:
+- Windows: the operating system
+- ProgramFiles: installed applications
+- Users: home directories for each user.
+- The Windows directory in turn contains subdirectories, particularly a System32
+- similar directories to Linux c
+- Mac-specific directories: System and Library
+- d an Applications d
+- . Linux distributions generally now adhere to the Linux Filesystem Hierarchy Standard.
+- The root directory / contains the entire file system on any Linux system.
+- The superuser is the only user who is able create and delete files and folders in the root folder
+- Each user on a Linux system is given their own directory,
+- A correctly configured Linux system can ensure that a user can only write to files in their home directory,
+- The /bin and /sbin directories contain the essential command-line utilities of a Linux system.
+- The /lib directory contains shared libraries that are an essential part of the operating system, including kernel modules
+- The /opt directory is another place where applications programs can be installed. It is sometimes used by cross-platform applications
+- The /etc directory contains the configuration files for the system. T
+- The /var directory is intended for files whose content changes continually as the system runs
+- The /proc directory also doesn’t contain normal files but instead provides a file-like interface to each process on the system
+- When a storage device is added to the system, its files are merged into the existing file system. The /mnt directory provides a convenient place for this to happen.
+- The /bin, /sbin and /lib directories hold the core of the OS and are set up manually by the creators of a distro. A system that contained only these directories would be a usable – if minimal – Linux system
+- Although a Linux file system always appears as a single hierarchy, different parts can be mounted on different physical devices;
+- Permissions can also be set differently on the main directories to aid security.
