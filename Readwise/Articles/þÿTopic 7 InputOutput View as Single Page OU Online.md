@@ -1,0 +1,71 @@
+# þÿTopic 7   Input/Output: View as Single Page | OU Online
+
+![rw-book-cover](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/288416376/wdL2rpH_iQRY1mIygzFR1H7FO-khDuJ3K6ZBg6UHTaI-cove_KER23gg.png)
+
+## Metadata
+- Author: [[readwise.io]]
+- Full Title: þÿTopic 7   Input/Output: View as Single Page | OU Online
+- Category: #articles
+- Summary: This text explains how an operating system manages input/output (I/O) devices through an I/O module. It covers the structure of the I/O module, data transfer techniques, and the importance of buffering and caching to improve performance. The OS interacts with hardware using device drivers and I/O registers, ensuring efficient communication between the system and various devices.
+- URL: https://readwise.io/reader/document_raw_content/288416376
+
+## Highlights
+- there is some overlap between the I/O module and the file system module. This is because, at the lowest level, reading and writing files requires I/O operations on secondary storage devices.
+- The lowest level of the I/O module is organised as device drivers
+- Device drivers connect directly to the hardware interface and are responsible for data transfers
+- Higher- level layers deal with general features which can be implemented in a device-independent manner
+- I/O devices vary greatly,
+- , the operating system is designed to provide a framework into which device drivers can be ‘plugged’.
+- driver is written specifically for each I/O device
+- it has to support a specific software interface;
+- This interface will include operations such as read and write
+- . As long as its device driver correctly supports these operations, a new I/O device can be installed
+- a device driver itself may be layered. It might have generic components provided by the OS that apply to a whole class of devices (for example, all disk drives), meaning relatively few parts specific
+- Device drivers run in kernel mode with access to critical operating system data;
+- By supplying more of the I/O module software themselves, OS implementors can hope to avoid these problems and achieve better reliability for the end-user.
+- A bus is an interface to which several devices can be connected at the same time; this requires standardised data transfer protocols and a way of identifying different devices.
+- the OS can provide generic USB drivers to handle classes of device such as keyboards, mice or secondary storage,
+- Bus-connected devices need to identify themselves
+- That description includes what class of device it is
+- host computer and peripheral device negotiate data rates and, if necessary, a specialised driver is located and loaded into the kernel.
+- Peripherals that connect through a bus therefore need their own internal processor and memory to handle these negotiations
+- a bus such as USB, as well being used to connect devices, must also be thought of as an I/O device in its own right. Hardware is required to implement and control the bus;
+- An I/O interface is required between the OS and the bus controller.
+- There has been a trend to increased integration in computer design
+- many of the system’s functions are handled within a single large chip
+- A computer system can have many I/O devices. Some of these are clearly peripheral
+- some appear more integrated, such as the touchscreen
+- , they are all treated as I/O devices by the OS.
+- The OS maintains tables which link each device to the computing resources it needs, such as the device driver and the I/O registers
+- internally the OS relies on a numbering system
+- Devices receive a major and a minor device number
+- , but two devices of the same type share a major number
+- Devices with the same major number can use the same device driver code.
+- One major classification used by most OSs is into character and block devices
+- Keyboards generate a stream of characters
+- secondary storage such as disk drives, always transfer data in large fixed-size blocks.
+- The Linux /sys, /dev and /proc pseudo file systems provide an interface to aspects of the operating system. Each entry here is not a conventional file, but links to information that is stored in the OS’s internal tables.
+- an OS is just a computer program consisting of machine instructions
+- Many of these instructions will load and store values in the main RAM memory, but some can be used to read/write binary values from/to hardware locations called I/O registers instead.
+- provide the lowest-level interface to hardware,
+- . This technique is called port-addressed I/O
+- Some processors have special I/O instructions (for example in and out) to read/write registers, called ports
+- Processors also use memory-mapped I/O. This means that the I/O registers replace RAM at certain addresses in memory. They can be accessed using the same instructions normally used to read or write values in RAM,
+- Many devices also generate interrupt signals, and the service routines that handle them are located in the device driver.
+- Data transfers are carried out by device drivers
+- There are three techniques used to control the transfer of data
+- One method is for the processor to poll the device until an I/O event occurs. This will be shown by a change in the value of the status register, say from busy to ready.
+- useful technique in simple embedded systems, but there are problems
+- t it uses busy waiting: the processor is tied up until I/O is complete.
+- In a multitasking system it would be better for a context switch to occur so that another process can be executed
+- the I/O hardware signals an interrupt whenever an I/O operation is completed;
+- the interrupt signal is detected by the processor, which jumps to an interrupt service routine (ISR). The ISR handles the interrupt and then returns
+- There is no busy waiting:
+- In an interrupt-driven system, an interrupt occurs for each I/O operation, that is for each byte that is sent or received.
+- A direct memory access (DMA) controller is a device that can transfer data directly between I/O devices and main memory without involving the processor.
+- DMA controller uses memory directly
+- The DMA controller itself is a device with its own I/O registers that the operating system can use to specify what transfer is to be made.
+- registers hold the starting address where the data is to be read/written in main memory and a count of how many bytes are to be transferred.
+- When the DMA controller has completed transferring all the data requested, it issues an interrupt. DMA is particularly useful for devices such as disk drives which transfer data in blocks
+- DMA transfer is efficient since the processor can continue to execute instructions in parallel
+- . Achieving hardware independence is of course a goal of all operating systems as a whole, but it also applies inside the OS.

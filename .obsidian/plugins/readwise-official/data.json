@@ -5,7 +5,7 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 19502693,
+  "lastSavedStatusID": 19519480,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
@@ -44,7 +44,8 @@
     "Readwise/Articles/What Is the Language Server Protocol.md": "49955546",
     "Readwise/Articles/þÿTopic 4 the Command-Line Interface View as Single Page OU Online.md": "49969501",
     "Readwise/Articles/þÿTopic 5 Users and Security View as Single Page OU Online.md": "50069149",
-    "Readwise/Articles/þÿTopic 6 Files and Directories View as Single Page OU Online.md": "50161022"
+    "Readwise/Articles/þÿTopic 6 Files and Directories View as Single Page OU Online.md": "50161022",
+    "Readwise/Articles/þÿTopic 7 InputOutput View as Single Page OU Online.md": "50183934"
   },
   "reimportShowConfirmation": true
 }
