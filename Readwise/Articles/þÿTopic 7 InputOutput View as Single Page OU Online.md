@@ -7,7 +7,6 @@
 - Full Title: þÿTopic 7   Input/Output: View as Single Page | OU Online
 - Category: #articles
 - Summary: This text explains how an operating system manages input/output (I/O) devices through an I/O module. It covers the structure of the I/O module, data transfer techniques, and the importance of buffering and caching to improve performance. The OS interacts with hardware using device drivers and I/O registers, ensuring efficient communication between the system and various devices.
-- URL: https://readwise.io/reader/document_raw_content/288416376
 
 ## Highlights
 - there is some overlap between the I/O module and the file system module. This is because, at the lowest level, reading and writing files requires I/O operations on secondary storage devices.
@@ -69,3 +68,36 @@
 - When the DMA controller has completed transferring all the data requested, it issues an interrupt. DMA is particularly useful for devices such as disk drives which transfer data in blocks
 - DMA transfer is efficient since the processor can continue to execute instructions in parallel
 - . Achieving hardware independence is of course a goal of all operating systems as a whole, but it also applies inside the OS.
+- . Buffering and caching by the I/O module can be done for any device, so the software for handling buffering and caching will be found at the higher-level
+- a process makes a system call to input or output some data
+- The process must be blocked until input arrives
+- a key is pressed which generates an interrupt
+- ISR (interrupt service routine) reads the data and stores it somewhere
+- operating system can now mark the blocked process as ready so that after a context switch it can continue to execute
+- the process will return from the original system call it made with the input character that was stored by the ISR
+- For an output operation,
+- An interrupt is signalled when the previous output operation completes; this allows the ISR to start the new output operation by writing the data to the data register.
+- The calling process can now be marked ready and will continue
+- an interrupt occurs for each I/O operation
+- the important point is that an I/O operation may be satisfied immediately with a buffer so there is no need to block the calling process. A process is only blocked if an output buffer is full or an input buffer is empty.
+- The operating system allows a user process to read/write single bytes or chunks of whatever size is convenient; these demands can be satisfied from the buffer.
+- Only when the buffer is full (for output) or empty (for input) does the operating system start an I/O operation
+- no context switch occurs unless an I/O operation is needed.
+- Buffering here decouples the speed of the user process and the device.
+- user process and device don’t have to wait for each other
+- changes that don’t fill the buffer could be lost when a process ends
+- the user process must call specific operating system services to open and close a device before and after use; the close operation is responsible for writing out incomplete buffers
+- Main memory can also be used as a cache for I/O devices, especially for secondary storage such as a disk
+- A buffer may be holding the only copy of data, for example if a user process has written some data but the I/O operation to write it out to secondary storage is not yet complete. A cache, on the other hand, always contains a copy of data which is stored elsewhere.
+- the operating system can allocate chunks of memory as a buffer and then retain them as a cache
+- If the first block is required again, then it can be taken from the cache
+- The OS may also implement read-ahead caching: if a process reads a particular block from disk, then the OS can also start reading in the next
+- few blocks into cache on the assumption that they may also be needed.
+- Performance of a system can therefore be improved by using plenty of main memory as a disk cache. However, this means less main memory can be used by processes, which could result in more virtual memory pages being swapped out to disk, reducing performance
+- There are two important aspects to a secondary storage system: the physical hardware device, and the way in which data is organised on it.
+- The logical organisation of data is through files and directories; this is the responsibility of the file system module,
+- The hardware can be treated like other I/O devices a
+- All secondary storage systems are block devices
+- all read and write operations transfer a large block of data.
+- The size of a block may also vary on different devices, but an OS typically simplifies things by working with a standard-size block. The OS can rely on the device driver to convert to the particular size of block (or sector or page) that the device uses internally.
+- all secondary storage devices can be seen as simply containing a large number of blocks, numbered 0, 1, 2, 3, … u

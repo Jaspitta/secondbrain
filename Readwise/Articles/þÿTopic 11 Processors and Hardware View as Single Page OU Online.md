@@ -1,0 +1,91 @@
+# þÿTopic 11   Processors and Hardware: View as Single Page | OU Online
+
+![rw-book-cover](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/292205660/ijoznxZINaASIBe9K1KvW2ce7d5fuHkBXJAVuhmef7Y-cove_elQJHgm.png)
+
+## Metadata
+- Author: [[readwise.io]]
+- Full Title: þÿTopic 11   Processors and Hardware: View as Single Page | OU Online
+- Category: #articles
+- Summary: The operating system acts as a bridge between applications and computer hardware, requiring it to understand hardware details. It relies on the processor's instruction set and memory hierarchy to function properly. Both operating system and processor designs are closely linked, influencing each other's development and capabilities.
+- URL: https://readwise.io/reader/document_raw_content/292205660
+
+## Highlights
+- By platform, I mean the combination of operating system and hardware which supports application software.
+- Different versions of a software package are needed to run on Windows, macOS or Linux operating systems. Different versions are also needed to run on different hardware
+- Moving an application to a new platform is known as porting.
+- The operating system does manage to hide much of the detail of hardware differences
+- A useful term to capture the larger differences that remain is computer architecture
+- a high-level, abstract idea of the hardware, without concern for the detailed implementation.
+- the processor instruction set,
+- the computer system’s functional organisation.
+- Unix was the first operating system to break this mould since it was largely written in the (relatively) high-level computer language C, with only isolated parts needing specific machine instructions. This made it easier to port Unix to different architectures
+- The processor used in a computer system is the most important aspect of the architecture
+- It is therefore the processor instruction set, the set of instructions a processor can execute, rather than any specific processor model that determines the computer architecture for an OS
+- x86
+- 32-bit processors
+- by Intel and other manufacturers including AMD.
+- AMD64 (also referred to as x86-64 or Intel 64
+- 64-bit instruction set, first defined by AMD and subsequently adopted by Inte
+- ARM.
+- word size to refer to these natural units for a processor,
+- ‘word’ meaning exactly 4 bytes and double-word to mean 8 bytes.)
+- each change, from 16- to 32- to 64-bit, makes an enormous difference to the range of values that the processor can handle in a single operation.
+- Mainstream OSs have transitioned over the last few years from 32-bit to 64-bit as 64-bit processors have become widely available
+- The range is in fact so large that current chip designs limit the physical address range to 48 bits, reducing the complexity of the chip circuitry, the power required, and overall cost of hardware.
+- A 32-bit operating system may still be preferable on a 64-bit processor if the system has limited memory: since each address is half the size, the binary code of programs can be considerably smaller.
+- , backward compatibility with earlier instructions is usually preserved.
+- . Complexities such as this must be understood and supported by the operating system
+- he OS does need to be designed to deal with different types of device.
+- OSs are designed to deal with major categories, with the detailed interface to specific devices provided through loadable device drivers
+- Small computing devices such as smartphones and tablets are smaller but not functionally simpler.
+- The core of the Raspberry Pi is the large central chip. This is a system on a chip (SoC), which combines the circuitry of many different functional components into a single package.
+- the OS can defer the more detailed interface with specific devices to loadable device drivers
+- One particular aspect of the functional organisation of computer system hardware with which the OS must deal is memory and storage. How well the OS does this has a major impact on the performance of the computer.
+- personal computers combine several different types of memory and storage, forming a hierarchy from fastest to slowest but also from smallest to largest.
+- as much processing as possible takes place in the fastest memory
+- Memory (or main memory, primary memory or simply RAM) is a form of semiconductor memory arranged as RAM (random-access memory), meaning that the processor can access any byte as efficiently (or almost as efficiently) as any other. Main memory is used for running programs, both code and data. However, RAM is volatile
+- Storage (or secondary storage or mass storage) refers to various forms of non-volatile storage that will retain its contents when powered off. Hard disk drives (HDD) and solid-state drives (SSD)
+- d the operating system must load program and data files into main memory before running.
+- CPU registers are the fastest form of memory, forming part of the processor core itself, but a processor core will have very few registers, perhaps only 32
+- RAM forms the main working memory for a running program, but is significantly slower than registers
+- a processor will have cache memory on the chip. This is a different form of RAM to that used for main memory: it is faster but requires more transistors
+- The CPU cache may be organised into two or three different levels with different capacity and speed.
+- the OS must save and restore the registers at each context switch
+- must manage main memory and secondary storage
+- also implement caching
+- Processor design and operating system design go hand-in-hand. Hardware support is essential to make some operating system techniques efficient or even possible at all
+- I will talk about a ‘processor’. Modern CPUs (central processing units) may contain several processor cores
+- the chip will also contain some cache memory:
+- memory management unit (MMU) which supports virtual memory access to physical memory
+- for an SoC, further functional units to interface to I/O
+- e not logically part of the processor.
+- t it loads instructions from memory and executes them.
+- driven by a clock
+- each tick of the clock, a new instruction begins executing.
+- processor instruction causes a single action,
+- The processor has a small number (perhaps 32) of high-speed register
+- Operations between registers, for example to add the values contained in two registers, are the fastest the processor can execute, taking only a single clock cycle.
+- The instruction pointer (IP; sometimes program counter, PC) holds the address of the next instruction to execute
+- incremented automatically
+- can be changed when a branch is made
+- The stack pointer (SP) holds the address of the top of the return stack
+- OS must carefully save and restore the values of registers at each context switch.
+- Processors also have a special mechanism used to call subroutines and return from them
+- fundamental mechanism used to implement high-level language constructs variously called functions
+- A subroutine is written to perform a single purpose such as to convert a string of letters to lower case.
+- The processor has a pair of instructions to support subroutines: call and return
+- a call instruction loads the subroutine address into the IP
+- e return instruction loads the return address into the IP
+- The return address is simply the value of the IP at the point when the call instruction was executed
+- The call instruction saves the current value of the IP (the return address) and then replaces it, in this case by the address of A. The return instruction uses the saved value of the IP
+- Each time a call is made, a return address must be saved. Furthermore, the first saved return address must be saved for longer so that it is still waiting to be used after the nested subroutine calls have been completed. The deeper the nested calls become, the more memory is needed to save return addresses.
+- The solution to storing these addresses correctly is to use a stack.
+- We can note, for example, that the contents of the stack as well as the stack pointer (SP) are specific to a process. A multitasking OS will therefore need to preserve the contents of the stack as well as the registers on every context switch.
+- When application programs call the kernel of the operating system, they must use a different instruction: syscall. The distinction is that syscall switches the kernel from user mode to kernel mode
+- syscall works similarly to call, using the stack in the same way
+- The processor mode needs to be restored to its previous state as the system call returns; I’ll assume the return instruction will do this.
+- The operating system deals with hardware interrupts using a similar mechanism.
+- An interrupt request (IRQ) signal causes the processor to interrupt its normal execution and instead jump to an interrupt service routine (ISR). This is shown in Figure 6.
+- This should look very similar to a call and return or, more accurately, to a syscall and return, b
+- , the interrupt is initiated by hardware rather than a machine instruction
+- Hardware interrupts are used so that input/output (I/O) hardware can signal that data is ready

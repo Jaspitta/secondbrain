@@ -1,0 +1,109 @@
+# þÿTopic 12   Memory Management: View as Single Page | OU Online
+
+![rw-book-cover](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/292825921/jSwuwvyfzhFA9YnCCkpSWBAxCDMdr1OX4TGQ3c7KLLM-cove_QTdXBkL.png)
+
+## Metadata
+- Author: [[readwise.io]]
+- Full Title: þÿTopic 12   Memory Management: View as Single Page | OU Online
+- Category: #articles
+- Summary: Memory management is crucial for operating systems as they handle multiple processes, ensuring each has its own memory space. Modern systems use paged virtual memory, where logical addresses are translated to physical addresses by a memory management unit (MMU). This system allows efficient use of memory by swapping pages between main memory and secondary storage while managing page faults.
+- URL: https://readwise.io/reader/document_raw_content/292825921
+
+## Highlights
+- a modern personal computer’s OS supports multiple processes, each of which demands its own allocation of memory for program instructions and for data.
+- The operating system must therefore manage how memory is allocated
+- memory management module
+- Allocating memory
+- processes come and go
+- the operating system needs to keep track of the overall memory map – the location and size of each chunk of memory allocated, and the location and size of any free memory
+- Relocation
+- a program contains memory addresses
+- If two programs happen to use the same range of memory locations then they cannot be in memory at the same time
+- The operating system must therefore provide a mechanism which allows a program to be loaded anywhere i
+- relocation.
+- Protection
+- what is to stop one process from accessing memory that belongs to another
+- if it were to corrupt the operating system, then the whole system could crash.
+- memory space of different processes is kept separate
+- Limited memory size
+- users still want to use more programs and more data
+- the operating system can make space for a new process in main memory by temporarily moving other processes to a swap space
+- reserved area on secondary storage
+- operating systems are complex and no longer use these basic techniques, but understanding them is useful to appreciate the more complex paged virtual memory used by mainstream OSs.
+- approach to the issue of relocating
+- a memory management unit (MMU)
+- changes the addresses used in program instructions before they are used to access memory.
+- addresses used in the program’s instructions (0 to 999 in this example) are logical (or virtual) addresses
+- the MMU intercepts every address
+- changes it to some different physical address
+- e called virtual memory systems
+- A processor with two special-purpose registers – a base register and a length register
+- The base register contains the amount to be added
+- The length register contains the highest logical address
+- any accesses to higher addresses must be a result of malicious or faulty software
+- each process has its own base and length values which are stored in the process control block
+- Suppose a user starts a new program, but the operating system finds that there is insufficient free memory
+- operating system must preserve the current state of the process’s
+- writing it out to swap space
+- Later, the operating system can restore
+- y a form of virtual memory system called paged virtual memory
+- memory is treated as being made up of fixed-size pages
+- applies to logical memory, to physical main memory, and to swap space.
+- Logical addresses are divided into pages each of 4 KiB. For example, the hexadecimal logical address 3D49 corresponds to address D49 in page 3
+- The MMU translates addresses for a whole page at a time
+- The last three hexadecimal digits represent the address within the page and remain unchanged when it is translated.
+  These three hexadecimal digits are called the offset
+- The operating system keeps track of which logical page is stored in which physical page by means of a page table.
+- programmer writes a program to use a single, contiguous set of addresses. In fact, when the program is loaded and run, the process’s pages may be scattered across physical memory
+- he translation from logical to physical addresses is carried out by the MMU, but it is controlled by the memory management module
+- The memory management module can relocate a page by updating its page table
+- . Each process has its own page table w
+- maintained by the operating system.
+- When a context switch occurs, the MMU must be told where the page table for the new process is
+- e it deals with small pages rather than whole processes. Swapping occurs in smaller chunks so the associated delays are much reduced
+- Allocation of memory is in small chunks so there is less wasted space
+- Protection can also be applied on a page-by- page basis
+- A downside of using small pages, such as the 4 KiB pages described here, is that the page table needs many entries
+- Some MMU hardware therefore also allows much larger page sizes
+- A translation from logical to physical addresses must happen every time the processor uses an address. The MMU provides the dedicated hardware to do this efficiently.
+- the page table itself can’t be kept in special hardware:
+- the MMU has to obtain the physical page address from the page table
+- a special hardware cache dedicated to the MMU is used. This is known as the translation look-aside buffer (TLB).
+- the number of entries in the TLB is limited, for example to just 64 entries.
+- Each entry has a valid/invalid bit which is set to valid when the page is present and invalid if the page is not present.
+- can be marked invalid for one of two reasons:
+- currently in the swap space
+- a reference to an address outside the process’s address limit.
+- Any memory access through an entry marked invalid in the page table causes a page fault
+- The operating system page fault handler will check first for an illegal memory access
+- terminate the process with an error message.
+- If the address is a valid logical address,
+- the operating system must bring the page into memory.
+- Find a free page
+- . Schedule a disk operation to load the page
+- update the page table by marking the page as valid.
+- Restart the instruction t
+- A disk operation takes a substantial amount of time
+- The operating system will perform a context switch
+- hidden from the process that originally caused the page fault:
+- assume that the time taken for an access to main memory is 1 ns
+- time taken to handle a page fault
+- time executing the operating system page fault handler
+- time waiting for the device transfer
+- assume that the time for a disk access is 5 ms
+- assume that only one out of ten thousand memory accesses causes a page fault
+- introducing paged memory in this system has changed the average memory access time from 1 ns to approximately 500 ns
+- The time taken to handle a page fault is dominated by the time taken to access secondary storage.
+- an OS designer must strive to keep the frequency of page faults very low.
+- What happens when main memory is full and there are no free pages?
+- the operating system must replace a page that is already in use
+- needing to write out the contents of the old page to the swap space has doubled the disk transfer time
+- this could make the system thrash: the computer spends all its time dealing with page faults
+- The operating system can reduce these overheads by being carefully designed to make appropriate choices about which particular page to replace
+- Each entry in the page table, besides the valid bit, can contain
+- A modify (or ‘dirty’) bit is set to 1 whenever a byte in the page is written
+- A reference bit is set to 1 whenever a byte in the page is referenced,
+- The operating system will reset the reference and modify bits to 0 when a page is loaded from the swap space
+- If the modify bit is 0, then the page being replaced has not changed since it was last brought in from the swap space
+- e reference bit is 0, then the page has not been recently used and the principle of locality suggests it is unlikely to be required again soon.
+- Linux provides good access to information about the current state of the operating system, including the memory management module, through the /proc

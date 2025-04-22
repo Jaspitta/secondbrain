@@ -5,7 +5,7 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 19519480,
+  "lastSavedStatusID": 19833069,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
@@ -45,7 +45,15 @@
     "Readwise/Articles/þÿTopic 4 the Command-Line Interface View as Single Page OU Online.md": "49969501",
     "Readwise/Articles/þÿTopic 5 Users and Security View as Single Page OU Online.md": "50069149",
     "Readwise/Articles/þÿTopic 6 Files and Directories View as Single Page OU Online.md": "50161022",
-    "Readwise/Articles/þÿTopic 7 InputOutput View as Single Page OU Online.md": "50183934"
+    "Readwise/Articles/þÿTopic 7 InputOutput View as Single Page OU Online.md": "50183934",
+    "Readwise/Articles/þÿTopic 8 Services and Daemons View as Single Page OU Online.md": "50307249",
+    "Readwise/Articles/þÿTopic 9 Processes and Scheduling View as Single Page OU Online.md": "50328318",
+    "Readwise/Articles/þÿTopic 10 Context Switching View as Single Page OU Online.md": "50383667",
+    "Readwise/Articles/þÿTopic 11 Processors and Hardware View as Single Page OU Online.md": "50458451",
+    "Readwise/Articles/þÿTopic 12 Memory Management View as Single Page OU Online.md": "50525932",
+    "Readwise/Articles/þÿTopic 13 Disk Management View as Single Page OU Online.md": "50594280",
+    "Readwise/Articles/þÿTopic 14 System Security and Cyber Threats View as Single Page OU Online.md": "50691404",
+    "Readwise/Articles/þÿTopic 15 Confidentiality, Integrity and Availability View as Single Page OU Online.md": "50754877"
   },
   "reimportShowConfirmation": true
 }

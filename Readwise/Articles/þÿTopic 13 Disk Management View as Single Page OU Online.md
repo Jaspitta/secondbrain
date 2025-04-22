@@ -1,0 +1,81 @@
+# þÿTopic 13   Disk Management: View as Single Page | OU Online
+
+![rw-book-cover](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/293924361/bH2fsoXj5NO1SVUdSTPQS_RENi6EQBKQU0UEucpxuTE-cove_AI5J007.png)
+
+## Metadata
+- Author: [[readwise.io]]
+- Full Title: þÿTopic 13   Disk Management: View as Single Page | OU Online
+- Category: #articles
+- Summary: This text discusses how operating systems manage file storage on secondary devices like hard drives and SSDs. It explains the use of different file systems, such as FAT and inodes, for organizing data and reducing fragmentation. Additionally, it covers disk partitioning, which allows multiple file systems on a single disk, and how Linux integrates these systems into a unified directory structure.
+- URL: https://readwise.io/reader/document_raw_content/293924361
+
+## Highlights
+- f how the file system module of the OS allocates space for files on secondary storage.
+- non-volatile, high capacity and cheap storage, but are very much slower to access than main memory (RAM).
+- they are block devices
+- data can only be read and written a block at a time
+- Translating between the OS block size and the physical sector size can be done by the device driver for each device.
+- allocate a number of blocks
+- record which blocks were used.
+- When a file is deleted
+- blocks are returned to a list of unused, free blocks.
+- requires cooperation from the I/O modules
+- file systems in existence. These carry out the task of allocating space in different ways
+- s the simplest method of assigning blocks to files is contiguous allocation
+- sufficient contiguous blocks for the length of the file are allocated to it
+- subsequent blocks can be streamed to or from the disk at the maximum rate.
+- contiguous allocation is inflexible.
+- What happens if additional data has to be appended to file aaa?
+- make a copy of aaa
+- It would work badly for Linux log files, for example, where lines are continually added
+- ideal for use on CD- ROMs and DVDs:
+- File allocation table (FAT) schemes are more flexibl
+- blocks anywhere on the disk to be linked together to form a file.
+- Each entry in the FAT corresponds to a block of the disk. It contains the number of the next block
+- The entry for the last block of a file is marked with a special value, shown as EOF (end of file
+- FAT schemes are flexible
+- performance on hard disk drives is poor when files become fragmented
+- Linux file systems use an intermediate data structure called an inode
+- The directory entry points to the file’s inode which contains metadata about the file
+- By moving this metadata into a separate structure, the directory itself can be kept as small as possible, containing just the filename and inode number.
+- Since transfers to and from a disk always involve a complete block, the inode can be conveniently made the same size as a block
+- Linux systems typically have very large numbers of small files and for these a single inode is sufficien
+- for very small files some Linux file systems go a step further: they dispense with the index altogether and store the contents of the file directly in the inode
+- ext2 and ext3 file systems deal with larger files by introducing indirect blocks.
+- The first indirect entry points to another block, which is an index to more data blocks. Once these are filled, the second, double-indirect entry is used, but this now points to an index block that points in turn to a set of index blocks that point to data blocks. A third, triple-indirect pointer adds a further layer of blocks and means that extremely large files can be accommodated
+- Although many index blocks are needed for very large files, they don’t have to be held in main memory at one time, so the overhead is kept low.
+- performance is better if blocks are allocated together as runs of contiguous blocks whenever possible, avoiding fragmentation.
+- A run of contiguous blocks is called an exten
+- an intermediate index holds the start and length of each extent,
+- The speed of reading and writing files strongly affects the perceived performance of the OS
+- disk operations are orders of magnitude slower than main memory, file operations can be sped up considerably if copies of these data structures are kept in main memory
+- if changes to data structures like a FAT or inode are made, then they must be written out to disk at some point
+- Storing duplicate copies of key data structures on disk and periodically flushing changes to disk offer some protection
+- Some file systems go further by using techniques such as journaling. Here the file system keeps a record of the changes
+- when a file is deleted? The directory entry for the file is removed
+- the contents of the file may remain in the data blocks
+- special tools may be able to recover the data
+- security risk.
+- However, it is sometimes convenient for a single physical disk to be partitioned into different areas such that each appears to the file system to be a separate disk
+- use a different file system on each partition
+- since they work ‘below’ the OS, some utilities can be used on all OSs
+- When the operating system first encounters a disk drive, for example during boot, it will need to know if the disk has been partitioned, and if so where each partition starts and how large it is
+- stored in the Master Boot Record (MBR) in sector 0
+- A Volume Boot Record (VBR, volume here is a synonym for partition) is placed in the first sector of each partition
+- records the start and end sectors
+- replaced by a GUID Partition Table (GPT) that allows more flexibility
+- Linux will create names for all attached devices: these can be found in the /dev directory
+- names for disk drives start with sd, followed by a, b, c, … for each drive and a number 1, 2, 3,
+- A partition is treated as an additional device and each therefore has a unique major:minor ID
+- A brand-new disk (or partition) is not yet in a usable state: it needs to be prepared with a file system.
+- e ‘mounted’ into the file hierarchy of your existing system. Once this is done, the files and directories from these devices will be merged with files from other devices to present a single tree to the user
+- At this stage you have successfully mounted the partitions within the file hierarchy of your system. However, the mount commands would need to be reissued by root after a reboot
+- this can be automated by editing a configuration file
+- The /etc/fstab
+- Linux and other operating systems can deal sensibly with removable drives that are already formatted
+- under the surface the operating system will carry out similar actions to mount the disk as you have done manually, although the mount point conventionally is in the /media rather than the /mnt directory.
+- there are aspects that are common to all of these file systems, particularly security and protection, the handling of names and paths, and a framework of common operations such as read and write
+- the part of the operating system that deals with files in general can be organised in a layered and modular fashion
+- the general framework is called the virtual file system (VFS)
+- allowing different specific file systems to replace or supplement
+- , the file system interacts with the hardware through device drivers and the I/O system;
