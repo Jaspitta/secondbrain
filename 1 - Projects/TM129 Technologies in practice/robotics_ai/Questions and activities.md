@@ -31,3 +31,17 @@
 
 **SAQ 3.2**
 - up to is false is phrase
+
+**SAQ 3.4**
+- engine hot is antecedent
+- engine fail is consequent
+- low oil is antecedent
+- engine hot is consequent
+
+**SAQ 3.5**
+- the first two rules may suggest that if the dog is told off it is happy which contrast the third
+- dogs do take a decision so I guess they have a conflict resolution strategy, listening to the owner has priority over sitting on the sofa
+- they do have some level of reasoning also because the do not take always the same decision
+
+**SAQ 4.1**
+- yea
