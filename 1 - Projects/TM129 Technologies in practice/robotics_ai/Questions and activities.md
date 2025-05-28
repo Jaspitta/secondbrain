@@ -45,3 +45,12 @@
 
 **SAQ 4.1**
 - yea
+
+**SAQ 2.1**
+- Gloria and her parents plus Robbie. Robbie is a company robot for this Child name Gloria, they play and Gloria really likes having him like a friend. People in the neighbourhood grow sceptical of robots and the mother, worried also that Gloria does not have human friends decide to get rid of Robbie. When the kid finds out she basically gets depressed, they get a dog but that does not help, they decide to move out to New York in the hope she would forget but nothing can make her forget. They decide to visit the robot factory to make her understand that Robbie was a machine, not alive, at one point Robbie is unexpectedly there, she run to him almost getting hit by a tractor in the way but Robbie being a robot is the only one fast enough to react and saves her. The parents in the end decide that the robot can stay with them
+- The relation between child an robot
+- In an eventual future very likely, although I hope not because a child would inevitably refuse to meet other humans with such a nice robot around
+
+**SAQ 2.2**
+- No, there is no possibility of guaranteed 100% fail-safety of any somewhat complex system
+- If it existed however, yes it would probably be a good idea to add the Azimov laws to robot brains

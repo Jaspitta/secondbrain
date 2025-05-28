@@ -5,7 +5,7 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 19833069,
+  "lastSavedStatusID": 20396506,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
@@ -53,7 +53,14 @@
     "Readwise/Articles/þÿTopic 12 Memory Management View as Single Page OU Online.md": "50525932",
     "Readwise/Articles/þÿTopic 13 Disk Management View as Single Page OU Online.md": "50594280",
     "Readwise/Articles/þÿTopic 14 System Security and Cyber Threats View as Single Page OU Online.md": "50691404",
-    "Readwise/Articles/þÿTopic 15 Confidentiality, Integrity and Availability View as Single Page OU Online.md": "50754877"
+    "Readwise/Articles/þÿTopic 15 Confidentiality, Integrity and Availability View as Single Page OU Online.md": "50754877",
+    "Readwise/Articles/þÿTopic 16 Cyber Attack and Defence View as Single Page OU Online.md": "50812206",
+    "Readwise/Articles/þÿTopic 17 Access Control Systems View as Single Page OU Online.md": "50866242",
+    "Readwise/Articles/þÿTopic 18 Systems Security View as Single Page OU Online.md": "50923750",
+    "Readwise/Articles/Meltdown.md": "50949917",
+    "Readwise/Articles/þÿTopic 19 Application Security View as Single Page OU Online.md": "50975960",
+    "Readwise/Articles/Spectre.md": "51005230",
+    "Readwise/Articles/Tomasulo.md": "51213292"
   },
   "reimportShowConfirmation": true
 }
