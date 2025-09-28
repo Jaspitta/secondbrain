@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16.4. Binary search trees</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="16.5. Balanced trees" href="16_5_balanced.html" />
+    <link rel="prev" title="16.3. Traversals" href="16_3_traversals.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="16-introduction.html">16. Rooted trees</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="16_1_binary.html">16.1. Binary tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_2_algorithms.html">16.2. Algorithms on trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_3_traversals.html">16.3. Traversals</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">16.4. Binary search trees</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Search">16.4.1. Search</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-16.4.1">Exercise 16.4.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-16.4.2">Exercise 16.4.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-16.4.3">Exercise 16.4.3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Add-node">16.4.2. Add node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Remove-node">16.4.3. Remove node</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="16_5_balanced.html">16.5. Balanced trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_6_heapsort.html">16.6. Heapsort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_7_summary.html">16.7. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="16-introduction.html"><span class="section-number">16. </span>Rooted trees</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">16.4. </span>Binary search trees</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Binary-search-trees">
+<h1><span class="section-number">16.4. </span>Binary search trees<a class="headerlink" href="#Binary-search-trees" title="Link to this heading"></a></h1>
+<p>A <strong>binary search tree</strong> (<strong>BST</strong>) is a sorted binary tree, which allows us to find items using binary search instead of exhaustive search. In a BST, all items in the left subtree come before the root item, which in turn comes before all items in the right subtree. (This is the <strong>ordering property</strong> of BSTs.) What ‘comes before’ means depends on the problem at hand. Both subtrees are BSTs too, so that all items are sorted. The next figure shows two binary trees with integers.</p>
+<p id="fig-16.4.1"></p><p><a class="reference internal" href="../33_Figures/Figures_16_4.html#Figure-16.4.1"><span class="std std-ref">Figure 16.4.1</span></a></p>
+<img alt="Image 16_4_bst_and_not.png" src="../_images/16_4_bst_and_not.png" />
+<p>If ‘comes before’ means ‘less than’, then the tree on the left is a BST and the other one isn’t because 5 is less than 6 but isn’t in the left subtree of 6. If ‘comes before’ means ‘greater than’, then neither tree is a BST.</p>
+<p>If the items in a BST are key–value pairs and the keys are unique, then a BST can be used as the data structure for the <a class="reference internal" href="../08_Unordered/08_1_map.html#The-map-ADT"><span class="std std-ref">map ADT</span></a>. The keys must be comparable, otherwise the binary tree wouldn’t be a BST. Like in the chapter on sorting, I’ll keep BST items in ascending order of keys. A descending order only requires reversing the comparison operator in the following algorithms.</p>
+<p>We’ll use the same <code class="docutils literal notranslate"><span class="pre">Tree</span></code> class as before, but each item will be a key–value pair, represented by a tuple. To make the code more readable I define two constants to index the tuple.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_tree
+
+<span class="n">KEY</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VALUE</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<p>I use the left-hand tree in Figure 16.4.1 to test the map operations. The values are irrelevant for the map operations so I’ll keep drawing BSTs with the keys only, but I need to add values for the algorithms to work. To keep the example short, the BST will map Arabic to Roman numerals.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">)</span>
+<span class="n">IV</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;IV&quot;</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">)</span>
+<span class="n">VI</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;VI&quot;</span><span class="p">)</span>
+<span class="n">VIII</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;VIII&quot;</span><span class="p">)</span>
+
+<span class="n">one</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">Tree</span><span class="p">(),</span> <span class="n">Tree</span><span class="p">())</span>
+<span class="n">six</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">VI</span><span class="p">,</span> <span class="n">Tree</span><span class="p">(),</span> <span class="n">Tree</span><span class="p">())</span>
+<span class="n">bst</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">IV</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">join</span><span class="p">(</span><span class="n">VIII</span><span class="p">,</span> <span class="n">join</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">Tree</span><span class="p">(),</span> <span class="n">six</span><span class="p">),</span> <span class="n">Tree</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<section id="Search">
+<h2><span class="section-number">16.4.1. </span>Search<a class="headerlink" href="#Search" title="Link to this heading"></a></h2>
+<p>Since a BST is sorted, a binary search, with the root item being the equivalent of the middle item in sequences, can be used for two map operations: membership (check if a key exists) and lookup (get the value for a given key).</p>
+<p>To check if a given key exists, we compare it to the root’s key. If the keys differ, the binary search proceeds recursively on the left or right subtree depending on whether the given key is smaller or larger than the root’s key, respectively.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">has</span><span class="p">(</span><span class="n">tree</span><span class="p">:</span> <span class="n">Tree</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if a node of tree has the key.</span>
+
+<span class="sd">    Preconditions: tree is a BST</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">elif</span> <span class="n">tree</span><span class="o">.</span><span class="n">root</span><span class="p">[</span><span class="n">KEY</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">tree</span><span class="o">.</span><span class="n">root</span><span class="p">[</span><span class="n">KEY</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">has</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">has</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+
+
+<span class="n">has</span><span class="p">(</span><span class="n">bst</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">has</span><span class="p">(</span><span class="n">bst</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>Like binary search on sequences, binary search on BSTs is a tail-recursive decrease-and-conquer algorithm with two base cases. However, whereas binary search on sequences always reduces the search space by half, binary search on BSTs reduces it by a variable amount: the left and right subtrees may not have the same size, as the examples show. I’ll look at the complexity of binary search on BSTs in the next section.</p>
+<p>Similar to what happened with hash tables, another map ADT implementation, if we directly access and modify a key stored in the BST, we may break the ordering property and the membership operation won’t find it anymore. For example, if key 6 is replaced with key 10, the tree is no longer a BST: the algorithm will search for 10 in the right subtree of 8 and not find it.</p>
+<section id="Exercise-16.4.1">
+<h3>Exercise 16.4.1<a class="headerlink" href="#Exercise-16.4.1" title="Link to this heading"></a></h3>
+<p>Implement the lookup operation.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lookup</span><span class="p">(</span><span class="n">tree</span><span class="p">:</span> <span class="n">Tree</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the value associated to the key.</span>
+
+<span class="sd">    Preconditions: tree is a BST and has the key</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="n">lookup_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;key in leaf&#39;</span><span class="p">,</span>   <span class="n">bst</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;key in root&#39;</span><span class="p">,</span>   <span class="n">bst</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;IV&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;key in other&#39;</span><span class="p">,</span>  <span class="n">bst</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">lookup</span><span class="p">,</span> <span class="n">lookup_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_16_4_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_16_4_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-16.4.2">
+<h3>Exercise 16.4.2<a class="headerlink" href="#Exercise-16.4.2" title="Link to this heading"></a></h3>
+<p>Does any DFS or BFS traversal of a BST produce the items in ascending key order?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_16_4_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_16_4_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-16.4.3">
+<h3>Exercise 16.4.3<a class="headerlink" href="#Exercise-16.4.3" title="Link to this heading"></a></h3>
+<p>In a BST, the first and last items in sorted order are in the left- and right-most nodes, respectively. For example, the smallest key in the example is 1 because one can’t go further left from that node and the largest key is 8 because one can’t go further right from that node.</p>
+<p>Implement the following function recursively or iteratively. Add any necessary preconditions. Run both tests.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">smallest</span><span class="p">(</span><span class="n">tree</span><span class="p">:</span> <span class="n">Tree</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the item in the tree with the smallest key.</span>
+
+<span class="sd">    Preconditions: tree is a non-empty BST</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smallest</span><span class="p">(</span><span class="n">bst</span><span class="p">)</span> <span class="o">==</span> <span class="n">I</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smallest</span><span class="p">(</span><span class="n">six</span><span class="p">)</span> <span class="o">==</span> <span class="n">VI</span>  <span class="c1"># this tree has a single node</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_16_4_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_16_4_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Add-node">
+<h2><span class="section-number">16.4.2. </span>Add node<a class="headerlink" href="#Add-node" title="Link to this heading"></a></h2>
+<p>The map ADT’s associate operation adds a new key–value pair or replaces the existing value.</p>
+<p>Adding a node requires finding where it should be and adding it there. Here’s a <a class="reference external" href="https://learn2.open.ac.uk/mod/oucontent/view.php?id=2554725&amp;extra=thumbnail_idm18">visualisation</a> of how a BST is created from an unsorted sequence, by adding one item at a time. First we find where the key should be, using binary search. If we reach an empty subtree, we put a new leaf there with the given item. If we reach an existing node, we replace its value.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">associate</span><span class="p">(</span><span class="n">tree</span><span class="p">:</span> <span class="n">Tree</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Associate the value to the key in the tree.</span>
+
+<span class="sd">    Preconditions: tree is a BST</span>
+<span class="sd">    Postconditions:</span>
+<span class="sd">    - if there&#39;s a node with the key, replace its value with the given one</span>
+<span class="sd">    - otherwise, add the key-value pair to the tree</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Base case: if tree is empty, create a leaf</span>
+    <span class="k">if</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">()</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">()</span>
+    <span class="c1"># Base case: if the key is in the root, replace the value</span>
+    <span class="k">elif</span> <span class="n">tree</span><span class="o">.</span><span class="n">root</span><span class="p">[</span><span class="n">KEY</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="c1"># Recurrence relation: add/replace in the appropriate subtree</span>
+    <span class="k">elif</span> <span class="n">tree</span><span class="o">.</span><span class="n">root</span><span class="p">[</span><span class="n">KEY</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">:</span>
+        <span class="n">associate</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">associate</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Like for linked lists, inserting a node has the same complexity as searching: the insertion itself takes constant time once the place is found because no items are shifted, unlike inserting in arrays. Let’s test the operation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">write</span><span class="p">(</span><span class="n">bst</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># this is the left tree in Figure 16.4.1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ (4, &#39;IV&#39;)
+     (1, &#39;I&#39;)
+         EMPTY
+         EMPTY
+     (8, &#39;VIII&#39;)
+         (5, &#39;V&#39;)
+             EMPTY
+             (6, &#39;VI&#39;)
+                 EMPTY
+                 EMPTY
+         EMPTY
+</pre></div></div>
+</div>
+<p>Adding a node with key 2 will put it as the right child of 1.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">associate</span><span class="p">(</span><span class="n">bst</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;II&quot;</span><span class="p">)</span>
+<span class="n">write</span><span class="p">(</span><span class="n">bst</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ (4, &#39;IV&#39;)
+     (1, &#39;I&#39;)
+         EMPTY
+         (2, &#39;II&#39;)
+             EMPTY
+             EMPTY
+     (8, &#39;VIII&#39;)
+         (5, &#39;V&#39;)
+             EMPTY
+             (6, &#39;VI&#39;)
+                 EMPTY
+                 EMPTY
+         EMPTY
+</pre></div></div>
+</div>
+</section>
+<section id="Remove-node">
+<h2><span class="section-number">16.4.3. </span>Remove node<a class="headerlink" href="#Remove-node" title="Link to this heading"></a></h2>
+<p>The map operation to delete an item has to first search for its key. At that point, we have a tree with a left subtree L, a right subtree R and the item to be removed in the root. We have to replace this old BST by a new BST without the root. We can’t simply remove the root: that would lead to two disconnected subtrees. We must think what to do case by case.</p>
+<p>If the root is a leaf, i.e. L and R are empty, then the new tree is empty.</p>
+<p id="fig-16.4.2"></p><p><a class="reference internal" href="../33_Figures/Figures_16_4.html#Figure-16.4.2"><span class="std std-ref">Figure 16.4.2</span></a></p>
+<img alt="Image 16_4_delete_leaf.png" src="../_images/16_4_delete_leaf.png" />
+<p>If L is empty, then the new tree is simply R, and vice versa.</p>
+<p id="fig-16.4.3"></p><p><a class="reference internal" href="../33_Figures/Figures_16_4.html#Figure-16.4.3"><span class="std std-ref">Figure 16.4.3</span></a></p>
+<img alt="Image 16_4_keep_right.png" src="../_images/16_4_keep_right.png" />
+<p>Note that if R is empty, we have the same situation as for removing a leaf, so we can treat all these cases equally: if one subtree is empty, the new tree is the other subtree.</p>
+<p>Finally, consider the case where neither subtree is empty. We must replace the old root by a node that keeps the ordering property: the key must come after the keys in the left subtree but before those in the right subtree. There are only two possible choices: the <strong>predecessor</strong> node, which has the key that comes immediately before the root’s key and the <strong>successor</strong> node, with the key immediately after the root’s key. If you think of a sorted sequence like (1, 2, 5, 6, 9), and we want to
+remove the 5, the only numbers that can take its place are 2, the predecessor of 5, or 6, the successor of 5. We cannot put any other number in place of the 5 as that would break the sorted order.</p>
+<p>Where in the tree is the predecessor of the root? Alternatively, where’s the successor?</p>
+<hr class="docutils" />
+<p>The predecessor of the root is in the left subtree, by definition of a BST. Since the predecessor comes immediately before the root, it has the largest key in the left subtree, so it’s the right-most node of the left subtree. Vice versa, the successor is the left-most node in the right subtree.</p>
+<p>After putting the predecessor (or the successor) in place of the root, we have to remove it from its subtree, making a recursive call.</p>
+<p>You already implemented the operation to obtain the smallest item in a tree (what a coincidence!), so we’ll use it to determine the root’s successor. The next figure shows the successor <em>s</em> replacing the root, while the predecessor <em>p</em> stays in its right-most place of the left subtree.</p>
+<p id="fig-16.4.4"></p><p><a class="reference internal" href="../33_Figures/Figures_16_4.html#Figure-16.4.4"><span class="std std-ref">Figure 16.4.4</span></a></p>
+<img alt="Image 16_4_replace_root.png" src="../_images/16_4_replace_root.png" />
+<p>The successor has no left child, otherwise it wouldn’t be the smallest key in the right subtree. Therefore, removing the successor falls into the base case above (one subtree is empty) and takes constant time (once we find it). The same applies if we had decided to replace the root by its predecessor, which has no right child.</p>
+<p>To sum up, removing a node does three searches in the worst case: find the node to be removed and find its successor (or predecessor) twice, first to copy it to the root, then to remove it. So deletion also has the same complexity as searching. I’ll come back to this in the next section.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">smallest</span><span class="p">(</span><span class="n">tree</span><span class="p">:</span> <span class="n">Tree</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the item in the tree with the smallest key.</span>
+
+<span class="sd">    Preconditions: tree is a non-empty BST</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="p">):</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">left</span>
+    <span class="k">return</span> <span class="n">tree</span><span class="o">.</span><span class="n">root</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">tree</span><span class="p">:</span> <span class="n">Tree</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Remove the tree&#39;s node with the key.</span>
+
+<span class="sd">    Do nothing if there&#39;s no such node.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># key not found</span>
+    <span class="k">elif</span> <span class="n">tree</span><span class="o">.</span><span class="n">root</span><span class="p">[</span><span class="n">KEY</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">:</span>
+        <span class="n">remove</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="n">tree</span><span class="o">.</span><span class="n">root</span><span class="p">[</span><span class="n">KEY</span><span class="p">]:</span>
+        <span class="n">remove</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># key found: it&#39;s in the root</span>
+        <span class="k">if</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="p">):</span>  <span class="c1"># replace tree with right subtree</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">root</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">left</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">right</span>
+        <span class="k">elif</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="p">):</span>  <span class="c1"># replace tree with left subtree</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">root</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">right</span>  <span class="c1"># note different order</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">left</span>  <span class="c1"># of assignments</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># replace root with successor</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">smallest</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+            <span class="n">remove</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">tree</span><span class="o">.</span><span class="n">root</span><span class="p">[</span><span class="n">KEY</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s remove the node that was added above:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">remove</span><span class="p">(</span><span class="n">bst</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">write</span><span class="p">(</span><span class="n">bst</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ (4, &#39;IV&#39;)
+     (1, &#39;I&#39;)
+         EMPTY
+         EMPTY
+     (8, &#39;VIII&#39;)
+         (5, &#39;V&#39;)
+             EMPTY
+             (6, &#39;VI&#39;)
+                 EMPTY
+                 EMPTY
+         EMPTY
+</pre></div></div>
+</div>
+<p>If we remove the root 4, it’s replaced by its successor 5, which in turn ‘promotes’ its right subtree, with root 6, one level up:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">remove</span><span class="p">(</span><span class="n">bst</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">write</span><span class="p">(</span><span class="n">bst</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ (5, &#39;V&#39;)
+     (1, &#39;I&#39;)
+         EMPTY
+         EMPTY
+     (8, &#39;VIII&#39;)
+         (6, &#39;VI&#39;)
+             EMPTY
+             EMPTY
+         EMPTY
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="16_3_traversals.html" class="btn btn-neutral float-left" title="16.3. Traversals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="16_5_balanced.html" class="btn btn-neutral float-right" title="16.5. Balanced trees" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

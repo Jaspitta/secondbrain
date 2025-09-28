@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12.7. Multiple recursion</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12.8. Summary" href="12_8_summary.html" />
+    <link rel="prev" title="12.6. Avoiding slicing" href="12_6_avoid_slicing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="12-introduction.html">12. Recursion</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="12_1_factorial.html">12.1. The factorial function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_2_integers.html">12.2. Recursion on integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_3_length.html">12.3. Length of a sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_4_inspect_sequences.html">12.4. Inspecting sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_5_create_sequences.html">12.5. Creating sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_6_avoid_slicing.html">12.6. Avoiding slicing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12.7. Multiple recursion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Dividing-the-input">12.7.1. Dividing the input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Designing-multiple-recursion">12.7.2. Designing multiple recursion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-12.7.1">Exercise 12.7.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-12.7.2">Exercise 12.7.2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="12_8_summary.html">12.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="12-introduction.html"><span class="section-number">12. </span>Recursion</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">12.7. </span>Multiple recursion</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Multiple-recursion">
+<h1><span class="section-number">12.7. </span>Multiple recursion<a class="headerlink" href="#Multiple-recursion" title="Link to this heading"></a></h1>
+<p>Recursive algorithms decrease the input to bring it ‘closer’ to the base case. So far we’ve reduced the size of the input collection by separating one item from it, and making a recursive call on the rest of the collection. Nothing prevents us from dividing the input in a different way, e.g. we could divide a sequence in two halves, recur into each half and then combine the subsolutions obtained.</p>
+<section id="Dividing-the-input">
+<h2><span class="section-number">12.7.1. </span>Dividing the input<a class="headerlink" href="#Dividing-the-input" title="Link to this heading"></a></h2>
+<p>Let’s revisit the maximum of a non-empty sequence of numbers. You implemented the following algorithm in a <a class="reference internal" href="12_4_inspect_sequences.html#Maximum"><span class="std std-ref">previous exercise</span></a>: separate the sequence into its head and tail, compute the maximum of the tail and return the larger of it and the head.</p>
+<ol class="arabic simple">
+<li><p>if │<em>numbers</em>│ = 1:</p>
+<ol class="arabic simple">
+<li><p>let <em>solution</em> be head(<em>numbers</em>)</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>solution</em> be max(head(<em>numbers</em>), maximum(tail(<em>numbers</em>)))</p></li>
+</ol>
+</li>
+</ol>
+<p>An alternative approach divides the sequence in two halves, computes their maxima and returns the larger of the two.</p>
+<ol class="arabic simple">
+<li><p>let <em>n</em> be │<em>numbers</em>│</p></li>
+<li><p>if <em>n</em> = 1:</p>
+<ol class="arabic simple">
+<li><p>let <em>solution</em> be head(<em>numbers</em>)</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>middle</em> be floor(<em>n</em> / 2)</p></li>
+<li><p>let <em>largest left</em> be maximum(<em>numbers</em>[0:<em>middle</em>])</p></li>
+<li><p>let <em>largest right</em> be maximum(<em>numbers</em>[<em>middle</em>:<em>n</em>])</p></li>
+<li><p>let <em>solution</em> be max(<em>largest left</em>, <em>largest right</em>)</p></li>
+</ol>
+</li>
+</ol>
+<p>Steps 3.2 and 3.3 make a recursive call each, on the left and right halves of the sequence. This algorithm involves <strong>multiple recursion</strong>; all previous algorithms were examples of <strong>single recursion</strong>. Multiple-recursion algorithms aren’t tail recursive, because the first recursive call isn’t the last operation of the algorithm.</p>
+<p>Splitting a sequence in two equal-sized (or nearly equal-sized) parts is just a matter of convenience because it’s easy to calculate the middle index. It’s not essential for recursion to work. I could have divided the sequence into a left part with one third of the items and a right part with the remaining two thirds of them, or any other ratio. I could also have divided the sequence in three parts and return the largest of the three maxima. These alternative ways of dividing the input
+complicate the algorithm and, if we’re careless, make it incorrect. Consider the one versus two thirds split.</p>
+<ol class="arabic simple" start="3">
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>third</em> be floor(<em>n</em> / 3)</p></li>
+<li><p>let <em>largest left</em> be maximum(<em>numbers</em>[0:<em>third</em>])</p></li>
+<li><p>let <em>largest right</em> be maximum(<em>numbers</em>[<em>third</em>:<em>n</em>])</p></li>
+<li><p>let <em>solution</em> be max(<em>largest left</em>, <em>largest right</em>)</p></li>
+</ol>
+</li>
+</ol>
+<p>If <em>n</em> = 2, then <em>third</em> = 0, the left part is empty and the right part is <em>numbers</em>. The right part doesn’t reduce in size so the recursion doesn’t stop. This issue can be solved by handling <em>n</em> = 2 as an additional base case.</p>
+</section>
+<section id="Designing-multiple-recursion">
+<h2><span class="section-number">12.7.2. </span>Designing multiple recursion<a class="headerlink" href="#Designing-multiple-recursion" title="Link to this heading"></a></h2>
+<p>When designing algorithms with multiple recursion, the questions to ask yourself are:</p>
+<ol class="arabic simple">
+<li><p>How can the input be divided in two or more parts? (decrease step)</p></li>
+<li><p>If I know the output for each part, what’s the output for the whole input? (combine step)</p></li>
+<li><p>What are the smallest parts that cannot be further divided and their corresponding outputs? (base cases)</p></li>
+</ol>
+<p>Previously there were only two questions: first about the base cases, then about the combine step. The input was always decreased in the same way: remove one item or decrement the input integer by one.</p>
+<p>With multiple recursion there are usually several ways to decrease the input, some more appropriate to the problem at hand than others, and each may have different base cases, so it’s best to think of them after deciding how to partition the input.</p>
+<p>Slicing a sequence in two or more parts takes linear time, whether the sequence is represented with an array or a linked list. We can reuse the technique of keeping track of the slice’s start and end instead of extracting the slice. The algorithm for maximum(<em>numbers</em>, <em>start</em>, <em>end</em>) is as follows.</p>
+<ol class="arabic simple">
+<li><p>if <em>start</em> + 1 = <em>end</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>solution</em> be <em>numbers</em>[<em>start</em>]</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>middle</em> be <em>start</em> + floor((<em>end</em> – <em>start</em>) / 2)</p></li>
+<li><p>let <em>largest left</em> be maximum(<em>numbers</em>, <em>start</em>, <em>middle</em>)</p></li>
+<li><p>let <em>largest right</em> be maximum(<em>numbers</em>, <em>middle</em>, <em>end</em>)</p></li>
+<li><p>let <em>solution</em> be max(<em>largest left</em>, <em>largest right</em>)</p></li>
+</ol>
+</li>
+</ol>
+<div class="line-block">
+<div class="line">Step 2.1 obtains the middle index by adding half of the length of the slice to the start index. When <em>start</em> = 0 and <em>end</em> = │<em>numbers</em>│, the middle index is as in the earlier algorithm:</div>
+<div class="line"><em>start</em> + floor((<em>end</em> – <em>start</em>) / 2) = floor(│<em>numbers</em>│ / 2).</div>
+</div>
+<section id="Exercise-12.7.1">
+<h3>Exercise 12.7.1<a class="headerlink" href="#Exercise-12.7.1" title="Link to this heading"></a></h3>
+<p>Write a multiple-recursive algorithm for the <a class="reference internal" href="12_6_avoid_slicing.html#Problem-definition"><span class="std std-ref">membership function</span></a> has(<em>items</em>, <em>item</em>, <em>start</em>, <em>end</em>).</p>
+<p><a class="reference internal" href="../31_Hints/Hints_12_7_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_12_7_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-12.7.2">
+<h3>Exercise 12.7.2<a class="headerlink" href="#Exercise-12.7.2" title="Link to this heading"></a></h3>
+<p>Implement your algorithm of the previous exercise.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">has</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if item is a member of items.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">in_slice</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if and only if item is in slice items[start:end].</span>
+
+<span class="sd">        Preconditions: 0 &lt;= start &lt;= end &lt;= len(items)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">in_slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
+
+
+<span class="n">has_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,         items,   item,  has?</span>
+    <span class="p">(</span><span class="s1">&#39;empty list&#39;</span><span class="p">,</span>  <span class="p">[],</span>         <span class="mi">3</span><span class="p">,</span>  <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;last member&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>  <span class="mi">3</span><span class="p">,</span>  <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;not member&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>  <span class="mi">4</span><span class="p">,</span>  <span class="kc">False</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">has</span><span class="p">,</span> <span class="n">has_tests</span><span class="p">)</span>    <span class="c1"># run against the same tests</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../32_Answers/Answers_12_7_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="12_6_avoid_slicing.html" class="btn btn-neutral float-left" title="12.6. Avoiding slicing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="12_8_summary.html" class="btn btn-neutral float-right" title="12.8. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

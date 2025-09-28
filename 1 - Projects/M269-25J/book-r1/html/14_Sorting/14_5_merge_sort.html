@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14.5. Merge sort</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="14.6. Quicksort" href="14_6_quicksort.html" />
+    <link rel="prev" title="14.4. Selection sort" href="14_4_selection_sort.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="14-introduction.html">14. Sorting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="14_1_sort_prep.html">14.1. Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_2_bogosort.html">14.2. Bogosort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_3_insertion_sort.html">14.3. Insertion sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_4_selection_sort.html">14.4. Selection sort</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">14.5. Merge sort</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">14.5.1. Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">14.5.2. Complexity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-14.5.1">Exercise 14.5.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Code-and-performance">14.5.3. Code and performance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="14_6_quicksort.html">14.6. Quicksort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_7_quicksort_variants.html">14.7. Quicksort variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_8_pigeonhole.html">14.8. Pigeonhole sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_9_summary.html">14.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="14-introduction.html"><span class="section-number">14. </span>Sorting</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">14.5. </span>Merge sort</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Merge-sort">
+<h1><span class="section-number">14.5. </span>Merge sort<a class="headerlink" href="#Merge-sort" title="Link to this heading"></a></h1>
+<p>Let’s now look at a divide-and-conquer approach to sorting.</p>
+<section id="Algorithm">
+<h2><span class="section-number">14.5.1. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p><strong>Merge sort</strong> divides the sequence into two halves, sorts each one recursively, and merges them by taking the smallest item of each half until both are empty. The bases cases are sequences of length 0 or 1, as they can’t be split into smaller sequences. When the length is odd, it doesn’t matter which half has one element more. The next figure shows the process applied to our familiar example.</p>
+<p id="fig-14.5.1"></p><p><a class="reference internal" href="../33_Figures/Figures_14_5.html#Figure-14.5.1"><span class="std std-ref">Figure 14.5.1</span></a></p>
+<img alt="Image 14_5_mergesort.png" src="../_images/14_5_mergesort.png" />
+<p>Here’s the recursive algorithm for mergesort(<em>unsorted</em>, <em>key</em>):</p>
+<ol class="arabic simple">
+<li><p>if <em>n</em> &lt; 2:</p>
+<ol class="arabic simple">
+<li><p>let <em>sorted</em> be <em>unsorted</em></p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>middle</em> be floor(<em>n</em> / 2)</p></li>
+<li><p>let <em>left sorted</em> be mergesort(<em>unsorted</em>[0:<em>middle</em>], <em>key</em>)</p></li>
+<li><p>let <em>right sorted</em> be mergesort(<em>unsorted</em>[<em>middle</em>:<em>n</em>], <em>key</em>)</p></li>
+<li><p>let <em>sorted</em> be merge(<em>left sorted</em>, <em>right sorted</em>, <em>key</em>)</p></li>
+</ol>
+</li>
+</ol>
+<p>The previous M269 team produced a <a class="reference external" href="https://learn2.open.ac.uk/mod/oucontent/view.php?id=2554725&amp;extra=thumbnail_idm34">visualisation</a> of step 2.4, so that you can see it in more detail. The code shown in the visualisation doesn’t use a key function. Here’s the algorithm for merge(<em>left</em>, <em>right</em>, <em>key</em>) with the precondition that both input sequences are sorted.</p>
+<ol class="arabic simple">
+<li><p>let <em>left index</em> be 0</p></li>
+<li><p>let <em>right index</em> be 0</p></li>
+<li><p>let <em>sorted</em> be the empty sequence</p></li>
+<li><p>while <em>left index</em> &lt; │<em>left sorted</em>│ and <em>right index</em> &lt; │<em>right sorted</em>│:</p>
+<ol class="arabic simple">
+<li><p>let <em>left item</em> be <em>left sorted</em>[<em>left index</em>]</p></li>
+<li><p>let <em>right item</em> be <em>right sorted</em>[<em>right index</em>]</p></li>
+<li><p>if <em>key</em>(<em>left item</em>) &lt; <em>key</em>(<em>right item</em>):</p>
+<ol class="arabic simple">
+<li><p>append <em>left item</em> to <em>sorted</em></p></li>
+<li><p>let <em>left index</em> be <em>left index</em> + 1</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>append <em>right item</em> to <em>sorted</em></p></li>
+<li><p>let <em>right index</em> be <em>right index</em> + 1</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>for <em>index</em> from <em>left index</em> to │<em>left sorted</em>│ – 1:</p>
+<ol class="arabic simple">
+<li><p>append <em>left sorted</em>[<em>index</em>] to <em>sorted</em></p></li>
+</ol>
+</li>
+<li><p>for <em>index</em> from <em>right index</em> to │<em>right sorted</em>│ – 1:</p>
+<ol class="arabic simple">
+<li><p>append <em>right sorted</em>[<em>index</em>] to <em>sorted</em></p></li>
+</ol>
+</li>
+</ol>
+<p>Step 4 and its sub-steps merge both sequences until one is copied to the output. The unprocessed items in the other half are then copied by either step 5 or step 6. Only one of those for-loops will execute.</p>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">14.5.2. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>Let’s first obtain the complexity in a visual way. In the above figure, each level splits sequences in half and a later corresponding level merges the sorted halves. Each splitting and merging corresponds to one recursive call. Since the input is always split in half, there are <span class="math notranslate nohighlight">\(\log_2\)</span> <em>n</em> recursive calls until the sequences have length 1 and start being merged. In the example, <em>n</em> = 7, so there are 3 recursive call levels.</p>
+<p>Each level processes the whole input, of length <em>n</em>, albeit split in substrings. For example, the second level processes 4 sequences of one or two characters each, while the third level processes seven sequences of one character each. Processing each character takes constant time, both when it’s being copied from the input to an unsorted half and when it’s copied from a sorted half to the output. The complexity is therefore log <em>n</em> × <em>n</em> × Θ(1) = Θ(<em>n</em> log <em>n</em>).</p>
+<p>Informal reasoning can sometimes have subtle flaws, so it’s safest to systematically define the complexity recursively, following the algorithm.</p>
+<section id="Exercise-14.5.1">
+<h3>Exercise 14.5.1<a class="headerlink" href="#Exercise-14.5.1" title="Link to this heading"></a></h3>
+<p>Write the recursive definition of T and confirm that merge sort has log-linear complexity.</p>
+<ul class="simple">
+<li><p>if <em>n</em> &lt; 2: T(<em>n</em>) = …</p></li>
+<li><p>if <em>n</em> ≥ 2: T(<em>n</em>) = …</p></li>
+</ul>
+<p><a class="reference internal" href="../31_Hints/Hints_14_5_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_14_5_01.html"><span class="doc">Answer</span></a></p>
+<p>Merge sort has two advantages over insertion and selection sort: it has better than quadratic complexity for unsorted input sequences and, being a divide-and-conquer algorithm, can be implemented in parallel.</p>
+</section>
+</section>
+<section id="Code-and-performance">
+<h2><span class="section-number">14.5.3. </span>Code and performance<a class="headerlink" href="#Code-and-performance" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+<span class="o">%</span><span class="k">run</span> -i ../m269_sorting
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge both lists into one with keys in non-decreasing order.</span>
+
+<span class="sd">    Preconditions: left and right have keys in non-decreasing order</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">left_index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">right_index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">left_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">right_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="n">left_item</span> <span class="o">=</span> <span class="n">left</span><span class="p">[</span><span class="n">left_index</span><span class="p">]</span>
+        <span class="n">right_item</span> <span class="o">=</span> <span class="n">right</span><span class="p">[</span><span class="n">right_index</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">key</span><span class="p">(</span><span class="n">left_item</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">(</span><span class="n">right_item</span><span class="p">):</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left_item</span><span class="p">)</span>
+            <span class="n">left_index</span> <span class="o">=</span> <span class="n">left_index</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right_item</span><span class="p">)</span>
+            <span class="n">right_index</span> <span class="o">=</span> <span class="n">right_index</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">left_index</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)):</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">right_index</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">)):</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">merge_sorted</span><span class="p">(</span><span class="n">unsorted</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a permutation with keys in non-decreasing order.</span>
+
+<span class="sd">    Preconditions: for any indices i and j,</span>
+<span class="sd">    key(unsorted[i]) and key(unsorted[j]) are comparable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">unsorted</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">unsorted</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">middle</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">left_sorted</span> <span class="o">=</span> <span class="n">merge_sorted</span><span class="p">(</span><span class="n">unsorted</span><span class="p">[:</span><span class="n">middle</span><span class="p">],</span> <span class="n">key</span><span class="p">)</span>
+        <span class="n">right_sorted</span> <span class="o">=</span> <span class="n">merge_sorted</span><span class="p">(</span><span class="n">unsorted</span><span class="p">[</span><span class="n">middle</span><span class="p">:],</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">left_sorted</span><span class="p">,</span> <span class="n">right_sorted</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">merge_sorted</span><span class="p">,</span> <span class="n">sorting_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing merge_sorted...
+Tests finished: 7 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>Remember that the start and end indices of a slice <a class="reference internal" href="../04_Iteration/04_9_summary.html#Sequence-operations"><span class="std std-ref">can be omitted</span></a>.</p>
+<p>Since the complexity is always the same, I measure the run-time for sequences that are easy to generate.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">doubling</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="n">doubling</span>  <span class="c1"># 100, 200, 400, ... zeros</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 5 merge_sorted(items, identity)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+73.8 μs ± 86.7 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+160 μs ± 606 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+340 μs ± 262 ns per loop (mean ± std. dev. of 5 runs, 1,000 loops each)
+730 μs ± 1.33 μs per loop (mean ± std. dev. of 5 runs, 1,000 loops each)
+1.58 ms ± 5.65 μs per loop (mean ± std. dev. of 5 runs, 1,000 loops each)
+</pre></div></div>
+</div>
+<p>The run-times more than double but don’t quadruple when the input size doubles. This confirms the complexity is between linear and quadratic.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="14_4_selection_sort.html" class="btn btn-neutral float-left" title="14.4. Selection sort" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="14_6_quicksort.html" class="btn btn-neutral float-right" title="14.6. Quicksort" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>23.3. Knapsack</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="23.4. Summary" href="23_4_summary.html" />
+    <link rel="prev" title="23.2. Longest common subsequence" href="23_2_lcs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="23-introduction.html">23. Dynamic Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="23_1_fibonacci.html">23.1. Fibonacci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23_2_lcs.html">23.2. Longest common subsequence</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">23.3. Knapsack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Recursive">23.3.1. Recursive</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-23.3.1">Exercise 23.3.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Common-subproblems">23.3.2. Common subproblems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-23.3.2">Exercise 23.3.2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Top-down-and-bottom-up">23.3.3. Top-down and bottom-up</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-23.3.3">Exercise 23.3.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-23.3.4">Exercise 23.3.4</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">23.3.4. Complexity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="23_4_summary.html">23.4. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="23-introduction.html"><span class="section-number">23. </span>Dynamic Programming</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">23.3. </span>Knapsack</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Knapsack">
+<h1><span class="section-number">23.3. </span>Knapsack<a class="headerlink" href="#Knapsack" title="Link to this heading"></a></h1>
+<p>The 0/1 knapsack problem asks for the most valuable subset of items that doesn’t exceed a given weight limit. The problem can be solved with <a class="reference internal" href="../11_Search/11_5_subsets.html#Exercise-11.5.2"><span class="std std-ref">exhaustive search</span></a> or <a class="reference internal" href="../22_Backtracking/22_7_knapsack.html#Back-to-the-knapsack"><span class="std std-ref">backtracking</span></a> but not with <a class="reference internal" href="../18_Greed/18_1_scheduling.html#Exercise-18.1.1"><span class="std std-ref">greed</span></a>. Let’s now consider dynamic programming.</p>
+<p>Bottom-up dynamic programming is usually implemented with for-loops iterating over an index-based cache. Sets can’t be indexed, but sequences can. So let’s slightly modify the formulation of the problem, using sequences and subsequences instead of sets and subsets.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: knapsack</div>
+<div class="line"><strong>Inputs</strong>: <em>items</em>, a sequence of pairs of integers; <em>capacity</em>, an integer</div>
+<div class="line"><strong>Preconditions</strong>: for each (<em>weight</em>, <em>value</em>) in <em>items</em>, <em>weight</em> &gt; 0 and <em>value</em> &gt; 0; <em>capacity</em> ≥ 0</div>
+<div class="line"><strong>Output</strong>: <em>packed</em>, a sequence of pairs of integers</div>
+<div class="line"><strong>Postconditions</strong>:</div>
+</div>
+<ul class="simple">
+<li><p><em>packed</em> is a subsequence of <em>items</em></p></li>
+<li><p>the sum of the weights in <em>packed</em> doesn’t exceed <em>capacity</em></p></li>
+<li><p>the sum of the values in <em>packed</em> is largest among all sequences satisfying the previous two conditions</p></li>
+</ul>
+<p>Here are the necessary constants and functions and some tests.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_tests</span><span class="p">,</span> <span class="n">test</span>
+
+<span class="n">WEIGHT</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VALUE</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">weight</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the total weight of the items.&quot;&quot;&quot;</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="n">WEIGHT</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the total value of the items.&quot;&quot;&quot;</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+
+<span class="n">ITEMS</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">)]</span>
+<span class="n">knapsack_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,         items,  capacity,   knapsack</span>
+    <span class="p">(</span><span class="s1">&#39;none fits&#39;</span><span class="p">,</span>   <span class="n">ITEMS</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>          <span class="p">[]),</span>
+    <span class="p">(</span><span class="s1">&#39;all fit&#39;</span><span class="p">,</span>     <span class="n">ITEMS</span><span class="p">,</span>  <span class="mi">16</span><span class="p">,</span>         <span class="n">ITEMS</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;one is best&#39;</span><span class="p">,</span> <span class="n">ITEMS</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>          <span class="p">[(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">)])</span>
+<span class="p">]</span>
+
+<span class="n">check_tests</span><span class="p">(</span><span class="n">knapsack_tests</span><span class="p">,</span> <span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">list</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+OK: the test table passed the automatic checks.
+</pre></div></div>
+</div>
+<section id="Recursive">
+<h2><span class="section-number">23.3.1. </span>Recursive<a class="headerlink" href="#Recursive" title="Link to this heading"></a></h2>
+<p>We must first recursively define the function we want to compute, namely knapsack(<em>items</em>, <em>capacity</em>).</p>
+<p>As usual, we start with the bases cases. The two smallest possible inputs correspond to no items and no capacity. In both cases nothing can be put in the knapsack: the output is the empty sequence.</p>
+<ul class="simple">
+<li><p>if <em>items</em> = (): knapsack(<em>items</em>, <em>capacity</em>) = ()</p></li>
+<li><p>if <em>capacity</em> = 0: knapsack(<em>items</em>, <em>capacity</em>) = ()</p></li>
+</ul>
+<p>If <em>items</em> isn’t the empty sequence, we can separate it into a head (the next item to consider) and a tail (the other items). Like for the backtracking solution, there are only two cases: either the head item fits in the knapsack or it doesn’t. If the latter, i.e. the item weighs more than the remaining capacity, it must be skipped.</p>
+<ul class="simple">
+<li><p>if weight(head(<em>items</em>)) &gt; <em>capacity</em>: knapsack(<em>items</em>, <em>capacity</em>) = knapsack(tail(<em>items</em>), <em>capacity</em>)</p></li>
+</ul>
+<p>If the item fits, we don’t know whether we should put it in the knapsack or not, so we try both options and choose the one that leads to the most valuable knapsack. To make the final recurrence relation less verbose and easier to read, I use <em>item</em> as an abbreviation of head(<em>items</em>).</p>
+<ul class="simple">
+<li><p>otherwise: knapsack(<em>items</em>, <em>capacity</em>) = most valuable of</p>
+<ul>
+<li><p>knapsack(tail(<em>items</em>), <em>capacity</em>) and</p></li>
+<li><p>(<em>item</em>) + knapsack(tail(<em>items</em>), <em>capacity</em> − weight(<em>item</em>))</p></li>
+</ul>
+</li>
+</ul>
+<p>The + operator is again the concatenation operator. If the item is put in the knapsack, the remaining capacity is decreased. Here’s my implementation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">knapsack</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a highest-value subsequence of items that weigh at most capacity.</span>
+
+<span class="sd">    Preconditions:</span>
+<span class="sd">    - items is a list of weight-value pairs, both positive integers</span>
+<span class="sd">    - capacity ≥ 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">capacity</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># head</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># tail</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="n">knapsack</span><span class="p">(</span><span class="n">rest</span><span class="p">,</span> <span class="n">capacity</span><span class="p">)</span>
+        <span class="c1"># if item doesn&#39;t fit, we must skip it</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="n">WEIGHT</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">capacity</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">skip</span>
+        <span class="c1"># otherwise take it if that leads to a higher value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">take</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">+</span> <span class="n">knapsack</span><span class="p">(</span><span class="n">rest</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">-</span> <span class="n">item</span><span class="p">[</span><span class="n">WEIGHT</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">value</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">value</span><span class="p">(</span><span class="n">take</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">skip</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">take</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">knapsack</span><span class="p">,</span> <span class="n">knapsack_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing knapsack...
+Tests finished: 3 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>The next step, in preparation for dynamic programming, is to use indices.</p>
+<section id="Exercise-23.3.1">
+<h3>Exercise 23.3.1<a class="headerlink" href="#Exercise-23.3.1" title="Link to this heading"></a></h3>
+<p>Copy the code above into the auxiliary function below and modify it so that it uses the <code class="docutils literal notranslate"><span class="pre">index</span></code> argument instead of repeatedly slicing the <code class="docutils literal notranslate"><span class="pre">items</span></code> list. Add the call to the auxiliary function.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">knapsack_indices</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="c1"># docstring not repeated</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">knapsack</span><span class="p">(</span><span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a subsequence of items[index:].</span>
+
+<span class="sd">        Preconditions: 0 ≤ index ≤ len(items) and 0 ≤ capacity</span>
+<span class="sd">        Postconditions: the output fits the capacity and maximises the value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">pass</span>  <span class="c1"># call the auxiliary function and return the solution</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">knapsack_indices</span><span class="p">,</span> <span class="n">knapsack_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_23_3_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_23_3_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Common-subproblems">
+<h2><span class="section-number">23.3.2. </span>Common subproblems<a class="headerlink" href="#Common-subproblems" title="Link to this heading"></a></h2>
+<p>Like for the Fibonacci and LCS problems, the next step is to think whether there are common subproblems that would benefit from caching the solutions.</p>
+<p>Is it possible for the recursive function <code class="docutils literal notranslate"><span class="pre">knapsack(items,</span> <span class="pre">capacity)</span></code> or <code class="docutils literal notranslate"><span class="pre">knapsack(index,</span> <span class="pre">capacity)</span></code> to be called several times with the exact same input values? (Hint: consider the list of items <code class="docutils literal notranslate"><span class="pre">[(1,</span> <span class="pre">3),</span> <span class="pre">(1,</span> <span class="pre">4),</span> <span class="pre">(3,</span> <span class="pre">4),</span> <span class="pre">(4,</span> <span class="pre">20)]</span></code>.)</p>
+<hr class="docutils" />
+<p>In the LCS problem, skipping first the left head and then the right head or vice versa leads to the same subproblem. Here we can have the same issue. If two items have the same weight, like the two items with weight 1 in the hint, then whether we skip the first and take the second or take the first and skip the second, we will arrive at the same subproblem, with the same remaining items and capacity. For the example in the hint, the recursive algorithm twice solves the subproblem
+<code class="docutils literal notranslate"><span class="pre">knapsack([(3,</span> <span class="pre">4),</span> <span class="pre">(4,</span> <span class="pre">20)],</span> <span class="pre">capacity</span> <span class="pre">-</span> <span class="pre">1)</span></code>, or <code class="docutils literal notranslate"><span class="pre">knapsack(2,</span> <span class="pre">capacity</span> <span class="pre">-</span> <span class="pre">1)</span></code> in the version with indices. This means that any further subproblem will also be solved at least twice. Twice the item with weight 3 will be taken to solve <code class="docutils literal notranslate"><span class="pre">knapsack([(4,</span> <span class="pre">20)],</span> <span class="pre">capacity</span> <span class="pre">-</span> <span class="pre">4)</span></code> and twice that item will be skipped to solve <code class="docutils literal notranslate"><span class="pre">knapsack([(4,</span> <span class="pre">20)],</span> <span class="pre">capacity</span> <span class="pre">-</span> <span class="pre">1)</span></code>, and so on. If we draw the DAG we can easily see how many paths lead to each subproblem.</p>
+<section id="Exercise-23.3.2">
+<h3>Exercise 23.3.2<a class="headerlink" href="#Exercise-23.3.2" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Draw the DAG of the subproblems of knapsack([(1, 3), (1, 4), (3, 4), (4, 20)], 4).</p></li>
+</ol>
+<p>To make the DAG less tedious to write, I suggest you omit ‘knapsack’ and just write a list–capacity pair or, even shorter, an index–capacity pair. Here are three of the DAG’s nodes:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Subproblem</p></th>
+<th class="head"><p>Shorthand</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>([(1, 3), (1, 4), (3, 4), (4, 20)], 4)</p></td>
+<td><p>(0, 4)</p></td>
+<td><p>no item processed, capacity is 4</p></td>
+</tr>
+<tr class="row-odd"><td><p>([(1, 4), (3, 4), (4, 20)], 4)</p></td>
+<td><p>(1, 4)</p></td>
+<td><p>first item skipped, capacity still 4</p></td>
+</tr>
+<tr class="row-even"><td><p>([(1, 4), (3, 4), (4, 20)], 3)</p></td>
+<td><p>(1, 3)</p></td>
+<td><p>first item added, reducing capacity by 1</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="2">
+<li><p>After drawing the DAG, find which subproblems are solved more than once.</p></li>
+</ol>
+<p><a class="reference internal" href="../31_Hints/Hints_23_3_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_23_3_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Top-down-and-bottom-up">
+<h2><span class="section-number">23.3.3. </span>Top-down and bottom-up<a class="headerlink" href="#Top-down-and-bottom-up" title="Link to this heading"></a></h2>
+<p>The next step is to think about the cache, which is the same for the top-down and bottom-up approaches. As always, the cache stores the solution of each problem instance. For this problem, the cache stores lists of items, namely the most valuable knapsack for each problem instance, which is a pair of integers: the current index and the remaining capacity.</p>
+<p>What’s the best way to implement the cache? With a hash table (Python dictionary), an array or a matrix? If it’s a hash table, what are the keys? If it’s an array or matrix, what do the indices represent and how many are there, i.e. what is the size of the array or matrix?</p>
+<hr class="docutils" />
+<p>Like the LCS problem, this one has two inputs that are natural numbers and can be used as indices to look up the solution in a matrix: <code class="docutils literal notranslate"><span class="pre">cache[i][c]</span></code> is the solution for instance knapsack(<em>i</em>, <em>c</em>), i.e. it’s the most valuable subsequence of <code class="docutils literal notranslate"><span class="pre">items[i:]</span></code> that doesn’t exceed weight <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p>
+<p>The row index goes from 0 to │<em>items</em>│ and is the index of the current item. The column index goes from 0 to <em>capacity</em> and indicates the remaining capacity.</p>
+<p>I could instead use columns for item indices and rows for capacities, but I find <code class="docutils literal notranslate"><span class="pre">cache[i][c]</span></code> more intuitive than <code class="docutils literal notranslate"><span class="pre">cache[c][i]</span></code> because in the former the matrix indices follow the same order as the problem inputs.</p>
+<section id="Exercise-23.3.3">
+<h3>Exercise 23.3.3<a class="headerlink" href="#Exercise-23.3.3" title="Link to this heading"></a></h3>
+<p>Copy your code for Exercise 23.3.1 and modify it so that it creates and uses a cache in a top-down fashion.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">knapsack_topdown</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">knapsack</span><span class="p">(</span><span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a subsequence of items[index:].</span>
+
+<span class="sd">        Preconditions: 0 ≤ index ≤ len(items) and 0 ≤ capacity</span>
+<span class="sd">        Postconditions: the output fits the capacity and maximises the value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">pass</span>  <span class="c1"># create an empty cache and call the auxiliary function</span>
+</pre></div>
+</div>
+</div>
+<p>If you add a print statement to trace how the cache is filled, run</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knapsack_topdown</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">)],</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>and check the caching follows a topological sort of the DAG for <a class="reference internal" href="../32_Answers/Answers_23_3_02.html"><span class="doc">Exercise 23.3.2</span></a>.</p>
+<p>Afterwards, uncomment your print statement before running all tests.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">(</span><span class="n">knapsack_topdown</span><span class="p">,</span> <span class="n">knapsack_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_23_3_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_23_3_03.html"><span class="doc">Answer</span></a></p>
+<p>The next step is to think in which order to fill the cache for the bottom-up approach. Here again are the recurrence relations, with the parts that don’t relate to subproblem dependencies omitted:</p>
+<ul class="simple">
+<li><p>if …: knapsack(<em>items</em>, <em>capacity</em>) = knapsack(tail(<em>items</em>), <em>capacity</em>)</p></li>
+<li><p>otherwise: knapsack(<em>items</em>, <em>capacity</em>) = … of</p>
+<ul>
+<li><p>knapsack(tail(<em>items</em>), <em>capacity</em>) and</p></li>
+<li><p>… + knapsack(tail(<em>items</em>), <em>capacity</em> − weight(<em>item</em>))</p></li>
+</ul>
+</li>
+</ul>
+<p>If we convert the above to matrix cells, which cells does <code class="docutils literal notranslate"><span class="pre">cache[i][c]</span></code> possibly depend on? (Hint: reformulate the recurrence relations using indices.)</p>
+<hr class="docutils" />
+<p>The recurrence relations (and the code) tell us that knapsack(<em>i</em>, <em>c</em>) depends on knapsack(<em>i</em> + 1, <em>c</em>) and knapsack(<em>i</em> + 1, <em>c</em> − <em>w</em>), where <em>w</em> is the weight of <em>items</em>[<em>i</em>]. This means that each matrix cell depends on cells in the next row and in columns to the left (lower-capacity value).</p>
+<p>Therefore, in which order should the rows of the matrix be filled? And in which order should the columns be filled?</p>
+<hr class="docutils" />
+<p>The rows must be filled from last to first. As for the columns, they must be filled first to last.</p>
+</section>
+<section id="Exercise-23.3.4">
+<h3>Exercise 23.3.4<a class="headerlink" href="#Exercise-23.3.4" title="Link to this heading"></a></h3>
+<p>Copy your top-down dynamic programming approach to the next cell and modify it so that it fills the cache iteratively.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">knapsack_bottomup</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="c1"># create the cache</span>
+    <span class="c1"># for each row from last to first:</span>
+        <span class="c1"># for each column:</span>
+            <span class="c1"># compute cache[row][column]</span>
+    <span class="k">pass</span> <span class="c1"># return the cell with the solution for items and capacity</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">knapsack_bottomup</span><span class="p">,</span> <span class="n">knapsack_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_23_3_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_23_3_04.html"><span class="doc">Answer</span></a></p>
+<p>If you haven’t attempted the exercises, I suggest you copy my solutions to this notebook, so that they are next to each other. That way you will see that the recursive, top-down and bottom-up algorithms are mostly the same, and that each one can be systematically derived from the previous one.</p>
+</section>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">23.3.4. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>As always, the worst-case top-down and bottom-up complexities are the same: the matrix size multiplied by the worst-case complexity of filling each cell.</p>
+<p>What’s the size of the matrix, in terms of │<em>items</em>│ and <em>capacity</em>? What’s the worst-case complexity of filling each cell? (Hint: the reasoning is similar to the LCS problem.)</p>
+<hr class="docutils" />
+<p>The matrix has (│<em>items</em>│ + 1) × (<em>capacity</em> + 1) cells. In the worst case, a cell requires</p>
+<ul class="simple">
+<li><p>concatenating the head item with the best knapsack for the tail and remaining capacity</p></li>
+<li><p>comparing the values of two knapsacks (with and without the item).</p></li>
+</ul>
+<p>A knapsack can never have more items than the input list, so the worst-case complexity for computing the value of a cell is Θ(│<em>items</em>│). The overall worst-case complexity is (│<em>items</em>│ + 1) × (<em>capacity</em> + 1) × Θ(│<em>items</em>│) = Θ(│<em>items</em>│² × <em>capacity</em>).</p>
+<p>This is usually much better than the exponential complexity for generating and testing all subsequences of <em>items</em>. However, as the capacity approaches 2ⁿ, with <em>n</em> = │<em>items</em>│, the dynamic approach may not be much faster. For example, if we have ten items to put in a container with 1000 kg capacity, then the cache has over ten thousand cells. Filling them all in the bottom-up approach may take longer than generating the <span class="math notranslate nohighlight">\(2^{10} = 1024\)</span> subsets of ten items.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="23_2_lcs.html" class="btn btn-neutral float-left" title="23.2. Longest common subsequence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="23_4_summary.html" class="btn btn-neutral float-right" title="23.4. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

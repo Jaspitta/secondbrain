@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>28.1. Problem classes</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="28.2. Turing machines" href="28_2_Turing_machines.html" />
+    <link rel="prev" title="28. TMA 03 part 2" href="28-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="28-introduction.html">28. TMA 03 part 2</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">28.1. Problem classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Computable">28.1.1. Computable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Tractable">28.1.2. Tractable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Intractable">28.1.3. Intractable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NP-hard">28.1.4. NP-hard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NP">28.1.5. NP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#NP-complete">28.1.6. NP-complete</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="28_2_Turing_machines.html">28.2. Turing machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="28_3_python.html">28.3. Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="28_4_the_end.html">28.4. Final words</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="28-introduction.html"><span class="section-number">28. </span>TMA 03 part 2</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">28.1. </span>Problem classes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Problem-classes">
+<h1><span class="section-number">28.1. </span>Problem classes<a class="headerlink" href="#Problem-classes" title="Link to this heading"></a></h1>
+<p>This section summarises how you can prove that a problem <em>Given</em> is in a particular class. Some proofs are based on the following facts:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>If …</p></th>
+<th class="head"><p>Then <em>Given</em> is …</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>Given</em> reduces to a computable problem</p></td>
+<td><p>computable</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Given</em> reduces in polynomial time to a tractable problem</p></td>
+<td><p>tractable</p></td>
+</tr>
+<tr class="row-even"><td><p>an NP-hard problem reduces in polynomial time to <em>Given</em></p></td>
+<td><p>NP-hard</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that to determine whether <em>Given</em> is computable, we don’t care about the complexity of the reduction. A problem is (or isn’t) computable if there is (or isn’t) <em>some</em> algorithm that solves it: the algorithm’s complexity is irrelevant.</p>
+<p>Note also that the reduction goes in one direction when showing that a problem is computable or tractable, and goes in the opposite direction when showing that the problem is NP-hard.</p>
+<section id="Computable">
+<h2><span class="section-number">28.1.1. </span>Computable<a class="headerlink" href="#Computable" title="Link to this heading"></a></h2>
+<p>There are two ways of proving that <em>Given</em> is computable. The direct way is:</p>
+<ul class="simple">
+<li><p>Provide an algorithm that solves <em>Given</em>.</p></li>
+</ul>
+<p>What ‘provide’ means depends on what you’re asked for: it may be just an outline or a Python implementation or a Turing machine. Do <em>not</em> analyse the complexity of your algorithm (unless you’re asked to, of course) because its efficiency is irrelevant. Go for the simplest algorithm you can think of, e.g. a brute-force search.</p>
+<p>The second, indirect, way uses reduction as an algorithmic technique to provide an algorithm for <em>Given</em> (first row of the above table):</p>
+<ol class="arabic simple">
+<li><p>Select a problem <em>Chosen</em>: usually it’s a more general problem than <em>Given</em>.</p></li>
+<li><p>Explain why <em>Chosen</em> is computable: either provide an algorithm for <em>Chosen</em> or point to such an algorithm in this book, by referring to a section or exercise.</p></li>
+<li><p>Show that <em>Given</em> reduces to <em>Chosen</em> by providing the input/output transformations.</p></li>
+</ol>
+<p>Since the efficiency of the algorithm for <em>Given</em> is irrelevant, the input/output transformations do <em>not</em> have to be polynomial.</p>
+<p>The second way of proving computability may be simpler than the first way, if the given problem <em>Given</em> is similar to or a special case of a problem solved in this book, and the transformations are simple.</p>
+<p>Unless asked otherwise, you can choose either way of proving computability and you don’t need to write algorithms in detail: outlines will do.</p>
+</section>
+<section id="Tractable">
+<h2><span class="section-number">28.1.2. </span>Tractable<a class="headerlink" href="#Tractable" title="Link to this heading"></a></h2>
+<p>To prove that <em>Given</em> is tractable, you must prove that it’s computable by an algorithm with worst-case polynomial complexity. So it’s a computability proof with an additional complexity analysis step. The direct way is:</p>
+<ol class="arabic simple">
+<li><p>Provide an algorithm that solves <em>Given</em>.</p></li>
+<li><p>Analyse the worst-case complexity of the algorithm to confirm it’s polynomial.</p></li>
+</ol>
+<p>The confirmation can be as simple as stating, for example, ‘The worst-case complexity is quadratic and therefore polynomial.’</p>
+<p>The second, indirect, way follows the second row in the above table:</p>
+<ol class="arabic simple">
+<li><p>Select a problem <em>Chosen</em>: usually it’s a more general problem than <em>Given</em>.</p></li>
+<li><p>Explain why <em>Chosen</em> is tractable: either provide a polynomial algorithm for <em>Chosen</em> or refer to the section or exercise in this book that has such an algorithm.</p></li>
+<li><p>Show that <em>Given</em> reduces to <em>Chosen</em> by providing the input/output transformations.</p></li>
+<li><p>Analyse the worst-case complexities of the transformations, confirming they are polynomial.</p></li>
+</ol>
+</section>
+<section id="Intractable">
+<h2><span class="section-number">28.1.3. </span>Intractable<a class="headerlink" href="#Intractable" title="Link to this heading"></a></h2>
+<p>To prove that <em>Given</em> isn’t tractable:</p>
+<ul class="simple">
+<li><p>Show that the size of the output is non-polynomial in the size of the input.</p></li>
+</ul>
+<p>Typically, intractable problems ask for all (or most of the) subsets or permutations of the input. Even if each subset or permutation could be produced in constant time, producing the whole output would take exponential or factorial time in the worst case.</p>
+</section>
+<section id="NP-hard">
+<h2><span class="section-number">28.1.4. </span>NP-hard<a class="headerlink" href="#NP-hard" title="Link to this heading"></a></h2>
+<p>To prove that <em>Given</em> is NP-hard, use the third row of the table:</p>
+<ol class="arabic simple">
+<li><p>Choose an NP-hard problem <em>Chosen</em> from <a class="reference internal" href="../26_Complexity_classes/26_6_summary.html#Problems"><span class="std std-ref">Section 26.6.3</span></a>.</p></li>
+<li><p>Show that <em>Chosen</em> reduces to <em>Given</em> by providing the input/output transformations.</p></li>
+<li><p>Analyse the worst-case complexities of the transformations, confirming they are polynomial.</p></li>
+</ol>
+<p>Steps 1 and 2 are the creative part of the proof: there’s no recipe for them. However, here are some general suggestions that might (or might not) work for the problem you’re given.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>If problem <em>Given</em> is about …</p></th>
+<th class="head"><p>Then problem <em>Chosen</em> might be …</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>putting items in some order</p></td>
+<td><p>(decision) TSP or longest path</p></td>
+</tr>
+<tr class="row-odd"><td><p>numeric values</p></td>
+<td><p>subset sum or 0/1 knapsack</p></td>
+</tr>
+<tr class="row-even"><td><p>selecting items that are in a binary relation</p></td>
+<td><p>maximal independent set</p></td>
+</tr>
+<tr class="row-odd"><td><p>satisfying constraints</p></td>
+<td><p>SAT</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="NP">
+<h2><span class="section-number">28.1.5. </span>NP<a class="headerlink" href="#NP" title="Link to this heading"></a></h2>
+<p>To prove that <em>Given</em> (which must be a decision problem) is in NP:</p>
+<ol class="arabic simple">
+<li><p>Define a certificate for each input that leads to a ‘yes’ decision.</p></li>
+<li><p>Provide the verifier’s algorithm, explaining why it does confirm ‘yes’ decisions.</p></li>
+<li><p>Analyse the verifier’s worst-case complexity, confirming it is polynomial.</p></li>
+</ol>
+<p>In step 1, you must think of what piece of information would convince you that the input to problem <em>Given</em> leads to a true output. Try to rephrase the decision problem as a search problem: ‘Is there an X that satisfies condition C?’ or similar. If the answer is ‘yes’, then there is such an X, and that’s the certificate.</p>
+<p>For example, the SAT problem asks ‘Is there an interpretation that makes the input expression true?’ and so the certificate is one such interpretation. Another example: the decision TSP asks ‘Is there a tour of the input graph with total weight <em>w</em> or less?’ and so the certificate is one such tour.</p>
+<p>In step 2, you must provide an algorithm that checks the certificate against the input to confirm the decision is ‘yes’. To know what the verifier must do, it often helps to look at the postconditions of <em>Given</em>.</p>
+<p>For example, the postcondition of SAT is: the output is true if and only if there’s an interpretation that makes the Boolean expression true. The interpretation is the certificate and the verifier checks it indeed makes the input expression true. As for the decision TSP, its postcondition is: the output is true if and only if there’s a tour of the input graph with total weight equal to or less than the input integer. Hence, the certificate is a tour and the verifier checks its weight is indeed
+not larger than the given integer.</p>
+</section>
+<section id="NP-complete">
+<h2><span class="section-number">28.1.6. </span>NP-complete<a class="headerlink" href="#NP-complete" title="Link to this heading"></a></h2>
+<p>To prove that <em>Given</em> is NP-complete, just follow the definition of NP-completeness:</p>
+<ol class="arabic simple">
+<li><p>Prove that <em>Given</em> is in NP.</p></li>
+<li><p>Prove that <em>Given</em> is NP-hard.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="28-introduction.html" class="btn btn-neutral float-left" title="28. TMA 03 part 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="28_2_Turing_machines.html" class="btn btn-neutral float-right" title="28.2. Turing machines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

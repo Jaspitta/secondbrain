@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>23.1. Fibonacci</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="23.2. Longest common subsequence" href="23_2_lcs.html" />
+    <link rel="prev" title="23. Dynamic Programming" href="23-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="23-introduction.html">23. Dynamic Programming</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">23.1. Fibonacci</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Recursive">23.1.1. Recursive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Top-down">23.1.2. Top-down</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Bottom-up">23.1.3. Bottom-up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#With-arrays">23.1.4. With arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#A-graph-perspective">23.1.5. A graph perspective</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="23_2_lcs.html">23.2. Longest common subsequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23_3_knapsack.html">23.3. Knapsack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23_4_summary.html">23.4. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="23-introduction.html"><span class="section-number">23. </span>Dynamic Programming</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">23.1. </span>Fibonacci</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Fibonacci">
+<h1><span class="section-number">23.1. </span>Fibonacci<a class="headerlink" href="#Fibonacci" title="Link to this heading"></a></h1>
+<p>The infinite integer sequence 1, 1, 2, 3, 5, 8, 13, 21, … is known as the Fibonacci sequence. The first two numbers are 1 and thereafter each number is the sum of the previous two. (You can search online for the history and relevance of this sequence, if you’re interested.)</p>
+<p>This section uses the problem of computing the <em>n</em>-th Fibonacci number, for <em>n</em> ≥ 1, to explain the need for dynamic programming and how it works. We’ll use these tests:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_tests</span><span class="p">,</span> <span class="n">test</span>
+
+<span class="n">fibonacci_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,     n,  n-th Fibonacci number</span>
+    <span class="p">(</span><span class="s1">&#39;n = 1&#39;</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;n = 2&#39;</span><span class="p">,</span>   <span class="mi">2</span><span class="p">,</span>  <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;n = 6&#39;</span><span class="p">,</span>   <span class="mi">6</span><span class="p">,</span>  <span class="mi">8</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;n = 10&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">55</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">check_tests</span><span class="p">(</span><span class="n">fibonacci_tests</span><span class="p">,</span> <span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+OK: the test table passed the automatic checks.
+</pre></div></div>
+</div>
+<section id="Recursive">
+<h2><span class="section-number">23.1.1. </span>Recursive<a class="headerlink" href="#Recursive" title="Link to this heading"></a></h2>
+<p>To develop a dynamic programming algorithm we must start with a recursive definition of the problem at hand, which is:</p>
+<div class="line-block">
+<div class="line">fibonacci(1) = 1</div>
+<div class="line">fibonacci(2) = 1</div>
+<div class="line">fibonacci(<em>n</em>) = fibonacci(<em>n</em>−1) + fibonacci(<em>n</em>−2) for <em>n</em> &gt; 2</div>
+</div>
+<p>The recursive algorithm follows the definition directly.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fibonacci_rec</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the n-th Fibonacci number, computed recursively.</span>
+
+<span class="sd">    Preconditions: n &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibonacci_rec</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci_rec</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">fibonacci_rec</span><span class="p">,</span> <span class="n">fibonacci_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing fibonacci_rec...
+Tests finished: 4 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>Unfortunately this algorithm quickly gets very slow.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">):</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 3 fibonacci_rec(n)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+480 μs ± 142 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+776 μs ± 108 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+1.26 ms ± 646 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+2.03 ms ± 1.17 μs per loop (mean ± std. dev. of 3 runs, 100 loops each)
+3.29 ms ± 1.65 μs per loop (mean ± std. dev. of 3 runs, 100 loops each)
+</pre></div></div>
+</div>
+<p>Computing the twentieth Fibonacci number should only require a few additions, done in nanoseconds, and yet it’s taking hundreds of microseconds! The run-time is almost doubling every time <em>n</em> increases. This indicates exponential complexity in the value of <em>n</em>.</p>
+<p>We can confirm this with a <a class="reference internal" href="../13_Divide/13_1_decrease_one.html#Factorial"><span class="std std-ref">recursive definition of the run-time</span></a>. Computing the first two Fibonacci numbers takes constant time. Every other value takes the time to compute the previous two values and some further constant time for adding them together.</p>
+<div class="line-block">
+<div class="line">T(1) = Θ(1)</div>
+<div class="line">T(2) = Θ(1)</div>
+<div class="line">T(<em>n</em>) = T(<em>n</em>−1) + T(<em>n</em>−2) + Θ(1) for <em>n</em> &gt; 2</div>
+</div>
+<p>Computing fibonacci(<em>n</em>–1) involves computing fibonacci(<em>n</em>–2), so the former takes longer to compute than the latter: T(<em>n</em>–1) &gt; T(<em>n</em>–2). This means that T(<em>n</em>) &gt; 2×T(<em>n</em>–2): the run-time for <em>n</em> is more than double that for <em>n</em>−2, as the above run-times confirm: the 24th number takes more than double the time to compute the 22nd, which in turn takes more than double the time for the 20th. If a fixed increment of the input (here, by two) more than doubles the run-time, this means the
+complexity is exponential.</p>
+<p>The exponential run-time is due to the overlapping subproblems. (A subproblem is a smaller instance of the same problem.) A diagram shows this best. Here are the recursive calls for <em>n</em> = 6, abbreviating the function name to ‘fib’ to avoid cluttering the diagram.</p>
+<p id="fig-23.1.1"></p><p><a class="reference internal" href="../33_Figures/Figures_23_1.html#Figure-23.1.1"><span class="std std-ref">Figure 23.1.1</span></a></p>
+<img alt="Image 23_1_recursive.png" src="../_images/23_1_recursive.png" />
+<p>The nodes for <em>n</em> = 3 and <em>n</em> = 4 have a common child: <em>n</em> = 2. Hence the two problem instances overlap: they require solving a common smaller instance. More generally, problem instances <em>n</em> and <em>n</em>–1 overlap because they have common subproblem <em>n</em>–2. The diagram shows that the algorithm is repeatedly solving the common subproblems. For example, the base case <em>n</em> = 2 is computed five times!</p>
+</section>
+<section id="Top-down">
+<h2><span class="section-number">23.1.2. </span>Top-down<a class="headerlink" href="#Top-down" title="Link to this heading"></a></h2>
+<p>A simple way to reduce the run-time is to store the result for each subproblem in a <strong>cache</strong>. When the solution of a subproblem is computed, it’s put in the cache so that subsequent calls for the same subproblem simply look up the solution instead of recomputing it.</p>
+<p>The cache is a data structure that maps subproblems to solutions and so any implementation of the <a class="reference internal" href="../08_Unordered/08_1_map.html#Maps"><span class="std std-ref">map ADT</span></a> will do, e.g. a hash table where the keys are the subproblems and the values are the corresponding solutions. Once a subproblem–solution pair is added to the cache, it’s never removed or modified. So the cache only has to support two ADT operations: membership (is a subproblem already in the cache?) and lookup (what’s the solution for this
+subproblem?).</p>
+<p>Adding a cache to the recursive algorithm can be done in a systematic way. Here’s the recursive function again, without repeating the docstring:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now the version with a cache. First we check if the subproblem is in the cache. If it isn’t, we follow the recursive algorithm and store the computed solution in the cache. Finally we return the cached solution, which was already there or has just been computed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This function has a second parameter, so we can’t reuse the tests written above. Moreover, it allows the caller to initially pass any dictionary, which could lead to wrong results.</p>
+<p>A better version hides the cache from the user: the main function creates an empty cache and an inner recursive function uses it. (Remember that inner functions can access the variables of outer functions.)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fibonacci_td</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute and cache the value if necessary. Return the cached value.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="n">cache</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">fibonacci_td</span><span class="p">,</span> <span class="n">fibonacci_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing fibonacci_td...
+Tests finished: 4 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>In the expression <code class="docutils literal notranslate"><span class="pre">fib(n-1)</span> <span class="pre">+</span> <span class="pre">fib(n-2)</span></code>, the call <code class="docutils literal notranslate"><span class="pre">fib(n-2)</span></code> takes constant time because it just retrieves the value from the cache: the call <code class="docutils literal notranslate"><span class="pre">fib(n-1)</span></code> already computed <code class="docutils literal notranslate"><span class="pre">fib(n-2)</span></code>. So the second call to <code class="docutils literal notranslate"><span class="pre">fib(n-2)</span></code> makes no further recursive calls. The call tree of the inner function for <em>n</em> = 6 becomes:</p>
+<p id="fig-23.1.2"></p><p><a class="reference internal" href="../33_Figures/Figures_23_1.html#Figure-23.1.2"><span class="std std-ref">Figure 23.1.2</span></a></p>
+<img alt="Image 23_1_top_down.png" src="../_images/23_1_top_down.png" />
+<p>The recursive complexity definition becomes</p>
+<div class="line-block">
+<div class="line">T(0) = Θ(1)</div>
+<div class="line">T(1) = Θ(1)</div>
+<div class="line">T(<em>n</em>) = T(<em>n</em>−1) + Θ(1)</div>
+</div>
+<p>As explained in <a class="reference internal" href="../13_Divide/13_1_decrease_one.html#Factorial"><span class="std std-ref">Section 13.1.1</span></a>, this results in T(<em>n</em>) = Θ(<em>n</em>). Caching the subproblems’ solutions lowered the complexity from exponential to linear! Doubling the value of <em>n</em> confirms that the run-times more or less double too.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">):</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 3 fibonacci_td(n)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+979 ns ± 0.04 ns per loop (mean ± std. dev. of 3 runs, 1,000,000 loops each)
+1.97 μs ± 2.63 ns per loop (mean ± std. dev. of 3 runs, 1,000,000 loops each)
+3.95 μs ± 9.36 ns per loop (mean ± std. dev. of 3 runs, 100,000 loops each)
+7.97 μs ± 6.49 ns per loop (mean ± std. dev. of 3 runs, 100,000 loops each)
+</pre></div></div>
+</div>
+<p>The technique of caching the solutions as they’re recursively computed is known as <strong>top-down dynamic programming</strong>. It starts with the given input (represented by the root node of the call tree) and then recursively solves smaller instances until it reaches a leaf of the call tree, which is either a base case or an already solved (i.e. cached) subproblem.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Top-down dynamic programming is also called recursion with memoisation (not memorisation).</p>
+</div>
+</section>
+<section id="Bottom-up">
+<h2><span class="section-number">23.1.3. </span>Bottom-up<a class="headerlink" href="#Bottom-up" title="Link to this heading"></a></h2>
+<p>Let’s look again at the full call tree in Figure 23.1.1: it shows for each problem node the two children subproblems it depends on. The leaves are the base cases (<em>n</em> = 1 and <em>n</em> = 2), which depend on nothing.</p>
+<p>We can solve the problem instances bottom-up: knowing the solutions for the base cases allows us to compute the solution for their parent (<em>n</em> = 3), which in turn allows us to compute the solution for its parent (<em>n</em> = 4) and so on until we reach the root.</p>
+<p>This can be done iteratively, by adding to the cache the solutions to <em>n</em> = 1, 2, 3, …, in this order. This ensures that when computing the <em>n</em>-th Fibonacci number, the two previous numbers are already in the cache.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fibonacci_bu</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="c1"># create cache with base cases fibonacci(1) = fibonacci(2) = 1</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">cache</span><span class="p">[</span><span class="n">number</span><span class="p">]</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="n">number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cache</span><span class="p">[</span><span class="n">number</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">fibonacci_bu</span><span class="p">,</span> <span class="n">fibonacci_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing fibonacci_bu...
+Tests finished: 4 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>The complexity is linear because the loop executes <em>n</em>−2 additions. Even though the complexity is the same as for top-down dynamic programming, this version runs faster, because there are no recursive calls and no checks for cached solutions (since they are computed in the order needed).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">):</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 3 fibonacci_bu(n)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+447 ns ± 0.196 ns per loop (mean ± std. dev. of 3 runs, 1,000,000 loops each)
+970 ns ± 0.919 ns per loop (mean ± std. dev. of 3 runs, 1,000,000 loops each)
+2.03 μs ± 5.34 ns per loop (mean ± std. dev. of 3 runs, 100,000 loops each)
+4.09 μs ± 5.03 ns per loop (mean ± std. dev. of 3 runs, 100,000 loops each)
+</pre></div></div>
+</div>
+<p>Iteratively filling the cache from the smaller to the larger problem instances, so that each one is solved using already cached solutions, is known as <strong>bottom-up dynamic programming</strong>.</p>
+</section>
+<section id="With-arrays">
+<h2><span class="section-number">23.1.4. </span>With arrays<a class="headerlink" href="#With-arrays" title="Link to this heading"></a></h2>
+<p>To calculate the <em>n</em>-th Fibonacci number, we must solve the problem instances 1, 2, 3, …, <em>n</em>. Since these are natural numbers, we can use them to index an array of solutions, instead of hashing them to retrieve solutions from a dictionary.</p>
+<p>The array must be initialised with impossible solutions, so that it’s easy to check whether a solution has been cached or not. Fibonacci numbers are always positive, so the cache can be initialised with zeros or with negative numbers. I choose zeros.</p>
+<p>I only have to change two lines of code to replace the dictionary in the top-down approach with a Python list, used as a static array.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fibonacci_tda</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># changed</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># changed</span>
+    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">fibonacci_tda</span><span class="p">,</span> <span class="n">fibonacci_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing fibonacci_tda...
+Tests finished: 4 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>And now the bottom-up approach. I only change the cache creation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fibonacci_bua</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">cache</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># first base case</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">cache</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># second base case</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">cache</span><span class="p">[</span><span class="n">number</span><span class="p">]</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="n">number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cache</span><span class="p">[</span><span class="n">number</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">fibonacci_bua</span><span class="p">,</span> <span class="n">fibonacci_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing fibonacci_bua...
+Tests finished: 4 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>Dynamic programming usually uses arrays, which require less memory than maps based on hash tables.</p>
+<p>Let’s compare the run-times of all approaches. I only double the input four times (instead of the default ten times) because the recursive version takes too long (exponential time).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">time_functions_int</span>
+
+<span class="n">time_functions_int</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">fibonacci_rec</span><span class="p">,</span> <span class="n">fibonacci_td</span><span class="p">,</span> <span class="n">fibonacci_tda</span><span class="p">,</span> <span class="n">fibonacci_bu</span><span class="p">,</span> <span class="n">fibonacci_bua</span><span class="p">],</span> <span class="n">double</span><span class="o">=</span><span class="mi">4</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Inputs generated by int_value
+
+Input value   fibonacci_rec    fibonacci_td   fibonacci_tda    fibonacci_bu   fibonacci_bua
+          1            46.3           259.5           278.4           141.8           167.8 ns
+          2            50.6           263.4           282.8           143.0           171.4 ns
+          4           179.1           509.9           480.7           239.0           244.0 ns
+          8          1483.4           993.8           880.5           467.8           395.2 ns
+         16         70093.6          1972.4          1640.2           976.1           708.5 ns
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/23_Dynamic_Programming_23_1_fibonacci_33_1.png" src="../_images/23_Dynamic_Programming_23_1_fibonacci_33_1.png" />
+</div>
+</div>
+<p>As expected, an array-based cache leads to shorter times than a dictionary-based cache. The recursive version doesn’t set up a cache and so it is initially the fastest, but the space-time tradeoff of the other versions quickly pays off, as the recursive version gets slower and slower.</p>
+</section>
+<section id="A-graph-perspective">
+<h2><span class="section-number">23.1.5. </span>A graph perspective<a class="headerlink" href="#A-graph-perspective" title="Link to this heading"></a></h2>
+<p>An alternative way of understanding dynamic programming is to look at the dependency graph of the problem instances. The nodes are the instances to be solved. If instance A must be solved before instance B, we draw an edge from A to B. The directed graph is acyclic because an instance can’t depend on itself: that would make it impossible to solve.</p>
+<p>Here’s the DAG (directed acyclic graph) for <em>n</em> = 6. It’s the recursive call tree with repeated nodes merged.</p>
+<p id="fig-23.1.3"></p><p><a class="reference internal" href="../33_Figures/Figures_23_1.html#Figure-23.1.3"><span class="std std-ref">Figure 23.1.3</span></a></p>
+<img alt="Image 23_1_dag.png" src="../_images/23_1_dag.png" />
+<p>The DAG shows that each instance (except the base cases) depends on two smaller ones: every node, except for the base cases, has two in-neighbours.</p>
+<p>Most nodes also have two out-neighbours, i.e. the solution of one instance is needed for two further instances. If there are edges from A to B and from A to C, this means instances B and C overlap because they have subproblem A in common. Hence we need dynamic programming, because recursion without a cache would repeatedly compute the common subproblems.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If the DAG of the problem instances and their dependencies shows that instances overlap, i.e. there are nodes with a common in-neighbour, then use dynamic programming.</p>
+</div>
+<p>Looking at the DAG, we can see that both recursive versions (with and without cache) follow the edges backwards: they start with the right-most node (the input instance, here <em>n</em> = 6) and for each node do the two recursive calls corresponding to its in-neighbours.</p>
+<p>Bottom-up dynamic programming instead starts with the left-most nodes (the base cases) and uses the subproblems solved so far to solve the next subproblem. It follows the dependency edges to solve increasingly larger subproblems until it reaches the input value (right-most node).</p>
+<p>Dynamic programming caches the solution for a problem instance after solving it. This means its subproblems have been solved, and thus cached, beforehand. In other words, a subproblem P is cached after all subproblems that P depends on were cached. This means the cache is filled in topological order.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Dynamic programming fills the cache (i.e. solves the subproblems) according to the topological sort of the instance dependency DAG.</p>
+</div>
+<p>The DAG is just a conceptual device to understand subproblem dependencies and in which order the subproblems are added to the cache. As you’ve seen in this section, dynamic programming algorithms fill the cache without creating a graph data structure and computing a topological sort.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="23-introduction.html" class="btn btn-neutral float-left" title="23. Dynamic Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="23_2_lcs.html" class="btn btn-neutral float-right" title="23.2. Longest common subsequence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16.6. Heapsort</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="16.7. Summary" href="16_7_summary.html" />
+    <link rel="prev" title="16.5. Balanced trees" href="16_5_balanced.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="16-introduction.html">16. Rooted trees</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="16_1_binary.html">16.1. Binary tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_2_algorithms.html">16.2. Algorithms on trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_3_traversals.html">16.3. Traversals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_4_bst.html">16.4. Binary search trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_5_balanced.html">16.5. Balanced trees</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">16.6. Heapsort</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Binary-heap">16.6.1. Binary heap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-16.6.1">Exercise 16.6.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Inserting-items">16.6.2. Inserting items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Removing-the-root">16.6.3. Removing the root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">16.6.4. Complexity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-16.6.2">Exercise 16.6.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-16.6.3">Exercise 16.6.3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Heaps-in-Python">16.6.5. Heaps in Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="16_7_summary.html">16.7. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="16-introduction.html"><span class="section-number">16. </span>Rooted trees</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">16.6. </span>Heapsort</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Heapsort">
+<h1><span class="section-number">16.6. </span>Heapsort<a class="headerlink" href="#Heapsort" title="Link to this heading"></a></h1>
+<p>Selection sort searches the unsorted part for the item with the smallest key, removes it and appends it to sorted part. We can see an item’s key as the priority of being chosen next and use a min-priority queue to retrieve the next item for the sorted part.</p>
+<ol class="arabic simple">
+<li><p>let <em>queue</em> be a min-priority queue</p></li>
+<li><p>for each <em>item</em> in <em>unsorted</em>:</p>
+<ol class="arabic simple">
+<li><p>enqueue <em>item</em> in <em>queue</em> with priority <em>key</em>(<em>item</em>)</p></li>
+</ol>
+</li>
+<li><p>let <em>sorted</em> be the empty sequence</p></li>
+<li><p>while <em>queue</em> isn’t empty:</p>
+<ol class="arabic simple">
+<li><p>append front of <em>queue</em> to <em>sorted</em></p></li>
+<li><p>dequeue <em>queue</em></p></li>
+</ol>
+</li>
+</ol>
+<p>This is a form of selection sort with pre-processing steps 1 and 2 to put the unsorted part in a min-priority queue, which thereby sorts it.</p>
+<p>If we implement the priority queue with a self-balancing BST, adding and removing an item in steps 2.1 and 4.2 takes logarithmic time. Selection sort on an array takes quadratic time to do <em>n</em> linear searches; with a BST-based min-priority queue, it takes log-linear time.</p>
+<p>Pigeonhole sort is also a form of selection sort with a data structure that allows getting the lowest key item in constant time.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> An algorithm’s complexity may be improved by using an auxiliary data structure.</p>
+</div>
+<p>Self-balancing BSTs have a memory overhead of two pointers per item and a run-time overhead to keep the tree balanced. There’s a more efficient data structure for priority queues.</p>
+<section id="Binary-heap">
+<h2><span class="section-number">16.6.1. </span>Binary heap<a class="headerlink" href="#Binary-heap" title="Link to this heading"></a></h2>
+<p>In a <strong>complete</strong> tree all levels are full except possibly the last one and there are no ‘gaps’ in the bottom-level leaves, i.e. they were added from left to right. A complete tree has minimal height and is balanced. The next figure shows two balanced binary trees. Only the left-hand tree is complete: the right-hand tree doesn’t have middle leaves in the deepest level.</p>
+<p id="fig-16.6.1"></p><p><a class="reference internal" href="../33_Figures/Figures_16_6.html#Figure-16.6.1"><span class="std std-ref">Figure 16.6.1</span></a></p>
+<img alt="Image 16_6_complete.png" src="../_images/16_6_complete.png" />
+<p>A <strong>binary heap</strong> is a complete binary tree with an ordering property: in a <strong>min-heap</strong> each node’s key is less than or equal to its children’s keys, whereas in a <strong>max-heap</strong> it’s larger than or equal to. A min-heap has the smallest item in the root; a max-heap has the largest. In M269, heap means a binary heap, since we’re not using other kinds of heaps.</p>
+<p>The next figure shows a min-heap on the left, a max-heap on the right, whereas the middle tree is complete but not a heap: node 3 is smaller than one of its children but larger than the other.</p>
+<p id="fig-16.6.2"></p><p><a class="reference internal" href="../33_Figures/Figures_16_6.html#Figure-16.6.2"><span class="std std-ref">Figure 16.6.2</span></a></p>
+<img alt="Image 16_6_heap.png" src="../_images/16_6_heap.png" />
+<section id="Exercise-16.6.1">
+<h3>Exercise 16.6.1<a class="headerlink" href="#Exercise-16.6.1" title="Link to this heading"></a></h3>
+<p>Can an item be searched in logarithmic time in a binary heap?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_16_6_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_16_6_01.html"><span class="doc">Answer</span></a></p>
+<p>A complete binary tree can be efficiently stored in an array in level order. We put the root in index 0, its left child in index 1, its right child in index 2, and so on. This way, the node at index <em>i</em> has its children at indices <em>2×i</em> + 1 and 2×<em>i</em> + 2 and its parent at index floor((<em>i</em> – 1)/ 2). This is illustrated by the left-hand tree of the previous figure, where the keys are the same as the nodes’ indices. For example, node 1 has children 2×1 + 1 = 3 and 2×1 + 2 = 4, and nodes 1 and
+2 have parent floor((1–1) / 2) = floor ((2–1) / 2) = 0.</p>
+<p>This approach is much more efficient in terms of memory and run-time than a pointer-based implementation of a complete tree. The latter requires three pointers per node to also access a node’s parent, whereas the array-based implementation multiplies and divides indices by 2, which is very fast in binary arithmetic.</p>
+<p><strong>Heapsort</strong> is the above min-priority queue version of selection sort, using a min-heap as the data structure. Before I go into the details of the heap operations, you should see them and heapsort at work in this <a class="reference external" href="https://learn2.open.ac.uk/mod/oucontent/view.php?id=2554725&amp;extra=thumbnail_idm42">visualisation</a>. (Ignore the references to Miller and Ranum’s textbook.)</p>
+</section>
+</section>
+<section id="Inserting-items">
+<h2><span class="section-number">16.6.2. </span>Inserting items<a class="headerlink" href="#Inserting-items" title="Link to this heading"></a></h2>
+<p>To add an item to a min-heap, we first put it in the next available leaf position, i.e. we append it to the array. This guarantees the tree remains complete. However, the new item may be smaller than its parent. If that’s the case, we swap it with its parent to satisfy the heap’s ordering property. If the new item is still smaller than its new parent, we keep swapping it up the tree until it becomes the root or is the child of a smaller item.</p>
+<p>The algorithm keeps two variables with the current index of the new item and its current parent, and updates them as the item ‘bubbles’ up the tree.</p>
+<ol class="arabic simple">
+<li><p>append <em>item</em> to <em>heap</em></p></li>
+<li><p>let <em>index</em> be │<em>heap</em>│ − 1</p></li>
+<li><p>let <em>parent</em> be floor((<em>index</em> – 1) / 2)</p></li>
+<li><p>while <em>index</em> ≠ 0 and <em>key</em>(<em>item</em>) &lt; <em>key</em>(<em>heap</em>[<em>parent</em>]):</p>
+<ol class="arabic simple">
+<li><p>swap <em>heap</em>[<em>index</em>] with <em>heap</em>[<em>parent</em>]</p></li>
+<li><p>let <em>index</em> be <em>parent</em></p></li>
+<li><p>let <em>parent</em> be floor((<em>index</em> – 1) / 2)</p></li>
+</ol>
+</li>
+</ol>
+<p>The algorithm relies on short-circuit conjunction in step 4, so that the invalid parent index isn’t accessed when the item becomes the root.</p>
+</section>
+<section id="Removing-the-root">
+<h2><span class="section-number">16.6.3. </span>Removing the root<a class="headerlink" href="#Removing-the-root" title="Link to this heading"></a></h2>
+<p>The only item that can be removed from a min-heap is the root, which is the front of the priority queue. When the root is removed the last leaf node replaces it, so that the tree remains complete. However, this will break the ordering property: the old root was the smallest item but the new root is one of the largest items, because it was in the lowest level. To reinstate the ordering, we simply swap the new root with one of its children and keep swapping it down until it becomes a leaf again or
+is smaller than its children.</p>
+<p>Promoting one of the largest items to the root only to move it back down sounds daft, but the actual point is to move the appropriate smaller items up as the swaps are made.</p>
+<p>Does it matter which child the parent is swapped with? Let’s think with a concrete example, the min-heap of Figure 16.6.2. If we dequeue the root, it gets replaced by the last leaf with key 4. The middle of the next figure shows the new root and its children.</p>
+<p id="fig-16.6.3"></p><p><a class="reference internal" href="../33_Figures/Figures_16_6.html#Figure-16.6.3"><span class="std std-ref">Figure 16.6.3</span></a></p>
+<img alt="Image 16_6_swap_down.png" src="../_images/16_6_swap_down.png" />
+<p>If we swap node 4 with its right child, as shown in the right-hand side of the figure, it still isn’t a min-heap, because the new root, with key 2, is larger than the left child. If we instead swap node 4 with its left child, node 1, as shown in the left-hand side of the figure, we reinstate the ordering property.</p>
+<p>In general, we must swap the root with the smallest of its children. This guarantees the child being promoted to parent is smaller than its two new children: its former parent and its former sibling.</p>
+<p>The algorithm to dequeue the root is as follows, with <em>front</em> being the output variable:</p>
+<ol class="arabic simple">
+<li><p>let <em>front</em> be <em>heap</em>[0]</p></li>
+<li><p>let <em>last</em> be │<em>heap</em>│ − 1</p></li>
+<li><p>let <em>heap</em>[0] be <em>heap</em>[<em>last</em>]</p></li>
+<li><p>remove <em>heap</em>[<em>last</em>]</p></li>
+<li><p>down(<em>heap</em>, 0)</p></li>
+</ol>
+<p>The auxiliary function down(<em>heap</em>, <em>index</em>) moves the node at the given index down as far as possible. The easiest implementation is recursive. One base case is that the node is a leaf, the other that it’s already smaller than its children. In both cases, nothing is done. Otherwise the node is swapped with the smallest child and pushed down further.</p>
+<ol class="arabic simple">
+<li><p>let <em>left</em> be 2×<em>index</em> + 1</p></li>
+<li><p>if <em>left</em> ≥ │<em>heap</em>│:</p>
+<ol class="arabic simple">
+<li><p>stop</p></li>
+</ol>
+</li>
+<li><p>let <em>right</em> be <em>left</em> + 1</p></li>
+<li><p>if <em>right</em> &lt; │<em>heap</em>│ and <em>key</em>(<em>heap</em>[<em>right</em>]) &lt; <em>key</em>(<em>heap</em>[<em>left</em>])</p>
+<ol class="arabic simple">
+<li><p>let <em>smallest</em> be <em>right</em></p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>smallest</em> be <em>left</em></p></li>
+</ol>
+</li>
+<li><p>if <em>key</em>(<em>heap</em>[<em>index</em>]) &gt; <em>key</em>(<em>heap</em>[<em>smallest</em>]):</p>
+<ol class="arabic simple">
+<li><p>swap <em>heap</em>[<em>index</em>] with <em>heap</em>[<em>smallest</em>]</p></li>
+<li><p>down(<em>heap</em>, <em>smallest</em>)</p></li>
+</ol>
+</li>
+</ol>
+<p>Step 2 checks that the node to be pushed down is a leaf by checking if the index of its left child is out of bounds. Step 4 uses short-circuit conjunction to first check if there’s a right child before comparing it to the left child.</p>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">16.6.4. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>The worst-case scenario for inserting an item is to bubble it up from the bottom level to the root. Likewise the worst-case scenario for dequeueing the root is to push the new root (which was the right-most leaf) down back to the bottom level.</p>
+<section id="Exercise-16.6.2">
+<h3>Exercise 16.6.2<a class="headerlink" href="#Exercise-16.6.2" title="Link to this heading"></a></h3>
+<p>What’s the worst-case complexity of heapsort?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_16_6_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_16_6_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-16.6.3">
+<h3>Exercise 16.6.3<a class="headerlink" href="#Exercise-16.6.3" title="Link to this heading"></a></h3>
+<p>What’s the best-case scenario and complexity of heapsort?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_16_6_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_16_6_03.html"><span class="doc">Answer</span></a></p>
+<p>In summary, their weaker ordering property than for BSTs and their structural property (being complete trees) makes heaps more efficient for implementing priority queues than self-balancing BSTs: although each priority queue operation takes logarithmic time for both data structures, heaps use less memory and execute operations faster.</p>
+<p>Despite heapsort having better worst-case complexity than quicksort, in practice quicksort is preferred because heapsort accesses all parts of the array as it swaps items. If the array doesn’t fit in cache memory, then the various parts of the array are copied in and out of the cache as the item bubbles up or down. In contrast, quicksort doesn’t access any part of the array outside the partition it’s working on. Every partition small enough to fit in the cache stays there until it’s sorted. We
+say that quicksort has better cache locality than heapsort. A well-implemented in-place quicksort algorithm runs faster than heapsort for large arrays.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 Block 1 Section 3.1.2 explains cache memory.</p>
+</div>
+</section>
+</section>
+<section id="Heaps-in-Python">
+<h2><span class="section-number">16.6.5. </span>Heaps in Python<a class="headerlink" href="#Heaps-in-Python" title="Link to this heading"></a></h2>
+<p>Python’s module <code class="docutils literal notranslate"><span class="pre">heapq</span></code> implements min-priority queues with min-heaps. No new data type is introduced: a heap is represented by a list. The module includes function <code class="docutils literal notranslate"><span class="pre">heappush(heap,</span> <span class="pre">item)</span></code> to add the given item to the given heap, and function <code class="docutils literal notranslate"><span class="pre">heappop(heap)</span></code> to remove and return the smallest item. Note that items are assumed to be directly comparable: there’s no additional parameter for a key function.</p>
+<p>To access the front of the priority queue without removing it, just write <code class="docutils literal notranslate"><span class="pre">heap[0]</span></code>. You can use any other list operation, but most of them are meaningless for priority queues and will break the heap properties.</p>
+<p>Here’s the heapsort algorithm, with a key function. I add each item to the heap as a key–item tuple. Due to lexicographic comparison, the keys are compared first, then the items, if they have the same key. This means that items must be comparable, contrary to the other sorting algorithms, where only keys are. The key is discarded before appending the item to the output sequence.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+<span class="o">%</span><span class="k">run</span> -i ../m269_sorting
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">heapq</span><span class="w"> </span><span class="kn">import</span> <span class="n">heappush</span><span class="p">,</span> <span class="n">heappop</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">heapsorted</span><span class="p">(</span><span class="n">unsorted</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a permutation with keys in non-decreasing order.</span>
+
+<span class="sd">    Preconditions:</span>
+<span class="sd">    - all items in unsorted are pairwise comparable</span>
+<span class="sd">    - for any indices i and j,</span>
+<span class="sd">      key(unsorted[i]) and key(unsorted[j]) are comparable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">unsorted</span><span class="p">:</span>
+        <span class="n">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="p">(</span><span class="n">key</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="n">item</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">heap</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">heappop</span><span class="p">(</span><span class="n">heap</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">heapsorted</span><span class="p">,</span> <span class="n">sorting_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing heapsorted...
+Tests finished: 7 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>Let’s confirm that heapsort is log-linear.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">shuffle</span>
+
+<span class="k">for</span> <span class="n">doubling</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="n">doubling</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">shuffle</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>  <span class="c1"># random sequence</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 5 heapsorted(items, identity)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+22.9 μs ± 55.8 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+48.7 μs ± 54 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+105 μs ± 144 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+225 μs ± 300 ns per loop (mean ± std. dev. of 5 runs, 1,000 loops each)
+487 μs ± 584 ns per loop (mean ± std. dev. of 5 runs, 1,000 loops each)
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="16_5_balanced.html" class="btn btn-neutral float-left" title="16.5. Balanced trees" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="16_7_summary.html" class="btn btn-neutral float-right" title="16.7. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

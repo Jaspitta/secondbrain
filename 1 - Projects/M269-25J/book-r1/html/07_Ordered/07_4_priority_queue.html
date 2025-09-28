@@ -1,0 +1,487 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.4. Priority queues</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.5. Summary" href="07_5_summary.html" />
+    <link rel="prev" title="7.3. Queues" href="07_3_queue.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="07-introduction.html">7. Stacks and queues</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="07_1_stack.html">7.1. Stacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_2_stack_usage.html">7.2. Using stacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_3_queue.html">7.3. Queues</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.4. Priority queues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#With-dynamic-arrays:-version-1">7.4.1. With dynamic arrays: version 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.4.1">Exercise 7.4.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#With-dynamic-arrays:-version-2">7.4.2. With dynamic arrays: version 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.4.2">Exercise 7.4.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.4.3">Exercise 7.4.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.4.4">Exercise 7.4.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.4.5">Exercise 7.4.5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.4.6">Exercise 7.4.6</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#With-a-linked-list">7.4.3. With a linked list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Min-priority-queues">7.4.4. Min-priority queues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.4.7">Exercise 7.4.7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.4.8">Exercise 7.4.8</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="07_5_summary.html">7.5. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="07-introduction.html"><span class="section-number">7. </span>Stacks and queues</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7.4. </span>Priority queues</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Priority-queues">
+<h1><span class="section-number">7.4. </span>Priority queues<a class="headerlink" href="#Priority-queues" title="Link to this heading"></a></h1>
+<p>Families with young children often board an airplane before other passengers. Hospitals treat patients with more severe conditions first. To-do list apps list tasks with higher priority first.</p>
+<p>All these are examples of queues that don’t process items in a FIFO order. A <strong>priority queue</strong> is a sequence in which each item has a priority and items are removed from the queue from the highest to the lowest priority. In a <strong>max-priority queue</strong>, the highest priority corresponds to the largest value, whereas in a <strong>min-priority queue</strong> it is given by the smallest value. For example, if priorities are represented by positive integers, priority 1 is the highest priority in a min-priority queue
+and the lowest priority in a max-priority queue.</p>
+<p>In the rest of this section we only implement unbounded max-priority queues, as bounded and min-priority queues are implemented very similarly. Actually, if priorities are given by integers, we get a max-priority queue to behave like a min-priority queue by negating the priorities when adding the items to the queue. Suppose item A has priority 1 and item B has priority 3. By inserting them with priorities −1 and −3, the max-priority queue will return A before B, as if it were a min-priority
+queue.</p>
+<p>Usually the order among items with the same priority is arbitrary, but a fairer priority queue keeps them in FIFO order.</p>
+<p>Traditionally, priority queue operations are named differently from queue operations, to make clear which kind of queue we’re using.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Effect</p></th>
+<th class="head"><p>Algorithm in English</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>new</p></td>
+<td><p>create an empty priority queue</p></td>
+<td><p>let <em>pq</em> be a new priority queue</p></td>
+</tr>
+<tr class="row-odd"><td><p>length</p></td>
+<td><p>the number of items in <em>pq</em></p></td>
+<td><p>│<em>pq</em>│</p></td>
+</tr>
+<tr class="row-even"><td><p>insert</p></td>
+<td><p>add item <em>i</em> with priority <em>p</em> to <em>pq</em></p></td>
+<td><p>add (<em>p</em>, <em>i</em>) to <em>pq</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>find max</p></td>
+<td><p>obtain an item with highest-priority value</p></td>
+<td><p>max(<em>pq</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>remove max</p></td>
+<td><p>remove the item obtained by find max</p></td>
+<td><p>remove max(<em>pq</em>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>The find and remove operations are only defined for non-empty priority queues.</p>
+<section id="With-dynamic-arrays:-version-1">
+<h2><span class="section-number">7.4.1. </span>With dynamic arrays: version 1<a class="headerlink" href="#With-dynamic-arrays:-version-1" title="Link to this heading"></a></h2>
+<p>One simple way of implementing an unbounded max-priority queue is to use a dynamic array of priority–item pairs that are kept in ascending priority order. The insert operation appends a new priority–item pair and re-sorts the array. The find and remove operations simply access and remove the last pair.</p>
+<section id="Exercise-7.4.1">
+<h3>Exercise 7.4.1<a class="headerlink" href="#Exercise-7.4.1" title="Link to this heading"></a></h3>
+<p>With dynamic arrays, the new and length operations take constant time. What is the complexity of the other operations for the approach outlined?</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Complexity</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>insert</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>find max</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>remove max</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="../31_Hints/Hints_07_4_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_4_01.html"><span class="doc">Answer</span></a></p>
+<p>In Python, we can use a list of tuples to represent the priority queue. Here’s a simple example, with priorities from 1 (lowest) to 3 (highest).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># a priority queue</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;go on holiday&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;finish this chapter&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;answer email&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">times</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">)):</span>  <span class="c1"># noqa: B007</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tasks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">tasks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># print priority and task</span>
+    <span class="n">tasks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2 go on holiday
+3 finish this chapter
+1 answer email
+</pre></div></div>
+</div>
+<p>This is not quite working. The task with priority 3 should be listed first. Where’s the error?</p>
+<hr class="docutils" />
+<p>The tuples are put in ascending order by comparing them item by item (lexicographic order): first the task, then its priority. So the tasks end up in alphabetical order in the list and the task starting with ‘g’ is considered the highest-priority task.</p>
+<p>How can we fix the issue?</p>
+<hr class="docutils" />
+<p>Since the ordering is by priority, that must be the first item of the pair.</p>
+<p>Here’s a similar example to show the correct ordering.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># a priority queue</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;go on holiday&quot;</span><span class="p">))</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;answer email&quot;</span><span class="p">))</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;finish this chapter&quot;</span><span class="p">))</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;remove old files&quot;</span><span class="p">))</span>
+<span class="n">tasks</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">tasks</span> <span class="o">!=</span> <span class="p">[]:</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">task</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3 finish this chapter
+2 go on holiday
+1 remove old files
+1 answer email
+</pre></div></div>
+</div>
+<p>This example shows both the advantages and disadvantages of using Python lists instead of defining our own class. The advantages are a familiar notation and the flexibility of using list operations: we can sort only when needed, we can access and remove a highest-priority item with one operation, we can remove any other item if they leave the queue, etc.</p>
+<p>One disadvantage is that this approach exposes the data structure and doesn’t restrict the operations, which can lead to mistakes. Another disadvantage is that, by sorting the tuples, the approach assumes that the items in the queue are comparable, thus restricting its applicability.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Try to restrict data types as little as possible.</p>
+</div>
+<p>Sorting priority–item pairs also leads to the priority queue not being fair. Among items with the same priority, the first to be removed is the one with highest-item value, not the one waiting longest. In the example, answering emails was added before but is done after the other priority 1 task, because of the alphabetical ordering.</p>
+</section>
+</section>
+<section id="With-dynamic-arrays:-version-2">
+<h2><span class="section-number">7.4.2. </span>With dynamic arrays: version 2<a class="headerlink" href="#With-dynamic-arrays:-version-2" title="Link to this heading"></a></h2>
+<p>The solution to all these issues is to define our own class, with a bespoke insertion algorithm that is fair and only compares priorities.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Using bespoke algorithms instead of general-purpose ones often leads to a better solution.</p>
+</div>
+<p>Here’s an incomplete solution with separate lists (dynamic arrays) for the priorities and the items.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_priority.py</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ArrayPriorityQueue</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A dynamic array implementation of a fair max-priority queue.</span>
+
+<span class="sd">    Items with the same priority are retrieved in FIFO order.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new empty priority queue.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priorities</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># in ascending order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of items in the queue.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the oldest item with the highest priority.</span>
+
+<span class="sd">        Preconditions: self.length() &gt; 0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove the oldest item with the highest priority.</span>
+
+<span class="sd">        Preconditions: self.length() &gt; 0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priorities</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">priority</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add item with the given priority to the queue.</span>
+
+<span class="sd">        Preconditions:</span>
+<span class="sd">        - priority is comparable to the priorities of all existing items</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># compute the index where to insert the item</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priorities</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">priority</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Exercise-7.4.2">
+<h3>Exercise 7.4.2<a class="headerlink" href="#Exercise-7.4.2" title="Link to this heading"></a></h3>
+<p>Write an algorithm in English that finds the index of where to insert the item. Use variables <em>priorities</em> and <em>priority</em> and set a value for <em>index</em>. You can assume that priorities can be compared with &lt;, ≤, ≠, etc.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_07_4_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_4_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-7.4.3">
+<h3>Exercise 7.4.3<a class="headerlink" href="#Exercise-7.4.3" title="Link to this heading"></a></h3>
+<p>Implement the algorithm in method <code class="docutils literal notranslate"><span class="pre">insert</span></code>. Run the following test, where <code class="docutils literal notranslate"><span class="pre">None</span></code> represents a patient without identification to make sure that the items are not comparable.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_test
+
+<span class="n">hospital</span> <span class="o">=</span> <span class="n">ArrayPriorityQueue</span><span class="p">()</span>
+<span class="n">hospital</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">hospital</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">hospital</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">patient</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>  <span class="c1"># this is the expected order</span>
+    <span class="n">check</span><span class="p">(</span><span class="s2">&quot;find_max&quot;</span><span class="p">,</span> <span class="n">hospital</span><span class="o">.</span><span class="n">find_max</span><span class="p">(),</span> <span class="n">patient</span><span class="p">,</span> <span class="n">hospital</span><span class="o">.</span><span class="n">length</span><span class="p">())</span>
+    <span class="n">hospital</span><span class="o">.</span><span class="n">remove_max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../32_Answers/Answers_07_4_03.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-7.4.4">
+<h3>Exercise 7.4.4<a class="headerlink" href="#Exercise-7.4.4" title="Link to this heading"></a></h3>
+<p>Fill out the following table for the described approach.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Complexity</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>insert</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>find max</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>remove max</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="../31_Hints/Hints_07_4_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_4_04.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-7.4.5">
+<h3>Exercise 7.4.5<a class="headerlink" href="#Exercise-7.4.5" title="Link to this heading"></a></h3>
+<p>Is it more efficient to have two lists for the items and the priorities, a single list with priority–item pairs, or does it not matter much? By more efficient I mean doing less work, not necessarily having better complexity.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_07_4_05.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_4_05.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-7.4.6">
+<h3>Exercise 7.4.6<a class="headerlink" href="#Exercise-7.4.6" title="Link to this heading"></a></h3>
+<p>There’s yet another way of implementing a priority queue with dynamic arrays, with the following complexities:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Complexity</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>insert</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>find max</p></td>
+<td><p>Θ(│<em>pq</em>│)</p></td>
+</tr>
+<tr class="row-even"><td><p>remove max</p></td>
+<td><p>Θ(│<em>pq</em>│)</p></td>
+</tr>
+</tbody>
+</table>
+<p>How? Outline the algorithm for each operation.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_07_4_06.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="With-a-linked-list">
+<h2><span class="section-number">7.4.3. </span>With a linked list<a class="headerlink" href="#With-a-linked-list" title="Link to this heading"></a></h2>
+<p>Version 2 of the dynamic array implementation can be adapted to linked lists. The head node has the item with the highest-priority value, i.e. the item returned by find max. To insert a new item, we start from the head node, skip all nodes with higher or equal priority, and insert a new node in the found place. With a linked list, no items are copied when inserting a new one: the insertion itself takes constant time once the insertion point is found, and there’s no need to resize a linked list.</p>
+</section>
+<section id="Min-priority-queues">
+<h2><span class="section-number">7.4.4. </span>Min-priority queues<a class="headerlink" href="#Min-priority-queues" title="Link to this heading"></a></h2>
+<p>To finish this section, here’s an example of using a max-priority queue as a min-priority queue.</p>
+<p>Calendar apps allow us to attach a reminder to an event with a period of our choice, e.g. 15 minutes before the event. Reminders can be implemented as a priority queue, where an item is an event and its priority is the time when to issue the reminder. For example, the priority of a 3 pm meeting with a 30-minute reminder is 2:30 pm. The reminders are issued from earliest to latest time, so it’s a min-priority queue, where the priority is the time.</p>
+<p>Times can be represented as integers (minutes after midnight), so we can negate them to use our max-priority queue implementation. Here’s an example, using an already fully implemented class.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_priority
+
+<span class="n">reminders</span> <span class="o">=</span> <span class="n">ArrayPriorityQueue</span><span class="p">()</span>
+<span class="c1"># meeting with 30 minute advance reminder</span>
+<span class="n">reminders</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;research group meeting @ 3pm&quot;</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="mi">14</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="mi">30</span><span class="p">))</span>
+<span class="c1"># meetings with same reminder time</span>
+<span class="n">reminders</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;M269 team meeting @ 11am&quot;</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="mi">9</span> <span class="o">*</span> <span class="mi">60</span><span class="p">))</span>
+<span class="n">reminders</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;student supervision @ 10am&quot;</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="mi">9</span> <span class="o">*</span> <span class="mi">60</span><span class="p">))</span>
+<span class="k">while</span> <span class="n">reminders</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">reminders</span><span class="o">.</span><span class="n">find_max</span><span class="p">())</span>
+    <span class="n">reminders</span><span class="o">.</span><span class="n">remove_max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+M269 team meeting @ 11am
+student supervision @ 10am
+research group meeting @ 3pm
+</pre></div></div>
+</div>
+<section id="Exercise-7.4.7">
+<h3>Exercise 7.4.7<a class="headerlink" href="#Exercise-7.4.7" title="Link to this heading"></a></h3>
+<p>Why not model reminders with a FIFO queue?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_07_4_07.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_4_07.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-7.4.8">
+<h3>Exercise 7.4.8<a class="headerlink" href="#Exercise-7.4.8" title="Link to this heading"></a></h3>
+<p>The workaround for a max-priority queue to behave like a min-priority queue only works for integer priorities. Briefly explain how you would change our class’s code to implement a min-priority queue for any comparable priority values.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_07_4_08.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_4_08.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="07_3_queue.html" class="btn btn-neutral float-left" title="7.3. Queues" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="07_5_summary.html" class="btn btn-neutral float-right" title="7.5. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>23.2. Longest common subsequence</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="23.3. Knapsack" href="23_3_knapsack.html" />
+    <link rel="prev" title="23.1. Fibonacci" href="23_1_fibonacci.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="23-introduction.html">23. Dynamic Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="23_1_fibonacci.html">23.1. Fibonacci</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">23.2. Longest common subsequence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Recursive">23.2.1. Recursive</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-23.2.1">Exercise 23.2.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Top-down">23.2.2. Top-down</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-23.2.2">Exercise 23.2.2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Recursive-with-indices">23.2.3. Recursive with indices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-23.2.3">Exercise 23.2.3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Top-down-with-matrix">23.2.4. Top-down with matrix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-23.2.4">Exercise 23.2.4</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Bottom-up">23.2.5. Bottom-up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity-and-run-time">23.2.6. Complexity and run-time</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="23_3_knapsack.html">23.3. Knapsack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="23_4_summary.html">23.4. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="23-introduction.html"><span class="section-number">23. </span>Dynamic Programming</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">23.2. </span>Longest common subsequence</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Longest-common-subsequence">
+<h1><span class="section-number">23.2. </span>Longest common subsequence<a class="headerlink" href="#Longest-common-subsequence" title="Link to this heading"></a></h1>
+<p>As explained in Sections <a class="reference internal" href="../04_Iteration/04_1_sequences.html#Creating-sequences"><span class="std std-ref">4.1.2</span></a> and <a class="reference internal" href="../04_Iteration/04_6_lists.html#Modifying-sequences"><span class="std std-ref">4.6.1</span></a>, substrings and subsequences are zero or more items taken from a given sequence, without changing their order. A substring (also called a slice) contains consecutive items from the sequence, whereas a subsequence doesn’t have to. Every substring is a subsequence, but not every subsequence is a substring. For example, (1, 2) is a
+substring and a subsequence of (1, 2, 3), whereas (1, 3) is a subsequence but not a substring, because 1 and 3 don’t appear consecutively in (1, 2, 3).</p>
+<p>This section further illustrates dynamic programming with the <strong>longest common subsequence (LCS)</strong> problem: given two sequences A and B, we want a longest of all sequences that are both a subsequence of A and a subsequence of B. For example, the LCS of (1, 3, 5, 7, 9, 11) and (2, 3, 5, 7, 11, 13) is (3, 5, 7, 11). Some sequences have several longest common subsequences, e.g. (1, 2, 3, 2) and (3, 2, 1, 2) have three LCS: (1, 2), (2, 2) and (3, 2). Our algorithm will return one of them.</p>
+<p>The LCS is an indication of how similar two sequences are. For example, the Linux <code class="docutils literal notranslate"><span class="pre">diff</span></code> command (introduced in TM129) and word processors can compare two versions of a text file and show which lines were added and removed between the versions. They use quite sophisticated algorithms but one simple way to solve that problem is to determine which lines haven’t changed, i.e. are common to both versions. Since new lines of text can be inserted between existing lines, the lines of the original
+file may not appear consecutively in the new file, so we must look for a subsequence, not a substring.</p>
+<p>As an example, let the original file be the sequence of lines (A, B, C, D) and let the new file be (B, E, D, C, F). Each letter represents the content of one line. Line A was removed, lines C and D were swapped and lines E and F were added.</p>
+<p>Every line of the original file that isn’t in the LCS was removed and every line of the new file that isn’t in the LCS was added, because those lines aren’t in the common subsequence. Sequences (A, B, C, D) and (B, E, D, C, F) have two LCS: (B, C) and (B, D). Both show that line A was removed and lines E and F were added. If the output is (B, C) then this means line D was removed from after C and added before C. If the output is (B, D) then it’s line C that is considered to have moved from
+before D to after D.</p>
+<p>Another application of the LCS problem is in bioinformatics. We can represent a <a class="reference internal" href="../04_Iteration/04_8_practice.html#DNA"><span class="std std-ref">DNA strand</span></a> as a string of the letters A, C, G and T. Computing the LCS (or some other similarity measure) of two strands allows scientists to find out if two genes have the same function, if one species evolved from another, if two people are related, etc.</p>
+<p>In summary, the LCS and similar problems that involve comparing two sequences have many applications and they are often solved with dynamic programming.</p>
+<p>In the rest of this section, to make the examples shorter to type, I will only use sequences of characters (strings). I’ll call the two input strings <em>left</em> and <em>right</em>.</p>
+<p>Here are some tests. Feel free to add your own. Make sure there’s only one LCS for each test, otherwise your algorithm may pick a different LCS and fail the test.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_tests</span><span class="p">,</span> <span class="n">test</span>
+
+<span class="n">DNA_LEFT</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span> <span class="o">*</span> <span class="mi">6</span>
+<span class="n">DNA_RIGHT</span> <span class="o">=</span> <span class="s2">&quot;GATTACA&quot;</span> <span class="o">*</span> <span class="mi">3</span>  <span class="c1"># more A&#39;s than DNA_LEFT</span>
+
+<span class="n">lcs_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,             left,       right,      LCS</span>
+    <span class="p">(</span><span class="s1">&#39;one is empty&#39;</span><span class="p">,</span>    <span class="s1">&#39;hello&#39;</span><span class="p">,</span>    <span class="s1">&#39;&#39;</span><span class="p">,</span>         <span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;same string&#39;</span><span class="p">,</span>     <span class="s1">&#39;hello&#39;</span><span class="p">,</span>    <span class="s1">&#39;hello&#39;</span><span class="p">,</span>    <span class="s1">&#39;hello&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;nothing common&#39;</span><span class="p">,</span>  <span class="s1">&#39;yes&#39;</span><span class="p">,</span>      <span class="s1">&#39;no&#39;</span><span class="p">,</span>       <span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;typical case&#39;</span><span class="p">,</span>    <span class="s1">&#39;soho&#39;</span><span class="p">,</span>     <span class="s1">&#39;ohio&#39;</span><span class="p">,</span>     <span class="s1">&#39;oho&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;subsequence&#39;</span><span class="p">,</span>     <span class="n">DNA_LEFT</span><span class="p">,</span>   <span class="n">DNA_RIGHT</span><span class="p">,</span>  <span class="n">DNA_LEFT</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;substring&#39;</span><span class="p">,</span>       <span class="s1">&#39;TACAG&#39;</span><span class="p">,</span>    <span class="n">DNA_RIGHT</span><span class="p">,</span>  <span class="s1">&#39;TACAG&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">check_tests</span><span class="p">(</span><span class="n">lcs_tests</span><span class="p">,</span> <span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+OK: the test table passed the automatic checks.
+</pre></div></div>
+</div>
+<section id="Recursive">
+<h2><span class="section-number">23.2.1. </span>Recursive<a class="headerlink" href="#Recursive" title="Link to this heading"></a></h2>
+<p>To obtain a dynamic programming solution, we must start with a recursive definition of the problem. At this point you may wish to read again <a class="reference internal" href="../12_Recursion/12_8_summary.html"><span class="doc">Section 12.8</span></a> and skim Sections <a class="reference internal" href="../12_Recursion/12_3_length.html#Length-of-a-sequence"><span class="std std-ref">12.3</span></a> and <a class="reference internal" href="../12_Recursion/12_5_create_sequences.html#Creating-sequences"><span class="std std-ref">12.5</span></a> to remind yourself how sequences are processed recursively.</p>
+<p>As usual, I start by thinking of the bases cases. The smallest problem instances are always base cases because they can’t be further decreased. The inputs of the LCS problem are strings, so the base cases are when either or both strings are empty. If one string is empty, it has no common characters with the other string, so their LCS is the empty string.</p>
+<ul class="simple">
+<li><p>if <em>left</em> or <em>right</em> is empty: lcs(<em>left</em>, <em>right</em>) = ‘’</p></li>
+</ul>
+<p>If neither string is empty, we can separate each one into a head (the first character) and a tail (the rest of the string). There are only two possible cases: their heads are the same or they differ.</p>
+<p>If both strings have the same head, i.e. start with the same character, then that character is common to both and we must include it in the LCS. (If we ignored this common character, we wouldn’t get the longest subsequence.) The LCS will be that character followed by the LCS of the tails, e.g. the LCS of ‘hello’ and ‘hill’ is ‘h’ followed by the LCS of ‘ello’ and ‘ill’.</p>
+<ul class="simple">
+<li><p>if head(<em>left</em>) = head(<em>right</em>): lcs(<em>left</em>, <em>right</em>) = head(<em>left</em>) + lcs(tail(<em>left</em>), tail(<em>right</em>))</p></li>
+</ul>
+<p>Since both heads are equal, I could have used head(<em>right</em>) instead of head(<em>left</em>). The + operator means concatenation in this context.</p>
+<p>If the two heads are different, what should we do? Let’s look at some examples. When computing the LCS of ‘soho’ and ‘ohio’, we must skip the ‘s’ so that we can then match the first two letters of ‘oho’ and ‘ohio’. We have lcs(‘soho’, ‘ohio’) = lcs(‘oho’, ‘ohio’) = ‘oho’. If we instead skip the initial ‘o’ of ‘ohio’, we would get the wrong answer lcs(‘soho’, ‘ohio’) = lcs(‘soho’, ‘hio’) = ‘ho’.</p>
+<p>On the other hand, when computing the LCS of ‘AAA’ and ‘GATTACA’, which is ‘AAA’, we can’t skip any As in the left string as all have to be matched to the As in the right string. To sum up, if the two heads are different, sometimes we must skip the left head, sometimes the right head, in order to get the longest output.</p>
+<p>How do we know which head to skip, without looking ahead to the rest of the strings? We don’t. When computing the <a class="reference internal" href="../16_Trees/16_2_algorithms.html#Algorithms-on-trees"><span class="std std-ref">height of a tree</span></a> recursively, we didn’t know which subtree was taller, so we computed the height of both and took the height of the tallest. Here we must do the same.</p>
+<ul class="simple">
+<li><p>if head(<em>left</em>) ≠ head(<em>right</em>): lcs(<em>left</em>, <em>right</em>) = longest of lcs(<em>left</em>, tail(<em>right</em>)) and lcs(tail(<em>left</em>), <em>right</em>)</p></li>
+</ul>
+<p>If skipping either head leads to common subsequences of the same length, then we can pick either of them. The resulting LCS will depend on which head is skipped, but it will always have the same maximum length. For example,</p>
+<ul class="simple">
+<li><p>lcs(‘aba’, ‘baca’) = lcs(‘ba’, ‘baca’) = ‘ba’ if we skip the left head</p></li>
+<li><p>lcs(‘aba’, ‘baca’) = lcs(‘aba’, ‘aca’) = ‘aa’ if we skip the right head</p></li>
+</ul>
+<p>but both LCS have the maximal length of 2.</p>
+<section id="Exercise-23.2.1">
+<h3>Exercise 23.2.1<a class="headerlink" href="#Exercise-23.2.1" title="Link to this heading"></a></h3>
+<p>Complete the following function and test it. The <code class="docutils literal notranslate"><span class="pre">m269_rec_list.py</span></code> file has functions <code class="docutils literal notranslate"><span class="pre">head</span></code> and <code class="docutils literal notranslate"><span class="pre">tail</span></code> that allow your code to closely follow the recursive definition. If you prefer, use <code class="docutils literal notranslate"><span class="pre">...[0]</span></code> and <code class="docutils literal notranslate"><span class="pre">...[1:]</span></code> instead.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_rec_list
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lcs</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the longest common subsequence of both strings.&quot;&quot;&quot;</span>
+    <span class="c1"># if one or both strings are empty:</span>
+        <span class="c1"># return the empty string</span>
+    <span class="c1"># elif both heads are equal:</span>
+        <span class="c1"># return the head concatenated with the LCS of both tails</span>
+    <span class="c1"># else:</span>
+        <span class="c1"># compute the LCS when skipping the right head</span>
+        <span class="c1"># compute the LCS when skipping the left head</span>
+        <span class="c1"># return the longest of the two</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">lcs</span><span class="p">,</span> <span class="n">lcs_tests</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> -r 3 lcs(DNA_LEFT, DNA_RIGHT)
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../32_Answers/Answers_23_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Top-down">
+<h2><span class="section-number">23.2.2. </span>Top-down<a class="headerlink" href="#Top-down" title="Link to this heading"></a></h2>
+<p>Before we invest effort in developing a dynamic programming solution, we should check whether it’s worth it: are any subproblems repeatedly solved? Let’s draw the DAG of the problem instances and their dependencies for input strings ‘yes’ and ‘no’.</p>
+<p id="fig-23.2.1"></p><p><a class="reference internal" href="../33_Figures/Figures_23_2.html#Figure-23.2.1"><span class="std std-ref">Figure 23.2.1</span></a></p>
+<img alt="Image 23_2_lcs.png" src="../_images/23_2_lcs.png" />
+<p>As the DAG shows, there are overlapping subproblems, e.g. lcs(‘es’, ‘no’) and lcs(‘yes’, ‘o’) overlap on common subproblem lcs(‘es’, ‘o’). Common subproblems arise from the multiple ways to reach the same tails of the initial input strings, by skipping characters from the left and right strings a in different order. For example, lcs(‘es’, ‘o’) is solved twice: first by skipping ‘y’ then ‘n’, and second by skipping ‘n’ then ‘y’.</p>
+<p>This means that instance (‘s’, ‘o’) is solved three times:</p>
+<ul class="simple">
+<li><p>lcs(‘yes’, ‘no’) ⟵ lcs(‘es’, ‘no’) ⟵ lcs(‘es’, ‘o’) ⟵ lcs(‘s’, ‘o’)</p></li>
+<li><p>lcs(‘yes’, ‘no’) ⟵ lcs(‘yes’, ‘o’) ⟵ lcs(‘es’, ‘o’) ⟵ lcs(‘s’, ‘o’)</p></li>
+<li><p>lcs(‘yes’, ‘no’) ⟵ lcs(‘es’, ‘no’) ⟵ lcs(‘s’, ‘no’) ⟵ lcs(‘s’, ‘o’)</p></li>
+</ul>
+<p>This in turn means that both leaf instances in the bottom row are also solved three times each. More generally, the number of times an instance is solved is the number of different paths from (‘yes’, ‘no’) to it. (Remember that recursion follows the DAG edges backwards.)</p>
+<p>Caching the results for subproblems avoids repeated recursive calls. For example, the second time <code class="docutils literal notranslate"><span class="pre">lcs('es',</span> <span class="pre">'o')</span></code> is called, the cache is looked up and no calls to <code class="docutils literal notranslate"><span class="pre">lcs('s',</span> <span class="pre">'o')</span></code> and <code class="docutils literal notranslate"><span class="pre">lcs('es',</span> <span class="pre">'')</span></code> are made.</p>
+<section id="Exercise-23.2.2">
+<h3>Exercise 23.2.2<a class="headerlink" href="#Exercise-23.2.2" title="Link to this heading"></a></h3>
+<p>Paste a copy of your code for the previous exercise into the auxiliary function below and modify it to use the <code class="docutils literal notranslate"><span class="pre">cache</span></code> dictionary.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_rec_list
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lcs_topdown</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the LCS of both strings using top-down dynamic programming.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">lcs</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Auxiliary recursive function.&quot;&quot;&quot;</span>
+        <span class="c1"># if problem instance (left, right) isn&#39;t in cache:</span>
+            <span class="c1"># compute LCS recursively and store it in cache</span>
+            <span class="c1"># optional: print the cached value to see how the cache is filled</span>
+        <span class="c1"># return the cached LCS for left and right</span>
+
+    <span class="n">cache</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">lcs</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>If you add a print statement I recommend you only run</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lcs_topdown</span><span class="p">(</span><span class="s2">&quot;yes&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>and check the order in which the solutions are cached against the DAG above. Then comment out the print statement and run the next cell. The run-time should be lower than for the original recursive version.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">(</span><span class="n">lcs_topdown</span><span class="p">,</span> <span class="n">lcs_tests</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> -r 3 lcs_topdown(DNA_LEFT, DNA_RIGHT)
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_23_2_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_23_2_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Recursive-with-indices">
+<h2><span class="section-number">23.2.3. </span>Recursive with indices<a class="headerlink" href="#Recursive-with-indices" title="Link to this heading"></a></h2>
+<p>Before proceeding to the bottom-up version, let’s improve the efficiency of what we have. As noted in <a class="reference internal" href="../12_Recursion/12_6_avoid_slicing.html#Avoiding-slicing"><span class="std std-ref">Section 12.6</span></a>, we should avoid slicing in every recursive call and use indices instead.</p>
+<p>For this problem two indices suffice, each pointing to the current head. I will use single-letter names <em>l</em> and <em>r</em> for the indices, because more descriptive names like <em>left index</em> make the recursive definition too verbose and harder to read, in my opinion.</p>
+<p>Function lcs(<em>l</em>, <em>r</em>) will compute the LCS of the <em>left</em> string from index <em>l</em> onwards and of the <em>right</em> string from index <em>r</em> onwards. To obtain the LCS of both strings from the start, we compute lcs(0, 0).</p>
+<p>The bases cases are when there’s nothing more to process in either string, which happens when either index reaches the end of the corresponding string:</p>
+<ul class="simple">
+<li><p>if <em>l</em> = │<em>left</em>│: lcs(<em>l</em>, <em>r</em>) = ‘’</p></li>
+<li><p>if <em>r</em> = │<em>right</em>│: lcs(<em>l</em>, <em>r</em>) = ‘’</p></li>
+</ul>
+<p>The recurrence relations remain the same, just written differently. The head of a string is the character at position <em>l</em> or <em>r</em>. The tail of a string comprises the characters from the next position: <em>l</em>+1 or <em>r</em>+1.</p>
+<ul class="simple">
+<li><p>if <em>left</em>[<em>l</em>] = <em>right</em>[<em>r</em>]: lcs(<em>l</em>, <em>r</em>) = <em>left</em>[<em>l</em>] + lcs(<em>l</em>+1, <em>r</em>+1)</p></li>
+<li><p>otherwise: lcs(<em>l</em>, <em>r</em>) = longest of lcs(<em>l</em>, <em>r</em>+1) and lcs(<em>l</em>+1, <em>r</em>)</p></li>
+</ul>
+<section id="Exercise-23.2.3">
+<h3>Exercise 23.2.3<a class="headerlink" href="#Exercise-23.2.3" title="Link to this heading"></a></h3>
+<p>Implement the new recursive definition and run it. The run-time should be lower than in Exercise 23.2.1 (with slicing) and higher than in Exercise 23.2.2 (with cache).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">lcs_indices</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the LCS of left and right using indices, not slicing.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">lcs</span><span class="p">(</span><span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the LCS of left[l:] and right[r:].</span>
+
+<span class="sd">        Preconditions: 0 ≤ l ≤ len(left) and 0 ≤ r ≤ len(right)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">lcs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">lcs_indices</span><span class="p">,</span> <span class="n">lcs_tests</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> lcs_indices(DNA_LEFT, DNA_RIGHT)
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../32_Answers/Answers_23_2_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Top-down-with-matrix">
+<h2><span class="section-number">23.2.4. </span>Top-down with matrix<a class="headerlink" href="#Top-down-with-matrix" title="Link to this heading"></a></h2>
+<p>Like for the <a class="reference internal" href="23_1_fibonacci.html#With-arrays"><span class="std std-ref">Fibonacci problem</span></a>, we can use arrays instead of hash tables. By changing the inputs of the recursive function from strings to integer indices, the cache can be implemented as a matrix: <code class="docutils literal notranslate"><span class="pre">cache[l][r]</span></code> is the LCS for strings <code class="docutils literal notranslate"><span class="pre">left[l:]</span></code> and <code class="docutils literal notranslate"><span class="pre">right[r:]</span></code>. Since <em>l</em> and <em>r</em> start at zero and go up to the length of the strings, the matrix has │<em>left</em>│ + 1 rows and │<em>right</em>│ + 1 columns.</p>
+<p>To understand how the matrix cells depend on each other, we must look at the recurrence relations. Here they are again, with the irrelevant info left out:</p>
+<ul class="simple">
+<li><p>if …: lcs(<em>l</em>, <em>r</em>) = … lcs(<em>l</em>+1, <em>r</em>+1)</p></li>
+<li><p>…: lcs(<em>l</em>, <em>r</em>) = … lcs(<em>l</em>, <em>r</em>+1) and lcs(<em>l</em>+1, <em>r</em>)</p></li>
+</ul>
+<p>From this we can see that <code class="docutils literal notranslate"><span class="pre">cache[l][r]</span></code>, which is lcs(l, r), may depend on <code class="docutils literal notranslate"><span class="pre">cache[l+1][r+1]</span></code> or on <code class="docutils literal notranslate"><span class="pre">cache[l][r+1]</span></code> and <code class="docutils literal notranslate"><span class="pre">cache[l+1][r]</span></code>. The value of the matrix cell at row <em>l</em> and column <em>r</em> depends on values that are in the next row <em>l</em> + 1, or in the same row <em>l</em> but in the next column <em>r</em> + 1.</p>
+<p>Here’s the DAG of dependencies for inputs ‘soho’ and ‘ohio’, shown as it’s stored in the matrix. As we go down the rows (<em>l</em> increases), we skip letters in the left string; as we go right in the columns (<em>r</em> increases), we skip letters in the right string. If the letters at indices <em>l</em> and <em>r</em> are the same, the algorithm skips that letter in both strings, and so those cells depend on the cells diagonally below: <code class="docutils literal notranslate"><span class="pre">cache[l+1][r+1]</span></code>.</p>
+<p>If instead the letters are different, the cell depends on two other cells. For example, the value in row 0, column 2, is the LCS of ‘soho’ (no letters skipped in the left string) and ‘io’ (two letters skipped in the right string). The LCS in that cell is the longest of the LCS in the two cells immediately below and to the right (<code class="docutils literal notranslate"><span class="pre">cache[l+1][r]</span></code> and <code class="docutils literal notranslate"><span class="pre">cache[l][r+1]</span></code>) because ‘soho’ and ‘io’ don’t start with the same letter.</p>
+<p id="fig-23.2.2"></p><p><a class="reference internal" href="../33_Figures/Figures_23_2.html#Figure-23.2.2"><span class="std std-ref">Figure 23.2.2</span></a></p>
+<img alt="Image 23_2_matrix_down.png" src="../_images/23_2_matrix_down.png" />
+<p>The empty cells are never filled by the top-down algorithm. Which cells are left empty depends on the input strings, but the recursive calls always start in the top left corner (row 0, column 0). Each call either makes one further recursive call to fill the cell diagonally below or makes two recursive calls to fill the cells below and to the right. The cells in the last row and column store the LCS of the base cases: at least one string is empty.</p>
+<p>Now that you’ve seen how the top-down algorithm works, implement it.</p>
+<section id="Exercise-23.2.4">
+<h3>Exercise 23.2.4<a class="headerlink" href="#Exercise-23.2.4" title="Link to this heading"></a></h3>
+<p>Copy your <code class="docutils literal notranslate"><span class="pre">lcs</span></code> auxiliary function from Exercise 23.2.3 and add a matrix cache. I’ve initialised the matrix for you with <code class="docutils literal notranslate"><span class="pre">None</span></code>. We can’t use the empty string as that’s a valid LCS value.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">lcs_topdown_matrix</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the LCS of both strings using top-down dynamic programming.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">lcs</span><span class="p">(</span><span class="n">l</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the LCS of left[l:] and right[r:].</span>
+
+<span class="sd">        Preconditions: 0 ≤ l ≤ len(left) and 0 ≤ r ≤ len(right)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if lcs(l, r) isn&#39;t in cache:</span>
+            <span class="c1"># compute it recursively and store it in cache</span>
+            <span class="c1"># optional: print the cached value</span>
+        <span class="c1"># return the cached lcs(l, r)</span>
+
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># noqa: B007</span>
+        <span class="n">cache</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">lcs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>If you add a print statement I recommend you only run</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lcs_topdown_matrix</span><span class="p">(</span><span class="s2">&quot;soho&quot;</span><span class="p">,</span> <span class="s2">&quot;ohio&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>and check the order in which the matrix is filled against Figure 23.2.2 to confirm it follows a topological sort. Then comment out or remove the print statement and run the next cell. You should obtain the lowest run-time so far.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">(</span><span class="n">lcs_topdown_matrix</span><span class="p">,</span> <span class="n">lcs_tests</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> lcs_topdown_matrix(DNA_LEFT, DNA_RIGHT)
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_23_2_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_23_2_04.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Bottom-up">
+<h2><span class="section-number">23.2.5. </span>Bottom-up<a class="headerlink" href="#Bottom-up" title="Link to this heading"></a></h2>
+<p>As we’ve seen above, when describing the top-down approach, each cell in the matrix either depends on</p>
+<ul class="simple">
+<li><p>zero cells, if it’s a base case (bottom row and right-most column)</p></li>
+<li><p>one cell diagonally below to the right, if both substrings start with the same letter</p></li>
+<li><p>or two cells to the right and below, if the substrings start with different letters.</p></li>
+</ul>
+<p>The next figure shows the completely filled matrix. The shaded cells are the cells that the top-down algorithm didn’t fill because they don’t contribute to solving lcs(‘soho’, ‘ohio’): there’s no path of dependencies from those cells to the top left cell.</p>
+<p id="fig-23.2.3"></p><p><a class="reference internal" href="../33_Figures/Figures_23_2.html#Figure-23.2.3"><span class="std std-ref">Figure 23.2.3</span></a></p>
+<img alt="Image 23_2_matrix_up.png" src="../_images/23_2_matrix_up.png" />
+<p>In the bottom-up approach we need to fill the matrix so that when a cell is computed, the cells it depends on are already filled. Since a cell depends on cells below and to the right, this means we must fill the cache from the last to the first row and, within each row, from the last to the first column.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">lcs_bottomup</span><span class="p">(</span><span class="n">left</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the LCS of both strings using bottom-up dynamic programming.&quot;&quot;&quot;</span>
+    <span class="c1"># create cache as in top-down approach</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># noqa: B007</span>
+        <span class="n">cache</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># compute LCS bottom-up</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># last to first row</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># last to first column</span>
+            <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">or</span> <span class="n">r</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+                <span class="n">cache</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">elif</span> <span class="n">left</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">==</span> <span class="n">right</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
+                <span class="n">cache</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">left</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">+</span> <span class="n">cache</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">skip_left</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">r</span><span class="p">]</span>
+                <span class="n">skip_right</span> <span class="o">=</span> <span class="n">cache</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">skip_left</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">skip_right</span><span class="p">):</span>
+                    <span class="n">cache</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">skip_left</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">cache</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">skip_right</span>
+
+    <span class="c1"># change the next line to see the contents of the matrix for other tests</span>
+    <span class="k">if</span> <span class="n">left</span> <span class="o">==</span> <span class="s2">&quot;soho&quot;</span> <span class="ow">and</span> <span class="n">right</span> <span class="o">==</span> <span class="s2">&quot;ohio&quot;</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">cache</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
+
+    <span class="c1"># solution is in top left corner of matrix (l = r = 0)</span>
+    <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">lcs_bottomup</span><span class="p">,</span> <span class="n">lcs_tests</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> lcs_bottomup(DNA_LEFT, DNA_RIGHT)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing lcs_bottomup...
+[&#39;oho&#39;, &#39;ho&#39;, &#39;o&#39;, &#39;o&#39;, &#39;&#39;]
+[&#39;oho&#39;, &#39;ho&#39;, &#39;o&#39;, &#39;o&#39;, &#39;&#39;]
+[&#39;ho&#39;, &#39;ho&#39;, &#39;o&#39;, &#39;o&#39;, &#39;&#39;]
+[&#39;o&#39;, &#39;o&#39;, &#39;o&#39;, &#39;o&#39;, &#39;&#39;]
+[&#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;&#39;]
+Tests finished: 6 passed (100%), 0 failed.
+16.3 μs ± 12 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+</pre></div></div>
+</div>
+</section>
+<section id="Complexity-and-run-time">
+<h2><span class="section-number">23.2.6. </span>Complexity and run-time<a class="headerlink" href="#Complexity-and-run-time" title="Link to this heading"></a></h2>
+<p>The complexity of dynamic programming is the number of entries in the cache multiplied by the complexity of computing each entry. The bottom-up approach always computes all entries, while top-down only computes those necessary to solve the given problem instance. In the worst case, the top-down recursive calls also fill the whole cache, so the bottom-up complexity is the same as the top-down worst-case complexity.</p>
+<p>For the LCS problem, the matrix has (│<em>left</em>│ + 1)×(│<em>right</em>│ + 1) cells but for complexity purposes we can ignore the +1. Each cell takes constant time to compute if it’s the longest of the strings in the cells below and to the right, or it takes linear time if it’s the concatenation of the head with the string in the cell diagonally below.</p>
+<p>The LCS of two strings can never be longer than the shortest string, because it only includes common characters. So the concatenation takes Θ(min(│<em>left</em>│, │<em>right</em>│)) in the worst case.</p>
+<p>To sum up, the LCS problem can be solved with dynamic programming in Θ(min(│<em>left</em>│, │<em>right</em>│) × │<em>left</em>│ × │<em>right</em>│) time.</p>
+<p>When I ran the various solutions I obtained roughly these times for the LCS of <code class="docutils literal notranslate"><span class="pre">DNA_LEFT</span></code> and <code class="docutils literal notranslate"><span class="pre">DNA_RIGHT</span></code>:</p>
+<ul class="simple">
+<li><p>recursive: 140 µs with slicing and 80 µs without</p></li>
+<li><p>top-down: 55 µs with slicing and 30 µs without</p></li>
+<li><p>bottom-up: 47 µs.</p></li>
+</ul>
+<p>Like for the ‘soho’ and ‘ohio’ example, the bottom-up approach solves all 7×22 subproblems of lcs(‘AAAAAA’, ‘GATTACAGATTACAGATTACA’), whereas the top-down approach only solves the necessary ones, so it is faster in spite of the overhead of recursive calls.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> When solving a problem with dynamic programming, you may have to implement both the top-down and bottom-up approaches to see which is faster for your typical problem instances.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="23_1_fibonacci.html" class="btn btn-neutral float-left" title="23.1. Fibonacci" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="23_3_knapsack.html" class="btn btn-neutral float-right" title="23.3. Knapsack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

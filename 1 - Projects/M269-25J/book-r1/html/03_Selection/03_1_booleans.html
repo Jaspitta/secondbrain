@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.1. Booleans</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.2. Decision problems" href="03_2_decision.html" />
+    <link rel="prev" title="3. Booleans and selection" href="03-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="03-introduction.html">3. Booleans and selection</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Booleans</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#The-Boolean-ADT">3.1.1. The Boolean ADT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.1.1">Exercise 3.1.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.1.2">Exercise 3.1.2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Using-Booleans">3.1.2. Using Booleans</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.1.3">Exercise 3.1.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.1.4">Exercise 3.1.4</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#The-bool-type">3.1.3. The <code class="docutils literal notranslate"><span class="pre">bool</span></code> type</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.1.5">Exercise 3.1.5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.1.6">Exercise 3.1.6</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Mistakes">3.1.4. Mistakes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.1.7">Exercise 3.1.7</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03_2_decision.html">3.2. Decision problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_3_expressions.html">3.3. Boolean expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_4_classification.html">3.4. Classification problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_5_exercises.html">3.5. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_6_summary.html">3.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="03-introduction.html"><span class="section-number">3. </span>Booleans and selection</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.1. </span>Booleans</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Booleans">
+<h1><span class="section-number">3.1. </span>Booleans<a class="headerlink" href="#Booleans" title="Link to this heading"></a></h1>
+<p>Besides numbers, most algorithms need logical values in order to represent binary properties (this section) and conditions (<a class="reference internal" href="03_3_expressions.html#Boolean-expressions"><span class="std std-ref">Section 3.3</span></a>).</p>
+<section id="The-Boolean-ADT">
+<h2><span class="section-number">3.1.1. </span>The Boolean ADT<a class="headerlink" href="#The-Boolean-ADT" title="Link to this heading"></a></h2>
+<p>The Boolean ADT consists of two logical values, true and false, and three logical operations, all of them functions in the mathematical sense (they produce one output, without changing the inputs):</p>
+<ul class="simple">
+<li><p>The output of the <strong>conjunction</strong> operation, written <em>left</em> and <em>right</em>, where <em>left</em> and <em>right</em> are Boolean values, is true if both operands are true, otherwise it’s false.</p></li>
+<li><p>The output of the <strong>disjunction</strong> operation, written <em>left</em> or <em>right</em>, is false if both operands are false, otherwise it’s true.</p></li>
+<li><p>The output of the <strong>negation</strong> operation, written not <em>right</em>, is true if the operand is false, and false if the operand is true.</p></li>
+</ul>
+<p>We use the terms ‘arithmetic negation’ and ‘logical negation’ when it’s not clear from the context what ‘negation’ refers to.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> The conjunction, disjunction and negation operators are also written as ∧, ∨ and ¬, respectively.</p>
+</div>
+<p>These definitions can be written using the M269 function template. Here’s an example:</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: conjunction</div>
+<div class="line"><strong>Inputs</strong>: <em>left</em>, a Boolean; <em>right</em>, a Boolean</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>result</em>, a Boolean</div>
+<div class="line"><strong>Postconditions</strong>: if <em>left</em> = <em>right</em> = true, then <em>result</em> = true, otherwise <em>result</em> = false</div>
+</div>
+<p>Only the input values that make the preconditions true are allowed. So, if the precondition is always true, any input value satisfies it. We henceforth write ‘true’ as the precondition when all input values are valid.</p>
+<p>There are only two Boolean values, so if the output isn’t true, it must be false, and vice versa. This leads to a more succinct way of writing postconditions for operations with a Boolean output.</p>
+<p><strong>Postconditions</strong>: <em>result</em> = true if and only if <em>left</em> = <em>right</em> = true</p>
+<p>This states that the output is true if both inputs are true, and only in that case is the output true, i.e. for other input values the output is false.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Some authors shorten ‘if and only if’ to ‘iff’.</p>
+</div>
+<p>An alternative way of defining the Boolean operations is to write a <strong>truth table</strong> that shows the outputs for all possible inputs.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>left</em></p></th>
+<th class="head"><p><em>right</em></p></th>
+<th class="head"><p><em>left</em> and <em>right</em></p></th>
+<th class="head"><p><em>left</em> or <em>right</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-odd"><td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>value</em></p></th>
+<th class="head"><p>not <em>value</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>true</p></td>
+<td><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 Block 1 Section 1.3 introduces the logical operations and truth tables. Truth tables sometimes use 0 and 1, or F and T, for false and true.</p>
+</div>
+<div class="line-block">
+<div class="line">Negation is right-associative and has higher precedence than conjunction, which in turn has higher precedence than disjunction. Conjunction and disjunction are left-associative. For example, the expression ‘true and not true or true’ is evaluated as follows:</div>
+<div class="line">(true and (not true)) or true = (true and false) or true = false or true = true.</div>
+</div>
+<section id="Exercise-3.1.1">
+<h3>Exercise 3.1.1<a class="headerlink" href="#Exercise-3.1.1" title="Link to this heading"></a></h3>
+<p>Fill the function definition template for the disjunction operation. Don’t forget to keep the backslash at the end of each line.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: disjunction</div>
+<div class="line"><strong>Inputs</strong>: the name and data type of each input</div>
+<div class="line"><strong>Preconditions</strong>: any conditions on the inputs</div>
+<div class="line"><strong>Output</strong>: the name and data type of the result</div>
+<div class="line"><strong>Postconditions</strong>: how the output relates to the inputs</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_03_1_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_1_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-3.1.2">
+<h3>Exercise 3.1.2<a class="headerlink" href="#Exercise-3.1.2" title="Link to this heading"></a></h3>
+<p>Define the negation operation. Make the postcondition as brief as possible.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>:</div>
+<div class="line"><strong>Inputs</strong>:</div>
+<div class="line"><strong>Preconditions</strong>:</div>
+<div class="line"><strong>Output</strong>:</div>
+<div class="line"><strong>Postconditions</strong>:</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_03_1_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_1_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Using-Booleans">
+<h2><span class="section-number">3.1.2. </span>Using Booleans<a class="headerlink" href="#Using-Booleans" title="Link to this heading"></a></h2>
+<p>Booleans are used to represent properties that have only two possible states: on/off, open/closed, up/down, pass/fail, inside/outside, etc. We have to decide which state is represented by which Boolean value.</p>
+<p>For example, a Boolean variable can represent whether a mobile phone is on or off. Let’s assume that value true indicates that the phone is on. The variable name must reflect that choice, so I’ll call it <em>phone on</em>. When bought, the phone is off, so the variable is initialised to false.</p>
+<blockquote>
+<div><p>let <em>phone on</em> be false</p>
+</div></blockquote>
+<p>If I prefer to represent the off state as the true value, then I must change the variable’s name and initial value.</p>
+<blockquote>
+<div><p>let <em>phone off</em> be true</p>
+</div></blockquote>
+<p>A rule of thumb for choosing Boolean variable names is that they should become unambiguous yes/no questions when you add a question mark at the end. The name <em>phone is on</em> is a good one too, albeit more verbose, because ‘phone is on?’ is a precise yes/no question. The name <em>phone</em> is a very poor one, because ‘phone?’ is an ambiguous question. It can mean ‘do you need a phone?’ or ‘do you have a phone?’ or something else.</p>
+<p>Negation switches from one state to the other, like when flipping a switch or tapping a button. For example,</p>
+<blockquote>
+<div><p>let <em>phone on</em> be not <em>phone on</em></p>
+</div></blockquote>
+<p>turns the phone off if it was on and vice versa.</p>
+<section id="Exercise-3.1.3">
+<h3>Exercise 3.1.3<a class="headerlink" href="#Exercise-3.1.3" title="Link to this heading"></a></h3>
+<p>Is <em>phone state</em> a good name for a Boolean variable?</p>
+<p><a class="reference internal" href="../32_Answers/Answers_03_1_03.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-3.1.4">
+<h3>Exercise 3.1.4<a class="headerlink" href="#Exercise-3.1.4" title="Link to this heading"></a></h3>
+<p>Look at the settings of your mobile phone. List some that can be represented as Booleans.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_03_1_04.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="The-bool-type">
+<h2><span class="section-number">3.1.3. </span>The <code class="docutils literal notranslate"><span class="pre">bool</span></code> type<a class="headerlink" href="#The-bool-type" title="Link to this heading"></a></h2>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">bool</span></code> type implements the Boolean ADT. The logical values true and false are represented by the literals <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>, which are keywords. Notice the initial uppercase letter!</p>
+<p>The conjunction, disjunction and negation operations are written with the operators <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code> respectively, which are keywords too. Here are some earlier examples, now in Python:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="kc">True</span> <span class="ow">or</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phone_on</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">phone_on</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">phone_on</span>
+<span class="n">phone_on</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>The Python interpreter stops evaluating conjunctions and disjunctions as soon as it can determine the value of the expression. If the left operand of a conjunction is false then the whole conjunction is false, so the right operand isn’t evaluated. Likewise, if the left operand of a disjunction is true then the whole disjunction is true, so the right operand isn’t evaluated. This is called the <strong>short-circuit</strong> evaluation of Boolean expressions. We’ll see later why this is useful.</p>
+<section id="Exercise-3.1.5">
+<h3>Exercise 3.1.5<a class="headerlink" href="#Exercise-3.1.5" title="Link to this heading"></a></h3>
+<p>Put parentheses in this expression so that it evaluates to false.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="kc">True</span> <span class="ow">or</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<p>I’ve removed the output in this and future exercises with Python code. Until you complete the exercises, their code output is necessarily wrong, so there’s no point in showing it.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_03_1_05.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_1_05.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-3.1.6">
+<h3>Exercise 3.1.6<a class="headerlink" href="#Exercise-3.1.6" title="Link to this heading"></a></h3>
+<p>What may happen if you write Booleans in lowercase, i.e. <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code>?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_03_1_06.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_1_06.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Mistakes">
+<h2><span class="section-number">3.1.4. </span>Mistakes<a class="headerlink" href="#Mistakes" title="Link to this heading"></a></h2>
+<p>In everyday English, ‘this or that’ often means ‘either this or that’, i.e. only one of them can be true, as in the statement ‘We will go to the movies or to the park’. In Boolean logic, disjunction never has that meaning. If it had, ‘true or true’ would be false.</p>
+<p>It’s easy to forget that conjunction is evaluated before disjunction, because it tends to be the other way round in English. The sentence ‘Alice is tall and has blue or brown eyes’ means that Alice is tall and that Alice has blue or brown eyes. But read as a Boolean expression, the sentence means that Alice is tall and has blue eyes, or that Alice has brown eyes. If Alice is short and has brown eyes, the sentence is false according to the usual meaning in English, but true according to the
+logical meaning.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_tall</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">blue_eyes</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">brown_eyes</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">is_tall</span> <span class="ow">and</span> <span class="n">blue_eyes</span> <span class="ow">or</span> <span class="n">brown_eyes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>The informal English meaning of the statement is obtained with parentheses:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_tall</span> <span class="ow">and</span> <span class="p">(</span><span class="n">blue_eyes</span> <span class="ow">or</span> <span class="n">brown_eyes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="admonition warning">
+<p><strong>Note:</strong> The meaning of conjunction and disjunction in Boolean logic is not the same as the meaning of ‘and’ and ‘or’ in everyday English.</p>
+</div>
+<p>The short-circuit evaluation of conjunction and disjunction can lead to errors that are hard to detect. For example, the expression</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_tall</span> <span class="ow">and</span> <span class="n">blue_eys</span> <span class="ow">or</span> <span class="n">brown_eyes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>is evaluated as before, even though the second variable is misspelled. (Did you spot it?) There’s no name error because the right operand isn’t evaluated.</p>
+<section id="Exercise-3.1.7">
+<h3>Exercise 3.1.7<a class="headerlink" href="#Exercise-3.1.7" title="Link to this heading"></a></h3>
+<p>Show the step-by-step evaluation of the following expression, using the precedence and associativity rules.</p>
+<blockquote>
+<div><p>true or not true and false or not false</p>
+</div></blockquote>
+<p><a class="reference internal" href="../31_Hints/Hints_03_1_07.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_1_07.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="03-introduction.html" class="btn btn-neutral float-left" title="3. Booleans and selection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="03_2_decision.html" class="btn btn-neutral float-right" title="3.2. Decision problems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

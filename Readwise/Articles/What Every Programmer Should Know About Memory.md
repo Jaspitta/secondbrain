@@ -1,0 +1,304 @@
+# What Every Programmer Should Know About Memory
+
+![rw-book-cover](https://readwise-assets.s3.amazonaws.com/media/reader/parsed_document_assets/2603280/UFRBRr2npEZSKrRWRgHxYMjJPCCT-Lj9fjq42mDgrH0-cover-2603280.png)
+
+## Metadata
+- Author: [[Ulrich Drepper]]
+- Full Title: What Every Programmer Should Know About Memory
+- Category: #articles
+- Summary: Processors use prefetching to speed up access to memory by loading the next cache line before it is needed. When multiple threads access the same memory, performance can suffer due to limited bandwidth and cache coherency issues. Understanding cache behavior is crucial for optimizing programs, especially in multi-threaded environments.
+- URL: https://readwise.io/reader/document_raw_content/2603280
+
+## Highlights
+- s through a variety of different buses.
+- All data communication from one CPU to another must travel over the same bus used to communicate with the Northbridge.
+- All communication with RAM must pass through the Northbridge.
+- The RAM has only a single port. 3
+- Communication between a CPU and a device at- tached to the Southbridge is routed through the Northbridge.
+- pable of direct memory access (DMA). DMA allows de- vices, with the help of the Northbridge, to store and re-
+- To work around this problem some devices became ca- pable of direct memory access (DMA). DMA allows de- vices, with the help of the Northbridge, to store and re- ceive data in RAM directly without the intervention of the CPU
+    - Note: So it used to be that devices wanting to write to RAM had to talk to the CPU and than the CPU would write to RAM through the Northbridge. With DMA they can bypass the CPU and write to RAM passing by the Northbridge but this creates contention for writes to RAM with the CPU
+- it also creates contention for the band- width of the Northbridge as DMA requests compete with RAM access from the CPUs
+- A second bottleneck involves the bus from the North- bridge to the RAM.
+- All CPUs (two in the previous example, but there can be more) are connected via a common bus (the Front Side Bus, FSB) to the Northbridge
+- The Northbridge contains, among other things, the memory controller, and its im- plementation determines the type of RAM chips used for the computer
+- it is important for per- formance to schedule memory access in ways that mini- mize delays.
+- To reach all other system devices, the Northbridge must communicate with the Southbridge. The Southbridge, often referred to as the I/O bridge
+- the Northbridge can be connected to a number of external memory controllers
+- There are disadvantages to this architecture, too. First of all, because the machine still has to make all the mem- ory of the system accessible to all processors
+- NUMA - Non-Uniform Memory Architecture - for such an archi- tecture
+- when memory attached to another processor is accessed. In this case the interconnects between the processors have to be used
+- We talk about “NUMA factors” when we describe the ex- tra time needed to access remote memory
+- more than one memory bus exists and therefore total available band- width increases
+- One other in- creasingly popular way is to integrate memory controllers into the CPUs and attach memory to each CPU.
+    - Note: The CPU cores actually have busses to the RAM. Weird but ok
+- The costs associated with NUMA make it important to recognize when a program is running on a NUMA ma- chine.
+- With an architecture like this there are as many memory banks available as there are processors
+- The following two sections discuss hardware details at the gate level and the access protocol between the mem- ory controller and the DRAM chips. Programmers will likely ﬁnd this information enlightening since these de- tails explain why RAM access works the way it does
+- If access to the state of the cell is needed the word access line WL is raised. This makes the state of the cell imme- diately available for reading on BL and BL. If the cell state must be overwritten the BL and BL lines are ﬁrst set to the desired values and then WL is raised.
+- one cell requires six transistors
+- maintaining the state of the cell requires constant power.
+- • the cell state is available for reading almost im- mediately once the word access line WL is raised.
+- there are different types of RAM in the same machine. More speciﬁcally, why are there both static RAM (SRAM5) and dynamic RAM (DRAM)
+- the cell state is stable,
+- The answer is, as one might expect, cost. SRAM is much more ex- pensive to produce and to use than DRAM
+- These slow variants are mainly interesting because they can be more easily used in a system than dynamic RAM
+- Dynamic RAM is, in its structure, much simpler
+- consists of is one transistor and one capacitor.
+- A dynamic RAM cell keeps its state in the capacitor C. The transistor M is used to guard the access to the state.
+- To read the state of the cell the access line AL is raised; this either causes a current to ﬂow on the data line DL or not, depending on the charge in the capacitor.
+- the structure of a 6 transistor SRAM cell.
+- The core of this cell is formed by the four transistors M1 toM4 which form two cross-coupled inverters
+- To write to the cell the data line DL is appropriately set and then AL is raised for a time long enough to charge or drain the capacitor.
+- The state is stable as long as power on Vdd is available.
+- . The use of a capacitor means that reading
+- the cell discharges the capacitor.
+- it only takes a short time for the capacity to dissipate. This problem is called “leakage”.
+- This leakage is why a DRAM cell must be constantly refreshed.
+- these days this refresh must happen every 64ms. During the refresh cycle no access to the memory is possible since a refresh is simply a memory read operation where the result is discarded.
+- The SRAM cells also need individual power
+- d might stall up to 50% of the memory
+- A second problem resulting from the tiny charge is that the information read from the cell is not directly usable. The data line must be connected to a sense ampliﬁer
+- the (quite dramatic) difference in cost wins. Ex- cept in specialized hardware
+- we have to live with main memory which is based on DRAM
+- reading a cell causes the charge of the capacitor to be depleted. This means every read operation must be followed by an operation to recharge the capacitor.
+- y by feeding the output of the sense ampliﬁer back into the capacitor
+- e reading memory content requires additional energy
+- To select the individ- ual memory cell on the RAM chip, parts of the physical address are passed on in the form of a number of address lines.
+- Instead the address is passed encoded as a binary number using a smaller set of address lines. The address passed to the DRAM chip this way must be demultiplexed ﬁrst
+    - Note: Basically the cells are arranged in a grid structure and the address contains row and column information. First a row signal called Row Address Strobe is sent and it is converted by a row decoder (a multiplexer), than the same thing is done with a Column Address Strobe signal and a column decoder.
+      Remember that this means that the chip "grab" the data from this grid structure and place it on the data bus where the other chips actually read, they therefore do not access directly the single cell ever and needs to know the delay after which upon a request the data will be available on the bus
+- it takes some time (determined by the capac- ity C and resistance R) for the capacitor to be charged and discharged. It also means that the current which can be detected by the sense ampliﬁers is not immediately avail- able
+- But if the number of cells grows this approach is not suit- able anymore.
+- The size of a de- multiplexer increases exponentially
+- The main advantage is size. The chip real estate needed for one DRAM cell is many times smaller
+- A secondary scalability problem is that having 30 address lines connected to every RAM chip is not feasible
+- If parallel access to multiple RAM mod- ules is required for performance reasons and each RAM module requires its own set of 30 or more address lines, then the memory controller needs to have, for 8 RAM modules, a whopping 240+ pins
+- DRAM chips have, for a long time, multiplexed the address it- self.
+- the address is transferred in two parts. The ﬁrst part consisting of address bits
+- Then the second part, address bits a2 and a3, select the column. The crucial difference is that only two external address lines are needed
+- A few more lines are needed to indicate when the RAS and CAS signals are available but this is a small price
+- The DRAM cells are organized in rows and columns. They could all be aligned in one row but then the DRAM chip would need a huge demultiplexer. With the array ap- proach the design can get by with one demultiplexer and one multiplexer of half the size
+- there are reasons why not all memory is SRAM
+- • memory cells need to be individually selected
+- the number of address lines is directly responsi- ble for the cost of the memory controller
+- For writing, the new cell value is put on the data bus and, when the cell is selected using the RAS and CAS, it is stored in the cell. A pretty straightforward design
+- it takes a while before the results of the read or write operation are available
+- There need to be speciﬁcations for how much delay there is after the signal before the data will be available on the data bus for reading.
+- For writing it must be speciﬁed how long the data must be available on the bus after the RAS and CAS is done to successfully store the new value in the cell
+- SRAM is currently used in CPU caches and on-die where the connections are small and fully under control of the CPU designer
+- it is time to put this all together and see how all these factors determine how the DRAM access has to happen.
+- lowering the RAS signal.
+- ignals are read on the rising edge of the clock (CLK)
+- the RAM chip to start latching the addressed row.
+- The CAS signal can be sent after tRCD (RAS-to-CAS Delay) clock cycles
+- We will concentrate exclusively on Syn- chronous DRAM (SDRAM) and its successors Double Data Rate DRAM (DDR).
+- The column address is then trans- mitted by making it available on the address bus and low- ering the CAS line
+- Synchronous DRAM, as the name suggests, works rel- ative to a time source
+- Now the addressing is complete and the data can be trans- mitted.
+- The memory controller provides a clock, the frequency of which determines the speed of the Front Side Bus (FSB) – the memory controller in- terface used by the DRAM chips
+- The RAM chip needs some time to prepare for this. The delay is usually called CAS Latency (CL).
+- y each data transfer consists of 64 bits
+- DRAM modules allow the memory controller to spec- ify how much data is to be transmitted. Often the choice is between 2, 4, or 8 words.
+- allows ﬁlling entire lines in the caches without a new RAS/CAS sequence
+- It is also possible for the memory controller to send a new CAS signal without resetting the row selection.
+- it is the burst speed, the maximum speed
+- the protocol for talking to the RAM modules has a lot of downtime
+- A read cycle begins with the memory con- troller making the row address available
+- DDR is able to transmit two words per cycle. This cuts down on the transfer time but does not change the latency
+- only in use two cycles out of seven. Multiply this with the FSB speed and the theoretical 6.4GB/s for a 800MHz bus become 1.8GB/s.
+- DDR2 can be made faster, cheaper, more reliable, and is more energy efﬁcient
+- an SDRAM module needs time after a RAS signal before it can precharge another row
+- Before a new RAS signal can be sent the currently latched row must be deactivated and the new row must be precharged.
+- usually pretty high, in the order of two or three times the tRP value.
+- a problem if, after a RAS signal, only one CAS signal follows
+- DDR modules are often described using a special nota- tion: w-x-y-z-T. For instance: 2-3-2-8-T1. This means:
+- shows the activity starting from one CAS sig- nal to the CAS signal for another row.
+- e two words are requested which, on a simple SDRAM, takes two cycles to transmit.
+- the precharge command cannot be issued right away. It is necessary to wait as long as it takes to transmit the data
+- . Sometimes the BIOS allows changing some or all these values. SDRAM modules have programmable registers
+- The pre- charge signal has no dedicated line; instead, some imple- mentations issue it by lowering the Write Enable (WE) and RAS line simultaneously.
+- Once the precharge command is issued it takes tRP (Row Precharge time) cycles until the row can be selected
+- tRP is larger than the transfer time and so the next RAS signal is stalled for one cycle.
+- t the next data transfer happens 5 cycles after
+- . As explained in section 2.1.2, DRAM cells must constantly be refreshed.
+- At times when a row10 is recharged no access is possible.
+- Each DRAM cell must be refreshed every 64ms accord- ing to the JEDEC
+- twice the amount of data is transported per cycle. I.e., the DDR1 chip transports data on the rising and falling edge. This is sometimes called a “double-pumped” bus.
+- the memory controller’s responsibility to schedule the refresh com- mands.
+- a buffer has to be introduced. This buffer holds two bits per data line.
+- There is really not much the programmer can do about the refresh and the points in time when the commands are issued.
+- use the same column address for two DRAM cells and access them in parallel.
+- SDRs were pretty simple. The memory cells and the data trans- fer rate were identica
+- output the mem- ory content at the same rate it can be transported over the memory bu
+- To get even more out of the memory technology DDR2 includes a bit more innovation. The most obvious change that can be seen in Figure 2.12 is the doubling of the frequency of the bus.
+- Increasing the throughput of the DRAM chip is expensive since the energy consumption rises with the frequency
+- it is now re- quired that the I/O buffer gets four bits in each clock cy- cle which it then can send on the bus.
+- the changes to the DDR2 modules consist of making only the I/O buffer component of the DIMM capable of running at higher speeds
+- DDR SDRAM (called DDR1 retroactively) manages to improve the throughput without increasing any of the involved frequencies.
+- All DDR memory has one problem: the increased bus frequency makes it hard to create parallel data busses
+- if more than one DDR module is to be daisy-chained on the same bus, the signals get more and more distorted for each additional module
+- With 240 pins per channel a single Northbridge cannot reasonably drive more than two channels.
+- The cell array of DDR3 modules will run at a quarter of the speed of the external bus which requires an 8 bit I/O buffer, up from 4 bits for DDR2
+- One answer is to add memory controllers into each pro- cessor
+- n some situations this is not the case and this setup will introduce a NUMA architecture and its negative effects
+- Intel’s answer to this problem for big server machines, at least at the moment, is called Fully Buffered DRAM
+- The difference is in the connec- tion with the memory controller. Instead of a parallel data bus FB-DRAM utilizes a serial bus
+- The serial bus can be driven at a much higher frequency,
+- the chip driving the serial bus requires signiﬁcant amounts of en- ergy because of the very high frequency and the need to drive a bus
+- more modules per channel can be used.
+- more channels per Northbridge/memory controller can be used.
+- the serial bus is designed to be fully-duplex
+- An FB-DRAM module has only 69 pins
+- up to 8 DRAM modules per channel.
+- An Intel Core 2 processor running at 2.933GHz and a 1.066GHz FSB have a clock ratio of 11:1 (note: the 1.066GHz bus is quad-pumped). Each stall of one cycle on the memory bus means a stall of 11 cycles for the pro- cessor
+- it is now possible to drive 6 chan- nels of FB-DRAM with fewer pins:
+- the serial bus is designed to be fully duplexed, which means, in some situations, that the bandwidth is theoret- ically doubled alone by this.
+- DRAM access is not al- ways sequential. Non-continuous memory regions are used which means precharging and new RAS signals are needed. This is when things slow down
+- The actual bandwidth of the serial bus depends on the type ofDDR2 (or DDR3) chips used on the FB-DRAM module.
+- Hardware and software prefetching (see section 6.3) can be used to create more overlap in the timing and reduce the stall. Prefetching also helps shift memory operations in time so that there is less contention at later times
+- While DMA is certainly beneﬁcial, it means that there is more competition for the FSB bandwidth.
+- CPU designers increased the frequency of the CPU core but the frequency of the memory bus and the performance of RAM chips did not increase proportionally. This is not due to the fact that faster RAM could not be built, as explained in the previous section. It is possible but it is not economica
+- A computer can have a small amount of high-speed SRAM in addition to the large amount of DRAM
+- instead of putting the SRAM under the control of the OS or user, it becomes a resource which is transparently used and administered by the processors.
+- For code this means that there are most likely loops in the code so that the same code gets executed over and over again (the perfect case for spatial locality). Data accesses are also ideally limited to small regions. Even if the memory used over short time periods is not close together there is a high chance that the same data will be reused before long (temporal locality). For code this means, for instance, that in a loop a function call is made and that function is located elsewhere in the address space. The function may be distant in memory, but calls to that function will be close in time. For data it means that the total amount of memory used at one time (the working set size) is ideally limited but the memory used, as a result of the random access nature of RAM, is not close together
+- The CPU core is no longer directly connected to the main mem- ory.
+- In a simpliﬁed representation, the main memory and the cache are connected to the sys- tem bus which can also be used for communication with other components
+- experience has shown that it is of advantage to separate the caches used for code and for data
+- What is needed to deal with the limited size of the cache is a set of good strategies to determine what should be cached at any given time.
+- The speed difference between the cache and the main memory increased again, to a point that another level of cache was added, bigger and slower than the ﬁrst-level cache
+- This prefetching would remove some of the costs of accessing main memory since it happens asynchronousl
+- Today, there are even machines with three levels of cache in regular use.
+- L1d is the level 1 data cache, L1i the level 1 in- struction cache
+- Note that this is a schematic; the data ﬂow in reality need not pass through any of the higher-level caches on the way from the core to the main
+- By default all data read or written by the CPU cores is stored in the cache. There are memory regions which cannot be cached but this is something only the OS im- plementers have to be concerned about
+- Obviously, the cache cannot contain the content of the entire main memory (otherwise we would need no cache), but since all memory addresses are cacheable, each cache entry is tagged using the address of the data word in the main memory.
+- The differ- ence between a core and a thread is that separate cores have separate copies of (almost17) all the hardware re- sources. The cores can run completely independently unless they are using the same resources–e.g., the con- nections to the outside–at the same time. Threads, on the other hand, share almost all of the processor’s resources.
+- Since neighboring memory is likely to be used together it should also be loaded into the cache to- gether. Remember also what we learned in section 2.2.1: RAM modules are much more effective if they can trans- port many data words in a row without a new CAS or even RAS signal. So the entries stored in the caches are not single words but, instead, “lines” of several contigu- ous words. In early caches these lines were 32 bytes long; nowadays the norm is 64 bytes.
+- When memory content is needed by the processor the entire cache line is loaded into the L1d. The memory address for each cache line is computed by masking the address value according to the cache line size
+- The cores (shaded in the darker gray) have individual Level 1 caches. All cores of the CPU share the higher-level caches
+- 2S sets of cache lines
+- Providing direct access to the caches of one processor from another processor would be terri- bly expensive and a huge bottleneck. Instead, processors detect when another processor wants to read or write to a certain cache line.
+- This leaves the top 32−S−O = T bits which form the tag. These T bits are the value associated with each cache line to distinguish all the aliases18 which are cached in the same cache set
+- If a write access is detected and the processor has a clean copy of the cache line in its cache, this cache line is marked invalid.
+- The S bits used to address the cache set do not have to be stored since they are the same for all cache lines in the same set.
+- It is not possible for a cache to hold partial cache lines. A cache line which has been written to and which has not been written back to main memory is said to be “dirty”.
+- Assume a cache line is dirty in one processor’s cache and a second processor wants to read or write that cache line. In this case the main mem- ory is out-of-date and the requesting processor must, in- stead, get the cache line content from the ﬁrst proces- sor. Through snooping, the ﬁrst processor notices this situation and automatically sends the requesting proces- sor the data.
+- To be able to load new data in a cache it is almost always ﬁrst necessary to make room
+- An eviction from L1d pushes the cache line down into L2
+- Each eviction is progressively more expensive
+- s the model for an exclusive cache as is preferred by modern AMD and VIA processors
+- Intel implements inclusive caches19 where each cache line in L1d is also present in L2.
+- . A possible advantage of an exclusive cache is that loading a new cache line only has to touch the L1d and not the L2,
+- All the processors need to do is to monitor each others’ write accesses and compare the addresses with those in their local caches.
+- In symmetric multi-processor (SMP) systems the caches of the CPUs cannot work independently from each other.
+- The maintenance of this uniform view of memory is called “cache coherency”.
+- large part (probably even the majority) of the access time is caused by wire delays. This is a physical lim- itation which can only get worse with increasing cache sizes.
+- The graph shows three distinct plateaus. This is not sur- prising: the speciﬁc processor has L1d and L2 caches, but no L3.
+- If the entire working set ﬁts into the L1d the cycles per operation on each element is below 10
+- Once the L1d size is exceeded the processor has to load data from L2 and the average time springs up to around 28
+- Today’s processors all use internal pipelines of different lengths where the instructions are decoded and prepared for execution. Part of the preparation is loading values from memory (or cache) if they are trans- ferred to a register. If the memory load operation can be started early enough in the pipeline, it may happen in parallel with other operations
+- There are many obstacles to starting the memory read early
+- This graph should give sufﬁcient motivation to look into coding improvements which help improve cache usage.
+- not having sufﬁcient re- sources
+- the ﬁnal address of the load becomes available late
+- we are talking about orders-of-magnitude im- provements
+- Cache implementers have the problem that each cell in the huge main memory potentially has to be cached.
+- It can start executing the next instruc- tion early. With the help of shadow registers which can hold values no longer available in a regular register it is even possible to change the value which is to be stored in the incomplete write operation.
+- It would be possible to implement a cache where each cache line can hold a copy of any memory location (see Figure 3.5). This is called a fully associative cache.
+- the processor core would have to compare the tags of each and every cache line with the tag for the requested address.
+- it is a simple simulation of a program which accesses a conﬁgurable amount of memory repeat- edly in a random fashion. Each data item has a ﬁxed size.
+- The comparator is complex due to the speed requirements but there is only one of them now;
+- The number of transistors in a simple multiplexer grows with O(log N), where N is the number of cache lines. This is tolerable but might get slow,
+- For each cache line a comparator is needed to compare the large tag (note, S is zero)
+- But it has a drawback: it only works well if the addresses used by the program are evenly distributed with respect to the bits used for the direct mapping
+- The number of transistors needed to implement a single comparator is large
+- Fully associative caches are practical for small caches
+- This problem can be solved by making the cache set as- sociative.
+- What can be done is to restrict the search
+- In the most extreme restriction each tag maps to exactly one cache entry
+- A set-associative cache combines the good features of the full associative and direct-mapped caches to largely avoid the weaknesses of those designs
+- The tag and data storage are divided into sets, one of which is selected by the address of a cache line
+- instead of only having one element for each set value in the cache a small number of values is cached for the same set value.
+- The tags for all the set members are compared in parallel,
+- If the cache grows it is (in this ﬁgure) only the number of columns which in- creases, not the number of rows. The number of rows (and therefore comparators) only increases if the asso- ciativity of the cache is increased.
+- Such a direct-mapped cache is fast and relatively easy to implement
+- To determine which (if any) of the entries in the cache set contains the addressed cache line 8 tags have to be com- pared.
+- the cache size is cache line size × associativity × number of sets
+- The addresses are mapped into the cache by using O = log2 cache line size S = log2 number of sets
+- In general, increasing the associativity of a cache above 8 seems to have little effects for a single-threaded work- load
+- With the introduction of hyper-threaded proces- sors where the ﬁrst level cache is shared and multi-core processors which use a shared L2 cache the situation changes.
+- you basically have two programs hitting on the same cache
+- it can be expected that, with increasing numbers of cores, the associativity of the shared caches should grow.
+- In the literature one can occasionally read that introduc- ing associativity has the same effect as doubling cache size. This is true in some extreme cases as can be seen in the jump from the 4MB to the 8MB cache. But it certainly is not true for further doubling of the associa- tivity.
+- All entries are chained in a circular list using the n el- ement,
+- The pad element is the payload and it can grow arbitrarily large
+- Single Threaded Sequential Access
+- a simple walk over all the entries in the list.
+- The list elements are laid out sequentially, densely packed.
+- how long it takes to handle a single list element.
+- we can see three distinct levels:
+- • Up to a working set size of 214 bytes. • From 215 bytes to 220 bytes.
+  • From 221 bytes and up.
+- the processor has a 16kB L1d and 1MB L2
+- We do not see sharp edges in the transition from one level to the other because the caches are used by other parts of the system
+- the L2 cache is a uniﬁed cache and also used for the instructions
+- load times after an L1d hit are around 4 cycles
+- for the L2. But the results show that only about 9 cycles are required.
+- explained by the advanced logic in the processors.
+- anticipation of using consecutive memory regions, the processor prefetches
+- The effect of prefetching is even more visible once the working set size grows beyond the L2 size.
+- for dif- ferent sizes of the structure l. This means we have fewer but larger elements in the list
+- t the distance between the n elements in the (still consecutive) list grows. In the four cases of the graph the distance is 0, 56, 120, and 248 bytes respec- tively.
+- The lines more or less all match each other as long as only the L1d is involved.
+- For the L2 cache hits we see that the three new lines all pretty much match each other but that they are at a higher level (about 28).
+- This means prefetching from L2 into L1d is basically disabled
+- once the working set size exceeds the L2 capacity. Now all four lines vary widely.
+- The processor should rec- ognize the size of the strides and not fetch unnecessary cache lines
+- Where the element size is hampering the prefetching ef- forts is a result of a limitation of hardware prefetching: it cannot cross page boundaries.
+- down for larger NPAD values is the reduced efﬁciency of the TLB cache. Since the physical address has to be com- puted before a cache line can be read
+- , given that, for NPAD=7 and higher, we need one cache line per list element the hardware prefetcher cannot do much.
+- n by looking at the data of test runs where the list elements are modiﬁed.
+- Another big reason for the slowdown are the misses of the TLB cache. This is a cache where the results of the translation of a virtual address to a physical address are stored,
+- The second line, labeled “Inc”, simply increments the pad[0] member of the current element
+- The third line, labeled “Addnext0”, takes the pad[0] list element of the next element and adds it to the pad[0] member of the current
+- on to the next. The third line, labeled “Addnext0”, takes the pad[0] list element of the next element and adds it to the pad[0] member of the current list element.
+  The na¨ıve assumption would be that the “Addnext0” test runs slower because it has more work to do. Before ad- vancing to the next list element a value from that element has to be loaded. This is why it is surprising to see that this test actually runs, for some working set sizes, faster
+- he explanation for this is that the load from the next list element is basically a forced pre- fetch.
+- load from the next list element is basically a forced pre- fetch. Whenever the program advances to the next list element we know for sure that element is already in the L1d cache.
+- For the second measurement we place each list element on a separate page. The rest of each page is left untouched
+- The “Addnext0” test runs out of L2 faster
+- It needs more data loaded from main mem- ory.
+- for the ﬁrst measurement, each list iteration requires a new cache line and, for every 64 elements, a new page. For the second measurement each iteration requires load- ing a new cache line which is on a new page.
+- Since the other two tests modify memory an L2 cache eviction to make room for new cache lines cannot simply discard the data. Instead it has to be written to memory
+- The second curve looks radically different. The important feature is the huge spike start- ing when the working set size reaches 213 bytes. This is when the TLB cache overﬂows.
+- As can be seen the number of cycles it takes to compute the physical address and store it in the TLB is very high.
+- As expected, the larger the last level cache is the longer the curve stays at the low level corresponding to the L2 access costs.
+- But if the workload can be tailored to the size of the last level cache the program performance can be increased quite dramatically
+- Single Threaded Random Access
+- the processor is able to hide most of the main memory and even L2 access latency by prefetching cache lines into L2 and L1d. This can work well only when the mem- ory access is predictable, though.
+- ed. There is no way for the processor to reliably prefetch data. This can only work by chance if elements which are used shortly after one another are also close to each other in memory.
+- The automatic prefetching is actually working to a disadvantage here
+- the curve is not ﬂat- tening at various plateaus as it has been for the sequen- tial access cases. The curve keeps on rising. To explain this we can measure the L2
+- , when the working set size is larger than the L2 size, the cache miss ratio (L2 accesses / L2 misses) starts to grow.
+- . But there is another factor. Looking at Ta- ble 3.2 we can see in the L2/#Iter columns that the total number of L2 uses per iteration of the program is grow- ing.
+- For random access the per-element access time more than doubles for each doubling of the working set size. This means the average access time per list element increases since the working set size only doubles. The reason be- hind this is a rising rate ofTLB misses.
+- 3.3.3 Write Behavior
+- there are two more cache policies to mention:
+- write-combining; and
+- • uncacheable.
+- Caches are supposed to be coherent and this coherency is supposed to be completely transparent for the userlevel code. Kernel code is a different story; it occasionally requires cache ﬂushes.
+- if a cache line is modiﬁed, the result for the system after this point in time is the same as if there were no cache at all
+- The MTRRs are also usable to select between write-through and write-back policies.
+- in two ways or policies:
+- Write-combining is a limited caching optimization
+- write-through cache implementation;
+- write-back cache implementation.
+- write-through cache
+- the cache line is written to, the processor immediately also writes the cache line into main memory
+- write-combining combines multiple write ac- cesses before the cache line is written out.
+- simple but not very fast. A pro- gram which, for instance, modiﬁes a local variable over and over again would create a lot of trafﬁc on the FSB
+- Finally there is uncacheable memory. This usually means the memory location is not backed by RAM at all. It might be a special address which is hardcoded to have some functionality implemented outside the CPU.
+- The write-back policy is more sophisticated. Here the processor does not immediately write the modiﬁed cache line back to main memory. Instead, the cache line is only marked as dirty. When the cache line is dropped from the cache at some point in the future the dirty bit will instruct the processor to write the data
+- t often is the case for mem- ory mapped address ranges which translate to accesses to cards and devices attached to a bus
+- But there is a signiﬁcant problem with the write-back im- plementation. When more than one processor (or core or hyper-thread) is available and accessing the same mem- ory it must still be assured that both processors see the same memory content

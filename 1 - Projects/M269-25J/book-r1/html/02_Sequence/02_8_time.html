@@ -1,0 +1,398 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.8. Run-times</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.9. Summary" href="02_9_summary.html" />
+    <link rel="prev" title="2.7. Complexity" href="02_7_complexity.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="02-introduction.html">2. Numbers and sequence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="02_1_numbers.html">2.1. Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_2_operations.html">2.2. Arithmetic operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_3_expressions.html">2.3. Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_4_assignments.html">2.4. Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_5_maths_functions.html">2.5. Functions in mathematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_6_py_functions.html">2.6. Functions in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_7_complexity.html">2.7. Complexity</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.8. Run-times</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Checking-growth-rates">2.8.1. Checking growth rates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-2.8.1">Exercise 2.8.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-2.8.2">Exercise 2.8.2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02_9_summary.html">2.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="02-introduction.html"><span class="section-number">2. </span>Numbers and sequence</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.8. </span>Run-times</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Run-times">
+<h1><span class="section-number">2.8. </span>Run-times<a class="headerlink" href="#Run-times" title="Link to this heading"></a></h1>
+<p>We determine the complexity of an algorithm from its English description. Later, after implementing it in Python, we can measure the run-times for ever-growing inputs to check the actual growth rate against what the complexity analysis predicted.</p>
+<p>The run-time depends on the hardware, operating system and Python interpreter that execute the code, so you’ll get different timings from mine if you run the code cells in this notebook. The run-times also depend on what other processes the computer is executing, so they change every time we run the code.</p>
+<p>We can measure the run-time of some code with the IPython command <code class="docutils literal notranslate"><span class="pre">%timeit</span></code>. Instructions starting with a percentage sign aren’t part of the Python language: they’re direct commands to the IPython interpreter.</p>
+<p>The next cell will take some seconds to run (I’ll explain why further below). While code is running, the notebook has an asterisk instead of a number in the brackets to the left of the code cell. Once the code finishes executing, the asterisk becomes a number.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> 2 + 7
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.63 ns ± 0.0203 ns per loop (mean ± std. dev. of 7 runs, 100,000,000 loops each)
+</pre></div></div>
+</div>
+<p>Adding 2 and 7 takes a few nanoseconds (abbreviated ns). The run-time varies each time the code cell is run, depending on the CPU load, so as I write this text I don’t know in advance the run-time you will see. In the following I assume computing <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">7</span></code> takes 8 nanoseconds.</p>
+<p>Other abbreviations you may see in the run-time report are ‘s’ (seconds), ‘ms’ (milliseconds) and ‘µs’ (microseconds). One second is a thousand milliseconds; one millisecond is a thousand microseconds; one microsecond is a thousand nanoseconds. In other words, 1 ms = <span class="math notranslate nohighlight">\(10^{−3}\)</span> s, 1 µs = <span class="math notranslate nohighlight">\(10^{−6}\)</span> s and 1 ns = <span class="math notranslate nohighlight">\(10^{−9}\)</span> s.</p>
+<p>Measuring a very short lapse of time is prone to significant measurement errors, so <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> executes the code multiple times, measures the total run-time, and divides it by the number of iterations to get a more precise value. On my machine, the addition was computed 100 million times, but on yours it may have been fewer or more times: the IPython interpreter automatically chooses the number of loops. Finally, to reduce the effect of other processes running at the same time, <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> runs
+everything seven times and takes the average.</p>
+<p>Even though addition is very fast, running the code cell takes several seconds. Assuming addition takes 8 ns, the cell executes in 7 runs × 100,000,000 loops × 8 ns = 7 × 100 × 8 ms = 5,600 ms = 5.6 s. Fortunately, we can reduce the time waiting for a result by setting the number of runs and loops with options <code class="docutils literal notranslate"><span class="pre">-r</span></code> and <code class="docutils literal notranslate"><span class="pre">-n</span></code>, respectively.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> -r 5 -n 1000000 2 + 7
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.66 ns ± 0.0334 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+</pre></div></div>
+</div>
+<p>I reduce the number of runs to five and the number of loops to one million. Now the cell runs in milliseconds: 5 × 1,000,000 × 8 ns = 5 × 1 × 8 ms = 40 ms.</p>
+<p>The time measured for addition may differ from previously, e.g. it may now be 7.5 ns or 8.5 ns instead of 8 ns, because reducing the number of runs and loops reduces accuracy. That’s OK, as I’ll explain in a minute.</p>
+<p>Modern processors add two 64-bit numbers in hardware, so the very short time is not a surprise. Let’s try some inputs that don’t fit in 64 bits.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> -r 5 -n 1000000 (2 ** 64 + 1) + (2 ** 64 + 2)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.65 ns ± 0.0309 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+</pre></div></div>
+</div>
+<p>This took about the same time! That can’t be right. Let’s try a different way.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 1000000 left + right
+<span class="n">left</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">64</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">64</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 1000000 left + right
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+12.6 ns ± 0.357 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+24.3 ns ± 0.498 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+</pre></div></div>
+</div>
+<p>The times look right now: adding longer numbers takes more time, as we’d expect. Before, the interpreter figured out I was adding two constant values and pre-computed the sum, as it wouldn’t change. I was just measuring the time to retrieve a value from memory, which is always the same, no matter how small or large the value is. The interpreter can’t make such optimisations when adding variables because their values may change.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> When measuring the run-time of an expression, use variables instead of literals.</p>
+</div>
+<p>As I mentioned in the previous section, ‘constant time’ doesn’t mean that <em>all</em> operations take the same time, but rather that <em>each</em> operation takes the same time for small and large inputs. For example, I expect that dividing two numbers takes longer than adding them.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="mi">9876543210</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">123456789</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 1000000 left + right
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 1000000 left // right
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+23.4 ns ± 0.232 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+29.1 ns ± 0.185 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+</pre></div></div>
+</div>
+<p>We can also measure the run-time of functions we define.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">brick_volume</span><span class="p">(</span><span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the volume of a brick, given its dimensions.</span>
+
+<span class="sd">    Preconditions: the dimensions are positive and in millimetres</span>
+<span class="sd">    Postconditions: the output is in cubic millimetres</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">length</span> <span class="o">*</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+
+
+<span class="n">l</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 brick_volume(l, w, h)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+34.5 ns ± 0.145 ns per loop (mean ± std. dev. of 5 runs, 10,000,000 loops each)
+</pre></div></div>
+</div>
+<p>I didn’t set the number of loops, so the interpreter automatically sets it according to the run-time. The longer the code takes to run, the fewer loops are necessary to get a precise measurement. In this example, the interpreter on my machine ‘only’ made 10 million function calls in each run, whereas it had previously made 100 million additions per run.</p>
+<section id="Checking-growth-rates">
+<h2><span class="section-number">2.8.1. </span>Checking growth rates<a class="headerlink" href="#Checking-growth-rates" title="Link to this heading"></a></h2>
+<p>To check the complexity of an operation, we measure the run-times for a series of inputs and look at the trend. That’s why the actual run-time values don’t matter, as long as we measure them consistently. What matters is how the run-times increase, as the inputs get larger. Often, we keep doubling the input size or value, as that’s a good way to check if an operation has constant or linear complexity. Here’s a little experiment for the addition operation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 1000000 left + right  # 1 digit
+<span class="n">left</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">77</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 1000000 left + right  # 2 digits
+<span class="n">left</span> <span class="o">=</span> <span class="mi">2222</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">7777</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 left + right  # 4 digits
+<span class="n">left</span> <span class="o">=</span> <span class="mi">22222222</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">77777777</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 left + right  # 8 digits
+<span class="n">left</span> <span class="o">=</span> <span class="mi">2222222222222222</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">7777777777777777</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 left + right  # 16 digits
+<span class="n">left</span> <span class="o">=</span> <span class="mi">22222222222222222222222222222222</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">77777777777777777777777777777777</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 left + right  # 32 digits
+<span class="n">left</span> <span class="o">=</span> <span class="mi">2222222222222222222222222222222222222222222222222222222222222222</span>
+<span class="n">right</span> <span class="o">=</span> <span class="mi">7777777777777777777777777777777777777777777777777777777777777777</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 left + right  # 64 digits
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+12.1 ns ± 0.0435 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+12.2 ns ± 0.0437 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+20.6 ns ± 0.0133 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+20.6 ns ± 0.0186 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+23.2 ns ± 0.0249 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+24.2 ns ± 0.0433 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+27.7 ns ± 2.58 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+</pre></div></div>
+</div>
+<p>Run-times remain similar but increase (without doubling) as the numbers get larger and go beyond 64-bits, which is consistent with most of the computation being done in hardware. As mentioned before, since we only use 64-bit integers in M269, the run-time will always be within a certain bound and hence we can treat addition as a constant-time operation.</p>
+<p>You may occasionally observe the mean run-times <em>decrease</em> as the inputs increase. A likely reason is that some other processes were running and so the previous measurements took longer or varied more across runs (look at the reported standard deviation) than they normally would.</p>
+<p>Let’s now look at exponentiation. We want to check if it’s linear in the value of the exponent, so we must double the value, not the number of digits. Doubling the exponent quickly leads to multiplying integers that don’t fit in 64 bits, but I’ll do it anyway to see how the run-times increase.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 base ** 1
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 base ** 2
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 base ** 4
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 base ** 8
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 base ** 16
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 base ** 32
+<span class="o">%</span><span class="k">timeit</span> -r 5 -n 10000 base ** 64
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+17.6 ns ± 0.0339 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+17.4 ns ± 0.0421 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+28.8 ns ± 0.0345 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+39.3 ns ± 0.193 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+52.2 ns ± 1.43 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+75.7 ns ± 0.178 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+111 ns ± 2.5 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+</pre></div></div>
+</div>
+<p>Overall, the run-time keeps increasing, but it’s not doubling whenever the exponent doubles. The interpreter or the hardware is using a more efficient algorithm than repeatedly multiplying the base with itself. (You will see such an algorithm in Chapter 13.)</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> To see the growth of run-times, keep doubling the input values or input sizes.</p>
+</div>
+<p>The fact that exponentiation has a lower complexity than linear in my computational environment (and yours too, probably) doesn’t change our assumption. When analysing algorithms involving exponentiation, we shall still assume it’s linear. The whole point of making these assumptions is to guarantee that you and your 700+ fellow M269 students obtain the same complexity for the same algorithm, and not different ones, depending on everyone’s computational environment. You can imagine the confusion
+this would cause in forums, tutorials and TMAs.</p>
+<p>A final note: in general, measuring the run-time on small inputs isn’t very useful. First, the computational environment may make some optimisations for small values, which means the timings won’t fit a clear growth rate. Second, even without optimisations the run-times may be so short that they will all be very similar, and look like constant run-time, or may fluctuate due to measuring errors. Third, we’re interested in how algorithms cope with large, not small, inputs.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> In general, don’t measure run-times for very small inputs.</p>
+</div>
+<section id="Exercise-2.8.1">
+<h3>Exercise 2.8.1<a class="headerlink" href="#Exercise-2.8.1" title="Link to this heading"></a></h3>
+<p>When measuring the run-times of exponentiation, would <code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">=</span> <span class="pre">1</span></code> be a good choice? Explain why or why not.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_02_8_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_02_8_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-2.8.2">
+<h3>Exercise 2.8.2<a class="headerlink" href="#Exercise-2.8.2" title="Link to this heading"></a></h3>
+<p>To practice measuring run-times and editing notebooks, choose an operation (other than addition and exponentiation) from Section 2.2 and check whether its run-time is linear as the value or size of the operands increases. Add a code cell below this paragraph for your experiment.</p>
+<p>Use the same number of runs and loops for each measurement, but different from what I used for addition. Since arithmetic operations take nanoseconds, choose at least one million loops to make the measurement relatively accurate. Since Python may optimise operations for values that fit in one byte, start the experiment with values grater than 255.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_02_8_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_02_8_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02_7_complexity.html" class="btn btn-neutral float-left" title="2.7. Complexity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="02_9_summary.html" class="btn btn-neutral float-right" title="2.9. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

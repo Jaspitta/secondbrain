@@ -1,0 +1,494 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.2. Factorisation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11.3. Constraint satisfaction" href="11_3_constraints.html" />
+    <link rel="prev" title="11.1. Linear search, again" href="11_1_linear.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="11-introduction.html">11. Exhaustive search</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="11_1_linear.html">11.1. Linear search, again</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.2. Factorisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Make-candidates-explicit">11.2.1. Make candidates explicit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Compute-solutions">11.2.2. Compute solutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Sort-candidates">11.2.3. Sort candidates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Prime-numbers">11.2.4. Prime numbers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.2.1">Exercise 11.2.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.2.2">Exercise 11.2.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.2.3-(optional)">Exercise 11.2.3 (optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="11_3_constraints.html">11.3. Constraint satisfaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_4_permutations.html">11.4. Searching permutations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_5_subsets.html">11.5. Searching subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_6_practice.html">11.6. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_7_summary.html">11.7. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="11-introduction.html"><span class="section-number">11. </span>Exhaustive search</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11.2. </span>Factorisation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Factorisation">
+<h1><span class="section-number">11.2. </span>Factorisation<a class="headerlink" href="#Factorisation" title="Link to this heading"></a></h1>
+<p>This section illustrates further exhaustive search techniques with a famous and important problem in number theory and cryptography: given a positive integer <em>n</em>, compute all its positive integer divisors (also called factors). For example, the positive integer factors of 5 are 1 and 5, and those of 10 are 1, 2, 5 and 10.</p>
+<p>I start by writing the problem definition and some tests in Python. To ease testing, I produce the factors in no particular order, as a set.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: factorisation</div>
+<div class="line"><strong>Inputs</strong>: <em>n</em>, an integer</div>
+<div class="line"><strong>Preconditions</strong>: <em>n</em> &gt; 0</div>
+<div class="line"><strong>Output</strong>: <em>factors</em>, a set</div>
+<div class="line"><strong>Postconditions</strong>: the members of <em>factors</em> are all the positive integer divisors of <em>n</em></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_tests</span>
+
+<span class="n">factorisation_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,         n,  factors</span>
+    <span class="p">(</span><span class="s1">&#39;smallest n&#39;</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="p">{</span><span class="mi">1</span><span class="p">}),</span>
+    <span class="p">(</span><span class="s1">&#39;2 factors&#39;</span><span class="p">,</span>   <span class="mi">2</span><span class="p">,</span>  <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}),</span>
+    <span class="p">(</span><span class="s1">&#39;3 factors&#39;</span><span class="p">,</span>   <span class="mi">25</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">}),</span>
+    <span class="p">(</span><span class="s1">&#39;4 factors&#39;</span><span class="p">,</span>   <span class="mi">10</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">}),</span>
+    <span class="p">(</span><span class="s1">&#39;5+ factors&#39;</span><span class="p">,</span>  <span class="mi">40</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">})</span>
+<span class="p">]</span>
+
+<span class="n">check_tests</span><span class="p">(</span><span class="n">factorisation_tests</span><span class="p">,</span> <span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">set</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+OK: the test table passed the automatic checks.
+</pre></div></div>
+</div>
+<p>To apply brute-force search I must state the problem as ‘find those candidates that satisfy these criteria’. For this problem we must find those positive integers that divide <em>n</em> without remainder.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> To apply exhaustive search, rephrase the problem at hand as a search problem.</p>
+</div>
+<section id="Make-candidates-explicit">
+<h2><span class="section-number">11.2.1. </span>Make candidates explicit<a class="headerlink" href="#Make-candidates-explicit" title="Link to this heading"></a></h2>
+<p>To obtain a brute-force search algorithm we must answer these questions:</p>
+<ul class="simple">
+<li><p>What are the candidates?</p></li>
+<li><p>How are they generated, one by one?</p></li>
+<li><p>How is each candidate tested?</p></li>
+</ul>
+<p>The second question is very easy to answer if we have a collection of candidates to iterate over but the input is a single integer. We must first create a collection of candidates to apply linear search.</p>
+<p>By rephrasing factorisation as a search problem, the candidates became explicit: the positive integers. Unfortunately, there are infinitely many of them, and the algorithm would never stop iterating. For brute-force search to work, two conditions must be met: the collection of candidates is finite and includes all solutions. Can you think of a finite range of positive integers that includes the factors of <em>n</em>?</p>
+<hr class="docutils" />
+<p>The smallest positive integer is 1 and no number higher than <em>n</em> divides <em>n</em>, so the integers from 1 to <em>n</em> include all factors of <em>n</em>.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If the solutions are integers, determine the smallest and largest solutions to obtain a finite range of candidates.</p>
+</div>
+<p>Having a finite collection of candidates (1 to <em>n</em>), we turn to the other two questions of how to generate and test each one. Generating integers within a range is trivial with a for-loop. Checking if a candidate is a solution, i.e. a divisor of <em>n</em>, is also trivial with the modulo operation.</p>
+<ol class="arabic simple">
+<li><p>let <em>factors</em> be the empty set</p></li>
+<li><p>for each <em>candidate</em> from 1 to <em>n</em>:</p>
+<ol class="arabic simple">
+<li><p>if <em>n</em> mod <em>candidate</em> = 0:</p>
+<ol class="arabic simple">
+<li><p>add <em>candidate</em> to <em>factors</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>What’s the complexity of this algorithm?</p>
+<hr class="docutils" />
+<p>The algorithm is a linear search over the integers from 1 to <em>n</em> and for each one executes two or three constant-time operations (just step 2.1 or also step 2.1.1). The best- and worst-case complexities are thus linear in <em>n</em>: Θ(<em>n</em>).</p>
+<p>The code is a direct translation of the algorithm to Python.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">factorisation</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all positive integer divisors of n.</span>
+
+<span class="sd">    Preconditions: n &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">candidate</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">factors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">factors</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">factorisation</span><span class="p">,</span> <span class="n">factorisation_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing factorisation...
+5+ factors FAILED: {1, 2, 4, 5, 8, 40, 10, 20} instead of {1, 2, 4, 20, 40, 10}
+Tests finished: 4 passed (80%), 1 failed.
+</pre></div></div>
+</div>
+<p>The last test fails. It’s easy to see why, because the test function prints the actual and expected outputs: I forgot two factors of 40. I must replace the expected output of the last test.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factorisation_tests</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;5+ factors&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">})</span>
+<span class="n">test</span><span class="p">(</span><span class="n">factorisation</span><span class="p">,</span> <span class="n">factorisation_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing factorisation...
+Tests finished: 5 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>As explained <a class="reference internal" href="../02_Sequence/02_5_maths_functions.html#Algorithms"><span class="std std-ref">previously</span></a>, an algorithm is correct if it produces an output that satisfies the postconditions for each input that satisfies the preconditions. To properly check the implementation of an algorithm, every test must associate a valid input to a valid output; otherwise the test itself is incorrect. Here, the test is incorrect because 40 satisfies the preconditions but {1, 2, 4, 10, 20, 40} doesn’t satisfy the postconditions:
+the set doesn’t contain all positive integer divisors of 40, it’s missing two of them.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If the code fails a test, maybe the code is correct and the test isn’t.</p>
+</div>
+</section>
+<section id="Compute-solutions">
+<h2><span class="section-number">11.2.2. </span>Compute solutions<a class="headerlink" href="#Compute-solutions" title="Link to this heading"></a></h2>
+<p>Sometimes, once you find a solution, you can directly compute other solutions from it and remove them from the candidates. This reduces the remaining number of candidates to generate and test. For this problem, if we have a factor <em>f</em> of <em>n</em>, then <em>n/f</em> is the ‘symmetric’ factor, e.g. if 2 divides 10 then 10 / 2 = 5 also divides 10.</p>
+<p>The algorithm must start with an explicit collection of candidates so that the computed solutions can be removed from it.</p>
+<ol class="arabic simple">
+<li><p>let <em>factors</em> be the empty set</p></li>
+<li><p>let <em>candidates</em> be {1, …, <em>n</em>}</p></li>
+<li><p>while <em>candidates</em> isn’t empty:</p>
+<ol class="arabic simple">
+<li><p>remove some <em>candidate</em> from <em>candidates</em></p></li>
+<li><p>if <em>n</em> mod <em>candidate</em> = 0:</p>
+<ol class="arabic simple">
+<li><p>add <em>candidate</em> to <em>factors</em></p></li>
+<li><p>add <em>n</em> / <em>candidate</em> to <em>factors</em></p></li>
+<li><p>remove <em>n</em> / <em>candidate</em> from <em>candidates</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>This algorithm is a linear search because it iterates over a given collection, but contrary to a for-loop, it goes through the candidates in no particular order. I’ll show you shortly how to implement step 3.1 in Python.</p>
+<p>What are the best- and worst-case complexities of this algorithm? Assume step 3.1 takes constant time.</p>
+<hr class="docutils" />
+<p>All operations within the while-loop take constant time. The number of iterations is either <em>n</em> / 2 in the best case (each iteration removes two factors) or <em>n</em> in the worst case (each iteration removes one factor). The algorithm is thus linear in <em>n</em> in the best and worst cases.</p>
+<p>Let’s move on to the code. Steps 3.2.2 and 3.2.3 of the algorithm divide integers to obtain the integer factors. In Python, the division operator <code class="docutils literal notranslate"><span class="pre">/</span></code> always produces a floating-point number, so we must use <code class="docutils literal notranslate"><span class="pre">//</span></code> (integer division) instead.</p>
+<p>Step 3.1 is implemented with Python’s <code class="docutils literal notranslate"><span class="pre">set</span></code> method <code class="docutils literal notranslate"><span class="pre">pop()</span></code>, which removes and returns an arbitrary set member.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">symmetric_factorisation</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all positive integer divisors of n.</span>
+
+<span class="sd">    Preconditions: n &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">candidates</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">candidate</span> <span class="o">=</span> <span class="n">candidates</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">candidate</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">factors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+            <span class="n">factors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="n">candidate</span><span class="p">)</span>
+            <span class="n">candidates</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="n">candidate</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">factors</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">symmetric_factorisation</span><span class="p">,</span> <span class="n">factorisation_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing symmetric_factorisation...
+Tests finished: 5 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+</section>
+<section id="Sort-candidates">
+<h2><span class="section-number">11.2.3. </span>Sort candidates<a class="headerlink" href="#Sort-candidates" title="Link to this heading"></a></h2>
+<p>In <a class="reference internal" href="11_1_linear.html#Sorted-candidates"><span class="std std-ref">Section 11.1.3</span></a> you saw that sorting the products in store allowed the linear search to stop early. My first factorisation approach generates the factors in ascending order, while the second computes some factors directly. Let’s try to combine both approaches and see if we can stop early due to the sorted order of the candidates.</p>
+<p>The combined algorithm tests candidates <em>f</em> in ascending order (1, 2, 3, …) and, if they’re a factor, adds <em>n</em> / <em>f</em> to <em>factors</em>. As <em>f</em> increases, <em>n</em> / <em>f</em> decreases (<em>n</em>/1, <em>n</em>/2, <em>n</em>/3, …), so at some point <em>f</em> &gt; <em>n</em> / <em>f</em>. If the algorithm continues testing and increasing <em>f</em> from that point onwards, then it will only find the same factors that were already computed. When <em>f</em> &gt; <em>n</em> / <em>f</em> we have <em>f</em>² &gt; <em>n</em>. At that point we can stop generating and testing candidates.</p>
+<p>To sum up, by generating candidates in ascending order and by computing the symmetric factors, we can stop much earlier: when the square of the candidate is <em>n</em>.</p>
+<ol class="arabic simple">
+<li><p>let <em>factors</em> be the empty set</p></li>
+<li><p>let <em>candidate</em> be 1</p></li>
+<li><p>while <em>candidate</em> × <em>candidate</em> ≤ <em>n</em>:</p>
+<ol class="arabic simple">
+<li><p>if <em>n</em> mod <em>candidate</em> = 0:</p>
+<ol class="arabic simple">
+<li><p>add <em>candidate</em> to <em>factors</em></p></li>
+<li><p>add <em>n</em> / <em>candidate</em> to <em>factors</em></p></li>
+</ol>
+</li>
+<li><p>increment <em>candidate</em></p></li>
+</ol>
+</li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">root_factorisation</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all positive integer divisors of n.</span>
+
+<span class="sd">    Preconditions: n &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">candidate</span> <span class="o">*</span> <span class="n">candidate</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">candidate</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">factors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+            <span class="n">factors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="n">candidate</span><span class="p">)</span>
+        <span class="n">candidate</span> <span class="o">=</span> <span class="n">candidate</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">factors</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">root_factorisation</span><span class="p">,</span> <span class="n">factorisation_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing root_factorisation...
+Tests finished: 5 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>The algorithm does <span class="math notranslate nohighlight">\(\sqrt{n}\)</span> iterations and each takes constant time, so the complexity is Θ(<span class="math notranslate nohighlight">\(\sqrt{n}\)</span>). This is a vast improvement. Imagine <em>n</em> is one million. The original algorithm does one million iterations but this one only executes a thousand!</p>
+<p>The new algorithm isn’t just faster: it copes much better with a growing input. The larger the input, the larger the run-time reduction, compared to the full linear search from 1 to <em>n</em>. A picture shows it better.</p>
+<p>I am going to use another function of the <code class="docutils literal notranslate"><span class="pre">algoesup</span></code> module. It measures the run-times of one or more functions that take an integer as input, executing them for <em>n</em> = 1, 2, 4, …, 1024.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">time_functions_int</span>
+
+<span class="n">time_functions_int</span><span class="p">([</span><span class="n">factorisation</span><span class="p">,</span> <span class="n">symmetric_factorisation</span><span class="p">,</span> <span class="n">root_factorisation</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Inputs generated by int_value
+
+Input value   factorisation symmetric_facto root_factorisat
+          1           152.6           275.4           150.5 ns
+          2           184.7           282.8           151.0 ns
+          4           237.8           422.5           217.3 ns
+          8           328.6           592.8           217.7 ns
+         16           576.3          1028.3           345.8 ns
+         32           931.9          1789.3           375.6 ns
+         64          1608.3          3208.4           528.3 ns
+        128          2899.0          6059.1           671.1 ns
+        256          5492.0         11496.6           863.4 ns
+        512         12655.7         26838.6          1139.5 ns
+       1024         28435.9         58488.7          1607.7 ns
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/11_Search_11_2_factorisation_23_1.png" src="../_images/11_Search_11_2_factorisation_23_1.png" />
+</div>
+</div>
+<p>The basic linear search from 1 to <em>n</em> (Section 11.2.1) and the linear search that computes solution <em>n</em> / <em>f</em> (Section 11.2.2) have linear complexity (the run-times form straight upward lines), but the latter takes much longer, even though it makes fewer iterations, because it uses an additional set with the candidates yet to test and so the operations within each iteration take much longer to execute.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Algorithms with the same complexity may have very different run-times.</p>
+</div>
+<p>The linear search up to <span class="math notranslate nohighlight">\(\sqrt{n}\)</span> (Section 11.2.3) seems to have constant complexity (a horizontal line) because it runs much faster than the other two and so the time growth is too small to see, but the table above the line chart shows that the run-times are not constant.</p>
+</section>
+<section id="Prime-numbers">
+<h2><span class="section-number">11.2.4. </span>Prime numbers<a class="headerlink" href="#Prime-numbers" title="Link to this heading"></a></h2>
+<p>To finish this section, here’s a similar problem for practice.</p>
+<p>A positive integer <em>n</em> is prime if and only if it has exactly two different positive integer factors, e.g. 1 and 4 aren’t prime but 2 is. Given a positive integer <em>n</em>, decide whether it’s prime.</p>
+<section id="Exercise-11.2.1">
+<h3>Exercise 11.2.1<a class="headerlink" href="#Exercise-11.2.1" title="Link to this heading"></a></h3>
+<p>Is <code class="docutils literal notranslate"><span class="pre">len(factorisation(n))</span> <span class="pre">==</span> <span class="pre">2</span></code> an efficient way of solving the problem?</p>
+<p><a class="reference internal" href="../32_Answers/Answers_11_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-11.2.2">
+<h3>Exercise 11.2.2<a class="headerlink" href="#Exercise-11.2.2" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../06_Implementing/06_4_bounded.html#Outlining-algorithms"><span class="std std-ref">Outline</span></a> a more efficient algorithm to decide if <em>n</em> is prime.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_11_2_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_11_2_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-11.2.3-(optional)">
+<h3>Exercise 11.2.3 (optional)<a class="headerlink" href="#Exercise-11.2.3-(optional)" title="Link to this heading"></a></h3>
+<p>Implement your algorithm. Write a docstring and add tests.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+
+<span class="n">prime_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,         n,      is_prime</span>
+    <span class="p">(</span><span class="s1">&#39;smallest n&#39;</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>      <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;even prime&#39;</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>      <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;n = 4&#39;</span><span class="p">,</span>       <span class="mi">4</span><span class="p">,</span>      <span class="kc">False</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">is_prime</span><span class="p">,</span> <span class="n">prime_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="11_1_linear.html" class="btn btn-neutral float-left" title="11.1. Linear search, again" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="11_3_constraints.html" class="btn btn-neutral float-right" title="11.3. Constraint satisfaction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

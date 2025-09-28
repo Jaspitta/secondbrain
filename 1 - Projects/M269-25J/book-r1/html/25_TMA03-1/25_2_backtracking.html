@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.2. Backtracking</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="25.3. Dynamic programming" href="25_3_dp.html" />
+    <link rel="prev" title="25.1. Problems on graphs" href="25_1_graphs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="25-introduction.html">25. TMA 03 part 1</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="25_1_graphs.html">25.1. Problems on graphs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">25.2. Backtracking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Constraints-on-sequences">25.2.1. Constraints on sequences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Best-sequence">25.2.2. Best sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Constraints-on-sets">25.2.3. Constraints on sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Best-set">25.2.4. Best set</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="25_3_dp.html">25.3. Dynamic programming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="25-introduction.html"><span class="section-number">25. </span>TMA 03 part 1</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">25.2. </span>Backtracking</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Backtracking">
+<h1><span class="section-number">25.2. </span>Backtracking<a class="headerlink" href="#Backtracking" title="Link to this heading"></a></h1>
+<p>You can apply backtracking to solve a problem with these properties:</p>
+<ol class="arabic simple">
+<li><p>It’s a constraint satisfaction or optimisation problem.</p></li>
+<li><p>Each solution is a set or a sequence of items.</p></li>
+<li><p>The candidates can be constructed incrementally, item by item.</p></li>
+<li><p>Each solution must satisfy local constraints that can be checked as each item is added.</p></li>
+</ol>
+<p>In addition, the way backtracking is presented in M269, you must know in advance the extensions, i.e. the items that can be added to a candidate. Moreover, if a solution is a sequence, items should be unique, but it may possible to work around this limitation. For example, we can solve the TSP with backtracking even though one node appears twice in the tour.</p>
+<p>If candidates can’t be generated incrementally or if there are no local constraints, use brute-force search instead.</p>
+<p>The following subsections present the code templates for constraint satisfaction and optimisation problems on sequences and sets.</p>
+<section id="Constraints-on-sequences">
+<h2><span class="section-number">25.2.1. </span>Constraints on sequences<a class="headerlink" href="#Constraints-on-sequences" title="Link to this heading"></a></h2>
+<p>If the problem asks for all sequences that satisfy some constraints, consider the following:</p>
+<ul class="simple">
+<li><p>What are the candidates? What do they represent?</p></li>
+<li><p>What are the items in the candidates? What do items represent?</p></li>
+<li><p>What data structure should be used for each item?</p></li>
+<li><p>Is the initial candidate the empty sequence?</p></li>
+<li><p>What is the initial set of extensions? How can it be generated?</p></li>
+<li><p>When is a candidate a solution, i.e. what are the constraints?</p></li>
+<li><p>Which constraints are local (can be checked on partial candidates) and which are global (must be checked on complete candidates)?</p></li>
+<li><p>Can partial candidates be solutions, like in <a class="reference internal" href="../22_Backtracking/22_3_trackword.html#Trackword"><span class="std std-ref">Trackword</span></a>?</p></li>
+</ul>
+<p>Then copy the following code template and adapt it to your problem, according to your answers to the above questions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">problem</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all solutions for the problem instance, in the order generated.&quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>       <span class="c1"># initial candidate, usually []</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="o">...</span>        <span class="c1"># a set of items</span>
+    <span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">solutions</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">solutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add to solutions all extensions of candidate that solve the problem instance.&quot;&quot;&quot;</span>
+    <span class="c1"># print(&#39;Visiting node&#39;, candidate, extensions)</span>
+    <span class="c1"># remove the next line if partial candidates can be solutions</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+            <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">extensions</span> <span class="o">-</span> <span class="p">{</span><span class="n">item</span><span class="p">},</span> <span class="n">instance</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if candidate satisfies the global constraints.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">...</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if item may extend candidate towards a solution.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>In this and the following templates, you may uncomment the print statements to debug your code and check if the search space is being pruned as you’d expect. Once your code passes the tests, make the variable names and docstrings specific to the problem and remove unnecessary parameters.</p>
+</section>
+<section id="Best-sequence">
+<h2><span class="section-number">25.2.2. </span>Best sequence<a class="headerlink" href="#Best-sequence" title="Link to this heading"></a></h2>
+<p>If the problem asks for one sequence that maximises or minimises some value, consider in addition to the previous questions:</p>
+<ul class="simple">
+<li><p>Is it a minimisation or maximisation problem?</p></li>
+<li><p>What value is being minimised or minimised?</p></li>
+<li><p>Is there an easily generated ‘good’ solution, i.e. with a low (or high) value?</p></li>
+</ul>
+<p>The following assumes the value is an integer, but an optimisation problem can be about any type of comparable values. If they aren’t comparable, it’s impossible to determine the best solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SOLUTION</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VALUE</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">problem</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the best solution the problem instance and its value.&quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>   <span class="c1"># initial candidate, usually []</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># a set of items</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="o">...</span>      <span class="c1"># ideally with a value near lowest/highest</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="p">[</span><span class="n">solution</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">solution</span><span class="p">,</span> <span class="n">instance</span><span class="p">)]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">best</span>
+
+<span class="c1"># in the next line replace &#39;int&#39; by the value&#39;s type</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the value of the candidate sequence for the problem instance.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">...</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update best if candidate is a better solution, then extend it.&quot;&quot;&quot;</span>
+    <span class="c1"># print(&#39;Visiting node&#39;, candidate, extensions)</span>
+    <span class="c1"># remove the next line if partial candidates can be solutions</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+            <span class="n">candidate_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+            <span class="c1"># in the next line, use &lt; for minimisation problems</span>
+            <span class="k">if</span> <span class="n">candidate_value</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span>
+                <span class="c1"># print(&#39;New best with value&#39;, candidate_value)</span>
+                <span class="n">best</span><span class="p">[</span><span class="n">SOLUTION</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span>
+                <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_value</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">extensions</span> <span class="o">-</span> <span class="p">{</span><span class="n">item</span><span class="p">},</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if candidate satisfies the global constraints.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">...</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if item may extend candidate towards a solution.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>If no initial solution can be easily constructed, use a pseudo-solution with an artificial positive or negative infinite value. The first solution found by backtracking will be the first best solution. The main function becomes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">problem</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the best solution the problem instance and its value.&quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>       <span class="c1"># initial candidate, usually []</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="o">...</span>        <span class="c1"># a set of items</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="p">[[],</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span>   <span class="c1"># use -math.inf for maximisation problems</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">best</span>
+</pre></div>
+</div>
+<p>To further prune the search space, consider:</p>
+<ul class="simple">
+<li><p>Does extending a candidate worsen its value, i.e. does extending increase the value for a minimisation problem or decrease the value for a maximisation problem?</p></li>
+</ul>
+<p>For the TSP, if weights are positive then extending a candidate path increases its length, which worsens the candidate’s value because we’re looking for a shortest tour. For problems like this, use the next <code class="docutils literal notranslate"><span class="pre">can_extend</span></code> template and add the <code class="docutils literal notranslate"><span class="pre">best</span></code> parameter to the call in function <code class="docutils literal notranslate"><span class="pre">extend</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if item can extend candidate into a better solution than best.&quot;&quot;&quot;</span>
+    <span class="c1"># replace ... with a check for the local constraints</span>
+    <span class="c1"># use &lt; for a minimisation problem</span>
+    <span class="k">return</span> <span class="o">...</span> <span class="ow">and</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="Constraints-on-sets">
+<h2><span class="section-number">25.2.3. </span>Constraints on sets<a class="headerlink" href="#Constraints-on-sets" title="Link to this heading"></a></h2>
+<p>If the problem asks for all sets that satisfy some constraints, use the next template. The questions to consider are the same as for constraint problems on sequences, except that now the candidates are sets and the extensions form a sequence.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">problem</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all solutions for the problem instance, in the order generated.&quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>   <span class="c1"># initial candidate, usually set()</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># a list of items</span>
+    <span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">solutions</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">solutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add to solutions all extensions of candidate that solve the problem instance.&quot;&quot;&quot;</span>
+    <span class="c1"># print(&#39;Visiting node&#39;, candidate, extensions)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+            <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">solutions</span><span class="p">):</span>    <span class="c1"># add item</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="n">item</span><span class="p">}),</span> <span class="n">rest</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+        <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">rest</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>            <span class="c1"># skip item</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if candidate satisfies the global constraints.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">...</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">candidate</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if item may extend candidate towards a solution.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>If partial candidates can be solutions, then change the <code class="docutils literal notranslate"><span class="pre">extend</span></code> function to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(&#39;Visiting node&#39;, candidate, extensions)</span>
+<span class="k">if</span> <span class="n">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+    <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="Best-set">
+<h2><span class="section-number">25.2.4. </span>Best set<a class="headerlink" href="#Best-set" title="Link to this heading"></a></h2>
+<p>If the problem asks for one set that maximises or minimises some value, use this template. Consider the same questions as for the best sequence.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SOLUTION</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VALUE</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">problem</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the best solution the problem instance and its value.&quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>   <span class="c1"># initial candidate, usually set()</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># a list of items</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="o">...</span>      <span class="c1"># ideally with a value near lowest/highest</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="p">[</span><span class="n">solution</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">solution</span><span class="p">)]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">best</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update best if candidate is a better solution, then try to extend it.&quot;&quot;&quot;</span>
+    <span class="c1"># print(&#39;Visiting node&#39;, candidate, extensions)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+            <span class="n">candidate_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+            <span class="c1"># use &lt; for a minimisation problem</span>
+            <span class="k">if</span> <span class="n">candidate_value</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span>
+                <span class="c1"># print(&#39;New best with value&#39;, candidate_value)</span>
+                <span class="n">best</span><span class="p">[</span><span class="n">SOLUTION</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span>
+                <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_value</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">):</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="n">item</span><span class="p">}),</span> <span class="n">rest</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+        <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">rest</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As shown earlier, if partial candidates can be solutions then change the <code class="docutils literal notranslate"><span class="pre">extend</span></code> function, and if the initial best solution can’t be easily constructed, start with a pseudo-solution of positive or negative infinite value.</p>
+<p>To further prune the search space, consider:</p>
+<ul class="simple">
+<li><p>Is it possible to order the extensions by ‘incompatibility’, i.e. so that if an item can’t extend a candidate, none of the following can?</p></li>
+</ul>
+<p>For the knapsack problem we can order items by ascending weight: if one item doesn’t fit the knapsack, nor do the subsequent heavier items. For problems like this, sort the extensions in the main function and use this <code class="docutils literal notranslate"><span class="pre">extend</span></code> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update best if candidate is a better solution, then try to extend it.&quot;&quot;&quot;</span>
+    <span class="c1"># print(&#39;Visiting node&#39;, candidate, extensions)</span>
+    <span class="k">if</span> <span class="n">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+        <span class="n">candidate_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+        <span class="c1"># use &lt; for a minimisation problem</span>
+        <span class="k">if</span> <span class="n">candidate_value</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span>
+            <span class="c1"># print(&#39;New best with value&#39;, candidate_value)</span>
+            <span class="n">best</span><span class="p">[</span><span class="n">SOLUTION</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span>
+            <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_value</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">):</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="n">item</span><span class="p">}),</span> <span class="n">rest</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">rest</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="25_1_graphs.html" class="btn btn-neutral float-left" title="25.1. Problems on graphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="25_3_dp.html" class="btn btn-neutral float-right" title="25.3. Dynamic programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

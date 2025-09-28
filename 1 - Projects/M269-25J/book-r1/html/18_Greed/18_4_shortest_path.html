@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18.4. Shortest paths</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="18.5. Summary" href="18_5_summary.html" />
+    <link rel="prev" title="18.3. Minimum spanning tree" href="18_3_mst.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="18-introduction.html">18. Greed</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="18_1_scheduling.html">18.1. Interval scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18_2_weighted_graph.html">18.2. Weighted graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18_3_mst.html">18.3. Minimum spanning tree</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">18.4. Shortest paths</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">18.4.1. Algorithm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-18.4.1">Exercise 18.4.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Code">18.4.2. Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Applications">18.4.3. Applications</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-18.4.2">Exercise 18.4.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-18.4.3">Exercise 18.4.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="18_5_summary.html">18.5. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="18-introduction.html"><span class="section-number">18. </span>Greed</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">18.4. </span>Shortest paths</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Shortest-paths">
+<h1><span class="section-number">18.4. </span>Shortest paths<a class="headerlink" href="#Shortest-paths" title="Link to this heading"></a></h1>
+<p>This section introduces an algorithm to solve the <strong>single-source shortest paths</strong> (SSSP) problem for weighted graphs: for each node R that is reachable from the given start node S, find a lowest cost (total weight) path from S to R. A typical application of the SSSP problem is to find the cheapest or fastest way to go from one place to every other place in a transport network.</p>
+<p>We defined the MST problem for connected undirected graphs to guarantee that a spanning tree can be obtained, no matter the start node. The SSSP problem is defined for any directed or undirected graph, because it doesn’t ask to connect all nodes. However, the algorithm to be shown only works for graphs with non-negative weights; most models of real-world networks don’t have negative weights, so this isn’t much of a restriction in practice.</p>
+<section id="Algorithm">
+<h2><span class="section-number">18.4.1. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p>The algorithm is again a graph traversal that produces a tree rooted at the start node, with a single path to each reachable node. In fact, it’s a small modification of Prim’s algorithm.</p>
+<p>Prim’s algorithm greedily chooses in each iteration the unvisited node ‘nearest’ to <em>any</em> visited node, because it’s minimising the total weight of the tree. The SSSP algorithm chooses instead the unvisited node ‘nearest’ to <em>one</em> visited node, namely the start node, because it’s minimising the weight of the paths beginning at the start node. This is known as <strong>Dijkstra’s algorithm</strong>, named after its inventor.</p>
+<p>You should now watch a <a class="reference external" href="https://learn2.open.ac.uk/mod/oucontent/view.php?id=2554725&amp;extra=thumbnail_idm46">visualisation</a> that explains the gist of Dijkstra’s algorithm, applied to a connected undirected graph in which weights represent distances. The visualisation doesn’t create a tree with the shortest paths: it only computes their weights. Extra work is then needed to obtain the paths.</p>
+<p>Now that you’ve seen the algorithm in action, let’s see why it works. The next figure shows schematically the shortest paths to nodes A and B, with total weights <em>ta</em> and <em>tb</em>, respectively. In addition there’s an edge with non-negative weight <em>w</em> from B to A.</p>
+<p id="fig-18.4.1"></p><p><a class="reference internal" href="../33_Figures/Figures_18_4.html#Figure-18.4.1"><span class="std std-ref">Figure 18.4.1</span></a></p>
+<img alt="Image 18_4_dijkstra.png" src="../_images/18_4_dijkstra.png" />
+<p>Let’s assume that A is visited before B by the algorithm. This means that A is ‘nearer’ to the start node than B, i.e. <em>ta</em> ≤ <em>tb</em> and therefore <em>ta</em> ≤ <em>tb</em> + <em>w</em>. In other words, the path to A via B can’t be shorter. Therefore, as soon as the algorithm picks A to visit next, it knows it has found a shortest path. Paths via nodes visited later won’t be shorter.</p>
+<p>Note that if <em>w</em> &lt; 0 then we may have <em>ta</em> &gt; <em>tb</em> + <em>w</em>. If weights can be negative, the greedy choice of picking the next nearest node won’t always work: a shorter path may go first to a node further off and then take a negative weight edge to obtain a lower total weight.</p>
+<p>As I mentioned above, the visualisation doesn’t construct a tree. So let’s take our version of Prim’s algorithm and use different priorities. My version of Prim’s algorithm adds edge (A, B, <em>w</em>) with priority <em>w</em> to the min-priority queue of unprocessed edges. For Dijkstra’s, the priority is the cost (total weight) of reaching B via A, i.e. it’s the cost to reach A plus <em>w</em>.</p>
+<p>How do I know the cost of reaching A? Well, the graph traversal only adds edge (A, B, <em>w</em>) when visiting A, and it visits A because it took from the queue some incoming edge (C, A) with priority <em>p</em> which is the cost of reaching A.</p>
+<ol class="arabic simple">
+<li><p>let <em>visited</em> be a weighted digraph with node <em>start</em></p></li>
+<li><p>let <em>unprocessed</em> be an empty min-priority queue</p></li>
+<li><p>for each <em>node</em> in the out-neighbours of <em>start</em> in <em>graph</em>:</p>
+<ol class="arabic simple">
+<li><p>add edge (<em>start</em>, <em>node</em>, <em>weight</em>) with priority <em>weight</em> to <em>unprocessed</em></p></li>
+</ol>
+</li>
+<li><p>while <em>unprocessed</em> isn’t empty:</p>
+<ol class="arabic simple">
+<li><p>let (<em>previous</em>, <em>current</em>, <em>weight</em>) be max(<em>unprocessed</em>) with priority <em>cost</em></p></li>
+<li><p>remove max(<em>unprocessed</em>)</p></li>
+<li><p>if <em>visited</em> hasn’t got node <em>current</em>:</p>
+<ol class="arabic simple">
+<li><p>add <em>current</em> to <em>visited</em></p></li>
+<li><p>add (<em>previous</em>, <em>current</em>, <em>weight</em>) to <em>visited</em></p></li>
+<li><p>for each <em>node</em> in the out-neighbours of <em>current</em> in <em>graph</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>weight</em> be weight(<em>current</em>, <em>node</em>)</p></li>
+<li><p>add edge (<em>current</em>, <em>node</em>, <em>weight</em>) with priority <em>cost</em> + <em>weight</em> to <em>unprocessed</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>The only changes to Prim’s algorithm are to use out-neighbours instead of neighbours in steps 3 and 4.3.3, to accommodate digraphs, and computing a different priority in step 4.3.3.2.</p>
+<p>The changes don’t affect the worst-case complexity, which is O(<em>e</em> log <em>e</em>), like for Prim’s algorithm.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> The worst-case complexity of both algorithms is often stated as O(<em>e</em> log <em>n</em>). Any graph has fewer than <em>n</em>² edges and log <span class="math notranslate nohighlight">\(x^y\)</span> = <span class="math notranslate nohighlight">\(y\)</span> log <span class="math notranslate nohighlight">\(x\)</span>, so O(<em>e</em> log <em>e</em>) = O(<em>e</em> log <em>n</em>²) = O(<em>e</em> × 2 × log <em>n</em>) = O(<em>e</em> log <em>n</em>).</p>
+</div>
+<p>My versions of BFS, DFS, Prim’s and Dijkstra’s algorithms aim to highlight their similarities: they use the same core graph-traversal algorithm, only differing in the order in which unprocessed edges are stored.</p>
+<section id="Exercise-18.4.1">
+<h3>Exercise 18.4.1<a class="headerlink" href="#Exercise-18.4.1" title="Link to this heading"></a></h3>
+<p>If the weights in the input graph are all equal, can you compute the shortest paths without using Dijkstra’s algorithm?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_18_4_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_18_4_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Code">
+<h2><span class="section-number">18.4.2. </span>Code<a class="headerlink" href="#Code" title="Link to this heading"></a></h2>
+<p>Let’s implement and run the algorithm.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_digraph
+<span class="o">%</span><span class="k">run</span> -i ../m269_ungraph
+<span class="o">%</span><span class="k">run</span> -i ../m269_graphs
+</pre></div>
+</div>
+</div>
+<p>Like for Prim’s algorithm, I use Python’s min-heaps.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_digraph.py</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">heapq</span><span class="w"> </span><span class="kn">import</span> <span class="n">heappush</span><span class="p">,</span> <span class="n">heappop</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="n">WeightedDiGraph</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WeightedDiGraph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a shortest path from start to each reachable node.</span>
+
+<span class="sd">    Preconditions:</span>
+<span class="sd">    - graph.has_node(start)</span>
+<span class="sd">    - node objects are comparable</span>
+<span class="sd">    - no weight is negative</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="n">WeightedDiGraph</span><span class="p">()</span>
+    <span class="n">visited</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+
+    <span class="c1"># create min-priority queue of tuples (cost, (A, B, weight))</span>
+    <span class="c1"># cost is total weight from start to B via shortest path to A</span>
+    <span class="n">unprocessed</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># min-priority queue</span>
+    <span class="k">for</span> <span class="n">neighbour</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">out_neighbours</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">weight</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">neighbour</span><span class="p">)</span>
+        <span class="n">heappush</span><span class="p">(</span><span class="n">unprocessed</span><span class="p">,</span> <span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">neighbour</span><span class="p">,</span> <span class="n">weight</span><span class="p">)))</span>
+
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">unprocessed</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">heappop</span><span class="p">(</span><span class="n">unprocessed</span><span class="p">)</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">edge</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">previous</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">edge</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="o">.</span><span class="n">has_node</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
+            <span class="n">visited</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+            <span class="n">visited</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">previous</span><span class="p">,</span> <span class="n">current</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">neighbour</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">out_neighbours</span><span class="p">(</span><span class="n">current</span><span class="p">):</span>
+                <span class="n">weight</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">weight</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">neighbour</span><span class="p">)</span>
+                <span class="n">edge</span> <span class="o">=</span> <span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">neighbour</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+                <span class="n">heappush</span><span class="p">(</span><span class="n">unprocessed</span><span class="p">,</span> <span class="p">(</span><span class="n">cost</span> <span class="o">+</span> <span class="n">weight</span><span class="p">,</span> <span class="n">edge</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">visited</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s use the example MST graph of <a class="reference internal" href="18_3_mst.html#Minimum-spanning-tree"><span class="std std-ref">Section 18.3</span></a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RHOMBUS</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/18_Greed_18_4_shortest_path_16_0.png" src="../_images/18_Greed_18_4_shortest_path_16_0.png" />
+</div>
+</div>
+<p>If the start node is A then the shortest paths happen to coincide with the MST, if we ignore the edge directions of the output digraph.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dijkstra</span><span class="p">(</span><span class="n">RHOMBUS</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/18_Greed_18_4_shortest_path_18_0.png" src="../_images/18_Greed_18_4_shortest_path_18_0.png" />
+</div>
+</div>
+<p>However, if the start node is D then we get a different spanning tree.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dijkstra</span><span class="p">(</span><span class="n">RHOMBUS</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/18_Greed_18_4_shortest_path_20_0.png" src="../_images/18_Greed_18_4_shortest_path_20_0.png" />
+</div>
+</div>
+<p>Finding the MST involves minimising the total weight of <em>all edges</em>. Finding shortest paths involves minimising the weight of <em>each path</em>: hence the output tree is often not an MST.</p>
+<p>The interactive visualisation graph is another example of that.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_graphs.py</span>
+
+<span class="c1"># graph used by the interactive visualisation of Dijkstra&#39;s algorithm</span>
+<span class="n">DIJKSTRA</span> <span class="o">=</span> <span class="n">WeightedUndirectedGraph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="s2">&quot;ABCDEFGHK&quot;</span><span class="p">:</span>
+    <span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DIJKSTRA</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/18_Greed_18_4_shortest_path_23_0.png" src="../_images/18_Greed_18_4_shortest_path_23_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prim</span><span class="p">(</span><span class="n">DIJKSTRA</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/18_Greed_18_4_shortest_path_24_0.png" src="../_images/18_Greed_18_4_shortest_path_24_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the automated layout of graphs is semi-random</span>
+<span class="c1"># you may need to re-run this cell several times to get a good layout</span>
+<span class="n">dijkstra</span><span class="p">(</span><span class="n">DIJKSTRA</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/18_Greed_18_4_shortest_path_25_0.png" src="../_images/18_Greed_18_4_shortest_path_25_0.png" />
+</div>
+</div>
+</section>
+<section id="Applications">
+<h2><span class="section-number">18.4.3. </span>Applications<a class="headerlink" href="#Applications" title="Link to this heading"></a></h2>
+<p>The following exercises show applications of the SSSP problem and Dijkstra’s algorithm.</p>
+<section id="Exercise-18.4.2">
+<h3>Exercise 18.4.2<a class="headerlink" href="#Exercise-18.4.2" title="Link to this heading"></a></h3>
+<p>Sometimes we want to solve the <strong>single-pair shortest path</strong> problem: find the shortest path between a given start and a given end node. How would you change Dijkstra’s algorithm so that instead of a tree it returns a sequence of nodes representing the shortest path from the start to the end node? The end node is an extra input of the new algorithm. If the end node is not reachable from the start node, the output sequence is empty.</p>
+<p>You don’t have to rewrite the algorithm or the code: a brief description of the changes suffices.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_18_4_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_18_4_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-18.4.3">
+<h3>Exercise 18.4.3<a class="headerlink" href="#Exercise-18.4.3" title="Link to this heading"></a></h3>
+<p>Sometimes a problem setter has a vague idea of what they want and the problem solver has to provide a precise and implementable definition. This exercise presents such a scenario. It’s a modelling exercise without one right answer.</p>
+<p>You were <a class="reference internal" href="../17_Graphs_1/17_2_concepts.html#Exercise-17.2.1"><span class="std std-ref">previously asked</span></a> by an advertising agency to determine the best train stations for displaying an advert, given an undirected unweighted graph of the rail network. Suppose the edges are now weighted with the travel times.</p>
+<p>The agency thinks the adverts will be seen by more people in central stations. You’re asked to come up with a precise definition of which node or nodes in a weighted undirected connected graph are central and to outline an algorithm to find them. The algorithm doesn’t have to be efficient.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_18_4_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_18_4_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="18_3_mst.html" class="btn btn-neutral float-left" title="18.3. Minimum spanning tree" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="18_5_summary.html" class="btn btn-neutral float-right" title="18.5. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

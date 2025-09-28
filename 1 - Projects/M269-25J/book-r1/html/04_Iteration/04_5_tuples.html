@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.5. Tuples and tables</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.6. Lists" href="04_6_lists.html" />
+    <link rel="prev" title="4.4. Linear search" href="04_4_search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="04-introduction.html">4. Sequences and iteration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04_1_sequences.html">4.1. The Sequence ADT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_2_strings.html">4.2. Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_3_iteration.html">4.3. Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_4_search.html">4.4. Linear search</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.5. Tuples and tables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Literals-and-operations">4.5.1. Literals and operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Mistakes">4.5.2. Mistakes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Tables">4.5.3. Tables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.5.1">Exercise 4.5.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Iterating">4.5.4. Iterating</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.5.2">Exercise 4.5.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.5.3">Exercise 4.5.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04_6_lists.html">4.6. Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_7_reverse.html">4.7. Reversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_8_practice.html">4.8. Optional practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_9_summary.html">4.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="04-introduction.html"><span class="section-number">4. </span>Sequences and iteration</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.5. </span>Tuples and tables</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Tuples-and-tables">
+<h1><span class="section-number">4.5. </span>Tuples and tables<a class="headerlink" href="#Tuples-and-tables" title="Link to this heading"></a></h1>
+<p>In Python, a tuple is an immutable sequence of items, which can be of any type, including other tuples. This allows for nested tuples, which we can use to represent tabular data.</p>
+<section id="Literals-and-operations">
+<h2><span class="section-number">4.5.1. </span>Literals and operations<a class="headerlink" href="#Literals-and-operations" title="Link to this heading"></a></h2>
+<p>Tuples are written within parentheses, with items separated by commas. For example <code class="docutils literal notranslate"><span class="pre">()</span></code> is the empty tuple and <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">(2,</span> <span class="pre">3),</span> <span class="pre">True)</span></code> is a tuple with three items: an integer, a tuple with two integers and a Boolean.</p>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">tuple</span></code> data type supports the same operations as <code class="docutils literal notranslate"><span class="pre">str</span></code>, with the same notation, so a few brief examples suffice.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># indexing: 2nd item is a pair of integers</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(2, 3)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># comparison: item by item</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># slicing: 2nd to 3rd items</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+((2, 3), True)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">min</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>  <span class="c1"># extra parentheses for the tuple</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-2
+</pre></div></div>
+</div>
+<p>For tuples, the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator checks for membership, not for a substring like with strings.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># (1, 2, 3) does have member 2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># (1, 2, 3) doesn&#39;t have member (1, 2)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">in</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># ((1, 2), 3) does have member (1, 2)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">tuple</span></code> constructor creates a tuple from another sequence.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">tuple</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1, 2, 3)
+</pre></div></div>
+</div>
+<p>As tuples are sequences, we can directly iterate over them:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+(2, 3)
+True
+</pre></div></div>
+</div>
+</section>
+<section id="Mistakes">
+<h2><span class="section-number">4.5.2. </span>Mistakes<a class="headerlink" href="#Mistakes" title="Link to this heading"></a></h2>
+<p>Forgetting a comma between items, or forgetting an item between two commas, usually leads to a syntax error. However, consider this example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+&lt;&gt;:1: SyntaxWarning: &#39;int&#39; object is not callable; perhaps you missed a comma?
+&lt;&gt;:1: SyntaxWarning: &#39;int&#39; object is not callable; perhaps you missed a comma?
+/var/folders/b2/13mhcbxn2b3fsdkb4d9lh32jc84fk1/T/ipykernel_71728/3144750586.py:1: SyntaxWarning: &#39;int&#39; object is not callable; perhaps you missed a comma?
+  (1(2, 3), True)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[12], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> (<span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">2</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">3</span><span class="ansi-yellow-bg">)</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)
+
+<span class="ansi-red-fg">TypeError</span>: &#39;int&#39; object is not callable
+</pre></div></div>
+</div>
+<p>This strange type error is due to the missing comma after the first item. The interpreter thinks that <code class="docutils literal notranslate"><span class="pre">1</span></code> is meant to be a function with arguments <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3)</span></code> and duly reports that we can’t call an integer, only functions.</p>
+<p>The error messages of most programming language interpreters are sometimes baffling. They can misguide us in finding the error’s source. I’ve been making errors on purpose to show various ‘diseases’ (errors) and their corresponding ‘symptoms’ (messages). I recommend you do the same.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> When learning a programming language, make deliberate mistakes in your code to associate error messages with their causes.</p>
+</div>
+<p>A single item within parentheses is a normal expression with redundant parentheses, not a tuple with a single item. To let the interpreter know we mean a tuple, we must add a comma.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># arithmetic expression with redundant parentheses</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+7
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="p">,)</span>  <span class="c1"># concatenation of tuples of length 1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(3, 4)
+</pre></div></div>
+</div>
+<p>Applying the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> constructor to a Boolean or number results in a type error, because it can only be applied to sequences.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">tuple</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[15], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">tuple</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">TypeError</span>: &#39;bool&#39; object is not iterable
+</pre></div></div>
+</div>
+<p>The error message states that Boolean values can’t be iterated over and so it’s not possible to create a tuple.</p>
+</section>
+<section id="Tables">
+<h2><span class="section-number">4.5.3. </span>Tables<a class="headerlink" href="#Tables" title="Link to this heading"></a></h2>
+<p>Data is often arranged in tabular form. We can use tuples to represent tables. A table is a sequence of rows, each row being a sequence of cells. Here’s a small selection of board games I enjoy, with one game per row.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">games_by_row</span> <span class="o">=</span> <span class="p">(</span>  <span class="c1"># each item is a row</span>
+    <span class="p">(</span><span class="s2">&quot;Board game&quot;</span><span class="p">,</span> <span class="s2">&quot;Rating&quot;</span><span class="p">,</span> <span class="s2">&quot;Owned&quot;</span><span class="p">),</span>  <span class="c1"># header row</span>
+    <span class="p">(</span><span class="s2">&quot;Power Grid&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>  <span class="c1"># first data row</span>
+    <span class="p">(</span><span class="s2">&quot;Vintage&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Pandemic&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The header row is a tuple of strings; the other rows are tuples of strings, integers and Booleans.</p>
+<p>I formatted the tuples like tables, with right-aligned values, to better show the structure of the nested tuples. But you don’t have to: the interpreter doesn’t care about spacing around tuple items.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">games_by_row</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+((&#39;Board game&#39;, &#39;Rating&#39;, &#39;Owned&#39;),
+ (&#39;Power Grid&#39;, 10, True),
+ (&#39;Vintage&#39;, 8, True),
+ (&#39;Pandemic&#39;, 9, False))
+</pre></div></div>
+</div>
+<p>To access a single cell’s value, we must first index the row and then the column within that row. Let’s suppose we want to check whether I own Power Grid.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row_index</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Power Grid is in the 2nd row</span>
+<span class="n">column_index</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ownership is in the 3rd column</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">games_by_row</span><span class="p">[</span><span class="n">row_index</span><span class="p">]</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="n">column_index</span><span class="p">]</span>
+<span class="n">cell</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>The first indexing operation selects a row of the table; the second indexing operation selects a cell of that row. The following line is equivalent to the above step-by-step process.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">games_by_row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># 2nd row, 3rd column</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>Indexing is left-associative: each operation takes the result produced by the previous operation. The next example shows that the order of indices matters.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">games_by_row</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># 3rd row (Vintage), 2nd column (Rating)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+8
+</pre></div></div>
+</div>
+<p>The first index always selects a row; the second index always selects a column.</p>
+<p>The header row is at index zero, so each game is at its ‘natural’ index: the first game is at index 1, the second game is at index 2, etc. However, it’s easy to get confused about which index corresponds to which column for wide tables. Giving them memorable names helps.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GAME</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">RATING</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">OWNED</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">games_by_row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">OWNED</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">games_by_row</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">RATING</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+8
+</pre></div></div>
+</div>
+<p>I can hear you exclaim ‘Variable names should be in lowercase!’ The convention in Python is that if a variable name is all in uppercase, then the value should not be further changed: the variable should be treated like a <strong>constant</strong>. Other programming languages have proper constants, i.e. a second assignment to the constant raises an error, but Python has constants by convention.</p>
+<section id="Exercise-4.5.1">
+<h3>Exercise 4.5.1<a class="headerlink" href="#Exercise-4.5.1" title="Link to this heading"></a></h3>
+<p>We can organise the data differently, with one game per column.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">games_by_column</span> <span class="o">=</span> <span class="p">(</span>  <span class="c1"># each item is a column</span>
+    <span class="p">(</span><span class="s2">&quot;Board game&quot;</span><span class="p">,</span> <span class="s2">&quot;Power Grid&quot;</span><span class="p">,</span> <span class="s2">&quot;Vintage&quot;</span><span class="p">,</span> <span class="s2">&quot;Pandemic&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Rating&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Owned&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Write an expression that indexes this table to retrieve my rating for Pandemic. Use constants. The expression should evaluate to <code class="docutils literal notranslate"><span class="pre">9</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace with your expression</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_04_5_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_5_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Iterating">
+<h2><span class="section-number">4.5.4. </span>Iterating<a class="headerlink" href="#Iterating" title="Link to this heading"></a></h2>
+<p>Tabular data is processed with iterative algorithms that go through one or more rows or columns, depending on the problem. For example, the following algorithm computes the mean rating of the games.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> MU123 Unit 4 Section 3.2 and TM112 Block 2 Section 2.4.2 introduce the mean and how to compute it.</p>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">games_by_row</span><span class="p">)):</span>  <span class="c1"># skip header row</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">games_by_row</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">RATING</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+9.0
+</pre></div></div>
+</div>
+<p>This algorithm works for any number of games in the table, as long as there’s at least one, to avoid division by zero.</p>
+<p>A slightly simpler and faster algorithm computes the number of games instead of counting them one by one.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">games_by_row</span><span class="p">)):</span>  <span class="c1"># skip header row</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">games_by_row</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">RATING</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">games_by_row</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+9.0
+</pre></div></div>
+</div>
+<p>To go through all cells of a table, we need nested loops: one to iterate over the rows and the other to iterate over the columns.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">games_by_row</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Board game
+Rating
+Owned
+Power Grid
+10
+True
+Vintage
+8
+True
+Pandemic
+9
+False
+</pre></div></div>
+</div>
+<p>To iterate first by column and then by row requires indexing:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">games_by_row</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">games_by_row</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">games_by_row</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">column</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Board game
+Power Grid
+Vintage
+Pandemic
+Rating
+10
+8
+9
+Owned
+True
+True
+False
+</pre></div></div>
+</div>
+<div class="admonition note">
+<p><strong>Info:</strong> TM351 introduces more sophisticated data types to represent and analyse tabular data.</p>
+</div>
+<section id="Exercise-4.5.2">
+<h3>Exercise 4.5.2<a class="headerlink" href="#Exercise-4.5.2" title="Link to this heading"></a></h3>
+<p>The next tuple represents the state of a Noughts and Crosses game after three turns of each player. (You don’t need to know the game to solve this exercise.)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tic_tac_toe</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The number of empty spaces (character <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code>) can be used to determine whose turn it is next or whether the game has ended. Write an algorithm in Python that displays the number of empty spaces for a board represented in the variable <code class="docutils literal notranslate"><span class="pre">tic_tac_toe</span></code>. You should obtain the value <code class="docutils literal notranslate"><span class="pre">3</span></code> for the board above. Change the tuple and rerun both cells to test with another board configuration.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace with your code</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_04_5_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_5_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.5.3">
+<h3>Exercise 4.5.3<a class="headerlink" href="#Exercise-4.5.3" title="Link to this heading"></a></h3>
+<p>This exercise is about how to make use of the data types you learned so far to represent some data in a way that eases the implementation of some operations.</p>
+<p>Moksha Patam, better known as Snakes and Ladders, is an ancient Indian board game, played usually on a 10 × 10 board, with positions numbered from 1 to 100, and some snakes and ladders connecting pairs of positions.</p>
+<p>A player moves their pawn forward by rolling a die. If the pawn lands on the bottom of a ladder, it immediately moves forward to the position at the top of the ladder. If it lands on the head of a snake, it immediately moves backward to the position at the tail of the snake. Then it’s the next player’s turn. The first player to reach the position 100 (which has no snake head) wins.</p>
+<p>How would you represent a board and its configuration of snakes and ladders with tuples? Do you have to represent the board as a table, with nested tuples? Assuming that the current position of each pawn is in a separate variable, how would the position be represented?</p>
+<p>Devise a representation for the board and pawn positions that makes it easy to implement the movement of pawns.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_04_5_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_5_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="04_4_search.html" class="btn btn-neutral float-left" title="4.4. Linear search" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04_6_lists.html" class="btn btn-neutral float-right" title="4.6. Lists" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

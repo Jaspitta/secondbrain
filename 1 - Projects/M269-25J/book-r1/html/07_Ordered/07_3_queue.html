@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.3. Queues</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.4. Priority queues" href="07_4_priority_queue.html" />
+    <link rel="prev" title="7.2. Using stacks" href="07_2_stack_usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="07-introduction.html">7. Stacks and queues</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="07_1_stack.html">7.1. Stacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_2_stack_usage.html">7.2. Using stacks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. Queues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.3.1. Queues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.3.1">Exercise 7.3.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.3.2-(optional)">Exercise 7.3.2 (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Queues-with-Python-lists">7.3.2. Queues with Python lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Queues-with-linked-lists">7.3.3. Queues with linked lists</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.3.3">Exercise 7.3.3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Using-queues">7.3.4. Using queues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.3.4">Exercise 7.3.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.3.5">Exercise 7.3.5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.3.6">Exercise 7.3.6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-7.3.7">Exercise 7.3.7</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="07_4_priority_queue.html">7.4. Priority queues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_5_summary.html">7.5. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="07-introduction.html"><span class="section-number">7. </span>Stacks and queues</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7.3. </span>Queues</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Queues">
+<h1><span class="section-number">7.3. </span>Queues<a class="headerlink" href="#Queues" title="Link to this heading"></a></h1>
+<p>A stack is a sequence where items are added and removed from the same end. A queue is a sequence where items are added to one end and removed from the other.</p>
+<section id="id1">
+<h2><span class="section-number">7.3.1. </span>Queues<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>People queue when boarding planes; cars queue at drive-ins. People and cars join the queue at the end and leave it at the front. Like stacks, queues are sequences of items ordered by arrival order, but contrary to stacks, the item arriving first is also the first to be processed: the ‘oldest’ item is at the bottom of the stack but at the front of the queue. A <strong>queue</strong> is a <strong>first in, first out (FIFO)</strong> sequence. The operations are very similar to a stack’s push, pop, and peek.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Effect</p></th>
+<th class="head"><p>Algorithm in English</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>new</p></td>
+<td><p>create an empty queue <em>q</em></p></td>
+<td><p>let <em>q</em> be an empty queue</p></td>
+</tr>
+<tr class="row-odd"><td><p>length</p></td>
+<td><p>the number of items in <em>q</em></p></td>
+<td><p>│<em>q</em>│</p></td>
+</tr>
+<tr class="row-even"><td><p>enqueue</p></td>
+<td><p>add an item to the back of <em>q</em></p></td>
+<td><p>add <em>item</em> to <em>q</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>dequeue</p></td>
+<td><p>remove the front item, if <em>q</em> isn’t empty</p></td>
+<td><p>dequeue <em>q</em></p></td>
+</tr>
+<tr class="row-even"><td><p>front</p></td>
+<td><p>access the front item of, if <em>q</em> isn’t empty</p></td>
+<td><p>front of <em>q</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>Alternatively, the dequeue operation could remove and return the front item, but this wouldn’t make the front operation redundant. Why?</p>
+<hr class="docutils" />
+<p>With stacks, we can inspect the top item without ‘disturbing’ the stack, by popping it and pushing it immediately back. We can’t inspect the front item of a queue with a dequeue followed by an enqueue operation: the front item would end up at the back of the queue.</p>
+<section id="Exercise-7.3.1">
+<h3>Exercise 7.3.1<a class="headerlink" href="#Exercise-7.3.1" title="Link to this heading"></a></h3>
+<p>How would you represent a to-do list of tasks: with a general sequence, a stack, or a queue?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_07_3_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_3_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-7.3.2-(optional)">
+<h3>Exercise 7.3.2 (optional)<a class="headerlink" href="#Exercise-7.3.2-(optional)" title="Link to this heading"></a></h3>
+<p>Define the queue operations in the same way as the <a class="reference internal" href="07_1_stack.html#Stacks"><span class="std std-ref">stack operations</span></a>, using sequence notation. The operations are similar, so you may wish to define only one or two of them.</p>
+</section>
+</section>
+<section id="Queues-with-Python-lists">
+<h2><span class="section-number">7.3.2. </span>Queues with Python lists<a class="headerlink" href="#Queues-with-Python-lists" title="Link to this heading"></a></h2>
+<p>Python’s versatile lists can not only simulate stacks but also queues.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>  <span class="c1"># Alice arrives first</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Next person served:&quot;</span><span class="p">,</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Clara&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Next person served:&quot;</span><span class="p">,</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Next person served:&quot;</span><span class="p">,</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;People still waiting?&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Next person served: Alice
+Next person served: Bob
+Next person served: Clara
+People still waiting? False
+</pre></div></div>
+</div>
+<p>This approach puts the front of the queue at index 0 and therefore uses <code class="docutils literal notranslate"><span class="pre">append</span></code> as the enqueue operation and <code class="docutils literal notranslate"><span class="pre">pop(0)</span></code> as the dequeue operation. The downside is that the latter takes time linear in the length of the list, because each remaining item is shifted one position down.</p>
+<p>We could instead have the front of the queue at the last index. That would make dequeuing with <code class="docutils literal notranslate"><span class="pre">pop(-1)</span></code> take constant time, but enqueuing with <code class="docutils literal notranslate"><span class="pre">insert(0,</span> <span class="pre">item)</span></code> would take linear time.</p>
+<p>To sum up, using Python lists and their methods makes one queue operation take linear time, which is fine if the queue never gets too long.</p>
+</section>
+<section id="Queues-with-linked-lists">
+<h2><span class="section-number">7.3.3. </span>Queues with linked lists<a class="headerlink" href="#Queues-with-linked-lists" title="Link to this heading"></a></h2>
+<p>The queue ADT can also be implemented with a linked list. If the front item is in the head node, then the dequeue operation removes the head node and the enqueue operation adds a node at the back of the linked list. We can traverse the linked list in linear time to find the last node and make it point to the new enqueued node, but by keeping a pointer to the last node we can enqueue a new node in constant time.</p>
+<p>Likewise, we can compute the length of a queue in linear time, by traversing the linked list and counting nodes, but by keeping an integer with the current size we can return the length in constant time.</p>
+<p>In both cases, we use a space-time tradeoff: storing additional data, and keeping it up to date as the queue operations are executed, leads to a better run-time. Here’s the code.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_queue.py</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Queue</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A last-in, first-out sequence of objects, implemented with a linked list.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A node in a linked list.&quot;&quot;&quot;</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Initialise the node with the given item.&quot;&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">item</span> <span class="o">=</span> <span class="n">item</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise the queue to be empty.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of items in the queue.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">front</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the item at the front of the queue.</span>
+
+<span class="sd">        Preconditions: self.size() &gt; 0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">item</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">enqueue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add item to the back of the queue.&quot;&quot;&quot;</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">node</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dequeue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove and return the item at the front of the queue.</span>
+
+<span class="sd">        Preconditions: self.size() &gt; 0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">front</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">item</span>
+</pre></div>
+</div>
+</div>
+<p>Here’s the same example, using the class:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">)</span>  <span class="c1"># Alice arrives first</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Next person served:&quot;</span><span class="p">,</span> <span class="n">queue</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="s2">&quot;Clara&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Next person served:&quot;</span><span class="p">,</span> <span class="n">queue</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Next person served:&quot;</span><span class="p">,</span> <span class="n">queue</span><span class="o">.</span><span class="n">dequeue</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;People still waiting?&quot;</span><span class="p">,</span> <span class="n">queue</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Next person served: Alice
+Next person served: Bob
+Next person served: Clara
+People still waiting? False
+</pre></div></div>
+</div>
+<div class="admonition note">
+<p><strong>Info:</strong> In Java, queue operations are defined by interface <code class="docutils literal notranslate"><span class="pre">Deque</span></code>, which implements double-ended queues, an extension of queues. The interface is usually implemented by class <code class="docutils literal notranslate"><span class="pre">ArrayDeque</span></code> or <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code>. Both the interface and the classes are in package <code class="docutils literal notranslate"><span class="pre">java.util</span></code>.</p>
+</div>
+<section id="Exercise-7.3.3">
+<h3>Exercise 7.3.3<a class="headerlink" href="#Exercise-7.3.3" title="Link to this heading"></a></h3>
+<p>If the queue were stored in the opposite order, with the last item in the head and the first item in the last node of the linked list, could we still implement the queue’s operations in constant time?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_07_3_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_3_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Using-queues">
+<h2><span class="section-number">7.3.4. </span>Using queues<a class="headerlink" href="#Using-queues" title="Link to this heading"></a></h2>
+<p>Consider <em>n</em> children in a circle, numbered clockwise from 1 to <em>n</em>. Alice is in the centre. She points at the first child and starts reciting:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Eeny, meeny, miny, moe,</div>
+<div class="line">Catch a tiger by the toe.</div>
+<div class="line">If he hollers, let him go,</div>
+<div class="line">Eeny, meeny, miny, moe.</div>
+</div>
+</div></blockquote>
+<p>For each syllable, Alice points at a child, going clockwise. For example, with <em>n</em> = 3, she would point successively at children 1 (ee) 2 (ny) 3 (mee) 1 (ny) 2 (mi) 3 (ny) 1 (moe) for the first line. The child pointed to on the last syllable, the second ‘moe’, leaves the circle. The reciting and counting starts again on the next child. After going <em>n</em> − 1 times through the rhyme, one child is left in the circle. We want to know which child is that.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> This is a version of the <a class="reference external" href="https://en.wikipedia.org/wiki/Josephus_problem">Josephus problem</a>.</p>
+</div>
+<section id="Exercise-7.3.4">
+<h3>Exercise 7.3.4<a class="headerlink" href="#Exercise-7.3.4" title="Link to this heading"></a></h3>
+<p>For this problem, we can represent a circle of children as a queue. How?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_07_3_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_3_04.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-7.3.5">
+<h3>Exercise 7.3.5<a class="headerlink" href="#Exercise-7.3.5" title="Link to this heading"></a></h3>
+<p>Given the number of children <em>n</em>, we want to know the number of the last remaining child. Outline an algorithm to compute that number.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_07_3_05.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_3_05.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-7.3.6">
+<h3>Exercise 7.3.6<a class="headerlink" href="#Exercise-7.3.6" title="Link to this heading"></a></h3>
+<p>Implement the algorithm you outlined by completing the following function, using the <code class="docutils literal notranslate"><span class="pre">Queue</span></code> class.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_queue
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">counting_rhyme</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return which child from 1 to n remains last in the circle.</span>
+
+<span class="sd">    Preconditions: n &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="n">counting_rhyme_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,         n,  last child</span>
+    <span class="p">[</span><span class="s1">&#39;1 child&#39;</span><span class="p">,</span>     <span class="mi">1</span><span class="p">,</span>          <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;2 children&#39;</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>          <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;3 children&#39;</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>          <span class="mi">2</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">counting_rhyme</span><span class="p">,</span> <span class="n">counting_rhyme_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_07_3_06.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_3_06.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-7.3.7">
+<h3>Exercise 7.3.7<a class="headerlink" href="#Exercise-7.3.7" title="Link to this heading"></a></h3>
+<p>What is the complexity of the algorithm as implemented in the solution to the previous exercise?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_07_3_07.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_07_3_07.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="07_2_stack_usage.html" class="btn btn-neutral float-left" title="7.2. Using stacks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="07_4_priority_queue.html" class="btn btn-neutral float-right" title="7.4. Priority queues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

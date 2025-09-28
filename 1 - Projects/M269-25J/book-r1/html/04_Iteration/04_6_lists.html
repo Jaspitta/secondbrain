@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.6. Lists</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.7. Reversal" href="04_7_reverse.html" />
+    <link rel="prev" title="4.5. Tuples and tables" href="04_5_tuples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="04-introduction.html">4. Sequences and iteration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04_1_sequences.html">4.1. The Sequence ADT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_2_strings.html">4.2. Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_3_iteration.html">4.3. Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_4_search.html">4.4. Linear search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_5_tuples.html">4.5. Tuples and tables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.6. Lists</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Modifying-sequences">4.6.1. Modifying sequences</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.6.1">Exercise 4.6.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Creating-lists">4.6.2. Creating lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Mistakes">4.6.3. Mistakes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Modifying-lists">4.6.4. Modifying lists</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.6.2">Exercise 4.6.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.6.3">Exercise 4.6.3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">4.6.5. Mistakes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04_7_reverse.html">4.7. Reversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_8_practice.html">4.8. Optional practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_9_summary.html">4.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="04-introduction.html"><span class="section-number">4. </span>Sequences and iteration</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.6. </span>Lists</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Lists">
+<h1><span class="section-number">4.6. </span>Lists<a class="headerlink" href="#Lists" title="Link to this heading"></a></h1>
+<p>Python provides various sequence types. The ones we’ve seen so far (<code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span></code> and <code class="docutils literal notranslate"><span class="pre">tuple</span></code>) are immutable: the sequence can’t be modified. Python’s <code class="docutils literal notranslate"><span class="pre">list</span></code> data type is the most flexible one: <strong>lists</strong> are mutable and may have items of different types. All operations on tuples work in the same way on lists, so I won’t repeat them. This section focuses on the operations that change lists, so let’s first revisit the sequence ADT.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Some texts use ‘list’ as a synonym of ‘sequence’. In M269 the term refers to Python’s data type.</p>
+</div>
+<section id="Modifying-sequences">
+<h2><span class="section-number">4.6.1. </span>Modifying sequences<a class="headerlink" href="#Modifying-sequences" title="Link to this heading"></a></h2>
+<p>Besides operations to inspect and create sequences, we need operations to remove and add individual items. They modify the input sequence, i.e. they aren’t mathematical functions. To define them, we replace ‘Function:’ with ‘Operation:’ in the template and add an entry ‘Inputs/Outputs:’ for variables that have their value changed by the operation. When we must distinguish the value of an input/output variable <em>x</em> before and after the operation, we use pre-<em>x</em> and post-<em>x</em> respectively. Here’s
+how we can define the operation to remove the item at a given index <em>i</em>, which we write as ‘remove <span class="math notranslate nohighlight">\(s_i\)</span>’ or ‘remove <em>s</em>[<em>i</em>]’ in algorithms in English.</p>
+<div class="line-block">
+<div class="line"><strong>Operation</strong>: remove</div>
+<div class="line"><strong>Inputs/Outputs</strong>: <em>values</em>, a sequence</div>
+<div class="line"><strong>Inputs</strong>: <em>index</em>, an integer</div>
+<div class="line"><strong>Preconditions</strong>: 0 ≤ <em>index</em> &lt; │<em>values</em>│</div>
+<div class="line"><strong>Postconditions</strong>: post-<em>values</em> = (pre-<em>values</em>[0], …, pre-<em>values</em>[<em>index</em> - 1], pre-<em>values</em>[<em>index</em> + 1], …, pre-<em>values</em>[│pre-<em>values</em>│ - 1])</div>
+</div>
+<p>The postcondition states that the value at the given index has ‘disappeared’ but all other items remain in the same order. Without the ‘pre-’ and ‘post-’ indications, the postcondition would be ambiguous. For example, if the sequence has length 5 before an item is removed, it has length 4 afterwards, so which length would │<em>values</em>│ refer to? Writing │pre-<em>values</em>│ or │post-<em>values</em>│ makes it clear.</p>
+<p>We assume that removing the item at index <em>i</em> from a sequence of length <em>n</em> is implemented by copying each of the subsequent <em>n</em> - <em>i</em> - 1 items one position down. Also, the length has to be updated whenever the sequence changes, so that the size operation can just look it up in constant time. Copying values in RAM and subtracting one from an integer take constant time, so the removal operation does <em>n</em> - <em>i</em> - 1 + 1 constant-time operations. The complexity is Θ(<em>n</em> - <em>i</em>) or Θ(│<em>values</em>│ -
+<em>index</em>).</p>
+<p>Using the pre-<em>x</em> notation in preconditions or complexity expressions is unnecessary. By definition, they can only refer to input values.</p>
+<p>A <strong>subsequence</strong> is obtained by deleting zero or more items from the input sequence. Every substring is a subsequence, but not every subsequence is a substring. For example, (1, 3, 5) is a subsequence of (1, 2, 3, 4, 5) but not a substring, because 1, 3 and 5 aren’t consecutive items in the longer sequence.</p>
+<p>The operation to add an item, more precisely to insert it at a given position, can be defined like this:</p>
+<div class="line-block">
+<div class="line"><strong>Operation</strong>: insert</div>
+<div class="line"><strong>Inputs/Outputs</strong>: <em>values</em>, a sequence</div>
+<div class="line"><strong>Inputs</strong>: <em>index</em>, an integer; <em>value</em>, an object</div>
+<div class="line"><strong>Preconditions</strong>: 0 ≤ <em>index</em> ≤ │<em>values</em>│</div>
+<div class="line"><strong>Postconditions</strong>: post-<em>values</em> = (pre-<em>values</em>[0], …, pre-<em>values</em>[<em>index</em> - 1], <em>value</em>, pre-<em>values</em>[<em>index</em>], …, pre-<em>values</em>[│pre-<em>values</em>│ - 1])</div>
+</div>
+<p>The postcondition defines what inserting at a certain position means: to shift all items from that position onwards to the next position, in order to ‘make space’ for the new item. As the postcondition explicitly shows, post-<em>values</em>[<em>index</em>] = <em>value</em>. If <em>index</em> = │pre-<em>values</em>│, as the preconditions allow, then the item is effectively added to the end of the sequence. This special case of insertion is so common it has a name: <strong>appending</strong>. In algorithms in English, we write these
+operations respectively as</p>
+<ul class="simple">
+<li><p>insert <em>value</em> in <em>values</em> at <em>index</em></p></li>
+<li><p>append <em>value</em> to <em>values</em>.</p></li>
+</ul>
+<p>The insertion operation shifts not just the items after the index, but also the item at the index itself, so it copies <em>n</em> - <em>i</em> values and increments the length. The complexity is therefore Θ(│<em>values</em>│ - <em>index</em> + 1). In the grand scheme of things, i.e. for long sequences, the operation spends most of its time shifting items. The update of the length hardly impacts the overall run-time. So, we write simply Θ(│<em>values</em>│ - <em>index</em>). More generally, a fixed number doesn’t affect the
+growth of the run-time.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> In complexity analysis, Θ(<em>e</em> + <em>c</em>) = Θ(<em>e</em> - <em>c</em>) = Θ(<em>e</em>) if <em>c</em> is an integer constant and <em>e</em> is an expression involving the input values or sizes.</p>
+</div>
+<p>If the value is appended then the complexity is Θ(1), as no shifting takes place.</p>
+<p>Replacing the item at a given index with a new item can be achieved by first removing it and then inserting the new item at the same index. Shifting all subsequent items first down and then up is very inefficient. The assignment ‘let <span class="math notranslate nohighlight">\(s_i\)</span> be <em>x</em>’ does the replacement in constant time.</p>
+<section id="Exercise-4.6.1">
+<h3>Exercise 4.6.1<a class="headerlink" href="#Exercise-4.6.1" title="Link to this heading"></a></h3>
+<p>The following defines a function that outputs the reverse of the input sequence.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: reversed sequence</div>
+<div class="line"><strong>Inputs</strong>: <em>values</em>, a sequence</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>reversed</em>, a sequence</div>
+<div class="line"><strong>Postconditions</strong>: <em>reversed</em> = (<em>values</em>[│ <em>values</em> │ - 1], <em>values</em>[│ <em>values</em> │ - 2], …, <em>values</em>[1], <em>values</em>[0])</div>
+</div>
+<p>Modify the definition so that it reverses the input sequence instead of creating a new sequence.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_04_6_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_6_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Creating-lists">
+<h2><span class="section-number">4.6.2. </span>Creating lists<a class="headerlink" href="#Creating-lists" title="Link to this heading"></a></h2>
+<p>Let’s now see how Python implements the sequence ADT with type <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p>
+<p>Like with tuples and strings, lists can be created in various ways. The simplest is to write a list literal. It looks like a tuple literal but with square brackets instead of parentheses. The empty list is <code class="docutils literal notranslate"><span class="pre">[]</span></code> and <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">[2,</span> <span class="pre">3],</span> <span class="pre">('A',</span> <span class="pre">'B'),</span> <span class="pre">True]</span></code> is a list with four elements of different types: an integer, a list of integers, a tuple of strings and a Boolean. Contrary to tuples, a list of length 1 doesn’t need an extra comma, because the square brackets can’t be confused with redundant
+parentheses.</p>
+<p>As with strings, printing a list and displaying it (by just writing the variable name) produces different outputs.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">to_do</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;finish writing this chapter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;write the next one&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rinse and repeat for another 20+ chapters&#39;</span>
+<span class="p">]</span>
+<span class="n">to_do</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;finish writing this chapter&#39;,
+ &#39;write the next one&#39;,
+ &#39;rinse and repeat for another 20+ chapters&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">to_do</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;finish writing this chapter&#39;, &#39;write the next one&#39;, &#39;rinse and repeat for another 20+ chapters&#39;]
+</pre></div></div>
+</div>
+<p>Lists can also be created by slicing or concatenating existing lists. Repeated concatenation is particularly convenient for creating long lists with all elements initialised to the same value.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># create an integer list initialised to zeros</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+</pre></div></div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">list</span></code> constructor to convert another sequence to a list.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;H&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39;,&#39;, &#39; &#39;, &#39;w&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;, &#39;!&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">board</span> <span class="o">=</span> <span class="p">((</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>  <span class="c1"># doesn&#39;t convert nested tuples</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(&#39;X&#39;, &#39;O&#39;, &#39;X&#39;), (&#39; &#39;, &#39; &#39;, &#39; &#39;), (&#39;O&#39;, &#39;X&#39;, &#39; &#39;)]
+</pre></div></div>
+</div>
+<p>Finally, we can use the <code class="docutils literal notranslate"><span class="pre">sorted</span></code> function to obtain a sorted list from any sequence of pairwise comparable items. The function has a second optional Boolean parameter to indicate whether to sort in descending order.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39; &#39;, &#39;!&#39;, &#39;,&#39;, &#39;H&#39;, &#39;d&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39;o&#39;, &#39;r&#39;, &#39;w&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-3, 2, 4, 4.1]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># sort in descending order</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[4.1, 4, 2, -3]
+</pre></div></div>
+</div>
+<p>We’ll look at sorting algorithms in <a class="reference internal" href="../14_Sorting/14-introduction.html#Sorting"><span class="std std-ref">Chapter 14</span></a>. For the moment we assume that sorting takes linear time in the length of the sequence in the best case and quadratic time in the worst case. In the best case, a single pass over the sequence detects that it’s already sorted. In the worst case, a sorting algorithm must compare every item to every other item, which takes a quadratic number of comparisons, to know where each item appears in the sorted
+sequence.</p>
+</section>
+<section id="Mistakes">
+<h2><span class="section-number">4.6.3. </span>Mistakes<a class="headerlink" href="#Mistakes" title="Link to this heading"></a></h2>
+<p>In Python, some arguments of some functions have to be named: you can’t just pass a value. If you do, the interpreter doesn’t know what to do with it and says that the function is being called with too many arguments.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># sort in descending order</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[10], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">sorted</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">2</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">3</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">)</span>  <span style="color: rgb(95,135,135)"># sort in descending order</span>
+
+<span class="ansi-red-fg">TypeError</span>: sorted expected 1 argument, got 2
+</pre></div></div>
+</div>
+<p>Forgetting a comma before a nested list makes the interpreter think we’re trying to index the previous item because indexing uses square brackets too. This leads to a type error if the item’s type doesn’t include the indexing operation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="kc">True</span><span class="p">]</span>  <span class="c1"># comma missing after 1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+&lt;&gt;:1: SyntaxWarning: &#39;int&#39; object is not subscriptable; perhaps you missed a comma?
+&lt;&gt;:1: SyntaxWarning: &#39;int&#39; object is not subscriptable; perhaps you missed a comma?
+/var/folders/b2/13mhcbxn2b3fsdkb4d9lh32jc84fk1/T/ipykernel_71734/3918117735.py:1: SyntaxWarning: &#39;int&#39; object is not subscriptable; perhaps you missed a comma?
+  [1[2, 3], True]  # comma missing after 1
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[11], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> [<span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">2</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">3</span><span class="ansi-yellow-bg">]</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>]  <span style="color: rgb(95,135,135)"># comma missing after 1</span>
+
+<span class="ansi-red-fg">TypeError</span>: &#39;int&#39; object is not subscriptable
+</pre></div></div>
+</div>
+<p>You can’t concatenate sequences of different types.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s2">&quot;first task&quot;</span><span class="p">,</span> <span class="s2">&quot;second task&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;third task&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[12], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">first task</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">second task</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">third task</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span>
+
+<span class="ansi-red-fg">TypeError</span>: can only concatenate list (not &#34;str&#34;) to list
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[13], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">2</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">3</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">4</span><span class="ansi-yellow-bg">]</span>
+
+<span class="ansi-red-fg">TypeError</span>: can only concatenate tuple (not &#34;list&#34;) to tuple
+</pre></div></div>
+</div>
+</section>
+<section id="Modifying-lists">
+<h2><span class="section-number">4.6.4. </span>Modifying lists<a class="headerlink" href="#Modifying-lists" title="Link to this heading"></a></h2>
+<p>A list can be changed by replacing, removing, or inserting a new item. As mentioned above, we replace an item with an assignment, e.g.</p>
+<ol class="arabic simple">
+<li><p>let <em>daily temperature</em> be [-5, -2, 0, 1, -1]</p></li>
+<li><p>let <em>daily temperature</em>[1] be -4</p></li>
+</ol>
+<p>In Python this becomes</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">daily_temperature</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<p>The list has indeed changed:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-5, -4, 0, 1, -1]
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">insert</span></code> method adds an item at a given position. A <strong>method</strong> is a function that is only known in the context of a particular data type. Whereas <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">len</span></code> are functions that can be applied to various data types, <code class="docutils literal notranslate"><span class="pre">insert</span></code> only applies to lists, so the syntax is different. It uses <strong>dot notation</strong>: first write an expression (typically a variable) of the required data type, then a dot, then the method name with the remaining inputs in parentheses. In the case of the <code class="docutils literal notranslate"><span class="pre">insert</span></code>
+method, the remaining inputs are first the index and then the item to be inserted.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span>  <span class="c1"># insert -6 at index 0</span>
+<span class="n">daily_temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-6, -5, -4, 0, 1, -1]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;week 2:&quot;</span><span class="p">)</span>
+<span class="n">daily_temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-6, -5, -4, 0, 1, &#39;week 2:&#39;, -1]
+</pre></div></div>
+</div>
+<p>Hmm, this didn’t work. I wanted to add the text to the end of the list, but instead it got into the penultimate position. Can you explain why and figure a way of making it appear last?</p>
+<hr class="docutils" />
+<p>The operation worked as described. I asked to insert the text in the last position, so the value at that position shifted right. Let’s start afresh.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>The insertion operation takes the index of where the item will be put. If I want it to appear after the current last item then I can’t use the index of that item: I must use the next index.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">daily_temperature</span><span class="p">),</span> <span class="s2">&quot;week 2:&quot;</span><span class="p">)</span>
+<span class="n">daily_temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-5, -2, 0, 1, -1, &#39;week 2:&#39;]
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">append</span></code> method adds an item to the end of a list: <code class="docutils literal notranslate"><span class="pre">a_list.append(an_item)</span></code> is short for <code class="docutils literal notranslate"><span class="pre">a_list.insert(len(a_list),</span> <span class="pre">an_item)</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">daily_temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-5, -2, 0, 1, -1, &#39;week 2:&#39;, 6]
+</pre></div></div>
+</div>
+<p>To remove an item, we use the <code class="docutils literal notranslate"><span class="pre">pop</span></code> method, indicating the index of the item to be removed. For convenience, the method returns the item that was removed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># remove first item</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-5
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># remove last item</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+6
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-2, 0, 1, -1, &#39;week 2:&#39;]
+</pre></div></div>
+</div>
+<p>If you want to see a method’s documentation, you must use dot notation to indicate which data type has that method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">list</span><span class="o">.</span><span class="n">insert</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Help on method_descriptor:
+
+insert(self, index, object, /) unbound builtins.list method
+    Insert object before index.
+
+</pre></div></div>
+</div>
+<p>Lists have a further method to sort a list, instead of creating a new sorted list. It has the same optional parameter as <code class="docutils literal notranslate"><span class="pre">sorted</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-2, 1, 3, 4]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[4, 3, 1, -2]
+</pre></div></div>
+</div>
+<section id="Exercise-4.6.2">
+<h3>Exercise 4.6.2<a class="headerlink" href="#Exercise-4.6.2" title="Link to this heading"></a></h3>
+<p>We can also append an item using concatenation:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_temperature</span> <span class="o">=</span> <span class="n">daily_temperature</span> <span class="o">+</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>From a complexity point of view, is this a good idea?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_04_6_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_6_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.6.3">
+<h3>Exercise 4.6.3<a class="headerlink" href="#Exercise-4.6.3" title="Link to this heading"></a></h3>
+<p>Here’s the board games table again, with one game per row, but this time as a list of lists, so that it can be modified.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">games_by_row</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;Board game&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating&#39;</span><span class="p">,</span> <span class="s1">&#39;Owned&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Power Grid&#39;</span><span class="p">,</span>      <span class="mi">10</span> <span class="p">,</span>   <span class="kc">True</span> <span class="p">],</span>
+    <span class="p">[</span>   <span class="s1">&#39;Vintage&#39;</span><span class="p">,</span>       <span class="mi">8</span> <span class="p">,</span>   <span class="kc">True</span> <span class="p">],</span>
+    <span class="p">[</span>  <span class="s1">&#39;Pandemic&#39;</span><span class="p">,</span>       <span class="mi">9</span> <span class="p">,</span>  <span class="kc">False</span> <span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Write code that adds one more column with game prices and one more row with another game. Use fictitious data. The new column should be the right-most column. The new game should be listed first, before Power Grid.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace this by your code to change the table</span>
+<span class="n">games_by_row</span>  <span class="c1"># display the new table</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_04_6_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_6_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="id1">
+<h2><span class="section-number">4.6.5. </span>Mistakes<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>Replacing, removing or adding an item of an immutable type leads to a type error: the operation is attempted on a type that doesn’t support it.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;i love grilled fish&quot;</span>
+<span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;I&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[30], line 2</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> text <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">i love grilled fish</span><span style="color: rgb(175,0,0)">&#34;</span>
+<span class="ansi-green-fg">----&gt; 2</span> <span class="ansi-yellow-bg">text</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0</span><span class="ansi-yellow-bg">]</span> <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">I</span><span style="color: rgb(175,0,0)">&#34;</span>
+
+<span class="ansi-red-fg">TypeError</span>: &#39;str&#39; object does not support item assignment
+</pre></div></div>
+</div>
+<p>Calling a method without using dot notation leads to a name error, because there’s no such function in the ‘global’ context.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pop</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># there&#39;s no pop function ...</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[31], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">pop</span>([<span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(98,98,98)">2</span>, <span style="color: rgb(98,98,98)">3</span>], <span style="color: rgb(98,98,98)">1</span>)  <span style="color: rgb(95,135,135)"># there&#39;s no pop function ...</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pop&#39; is not defined
+</pre></div></div>
+</div>
+<p>A method’s name is only known in the context of a particular data type. The interpreter must know the type before it’s told the method name. The dot notation does exactly that: the interpreter, which reads code left to right like you and I do, first looks at the type of the expression before the dot and then checks whether that data type has a method with the name after the dot.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># but lists do have a method named pop</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="04_5_tuples.html" class="btn btn-neutral float-left" title="4.5. Tuples and tables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04_7_reverse.html" class="btn btn-neutral float-right" title="4.7. Reversal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

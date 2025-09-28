@@ -1,0 +1,230 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.8. Summary</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Stacks and queues" href="../07_Ordered/07-introduction.html" />
+    <link rel="prev" title="6.7. Linked lists" href="06_7_linked_list.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="06-introduction.html">6. Implementing sequences</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="06_1_define_type.html">6.1. Defining data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_2_static_array.html">6.2. Static arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_3_develop_type.html">6.3. Developing data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_4_bounded.html">6.4. Bounded sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_5_dynamic_array.html">6.5. Dynamic arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_6_use_dyn_array.html">6.6. Using dynamic arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_7_linked_list.html">6.7. Linked lists</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.8. Summary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Classes">6.8.1. Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Data-structures">6.8.2. Data structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">6.8.3. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Python">6.8.4. Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="06-introduction.html"><span class="section-number">6. </span>Implementing sequences</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.8. </span>Summary</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Summary">
+<h1><span class="section-number">6.8. </span>Summary<a class="headerlink" href="#Summary" title="Link to this heading"></a></h1>
+<section id="Classes">
+<h2><span class="section-number">6.8.1. </span>Classes<a class="headerlink" href="#Classes" title="Link to this heading"></a></h2>
+<p>A <strong>class</strong> defines a data type in Python. A value of a type defined by a class <em>C</em> is said to be an <strong>object</strong> and in particular, an <strong>instance of class</strong> <em>C</em>. The instance variables hold the data for each instance of the class. A method is an operation provided by a class. In Python, the first argument of each method for class <em>C</em> is an instance of <em>C</em>. Methods often modify the class instance to which they are applied and in such cases do not implement a mathematical function.</p>
+<p>The methods form the class’s <strong>interface</strong>. A class may change its instance variables without changing its interface. A class’s <strong>attributes</strong> are its instance variables and methods.</p>
+<p>To define a class <code class="docutils literal notranslate"><span class="pre">C</span></code>, write:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;What class C represents.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise a new instance of C.&quot;&quot;&quot;</span>
+        <span class="c1"># create the instance variables with self.x = value</span>
+
+    <span class="c1"># define further methods</span>
+</pre></div>
+</div>
+</div>
+<p>If all instances of class <em>A</em> are also instances of class <em>B</em>, then <em>A</em> is a <strong>subclass</strong> of <em>B</em> and <em>B</em> a <strong>superclass</strong> of <em>A</em>. Class <em>A</em> inherits the methods of <em>B</em>. In Python, write <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">A(B):</span></code> to define a subclass of <em>B</em>.</p>
+<p>An <strong>abstract class</strong> isn’t meant to be instantiated. It usually doesn’t have an <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method nor does it implement most methods. It can be used to define an ADT.</p>
+<p>In Python, if a class <code class="docutils literal notranslate"><span class="pre">Auxiliary</span></code> is defined within a class <code class="docutils literal notranslate"><span class="pre">Main</span></code>, then it must be referred to by its full name: <code class="docutils literal notranslate"><span class="pre">Main.Auxiliary</span></code>.</p>
+<p>White-box tests access the instance variables while black-box tests only use a class’s interface to test the behaviour of each method. Running the same tests after a change is called regression testing. Black-box testing facilitates regression testing, as changes to instance variables and method bodies don’t require changing the black-box tests.</p>
+</section>
+<section id="Data-structures">
+<h2><span class="section-number">6.8.2. </span>Data structures<a class="headerlink" href="#Data-structures" title="Link to this heading"></a></h2>
+<p>A data type implements an ADT with a <strong>data structure</strong>, a particular way of organising data. A linear data structure organises data sequentially.</p>
+<p>A <strong>static array</strong> is a data structure that stores a fixed-length sequence contiguously in memory, with the same number of bytes per item. This allows any item to be accessed and replaced in constant time.</p>
+<p>In Python, a static array can be emulated by creating a list with <code class="docutils literal notranslate"><span class="pre">[initial_value]</span> <span class="pre">*</span> <span class="pre">length</span></code> and never applying operations that change its length.</p>
+<p>A sequence can be stored in a static array of references to the actual items. A <strong>reference</strong> is an object that refers another one. A <strong>pointer</strong> is the memory address of the referred objected. <strong>Garbage collection</strong> is the process of freeing the memory occupied by objects that are no longer used because no object refers to them.</p>
+<p>A <strong>bounded</strong> sequence has a fixed <strong>capacity</strong>, the maximum number of items it can hold, set at creation time. The sequence is full when its length and capacity are equal. A bounded sequence can be implemented with a static array and a variable to keep track of the sequence’s length.</p>
+<p>A <strong>dynamic array</strong> is a succession of static arrays to give the illusion that the length of the dynamic array shrinks and grows. Resizing the dynamic array involves copying the items from the current static array to a new static array with the new length, and therefore takes time linear in the new length. Python lists are implemented with dynamic arrays.</p>
+<p>A <strong>linked list</strong> is a chain of nodes, each holding an item and pointing to the next node. The last node has a <strong>null pointer</strong> to indicate there’s no further node. A null pointer dereference occurs when trying to access the object referenced by a pointer without first checking that it’s the null pointer. The first node is called the <strong>head</strong> of the list. Linked lists don’t require a resize operation nor shifting items when inserting or removing one.</p>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">6.8.3. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>Implementing operations may require making <strong>space–time tradeoffs</strong> to reduce the run-time by using extra memory.</p>
+<p>The complexity of an operation depends on the underlying data structure. In the following table, <em>s</em> is a sequence and <em>i</em> is the index of the item to access, replace, insert or remove. Contrary to the table in <a class="reference internal" href="06_7_linked_list.html#Linked-list-v.-array"><span class="std std-ref">Section 6.7.4</span></a>, this one accounts for the space-time tradeoffs mentioned in that section.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sequence operation</p></th>
+<th class="head"><p>Dynamic array</p></th>
+<th class="head"><p>Linked list</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>length</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>indexing, replace</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(<em>i</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>insert, remove</p></td>
+<td><p>Θ(│<em>s</em>│ − <em>i</em>)</p></td>
+<td><p>Θ(<em>i</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>append</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="Python">
+<h2><span class="section-number">6.8.4. </span>Python<a class="headerlink" href="#Python" title="Link to this heading"></a></h2>
+<p>The Python statement <code class="docutils literal notranslate"><span class="pre">pass</span></code> does nothing. It can be used to indicate that abstract class methods do nothing: they have to be implemented in a subclass.</p>
+<p>Module <code class="docutils literal notranslate"><span class="pre">math</span></code> defines constant <code class="docutils literal notranslate"><span class="pre">inf</span></code> for positive infinity. It can be used to represent the capacity of an unbounded sequence. Negative infinity is represented as <code class="docutils literal notranslate"><span class="pre">-inf</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="06_7_linked_list.html" class="btn btn-neutral float-left" title="6.7. Linked lists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../07_Ordered/07-introduction.html" class="btn btn-neutral float-right" title="7. Stacks and queues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

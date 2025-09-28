@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.4. Searching permutations</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11.5. Searching subsets" href="11_5_subsets.html" />
+    <link rel="prev" title="11.3. Constraint satisfaction" href="11_3_constraints.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="11-introduction.html">11. Exhaustive search</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="11_1_linear.html">11.1. Linear search, again</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_2_factorisation.html">11.2. Factorisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_3_constraints.html">11.3. Constraint satisfaction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.4. Searching permutations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem">11.4.1. Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">11.4.2. Algorithm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.4.1">Exercise 11.4.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">11.4.3. Complexity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.4.2">Exercise 11.4.2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Code">11.4.4. Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="11_5_subsets.html">11.5. Searching subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_6_practice.html">11.6. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_7_summary.html">11.7. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="11-introduction.html"><span class="section-number">11. </span>Exhaustive search</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11.4. </span>Searching permutations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Searching-permutations">
+<h1><span class="section-number">11.4. </span>Searching permutations<a class="headerlink" href="#Searching-permutations" title="Link to this heading"></a></h1>
+<p>As the previous section illustrated, an exhaustive search algorithm with <em>n</em> nested loops can generate all permutations of <em>n</em> items and test which of them satisfy the search conditions. That’s fine if <em>n</em> is small and known in advance, but if <em>n</em> is an input of the problem, how can we generate the permutations? This section shows how with a classic problem.</p>
+<section id="Problem">
+<h2><span class="section-number">11.4.1. </span>Problem<a class="headerlink" href="#Problem" title="Link to this heading"></a></h2>
+<p>The <strong>travelling salesman problem</strong> (<strong>TSP</strong>) asks to find the shortest way to start in one place, visit other places only once and return to the start place, where ‘shortest way’ means the least total distance travelled.</p>
+<p>A <strong>tour</strong> is a route that goes once through each place and returns to the start place, e.g. the route of a truck delivering or collecting goods across multiple places and returning to the warehouse. The TSP is thus asking for the tour with the least total distance, given the distances between <em>n</em> places. We assume there are at least two places, in order to travel to a place and back to the start place.</p>
+<p>If instead of the distance we know the time or cost to go from one place to another, then the TSP asks for the respectively fastest or cheapest tour. If multiple tours are equally short, fast or cheap, then the output can be any of them.</p>
+<p>Problems that ask for a collection of items that minimise or maximise some quantity are <strong>optimisation problems</strong>. When talking about optimisation problems in general, the quantity being minimised is traditionally called the <strong>cost</strong>, even if it represents something else, like distance, for particular problems. So, the TSP is an optimisation problem that asks for a tour among <em>n</em> places with the lowest cost, given the costs of travelling between any two places.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> The Robotics and AI block of TM129 introduces optimisation problems and the TSP.</p>
+</div>
+<p>To turn the informal description of the TSP into a problem definition, I must choose how to model places and costs. Whether we’re flying around the globe with a band, visiting castles in Scotland or island-hopping in the Azores, it doesn’t matter what and where the places are: all we need is the cost of travelling between any two of them. The costs must be given by numbers, so that we can add up the cost of the tour. Although costs are usually positive, I allow for zero and negative numbers,
+e.g. if we wish to represent the cost below or above a given travel budget.</p>
+<p>There are several ways of representing the costs between pairs of places. A simple way of quickly looking up costs is to store them in a matrix. This means that places must be represented by natural numbers, in order to index the matrix. We have to decide whether the cost of going from <em>origin</em> to <em>destination</em> is in row <em>origin</em> and column <em>destination</em>, or row <em>destination</em> and column <em>origin</em>. It doesn’t matter which way it is, as long as we state it in the preconditions, so that the user
+knows how to fill the input matrix.</p>
+<p>Next, the output: the best tour. It can be represented by a sequence of integers, indicating in which order the places are visited. The postconditions must state that all places occur in the tour and that the first and last place are the same. They must also define the optimisation criterion: the tour’s cost.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: TSP</div>
+<div class="line"><strong>Inputs</strong>: <em>costs</em>, a <em>n</em>×<em>n</em> matrix of numbers</div>
+<div class="line"><strong>Preconditions</strong>: <em>n</em> ≥ 2; <em>costs</em>[<em>i</em>][<em>j</em>] is the cost of travelling from <em>i</em> to <em>j</em></div>
+<div class="line"><strong>Output</strong>: <em>tour</em>, a sequence of integers</div>
+<div class="line"><strong>Postconditions</strong>:</div>
+</div>
+<ul class="simple">
+<li><p><em>tour</em> has length <em>n</em> + 1, with <em>tour</em>[0] = <em>tour</em>[<em>n</em>]</p></li>
+<li><p>every integer from 0 to <em>n</em> − 1 occurs in <em>tour</em></p></li>
+<li><p><em>costs</em>[<em>tour</em>[0]][<em>tour</em>[1]] + <em>costs</em>[<em>tour</em>[1]][<em>tour</em>[2]] + … + <em>costs</em>[<em>tour</em>[<em>n</em> − 1]][<em>tour</em>[<em>n</em>]] has the lowest possible value</p></li>
+</ul>
+<p>Because the tour has length <em>n</em> + 1, with one duplicate place, all other places must occur once in the tour.</p>
+<p>Here’s a depiction of the example I’ll use, with <em>n</em> = 4. In this example, travelling from A to B costs the same as from B to A. The places are numbered from 0 to 3 and indicated by circles. The cost of travelling between two places is indicated next to the line connecting the two places.</p>
+<p id="fig-11.4.1"></p><p><a class="reference internal" href="../33_Figures/Figures_11_4.html#Figure-11.4.1"><span class="std std-ref">Figure 11.4.1</span></a></p>
+<img alt="Image 11_4_tsp.png" src="../_images/11_4_tsp.png" />
+<p>Can you find at least two tours with the same lowest cost? Two tours are different if their start/end place is different or if they visit the places in a different order.</p>
+<hr class="docutils" />
+<p>Some of the tours with lowest cost 40 are (0, 1, 3, 2, 0), (1, 3, 2, 0, 1) and (3, 1, 0, 2, 3).</p>
+</section>
+<section id="Algorithm">
+<h2><span class="section-number">11.4.2. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p>The exhaustive search algorithm is like a linear search for the best candidate, where the candidates are all possible tours and being better means to have a lower cost.</p>
+<p>Tours that go through the same places in the same order have the same cost, so to find the best tour it doesn’t matter which place we start from, as the example above shows. We can choose place 0 to be the start and end place and generate all permutations of (1, …, <em>n</em> – 1) for the intermediate places.</p>
+<p>We compute the cost of each candidate tour and see if it improves the current best cost, which is initially infinite. (If we were maximising a quantity, we’d initialise it with negative infinity.)</p>
+<ol class="arabic simple">
+<li><p>let <em>best cost</em> be infinite</p></li>
+<li><p>for each <em>places</em> that is a permutation of (1, 2, …, <em>n</em> – 1):</p>
+<ol class="arabic simple">
+<li><p>let <em>this tour</em> be <em>places</em> with 0 prepended and appended</p></li>
+<li><p>let <em>cost</em> be <em>costs</em>[<em>this tour</em>[0]][<em>this tour</em>[1]] + … + <em>costs</em>[<em>this tour</em>[<em>n</em> − 1]][<em>this tour</em>[<em>n</em>]]</p></li>
+<li><p>if <em>cost</em> &lt; <em>best cost</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>best cost</em> be <em>cost</em></p></li>
+<li><p>let <em>tour</em> be <em>this tour</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<section id="Exercise-11.4.1">
+<h3>Exercise 11.4.1<a class="headerlink" href="#Exercise-11.4.1" title="Link to this heading"></a></h3>
+<p>In many real-life situations, the cost of going from A to B is the same as the cost of going from B to A, like in the example above. In such cases, will the algorithm generate different candidate tours with the same total cost?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_11_4_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_11_4_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">11.4.3. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>There are <em>n</em> × (<em>n</em>−1) × … × 2 × 1 permutations of <em>n</em> items, because the first item in the permutation can be any of the <em>n</em> items, the second item in the permutation can be any of the remaining <em>n</em>−1 items, and so on, until only one item remains to be put in the last position.</p>
+<p>The product of all integers from 1 to <em>n</em> is written <em>n</em>! and is called the <strong>factorial</strong> of n. There’s only one permutation of zero items, the empty sequence, so 0! = 1.</p>
+<p>The exhaustive search for the best tour among <em>n</em> places only generates the permutations of (1, …, <em>n</em> – 1), because the start/end place is fixed, so the complexity is Θ((<em>n</em>−1)!).</p>
+<p>The factorial grows much much faster than the square or the cube of a number. A picture shows it best.</p>
+<p id="fig-11.4.2"></p><p><a class="reference internal" href="../33_Figures/Figures_11_4.html#Figure-11.4.2"><span class="std std-ref">Figure 11.4.2</span></a></p>
+<img alt="Image 11_4_factorial.png" src="../_images/11_4_factorial.png" />
+<p>As the chart shows, 5! is about the same as 5³ (the red and blue lines cross at <em>n</em> = 5) but from then on the factorial function leaves the cubic function in the dust, and <em>n</em>² looks like a constant function (the black line is flat) in comparison to <em>n</em>!.</p>
+<p>I once asked the driver delivering my supermarket online shopping how many customers he served in one tour with a full van. He said about fifteen. Assuming we can compute the cost of each tour in 1 µs, we can obtain a van’s best tour in 15! µs. Python’s <code class="docutils literal notranslate"><span class="pre">math</span></code> module provides a function to compute the factorial.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="s2">&quot;µs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1307674368000 µs
+</pre></div></div>
+</div>
+<p>That’s a huge number. Let’s see how many days that is.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MS_PER_DAY</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span>  <span class="c1"># microseconds in a day</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">//</span> <span class="n">MS_PER_DAY</span><span class="p">,</span> <span class="s2">&quot;days&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+15 days
+</pre></div></div>
+</div>
+<p>By comparison, if the van delivers to 10 customers, then the best tour can be computed in just …</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MS_PER_S</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># microseconds in a second</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">//</span> <span class="n">MS_PER_S</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3 seconds
+</pre></div></div>
+</div>
+<p>This shows again how fast the factorial function grows.</p>
+<p>As you may imagine, delivery companies don’t use exhaustive search, with factorial complexity, to compute the best tour. They use <strong>heuristic</strong> algorithms which compute an approximate ‘good enough’ solution, rather than the optimal one. A heuristic algorithm for the TSP will be presented in <a class="reference internal" href="../18_Greed/18_3_mst.html#Exercise-18.3.1"><span class="std std-ref">Exercise 18.3.1</span></a>.</p>
+<section id="Exercise-11.4.2">
+<h3>Exercise 11.4.2<a class="headerlink" href="#Exercise-11.4.2" title="Link to this heading"></a></h3>
+<p>The previous exercise showed that the algorithm generates ‘symmetric’ tours. Would the complexity improve if the algorithm could be modified to not generate them?</p>
+<p><a class="reference internal" href="../32_Answers/Answers_11_4_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Code">
+<h2><span class="section-number">11.4.4. </span>Code<a class="headerlink" href="#Code" title="Link to this heading"></a></h2>
+<p>To generate permutations, we use function <code class="docutils literal notranslate"><span class="pre">permutations</span></code> in module <code class="docutils literal notranslate"><span class="pre">itertools</span></code>. The function is meant to be used in a for-loop because it returns the permutations one by one, as a tuple. The function’s argument is an iterable collection of items.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">permutations</span>
+
+<span class="k">for</span> <span class="n">permutation</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">({</span><span class="s2">&quot;travelling&quot;</span><span class="p">,</span> <span class="s2">&quot;salesman&quot;</span><span class="p">,</span> <span class="s2">&quot;problem&quot;</span><span class="p">}):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">permutation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&#39;travelling&#39;, &#39;problem&#39;, &#39;salesman&#39;)
+(&#39;travelling&#39;, &#39;salesman&#39;, &#39;problem&#39;)
+(&#39;problem&#39;, &#39;travelling&#39;, &#39;salesman&#39;)
+(&#39;problem&#39;, &#39;salesman&#39;, &#39;travelling&#39;)
+(&#39;salesman&#39;, &#39;travelling&#39;, &#39;problem&#39;)
+(&#39;salesman&#39;, &#39;problem&#39;, &#39;travelling&#39;)
+</pre></div></div>
+</div>
+<p>Let’s construct the matrix of the example input. The cost of ‘travelling’ from a place to itself can be any number, because it won’t be used by the algorithm, but it’s usually set to zero.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">four_places</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>     <span class="c1"># cost from 0 to other places</span>
+    <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>     <span class="c1"># cost from 1 to other places</span>
+    <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>    <span class="c1"># cost from 2 to other places</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>      <span class="c1"># cost from 3 to other places</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>I use slightly different variable names from the algorithm to keep the code lines short.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">permutations</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tsp</span><span class="p">(</span><span class="n">costs</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve the travelling salesman problem.</span>
+
+<span class="sd">    Input: costs is a n*n matrix of numbers</span>
+<span class="sd">    Preconditions:</span>
+<span class="sd">    - n &gt; 1</span>
+<span class="sd">    - costs[i][j] is the cost of travelling from i to j</span>
+<span class="sd">    Postconditions:</span>
+<span class="sd">    - len(output) = n + 1</span>
+<span class="sd">    - output[0] = output[n]</span>
+<span class="sd">    - every integer from 0 to n - 1 occurs in the output</span>
+<span class="sd">    - costs[output[0]][output[1]] + ... + costs[output[n-1]][output[n]]</span>
+<span class="sd">      has the lowest possible value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">best_cost</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>  <span class="c1"># positive infinity (Section 6.8)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">costs</span><span class="p">)</span>
+    <span class="c1"># generate all permutations of (1, .., n-1)</span>
+    <span class="k">for</span> <span class="n">places</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)):</span>
+        <span class="c1"># tuple literals with 1 item need extra comma (Section 4.5)</span>
+        <span class="n">tour</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span> <span class="o">+</span> <span class="n">places</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">cost</span> <span class="o">=</span> <span class="n">cost</span> <span class="o">+</span> <span class="n">costs</span><span class="p">[</span><span class="n">tour</span><span class="p">[</span><span class="n">index</span><span class="p">]][</span><span class="n">tour</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+        <span class="k">if</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="n">best_cost</span><span class="p">:</span>
+            <span class="n">best_cost</span> <span class="o">=</span> <span class="n">cost</span>
+            <span class="n">best_tour</span> <span class="o">=</span> <span class="n">tour</span>
+    <span class="k">return</span> <span class="n">best_tour</span>
+
+
+<span class="n">tsp</span><span class="p">(</span><span class="n">four_places</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(0, 1, 3, 2, 0)
+</pre></div></div>
+</div>
+<p>There are two equally best tours starting and ending at place 0, namely (0, 1, 3, 2, 0) and (0, 2, 3, 1, 0), but only the one generated first is output as the second one doesn’t improve the best cost.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="11_3_constraints.html" class="btn btn-neutral float-left" title="11.3. Constraint satisfaction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="11_5_subsets.html" class="btn btn-neutral float-right" title="11.5. Searching subsets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

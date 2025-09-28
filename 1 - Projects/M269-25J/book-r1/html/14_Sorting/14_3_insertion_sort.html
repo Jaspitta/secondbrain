@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14.3. Insertion sort</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="14.4. Selection sort" href="14_4_selection_sort.html" />
+    <link rel="prev" title="14.2. Bogosort" href="14_2_bogosort.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="14-introduction.html">14. Sorting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="14_1_sort_prep.html">14.1. Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_2_bogosort.html">14.2. Bogosort</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">14.3. Insertion sort</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Recursive-version">14.3.1. Recursive version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Iterative-version">14.3.2. Iterative version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">14.3.3. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Performance">14.3.4. Performance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-14.3.1">Exercise 14.3.1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="14_4_selection_sort.html">14.4. Selection sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_5_merge_sort.html">14.5. Merge sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_6_quicksort.html">14.6. Quicksort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_7_quicksort_variants.html">14.7. Quicksort variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_8_pigeonhole.html">14.8. Pigeonhole sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_9_summary.html">14.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="14-introduction.html"><span class="section-number">14. </span>Sorting</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">14.3. </span>Insertion sort</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Insertion-sort">
+<h1><span class="section-number">14.3. </span>Insertion sort<a class="headerlink" href="#Insertion-sort" title="Link to this heading"></a></h1>
+<p>Let’s apply decrease and conquer to sorting, instead of exhaustive search.</p>
+<section id="Recursive-version">
+<h2><span class="section-number">14.3.1. </span>Recursive version<a class="headerlink" href="#Recursive-version" title="Link to this heading"></a></h2>
+<p>I start with the usual questions.</p>
+<ol class="arabic simple">
+<li><p>What are the smallest possible unsorted sequence and its sorted counterpart? The unsorted and sorted sequences are empty.</p></li>
+<li><p>If the tail were already sorted, how could we sort the whole sequence? We simply insert the head in the appropriate place.</p></li>
+</ol>
+<p>This is the core idea of <strong>insertion sort</strong>: the next item to be processed is inserted into an already sorted part of the sequence. After processing all items, the sequence is sorted.</p>
+<p>This is one way players sort their cards: with one hand they pick up the cards they were dealt, one by one, inserting each one in its place in a fan of cards held in their other hand.</p>
+<p>The algorithm for function insertion_sorted(<em>unsorted</em>, <em>key</em>) is:</p>
+<ol class="arabic simple">
+<li><p>if <em>unsorted</em> is empty:</p>
+<ol class="arabic simple">
+<li><p>let <em>sorted</em> be ()</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>subsolution</em> be insertion_sorted(tail(<em>unsorted</em>), <em>key</em>)</p></li>
+<li><p>let <em>sorted</em> be insert(head(<em>unsorted</em>), <em>subsolution</em>, <em>key</em>)</p></li>
+</ol>
+</li>
+</ol>
+<p>Inserting an item into a sorted sequence (step 2.2) also requires the key function. The algorithm for function insert(<em>item</em>, <em>sorted</em>, <em>key</em>) has to compare the keys of the item to be inserted and of the head, to know if the item is to be inserted before or after the head. It’s another decrease-and-conquer algorithm. I call the output variable <em>inserted</em>.</p>
+<ol class="arabic simple">
+<li><p>if <em>sorted</em> is empty:</p>
+<ol class="arabic simple">
+<li><p>let <em>inserted</em> be (<em>item</em>)</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>key</em>(<em>item</em>) ≤ <em>key</em>(head(<em>sorted</em>)):</p>
+<ol class="arabic simple">
+<li><p>let <em>inserted</em> be prepend(<em>item</em>, <em>sorted</em>)</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>subsolution</em> be insert(<em>item</em>, tail(<em>sorted</em>), <em>key</em>)</p></li>
+<li><p>let <em>inserted</em> be prepend(head(<em>sorted</em>), <em>subsolution</em>)</p></li>
+</ol>
+</li>
+</ol>
+<p>This version of insertion sort isn’t tail recursive. It exhausts the call stack when sorting a sequence with thousands of items. We need an iterative version.</p>
+</section>
+<section id="Iterative-version">
+<h2><span class="section-number">14.3.2. </span>Iterative version<a class="headerlink" href="#Iterative-version" title="Link to this heading"></a></h2>
+<p>Here’s a version that can be implemented in-place, on the input array.</p>
+<p>Continuing with the card game analogy, the player fans all the dealt cards in one hand and mentally divides them in two parts: the sorted cards are on the left and the unsorted cards are on the right. Initially, the sorted part is the first card and the unsorted part has all other ones. At each step, the player uses their free hand to pick the left-most unsorted card and put it in its correct place in the sorted part. Each step grows the sorted part by one card and shrinks the unsorted part by
+one card. The sorting ends when the unsorted part is empty.</p>
+<p>The next table shows step by step how in-place insertion sort alphabetically sorts a sequence of seven letters. I use monospaced font to highlight the already sorted left part of the sequence.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p>O</p></td>
+<td><p>R</p></td>
+<td><p>T</p></td>
+<td><p>I</p></td>
+<td><p>N</p></td>
+<td><p>G</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p>R</p></td>
+<td><p>T</p></td>
+<td><p>I</p></td>
+<td><p>N</p></td>
+<td><p>G</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">R</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p>T</p></td>
+<td><p>I</p></td>
+<td><p>N</p></td>
+<td><p>G</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">R</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td><p>I</p></td>
+<td><p>N</p></td>
+<td><p>G</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">I</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">R</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td><p>N</p></td>
+<td><p>G</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">I</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">R</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td><p>G</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">G</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">I</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">R</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>To insert each unsorted item in the sorted part, the algorithm shifts right all sorted items that are larger than the unsorted item. This overwrites the unsorted item but makes place to put it in the sorted part. This <a class="reference external" href="https://learn2.open.ac.uk/mod/oucontent/view.php?id=2554725&amp;extra=thumbnail_idm26">visualisation</a> shows the shifting in more detail.</p>
+<p>I proceed directly to the code. As shown in the visualisation, insertion sort goes through the sorted items from right to left and shifts each one to the right if it’s larger than the unsorted item.</p>
+<p>Remember that our sorting algorithms take a <a class="reference internal" href="14_1_sort_prep.html#Problem"><span class="std std-ref">key function</span></a> as a second argument and that functions are objects of type <code class="docutils literal notranslate"><span class="pre">Callable</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">insertion_sort</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sort the items in-place, with keys in non-decreasing order.</span>
+
+<span class="sd">    Preconditions: for any indices i and j,</span>
+<span class="sd">    key(items[i]) and key(items[j]) are comparable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># go through all items in the unsorted part</span>
+    <span class="k">for</span> <span class="n">first_unsorted</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)):</span>
+        <span class="n">to_sort</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="n">first_unsorted</span><span class="p">]</span>
+        <span class="c1"># apply the key function given as input</span>
+        <span class="n">the_key</span> <span class="o">=</span> <span class="n">key</span><span class="p">(</span><span class="n">to_sort</span><span class="p">)</span>
+        <span class="c1"># to start, index where to put item is index where it is now</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">first_unsorted</span>
+        <span class="c1"># for each sorted item larger than the one to sort</span>
+        <span class="k">while</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">key</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">the_key</span><span class="p">:</span>
+            <span class="c1"># copy it to the right, i.e. one position up</span>
+            <span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">items</span><span class="p">[</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># and proceed with the next sorted item on the left</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="c1"># sorted item on the left isn&#39;t larger: we found the index</span>
+        <span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_sort</span>  <span class="c1"># put the unsorted item there</span>
+</pre></div>
+</div>
+</div>
+<p>There are <a class="reference internal" href="14_1_sort_prep.html#Problem"><span class="std std-ref">two versions</span></a> of the sorting problem: one modifies the input, the other returns a sorted copy. I follow the same naming convention as Python: <code class="docutils literal notranslate"><span class="pre">sort</span></code> for the in-place version and <code class="docutils literal notranslate"><span class="pre">sorted</span></code> for the other.</p>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">test</span></code> function, I need the sorting function to return an output, so I will implement the <code class="docutils literal notranslate"><span class="pre">sorted</span></code> version that makes a copy of the input list, using the <code class="docutils literal notranslate"><span class="pre">list</span></code> constructor: <code class="docutils literal notranslate"><span class="pre">copy</span> <span class="pre">=</span> <span class="pre">list(original)</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">copy</span> <span class="pre">=</span> <span class="pre">original</span></code> would create a new reference to the <em>same</em> list and hence modify the original input.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+<span class="o">%</span><span class="k">run</span> -i ../m269_sorting
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">insertion_sorted</span><span class="p">(</span><span class="n">unsorted</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a permutation with keys in non-decreasing order.</span>
+
+<span class="sd">    Preconditions: for any indices i and j,</span>
+<span class="sd">    key(unsorted[i]) and key(unsorted[j]) are comparable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">unsorted</span><span class="p">)</span>  <span class="c1"># make a copy</span>
+    <span class="n">insertion_sort</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">insertion_sorted</span><span class="p">,</span> <span class="n">sorting_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing insertion_sorted...
+Tests finished: 7 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>Remember that our <a class="reference internal" href="14_1_sort_prep.html#Problem-instances"><span class="std std-ref">sorting test table</span></a> indicates which key function (<code class="docutils literal notranslate"><span class="pre">value</span></code>, <code class="docutils literal notranslate"><span class="pre">suit</span></code> or <code class="docutils literal notranslate"><span class="pre">suit_value</span></code>) each test uses.</p>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">14.3.3. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>For this and the following algorithms, we assume that the key function takes constant time and so does comparing two keys.</p>
+<p>The algorithm does the least work when the while-loop never executes. This happens if the condition is always false: the key of the left neighbour of the unsorted item has a lower or equal key. In that case, the <code class="docutils literal notranslate"><span class="pre">index</span></code> variable doesn’t change and the unsorted item remains in its place, becoming the new right-most sorted item. What’s the best-case complexity of insertion sort?</p>
+<hr class="docutils" />
+<p>The for-loop does <em>n</em> − 1 iterations, each only doing constant-time operations, because the while-loop is skipped. The complexity is Θ(<em>n</em>).</p>
+<p>The algorithm does the most work if, for each unsorted item, <em>all</em> the sorted items are shifted. The first unsorted item requires one shift because the sorted part has one item. The second unsorted item requires two shifts because the sorted part has now two items. In total, the number of shifts is 1 + 2 + … + <em>n</em>−1 = ((<em>n</em>–1)² + (<em>n</em>–1)) / 2 by using the formula seen in the <a class="reference internal" href="../13_Divide/13_1_decrease_one.html#Sequence-length"><span class="std std-ref">previous chapter</span></a>. Each shift takes constant time, so the
+worst-case complexity is Θ(<em>n</em>²). Can you think of a scenario with this worst-case complexity?</p>
+<hr class="docutils" />
+<p>If inserting an unsorted item shifts all sorted items, then the unsorted item must be smaller than all of them and go to index zero. If each unsorted item triggers shifting, then it must be smaller than the previous unsorted item. A worst-case scenario is therefore the sequence being in descending order, or more generally, in reverse sorted order.</p>
+</section>
+<section id="Performance">
+<h2><span class="section-number">14.3.4. </span>Performance<a class="headerlink" href="#Performance" title="Link to this heading"></a></h2>
+<p>Let’s check the best-case complexity by generating ascending integer sequences, always doubling the length. As previously advised, I don’t start with very short sequences, but not too long ones either because the worst-case is quadratic.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_sorting
+
+<span class="k">for</span> <span class="n">doubling</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># generate lists of length 100, 200, 400, 800, 1600</span>
+    <span class="c1"># each list has the integers from 0 to length - 1</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="n">doubling</span><span class="p">))</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 5 insertion_sorted(items, identity)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+6.95 μs ± 9.73 ns per loop (mean ± std. dev. of 5 runs, 100,000 loops each)
+13.7 μs ± 9.58 ns per loop (mean ± std. dev. of 5 runs, 100,000 loops each)
+30.4 μs ± 162 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+65 μs ± 43.8 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+135 μs ± 92.1 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+</pre></div></div>
+</div>
+<p>Let’s check the worst-case complexity with descending sequences.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">doubling</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**</span><span class="n">doubling</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 5 insertion_sorted(items, identity)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+280 μs ± 147 ns per loop (mean ± std. dev. of 5 runs, 1,000 loops each)
+1.1 ms ± 806 ns per loop (mean ± std. dev. of 5 runs, 1,000 loops each)
+4.74 ms ± 11.2 μs per loop (mean ± std. dev. of 5 runs, 100 loops each)
+21.4 ms ± 16.1 μs per loop (mean ± std. dev. of 5 runs, 10 loops each)
+92.5 ms ± 72.6 μs per loop (mean ± std. dev. of 5 runs, 10 loops each)
+</pre></div></div>
+</div>
+<p>Do the run-times confirm the best- and worst-case complexities?</p>
+<hr class="docutils" />
+<p>For ascending sequences, the run-time doubles as the length doubles, thus confirming the linear complexity. For descending sequences, the run-time roughly quadruples as the length doubles, thus confirming the quadratic complexity.</p>
+<section id="Exercise-14.3.1">
+<h3>Exercise 14.3.1<a class="headerlink" href="#Exercise-14.3.1" title="Link to this heading"></a></h3>
+<p>The above code isn’t just measuring the run-time of insertion sort: it’s also measuring the time to copy the input list. Wouldn’t it be better to directly call the in-place <code class="docutils literal notranslate"><span class="pre">insertion_sort</span></code> instead of <code class="docutils literal notranslate"><span class="pre">insertion_sorted</span></code>?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_14_3_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_14_3_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="14_2_bogosort.html" class="btn btn-neutral float-left" title="14.2. Bogosort" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="14_4_selection_sort.html" class="btn btn-neutral float-right" title="14.4. Selection sort" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

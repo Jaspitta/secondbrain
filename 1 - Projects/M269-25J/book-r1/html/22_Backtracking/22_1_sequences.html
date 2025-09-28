@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22.1. Generate sequences</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="22.2. Prune the search space" href="22_2_pruning.html" />
+    <link rel="prev" title="22. Backtracking" href="22-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="22-introduction.html">22. Backtracking</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">22.1. Generate sequences</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Recursive-generation">22.1.1. Recursive generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Accept-partial-candidates">22.1.2. Accept partial candidates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="22_2_pruning.html">22.2. Prune the search space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_3_trackword.html">22.3. Trackword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_4_optimising.html">22.4. Optimise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_5_tsp.html">22.5. Back to the TSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_6_subsets.html">22.6. Generate subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_7_knapsack.html">22.7. Back to the knapsack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_8_summary.html">22.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="22-introduction.html"><span class="section-number">22. </span>Backtracking</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">22.1. </span>Generate sequences</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Generate-sequences">
+<h1><span class="section-number">22.1. </span>Generate sequences<a class="headerlink" href="#Generate-sequences" title="Link to this heading"></a></h1>
+<p>Backtracking can solve many <a class="reference internal" href="../11_Search/11_7_summary.html#Problems"><span class="std std-ref">constraint satisfaction and optimisation problems</span></a>. In M269 we restrict backtracking to problems on sets of items or on sequences of unique items, i.e. without duplicates. We will first look at constraint satisfaction problems on sequences. Here’s one, admittedly contrived.</p>
+<blockquote>
+<div><p>Given an integer <em>n</em> &gt; 2, obtain all permutations of 1, …, <em>n</em> such that:</p>
+<ul class="simple">
+<li><p>the first and last numbers are at least <em>n</em> / 2 apart (range constraint)</p></li>
+<li><p>the sequence starts with an odd number and then alternates even and odd numbers (parity constraint).</p></li>
+</ul>
+</div></blockquote>
+<p>For <em>n</em> = 3, only permutations (1, 2, 3) and (3, 2, 1) satisfy both constraints. Permutations like (2, 1, 3) satisfy neither:</p>
+<ul class="simple">
+<li><p>the difference between the first and last numbers is 1, but it should be at least 1.5</p></li>
+<li><p>the permutation starts with an even number and has consecutive odd numbers.</p></li>
+</ul>
+<p>I first solve the problem with a recursive exhaustive search, because backtracking is based on that.</p>
+<p>A <a class="reference internal" href="../11_Search/11_7_summary.html"><span class="doc">brute-force search</span></a> for the solutions to the above problem generates all possible permutations and tests each permutation against both constraints, to decide if it’s a solution.</p>
+<p>To test the range constraint I compute the difference between the first and last numbers with Python function <code class="docutils literal notranslate"><span class="pre">abs</span></code>, introduced in <a class="reference internal" href="../18_Greed/18_2_weighted_graph.html#Weighted-graphs"><span class="std std-ref">Section 18.2</span></a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">satisfies_range</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if first and last of numbers are at least n/2 apart.</span>
+
+<span class="sd">    Preconditions:</span>
+<span class="sd">    - numbers is a list of integers; len(numbers) &gt;= 2</span>
+<span class="sd">    - n &gt; 2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<p>To test the parity constraint, I must verify there’s an odd number at index 0, an even number at index 1, an odd number at index 2, etc. The general rule is that each number and its index must have different parities. If there are no numbers (the list is empty) then the constraint is satisfied.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">satisfies_parity</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if numbers is an odd, even, odd, ... sequence.</span>
+
+<span class="sd">    Preconditions: numbers is a list of integers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">numbers</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<p>The test for whether a permutation candidate is a solution is simply:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_solution</span><span class="p">(</span><span class="n">permutation</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if permutation satisfies the range and parity constraints.</span>
+
+<span class="sd">    Preconditions: n &gt; 2 and permutation is a rearrangement of 1, ..., n</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">satisfies_range</span><span class="p">(</span><span class="n">permutation</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="ow">and</span> <span class="n">satisfies_parity</span><span class="p">(</span><span class="n">permutation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now all that remains is to generate the permutations. This could be done iteratively with Python’s <code class="docutils literal notranslate"><span class="pre">permutations</span></code> function introduced in <a class="reference internal" href="../11_Search/11_4_permutations.html#Code"><span class="std std-ref">Section 11.4.4</span></a>. However, backtracking requires each permutation to be generated one item at a time. (I’ll explain why in Section 2.) We need a different way of generating permutations.</p>
+<section id="Recursive-generation">
+<h2><span class="section-number">22.1.1. </span>Recursive generation<a class="headerlink" href="#Recursive-generation" title="Link to this heading"></a></h2>
+<p>To generate <em>one</em> permutation with pencil and paper, we could start with an empty sequence and take the numbers one by one, in any order, from the set {1, …, <em>n</em>}, appending each one to the sequence. When the set becomes empty, the sequence is a permutation of the numbers from 1 to <em>n</em>.</p>
+<p>To generate <em>all</em> permutations, we need to systematically go back to an earlier choice (e.g. when we picked the first number in the permutation) and make a different one.</p>
+<p>The following tree shows the decision process for <em>n</em> = 3. Each node represents the sequence created so far and the available set of choices. Initially the sequence is empty and all numbers are available. The children of a node are all the possible ways of extending the sequence in that node. When the set is empty, the sequence can’t be further extended. Nodes with the empty set are the leaves of the tree and contain the permutations.</p>
+<p id="fig-22.1.1"></p><p><a class="reference internal" href="../33_Figures/Figures_22_1.html#Figure-22.1.1"><span class="std std-ref">Figure 22.1.1</span></a></p>
+<img alt="Image 22_1_extensions.png" src="../_images/22_1_extensions.png" />
+<p>The sequences in the leaves are the <strong>complete candidates</strong>, which for this problem are the permutations. The sequences in the other nodes are the <strong>partial candidates</strong>. Each set in a node is the <strong>extensions</strong> for that node’s candidate. A candidate is complete when it has no extensions. A <strong>solution</strong> is a complete or partial candidate that satisfies the constraints. For this problem, all solutions are complete candidates (permutations). Because of the constraints imposed, not every complete
+candidate is a solution.</p>
+<p>Since the candidates can be organised in a tree, all we need to generate them is a recursive tree-traversal algorithm. The <a class="reference internal" href="../16_Trees/16_3_traversals.html#Traversals"><span class="std std-ref">algorithms</span></a> in Chapter 16 went through an existing tree. It would be a waste of time and memory to create the whole tree in advance, with the partial candidates and their extensions, as we’re only interested in those complete candidates that are solutions. A better approach is to create the nodes as they’re visited. In fact,
+we don’t need to create node objects with pointers to children: we only need the content of nodes (the candidates and their extensions), which is much simpler and efficient.</p>
+<p>The following is a recursive exhaustive search. It generates all partial and complete candidates and their extensions, and tests complete candidates (the permutations) against the constraints. If the permutation is a solution then it’s appended to a sequence of solutions, so that we keep the solutions in the order they’re found. I’ve also added some print statements to follow what the search does.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">solutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add to solutions all valid permutations that extend candidate.</span>
+
+<span class="sd">    Preconditions: n &gt; 2 and</span>
+<span class="sd">    - candidate is a list of integers between 1 and n</span>
+<span class="sd">    - extensions is a set of integers between 1 and n</span>
+<span class="sd">    - candidate and extensions have no integer in common</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Visiting node&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># leaf node: candidate is complete</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing candidate&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_solution</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># create and visit children nodes</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">extensions</span> <span class="o">-</span> <span class="p">{</span><span class="n">item</span><span class="p">},</span> <span class="n">n</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Like all recursive algorithms, it has a base case (there are no extensions) and a reduction step (remove one item from the extensions) to make progress towards the base case.</p>
+<p>Being a tree-traversal function, I must call it on the root node: the empty candidate and the full set of extensions. I must also initialise the solutions sequence.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">valid_permutations</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all valid permutations of 1, ..., n in the order generated.&quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># {1, ..., n}</span>
+    <span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">solutions</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solutions:&quot;</span><span class="p">,</span> <span class="n">valid_permutations</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Visiting node [] {1, 2, 3}
+Visiting node [1] {2, 3}
+Visiting node [1, 2] {3}
+Visiting node [1, 2, 3] set()
+Testing candidate [1, 2, 3]
+Visiting node [1, 3] {2}
+Visiting node [1, 3, 2] set()
+Testing candidate [1, 3, 2]
+Visiting node [2] {1, 3}
+Visiting node [2, 1] {3}
+Visiting node [2, 1, 3] set()
+Testing candidate [2, 1, 3]
+Visiting node [2, 3] {1}
+Visiting node [2, 3, 1] set()
+Testing candidate [2, 3, 1]
+Visiting node [3] {1, 2}
+Visiting node [3, 1] {2}
+Visiting node [3, 1, 2] set()
+Testing candidate [3, 1, 2]
+Visiting node [3, 2] {1}
+Visiting node [3, 2, 1] set()
+Testing candidate [3, 2, 1]
+Solutions: [[1, 2, 3], [3, 2, 1]]
+</pre></div></div>
+</div>
+<p>As you can see, the algorithm tests all 3! = 6 permutations of numbers 1 to 3, but only two of them are solutions.</p>
+<p>If you follow the nodes visited with your finger on the tree diagram, you see that the algorithm is doing a pre-order traversal of the tree. After visiting a leaf and testing the complete candidate in it, the algorithm ‘unwinds’ (because leaves have no children) to the last node with yet unvisited subtrees and traverses the next subtree.</p>
+<p>For example, if you look at the printed output and at the tree diagram, after producing permutation <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">2]</span></code>, there are no further subtrees to explore for partial candidate <code class="docutils literal notranslate"><span class="pre">[1]</span></code>. The execution of the algorithm is back in the for-loop of the call on the root node <code class="docutils literal notranslate"><span class="pre">extend([],</span> <span class="pre">{1,2,3},</span> <span class="pre">3,</span> <span class="pre">solutions)</span></code> and goes into the next iteration, with <code class="docutils literal notranslate"><span class="pre">item</span></code> being 2. The next recursive call is <code class="docutils literal notranslate"><span class="pre">extend([2],</span> <span class="pre">{1,</span> <span class="pre">3},</span> <span class="pre">3,</span> <span class="pre">solutions)</span></code>, which starts traversing the middle subtree.</p>
+<p>At this point you may be rightly thinking that this recursive brute-force search is less efficient than an iterative one, because it also generates and visits all partial candidates as the initially empty candidate is extended one item at a time. For <em>n</em> = 3, there are 10 partial and only 6 complete candidates.</p>
+<p>One advantage of the incremental generation approach is that it can also solve problems where the solution sequences don’t have all items, i.e. where some partial candidates are solutions too.</p>
+</section>
+<section id="Accept-partial-candidates">
+<h2><span class="section-number">22.1.2. </span>Accept partial candidates<a class="headerlink" href="#Accept-partial-candidates" title="Link to this heading"></a></h2>
+<p>Let’s change the problem so that solutions can be sequences with only some of the numbers from 1 to <em>n</em>, as long as they satisfy both constraints. All permutations satisfying the range and parity constraints are still solutions, but shorter sequences may be solutions too. For example, for <em>n</em> = 4, (1, 2, 3, 4) is the only permutation that is a solution, but sequences (1, 2, 3) and (3, 2, 1) are solutions too: they each have a difference of at least 4 / 2 = 2 between the first and last numbers
+and they alternate odd and even numbers.</p>
+<p>To solve this problem I must make two changes. First, the tree traversal must check every candidate, not just the complete candidates. (I don’t repeat the docstring and print statements.)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">solutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="k">if</span> <span class="n">is_solution</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">extensions</span> <span class="o">-</span> <span class="p">{</span><span class="n">item</span><span class="p">},</span> <span class="n">n</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The change I made was removing the if-else statement that checked if the candidate is complete. The for-loop won’t do anything for complete candidates because they have no extensions.</p>
+<p>The second change is to the function that tests the range constraint, which requires the sequence to have at least two numbers. Previously, we could assume that as part of the preconditions, because only complete candidates (permutations of <em>n</em> &gt; 2) were tested. Now that we test all partial candidates, we must explicitly check they have at least two numbers.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">satisfies_range</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if first and last of numbers are at least n/2 apart.</span>
+
+<span class="sd">    Preconditions: numbers is a list of integers; n &gt; 2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s confirm that we now find more sequences for <em>n</em> = 4.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid_permutations</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1, 2, 3], [1, 2, 3, 4], [1, 4], [1, 4, 3], [3, 2, 1], [3, 4, 1]]
+</pre></div></div>
+</div>
+<p>To sum up, a constraint satisfaction problem on sequences with unique items can be solved with a brute-force search that generates all candidates in a recursive and incremental way, starting from the empty sequence and extending it by one item at a time. Depending on the problem, all candidates or only the complete ones are tested against the constraints.</p>
+<p>The next section shows the main advantage of incremental generation: a simple change will make the search much more efficient.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="22-introduction.html" class="btn btn-neutral float-left" title="22. Backtracking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="22_2_pruning.html" class="btn btn-neutral float-right" title="22.2. Prune the search space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

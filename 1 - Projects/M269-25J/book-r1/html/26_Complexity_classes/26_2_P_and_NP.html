@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>26.2. The P and NP classes</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="26.3. Reductions" href="26_3_reductions.html" />
+    <link rel="prev" title="26.1. Tractable and intractable problems" href="26_1_tractable.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="26-introduction.html">26. Complexity classes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="26_1_tractable.html">26.1. Tractable and intractable problems</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">26.2. The P and NP classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#SAT">26.2.1. SAT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Class-P">26.2.2. Class P</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Class-NP">26.2.3. Class NP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-26.2.1">Exercise 26.2.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#P-versus-NP">26.2.4. P versus NP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="26_3_reductions.html">26.3. Reductions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_4_hardness.html">26.4. Problem hardness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_5_theory_practice.html">26.5. Theory and Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_6_summary.html">26.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="26-introduction.html"><span class="section-number">26. </span>Complexity classes</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">26.2. </span>The P and NP classes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="The-P-and-NP-classes">
+<h1><span class="section-number">26.2. </span>The P and NP classes<a class="headerlink" href="#The-P-and-NP-classes" title="Link to this heading"></a></h1>
+<p>This section is about decision problems, i.e. those with a Boolean output. There are two major classes of decision problems, called P and NP. I will use the arguably most famous decision problem to introduce both classes.</p>
+<section id="SAT">
+<h2><span class="section-number">26.2.1. </span>SAT<a class="headerlink" href="#SAT" title="Link to this heading"></a></h2>
+<p>Consider the Boolean expression ‘not (A or (B and C))’. Depending on the values of the three variables, the expression may be true or false. If A is true, then the expression is false, but if A and B are false, then the expression is true.</p>
+<p>An <strong>interpretation</strong> is a set of assignments of a Boolean value to each variable. For example, the interpretations</p>
+<ul class="simple">
+<li><p>{A = true, B = false, C = false}</p></li>
+<li><p>{A = true, B = true, C = true}</p></li>
+</ul>
+<p>make the expression false, while the interpretations</p>
+<ul class="simple">
+<li><p>{A = false, B = false, C = false}</p></li>
+<li><p>{A = false, B = false, C = true}</p></li>
+</ul>
+<p>make the expression true. A Boolean expression with <em>n</em> variables has 2ⁿ different interpretations, because each variable has two possible values.</p>
+<p>A Boolean expression is <strong>satisfiable</strong> if at least one interpretation satisfies the expression, i.e. makes it true. The expression ‘not (A or (B and C))’ is satisfiable, but ‘A and not A’ isn’t: neither {A = false} nor {A = true} makes the expression true. The <strong>satisfaction problem</strong> (also known as <strong>SAT</strong>) is the problem of deciding whether a given Boolean expression is satisfiable.</p>
+<p>SAT can be solved with brute-force search: generate all possible interpretations for the input expression and evaluate the expression with each interpretation. If a candidate interpretation makes the expression true, stop searching and output true: the expression is satisfiable. Otherwise, output false after generating and testing all interpretations.</p>
+<p>Testing one interpretation takes linear time: one pass over the expression to replace the variables with their values (as given by the interpretation) and one pass to evaluate the Boolean operators, each in constant time.</p>
+<p>In the worst case, the search generates and tests all 2ⁿ interpretations to realise that none of them (or only the last one) makes the expression true. There are SAT algorithms that are quite efficient in the average case, i.e. for most Boolean expressions, but all known SAT algorithms have exponential worst-case complexity.</p>
+</section>
+<section id="Class-P">
+<h2><span class="section-number">26.2.2. </span>Class P<a class="headerlink" href="#Class-P" title="Link to this heading"></a></h2>
+<p><strong>Class P</strong> is the set of tractable decision problems: those that can be solved in polynomial time. For example, the problem of deciding whether a given string is a <a class="reference internal" href="../04_Iteration/04_4_search.html#Valid-password"><span class="std std-ref">valid password</span></a> is in P, because a simple linear-time algorithm solves it.</p>
+<p>As I mentioned before, for some problems like the TSP we don’t know if they’re tractable, and the same happens with some decision problems. For example, we don’t know whether SAT is tractable, i.e. if it’s in P or not, because while current SAT algorithms are exponential, there’s no proof that a polynomial algorithm for SAT can’t exist.</p>
+</section>
+<section id="Class-NP">
+<h2><span class="section-number">26.2.3. </span>Class NP<a class="headerlink" href="#Class-NP" title="Link to this heading"></a></h2>
+<p>If for some Boolean expression the output for the SAT problem is true, then we can verify in linear time that the expression is indeed satisfiable, provided we’re given an interpretation that satisfies the expression: we simply evaluate the expression with the interpretation to confirm it makes the expression true.</p>
+<p>In more general terms, SAT is a decision problem with this property: for every input that leads to a true output (the decision is ‘yes’), we can provide some data that allows us to confirm the decision in polynomial time. <strong>Class NP</strong> is the set of all decision problems with this property.</p>
+<p>Class P is the set of decision problems for which the ‘yes’ or ‘no’ decision can be <em>computed</em> in polynomial time; class NP is the set of decision problems for which a ‘yes’ decision can be <em>checked</em> in polynomial time.</p>
+<p>The additional data to check the ‘yes’ decision is called a <strong>certificate</strong> because it certifies that the output must be true for that input. The polynomial algorithm that takes an input and its associated certificate to confirm the decision must be ‘yes’ is called the <strong>verifier</strong>. For each input for which the decision is ‘yes’, the certificate is the extra information needed to verify the decision.</p>
+<p>To show that a decision problem is in NP, we must</p>
+<ol class="arabic simple">
+<li><p>define a certificate for each input that leads to a ‘yes’ decision</p></li>
+<li><p>outline the verifier’s algorithm, explaining why it does confirm ‘yes’ decisions</p></li>
+<li><p>justify that the algorithm has polynomial complexity.</p></li>
+</ol>
+<p>Here’s how I would answer a TMA question asking to show that SAT is in NP:</p>
+<ol class="arabic simple">
+<li><p>If the output is true, the input is a satisfiable expression. The associated certificate is an interpretation that satisfies the expression.</p></li>
+<li><p>The verifier takes an input expression and an interpretation, and evaluates the expression using the interpretation. If the expression evaluates to true, this confirms the expression is satisfiable because this interpretation makes the expression true.</p></li>
+<li><p>If the expression has <em>v</em> variable occurrences and <em>o</em> Boolean operators, the verifier takes linear time in the size of the expression: Θ(<em>v</em> + <em>o</em>). It takes Θ(<em>v</em>) to replace the variables with the interpretation’s values and <em>o</em>×Θ(1) to evaluate the operators.</p></li>
+</ol>
+<p>As a further example, consider the decision problem of whether a sequence has even length. It can be shown to be in NP:</p>
+<ol class="arabic simple">
+<li><p>The certificate is an integer: the length of the input sequence.</p></li>
+<li><p>The verifier takes the list and its certificate and checks that the certificate is an even number that corresponds to the length of the sequence. This confirms that the sequence has even length.</p></li>
+<li><p>The verifier takes constant time to check that the certificate is an even number, using the modulo operation. The verifier takes at most linear time to compute the length of the sequence and check it’s equal to the certificate.</p></li>
+</ol>
+<p>Note that only checking if the certificate is an even number isn’t enough to confirm the list has even length: it could be that the certificate was incorrectly computed. The verifier is checking that a given input leads to a ‘yes’ decision, so the verifier can’t use only the certificate and ignore the input.</p>
+<p>For this example we can produce certificates for all input sequences, not just those of even length, but in general you only have to indicate what the certificate is for each input leading to a true output.</p>
+<section id="Exercise-26.2.1">
+<h3>Exercise 26.2.1<a class="headerlink" href="#Exercise-26.2.1" title="Link to this heading"></a></h3>
+<p>Alice has an extended lunch break during a conference. Can she walk around the city to see all the major landmarks and return to the hotel within 2 hours? Her problem is a particular case of the <strong>decision TSP</strong>:</p>
+<blockquote>
+<div><p>Given a complete weighted graph and a positive integer <em>w</em>, does the graph have a tour with total weight less than or equal to <em>w</em>?</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>What is the certificate for a graph and integer that lead to a ‘yes’ answer?</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Outline the verifier algorithm.</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p>Explain why the verifier takes polynomial time.</p></li>
+</ol>
+<p><a class="reference internal" href="../31_Hints/Hints_26_2_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_26_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="P-versus-NP">
+<h2><span class="section-number">26.2.4. </span>P versus NP<a class="headerlink" href="#P-versus-NP" title="Link to this heading"></a></h2>
+<p>When I proved that deciding whether a sequence has even length is an NP problem, you may have noticed that the certificate is redundant because the verifier computes the length of the sequence anyway. The verifier is in effect the decision algorithm: it computes the length and checks it is even.</p>
+<p>Deciding if a sequence has even length is a tractable problem and so we can use its polynomial algorithm to confirm a ‘yes’ decision without really making use of the certificate.</p>
+<p>The argument that every tractable decision problem is in NP goes as follows:</p>
+<ol class="arabic simple">
+<li><p>For every input, the certificate can be anything: zero, the empty set, the string ‘whatever’, etc.</p></li>
+<li><p>The verifier algorithm takes an input and its certificate, ignores the certificate, calls the decision algorithm on the input and checks the output is true, to confirm it.</p></li>
+<li><p>The decision algorithm (and therefore the verifier) takes polynomial time because the problem is tractable.</p></li>
+</ol>
+<p>In summary, if a decision can be computed in polynomial time, then it can be verified in polynomial time. Therefore, every decision problem that is in set P is also in set NP.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> P ⊆ NP.</p>
+</div>
+<p>If P is a subset of NP, do we have P = NP or P <span class="math notranslate nohighlight">\(\subset\)</span> NP (and thus P ≠ NP)? The next figure shows both possibilities. I’ve added empty columns for non-decision problems to emphasise that classes P and NP are only about decision problems.</p>
+<p id="fig-26.2.1"></p><p><a class="reference internal" href="../33_Figures/Figures_26_2.html#Figure-26.2.1"><span class="std std-ref">Figure 26.2.1</span></a></p>
+<img alt="Image 26_2_p_vs_np.png" src="../_images/26_2_p_vs_np.png" />
+<p>In the left-hand diagram, P and NP are the same set: the tractable decision problems. In the right-hand diagram, P <span class="math notranslate nohighlight">\(\subset\)</span> NP: NP includes P (as conveyed by the dashed line) and includes the intractable decision problems that can be verified in polynomial time. There are further intractable decision problems, outside class NP.</p>
+<p>Which of these two possibilities is actually the case? Is every NP problem in P (and therefore P = NP) or are some NP problems not in P (and therefore P ≠ NP)? Asking if NP = P can also be phrased as: is every NP problem tractable? In other words, for <em>every</em> decision problem for which we can <em>check</em> the ‘yes’ decisions in polynomial time, can we also <em>compute</em> them in polynomial time?</p>
+<p>This is known as the <strong>P versus NP problem</strong> or the <strong>‘P = NP?’ question</strong>. It is literally a million-dollar question. Since 2000, the Clay Mathematics Institute has been offering one million dollars for a proof of P = NP or of P ≠ NP.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> You can find informal and formal descriptions of the problem, together with the rules for claiming the prize, on <a class="reference external" href="https://www.claymath.org/millennium/p-vs-np">their website</a>.</p>
+</div>
+<p>Here are two suggestions for how you can get a million bucks. (No need to thank me.)</p>
+<p>To prove that P ≠ NP, you ‘just’ have to prove that <em>one</em> NP problem of your choice is intractable. Since all problems in P are tractable by definition, this would show that P and NP are not the same set of problems.</p>
+<p>To prove P = NP, you ‘just’ have to invent a polynomial algorithm for SAT. I know, it sounds unbelievable that inventing an efficient algorithm for <em>one</em> particular problem proves that <em>all</em> the infinitely many NP problems can also be solved (not just verified) efficiently. As Tolkien might have noted if he had known about SAT: one problem to bind them all.</p>
+<p>The next two sections will explain why a polynomial algorithm for SAT ‘unlocks’ polynomial algorithms for all NP problems. That’s why the P v. NP issue is so famous and significant, and why there’s a large bounty on an elusive algorithm or proof that settles the issue.</p>
+<p>The majority of computer scientists believe that P ≠ NP, partly because no polynomial algorithm for SAT has been found in the past 50 years, since the study of the P v. NP question began. The key word in the previous sentence is ‘believe’, because there’s no certainty either way.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="26_1_tractable.html" class="btn btn-neutral float-left" title="26.1. Tractable and intractable problems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="26_3_reductions.html" class="btn btn-neutral float-right" title="26.3. Reductions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

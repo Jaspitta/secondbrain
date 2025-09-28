@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>21.2. Directed graph components</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="21.3. Topological sort" href="21_3_topological.html" />
+    <link rel="prev" title="21.1. Undirected graph components" href="21_1_un_components.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="21-introduction.html">21. Graphs 2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="21_1_un_components.html">21.1. Undirected graph components</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">21.2. Directed graph components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-and-instances">21.2.1. Problem and instances</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-21.2.1">Exercise 21.2.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm-and-complexity">21.2.2. Algorithm and complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Code-and-tests">21.2.3. Code and tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="21_3_topological.html">21.3. Topological sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_4_states.html">21.4. State graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_5_practice.html">21.5. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_6_summary.html">21.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="21-introduction.html"><span class="section-number">21. </span>Graphs 2</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">21.2. </span>Directed graph components</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Directed-graph-components">
+<h1><span class="section-number">21.2. </span>Directed graph components<a class="headerlink" href="#Directed-graph-components" title="Link to this heading"></a></h1>
+<p>Contrary to undirected graphs, digraphs have two kinds of components. Consider the following example.</p>
+<p id="fig-21.2.1"></p><p><a class="reference internal" href="../33_Figures/Figures_21_2.html#Figure-21.2.1"><span class="std std-ref">Figure 21.2.1</span></a></p>
+<img alt="Image 21_2_digraph.png" src="../_images/21_2_digraph.png" />
+<p>If we ignore the edge directions then we get this undirected graph, with three connected components:</p>
+<p id="fig-21.2.2"></p><p><a class="reference internal" href="../33_Figures/Figures_21_2.html#Figure-21.2.2"><span class="std std-ref">Figure 21.2.2</span></a></p>
+<img alt="Image 21_2_ungraph.png" src="../_images/21_2_ungraph.png" />
+<p>The <strong>weakly connected components</strong> of a digraph G are the connected components of the undirected version of G. So, the above digraph has three weakly connected components: nodes A, B, C and their three directed edges; nodes D and E and their edge; node F. Nodes of weakly connected components are mutually reachable if we ignore the edge directions.</p>
+<p>By contrast, a <strong>strongly connected component</strong> is a largest subgraph where all nodes are mutually reachable when considering the edge directions. Nodes A, B and C are mutually reachable because their edges form a cycle. Each other node forms a strongly connected component by itself, because the other nodes can only reach themselves, via paths of length zero. To sum up, the above digraph has three weakly and four strongly connected components.</p>
+<p>Just to check your understanding, how many weakly and strongly connected components does digraph A⟶B⟵C have?</p>
+<hr class="docutils" />
+<p>It has one weakly connected component (the whole graph) and three strongly connected components (each node by itself).</p>
+<section id="Problem-and-instances">
+<h2><span class="section-number">21.2.1. </span>Problem and instances<a class="headerlink" href="#Problem-and-instances" title="Link to this heading"></a></h2>
+<p>Before we turn to the problem of computing components in digraphs, here’s the digraph in Figure 21.2.1, for testing.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_digraph
+<span class="o">%</span><span class="k">run</span> -i ../m269_queue
+<span class="o">%</span><span class="k">run</span> -i ../m269_stack
+
+<span class="n">digraph</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="s2">&quot;ABCDEF&quot;</span><span class="p">:</span>
+    <span class="n">digraph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;AB&quot;</span><span class="p">,</span> <span class="s2">&quot;BC&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;DE&quot;</span><span class="p">):</span>
+    <span class="n">digraph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>I will compute the strongly connected components and leave the weakly connected components to you.</p>
+<section id="Exercise-21.2.1">
+<h3>Exercise 21.2.1<a class="headerlink" href="#Exercise-21.2.1" title="Link to this heading"></a></h3>
+<p>Complete the following function.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">weakly_connected_components</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the weakly connected components of graph.</span>
+
+<span class="sd">    Postconditions: the output maps each node to its component,</span>
+<span class="sd">    numbered from 1 onwards.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="n">weakly_connected_components</span><span class="p">(</span><span class="n">digraph</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>You should obtain three components: A, B and C; D and E; F.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_21_2_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_21_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Algorithm-and-complexity">
+<h2><span class="section-number">21.2.2. </span>Algorithm and complexity<a class="headerlink" href="#Algorithm-and-complexity" title="Link to this heading"></a></h2>
+<p>The algorithm for the strongly connected components is similar to the algorithm for connected components in undirected graphs: for each node A that isn’t yet in the map, we find the nodes that are in the same component as A and add them to the map.</p>
+<p>Node B is in the same component as A if there’s a path from A to B and a path from B to A. If we compute the set of all nodes that have paths <em>from</em> A and the set of all nodes that have paths <em>to</em> A, then the intersection of both sets is the set of nodes in the component of A, because those nodes have a path from and to A.</p>
+<p>Traversal algorithms follow the directions of the edges and hence compute the paths <em>from</em> a given node A. One way to compute all paths <em>to</em> A is to reverse the direction of all edges to obtain the <strong>reverse graph</strong>, and then compute the paths <em>from</em> A in the reverse graph. As mentioned in <a class="reference internal" href="../17_Graphs_1/17_1_modelling.html#Modelling-with-graphs"><span class="std std-ref">Section 17.1</span></a>, if a digraph represents the ‘follows’ relationship on Twitter, then its reverse graph represents the ‘is followed by’ relation.
+Here is the reverse graph of our example.</p>
+<p id="fig-21.2.3"></p><p><a class="reference internal" href="../33_Figures/Figures_21_2.html#Figure-21.2.3"><span class="std std-ref">Figure 21.2.3</span></a></p>
+<img alt="Image 21_2_reverse.png" src="../_images/21_2_reverse.png" />
+<div class="admonition note">
+<p><strong>Info:</strong> The reverse graph is also called the transpose graph because it can be obtained by transposing the adjacency matrix.</p>
+</div>
+<p>If we traverse the original graph from A, we obtain the tree A⟶B⟶C and thereby the nodes that can be reached from A. If we traverse the reverse graph from A, we obtain the tree A⟶C⟶B, and thereby the nodes that can reach A in the original graph. Nodes A, B and C are in both trees, so they all can reach A and be reached from A, which means they form a strongly connected component.</p>
+<p>As a further example, if we traverse the original graph from D, we obtain tree D⟶E. If we traverse the reverse graph from D, we obtain tree D (a single node). Both trees have only D in common, so it forms a strongly connected component by itself.</p>
+<p>To sum up: for each node V that isn’t yet in the map, we find which nodes are reachable from V (using the input graph) and from which nodes we can reach V (using the reverse graph). The nodes in both sets are by definition in the same strongly connected component as V. Here’s the algorithm, using again a depth-first traversal, but any kind of traversal will do.</p>
+<ol class="arabic simple">
+<li><p>let <em>reverse graph</em> be the reverse of <em>graph</em></p></li>
+<li><p>let <em>component</em> be an empty map</p></li>
+<li><p>let <em>current</em> be 1</p></li>
+<li><p>for each <em>node</em> in <em>graph</em>:</p>
+<ol class="arabic simple">
+<li><p>if <em>node</em> not in <em>component</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>forward</em> be the nodes of DFS(<em>node</em>, <em>graph</em>)</p></li>
+<li><p>let <em>backward</em> be the nodes of DFS(<em>node</em>, <em>reverse graph</em>)</p></li>
+<li><p>for each <em>common</em> in <em>forward</em> intersected with <em>backward</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>component</em>(<em>common</em>) be <em>current</em></p></li>
+</ol>
+</li>
+<li><p>let <em>current</em> be <em>current</em> + 1</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Step 1 always has complexity Θ(<em>n</em> + <em>e</em>). In the worst case:</p>
+<ul class="simple">
+<li><p>steps 4.1.1 to 4.1.4 are executed <em>n</em> times</p></li>
+<li><p>steps 4.1.1 and 4.1.2 visit together the whole graph in Θ(<em>n</em> + <em>e</em>)</p></li>
+<li><p>step 4.1.3 takes Θ(<em>n</em>) to compute the intersection of two node sets.</p></li>
+</ul>
+<p>The total complexity is</p>
+<div class="math notranslate nohighlight">
+\[Θ(n+e) + n×(Θ(n+e) + Θ(n)) = n×Θ(n+e) = Θ(n²+ne)\]</div>
+<p>by considering only the fastest growing part of the expression.</p>
+<p>In the best case, the loop executes only once, adding all nodes to the map. (This means the best-case scenario is when the graph has only one strongly connected component.) Replacing the worst-case <em>n</em> iterations with a best-case single iteration in the previous formula, we get the best-case complexity:</p>
+<div class="math notranslate nohighlight">
+\[Θ(n+e) + 1×(Θ(n+e) + Θ(n)) = Θ(n+e).\]</div>
+</section>
+<section id="Code-and-tests">
+<h2><span class="section-number">21.2.3. </span>Code and tests<a class="headerlink" href="#Code-and-tests" title="Link to this heading"></a></h2>
+<p>Here’s the code for reversing a digraph and computing its strongly connected components.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_digraph.py</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DiGraph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the same graph but with edge directions reversed.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">strongly_connected_components</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the strongly connected components of graph.</span>
+
+<span class="sd">    Postconditions: the output maps each node to its component,</span>
+<span class="sd">    numbered from 1 onwards.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">reverse_graph</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+    <span class="n">component</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">component</span><span class="p">:</span>
+            <span class="n">forward</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+            <span class="n">backward</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">reverse_graph</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">common</span> <span class="ow">in</span> <span class="n">forward</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">backward</span><span class="p">):</span>
+                <span class="n">component</span><span class="p">[</span><span class="n">common</span><span class="p">]</span> <span class="o">=</span> <span class="n">counter</span>
+            <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">component</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s test the code with the example digraph.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strongly_connected_components</span><span class="p">(</span><span class="n">digraph</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;E&#39;: 1, &#39;D&#39;: 2, &#39;C&#39;: 3, &#39;B&#39;: 3, &#39;A&#39;: 3, &#39;F&#39;: 4}
+</pre></div></div>
+</div>
+<p>As expected, nodes A, B, C are in one component and each other node is in its own component.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="21_1_un_components.html" class="btn btn-neutral float-left" title="21.1. Undirected graph components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="21_3_topological.html" class="btn btn-neutral float-right" title="21.3. Topological sort" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

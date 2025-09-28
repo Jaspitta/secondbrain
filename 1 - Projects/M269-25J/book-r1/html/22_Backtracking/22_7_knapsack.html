@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22.7. Back to the knapsack</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="22.8. Summary" href="22_8_summary.html" />
+    <link rel="prev" title="22.6. Generate subsets" href="22_6_subsets.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="22-introduction.html">22. Backtracking</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="22_1_sequences.html">22.1. Generate sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_2_pruning.html">22.2. Prune the search space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_3_trackword.html">22.3. Trackword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_4_optimising.html">22.4. Optimise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_5_tsp.html">22.5. Back to the TSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_6_subsets.html">22.6. Generate subsets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">22.7. Back to the knapsack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#The-problem">22.7.1. The problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-value-function">22.7.2. The value function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-constraints-functions">22.7.3. The constraints functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-backtracking-function">22.7.4. The backtracking function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-main-function">22.7.5. The main function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Sort-extensions">22.7.6. Sort extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-22.7.1">Exercise 22.7.1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="22_8_summary.html">22.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="22-introduction.html"><span class="section-number">22. </span>Backtracking</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">22.7. </span>Back to the knapsack</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Back-to-the-knapsack">
+<h1><span class="section-number">22.7. </span>Back to the knapsack<a class="headerlink" href="#Back-to-the-knapsack" title="Link to this heading"></a></h1>
+<p>To recap, the 0/1 knapsack problem is as follows.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: 0/1 knapsack</div>
+<div class="line"><strong>Inputs</strong>: <em>items</em>, a set of pairs of integers; <em>capacity</em>, an integer</div>
+<div class="line"><strong>Preconditions</strong>: no integer is negative; each pair represents a weight and a value</div>
+<div class="line"><strong>Output</strong>: <em>packed</em>, a set of pairs of integers</div>
+<div class="line"><strong>Postconditions</strong>:</div>
+</div>
+<ul class="simple">
+<li><p><em>packed</em> is a subset of <em>items</em></p></li>
+<li><p>the sum of the weights in <em>packed</em> doesn’t exceed <em>capacity</em></p></li>
+<li><p>the sum of the values in <em>packed</em> is largest among all sets satisfying the previous two conditions</p></li>
+</ul>
+<p>I’ll use the following example:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ITEMS</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+<p>If the knapsack has a capacity of 4, it can hold the first and second items (weight 1 + 2 = 3, value 2 + 3 = 5) or the first and third items (weight 1 + 3 = 4, value 2 + 4 = 6) or the fourth item (weight 4, value 20). The latter is the desired output, because it has the largest value.</p>
+<p>Let’s follow the same procedure as before to solve this problem, with ‘stop and think’ lines for you to think along.</p>
+<section id="The-problem">
+<h2><span class="section-number">22.7.1. </span>The problem<a class="headerlink" href="#The-problem" title="Link to this heading"></a></h2>
+<p>The knapsack problem is obviously an optimisation problem on subsets of items, where the value of the items in the subset is the quantity being maximised. Each candidate is the subset of items already put in the knapsack and the corresponding extensions are the items yet to consider.</p>
+<ol class="arabic simple">
+<li><p>What are the global and local constraints for this problem?</p></li>
+<li><p>Can partial candidates be solutions or only complete candidates?</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>The only constraint is that the weight of the items in the subset cannot exceed the knapsack’s capacity. It’s a local constraint because it can be checked as each item to be added is considered.</p></li>
+<li><p>As mentioned in the previous section, although partial candidates are subsets too, the solutions are the complete candidates, after all items have been considered.</p></li>
+</ol>
+<p>We can start implementing the solution, from the auxiliary functions towards the backtracking and main functions.</p>
+</section>
+<section id="The-value-function">
+<h2><span class="section-number">22.7.2. </span>The value function<a class="headerlink" href="#The-value-function" title="Link to this heading"></a></h2>
+<p>Every optimisation problem needs a function to compute the value of a solution, so let’s start with that. As usual, I define constants for the indices of pairs, to make the code more readable.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WEIGHT</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VALUE</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">set</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the total value of the items.&quot;&quot;&quot;</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="The-constraints-functions">
+<h2><span class="section-number">22.7.3. </span>The constraints functions<a class="headerlink" href="#The-constraints-functions" title="Link to this heading"></a></h2>
+<p>Next are the auxiliary functions to check the global and local constraints. Looking at the answers to the earlier questions, how does this problem differ from the other problems in this chapter?</p>
+<hr class="docutils" />
+<p>There are no global constraints. Any candidate that satisfies the local constraint (fits the capacity) is a solution, but perhaps not a best one.</p>
+<p>This means we don’t need a <code class="docutils literal notranslate"><span class="pre">satisfies_global</span></code> function. We must only check if an item can extend a candidate (the items already in the knapsack) towards a better solution than the current one. Let’s break that down into two parts.</p>
+<p>How can we check whether an item can extend a candidate towards a solution? Or put differently, how do we know if there’s no point in extending the given candidate with the given item?</p>
+<hr class="docutils" />
+<p>If the weight of the item plus the weight of the candidate exceeds the capacity, then the item shouldn’t be added to the knapsack.</p>
+<p>Now let’s assume that an item can extend a candidate towards a solution. Is there a way to know it won’t lead to a better solution than the current best? (Hint: does extending a candidate worsen its value?)</p>
+<hr class="docutils" />
+<p>The problem definition above states that items cannot have negative values. If an item <em>can</em> extend a candidate, we <em>must</em> extend it, because the new item may lead to a better (i.e. higher value) solution. There is no way of pruning the search space early.</p>
+<p>In summary, an item can extend a candidate if the sum of their weights doesn’t exceed the capacity.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">candidate</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if adding the item to candidate won&#39;t exceed the capacity.&quot;&quot;&quot;</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="n">WEIGHT</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">another_item</span> <span class="ow">in</span> <span class="n">candidate</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">another_item</span><span class="p">[</span><span class="n">WEIGHT</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">total</span> <span class="o">&lt;=</span> <span class="n">capacity</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="The-backtracking-function">
+<h2><span class="section-number">22.7.4. </span>The backtracking function<a class="headerlink" href="#The-backtracking-function" title="Link to this heading"></a></h2>
+<p>Here’s the template for the backtracking function for optimisation problems on sets. The <code class="docutils literal notranslate"><span class="pre">instance</span></code> variable stands for the inputs of the problem, which are passed on to the auxiliary functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SOLUTION</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VALUE</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update best if candidate is a better solution, then try to extend it.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Visiting node&#39;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">satisfies_global</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+            <span class="n">candidate_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">candidate_value</span> <span class="o">==</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span> <span class="c1"># replace == with &lt; or &gt;</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New best with value&#39;</span><span class="p">,</span> <span class="n">candidate_value</span><span class="p">)</span>
+                <span class="n">best</span><span class="p">[</span><span class="n">SOLUTION</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span>
+                <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_value</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">):</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="n">item</span><span class="p">}),</span> <span class="n">rest</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+        <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">rest</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s think what changes are needed for the knapsack problem.</p>
+<p>Which comparison should be used: less than or greater than?</p>
+<hr class="docutils" />
+<p>It’s a maximisation problem so the candidate is the new best if its value is greater than the current one.</p>
+<p>Looking at the auxiliary functions written before, can any code or parameters be removed?</p>
+<hr class="docutils" />
+<p>Yes, the <code class="docutils literal notranslate"><span class="pre">value</span></code> function only needs the candidate parameter, the <code class="docutils literal notranslate"><span class="pre">can_extend</span></code> function only needs the item, candidate and capacity, and the <code class="docutils literal notranslate"><span class="pre">satisfies_global</span></code> function isn’t needed at all.</p>
+<p>Finally, given the previous changes, what should the <code class="docutils literal notranslate"><span class="pre">instance:</span> <span class="pre">object</span></code> parameter in the function header be replaced with?</p>
+<hr class="docutils" />
+<p>It should be <code class="docutils literal notranslate"><span class="pre">capacity:</span> <span class="pre">int</span></code>, which is needed by <code class="docutils literal notranslate"><span class="pre">can_extend</span></code>.</p>
+<p>Here’s the backtracking function for the knapsack problem.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SOLUTION</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VALUE</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update best if candidate is a better solution, then try to extend it.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Visiting node&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">candidate_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">candidate_value</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New best with value&quot;</span><span class="p">,</span> <span class="n">candidate_value</span><span class="p">)</span>
+            <span class="n">best</span><span class="p">[</span><span class="n">SOLUTION</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span>
+            <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_value</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">capacity</span><span class="p">):</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="n">item</span><span class="p">}),</span> <span class="n">rest</span><span class="p">,</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+        <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">rest</span><span class="p">,</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="The-main-function">
+<h2><span class="section-number">22.7.5. </span>The main function<a class="headerlink" href="#The-main-function" title="Link to this heading"></a></h2>
+<p>We finally have to think of what the main function needs to do.</p>
+<p>What are the candidate and the extensions of the root node?</p>
+<hr class="docutils" />
+<p>The initial candidate is the empty set and the extensions are all the items given in the input, in a sequence.</p>
+<p>What is a possible initial best solution?</p>
+<hr class="docutils" />
+<p>We need a solution that can be easily constructed. The only one I could think of is the empty set: it’s a solution of every problem instance though hardly ever the best one (unless no item fits in the knapsack).</p>
+<p>The main function is thus:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">knapsack</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a subset of items and their total value.</span>
+
+<span class="sd">    Preconditions:</span>
+<span class="sd">    - items is a set of weight-value pairs, both integers</span>
+<span class="sd">    - no integer is negative</span>
+<span class="sd">    Postconditions:</span>
+<span class="sd">    - the output is a set-integer pair</span>
+<span class="sd">    - total weight of the output items &lt;= capacity</span>
+<span class="sd">    - no other subset of items has higher value and fits the capacity</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="p">[</span><span class="n">solution</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">solution</span><span class="p">)]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">best</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s solve the example at the start of the notebook.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knapsack</span><span class="p">(</span><span class="n">ITEMS</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Visiting node set() [(2, 3), (1, 2), (3, 4), (5, 30), (4, 20)]
+Visiting node {(2, 3)} [(1, 2), (3, 4), (5, 30), (4, 20)]
+Visiting node {(2, 3), (1, 2)} [(3, 4), (5, 30), (4, 20)]
+Visiting node {(2, 3), (1, 2)} [(5, 30), (4, 20)]
+Visiting node {(2, 3), (1, 2)} [(4, 20)]
+Visiting node {(2, 3), (1, 2)} []
+New best with value 5
+Visiting node {(2, 3)} [(3, 4), (5, 30), (4, 20)]
+Visiting node {(2, 3)} [(5, 30), (4, 20)]
+Visiting node {(2, 3)} [(4, 20)]
+Visiting node {(2, 3)} []
+Visiting node set() [(1, 2), (3, 4), (5, 30), (4, 20)]
+Visiting node {(1, 2)} [(3, 4), (5, 30), (4, 20)]
+Visiting node {(1, 2), (3, 4)} [(5, 30), (4, 20)]
+Visiting node {(1, 2), (3, 4)} [(4, 20)]
+Visiting node {(1, 2), (3, 4)} []
+New best with value 6
+Visiting node {(1, 2)} [(5, 30), (4, 20)]
+Visiting node {(1, 2)} [(4, 20)]
+Visiting node {(1, 2)} []
+Visiting node set() [(3, 4), (5, 30), (4, 20)]
+Visiting node {(3, 4)} [(5, 30), (4, 20)]
+Visiting node {(3, 4)} [(4, 20)]
+Visiting node {(3, 4)} []
+Visiting node set() [(5, 30), (4, 20)]
+Visiting node set() [(4, 20)]
+Visiting node {(4, 20)} []
+New best with value 20
+Visiting node set() []
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[{(4, 20)}, 20]
+</pre></div></div>
+</div>
+<p>Compared to an exhaustive search that generates all 2⁵ = 32 subsets of the five items and tests each subset for whether it fits the knapsack and has a better value, the backtracking approach only generates seven subsets (those with empty extension sequences in the printout). However, many partial candidates are generated. Fortunately, there’s a way to further prune the search space.</p>
+</section>
+<section id="Sort-extensions">
+<h2><span class="section-number">22.7.6. </span>Sort extensions<a class="headerlink" href="#Sort-extensions" title="Link to this heading"></a></h2>
+<p>When searching a store for products below £20, we <a class="reference internal" href="../11_Search/11_1_linear.html#Sorted-candidates"><span class="std std-ref">sorted the products</span></a> by ascending price. That allowed us to stop the linear search as soon as we found a product costing £20 or more. We can apply the same idea here.</p>
+<p>Let’s sort the items by ascending weight. If adding the current item to a candidate exceeds the capacity, so will adding any subsequent item in the extensions sequence, because they weigh even more.</p>
+<p>At the moment, if adding an item exceeds the capacity, we skip only <em>that</em> item. Sorting the items by ascending weight allows us to skip <em>all</em> the remaining extensions too: a massive reduction in the search space.</p>
+<p>Here’s the new main function. Items are weight–value pairs so Python’s lexicographic sorting of tuples puts them in ascending weight. I don’t repeat the docstring.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">knapsack</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>  <span class="c1"># changed line</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="p">[</span><span class="n">solution</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">solution</span><span class="p">)]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">best</span>
+</pre></div>
+</div>
+</div>
+<p>If a partial candidate can’t be extended because all remaining extensions go over the capacity, the candidate may still be the best solution so far. This means we have to check partial candidates against the best solution, not just complete candidates. Here’s the new backtracking function.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update best if candidate is a better solution, then try to extend it.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Visiting node&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">)</span>
+    <span class="n">candidate_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">candidate_value</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New best with value&quot;</span><span class="p">,</span> <span class="n">candidate_value</span><span class="p">)</span>
+        <span class="n">best</span><span class="p">[</span><span class="n">SOLUTION</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span>
+        <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_value</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extensions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># changed line</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="n">extensions</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">capacity</span><span class="p">):</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="o">.</span><span class="n">union</span><span class="p">({</span><span class="n">item</span><span class="p">}),</span> <span class="n">rest</span><span class="p">,</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">rest</span><span class="p">,</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>  <span class="c1"># changed line</span>
+</pre></div>
+</div>
+</div>
+<p>Notice the changes to the previous version.</p>
+<ul class="simple">
+<li><p>I remove the check at the beginning for a complete candidate (no extensions), because now partial candidates can be solutions.</p></li>
+<li><p>I check if there are any extensions before I look at the next item.</p></li>
+<li><p>I indent the last line of code, the one which skips the item.</p></li>
+</ul>
+<p>The last change is subtle but profound. It implements the skipping of all further extensions if the current one can’t extend the candidate. Let’s see the impact on the search space.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knapsack</span><span class="p">(</span><span class="n">ITEMS</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Visiting node set() [(1, 2), (2, 3), (3, 4), (4, 20), (5, 30)]
+Visiting node {(1, 2)} [(2, 3), (3, 4), (4, 20), (5, 30)]
+New best with value 2
+Visiting node {(2, 3), (1, 2)} [(3, 4), (4, 20), (5, 30)]
+New best with value 5
+Visiting node {(1, 2)} [(3, 4), (4, 20), (5, 30)]
+Visiting node {(1, 2), (3, 4)} [(4, 20), (5, 30)]
+New best with value 6
+Visiting node {(1, 2)} [(4, 20), (5, 30)]
+Visiting node set() [(2, 3), (3, 4), (4, 20), (5, 30)]
+Visiting node {(2, 3)} [(3, 4), (4, 20), (5, 30)]
+Visiting node set() [(3, 4), (4, 20), (5, 30)]
+Visiting node {(3, 4)} [(4, 20), (5, 30)]
+Visiting node set() [(4, 20), (5, 30)]
+Visiting node {(4, 20)} [(5, 30)]
+New best with value 20
+Visiting node set() [(5, 30)]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[{(4, 20)}, 20]
+</pre></div></div>
+</div>
+<p>The search space has almost halved: only 13 of the previous 24 nodes are created and visited. For example, partial candidate {(1, 2), (2, 3)} is not extended because any further item exceeds the capacity.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If possible, order the extensions sequence so that if one item in the sequence can’t extend a candidate, none of the following can.</p>
+</div>
+<section id="Exercise-22.7.1">
+<h3>Exercise 22.7.1<a class="headerlink" href="#Exercise-22.7.1" title="Link to this heading"></a></h3>
+<p>The original problem asks for <em>any</em> subset of the items that maximises the value and fits the knapsack. Imagine we add one postcondition: the returned subset should be as small as possible, i.e. we want to pack the fewest items that maximise the value and fit in the knapsack.</p>
+<p>For example, let the items be {(1, 2), (2, 3), (4, 5)} and the capacity be 4. The largest possible value is 5 and can be obtained in two ways: pack the two items {(1, 2), (2, 3)} or pack the single item {(4, 5)}. Any of these two subsets is a solution to the original problem but only the latter subset is a solution for the new problem, as it has fewer items.</p>
+<p>What changes would be required to the <code class="docutils literal notranslate"><span class="pre">extend</span></code> function?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_22_7_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_22_7_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="22_6_subsets.html" class="btn btn-neutral float-left" title="22.6. Generate subsets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="22_8_summary.html" class="btn btn-neutral float-right" title="22.8. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

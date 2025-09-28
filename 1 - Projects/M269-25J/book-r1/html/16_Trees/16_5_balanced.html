@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16.5. Balanced trees</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="16.6. Heapsort" href="16_6_heapsort.html" />
+    <link rel="prev" title="16.4. Binary search trees" href="16_4_bst.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="16-introduction.html">16. Rooted trees</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="16_1_binary.html">16.1. Binary tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_2_algorithms.html">16.2. Algorithms on trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_3_traversals.html">16.3. Traversals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_4_bst.html">16.4. Binary search trees</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">16.5. Balanced trees</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity-of-search">16.5.1. Complexity of search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">16.5.2. Balanced trees</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-16.5.1">Exercise 16.5.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Checking-balance">16.5.3. Checking balance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-16.5.2">Exercise 16.5.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-16.5.3">Exercise 16.5.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="16_6_heapsort.html">16.6. Heapsort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="16_7_summary.html">16.7. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="16-introduction.html"><span class="section-number">16. </span>Rooted trees</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">16.5. </span>Balanced trees</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Balanced-trees">
+<h1><span class="section-number">16.5. </span>Balanced trees<a class="headerlink" href="#Balanced-trees" title="Link to this heading"></a></h1>
+<p>As seen in the previous section, all the operations on a BST that aren’t traversals rely on search and some constant-time operations. So the complexity of adding or removing a node, or replacing a value, is the complexity of binary search over a BST.</p>
+<section id="Complexity-of-search">
+<h2><span class="section-number">16.5.1. </span>Complexity of search<a class="headerlink" href="#Complexity-of-search" title="Link to this heading"></a></h2>
+<p>A binary search takes constant time for each call. What’s the best-case complexity of binary search on trees?</p>
+<hr class="docutils" />
+<p>In the best case, the item sought is in the root and the search does one call: the complexity is Θ(1). Remember that a best- or worst-case scenario applies to varying input sizes, so the empty tree isn’t a best-case scenario.</p>
+<p>In the worst case, the search will go all the way down to the deepest leaf, where the sought item may be. Such a search will do one recursive call per level: the worst-case complexity is Θ(height(<em>tree</em>)).</p>
+<p>The height is maximal when the tree degenerates to a linked list, with each node having a single left or right child. In that case, each level has a single node, the height is equal to the size and the search has complexity Θ(│<em>tree</em>│).</p>
+<p>The height is minimal when each level (except possibly the last one) is full, i.e. has as many nodes as possible. A perfect tree has minimal height for its size because all levels are full. Here’s the shape of a perfect tree with four levels.</p>
+<p id="fig-16.5.1"></p><p><a class="reference internal" href="../33_Figures/Figures_16_5.html#Figure-16.5.1"><span class="std std-ref">Figure 16.5.1</span></a></p>
+<img alt="Image 16_5_perfect.png" src="../_images/16_5_perfect.png" />
+<p>Each level has double the nodes of the previous level because each parent has two children. The number of nodes thus grows exponentially with the height: it can be shown that a perfect tree of height <span class="math notranslate nohighlight">\(h\)</span> has <span class="math notranslate nohighlight">\(2^h - 1\)</span> nodes. This means that the minimal height for a tree of size <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(\log_2 n\)</span>. So, binary search on a perfect tree has complexity Θ(log │<em>tree</em>│) in the worst case, when the sought item is in the lowest level.</p>
+<p>It has been proven that if we add random comparable items one by one to an initially empty BST, then the height of the resulting BST is on average proportional to the logarithm of its size. Binary search thus has average complexity Θ(log │<em>tree</em>│).</p>
+</section>
+<section id="id1">
+<h2><span class="section-number">16.5.2. </span>Balanced trees<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>A perfect tree has minimal height because <em>every</em> node has subtrees of exactly the same height. No subtree is deeper than its sibling and so no subtree degenerates into a linked list.</p>
+<p>Not every tree can have sibling subtrees with the same height. For example, a tree with only two nodes has necessarily one empty subtree of height 0 and one single-node subtree of height 1. To minimise the height of a binary tree we can only require subtrees to have as similar a height as possible. The precise definitions are as follows.</p>
+<p>The <strong>balance factor</strong> of a node is the height of its left subtree minus the height of its right subtree, e.g. all leaves have balance factor 0. A binary tree is <strong>balanced</strong> if every node has balance factor −1, 0 or 1. In other words, for every node of a balanced tree, its subtrees differ in height by at most one. An empty tree is balanced. A perfect tree is perfectly balanced: all nodes have balance factor 0.</p>
+<p>The next figure shows two trees you’ve seen before; each node is annotated with its balance factor. The left-hand tree is balanced because all balance factors are 0 or 1. For example, the nodes in the middle level have a left subtree of height 1 and an empty right subtree so their balance factor is 1 − 0 = 1. The other tree in the figure isn’t balanced. The root node has a left subtree of height 1 and a right subtree of height 3 so the balance factor is −2.</p>
+<p id="fig-16.5.2"></p><p><a class="reference internal" href="../33_Figures/Figures_16_5.html#Figure-16.5.2"><span class="std std-ref">Figure 16.5.2</span></a></p>
+<img alt="Image 16_5_bf.png" src="../_images/16_5_bf.png" />
+<p>Even though the heights of sibling subtrees are not always equal, it can still be shown that the height of a balanced tree is proportional to the logarithm of its size, which is the best we can expect. A <strong>self-balancing BST</strong> checks after each node addition or removal if it has become unbalanced and, if so, restores the balance. This ensures that binary search (and thus every map operation) always takes logarithmic time in the worst case.</p>
+<p>There are several self-balancing BST data structures, including AVL trees, which restore the balance by rotating subtrees left or right to decrease the height of one and increase the height of the other. You can watch a <a class="reference external" href="https://learn2.open.ac.uk/mod/oucontent/view.php?id=2554725&amp;extra=thumbnail_idm22">visualisation of an AVL tree</a> but in M269 you’re not expected to know how an AVL tree works. The visualisation uses –1 instead of 0 as the height of an empty tree. The resulting balance factors
+are the same, because they’re the difference of two heights.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> M250 Unit 10 introduces Java classes <code class="docutils literal notranslate"><span class="pre">TreeSet</span></code> and <code class="docutils literal notranslate"><span class="pre">TreeMap</span></code> in package <code class="docutils literal notranslate"><span class="pre">java.util</span></code>. They implement the set and map ADTs with self-balancing BSTs.</p>
+</div>
+<section id="Exercise-16.5.1">
+<h3>Exercise 16.5.1<a class="headerlink" href="#Exercise-16.5.1" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>If both subtrees of a non-empty tree are balanced, so is the tree. True or false?</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>If a non-empty tree is balanced, so are both its subtrees. True or false?</p></li>
+</ol>
+<p><a class="reference internal" href="../31_Hints/Hints_16_5_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_16_5_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Checking-balance">
+<h2><span class="section-number">16.5.3. </span>Checking balance<a class="headerlink" href="#Checking-balance" title="Link to this heading"></a></h2>
+<p>To decide if a tree is balanced we need to check, for each node, if its balance factor is valid (-1, 0 or 1) and if both subtrees are balanced. Any traversal will do. I choose a pre-order traversal: the root is processed, i.e. its balance factor is computed, before traversing the subtrees.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_tree
+<span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">height</span><span class="p">(</span><span class="n">tree</span><span class="p">:</span> <span class="n">Tree</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return how many levels the tree has.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">height</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="p">),</span> <span class="n">height</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_balanced</span><span class="p">(</span><span class="n">tree</span><span class="p">:</span> <span class="n">Tree</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if the tree is balanced.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">valid_factor</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">height</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="o">-</span> <span class="n">height</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+        <span class="n">left_balanced</span> <span class="o">=</span> <span class="n">is_balanced</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+        <span class="n">right_balanced</span> <span class="o">=</span> <span class="n">is_balanced</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">valid_factor</span> <span class="ow">and</span> <span class="n">left_balanced</span> <span class="ow">and</span> <span class="n">right_balanced</span>
+
+
+<span class="n">is_balanced_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;empty tree&#39;</span><span class="p">,</span>  <span class="n">Tree</span><span class="p">(),</span>  <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;leaf&#39;</span><span class="p">,</span>        <span class="n">SIX</span><span class="p">,</span>     <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;unbalanced&#39;</span><span class="p">,</span>  <span class="n">PMT</span><span class="p">,</span>     <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span>    <span class="n">TPM</span><span class="p">,</span>     <span class="kc">True</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">is_balanced</span><span class="p">,</span> <span class="n">is_balanced_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing is_balanced...
+Tests finished: 4 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>Let’s first analyse the complexity of <code class="docutils literal notranslate"><span class="pre">height</span></code>. The worst-case scenario is a degenerate tree with one node per level, i.e. with height equal to the size. In that case, one subtree is empty and the other has all the remaining nodes. The divide-and-conquer approach degenerates to a decrease-by-one approach. If <em>n</em> is the size of the tree, then the complexity of the height function is:</p>
+<ul class="simple">
+<li><p>T(0) to recursively handle the empty subtree</p></li>
+<li><p>T(<em>n</em> – 1) to recursively handle the other subtree</p></li>
+<li><p>Θ(1) to take the largest value and add one.</p></li>
+</ul>
+<p>The base case takes constant time, so the recursive definition of T is:</p>
+<ul class="simple">
+<li><p>if <em>n</em> = 0: T(0) = Θ(1)</p></li>
+<li><p>if <em>n</em> &gt; 0: T(<em>n</em>) = T(<em>n</em> − 1) + T(0) + Θ(1) = T(<em>n</em> − 1) + Θ(1).</p></li>
+</ul>
+<p>This leads to T(<em>n</em>) = Θ(<em>n</em>).</p>
+<section id="Exercise-16.5.2">
+<h3>Exercise 16.5.2<a class="headerlink" href="#Exercise-16.5.2" title="Link to this heading"></a></h3>
+<p>Define the worst-case complexity for <code class="docutils literal notranslate"><span class="pre">is_balanced</span></code> recursively. What is the resulting complexity?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_16_5_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_16_5_02.html"><span class="doc">Answer</span></a></p>
+<p>The best-case scenario is the perfect tree, which has minimal height and equally divided nodes among the subtrees. The complexity is defined as above, but each recursive call now takes T(<em>n</em> / 2) time. So the best-case complexity for the <code class="docutils literal notranslate"><span class="pre">height</span></code> function is:</p>
+<ul class="simple">
+<li><p>T(0) = Θ(1)</p></li>
+<li><p>T(<em>n</em>) = T(<em>n</em> / 2) + T(<em>n</em> / 2) + Θ(1) = 2×T(<em>n</em> / 2) + Θ(1).</p></li>
+</ul>
+<p>This leads to T(<em>n</em>) = Θ(<em>n</em>), which fits our intuition. Computing the height of a tree requires visiting all nodes, no matter how they’re distributed in the tree. Like the size operation, the height operation always takes linear time.</p>
+<p>Having the best-case complexity of <code class="docutils literal notranslate"><span class="pre">height</span></code>, we can define the best-case complexity of <code class="docutils literal notranslate"><span class="pre">is_balanced</span></code>:</p>
+<ul class="simple">
+<li><p>T(0) = Θ(1)</p></li>
+<li><p>T(<em>n</em>) = 2×T(<em>n</em>/2) + Θ(<em>n</em> / 2) + Θ(<em>n</em> / 2) = 2×T(<em>n</em>/2) + Θ(<em>n</em>).</p></li>
+</ul>
+<p>This leads to T(<em>n</em>) = Θ(<em>n</em> log <em>n</em>). Although the function is doing a linear time operation (computing the height) for each subtree, in a perfect tree each subtree has half the size, hence the logarithmic component.</p>
+</section>
+<section id="Exercise-16.5.3">
+<h3>Exercise 16.5.3<a class="headerlink" href="#Exercise-16.5.3" title="Link to this heading"></a></h3>
+<p>What changes would you make to the above algorithm to decide more efficiently whether a tree is balanced? You can describe the changes briefly instead of writing code.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_16_5_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_16_5_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="16_4_bst.html" class="btn btn-neutral float-left" title="16.4. Binary search trees" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="16_6_heapsort.html" class="btn btn-neutral float-right" title="16.6. Heapsort" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

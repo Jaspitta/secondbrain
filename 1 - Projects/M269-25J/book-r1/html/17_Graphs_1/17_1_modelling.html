@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17.1. Modelling with graphs</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="17.2. Basic concepts" href="17_2_concepts.html" />
+    <link rel="prev" title="17. Graphs 1" href="17-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="17-introduction.html">17. Graphs 1</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">17.1. Modelling with graphs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Exercises">17.1.1. Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.1.1">Exercise 17.1.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.1.2">Exercise 17.1.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.1.3">Exercise 17.1.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.1.4">Exercise 17.1.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.1.5">Exercise 17.1.5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="17_2_concepts.html">17.2. Basic concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_3_edge_list.html">17.3. Edge list representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_4_adj_matrix.html">17.4. Adjacency matrix representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_5_adj_list.html">17.5. Adjacency list representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_6_classes.html">17.6. Classes for graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_7_traversal.html">17.7. Traversing a graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_8_bfs_dfs.html">17.8. Breadth- and depth-first search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_9_summary.html">17.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="17-introduction.html"><span class="section-number">17. </span>Graphs 1</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">17.1. </span>Modelling with graphs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Modelling-with-graphs">
+<h1><span class="section-number">17.1. </span>Modelling with graphs<a class="headerlink" href="#Modelling-with-graphs" title="Link to this heading"></a></h1>
+<p>Graphs are simple abstract mathematical structures and that’s what makes them so powerful: they can model myriad real-world situations. Once you learn what graphs are and what they can represent, it’s difficult not to see graphs everywhere.</p>
+<p>An <strong>undirected graph</strong> consists of a set of items called <strong>nodes</strong> and a set of <strong>undirected edges</strong>, such that each edge connects two different nodes and there’s at most one edge between any pair of nodes. A <strong>directed graph</strong> (abbreviated <strong>digraph</strong>) consists of a set of nodes and a set of <strong>directed edges</strong>, such that each edge connects two different nodes and there’s at most two edges in opposite directions between any pair of nodes.</p>
+<p>Graphs are usually depicted with the items within circles or ellipses and edges as lines. Directed edges have an arrowhead to show their direction. The next figure shows an undirected graph on the left and a digraph on the right.</p>
+<p id="fig-17.1.1"></p><p><a class="reference internal" href="../33_Figures/Figures_17_1.html#Figure-17.1.1"><span class="std std-ref">Figure 17.1.1</span></a></p>
+<img alt="Image 17_1_un_directed.png" src="../_images/17_1_un_directed.png" />
+<p>Any undirected graph can be represented as a digraph. If we replace each undirected edge by two opposing directed edges, we transform an undirected graph into an equivalent digraph, albeit with double the number of edges.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Nodes are also called vertices (singular: vertex) and edges are also called links. Directed edges are also called arcs. There are many kinds of graphs; those defined above are called simple graphs.</p>
+</div>
+<p>As I mentioned in the introduction, graphs can represent all sorts of networks.</p>
+<p>Several transport networks can be modelled by undirected graphs.</p>
+<ul class="simple">
+<li><p>A railway network can be modelled with nodes representing stations and edges representing track between stations. Track doesn’t have a direction, it can be used by trains travelling in both directions, so the edges are undirected.</p></li>
+<li><p>A flight network can be modelled with nodes representing airports and edges representing the existence of a direct flight between two airports. Assuming there’s a return flight between the same airports, the edges are undirected.</p></li>
+<li><p>The motorway network of a country can be represented by an undirected graph, because motorways can be used in both directions. Nodes represent junctions and edges represent stretches of road between them.</p></li>
+</ul>
+<p>It’s often better to use digraphs, in order to represent transport networks in more detail.</p>
+<ul class="simple">
+<li><p>The street network of a city can be modelled by a digraph with nodes representing junctions and edges representing streets. The direction of the edge indicates how the traffic flows. Directed edges allow us to distinguish one-way from two-way streets.</p></li>
+<li><p>If one direction of a motorway segment between two junctions is blocked, e.g. due to an accident, we need to represent each direction separately. A digraph with opposing edges between pairs of junctions is a more flexible model than an undirected graph, because it allows us to remove edges (and add them back) as the situation on the ground changes.</p></li>
+</ul>
+<p>Like transport networks, communication and information networks can be modelled by undirected or directed graphs, depending on whether communication and information flows both ways between any pair of nodes or not, and on whether we want to represent each direction of flow separately or not.</p>
+<p>The internet (a communication network) can be modelled as an undirected graph with nodes representing computers and edges representing a direct link (like an Ethernet cable or a Wi-Fi connection) between two computers. The World Wide Web (an information network) can be modelled as a digraph, where nodes represent web pages and an edge from A to B indicates that page A links to page B.</p>
+<p>A spreadsheet can also be seen as an information network, with nodes representing cells and a directed edge from node A to node B if the value of cell A is used by the formula in cell B. Whenever the user changes the value of a cell, the spreadsheet app follows outgoing edges to quickly recompute only those formulas that directly or indirectly depend on that cell.</p>
+<p>The following spreadsheet adds 20% VAT to the cost of a good or service.</p>
+<p id="fig-17.1.2"></p><p><a class="reference internal" href="../33_Figures/Figures_17_1.html#Figure-17.1.2"><span class="std std-ref">Figure 17.1.2</span></a></p>
+<img alt="Image 17_1_spreadsheet.png" src="../_images/17_1_spreadsheet.png" />
+<p>The underlying digraph is:</p>
+<p id="fig-17.1.3"></p><p><a class="reference internal" href="../33_Figures/Figures_17_1.html#Figure-17.1.3"><span class="std std-ref">Figure 17.1.3</span></a></p>
+<img alt="Image 17_1_cells.png" src="../_images/17_1_cells.png" />
+<p>Whenever the value in cell A2 changes, the app follows the outgoing edge to recompute B2 and then its outgoing edge to recompute C2.</p>
+<p>Another example from Computing is the digraph formed by the data and the variable names in memory and the references between them. As the diagrams in <a class="reference internal" href="../06_Implementing/06_2_static_array.html#Variables-and-assignments"><span class="std std-ref">Section 6.2.1</span></a> show, the nodes are the variables and the data, and an edge from A to B indicates that A refers to B. An assignment <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">C</span></code> removes any existing edge from A and creates an edge from A to the data referred to by C.</p>
+<p>Biological networks are usually modelled with digraphs. For example, a food web is modelled with nodes representing animal and plant species, and an edge from node A to node B indicating that animal A eats animal or plant B.</p>
+<p>In a spreadsheet, a formula in one cell depends on the values in other cells; in a food web, a species depends on other species for nourishment. More generally, digraphs can represent networks of dependencies. For example, a digraph can model a work schedule, with nodes representing tasks and an edge from A to B indicating that task A has to be done before task B.</p>
+<p>Social networks are modelled with graphs where nodes represent people. To model the Twitter network, we use a digraph with an edge from A to B indicating that A follows B. To model the Facebook or LinkedIn networks, we use an undirected graph with an edge between two people indicating that they are friends or acquainted.</p>
+<p>Digraphs can also represent state transition diagrams. Each node is a possible state and an edge from A to B represents a transition: it’s possible to go from state A to state B. For example, each possible state of a <a class="reference internal" href="../04_Iteration/04_5_tuples.html#Exercise-4.5.2"><span class="std std-ref">Noughts and Crosses game</span></a> corresponds to a node and each edge to a valid move, leading from one state to another. For example, if either player can start the game, the digraph includes the following nodes and edges (among many
+others).</p>
+<p id="fig-17.1.4"></p><p><a class="reference internal" href="../33_Figures/Figures_17_1.html#Figure-17.1.4"><span class="std std-ref">Figure 17.1.4</span></a></p>
+<img alt="Image 17_1_XO.png" src="../_images/17_1_XO.png" />
+<p>Programs can then analyse the graph to determine a good move. Except for the simplest of games, the graph is too big to be fully analysed, so the program works on a partial graph: for example it generates only the states reachable from the current state in three moves. We’ll return to state transition graphs in a <a class="reference internal" href="../21_Graphs_2/21_4_states.html#State-graphs"><span class="std std-ref">later chapter</span></a>.</p>
+<p>In summary, whenever you want to represent a set of entities and a <strong>binary relation</strong>, i.e. between pairs of entities, a graph may be the best choice. If the relation is <strong>symmetric</strong>, i.e. holds in both directions, then you can use an undirected graph; otherwise it has to be directed. The ‘A is friends with B’ relation on Facebook is symmetric: if Alice is Bob’s friend, then Bob is Alice’s friend. The ‘A follows B’ relation on Twitter isn’t symmetric: Alice may follow Bob without Bob following
+Alice.</p>
+<p>For asymmetric relations we often have a choice about the direction of edges. We can represent the same Twitter network with edges representing the ‘follows’ or the ‘is followed by’ relation, depending on the problem at hand. The ‘is followed by’ graph can be obtained from the ‘follows’ graph by reversing the direction of the edges.</p>
+<p>Likewise, if there’s an edge from task A to task B in a work schedule graph this could either mean that task A depends on (and thus is done after) task B, or that task A prepares for (and thus is done before) task B.</p>
+<p>When you’re asked to model some situation with a graph, you must state exactly what the edges and their direction represent. All edges must represent the same relation, otherwise the model is useless.</p>
+<p>Once you have modelled a set of entities and their relations as a graph, you can use general-purpose algorithms to process your graph. For example, you may have experienced a spreadsheet app telling you there’s a circular dependency between your formulas. The app simply uses a general algorithm to find a cycle in any digraph. The same algorithm can find circular dependencies in a work schedule.</p>
+<p>If a digraph has no cycles, there’s an algorithm for sequencing the nodes so that for every edge from A to B, B will appear after A in the sequence. Such an algorithm is used by a spreadsheet to determine in which order to recalculate values: in the above example, cell C2 must be recomputed after B2. It’s also used by <a class="reference internal" href="../06_Implementing/06_2_static_array.html#Variables-and-assignments"><span class="std std-ref">garbage collection</span></a>: if name or datum A refers to B which in turn refers to C, and nothing else refers to
+them, then A, B and C can be garbage collected, in that order.</p>
+<p>As a final example, there’s a general algorithm that finds the shortest path, with the least number of edges, to go from a node A to a node B. The same algorithm can be used on various networks to find, for example, a flight itinerary with the fewest transfers or a path for a data packet to go through the fewest intermediary computers.</p>
+<p>No wonder graphs and their algorithms are so widely used, in games, satnavs, spreadsheets, language interpreters, by transport, communication and social media companies, by scientists studying how gossip and diseases spread, etc.</p>
+<section id="Exercises">
+<h2><span class="section-number">17.1.1. </span>Exercises<a class="headerlink" href="#Exercises" title="Link to this heading"></a></h2>
+<section id="Exercise-17.1.1">
+<h3>Exercise 17.1.1<a class="headerlink" href="#Exercise-17.1.1" title="Link to this heading"></a></h3>
+<p>A train network has a north–south train running between stations N and S, stopping at stations A and B in between. There’s also an east–west train that runs between stations E and W and stops at B in between.</p>
+<p>Draw an undirected graph that represents direct travel: there’s an edge between two stations if one can travel from one to the other without changing trains.</p>
+<p>Don’t worry too much about the layout of your graph: edges may cross, as in the undirected graph above.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_17_1_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_17_1_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-17.1.2">
+<h3>Exercise 17.1.2<a class="headerlink" href="#Exercise-17.1.2" title="Link to this heading"></a></h3>
+<p>Give two examples of relations between people (one symmetric, the other not) that don’t involve social media.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_17_1_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-17.1.3">
+<h3>Exercise 17.1.3<a class="headerlink" href="#Exercise-17.1.3" title="Link to this heading"></a></h3>
+<p>How could you represent a sequence of items (e.g. a queue) as a graph? State what the nodes and edges represent and whether the edges are directed.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_17_1_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_17_1_03.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-17.1.4">
+<h3>Exercise 17.1.4<a class="headerlink" href="#Exercise-17.1.4" title="Link to this heading"></a></h3>
+<p>How could you represent a set of items as a graph? State what the nodes and edges represent and whether the edges are directed.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_17_1_04.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-17.1.5">
+<h3>Exercise 17.1.5<a class="headerlink" href="#Exercise-17.1.5" title="Link to this heading"></a></h3>
+<p>Some train and subway networks have several lines connecting two stops. For example, on the London Underground you can take the Circle or District line from Westminster to Tower Hill.</p>
+<p>Our graph definitions don’t allow multiple edges between two nodes. How could you model such networks then?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_17_1_05.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_17_1_05.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="17-introduction.html" class="btn btn-neutral float-left" title="17. Graphs 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="17_2_concepts.html" class="btn btn-neutral float-right" title="17.2. Basic concepts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

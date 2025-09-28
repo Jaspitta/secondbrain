@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.9. Summary</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Booleans and selection" href="../03_Selection/03-introduction.html" />
+    <link rel="prev" title="2.8. Run-times" href="02_8_time.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="02-introduction.html">2. Numbers and sequence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="02_1_numbers.html">2.1. Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_2_operations.html">2.2. Arithmetic operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_3_expressions.html">2.3. Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_4_assignments.html">2.4. Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_5_maths_functions.html">2.5. Functions in mathematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_6_py_functions.html">2.6. Functions in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_7_complexity.html">2.7. Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_8_time.html">2.8. Run-times</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.9. Summary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Python">2.9.1. Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Data-types">2.9.2. Data types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Real-numbers-and-floats">Real numbers and floats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Integers">Integers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Expressions">Expressions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Functions">2.9.3. Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">2.9.4. Complexity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="02-introduction.html"><span class="section-number">2. </span>Numbers and sequence</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.9. </span>Summary</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Summary">
+<h1><span class="section-number">2.9. </span>Summary<a class="headerlink" href="#Summary" title="Link to this heading"></a></h1>
+<p>This section summarises the previous ones. All definitions in this and future chapters are for the purposes of M269 only. Other texts and programming languages may define concepts and operations differently.</p>
+<section id="Python">
+<h2><span class="section-number">2.9.1. </span>Python<a class="headerlink" href="#Python" title="Link to this heading"></a></h2>
+<p>A <strong>module</strong> is a code library. The statement <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">m</span></code> imports the module <code class="docutils literal notranslate"><span class="pre">m</span></code>, making its contents available. To access a variable <code class="docutils literal notranslate"><span class="pre">v</span></code> or function <code class="docutils literal notranslate"><span class="pre">f</span></code> defined in <code class="docutils literal notranslate"><span class="pre">m</span></code>, write <code class="docutils literal notranslate"><span class="pre">m.v</span></code> or <code class="docutils literal notranslate"><span class="pre">m.f</span></code>.</p>
+<p>An <strong>identifier</strong> is a name. It starts with a letter, followed by zero or more letters, underscores, periods or digits. The convention is to write variable and function names in lowercase, with underscores separating words.</p>
+<p>A <strong>keyword</strong> is a word with a reserved meaning in Python. Keywords include <code class="docutils literal notranslate"><span class="pre">def</span></code>, <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">return</span></code> and can’t be used as identifiers.</p>
+<p>A <strong>comment</strong> starts with a hash symbol and goes until the end of the line. The Python interpreter ignores comments.</p>
+</section>
+<section id="Data-types">
+<h2><span class="section-number">2.9.2. </span>Data types<a class="headerlink" href="#Data-types" title="Link to this heading"></a></h2>
+<p>A <strong>data type</strong> (or just <strong>type</strong>) is a collection of values and operations on those values. An <strong>abstract data type</strong> (<strong>ADT</strong>) is a data type defined independently of any implementation.</p>
+<section id="Real-numbers-and-floats">
+<h3>Real numbers and floats<a class="headerlink" href="#Real-numbers-and-floats" title="Link to this heading"></a></h3>
+<p>The <strong>real numbers</strong> are those that can be represented in decimal form, possibly with an infinite number of digits after the decimal point. The <strong>positive</strong> numbers are greater than zero; the <strong>negative</strong> numbers are less than zero.</p>
+<p>The real number ADT consists of the real numbers and the operations in the next table. Python’s <code class="docutils literal notranslate"><span class="pre">float</span></code> type implements an approximation of the real number ADT. The <strong>floating-point numbers</strong> (or <strong>floats</strong>) are the real numbers that can be represented with a fixed number of binary digits.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Mathematics</p></th>
+<th class="head"><p>Python</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>negation</p></td>
+<td><p>−<em>x</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-x</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>addition</p></td>
+<td><p><em>x</em> + <em>y</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>subtraction</p></td>
+<td><p><em>x</em> − <em>y</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>multiplication</p></td>
+<td><p><em>x</em> × <em>y</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>division</p></td>
+<td><p><em>x</em> / <em>y</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>floor (round down)</p></td>
+<td><p>floor(<em>x</em>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">math.floor(x)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>maximum (largest)</p></td>
+<td><p>max(<em>x</em>, <em>y</em>, …)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">max(x,</span> <span class="pre">y,</span> <span class="pre">...)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>minimum (smallest)</p></td>
+<td><p>min(<em>x</em>, <em>y</em>, …)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">min(x,</span> <span class="pre">y,</span> <span class="pre">...)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>An <strong>operator</strong> is a symbol used to represent an operation. The <strong>operands</strong> are the values to which the operator applies. The right operand of the division operation can’t be zero.</p>
+<p>A <strong>literal</strong> is a direct representation of a value in Python. Integer and float literals start with a digit, followed by zero or more digits. A float literal includes a single period.</p>
+<p>The real number π is approximated by the float <code class="docutils literal notranslate"><span class="pre">math.pi</span></code>.</p>
+</section>
+<section id="Integers">
+<h3>Integers<a class="headerlink" href="#Integers" title="Link to this heading"></a></h3>
+<p>The <strong>integers</strong> are the numbers 0, 1, −1, 2, −2, etc. Every integer is a real number. The <strong>natural numbers</strong> are the non-negative integers.</p>
+<p>The integer ADT consists of the integers, the operations above and the operations in the next table. All operations, when applied to integers, produce integers, except division. Python’s <code class="docutils literal notranslate"><span class="pre">int</span></code> type implements the integer ADT.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Mathematics</p></th>
+<th class="head"><p>Python</p></th>
+<th class="head"><p>Preconditions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>floor division</p></td>
+<td><p>floor(<em>x</em> / <em>y</em>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">//</span> <span class="pre">y</span></code></p></td>
+<td><p>y ≠ 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>modulo</p></td>
+<td><p><em>x</em> mod <em>y</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">y</span></code></p></td>
+<td><p>y ≠ 0</p></td>
+</tr>
+<tr class="row-even"><td><p>exponentiation or power</p></td>
+<td><p><span class="math notranslate nohighlight">\(x^y\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">**</span> <span class="pre">y</span></code></p></td>
+<td><p>y ≥ 0</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>modulo</strong> is the remainder of floor division. If <em>x</em> mod <em>y</em> = 0, then <em>x</em> is said to be a <strong>multiple</strong> of (or <strong>divisible by</strong>) <em>y</em>, and <em>y</em> is said to be a <strong>factor</strong> or <strong>divisor</strong> of <em>x</em>. An <strong>even</strong> integer is divisible by 2; an <strong>odd</strong> integer isn’t.</p>
+</section>
+<section id="Expressions">
+<h3>Expressions<a class="headerlink" href="#Expressions" title="Link to this heading"></a></h3>
+<p>An <strong>expression</strong> is a single value or variable, or an operation applied to subexpressions. Operations are carried out in the following <strong>precedence order</strong>:</p>
+<ol class="arabic simple">
+<li><p>bracketed expressions, including functions</p></li>
+<li><p>exponentiation</p></li>
+<li><p>negation</p></li>
+<li><p>multiplication, division, floor division, modulo</p></li>
+<li><p>addition, subtraction.</p></li>
+</ol>
+<p>Bracketed expressions are executed from the most to the least nested. Those at the same nesting level are executed from left to right. Operations with the same precedence are <strong>left-associative</strong> (executed from left to right), except negation and exponentiation, which are <strong>right-associative</strong> (executed right to left).</p>
+<p>In Python, the evaluation of an expression may raise an error and stop, depending on the issue (division by zero, unknown name, or wrong syntax).</p>
+</section>
+</section>
+<section id="Functions">
+<h2><span class="section-number">2.9.3. </span>Functions<a class="headerlink" href="#Functions" title="Link to this heading"></a></h2>
+<p>Most operations in M269, including the above, are <strong>functions</strong> in the mathematical sense: they produce a single output and don’t modify the inputs. Functions are defined with the following template.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: the name of the function</div>
+<div class="line"><strong>Inputs</strong>: the name and type of each input variable</div>
+<div class="line"><strong>Preconditions</strong>: any conditions on the inputs</div>
+<div class="line"><strong>Output</strong>: the name and type of the output variable</div>
+<div class="line"><strong>Postconditions</strong>: how the output relates to the inputs</div>
+</div>
+<p><strong>Preconditions</strong> state what must be true <em>before</em> we can apply the function to the input values; <strong>postconditions</strong> state what will be true <em>after</em> applying it. A function defined as:</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: function name</div>
+<div class="line"><strong>Inputs</strong>: <em>input1</em>, a type1; <em>input2</em>, a type2; …</div>
+<div class="line"><strong>Preconditions</strong>: conditions on <em>input1</em>, <em>input2</em>, …</div>
+<div class="line"><strong>Output</strong>: <em>output</em>, an output type</div>
+<div class="line"><strong>Postconditions</strong>: conditions on <em>output</em>, <em>input1</em>, <em>input2</em>, …</div>
+</div>
+<p>is implemented in Python as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function_name</span><span class="p">(</span><span class="n">input1</span><span class="p">:</span> <span class="n">type1</span><span class="p">,</span> <span class="n">input2</span><span class="p">:</span> <span class="n">type2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">output_type</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prescribe what the function computes.</span>
+
+<span class="sd">    Preconditions: conditions on input1, input2, ...</span>
+<span class="sd">    Postconditions: conditions on output, input1, input2, ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">algorithm</span>
+    <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+<p>A <strong>docstring</strong> documents what a Python function does. It comes after the function header and starts and ends with three double quotes. Python’s function <code class="docutils literal notranslate"><span class="pre">help</span></code> takes a function name and displays its header and docstring.</p>
+<p>Python’s function <code class="docutils literal notranslate"><span class="pre">print(expression1,</span> <span class="pre">expression2,</span> <span class="pre">...)</span></code> displays the values of the given expressions.</p>
+<p>An <strong>assignment</strong> statement is of the form ‘let <em>variable</em> be <em>expression</em>’ (in English) or <code class="docutils literal notranslate"><span class="pre">variable</span> <span class="pre">=</span> <span class="pre">expression</span></code> (in Python). The right-hand side expression is evaluated and its value assigned to the name. The assignment forms <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-=</span> <span class="pre">y</span></code>, etc., are abbreviations of <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span></code>, etc.</p>
+<p>An <strong>algorithm</strong> is a step-by-step procedure expressed as a structured list of unambiguous instructions. In this chapter, an algorithm is a sequence of assignments. Each assignment’s expression can only involve the input variables or the variables occurring on the left-hand side of previous assignments. At least one assignment must have the output variable on the left-hand side.</p>
+<p>An algorithm implementing an operation is <strong>correct</strong> if for all inputs that satisfy the preconditions it produces an output satisfying the postconditions. If the input values don’t satisfy the preconditions, there’s no meaningful output and the algorithm may behave in any way.</p>
+<p>Two consecutive Python lines of the form</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">expression</span>
+<span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+<p>can be simplified to <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">expression</span></code>.</p>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">2.9.4. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>The run-time of a statement or expression is measured with the IPython command <code class="docutils literal notranslate"><span class="pre">%timeit</span></code>. It runs the code many times to improve the measurement accuracy and takes the mean time. To set the exact number of repetitions, write</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">timeit</span> <span class="o">-</span><span class="n">r</span> <span class="n">R</span> <span class="o">-</span><span class="n">n</span> <span class="n">N</span> <span class="n">code</span> <span class="n">to</span> <span class="n">execute</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">R</span></code> and <code class="docutils literal notranslate"><span class="pre">N</span></code> are positive integer literals indicating the number of runs and the number of iterations per run, respectively.</p>
+<p>The <strong>complexity</strong> of an algorithm is an indication of how its run-time grows for ever larger inputs.</p>
+<p><strong>Big-Theta notation</strong> Θ(<em>e</em>) states that, for large inputs, the run-time of an algorithm is proportional to the value of integer expression <em>e</em> based on the inputs’ values and sizes. The size of number <em>n</em>, written │<em>n</em>│, is how many digits it has.</p>
+<p>An algorithm has <strong>constant complexity</strong>, written Θ(1), if its run-time doesn’t grow as the inputs get larger. An algorithm has <strong>linear complexity</strong> if its run-time grows proportionally to the inputs’ values or sizes. When the inputs’ value or size doubles, the run-time of a constant- or linear-time algorithm stays the same or doubles, respectively.</p>
+<p>Although Python supports arbitrarily large integers, we will only use 64-bit integers. We can thus assume all arithmetic operations to have complexity Θ(1), except <span class="math notranslate nohighlight">\(x^y\)</span>, which has complexity Θ(<em>y</em>). The assignment and return statements also take constant time, after their expressions have been evaluated.</p>
+<p>An algorithm that executes a fixed number of operations, all of them with constant complexity, has constant complexity too.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02_8_time.html" class="btn btn-neutral float-left" title="2.8. Run-times" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../03_Selection/03-introduction.html" class="btn btn-neutral float-right" title="3. Booleans and selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.2. Static arrays</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.3. Developing data types" href="06_3_develop_type.html" />
+    <link rel="prev" title="6.1. Defining data types" href="06_1_define_type.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="06-introduction.html">6. Implementing sequences</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="06_1_define_type.html">6.1. Defining data types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.2. Static arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Variables-and-assignments">6.2.1. Variables and assignments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-StaticArray-class">6.2.2. The <code class="docutils literal notranslate"><span class="pre">StaticArray</span></code> class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Testing-methods">6.2.3. Testing methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06_3_develop_type.html">6.3. Developing data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_4_bounded.html">6.4. Bounded sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_5_dynamic_array.html">6.5. Dynamic arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_6_use_dyn_array.html">6.6. Using dynamic arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_7_linked_list.html">6.7. Linked lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_8_summary.html">6.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="06-introduction.html"><span class="section-number">6. </span>Implementing sequences</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.2. </span>Static arrays</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Static-arrays">
+<h1><span class="section-number">6.2. </span>Static arrays<a class="headerlink" href="#Static-arrays" title="Link to this heading"></a></h1>
+<p>A <strong>static array</strong> is a data structure that stores a fixed-length sequence contiguously in memory, with the same number of bytes per item. This allows us to compute the address of any item, and thereby access it, in constant time. For example, the next figure shows a static array storing the string ‘Hi!’ from memory address 123 onwards, using two bytes per character.</p>
+<p id="fig-6.2.1"></p><p><a class="reference internal" href="../33_Figures/Figures_06_2.html#Figure-6.2.1"><span class="std std-ref">Figure 6.2.1</span></a></p>
+<img alt="Image 06_2_string.png" src="../_images/06_2_string.png" />
+<p>The character at index <em>i</em> is stored at the address 123 + <em>i</em> × 2 and the next address, e.g. the character at index 1 starts at address 123 + 1 × 2 = 125. (Remember that indices start at zero.) More generally, if an array at memory <em>start</em> allocates <em>n</em> bytes per item, the item at index <em>i</em> can be found at address <em>start</em> + <em>i</em> × <em>n</em> and the subsequent <em>n</em> − 1 bytes.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> The term ‘array’ can mean different things (static array, list, sequence of items of the same type, etc.), depending on the author or programming language. To avoid confusions, we use ‘static array’ in M269, with the above meaning.</p>
+</div>
+<p>Static arrays are the ideal data structure for immutable sequences where all items occupy the same number of bytes, like strings and tuples of Booleans. But how to store a tuple of strings of different lengths, or a tuple with items of different types? The trick is to store in the array the addresses of the items instead of the items themselves. Let’s suppose we have <span class="math notranslate nohighlight">\(2^{32}\)</span> bytes = 4 GB of RAM. We can represent any memory location as a 32-bit integer. The next figure illustrates the
+storage of tuple <code class="docutils literal notranslate"><span class="pre">('Hi!',</span> <span class="pre">'Go',</span> <span class="pre">'left')</span></code>. The static array for the tuple contains the address of each string. The strings may be anywhere in memory, not necessarily next to the tuple or each other.</p>
+<p id="fig-6.2.2"></p><p><a class="reference internal" href="../33_Figures/Figures_06_2.html#Figure-6.2.2"><span class="std std-ref">Figure 6.2.2</span></a></p>
+<img alt="Image 06_2_tuple.png" src="../_images/06_2_tuple.png" />
+<p>We usually don’t know (and don’t care) where in memory a data structure will be stored. It’s also often irrelevant how many bytes characters, addresses and other items occupy. Abstracting away those details, we can represent the tuple and its three strings in a more schematic way.</p>
+<p id="fig-6.2.3"></p><p><a class="reference internal" href="../33_Figures/Figures_06_2.html#Figure-6.2.3"><span class="std std-ref">Figure 6.2.3</span></a></p>
+<img alt="Image 06_2_pointers.png" src="../_images/06_2_pointers.png" />
+<p>This image conveys the gist of the data structure: a string is stored as a static array of characters, and the tuple of strings is stored as a static array of references to those strings. A <strong>reference</strong> is an object that refers to another object. If the reference consists of the memory address of that other object, we call it a <strong>pointer</strong>.</p>
+<p>Before continuing with static arrays, let me illustrate how the use of references explains the behaviour of assignments in Python.</p>
+<section id="Variables-and-assignments">
+<h2><span class="section-number">6.2.1. </span>Variables and assignments<a class="headerlink" href="#Variables-and-assignments" title="Link to this heading"></a></h2>
+<p>There are other kinds of reference objects. An index is an integer object that refers to a particular item of a sequence. A variable is a named reference to an object: you can think of it as a string–pointer pair with the name of the variable and the address of the object it refers to.</p>
+<p>Consider the following example, which uses a list instead of a tuple.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># the x-y coordinates of a 2D point</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">pair</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+<span class="n">point</span> <span class="o">=</span> <span class="n">pair</span>
+</pre></div>
+</div>
+</div>
+<p>Assuming that lists are also stored as static arrays, the situation in memory at this stage is as follows:</p>
+<p id="fig-6.2.4"></p><p><a class="reference internal" href="../33_Figures/Figures_06_2.html#Figure-6.2.4"><span class="std std-ref">Figure 6.2.4</span></a></p>
+<img alt="Image 06_2_assign_1.png" src="../_images/06_2_assign_1.png" />
+<p>Names <code class="docutils literal notranslate"><span class="pre">pair</span></code> and <code class="docutils literal notranslate"><span class="pre">point</span></code> refer to exactly the same list object, <code class="docutils literal notranslate"><span class="pre">pair[0]</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span></code> refer to the exact same integer object with value one, and <code class="docutils literal notranslate"><span class="pre">pair[1]</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> refer to the same integer object with value two. Let’s change the value that <code class="docutils literal notranslate"><span class="pre">y</span></code> refers to:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<p>The Python interpreter does <em>not</em> change the value of the existing integer object. Instead, it creates a new integer object with value three, and makes the variable refer to that object. In Python, <code class="docutils literal notranslate"><span class="pre">variable</span> <span class="pre">=</span> <span class="pre">value</span></code> ‘attaches’ the variable’s name to the value, rather than modifies the current variable’s value. The data structures look now like this:</p>
+<p id="fig-6.2.5"></p><p><a class="reference internal" href="../33_Figures/Figures_06_2.html#Figure-6.2.5"><span class="std std-ref">Figure 6.2.5</span></a></p>
+<img alt="Image 06_2_assign_2.png" src="../_images/06_2_assign_2.png" />
+<p>Hence, if we display the list, it hasn’t changed:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2]
+</pre></div></div>
+</div>
+<p>If we do this assignment,</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<p>then the interpreter again creates an integer object with value 3 and makes the name <code class="docutils literal notranslate"><span class="pre">pair[1]</span></code> refer to that object. The situation is now:</p>
+<p id="fig-6.2.6"></p><p><a class="reference internal" href="../33_Figures/Figures_06_2.html#Figure-6.2.6"><span class="std std-ref">Figure 6.2.6</span></a></p>
+<img alt="Image 06_2_assign_3.png" src="../_images/06_2_assign_3.png" />
+<p>Let’s display again the point’s coordinates:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 3]
+</pre></div></div>
+</div>
+<p>They have changed, even though the assignment was to <code class="docutils literal notranslate"><span class="pre">pair[1]</span></code>, not <code class="docutils literal notranslate"><span class="pre">point[1]</span></code>. The earlier assignment <code class="docutils literal notranslate"><span class="pre">point</span> <span class="pre">=</span> <span class="pre">pair</span></code> created a new reference to the same list, it didn’t create a copy of the list.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 Block 2 Sections 4.5.1 to 4.5.3 explain the above in more detail.</p>
+</div>
+<p>The diagram also shows that the integer object with value two isn’t referred by any other object anymore. The Python interpreter detects that automatically, and frees the memory occupied by the object so that it can be reused later. This process is known as <strong>garbage collection</strong>.</p>
+</section>
+<section id="The-StaticArray-class">
+<h2><span class="section-number">6.2.2. </span>The <code class="docutils literal notranslate"><span class="pre">StaticArray</span></code> class<a class="headerlink" href="#The-StaticArray-class" title="Link to this heading"></a></h2>
+<p>Some languages provide a static array data type to implement a restricted form of the sequence ADT, namely fixed-length sequences of items of the same type. Besides the length of the array, one has to indicate the type of items. This allows the interpreter to figure out how many bytes per item are needed and the initial value of each item, to then create the static array in memory. For example, an array of Booleans may be created with one byte per Boolean, each initialised to false, whereas an
+array of strings may be created with pointers to the same empty string.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Java has a static array data type, simply called array, with indices starting at zero. The type of items is indicated when the array is declared and the length is determined when the array is initialised. Java arrays can have items of different types if the declared item’s type is <code class="docutils literal notranslate"><span class="pre">Object</span></code>.</p>
+</div>
+<p>A data type for static arrays only has to support three operations, besides the constructor: length, indexing, and replacing an item. All other operations, e.g. slicing, can be implemented with these basic operations.</p>
+<p>Python doesn’t include such a data type as it already has a far more flexible one: lists. The implementation of lists may differ between Python interpreters, because the Python language only defines the list as an ADT, i.e. which operations it supports. However, it’s safe to assume all interpreters use static arrays as the underlying data structure in order to achieve constant-time indexing. We can thus use lists as if they were static arrays providing we never call methods <code class="docutils literal notranslate"><span class="pre">append</span></code>,
+<code class="docutils literal notranslate"><span class="pre">insert</span></code> and <code class="docutils literal notranslate"><span class="pre">pop</span></code>. I will however define a new data type, to make the use of static arrays explicit in subsequent examples.</p>
+<p>I won’t restrict my static array data type to any particular type of items. The constructor simply takes the length of the array, and initialises it with <code class="docutils literal notranslate"><span class="pre">None</span></code> in every position. The essential operations on an array are to obtain its length, and to access and replace an item at a given index. Following my definition of the <a class="reference internal" href="../04_Iteration/04_1_sequences.html#Inspecting-sequences"><span class="std std-ref">indexing operation</span></a>, I assume indices aren’t negative. For convenience I also implement an operation to
+convert to a string.</p>
+<p>I write the class to a file to reuse it later.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_array.py</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">StaticArray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A fixed-length sequence of references in contiguous memory.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an array of the given length.</span>
+
+<span class="sd">        Preconditions: length &gt;= 0</span>
+<span class="sd">        Postconditions: every item in the array is None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># assume lists are stored in arrays</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">length</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the length of the array.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the item at the given index.</span>
+
+<span class="sd">        Preconditions: 0 &lt;= index &lt; self.length()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replace the item at the given index with the given item.</span>
+
+<span class="sd">        Preconditions: 0 &lt;= index &lt; self.length()</span>
+<span class="sd">        Postconditions: self.get_item(index) == item</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a string representation of the array.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>In Python, every object is an instance of a class appropriately named <code class="docutils literal notranslate"><span class="pre">object</span></code>. All other classes are subclasses of <code class="docutils literal notranslate"><span class="pre">object</span></code>. Class <em>A</em> is a <strong>subclass</strong> of class <em>B</em>, and <em>B</em> is a <strong>superclass</strong> of <em>A</em>, if every instance of <em>A</em> is also an instance of <em>B</em>. Using <code class="docutils literal notranslate"><span class="pre">object</span></code> in a method or function header indicates that the input or output value can be any object. As such, the method or function body can only use the equality and inequality comparisons or assign the object to a variable.</p>
+</section>
+<section id="Testing-methods">
+<h2><span class="section-number">6.2.3. </span>Testing methods<a class="headerlink" href="#Testing-methods" title="Link to this heading"></a></h2>
+<p>Our <a class="reference internal" href="../04_Iteration/04_7_reverse.html#Tests"><span class="std std-ref">generic test function</span></a> is meant for testing functions with a single output that can be easily compared against an expected value. However, class methods sometimes modify an instance variable instead of returning a value, like <code class="docutils literal notranslate"><span class="pre">set_item</span></code> above. We need a different approach.</p>
+<p><strong>White-box tests</strong>, also known as structural tests, have full knowledge of the data structure(s) used by the data type. Structural tests can be written independently for each method, as they can access the instance variables before and after the method to check they were correctly modified. The disadvantage of structural tests is that they must be rewritten whenever the data structures change.</p>
+<p><strong>Black-box tests</strong>, also known as specification-based tests, don’t access the data structures. They test methods based on their defined behaviour. This means that methods can’t be tested independently: a method that changes data can only be tested with methods that inspect data. Black-box testing makes <strong>regression testing</strong> easier. That’s the process of running the same tests after each change, to make sure the modified code still behaves as before.</p>
+<p>For example, a white-box test of the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method can iterate over the <code class="docutils literal notranslate"><span class="pre">self.items</span></code> list to check all items were initialised to <code class="docutils literal notranslate"><span class="pre">None</span></code>, whereas a black-box test has to use method <code class="docutils literal notranslate"><span class="pre">get_item</span></code>.</p>
+<p>In M269 we’ll use mostly black-box testing: a single set of tests, based on the ADT’s operations, can be run repeatedly to test different implementations of the same ADT. This saves work and time.</p>
+<p>To make test code shorter and more readable, I define an auxiliary function for the error messages and write it to a file to reuse it later.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_test.py</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">case</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">actual</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">expected</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write a message if actual and expected are different.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">actual</span> <span class="o">!=</span> <span class="n">expected</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="s2">&quot;FAILED for&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="s2">&quot;instead of&quot;</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The context is some additional information to help us make sense of the error. In the following, the context is the static array for which the test failed.</p>
+<p>Let’s start by testing the initialisation method for an arbitrary array length. We must check it has created the right number of items, all of them <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_init</span><span class="p">(</span><span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new array of the given length and check it.</span>
+
+<span class="sd">    Preconditions: length &gt;= 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">StaticArray</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+    <span class="n">check</span><span class="p">(</span><span class="s2">&quot;length&quot;</span><span class="p">,</span> <span class="n">array</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">length</span><span class="p">,</span> <span class="n">array</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+        <span class="n">check</span><span class="p">(</span><span class="s2">&quot;initial item&quot;</span><span class="p">,</span> <span class="n">array</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The black-box test uses methods <code class="docutils literal notranslate"><span class="pre">length</span></code> and <code class="docutils literal notranslate"><span class="pre">get_item</span></code> to inspect the created instance. As such, we’re also testing these methods besides <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
+<p>We also test <code class="docutils literal notranslate"><span class="pre">set_item</span></code> by creating an array and checking it with <code class="docutils literal notranslate"><span class="pre">get_item</span></code>. I often use the sequence 0, 1, 2, … for testing, because if a test fails it’s easy to see which value is not at the right index.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> When testing operations on sequences, use sequences of the form (0, 1, 2, …).</p>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_set_item</span><span class="p">(</span><span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create an array of the given length, replace all items and check it.</span>
+
+<span class="sd">    Preconditions: length &gt;= 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">StaticArray</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+        <span class="n">array</span><span class="o">.</span><span class="n">set_item</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+        <span class="n">check</span><span class="p">(</span><span class="s2">&quot;replaced item&quot;</span><span class="p">,</span> <span class="n">array</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="n">index</span><span class="p">,</span> <span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>This only tests <code class="docutils literal notranslate"><span class="pre">set_item</span></code> with an array of items of the same type. In general, you may need several test functions for one method. It’s not unusual for test code to be longer than the code it tests.</p>
+<p>I can now test arrays of different lengths. The <code class="docutils literal notranslate"><span class="pre">check</span></code> function will print every array that fails a test.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_init</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># edge case: length zero</span>
+<span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">test_init</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+    <span class="n">test_set_item</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>In testing, no news is good news.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> To black-box test a class, write one or more test functions for each method that creates or modifies an instance of that class, using the methods that inspect the instance. Together, the tests must use all inspection methods.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="06_1_define_type.html" class="btn btn-neutral float-left" title="6.1. Defining data types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="06_3_develop_type.html" class="btn btn-neutral float-right" title="6.3. Developing data types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

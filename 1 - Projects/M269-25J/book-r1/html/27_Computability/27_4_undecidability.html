@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>27.4. Undecidability</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="27.5. Summary" href="27_5_summary.html" />
+    <link rel="prev" title="27.3. Static analysis" href="27_3_static_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="27-introduction.html">27. Computability</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="27_1_turing_machine.html">27.1. Turing machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27_2_thesis.html">27.2. The Church–Turing thesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27_3_static_analysis.html">27.3. Static analysis</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">27.4. Undecidability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#The-halting-problem">27.4.1. The halting problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-totality-problem">27.4.2. The totality problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Rice's-theorem">27.4.3. Rice’s theorem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-equivalence-problem">27.4.4. The equivalence problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Reduction-and-computability">27.4.5. Reduction and computability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-problem-landscape">27.4.6. The problem landscape</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-27.4.1">Exercise 27.4.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-27.4.2">Exercise 27.4.2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="27_5_summary.html">27.5. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="27-introduction.html"><span class="section-number">27. </span>Computability</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">27.4. </span>Undecidability</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Undecidability">
+<h1><span class="section-number">27.4. </span>Undecidability<a class="headerlink" href="#Undecidability" title="Link to this heading"></a></h1>
+<p>Having looked at how functions can analyse other functions and themselves, let me introduce three problems about functions that are not computable. They all happen to be decision problems. Non-computable decision problems are simply called <strong>undecidable</strong> problems.</p>
+<section id="The-halting-problem">
+<h2><span class="section-number">27.4.1. </span>The halting problem<a class="headerlink" href="#The-halting-problem" title="Link to this heading"></a></h2>
+<p>Our first undecidable problem is the <strong>halting problem</strong>: given an algorithm and a valid input for it, i.e. that satisfies the preconditions, will the execution of the algorithm terminate for that input? (Note that we’re not interested in the output or whether it’s correct.) In terms of Turing machines, the problem is: given the transition table and the initial tape content, will the machine eventually stop?</p>
+<p>We’ll assume the algorithm has a single input value, to make the examples concrete. In terms of Python, what we want is a static analysis function with this heading.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">halts</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if function(value) eventually stops.&quot;&quot;&quot;</span>
+    <span class="c1"># do some highly sophisticated static analysis here</span>
+</pre></div>
+</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">halts</span></code> must do static analysis: it cannot execute <code class="docutils literal notranslate"><span class="pre">function</span></code> because if the latter enters an infinite loop for <code class="docutils literal notranslate"><span class="pre">value</span></code>, so would <code class="docutils literal notranslate"><span class="pre">halts</span></code>. We would never get the desired <code class="docutils literal notranslate"><span class="pre">False</span></code> output to know that <code class="docutils literal notranslate"><span class="pre">function</span></code> doesn’t halt on <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<p>It’s possible to statically analyse <em>some</em> functions and determine whether they enter an infinite loop. For example, we could check if a function has no while- or for-loops, no recursive calls and only uses operations of which we know they halt. In such cases, the function will stop for every input value and <code class="docutils literal notranslate"><span class="pre">halts</span></code> would return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>While such restricted forms on static analysis are possible, <code class="docutils literal notranslate"><span class="pre">halts</span></code> doesn’t exist: nobody will ever be able to write a general algorithm that can decide whether <em>any</em> given algorithm halts on <em>any</em> given input.</p>
+<p>Let’s assume that function <code class="docutils literal notranslate"><span class="pre">halts</span></code> did exist. Then we could write functions that call it, like this one:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">opposite</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if f(f) doesn&#39;t halt.</span>
+
+<span class="sd">    Preconditions: f takes a function as argument</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">halts</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>  <span class="c1"># does f(f) halt?</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<p>Function <code class="docutils literal notranslate"><span class="pre">opposite</span></code> uses <code class="docutils literal notranslate"><span class="pre">halts</span></code> to check if the call <code class="docutils literal notranslate"><span class="pre">f(f)</span></code> eventually stops. If it does, <code class="docutils literal notranslate"><span class="pre">opposite</span></code> gets into an infinite loop and never returns <code class="docutils literal notranslate"><span class="pre">False</span></code>. If <code class="docutils literal notranslate"><span class="pre">f(f)</span></code> doesn’t halt, then <code class="docutils literal notranslate"><span class="pre">opposite</span></code> does, returning <code class="docutils literal notranslate"><span class="pre">True</span></code>. In summary, <code class="docutils literal notranslate"><span class="pre">opposite(f)</span></code> halts if and only if <code class="docutils literal notranslate"><span class="pre">f(f)</span></code> doesn’t.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">opposite(help)</span></code> doesn’t halt because <code class="docutils literal notranslate"><span class="pre">help(help)</span></code> does: the <code class="docutils literal notranslate"><span class="pre">help</span></code> function prints its own docstring and stops, as shown in the previous section.</p>
+<p>Now comes the sting in the tail. What would happen if we call <code class="docutils literal notranslate"><span class="pre">opposite</span></code> on itself? How will <code class="docutils literal notranslate"><span class="pre">opposite(opposite)</span></code> behave? As I just mentioned,</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">opposite(f)</span></code> halts if and only if <code class="docutils literal notranslate"><span class="pre">f(f)</span></code> doesn’t.</p>
+</div></blockquote>
+<p>Replacing <code class="docutils literal notranslate"><span class="pre">f</span></code> with <code class="docutils literal notranslate"><span class="pre">opposite</span></code>, we have that</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">opposite(opposite)</span></code> halts if and only if <code class="docutils literal notranslate"><span class="pre">opposite(opposite)</span></code> doesn’t.</p>
+</div></blockquote>
+<p>In other words, we have a function call that stops and doesn’t stop at the same time: an impossible behaviour. This means that function <code class="docutils literal notranslate"><span class="pre">halts</span></code> can’t exist: otherwise <code class="docutils literal notranslate"><span class="pre">opposite</span></code> would be able to call it and we’d get into this paradox.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> <a class="reference external" href="http://www.lel.ed.ac.uk/~gpullum/loopsnoop.html">Scooping the loop snooper</a> is an entertaining and rhyming rendition of the above proof. This kind of proof is called a proof by contradiction: we assume the opposite of what we want to prove (here we assume <code class="docutils literal notranslate"><span class="pre">halts</span></code> <em>does</em> exist) and obtain a contradiction, thereby showing that our assumption was wrong.</p>
+</div>
+<p>We’re asking function <code class="docutils literal notranslate"><span class="pre">halts</span></code> to predict how <code class="docutils literal notranslate"><span class="pre">opposite(opposite)</span></code> will behave and once we know what the prediction is, we do the opposite. So it’s not possible to make a correct prediction for function <code class="docutils literal notranslate"><span class="pre">opposite</span></code> with input <code class="docutils literal notranslate"><span class="pre">opposite</span></code>. And if there’s no algorithm that can solve the halting problem for one particular function and input, then there’s no algorithm that can solve the problem for <em>any</em> function and input, so the halting problem is undecidable.</p>
+</section>
+<section id="The-totality-problem">
+<h2><span class="section-number">27.4.2. </span>The totality problem<a class="headerlink" href="#The-totality-problem" title="Link to this heading"></a></h2>
+<p>The halting problem asks if a given algorithm stops on <em>one</em> given input. Unsurprisingly, the more general <strong>totality problem</strong> (does a given algorithm stop for <em>all</em> its valid inputs?) is also undecidable.</p>
+<p>The undecidability of the totality problem has great practical consequences. No matter how sophisticated our programming tools will ever be, they will never be able to determine for <em>any</em> program whether it will enter an infinite loop for some input. They might be able to tell us the answer for <em>some</em> programs with particular characteristics, but not for all. Since there’s no systematic way to detect infinite loops, the practical consequence is that sometimes apps still ‘freeze’, even if they
+were well tested, because tests can’t cover all possible inputs.</p>
+</section>
+<section id="Rice's-theorem">
+<h2><span class="section-number">27.4.3. </span>Rice’s theorem<a class="headerlink" href="#Rice's-theorem" title="Link to this heading"></a></h2>
+<p>At this point you may be thinking that the undecidability of the totality problem is not a big deal. Only a few programs may get into infinite loops. Most programs have other kinds of errors: division by zero, indices off by one, etc. Unfortunately, detecting any of those issues is an undecidable problem too.</p>
+<p>In fact, <strong>Rice’s theorem</strong> states that <em>all</em> non-trivial decision problems about the behaviour of programs are undecidable. ‘Non-trivial’ means the decision can’t be the same for all programs. For example, the decision problem ‘Does the program execute zero or more steps?’ is trivial: the answer is always ‘yes’ and hence the problem is decidable.</p>
+<p>Note that problems about the structure of programs are decidable. For example, the decision problem ‘Does the program contain a for- or while-loop?’ is about the program’s syntax, not its behaviour, and hence it’s decidable.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> The theorem is named after Henry Rice, who proved it in his 1951 PhD thesis.</p>
+</div>
+<p>The practical consequence of Rice’s theorem is that most software systems have errors, even when developed by very smart people following best practices, because there’s no magic static analysis wand that can determine whether a program is correct. And no advance in AI or quantum computing will turn non-computable problems into computable ones.</p>
+</section>
+<section id="The-equivalence-problem">
+<h2><span class="section-number">27.4.4. </span>The equivalence problem<a class="headerlink" href="#The-equivalence-problem" title="Link to this heading"></a></h2>
+<p>The halting and totality problems have a single algorithm as input, but we can also define problems on two or more algorithms. The most famous is the <strong>equivalence problem</strong>: given two different algorithms for the same problem, do they compute the same output for the same valid input?</p>
+<p>An algorithm that solves the equivalence problem would be of great value to the M269 tutors and all programming teachers. We would write <em>one</em> model solution for each programming assessment and the equivalence problem algorithm would decide if your submission is equivalent to the model solution and thus correct or not. (Assuming we write correct model answers, which we tend to do.) If the equivalence problem algorithm returns false, your tutor would still have to figure out, through tests or
+reasoning, for which inputs your and the model programs diverge.</p>
+<p>More importantly, having an algorithm for the equivalence problem would allow programmers to check successive versions of their programs to make sure that their changes to the efficiency or structure of the code don’t break the functionality.</p>
+<p>Unfortunately, that algorithm doesn’t exist: the equivalence problem is also undecidable.</p>
+<p>Like the halting and totality problems, the equivalence problem can be solved for some particular programs. For example, it’s possible to write a Python function that checks if two Python functions are the same, except for differences in the docstring, comments, spaces and the names of variables. However, it’s impossible to write an algorithm that solves the equivalence problem for <em>any</em> two programs.</p>
+</section>
+<section id="Reduction-and-computability">
+<h2><span class="section-number">27.4.5. </span>Reduction and computability<a class="headerlink" href="#Reduction-and-computability" title="Link to this heading"></a></h2>
+<p>You learned in Chapter 26 how polynomial-time reduction can be used to classify problems as tractable or NP-hard. Here you’ll see how it can be used to classify problems as computable or not.</p>
+<p>If problem A can be reduced to problem B, then we have the following algorithm for A:</p>
+<ol class="arabic simple">
+<li><p>Transform the inputs of A into those of B.</p></li>
+<li><p>Compute the output of B using any algorithm for B.</p></li>
+<li><p>Transform the output of B into the one for A.</p></li>
+</ol>
+<p>Steps 1 and 3 do not have to take polynomial time for A to be solvable: what matters is that there must be some algorithm for B we can use. In summary, a reduction of A to B tells us that if B can be solved, so can A.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If problem A reduces to a computable problem B, then A is computable too.</p>
+</div>
+<p>What if we’re told that A reduces to B, i.e. steps 1 and 3 are possible, but that A can’t be solved, i.e. there’s no algorithm for A? In that case, step 2 isn’t possible: there’s no algorithm for B. If there were one, the three steps would form an algorithm for A, which we’re told is not possible. In summary, a reduction of A to B tells us that if A can’t be solved, neither can B.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If a non-computable problem A reduces to problem B, then B isn’t computable either.</p>
+</div>
+<p>This fact allowed computer scientists to reduce the halting problem to the totality, equivalence and other problems to prove they are undecidable too.</p>
+</section>
+<section id="The-problem-landscape">
+<h2><span class="section-number">27.4.6. </span>The problem landscape<a class="headerlink" href="#The-problem-landscape" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../26_Complexity_classes/26_6_summary.html#Problem-classes"><span class="std std-ref">diagram</span></a> in Chapter 26 covers all computable problems, because each one is either tractable or intractable and is either a decision problem or not. If we add non-computable problems to that diagram, we get:</p>
+<p id="fig-27.4.1"></p><p><a class="reference internal" href="../33_Figures/Figures_27_4.html#Figure-27.4.1"><span class="std std-ref">Figure 27.4.1</span></a></p>
+<img alt="Image 27_4_classes.png" src="../_images/27_4_classes.png" />
+<p>The new diagram shows that the undecidable problems are the intersection of the non-computable and the decision problems.</p>
+<p>The new diagram also shows that the NP-hard class also includes non-computable problems. For example, it includes the halting problem.</p>
+<p>As <a class="reference internal" href="../26_Complexity_classes/26_4_hardness.html#The-NP-hard-class"><span class="std std-ref">explained before</span></a>, if an NP-hard problem A reduces in polynomial time to problem B, then B is NP-hard too. It has been shown that there’s a polynomial-time reduction of the SAT problem, which is NP-hard, to the halting problem, which is therefore NP-hard too.</p>
+<section id="Exercise-27.4.1">
+<h3>Exercise 27.4.1<a class="headerlink" href="#Exercise-27.4.1" title="Link to this heading"></a></h3>
+<p>Knowing that the halting problem reduces in polynomial time to the totality and to the equivalence problems, does it mean that these two problems are NP-hard too? Explain why or why not.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_27_4_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_27_4_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-27.4.2">
+<h3>Exercise 27.4.2<a class="headerlink" href="#Exercise-27.4.2" title="Link to this heading"></a></h3>
+<p>Bob is confused.</p>
+<div class="line-block">
+<div class="line">‘We were told that SAT reduces to the halting problem,’ he tells Alice.</div>
+<div class="line">‘Indeed,’ replies Alice.</div>
+<div class="line">‘We were also told that if a non-computable problem reduces to some problem B, then B isn’t computable either,’ continues Bob.</div>
+<div class="line">‘Yes,’ confirms Alice.</div>
+<div class="line">‘So shouldn’t SAT be undecidable, like the halting problem?’ asks Bob.</div>
+</div>
+<p>How can Alice explain to Bob what’s wrong with his reasoning?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_27_4_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_27_4_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="27_3_static_analysis.html" class="btn btn-neutral float-left" title="27.3. Static analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="27_5_summary.html" class="btn btn-neutral float-right" title="27.5. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>26.4. Problem hardness</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="26.5. Theory and Practice" href="26_5_theory_practice.html" />
+    <link rel="prev" title="26.3. Reductions" href="26_3_reductions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="26-introduction.html">26. Complexity classes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="26_1_tractable.html">26.1. Tractable and intractable problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_2_P_and_NP.html">26.2. The P and NP classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_3_reductions.html">26.3. Reductions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">26.4. Problem hardness</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Comparing-problems">26.4.1. Comparing problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Transitivity">26.4.2. Transitivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-NP-hard-class">26.4.3. The NP-hard class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-NP-complete-class">26.4.4. The NP-complete class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#P-versus-NP">26.4.5. P versus NP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="26_5_theory_practice.html">26.5. Theory and Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_6_summary.html">26.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="26-introduction.html"><span class="section-number">26. </span>Complexity classes</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">26.4. </span>Problem hardness</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Problem-hardness">
+<h1><span class="section-number">26.4. </span>Problem hardness<a class="headerlink" href="#Problem-hardness" title="Link to this heading"></a></h1>
+<p>So far we used reduction to obtain an algorithm for an unsolved problem, given an algorithm for an already-solved problem. This section shows how reduction can be used to classify problems.</p>
+<section id="Comparing-problems">
+<h2><span class="section-number">26.4.1. </span>Comparing problems<a class="headerlink" href="#Comparing-problems" title="Link to this heading"></a></h2>
+<p>By reducing problem A to problem B, we obtain an algorithm for A: it transforms the inputs, uses the most efficient algorithm for B and transforms the output. So, the complexity of problem A is at most the sum of the complexities of the input and output transformations and of problem B. (Remember that the complexity of a problem is the complexity of the most efficient algorithm that solves it.)</p>
+<p>We say ‘at most’ because there could be a more efficient algorithm for A, possibly without using reduction. For example, the reduction of the interval scheduling to the maximal independent set problem shows that the complexity of the former is at most exponential, and in fact there’s a far more efficient greedy algorithm.</p>
+<p>We say that problem A is <strong>at most as hard as</strong> problem B, and B is <strong>at least as hard as</strong> A, if A can be reduced to B with two polynomial transformation algorithms.</p>
+<p>All examples in the previous section use polynomial-time transformations, so finding the median is at most as hard as sorting, finding the minimum or maximum is at most as hard as selecting the <em>n</em>-th smallest value, and the interval scheduling problem is at most as hard as the maximal independent set problem.</p>
+<p>Intuitively, A being at most as hard as B means that</p>
+<ul class="simple">
+<li><p>either A is as hard as B (both are tractable or both are intractable)</p></li>
+<li><p>or A is less hard than B (A is tractable and B is intractable).</p></li>
+</ul>
+<p>This only happens if both transformations take polynomial time. If at least one transformation takes longer than polynomial time, then even if B is tractable, the complexity of the reduction algorithm for A is non-polynomial and A could be intractable (if no algorithm that is more efficient exists).</p>
+<p>To sum up, if one or both transformations are non-polynomial it’s possible for A to be harder than B (A is intractable and B is tractable). With polynomial transformations, A is always at most as hard as B.</p>
+<p>If A reduces in polynomial time to B and B is tractable, then so is A, because A can’t be harder than B. More precisely, A is tractable because the sum of the polynomial complexities of the transformations and of the algorithm for B is polynomial. This is our first example of how reduction helps classify problems.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If problem A reduces in polynomial time to a tractable problem, then A is tractable too.</p>
+</div>
+</section>
+<section id="Transitivity">
+<h2><span class="section-number">26.4.2. </span>Transitivity<a class="headerlink" href="#Transitivity" title="Link to this heading"></a></h2>
+<p>Before I introduce the final two complexity classes, we must realise that reduction is <em>transitive</em>: if problem A reduces to problem B, and B reduces to problem C, then A reduces to C. The reason is simple: if we can transform A’s inputs into B’s and B’s inputs into C’s, then we can just write one transformation algorithm after the other to transform A’s inputs directly into C’s, and similarly for the output transformations.</p>
+<p>The next figure shows that. The top diagram shows A being reduced to B, which is reduced to C, while the bottom diagram shows the direct reduction of A to C. Algorithms <span class="math notranslate nohighlight">\(\mathrm{IT}_\mathrm{A} + \mathrm{IT}_\mathrm{B}\)</span> and <span class="math notranslate nohighlight">\(\mathrm{OT}_\mathrm{C} + \mathrm{OT}_\mathrm{B}\)</span> are the concatenation of the input and of the output transformation algorithms.</p>
+<p id="fig-26.4.1"></p><p><a class="reference internal" href="../33_Figures/Figures_26_4.html#Figure-26.4.1"><span class="std std-ref">Figure 26.4.1</span></a></p>
+<img alt="Image 26_4_transitive.png" src="../_images/26_4_transitive.png" />
+<div class="admonition warning">
+<p><strong>Note:</strong> If A reduces to B and B reduces to C, then A reduces to C. If the reductions of A to B and of B to C take polynomial time, so does the reduction of A to C.</p>
+</div>
+</section>
+<section id="The-NP-hard-class">
+<h2><span class="section-number">26.4.3. </span>The NP-hard class<a class="headerlink" href="#The-NP-hard-class" title="Link to this heading"></a></h2>
+<p>In 1971, Stephen Cook proved something extraordinary: <em>any</em> decision problem in NP can be reduced in polynomial time to SAT, the satisfiability problem. This means that, by definition, SAT is at least as hard as every NP problem. Problems that are as hard as every problem in NP are called <strong>NP-hard</strong>.</p>
+<p>At the moment, no polynomial algorithm for SAT is known, but there’s no proof that it can’t exist. Imagine that someone finds a polynomial algorithm for SAT, thus proving that SAT is tractable. We saw earlier that if a problem A reduces in polynomial time to a tractable problem, then A must be tractable. So, since every NP problem reduces in polynomial time to SAT, if SAT turns out to be tractable, then every NP problem is tractable: NP = P. That’s why I wrote in
+<a class="reference internal" href="26_2_P_and_NP.html#P-versus-NP"><span class="std std-ref">Section 26.2.4</span></a> that SAT binds classes P and NP: to prove that P = NP you only have to find a polynomial algorithm for SAT.</p>
+<p>SAT was the first NP-hard problem to be found, but many others exist. Imagine that an NP-hard problem A reduces in polynomial time to problem B. Since any NP problem reduces in polynomial time to A, because A is NP-hard, then by transitivity of reduction it also reduces in polynomial time to B. Well, if there’s a polynomial-time reduction from each NP problem to B, then B is NP-hard by definition. We have just proved the following statement.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If an NP-hard problem A reduces in polynomial time to problem B, then B is NP-hard too.</p>
+</div>
+<p>This is the second example of using reduction to classify problems. Starting from SAT and using polynomial-time reductions, computer scientists have proven many problems to be NP-hard. I’ll list a few in <a class="reference internal" href="26_5_theory_practice.html#Theory"><span class="std std-ref">Section 26.5.1</span></a>. The earlier argument of why a polynomial algorithm for SAT proves that NP = P can be applied to any other NP-hard problem.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If someone finds a polynomial algorithm for <em>one</em> NP-hard problem, then NP = P.</p>
+</div>
+</section>
+<section id="The-NP-complete-class">
+<h2><span class="section-number">26.4.4. </span>The NP-complete class<a class="headerlink" href="#The-NP-complete-class" title="Link to this heading"></a></h2>
+<p>An NP-hard problem is <em>at least</em> as hard as any NP problem, so it may not be in the NP class. When a problem is both NP-hard and in NP, the problem is <strong>NP-complete</strong>.</p>
+<p>SAT is NP-complete because it is NP-hard (as proven by Stephen Cook) and in NP (as shown <a class="reference internal" href="26_2_P_and_NP.html#Class-NP"><span class="std std-ref">before</span></a>). Another NP-complete problem is the <a class="reference internal" href="26_2_P_and_NP.html#Exercise-26.2.1"><span class="std std-ref">decision TSP</span></a>. We’ve seen it’s in NP, but the proof that it’s NP-hard will be omitted.</p>
+<p>The NP-complete problems are the hardest problems in NP, because they are at least as hard as every other NP problem.</p>
+<p>One striking property of NP-complete problems is that they all reduce in polynomial time to each other. The reason for this is as follows. Consider any two NP-complete problems A and B, i.e. both are in NP and NP-hard. Since A is in NP and B is NP-hard, there’s a polynomial-time reduction of A to B, by definition of NP-hardness. However, since B is in NP and A is NP-hard, there’s also a polynomial-time reduction of B to A. So any two NP-complete problems reduce in polynomial time to each other.
+In a sense, all NP-complete problems are the same problem.</p>
+</section>
+<section id="P-versus-NP">
+<h2><span class="section-number">26.4.5. </span>P versus NP<a class="headerlink" href="#P-versus-NP" title="Link to this heading"></a></h2>
+<p>To conclude this section, let’s see how the NP-hard and NP-complete classes fit with the other classes under both scenarios: P = NP and P ≠ NP. Here’s a diagram showing the class relations.</p>
+<p id="fig-26.4.2"></p><p><a class="reference internal" href="../33_Figures/Figures_26_4.html#Figure-26.4.2"><span class="std std-ref">Figure 26.4.2</span></a></p>
+<img alt="Image 26_4_p_vs_np.png" src="../_images/26_4_p_vs_np.png" />
+<p>In both cases, due to the definition of NP-completeness, the NP-complete class is the intersection of the NP and NP-hard classes.</p>
+<p>The NP-hard class also includes non-decision problems because it has been proven that the travelling salesman problem and many other problems that don’t have Boolean outputs are NP-hard.</p>
+<p>We’ve seen earlier that if <em>any one</em> NP-hard problem is tractable, then <em>all</em> NP problems are tractable too. So when P ≠ NP (right-hand diagram), all NP-hard problems must be intractable, because otherwise we’d have NP = P. Since the NP-complete problems are a subset of the NP-hard problems, they must be intractable too when P ≠ NP.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="26_3_reductions.html" class="btn btn-neutral float-left" title="26.3. Reductions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="26_5_theory_practice.html" class="btn btn-neutral float-right" title="26.5. Theory and Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

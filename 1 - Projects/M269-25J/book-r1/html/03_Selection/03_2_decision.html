@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2. Decision problems</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.3. Boolean expressions" href="03_3_expressions.html" />
+    <link rel="prev" title="3.1. Booleans" href="03_1_booleans.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="03-introduction.html">3. Booleans and selection</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="03_1_booleans.html">3.1. Booleans</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. Decision problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-definition">3.2.1. Problem definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-instances">3.2.2. Problem instances</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.2.1">Exercise 3.2.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">3.2.3. Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">3.2.4. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Code-and-tests">3.2.5. Code and tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.2.2">Exercise 3.2.2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Performance">3.2.6. Performance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.2.3">Exercise 3.2.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03_3_expressions.html">3.3. Boolean expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_4_classification.html">3.4. Classification problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_5_exercises.html">3.5. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_6_summary.html">3.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="03-introduction.html"><span class="section-number">3. </span>Booleans and selection</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.2. </span>Decision problems</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Decision-problems">
+<h1><span class="section-number">3.2. </span>Decision problems<a class="headerlink" href="#Decision-problems" title="Link to this heading"></a></h1>
+<p>A problem that has only two possible outcomes is called a <strong>decision problem</strong>, like deciding whether an integer is even or odd, or is a natural number or not. The output of such problems is best represented as a Boolean.</p>
+<p>This section shows the process of solving a computational problem, using a decision problem as an example.</p>
+<section id="Problem-definition">
+<h2><span class="section-number">3.2.1. </span>Problem definition<a class="headerlink" href="#Problem-definition" title="Link to this heading"></a></h2>
+<p>Consider the following informal problem description:</p>
+<blockquote>
+<div><p>Many mobile phone apps require internet access to work. Implement a function that apps can call to check if the phone has an internet connection, i.e. if it’s not in flight mode (which ceases all communications) and Wi-Fi or mobile data are on.</p>
+</div></blockquote>
+<p>The first step towards solving this problem is to define the function. Decision problems should also have names that become yes/no questions when appending a question mark. Here are some options (other names are possible):</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: is internet connected</div>
+<div class="line"><strong>Function</strong>: connected to internet</div>
+<div class="line"><strong>Function</strong>: internet connection</div>
+</div>
+<p>Next, I must think about the inputs. To determine if there’s an internet connection, the function requires the current state of the flight mode, Wi-Fi connection and data connection. Each of those can be on or off. The operation therefore has three Boolean inputs.</p>
+<p><strong>Inputs</strong>: <em>in flight mode</em>, a Boolean; <em>wifi on</em>, a Boolean; <em>data on</em>, a Boolean</p>
+<p>Remember that variable names are in lowercase and can’t include hyphens, so it’s <em>wifi on</em>, not <em>Wi-Fi on</em>.</p>
+<p>I can’t think of any excluded value combinations, so:</p>
+<p><strong>Preconditions</strong>: true</p>
+<p>In M269, the output of a decision problem is always a Boolean.</p>
+<p><strong>Output</strong>: <em>internet on</em>, a Boolean</p>
+<p>The postcondition is given by the problem statement above: the phone has an internet connection if it’s not in flight mode and Wi-Fi or mobile data are on. This statement, in everyday English, is like the statement about Alice: it doesn’t use ‘and’ and ‘or’ with the same precedence as Boolean logic does. I must therefore translate it to the unambiguous English version we use in function definitions and algorithms, which relies on a precise meaning, precedence and associativity for ‘and’, ‘or’
+and every other operation.</p>
+<p><strong>Postconditions</strong>: <em>internet on</em> = true if and only if <em>in flight mode</em> = false and (<em>wifi on</em> = true or <em>data on</em> = true)</p>
+<p>A condition of the form ‘<em>b</em> = true’, where <em>b</em> is a Boolean variable, is true when <em>b</em> is true and false when <em>b</em> is false. In other words, the condition has the same value as the variable and can thus be simplified to just <em>b</em>. Similarly, a condition of the form ‘<em>b</em> = false’ has the opposite value of <em>b</em> and so can be simplified to ‘not <em>b</em>’. Here’s the whole definition, with these simplifications:</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: internet connection</div>
+<div class="line"><strong>Inputs</strong>: <em>in flight mode</em>, a Boolean; <em>wifi on</em>, a Boolean; <em>data on</em>, a Boolean</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>internet on</em>, a Boolean</div>
+<div class="line"><strong>Postconditions</strong>: <em>internet on</em> if and only if not <em>in flight mode</em> and (<em>wifi on</em> or <em>data on</em>)</div>
+</div>
+</section>
+<section id="Problem-instances">
+<h2><span class="section-number">3.2.2. </span>Problem instances<a class="headerlink" href="#Problem-instances" title="Link to this heading"></a></h2>
+<p>The next step of the process is to think how we’ll check our solution, when we have it.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Defining tests before devising an algorithm is part of test-driven development.</p>
+</div>
+<p>The function definition describes the general problem. A <strong>problem instance</strong> is a concrete problem: a collection of values, one per input, that satisfy the preconditions. The problem instances are those for which the algorithm must produce the correct output, i.e. that satisfies the postconditions.</p>
+<p>A <strong>test case</strong> is a problem instance and its expected output. Writing a <strong>test table</strong> with one test case per row helps us check that we didn’t forget any input, pre- or postcondition and helps us check our algorithm, once we write it.</p>
+<p>The table has one column per input and output, and one extra column to describe the test case. You should include problem instances for the <strong>edge cases</strong>, i.e. values that occur at the boundaries. Examples of edge cases are: the input’s lowest and highest possible values; zero (the boundary between negative and positive integers); 1 (the lowest positive number); −1 (the highest negative number). You can only include edge cases that satisfy the preconditions, or else the edge case is not a
+problem instance.</p>
+<p>This function has three inputs, each with two possible values, so there are only 2 × 2 × 2 = 8 problem instances. I consider the most interesting ones and leave the rest as an exercise for you.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Case</p></th>
+<th class="head"><p><em>in flight mode</em></p></th>
+<th class="head"><p><em>wifi on</em></p></th>
+<th class="head"><p><em>data on</em></p></th>
+<th class="head"><p><em>internet on</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>all on</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-odd"><td><p>all off</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+</tr>
+<tr class="row-even"><td><p>Wi-Fi connection</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>data connection</p></td>
+<td><p>false</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>both connections</p></td>
+<td><p>false</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+<td><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<p>The chosen instances cover all cases for Wi-Fi and data: both, neither, or only one of them is on. In the first instance, the flight mode overrides the Wi-Fi and data connections and so there’s no internet access.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 Block 1 Section 4.2.2 introduces test tables.</p>
+</div>
+<section id="Exercise-3.2.1">
+<h3>Exercise 3.2.1<a class="headerlink" href="#Exercise-3.2.1" title="Link to this heading"></a></h3>
+<p>Write the three remaining problem instances in the table below.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Case</p></th>
+<th class="head"><p><em>in flight mode</em></p></th>
+<th class="head"><p><em>wifi on</em></p></th>
+<th class="head"><p><em>data on</em></p></th>
+<th class="head"><p><em>internet on</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="../31_Hints/Hints_03_2_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Algorithm">
+<h2><span class="section-number">3.2.3. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p>The next step is to write an algorithm in plain but unambiguous English (and some maths, if necessary). This is the most creative step of the whole process: there’s no recipe for it. M269 teaches several algorithmic techniques to put you in the right direction, but coming up with the algorithm can still be hard work.</p>
+<p>For this problem I must translate the postcondition into an assignment:</p>
+<blockquote>
+<div><p>let <em>internet on</em> be (not <em>flight mode</em>) and (<em>wifi on</em> or <em>data on</em>)</p>
+</div></blockquote>
+<p>The first pair of parentheses is redundant because negations are evaluated before conjunctions, but I think they make the expression easier to read and understand.</p>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">3.2.4. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>The next step is to analyse the complexity of our algorithm and, if it turns out to be too high, i.e. the algorithm is too inefficient, go back to the previous step and improve or completely redesign the algorithm.</p>
+<p>My algorithm does a fixed number of operations: one assignment and three logical operations (one of each). The algorithm has constant complexity, assuming that logical operations have constant complexity. Do you think that’s a reasonable assumption?</p>
+<hr class="docutils" />
+<p>Definitely, for three reasons. First, logical operations are executed in hardware, by the computer’s arithmetic and logic unit (ALU). Second, Booleans can’t grow in value and size, unlike numbers, because there’s only two of them. Hence the run-time of logical operations can’t grow. Third, computing the result of a logical operation consists of a fixed number of elementary steps to look up a truth table of at most four rows.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 Block 1 Section 3.1.1 introduces the ALU.</p>
+</div>
+<p>The algorithm has complexity Θ(1). That’s as good as it gets.</p>
+</section>
+<section id="Code-and-tests">
+<h2><span class="section-number">3.2.5. </span>Code and tests<a class="headerlink" href="#Code-and-tests" title="Link to this heading"></a></h2>
+<p>Finally, we translate the function definition and the algorithm to a Python function. The header is rather long and so I write the parameters over multiple lines.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">internet_connection</span><span class="p">(</span><span class="n">in_flight_mode</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">wifi_on</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">data_on</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return whether there&#39;s a connection to the internet.</span>
+
+<span class="sd">    Postconditions: the output is true if and only if</span>
+<span class="sd">    (not in_flight_mode) and (wifi_on or data_on)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">internet_on</span> <span class="o">=</span> <span class="p">(</span><span class="ow">not</span> <span class="n">in_flight_mode</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">wifi_on</span> <span class="ow">or</span> <span class="n">data_on</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">internet_on</span>
+</pre></div>
+</div>
+</div>
+<p>To check the algorithm and its translation to Python, I must call the Python function for each test case in my table and compare the interpreter’s output with the last column of the table.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">internet_connection</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">internet_connection</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">internet_connection</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">internet_connection</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">internet_connection</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<section id="Exercise-3.2.2">
+<h3>Exercise 3.2.2<a class="headerlink" href="#Exercise-3.2.2" title="Link to this heading"></a></h3>
+<p>Add the calls for the remaining three problem instances. The quickest way is to copy and paste code cells and change as necessary.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_03_2_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Performance">
+<h2><span class="section-number">3.2.6. </span>Performance<a class="headerlink" href="#Performance" title="Link to this heading"></a></h2>
+<p>The last step is to measure the run-time of the implemented function. As explained in the previous chapter, complexity analysis only gives us an idea of how the run-time grows for increasingly large inputs: it doesn’t tell us whether the implemented algorithm runs slow or fast.</p>
+<p>Often we won’t do any run-time measurement as there’s little point in it, like in this example. I expect the run-times to be pretty small, given that the function just does a few logical operations, one assignment and one return statement (which also takes constant time).</p>
+<p>Let’s check that logical operations take constant time.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 internet_connection(True, True, True)
+<span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 internet_connection(False, False, False)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+52.5 ns ± 0.472 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+61.8 ns ± 0.465 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+</pre></div></div>
+</div>
+<p>On my computer the second call takes longer than the first one. Can you explain the reason?</p>
+<hr class="docutils" />
+<p>The first call doesn’t execute the disjunction operation. It short-circuits the conjunction because <code class="docutils literal notranslate"><span class="pre">in_flight_mode</span></code> is true and thus the left operand (<code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in_flight_mode</span></code>) is false. The second call takes longer to run because it doesn’t short-circuit any operation: the left operand of the conjunction is true and the left operand of the disjunction (<code class="docutils literal notranslate"><span class="pre">wifi_on</span></code>) is false.</p>
+<p>To compare like for like, we must make two calls that do the same number of evaluations. Here are two that don’t short-circuit any expression and therefore execute all logical operations (negation, conjunction and disjunction).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 internet_connection(False, False, False)
+<span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 internet_connection(False, False, True)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+61.8 ns ± 0.425 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+61.8 ns ± 0.343 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+</pre></div></div>
+</div>
+<p>The run-times are now more similar.</p>
+<section id="Exercise-3.2.3">
+<h3>Exercise 3.2.3<a class="headerlink" href="#Exercise-3.2.3" title="Link to this heading"></a></h3>
+<p>Measure the run-times of two function calls that don’t short-circuit the conjunction, but short-circuit the disjunction.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace with your code</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_03_2_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_2_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="03_1_booleans.html" class="btn btn-neutral float-left" title="3.1. Booleans" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="03_3_expressions.html" class="btn btn-neutral float-right" title="3.3. Boolean expressions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

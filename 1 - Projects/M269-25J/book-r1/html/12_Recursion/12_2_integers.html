@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12.2. Recursion on integers</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12.3. Length of a sequence" href="12_3_length.html" />
+    <link rel="prev" title="12.1. The factorial function" href="12_1_factorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="12-introduction.html">12. Recursion</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="12_1_factorial.html">12.1. The factorial function</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12.2. Recursion on integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">12.2.1. Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Recursive-definition">12.2.2. Recursive definition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-12.2.1">Exercise 12.2.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-12.2.2">Exercise 12.2.2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="12_3_length.html">12.3. Length of a sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_4_inspect_sequences.html">12.4. Inspecting sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_5_create_sequences.html">12.5. Creating sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_6_avoid_slicing.html">12.6. Avoiding slicing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_7_multiple.html">12.7. Multiple recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_8_summary.html">12.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="12-introduction.html"><span class="section-number">12. </span>Recursion</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">12.2. </span>Recursion on integers</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Recursion-on-integers">
+<h1><span class="section-number">12.2. </span>Recursion on integers<a class="headerlink" href="#Recursion-on-integers" title="Link to this heading"></a></h1>
+<p>Let’s step back from the factorial example and see how to design a recursive algorithm on integers. Consider a problem on an integer <em>n</em> with precondition <em>n</em> ≥ <em>lowest</em>. Computing the factorial is such a problem, with <em>lowest</em> = 0.</p>
+<section id="Algorithm">
+<h2><span class="section-number">12.2.1. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p>A recursive algorithm repeatedly decreases <em>n</em> by one each time, until it can’t be further decreased, i.e. until the input is <em>lowest</em>. At that point we reached the base case and the answer is directly computed. Then, the output for <em>lowest</em> is used to obtain the answer for <em>lowest</em> + 1. That output is then used to obtain the output for <em>lowest</em> + 2 and so on, until we get the output for the original input <em>n</em>.</p>
+<p>The algorithmic pattern for a recursive decrease by one function f(<em>n</em>) is:</p>
+<ol class="arabic simple">
+<li><p>if <em>n</em> = <em>lowest</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>solution</em> be …</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>subproblem</em> be <em>n</em>−1</p></li>
+<li><p>let <em>subsolution</em> be f(<em>subproblem</em>)</p></li>
+<li><p>let <em>solution</em> be based on <em>subsolution</em> and <em>n</em></p></li>
+</ol>
+</li>
+</ol>
+<p>The algorithm first checks for the base case (step 1) and computes the output directly (step 1.1). Otherwise, the algorithm decreases the input (step 2.1), makes a recursive call to solve the smaller subproblem (step 2.2), and finally combines the ‘subsolution’ (the solution for the subproblem) with <em>n</em> to get the solution for the original problem (step 2.3). As you shall see, for some problems the solution can be computed from the subsolution only, without using the value of <em>n</em>, but that’s
+rare.</p>
+<p>To sum up, a recursive algorithm usually consists of four steps:</p>
+<ul class="simple">
+<li><p>check and compute the base case</p></li>
+<li><p>decrease the input</p></li>
+<li><p>recur</p></li>
+<li><p>combine.</p></li>
+</ul>
+<p>If the last three steps are simple and short, they are merged into a single expression, as done for the factorial.</p>
+<p>The second step usually decreases the input by one to make sure it reaches the base case. For example, if <em>lowest</em> = 3 and the input were decreased by two at a time, then the recursion wouldn’t stop for any even <em>n</em>, because the successive inputs would be …, 4, 2, 0, −2, −4, …</p>
+</section>
+<section id="Recursive-definition">
+<h2><span class="section-number">12.2.2. </span>Recursive definition<a class="headerlink" href="#Recursive-definition" title="Link to this heading"></a></h2>
+<p>To fill in the algorithmic pattern, you only need to come up with the recursive definition and for that you need to answer just two questions:</p>
+<ol class="arabic simple">
+<li><p>What’s the lowest value for the input and what’s the corresponding output?</p></li>
+<li><p>If I know the output for <em>n</em>−1, how can I use it to compute the output for <em>n</em>?</p></li>
+</ol>
+<p>The recursive definition for function f is then:</p>
+<ul class="simple">
+<li><p>if <em>n</em> = <em>lowest</em>: f(<em>n</em>) = output</p></li>
+<li><p>if <em>n</em> &gt; <em>lowest</em>: f(<em>n</em>) = some expression based on f(<em>n</em>−1) and <em>n</em>.</p></li>
+</ul>
+<p>Not all problems on integers can be defined recursively. For example, as far as I know there’s no recursive definition for being prime, because whether <em>n</em>−1 is prime doesn’t in general provide a clue about whether <em>n</em> is prime. So for this example, it’s not possible, at least without advanced mathematical knowledge, to answer question 2 above.</p>
+<section id="Exercise-12.2.1">
+<h3>Exercise 12.2.1<a class="headerlink" href="#Exercise-12.2.1" title="Link to this heading"></a></h3>
+<p>Write a recursive definition of whether a positive integer is even, i.e. divisible by two.</p>
+<ul class="simple">
+<li><p>if <em>n</em> = …: even(<em>n</em>) = …</p></li>
+<li><p>if <em>n</em> &gt; …: even(<em>n</em>) = …</p></li>
+</ul>
+<p><a class="reference internal" href="../31_Hints/Hints_12_2_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_12_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-12.2.2">
+<h3>Exercise 12.2.2<a class="headerlink" href="#Exercise-12.2.2" title="Link to this heading"></a></h3>
+<p>Implement it and add more tests. Add print statements if you wish.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">even</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write the docstring here.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="n">even_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,             n,      even?</span>
+    <span class="p">(</span><span class="s1">&#39;smallest even&#39;</span><span class="p">,</span>   <span class="mi">2</span><span class="p">,</span>      <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;larger even&#39;</span><span class="p">,</span>     <span class="mi">100</span><span class="p">,</span>    <span class="kc">True</span><span class="p">),</span>
+    <span class="c1"># your tests here</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">even</span><span class="p">,</span> <span class="n">even_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../32_Answers/Answers_12_2_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="12_1_factorial.html" class="btn btn-neutral float-left" title="12.1. The factorial function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="12_3_length.html" class="btn btn-neutral float-right" title="12.3. Length of a sequence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22.4. Optimise</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="22.5. Back to the TSP" href="22_5_tsp.html" />
+    <link rel="prev" title="22.3. Trackword" href="22_3_trackword.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="22-introduction.html">22. Backtracking</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="22_1_sequences.html">22.1. Generate sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_2_pruning.html">22.2. Prune the search space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_3_trackword.html">22.3. Trackword</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">22.4. Optimise</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#The-problem">22.4.1. The problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Keep-the-best">22.4.2. Keep the best</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Avoid-worse-candidates">22.4.3. Avoid worse candidates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Start-well">22.4.4. Start well</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="22_5_tsp.html">22.5. Back to the TSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_6_subsets.html">22.6. Generate subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_7_knapsack.html">22.7. Back to the knapsack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_8_summary.html">22.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="22-introduction.html"><span class="section-number">22. </span>Backtracking</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">22.4. </span>Optimise</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Optimise">
+<h1><span class="section-number">22.4. </span>Optimise<a class="headerlink" href="#Optimise" title="Link to this heading"></a></h1>
+<p>I’ve shown you how to solve constraint satisfaction problems on sequences with backtracking. It shouldn’t be a surprise that backtracking can also solve optimisation problems. Instead of collecting all solutions in a list or set, the algorithm keeps only the best solution found so far. Let’s see an example.</p>
+<section id="The-problem">
+<h2><span class="section-number">22.4.1. </span>The problem<a class="headerlink" href="#The-problem" title="Link to this heading"></a></h2>
+<p>I take the earlier problem of finding sequences of numbers from 1 to <em>n</em> that satisfy range and parity constraints, and add an optimisation criterion: we want a sequence with a lowest sum. For example, for <em>n</em> = 4, the best sequence is (1, 4) because its sum 5 is lowest among all other sequences that satisfy both constraints.</p>
+<p>An optimisation problem asks to find a solution that minimises or maximises some value. We thus need a function that calculates the value of a candidate. For this problem, it’s simply the sum of the numbers in the sequence.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the value of the candidate: the sum of the numbers.&quot;&quot;&quot;</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+</div>
+</div>
+<p>With respect to the earlier solution for the constraint satisfaction problem, I need to make two changes. First, instead of appending each solution found to a sequence, the backtracking algorithm must receive the current best solution as input and update it when it finds a better solution. Second, the main function must compute some initial best solution and pass it to the backtracking function. Let’s do these changes in turn.</p>
+</section>
+<section id="Keep-the-best">
+<h2><span class="section-number">22.4.2. </span>Keep the best<a class="headerlink" href="#Keep-the-best" title="Link to this heading"></a></h2>
+<p>The backtracking algorithm must compare each found solution to the current best and update the latter if the new solution is better. If it’s a minimisation problem, better means having a lower value, otherwise better means higher.</p>
+<p>To avoid recomputing the best solution’s value every time it’s compared to a new solution, I will trade space for time and keep a solution–value pair instead of just the best solution. Usually I represent a pair with a tuple, but to be able to update the pair, I use a list of length two with <a class="reference internal" href="../04_Iteration/04_5_tuples.html#Tables"><span class="std std-ref">constants to name the indices</span></a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SOLUTION</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VALUE</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<p>I could instead have defined a class with two data fields, similar to the node classes for <a class="reference internal" href="../06_Implementing/06_7_linked_list.html#The-LinkedSequence-class"><span class="std std-ref">linked lists</span></a> and <a class="reference internal" href="../16_Trees/16_1_binary.html#ADT-and-data-structure"><span class="std std-ref">binary trees</span></a>. I’ll leave that as an optional exercise, if you wish to practise using classes.</p>
+<p>The backtracking function is largely the same as before. The <code class="docutils literal notranslate"><span class="pre">solutions</span></code> parameter is replaced by the best solution–value pair, which is updated when the current candidate is a better solution.</p>
+<p>I add some print statements to later follow the algorithm’s actions.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update best if needed, and extend candidate.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Visiting node&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">satisfies_range</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">candidate_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">candidate_value</span> <span class="o">&lt;</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New best&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="s2">&quot;with value&quot;</span><span class="p">,</span> <span class="n">candidate_value</span><span class="p">)</span>
+            <span class="n">best</span><span class="p">[</span><span class="n">SOLUTION</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span>
+            <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_value</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">):</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">extensions</span> <span class="o">-</span> <span class="p">{</span><span class="n">item</span><span class="p">},</span> <span class="n">n</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The current best solution must be initialised before starting the search. Since the search updates the current best every time a better one is found, the initial best can be <em>any</em> solution, preferably one that is easy to construct.</p>
+<p>For this problem, sequence (1, 2, …, <em>n</em>) is a solution: it satisfies both constraints.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">best_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a lowest sum sequence that satisfies both constraints.&quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="p">[</span><span class="n">solution</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">solution</span><span class="p">)]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">best</span>
+</pre></div>
+</div>
+</div>
+<p>The constraint checking functions are as before.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">satisfies_range</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if first and last numbers in candidate are at least n/2 apart.</span>
+
+<span class="sd">    Preconditions: candidate is a list of integers; n &gt; 2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">candidate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">candidate</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if extending candidate with item can lead to a solution.&quot;&quot;&quot;</span>
+    <span class="c1"># the number and the index where it will be put must have different parity</span>
+    <span class="k">return</span> <span class="n">item</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span>
+
+
+<span class="n">best_sequence</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Visiting node [] {1, 2, 3, 4}
+Visiting node [1] {2, 3, 4}
+Visiting node [1, 2] {3, 4}
+Visiting node [1, 2, 3] {4}
+New best [1, 2, 3] with value 6
+Visiting node [1, 2, 3, 4] set()
+Visiting node [1, 4] {2, 3}
+New best [1, 4] with value 5
+Visiting node [1, 4, 3] {2}
+Visiting node [1, 4, 3, 2] set()
+Visiting node [3] {1, 2, 4}
+Visiting node [3, 2] {1, 4}
+Visiting node [3, 2, 1] {4}
+Visiting node [3, 2, 1, 4] set()
+Visiting node [3, 4] {1, 2}
+Visiting node [3, 4, 1] {2}
+Visiting node [3, 4, 1, 2] set()
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1, 4], 5]
+</pre></div></div>
+</div>
+<p>As desired, the result is the sequence (1, 4) with lowest sum 5.</p>
+<p>This version visits 15 nodes. Can we further prune the search space? (All together now: oh yes, we can!)</p>
+</section>
+<section id="Avoid-worse-candidates">
+<h2><span class="section-number">22.4.3. </span>Avoid worse candidates<a class="headerlink" href="#Avoid-worse-candidates" title="Link to this heading"></a></h2>
+<p>When using backtracking for an optimisation problem, we must think whether we can avoid generating candidates that won’t lead to a better solution than the current one.</p>
+<p>In this problem, as a sequence is extended, its sum grows because all extensions are positive numbers. When a sequence reaches or surpasses the sum of the current best solution, we know this sequence can’t lead to a better solution, with a lower sum, so we can stop extending it.</p>
+<p>To do this check, the <code class="docutils literal notranslate"><span class="pre">can_extend</span></code> function needs another parameter: the current best.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if item can extend candidate to a better solution than best.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">item</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">item</span> <span class="o">+</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Because of the extra parameter, we must change its call in <code class="docutils literal notranslate"><span class="pre">extend</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">best</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update best if a better extension of candidate is found.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Visiting node&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">satisfies_range</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">candidate_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">candidate_value</span> <span class="o">&lt;</span> <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New best&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="s2">&quot;with value&quot;</span><span class="p">,</span> <span class="n">candidate_value</span><span class="p">)</span>
+            <span class="n">best</span><span class="p">[</span><span class="n">SOLUTION</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate</span>
+            <span class="n">best</span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span> <span class="o">=</span> <span class="n">candidate_value</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">best</span><span class="p">):</span>  <span class="c1"># changed line</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">extensions</span> <span class="o">-</span> <span class="p">{</span><span class="n">item</span><span class="p">},</span> <span class="n">n</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+
+
+<span class="n">best_sequence</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Visiting node [] {1, 2, 3, 4}
+Visiting node [1] {2, 3, 4}
+Visiting node [1, 2] {3, 4}
+Visiting node [1, 2, 3] {4}
+New best [1, 2, 3] with value 6
+Visiting node [1, 4] {2, 3}
+New best [1, 4] with value 5
+Visiting node [3] {1, 2, 4}
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1, 4], 5]
+</pre></div></div>
+</div>
+<p>As you can see, only six of the previous 15 nodes are created and visited. Once a solution with sum 5 is found, partial candidates starting with 3 aren’t generated because number 3 can only be followed by 2 or 4, both leading to sequences with sum at least 5 and thus not improving on the current best.</p>
+<p>Is this the best (pun intended) we can do to prune the search space? (All together: oh no, it isn’t!)</p>
+</section>
+<section id="Start-well">
+<h2><span class="section-number">22.4.4. </span>Start well<a class="headerlink" href="#Start-well" title="Link to this heading"></a></h2>
+<p>I mentioned earlier that we can start with any solution because the search continuously improves on it until it finds the best solution. However, now that the algorithm uses the best solution to not generate candidates leading to equally good or worse solutions, we should start with an initial solution close to a best one, to further prune the search space. The trick is to think of a good solution that is easy to construct.</p>
+<p>Based on the fact that (1, 4) is a best solution for <em>n</em> = 4, I choose (1, <em>n</em>) or (1, 2, <em>n</em>) as the initial solution, depending on whether <em>n</em> is even or odd. (Remember that <em>n</em> &gt; 2.)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">best_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a lowest sum sequence that satisfies both constraints.&quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="p">[</span><span class="n">solution</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">solution</span><span class="p">)]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">best</span>
+
+
+<span class="n">best_sequence</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Visiting node [] {1, 2, 3, 4}
+Visiting node [1] {2, 3, 4}
+Visiting node [1, 2] {3, 4}
+Visiting node [3] {1, 2, 4}
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1, 4], 5]
+</pre></div></div>
+</div>
+<p>The final version only visits four of the initial version’s 15 nodes: the search space has been reduced by over 70%!</p>
+<p>To sum up, backtracking can solve optimisation problems by keeping track of the current best solution and its value, and by updating both when a better solution is found. For optimisation problems where extending a candidate worsens its value, e.g. makes the value larger but it’s a minimisation problem, the search space can be pruned by stopping extending a candidate when its value is equal to or worse than the current best. Further pruning can be obtained by constructing an initial solution
+close to a best one.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="22_3_trackword.html" class="btn btn-neutral float-left" title="22.3. Trackword" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="22_5_tsp.html" class="btn btn-neutral float-right" title="22.5. Back to the TSP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

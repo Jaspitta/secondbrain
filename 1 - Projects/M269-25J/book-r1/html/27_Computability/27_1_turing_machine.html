@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>27.1. Turing machine</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="27.2. The Church–Turing thesis" href="27_2_thesis.html" />
+    <link rel="prev" title="27. Computability" href="27-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="27-introduction.html">27. Computability</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">27.1. Turing machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Definition">27.1.1. Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Parity-bit">27.1.2. Parity bit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Implementation">27.1.3. Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Checking-passwords">27.1.4. Checking passwords</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-27.1.1">Exercise 27.1.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-27.1.2">Exercise 27.1.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-27.1.3">Exercise 27.1.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-27.1.4">Exercise 27.1.4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="27_2_thesis.html">27.2. The Church–Turing thesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27_3_static_analysis.html">27.3. Static analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27_4_undecidability.html">27.4. Undecidability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="27_5_summary.html">27.5. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="27-introduction.html"><span class="section-number">27. </span>Computability</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">27.1. </span>Turing machine</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Turing-machine">
+<h1><span class="section-number">27.1. </span>Turing machine<a class="headerlink" href="#Turing-machine" title="Link to this heading"></a></h1>
+<p>In 1936, mathematician Alan Turing captured the intuitive notion of algorithms in a formal way. There were no programmable analogue or electronic computers in those days, so he proposed a conceptual machine that could carry out computations.</p>
+<p>The following is one of many possible definitions of <strong>Turing machines</strong>. As we shall see later, it doesn’t really matter which definition we adopt.</p>
+<section id="Definition">
+<h2><span class="section-number">27.1.1. </span>Definition<a class="headerlink" href="#Definition" title="Link to this heading"></a></h2>
+<p>The ‘hardware’ of the Turing machine consists of a <strong>tape</strong> divided into <strong>cells</strong>. Each cell holds one <strong>symbol</strong>. The symbols are anything that’s convenient for the problem at hand: bits (0 and 1), characters, 64-bit integers, etc. The special <strong>blank</strong> symbol indicates that a cell is empty.</p>
+<p>The tape is infinite: it has a start but no end. The machine has a <strong>head</strong> that is over one cell at a time. The head may move left or right, one cell at a time. The head can read the symbol in the cell it’s over (the <strong>current symbol</strong>) and write a symbol into that cell. Initially, the head is at the start of the tape. If at any time the head moves to the left of the first cell, the machine stops.</p>
+<p>Since the tape is infinite, only part of it contains the data; the rest is an infinite sequence of blanks. The <strong>input</strong> is the initial data on the tape: the zero or more symbols before the infinite blank sequence. When the machine stops executing, the <strong>output</strong> is the symbols from the head onwards until the infinite blank sequence starts.</p>
+<p>When we write an algorithm in English or implement it in a programming language, the problem definition tells us how many inputs and outputs there are, their types and all the conditions they must satisfy. Likewise, problem statements for Turing machines must tell us the initial and final content of the tape, what symbols are used and where the head is when the machine stops. You will see an example in a minute.</p>
+<p>As for the ‘software’ of a Turing machine, it defines when and how to move the head and which symbol to write. This depends on the <strong>current state</strong> of the machine. There’s a finite set of possible states and we must indicate which one is the <strong>initial state</strong>.</p>
+<p>The program for the machine is of the form</p>
+<ol class="arabic simple">
+<li><p>put head on the start of the tape</p></li>
+<li><p>let current state be the initial state</p></li>
+<li><p>repeat forever:</p>
+<ol class="arabic simple">
+<li><p>if current state = … and current symbol = …:</p>
+<ol class="arabic simple">
+<li><p>write symbol …</p></li>
+<li><p>move the head left or right or not at all</p></li>
+<li><p>let current state be …</p></li>
+</ol>
+</li>
+<li><p>otherwise if current state = … and current symbol = …:</p>
+<ol class="arabic simple">
+<li><p>write symbol …</p></li>
+<li><p>move the head left or right or not at all</p></li>
+<li><p>let current state be …</p></li>
+</ol>
+</li>
+<li><p>…</p></li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>stop</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>There’s at most one if-statement per state–symbol pair and so the order of the if-statements doesn’t matter. For <em>n</em> symbols and <em>m</em> states, there are at most <em>n</em>×<em>m</em> if-statements. If there’s no if-statement for the current symbol and state (step 3.4 above), the machine stops.</p>
+<p>Turing machines use the three algorithmic ingredients: iteration (repeat forever), selection (the if-statements) and sequence of instructions.</p>
+<p>The if-statements can be represented more compactly as a <strong>transition table</strong> that has one row per state and one column per symbol, including the blank symbol. If there’s an if-statement for a particular state and symbol, then the table entry for the corresponding row and column indicates the <strong>execution step</strong>: the symbol written (which can be the same as the symbol read), the movement of the head (left, right or stay) and the new state (which can be the same as the current state).</p>
+<p>A <strong>configuration</strong> is made of the current state, the position of the head and the content of the tape. Each execution step makes the Turing machine transition from one configuration to the next.</p>
+<p>Let’s see an example Turing machine.</p>
+</section>
+<section id="Parity-bit">
+<h2><span class="section-number">27.1.2. </span>Parity bit<a class="headerlink" href="#Parity-bit" title="Link to this heading"></a></h2>
+<p>One method to detect if binary data was corrupted during transmission is for the sender to append a bit (0 or 1) to the message, so that the number of ones is even. The added bit is called the parity bit. The receiver checks the number of ones: if it’s odd, it asks for the message to be sent again, otherwise it discards the parity bit.</p>
+<p>For example, if the message is 011 then the parity bit is 0 and the sender transmits 0110. If the receiver gets 0111 then it knows something is wrong (here, the parity bit changed) and asks for a re-transmission of the message. This method can’t detect all errors. For example, if the message sent is 011011 and the message received is 100111, the errors aren’t detected because the number of 1s remains even.</p>
+<p>Here’s the problem description for a Turing machine.</p>
+<blockquote>
+<div><p>The tape initially has a blank followed by a possibly empty sequence of 0s and 1s. Add a 0 or 1 at the end, so that the number of 1s is even. Return the head to the start of the tape.</p>
+</div></blockquote>
+<p>As mentioned before, the description must include the needed symbols (‘0s and 1s’), the input (‘a blank followed by …’), what to do (‘add a 0 or 1 at the end’) and where the head ends up (‘return the head to the start’) in order to know what the output (the data to the right of the head) is.</p>
+<p>When providing input and output examples, we only represent the data as a finite sequence of symbols, omitting the infinite sequence of blank cells. The above example can be restated as: if the input is (blank, 0, 1, 1), the output is (blank, 0, 1, 1, 0).</p>
+<p>To solve the problem, we should first outline the algorithm, before writing the transition table. Here’s a first rough outline.</p>
+<blockquote>
+<div><p>Move the head to the right, over the 0s and 1s, keeping track of whether the number of 1s is even. When a blank is reached, write a 0 or 1 accordingly. Move the head to the left, over the 0s and 1s. Stop when a blank is reached.</p>
+</div></blockquote>
+<p>This outline is incomplete because it doesn’t explain how to determine if there’s an odd or even number of 1s. If a Turing machine had variables, we could count the 1s, but since it hasn’t, we must instead think in terms of states.</p>
+<p>All we need to keep track of, as we process the input, is the parity of the 1s, so let’s create two states called ‘odd’ and ‘even’. We don’t change state when reading a zero, but when we read a 1, we change the state from ‘odd’ to ‘even’ or vice versa. When we read a blank, we write a 0 if in the ‘even’ state, otherwise a 1. We then get into a new state, let’s call it ‘back’, where we simply move to the left until reading a blank.</p>
+<p>Finally, we must think of the initial state. Initially, we haven’t read any bits, so we should start in the ‘even’ state. However, the first symbol is a blank. We already have an action for a blank in the ‘even’ state: write 0 and start moving back. The only way for a machine to distinguish the start blank from the end blank is by being in two different states. We need therefore an extra initial state, let’s call it ‘start’.</p>
+<p>Here’s a better outline of the algorithm, detailing the actions and providing some of the rationale.</p>
+<ol class="arabic simple">
+<li><p>Begin in state ‘start’.</p></li>
+<li><p>Skip the initial blank and change to state ‘even’ because zero 1s have been read so far.</p></li>
+<li><p>Move right over any 0s and 1s, switching between the ‘even’ and ‘odd’ state when reading a 1.</p></li>
+<li><p>When reading a blank, write 0 if the state is ‘even’, otherwise write 1, because there’s an odd number of 1s and so we need an extra 1.</p></li>
+<li><p>After writing the parity bit, move left and change to the ‘back’ state.</p></li>
+<li><p>Move left, skipping any 0s and 1s.</p></li>
+<li><p>Don’t do anything when reading a blank: this stops the machine with the head at the start of the tape.</p></li>
+</ol>
+<p>Notice that an outline doesn’t have to spell out all details. For example, I use the word ‘skip’ to indicate that the head moves over the symbols without changing them. However, when writing the algorithm as a transition table, we must always indicate the symbol written, the head movement and the new state.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>blank</p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>start</p></td>
+<td><p>write blank, right, even</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>even</p></td>
+<td><p>write 0, left, back</p></td>
+<td><p>write 0, right, even</p></td>
+<td><p>write 1, right, odd</p></td>
+</tr>
+<tr class="row-even"><td><p>odd</p></td>
+<td><p>write 1, left, back</p></td>
+<td><p>write 0, right, odd</p></td>
+<td><p>write 1, right, even</p></td>
+</tr>
+<tr class="row-odd"><td><p>back</p></td>
+<td></td>
+<td><p>write 0, left, back</p></td>
+<td><p>write 1, left, back</p></td>
+</tr>
+</tbody>
+</table>
+<p>As the table shows, except when reaching a blank in the ‘even’ or ‘odd’ state, we always write the symbol that has been read, to keep the tape unchanged.</p>
+<p>The next figure shows how the machine processes input (blank, 1, 0, 1). The figure shows above each symbol the current state and below the symbol how the head moves. The new state, after moving the head, is the state above the next cell.</p>
+<p id="fig-27.1.1"></p><p><a class="reference internal" href="../33_Figures/Figures_27_1.html#Figure-27.1.1"><span class="std std-ref">Figure 27.1.1</span></a></p>
+<img alt="Image 27_1_parity.png" src="../_images/27_1_parity.png" />
+<p>The machine begins in state ‘start’, skips the blank by moving the head right and enters state ‘even’. It continues reading symbols and moving right, changing state after reading a 1.</p>
+<p>When it reaches the blank after the bit sequence, it writes a 0 because it’s in state ‘even’, moves the head left and enters state ‘back’. It keeps moving the head left in that state until the first blank is reached. There’s no entry in the transition table for state ‘back’ and the blank symbol, so the machine stops.</p>
+</section>
+<section id="Implementation">
+<h2><span class="section-number">27.1.3. </span>Implementation<a class="headerlink" href="#Implementation" title="Link to this heading"></a></h2>
+<p>This subsection explains how I implemented Turing machines and the functions I created for you to write, run and test Turing machines. All functions are in file <code class="docutils literal notranslate"><span class="pre">m269_tm.py</span></code>, so let’s run it to load those functions.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_tm
+</pre></div>
+</div>
+</div>
+<p>The Turing machine simulator will take a transition table, an input tape and an initial state, and execute steps until there’s no transition for the current state and symbol. To simplify things, we adopt the following convention.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> In M269, the initial state of a Turing machine is always called ‘start’.</p>
+</div>
+<p>The simulator will be implemented as a Python function with two inputs (a transition table and a tape) and one output (the tape from the head’s final position onwards).</p>
+<p>There are many ways to represent transition tables in Python. The simplest, in my view, is a map (Python dictionary) of state–symbol pairs to symbol–movement–state triples: given the current state and symbol, the map tells us what symbol is written, how the head moves and what’s the new state.</p>
+<p>I will represent the tape as a list, with one symbol per cell. The blank symbol is represented with <code class="docutils literal notranslate"><span class="pre">None</span></code>. The current position of the head is a natural number, indexing the list. The movement can thus be represented as how the current index changes: −1 to move the head left, +1 to move it right and 0 if it doesn’t move.</p>
+<p>Here’s the transition table for the parity problem, written as a Python dictionary. For readability, it uses constants <code class="docutils literal notranslate"><span class="pre">LEFT</span></code> (-1), <code class="docutils literal notranslate"><span class="pre">STAY</span></code> (0), <code class="docutils literal notranslate"><span class="pre">RIGHT</span></code> (+1) defined in <code class="docutils literal notranslate"><span class="pre">m269_tm.py</span></code>. A dictionary’s key–value pairs can be given in any order. One possibility is to follow the table I wrote earlier, row by row, to make sure no state–symbol combination is forgotten.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parity</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># (state now, symbol read):  (symbol written, move, next state)</span>
+    <span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>    <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+
+    <span class="p">(</span><span class="s1">&#39;even&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>     <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;even&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;even&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;odd&#39;</span><span class="p">),</span>
+
+    <span class="p">(</span><span class="s1">&#39;odd&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>      <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;odd&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>         <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;odd&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;odd&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>         <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+
+    <span class="c1"># (&#39;back&#39;, None):   stop</span>
+    <span class="p">(</span><span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>An alternative order follows the algorithm.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parity</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>    <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+
+    <span class="c1"># skip 0s and 1s, switching state on each 1</span>
+    <span class="p">(</span><span class="s1">&#39;even&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;even&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;odd&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;odd&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>         <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;odd&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;odd&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>         <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+
+    <span class="c1"># when reading a blank, write the parity bit and start moving back</span>
+    <span class="p">(</span><span class="s1">&#39;even&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>     <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;odd&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>      <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">),</span>
+
+    <span class="c1"># skip all 0s and 1s, stop when reaching the first blank</span>
+    <span class="p">(</span><span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p><strong>Note:</strong> In a TMA, you can list the transitions in either of these orders, as you prefer.</p>
+</div>
+<p>Before running a machine, I recommend you check it with <code class="docutils literal notranslate"><span class="pre">check_tm</span></code>, a function that can spot small mistakes, like mistyping a state name. The function needs the sets of input and output symbols, to check among other things that each input symbol is read by at least one transition (otherwise the machine wouldn’t handle all possible input tapes). In this case, the input and output symbols are the same: 0 and 1.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PARITY_IN</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">PARITY_OUT</span> <span class="o">=</span> <span class="n">PARITY_IN</span>
+
+<span class="n">check_tm</span><span class="p">(</span><span class="n">parity</span><span class="p">,</span> <span class="n">PARITY_IN</span><span class="p">,</span> <span class="n">PARITY_OUT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+OK: the transition table passed the automatic checks
+</pre></div></div>
+</div>
+<p>All’s well with this machine. Here’s a bogus machine to illustrate some errors that <code class="docutils literal notranslate"><span class="pre">check_tm</span></code> spots.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wrong_parity</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># wrong name for initial state, which becomes unreachable</span>
+    <span class="p">(</span><span class="s1">&#39;begin&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>    <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+    <span class="c1"># state, symbol and movement in wrong order, in both tuples</span>
+    <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">):</span>     <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">),</span>
+    <span class="c1"># missing movement</span>
+    <span class="p">(</span><span class="s1">&#39;odd&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>         <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+    <span class="c1"># typo in state name, which leads to another unreachable state</span>
+    <span class="p">(</span><span class="s1">&#39;eben&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+    <span class="c1"># symbol 2 is read (expected on the tape) but is not in input nor written by another transition</span>
+    <span class="p">(</span><span class="s1">&#39;even&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>        <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;even&#39;</span><span class="p">),</span>
+    <span class="c1"># symbol 3 is written but not used in output or by another transition</span>
+    <span class="p">(</span><span class="s1">&#39;even&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>        <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;odd&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">check_tm</span><span class="p">(</span><span class="n">wrong_parity</span><span class="p">,</span> <span class="n">PARITY_IN</span><span class="p">,</span> <span class="n">PARITY_OUT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ERROR in (None, &#39;even&#39;): None is not a state name (string)
+ERROR in (0, &#39;back&#39;, -1): back is not STAY, LEFT or RIGHT
+ERROR in (1, &#39;even&#39;): not a tuple (symbol, movement, state)
+ERROR: no state named &#39;start&#39;
+ERROR: no transitions to states {&#39;begin&#39;, &#39;eben&#39;}
+ERROR: no transitions read input symbols {0}
+ERROR: symbols {2} are read but no other transitions write them
+WARNING: symbols {2, 3} are written but no other transitions read them
+</pre></div></div>
+</div>
+<p>Did you spot the error I didn’t mention in the comments? (No transition reads 0.) Such small errors can be difficult to find and fix just by testing the machine, hence it’s always best to check the transition table first. The checking function can’t guarantee the machine is correct, but at least it can catch some mistakes.</p>
+<p>Now we can run the machine with function <code class="docutils literal notranslate"><span class="pre">run_tm</span></code>. It looks up the dictionary with the current state and symbol and carries out the associated actions: write a symbol, move the head, change the state. It keeps doing this until it finds no entry for the current state–symbol pair.</p>
+<p>The Turing machines you will be asked to write in M269 are simple and will have short inputs. If your machine hasn’t stopped after 100 steps, it probably entered an infinite loop, and the simulator will stop.</p>
+<p>Since the tape is only infinite to the right, the simulator also stops if the head goes left past the first position.</p>
+<p>Once the simulator stops, it returns the content of the tape from the head’s position onwards. That’s the output of the machine. Here’s the output for the example input given in the figure above.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run_tm</span><span class="p">(</span><span class="n">parity</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[None, 1, 0, 1, 0]
+</pre></div></div>
+</div>
+<p>To see what’s happening step by step, the simulator can print out the configurations it is going through. Each configuration is printed in the form</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span> <span class="n">current</span> <span class="n">state</span> <span class="p">[</span><span class="n">symbols</span> <span class="n">left</span> <span class="n">of</span> <span class="n">the</span> <span class="n">head</span><span class="p">]</span> <span class="n">current</span> <span class="n">symbol</span> <span class="p">[</span><span class="n">symbols</span> <span class="n">right</span> <span class="n">of</span> <span class="n">the</span> <span class="n">head</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>where the counter starts at zero for the initial configuration. The configurations are printed by enabling debugging mode through a third, Boolean argument.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run_tm</span><span class="p">(</span><span class="n">parity</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0 start [] None [1, 0, 1]
+1 even [None] 1 [0, 1]
+2 odd [None, 1] 0 [1]
+3 odd [None, 1, 0] 1 []
+4 even [None, 1, 0, 1] None []
+5 back [None, 1, 0] 1 [0]
+6 back [None, 1] 0 [1, 0]
+7 back [None] 1 [0, 1, 0]
+8 back [] None [1, 0, 1, 0]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[None, 1, 0, 1, 0]
+</pre></div></div>
+</div>
+<p>We can use test tables to run a machine with several inputs and compare the actual outputs with the expected ones. The test table just includes the input tape, the debug parameter and the expected output for each test. Debugging is initially off but we can turn it later on for tests that fail.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parity_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># name,       input,      debug,  output</span>
+    <span class="p">(</span><span class="s1">&#39;no bits&#39;</span><span class="p">,</span>   <span class="p">[</span><span class="kc">None</span><span class="p">],</span>     <span class="kc">False</span><span class="p">,</span>  <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;just 0&#39;</span><span class="p">,</span>    <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>  <span class="kc">False</span><span class="p">,</span>  <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;just 1&#39;</span><span class="p">,</span>    <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="kc">False</span><span class="p">,</span>  <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>I recommend checking the test table with <code class="docutils literal notranslate"><span class="pre">check_tm_tests</span></code> before running the tests. This function also needs the input and output symbols, to check that each test only uses those symbols.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check_tm_tests</span><span class="p">(</span><span class="n">parity_tests</span><span class="p">,</span> <span class="n">PARITY_IN</span><span class="p">,</span> <span class="n">PARITY_OUT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+OK: the test table passed the automatic checks.
+</pre></div></div>
+</div>
+<p>Finally, we can run the tests with the new function <code class="docutils literal notranslate"><span class="pre">test_tm</span></code>, which has two parameters: the machine (transition table) to test, and the test table.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_tm</span><span class="p">(</span><span class="n">parity</span><span class="p">,</span> <span class="n">parity_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Tests finished: 3 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>The function takes an optional third parameter, a Boolean that controls whether the tests’ names are printed as they’re executed. This helps tracking what’s happening, especially when debugging several tests.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parity_tests_debug</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># name,       input,      debug,   output</span>
+    <span class="p">(</span><span class="s1">&#39;no bits&#39;</span><span class="p">,</span>   <span class="p">[</span><span class="kc">None</span><span class="p">],</span>     <span class="kc">True</span><span class="p">,</span>    <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;just 0&#39;</span><span class="p">,</span>    <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>  <span class="kc">False</span><span class="p">,</span>   <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;just 1&#39;</span><span class="p">,</span>    <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="kc">True</span><span class="p">,</span>    <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+<span class="p">]</span>
+
+<span class="n">test_tm</span><span class="p">(</span><span class="n">parity</span><span class="p">,</span> <span class="n">parity_tests_debug</span><span class="p">,</span> <span class="n">show_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Running test no bits...
+0 start [] None []
+1 even [None] None []
+2 back [] None [0]
+Running test just 0...
+Running test just 1...
+0 start [] None [1]
+1 even [None] 1 []
+2 odd [None, 1] None []
+3 back [None] 1 [1]
+4 back [] None [1, 1]
+Tests finished: 3 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>Now over to you, for some practice.</p>
+</section>
+<section id="Checking-passwords">
+<h2><span class="section-number">27.1.4. </span>Checking passwords<a class="headerlink" href="#Checking-passwords" title="Link to this heading"></a></h2>
+<p>We want a machine that decides whether the tape contains a valid password: a password with at least one letter and at least one digit. To represent all English letters and all 10 digits, we will use only two symbols: characters ‘a’ and ‘0’.</p>
+<p>The input is a possibly empty sequence of those two characters. The machine should write at the end of the sequence the corresponding Boolean, keep the head over it and stop. The set of symbols thus includes two further symbols, the Boolean values, to represent the output. For example, if the input is (‘a’, ‘a’), then the output is (false). Remember that in this case the output is the sequence of symbols from the head to the right. The final tape is actually (‘a’, ‘a’, false).</p>
+<section id="Exercise-27.1.1">
+<h3>Exercise 27.1.1<a class="headerlink" href="#Exercise-27.1.1" title="Link to this heading"></a></h3>
+<p>Outline an algorithm for the Turing machine. Don’t forget to indicate the states.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_27_1_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_27_1_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-27.1.2">
+<h3>Exercise 27.1.2<a class="headerlink" href="#Exercise-27.1.2" title="Link to this heading"></a></h3>
+<p>Complete the transition table below. I wrote the first two transitions for you.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VALID_IN</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">}</span>
+<span class="n">VALID_OUT</span> <span class="o">=</span> <span class="p">{</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">}</span>
+
+<span class="n">is_valid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">):</span>     <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;letter&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">):</span>     <span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">RIGHT</span><span class="p">,</span> <span class="s1">&#39;digit&#39;</span><span class="p">),</span>
+    <span class="c1"># add your transitions here</span>
+<span class="p">}</span>
+
+<span class="n">check_tm</span><span class="p">(</span><span class="n">is_valid</span><span class="p">,</span> <span class="n">VALID_IN</span><span class="p">,</span> <span class="n">VALID_OUT</span><span class="p">)</span>
+
+<span class="n">is_valid_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,         input,            debug,  output</span>
+    <span class="p">(</span><span class="s1">&#39;empty pwd&#39;</span><span class="p">,</span>   <span class="p">[],</span>               <span class="kc">False</span><span class="p">,</span>  <span class="p">[</span><span class="kc">False</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;no digits&#39;</span><span class="p">,</span>   <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">],</span>       <span class="kc">False</span><span class="p">,</span>  <span class="p">[</span><span class="kc">False</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;no letters&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">],</span>            <span class="kc">False</span><span class="p">,</span>  <span class="p">[</span><span class="kc">False</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">,</span>        <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">],</span>  <span class="kc">False</span><span class="p">,</span>  <span class="p">[</span><span class="kc">True</span><span class="p">])</span>
+<span class="p">]</span>
+
+<span class="n">check_tm_tests</span><span class="p">(</span><span class="n">is_valid_tests</span><span class="p">,</span> <span class="n">VALID_IN</span><span class="p">,</span> <span class="n">VALID_OUT</span><span class="p">)</span>
+
+<span class="n">test_tm</span><span class="p">(</span><span class="n">is_valid</span><span class="p">,</span> <span class="n">is_valid_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Remember that you can see the step-by-step configurations by setting <code class="docutils literal notranslate"><span class="pre">debug</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>. In that case you may wish to add <code class="docutils literal notranslate"><span class="pre">True</span></code> as a final argument to <code class="docutils literal notranslate"><span class="pre">test_tm</span></code>.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_27_1_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_27_1_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-27.1.3">
+<h3>Exercise 27.1.3<a class="headerlink" href="#Exercise-27.1.3" title="Link to this heading"></a></h3>
+<p>Imagine the input may include all 26 English letters, both in uppercase and lowercase, and all 10 digits. How would you change the transition table to check that the input is a valid password, i.e. has at least one letter and at least one digit? Don’t write the table: just describe what additional entries would be needed. (The table would be rather long. Can you estimate how many additional entries are needed?)</p>
+<p><a class="reference internal" href="../31_Hints/Hints_27_1_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_27_1_03.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-27.1.4">
+<h3>Exercise 27.1.4<a class="headerlink" href="#Exercise-27.1.4" title="Link to this heading"></a></h3>
+<p>Now imagine we require a valid password to also include at least one of the three punctuation marks ‘.’, ‘!’ or ‘?’. Which states would you need?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_27_1_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_27_1_04.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="27-introduction.html" class="btn btn-neutral float-left" title="27. Computability" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="27_2_thesis.html" class="btn btn-neutral float-right" title="27.2. The Church–Turing thesis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

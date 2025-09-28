@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.2. Arithmetic operations</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. Expressions" href="02_3_expressions.html" />
+    <link rel="prev" title="2.1. Numbers" href="02_1_numbers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="02-introduction.html">2. Numbers and sequence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="02_1_numbers.html">2.1. Numbers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. Arithmetic operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#On-real-numbers">2.2.1. On real numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#On-integers">2.2.2. On integers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-2.2.1">Exercise 2.2.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#On-int-and-float">2.2.3. On <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#On-float">2.2.4. On <code class="docutils literal notranslate"><span class="pre">float</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#On-int">2.2.5. On <code class="docutils literal notranslate"><span class="pre">int</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Mistakes">2.2.6. Mistakes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02_3_expressions.html">2.3. Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_4_assignments.html">2.4. Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_5_maths_functions.html">2.5. Functions in mathematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_6_py_functions.html">2.6. Functions in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_7_complexity.html">2.7. Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_8_time.html">2.8. Run-times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_9_summary.html">2.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="02-introduction.html"><span class="section-number">2. </span>Numbers and sequence</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.2. </span>Arithmetic operations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Arithmetic-operations">
+<h1><span class="section-number">2.2. </span>Arithmetic operations<a class="headerlink" href="#Arithmetic-operations" title="Link to this heading"></a></h1>
+<p>This section lists the most common arithmetic operations used in M269. Further operations may be introduced in later chapters, as needed. I first introduce the ADT operations and then the corresponding Python operations.</p>
+<p>The mathematical or Python symbols that represent operations are called <strong>operators</strong>, and the values the operator applies to are the <strong>operands</strong>. For example, in 3 + 4, value 3 is the left operand and value 4 is the right operand of the operator +.</p>
+<section id="On-real-numbers">
+<h2><span class="section-number">2.2.1. </span>On real numbers<a class="headerlink" href="#On-real-numbers" title="Link to this heading"></a></h2>
+<p>The most common operations of the real number ADT are <strong>addition</strong>, <strong>subtraction</strong>, <strong>multiplication</strong> and <strong>division</strong>. The corresponding operators are +, −, × and /. The corresponding results are called the <strong>sum</strong>, <strong>difference</strong>, <strong>product</strong> and <strong>quotient</strong> of the two operands.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Other texts may write multiplication as <em>x</em> · <em>y</em>, or even just <em>xy</em>, and division as <em>x</em> ÷ <em>y</em>.</p>
+</div>
+<p>Division isn’t defined when the right operand is zero. For example, 3 / 0 should be the quotient <em>z</em> such that <em>z</em> × 0 = 3 because multiplication is the inverse of division. But there’s no such <em>z</em>: any number multiplied by zero gives zero, not 3.</p>
+<p>The <strong>negation</strong> operation, written −<em>x</em>, converts a negative number into a positive one and vice versa. We have −0 = 0 and −(−<em>x</em>) = <em>x</em> for any real number <em>x</em>.</p>
+<p>The <strong>maximum</strong> and <strong>minimum</strong> operations compute the largest and smallest of a series of numbers, respectively. Because the operation can take a variable number of operands, it’s written in functional notation, with the name of the operation (max or min, in this case) preceding the operands, which are separated by commas and enclosed within parentheses (round brackets). For example, max(3, π, −0.5) = π, and min(3, π, −0.5) = −0.5.</p>
+<p>The <strong>floor</strong> operation, written floor(<em>x</em>), rounds <em>x</em> down. For example, floor(0.7) = 0 and floor(–0.2) = –1.</p>
+</section>
+<section id="On-integers">
+<h2><span class="section-number">2.2.2. </span>On integers<a class="headerlink" href="#On-integers" title="Link to this heading"></a></h2>
+<p>All the above operations are also part of the integer ADT, because every integer is a real number too, although it’s a bit pointless to round an integer.</p>
+<p>Addition, negation and the other operations produce an integer when applied to integers, except for division: dividing two integers may result in a real number, e.g. 2 / 3 isn’t an integer but 6 / 3 is.</p>
+<p>We will use the <strong>exponentiation</strong> or <strong>power</strong> operation, written <span class="math notranslate nohighlight">\(x^y\)</span>, only with integer operands, and when <strong>exponent</strong> <span class="math notranslate nohighlight">\(y\)</span> isn’t negative. Under these conditions, the operation multiplies the <strong>base</strong> <span class="math notranslate nohighlight">\(x\)</span> with itself <span class="math notranslate nohighlight">\(y\)</span> times, e.g. −2³ = −2 × −2 × −2 = −8. We define <em>x</em>⁰ = 1 for all integers <em>x</em>.</p>
+<p>The <strong>modulo</strong> operation, written <em>x</em> mod <em>y</em>, computes the remainder of dividing integer <em>x</em> by integer <em>y</em>. The modulo is undefined for <em>y</em> = 0. For example, dividing 5 by 2 results in 2 with a remainder of 1, so 5 mod 2 = 1, whereas dividing 9 by 3 results in 3 without a remainder, so 9 mod 3 = 0. If <em>x</em> mod <em>y</em> = 0 then we say that <em>x</em> is a <strong>multiple</strong> of <em>y</em> (or is <strong>divisible</strong> by <em>y</em>) and vice versa <em>y</em> is a <strong>factor</strong> or <strong>divisor</strong> of <em>x</em>.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> MU123 Unit 3 Section 1 introduces multiples, factors and powers.</p>
+</div>
+<p>Unfortunately, for negative operands, there are various definitions of modulo. M269 uses this one: <em>x</em> mod <em>y</em> = <em>x</em> − floor(<em>x</em> / <em>y</em>) × <em>y</em>. The definition also works for positive operands. Here are some examples:</p>
+<ul class="simple">
+<li><p>5 mod 2 = 5 − floor(5/2) × 2 = 5 − 2×2 = 1</p></li>
+<li><p>−5 mod 2 = −5 − floor(−5/2) × 2 = −5 − (−3×2) = 1</p></li>
+<li><p>5 mod −2 = 5 − floor(5/−2) × −2 = 5 − (−3×−2) = −1</p></li>
+</ul>
+<section id="Exercise-2.2.1">
+<h3>Exercise 2.2.1<a class="headerlink" href="#Exercise-2.2.1" title="Link to this heading"></a></h3>
+<p>An integer is <strong>even</strong> if it’s a multiple of two, otherwise it’s <strong>odd</strong>. For example, 0, 2 and −2 are even, but 1 and −1 are odd. Which operation would you use, and how, to check if a given integer <em>x</em> is even or odd?</p>
+<p><a class="reference internal" href="../32_Answers/Answers_02_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="On-int-and-float">
+<h2><span class="section-number">2.2.3. </span>On <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code><a class="headerlink" href="#On-int-and-float" title="Link to this heading"></a></h2>
+<p>The following operations are defined for both integers and floats.</p>
+<p>Python uses <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> and <code class="docutils literal notranslate"><span class="pre">/</span></code> for addition, subtraction, negation and division, but the multiplication operator is <code class="docutils literal notranslate"><span class="pre">*</span></code>. The result of division is always a float.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2.0
+</pre></div></div>
+</div>
+<p>For the other operations, if both operands are integers, so is the result; otherwise, it’s a float.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+5
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.0</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+5.0
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="o">-</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-6
+</pre></div></div>
+</div>
+<p>The minimum and maximum operations are written as in mathematics. Here are the earlier examples, now in Python.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="nb">max</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.141592653589793
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">min</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-0.5
+</pre></div></div>
+</div>
+<p>We have to import a module in each notebook that uses it, but once a module is imported, it’s available for all subsequent code cells in the same notebook.</p>
+</section>
+<section id="On-float">
+<h2><span class="section-number">2.2.4. </span>On <code class="docutils literal notranslate"><span class="pre">float</span></code><a class="headerlink" href="#On-float" title="Link to this heading"></a></h2>
+<p>We’ll apply the floor operation to floats only, although it can be applied to integers too. The Python module <code class="docutils literal notranslate"><span class="pre">math</span></code> implements the operation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-2
+</pre></div></div>
+</div>
+</section>
+<section id="On-int">
+<h2><span class="section-number">2.2.5. </span>On <code class="docutils literal notranslate"><span class="pre">int</span></code><a class="headerlink" href="#On-int" title="Link to this heading"></a></h2>
+<p>Python’s <strong>floor division</strong> is equivalent to division followed by rounding down. The operation is only defined on integers. The operator is two slashes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">/</span> <span class="o">-</span><span class="mi">3</span>      <span class="c1"># one slash: float division</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-0.6666666666666666
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">//</span> <span class="o">-</span><span class="mi">3</span>     <span class="c1"># two slashes: floor division</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">//</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+</pre></div></div>
+</div>
+<p>Can you explain the last two results?</p>
+<hr class="docutils" />
+<p>(Remember that a long thin line is a ‘stop reading and think’ sign.)</p>
+<p>We have 2 / −3 = −0.66…, which rounds down to −1, whereas 2 / 3 = 0.66… rounds down to 0.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> If you’re studying M250, note that Python’s integer division is different from Java’s. Python uses floor division whereas Java uses truncated division, i.e. removes the decimal part, so 2 divided by −3 is –1 in Python but 0 in Java.</p>
+</div>
+<p>As mentioned before, we’ll use the modulo and power operations on integers only. In Python, the corresponding operators are <code class="docutils literal notranslate"><span class="pre">%</span></code> and <code class="docutils literal notranslate"><span class="pre">**</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">%</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">5</span> <span class="o">%</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">%</span> <span class="o">-</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-8
+</pre></div></div>
+</div>
+<div class="admonition note">
+<p><strong>Info:</strong> Python’s and Java’s modulo operations also differ, e.g. –5 modulo 2 is 1 in Python and –1 in Java. Python uses the definition shown earlier, based on floor division, whereas Java defines the modulo in terms of truncated division.</p>
+</div>
+</section>
+<section id="Mistakes">
+<h2><span class="section-number">2.2.6. </span>Mistakes<a class="headerlink" href="#Mistakes" title="Link to this heading"></a></h2>
+<p>Chapter 1 showed that some code cells may depend on the execution of earlier code cells. In this notebook, you’ll get a name error if you run any of the cells with <code class="docutils literal notranslate"><span class="pre">floor</span></code> without having first executed the earlier cell with <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code>.</p>
+<p>Division, floor division and the modulo are undefined if the right operand is zero. The interpreter raises an error in such cases.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">%</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[16], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg" style="color: rgb(98,98,98)">2</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">%</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0</span>
+
+<span class="ansi-red-fg">ZeroDivisionError</span>: integer modulo by zero
+</pre></div></div>
+</div>
+<p>If you want, you can duplicate the above cell and replace the modulo operation by division or floor division.</p>
+<p>If you leave a space between the slashes of the floor division operator, or the asterisks of the power operator, then the interpreter thinks you forgot an operand between two consecutive divisions or multiplications, and reports a generic <strong>syntax error</strong>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">/</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-cyan-fg">  Cell </span><span class="ansi-green-fg">In[17], line 1</span>
+<span class="ansi-red-fg">    2 / / 3</span>
+        ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> invalid syntax
+
+</pre></div></div>
+</div>
+<p>The little caret (^) points to where the interpreter detected the error. The source of the error is somewhere before that point, sometimes even in an earlier line of code.</p>
+<p>A common mistake is to think that the minus sign is part of the literal. In fact, it’s the negation operator, and this has a subtle side effect.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">0</span>     <span class="c1"># expecting x⁰ = 1 for all x</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-1
+</pre></div></div>
+</div>
+<p>Why isn’t the result 1? Do the laws of maths not apply to Python? Read on for the solution to this mild cliffhanger…</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02_1_numbers.html" class="btn btn-neutral float-left" title="2.1. Numbers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="02_3_expressions.html" class="btn btn-neutral float-right" title="2.3. Expressions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

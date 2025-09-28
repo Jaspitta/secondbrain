@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15.1. Brute-force search</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15.2. Divide and conquer" href="15_2_divide_conquer.html" />
+    <link rel="prev" title="15. TMA 02 part 1" href="15-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="15-introduction.html">15. TMA 02 part 1</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">15.1. Brute-force search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-type">15.1.1. Problem type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Candidates">15.1.2. Candidates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Generate">15.1.3. Generate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Test">15.1.4. Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Solutions">15.1.5. Solutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">15.1.6. Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">15.1.7. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Performance">15.1.8. Performance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="15_2_divide_conquer.html">15.2. Divide and conquer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="15-introduction.html"><span class="section-number">15. </span>TMA 02 part 1</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">15.1. </span>Brute-force search</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Brute-force-search">
+<h1><span class="section-number">15.1. </span>Brute-force search<a class="headerlink" href="#Brute-force-search" title="Link to this heading"></a></h1>
+<p>To apply brute-force search, you should ask yourself:</p>
+<ul class="simple">
+<li><p>What type of problem is it?</p></li>
+<li><p>What are the candidates?</p></li>
+<li><p>How can I generate and test them?</p></li>
+<li><p>What should I do with each solution found?</p></li>
+</ul>
+<section id="Problem-type">
+<h2><span class="section-number">15.1.1. </span>Problem type<a class="headerlink" href="#Problem-type" title="Link to this heading"></a></h2>
+<p>If you can rephrase the problem in one of the following forms, you can solve it with brute-force search; otherwise, you may have to look for a different approach.</p>
+<ol class="arabic simple">
+<li><p>Search problem: Find all/one/at most <em>n</em> … that …, e.g. find all products in store that are size 7 shoes.</p></li>
+<li><p>Optimisation or constraint satisfaction problem (CSP): Find all/one/at most <em>n</em> of the smallest/largest/cheapest/etc. … that …, e.g. find any of the cheapest products in store that are size 7 shoes.</p></li>
+<li><p>Decision problem: The input has/is … if and only if a … that … can/cannot be found, e.g. the item is the cheapest if and only if a product that has a lower price cannot be found.</p></li>
+<li><p>Counting problem: How many … are …?, e.g. how many products in the store are size 7 shoes?</p></li>
+</ol>
+</section>
+<section id="Candidates">
+<h2><span class="section-number">15.1.2. </span>Candidates<a class="headerlink" href="#Candidates" title="Link to this heading"></a></h2>
+<p>If you can apply brute-force search, the next step is to think what the candidates are.</p>
+<ol class="arabic simple">
+<li><p>Are the candidates one of the inputs?</p></li>
+<li><p>Are the candidates integers? If so, what is the range of candidates, i.e. what are the smallest and largest integers?</p></li>
+<li><p>Are the candidates items, indices or slices of a sequence?</p></li>
+<li><p>Are the candidates tuples or sets of items? This is often the case in CSPs, which ask for multiple items that together satisfy the constraints.</p></li>
+<li><p>Do the candidates include the solutions sought? Otherwise, the algorithm will produce the wrong output.</p></li>
+<li><p>Is there a finite number of candidates? Otherwise, the algorithm can’t generate all of them.</p></li>
+</ol>
+<p>If you rephrased the problem as ‘find all <em>C</em> that …’, or something similar, then the candidates are <em>C</em> or some of them. For example, the factorisation problem can be stated as ‘find all positive integers that divide the given number’, but there are infinite positive integers, so we must restrict the candidates to be only some of the positive integers.</p>
+</section>
+<section id="Generate">
+<h2><span class="section-number">15.1.3. </span>Generate<a class="headerlink" href="#Generate" title="Link to this heading"></a></h2>
+<p>Once you know the candidates, think how to generate them. The fewer candidates the algorithm generates, the faster it is. Pruning the search space has the greatest effect on the algorithm’s run-time.</p>
+<ol class="arabic simple">
+<li><p>If the candidates are items in a sequence or integers in a range, use a for-loop.</p></li>
+<li><p>If the candidates are tuples, use nested loops or iterate over permutations or subsets.</p></li>
+<li><p>Is it possible to stop early, i.e. is there a point where no further solutions can be found? This may be the case if candidates are sorted.</p></li>
+<li><p>Is it possible to avoid generating some solutions by computing them from others?</p></li>
+<li><p>Is it possible to avoid generating candidates that will be rejected anyhow?</p></li>
+</ol>
+<p>Examples of problems to which the above apply are:</p>
+<ol class="arabic simple">
+<li><p>find size 7 shoes in a given store; find factors from 1 to <em>n</em></p></li>
+<li><p>find pairs of products to spend a voucher; find the shortest tour; find the most valuable subset of items that fit in a knapsack</p></li>
+<li><p>stop after size 7 shoes when going through a sorted store</p></li>
+<li><p>generate factors from 1 to <span class="math notranslate nohighlight">\(\sqrt{n}\)</span> and compute the others</p></li>
+<li><p>for the voucher problem, don’t generate the symmetric product pair.</p></li>
+</ol>
+</section>
+<section id="Test">
+<h2><span class="section-number">15.1.4. </span>Test<a class="headerlink" href="#Test" title="Link to this heading"></a></h2>
+<p>The next step is to think about how to test each candidate.</p>
+<ul class="simple">
+<li><p>What are a candidate’s properties for it to be a solution?</p></li>
+<li><p>Can the candidate be tested in isolation, or must it be compared to other candidates? For optimisation problems, test if the candidate is better than the solutions found so far.</p></li>
+<li><p>Is the test complicated? If so, consider it as a separate decision problem, solved with an auxiliary function.</p></li>
+<li><p>Can the test be done in constant time?</p></li>
+<li><p>Can the test be simplified by generating candidates that already satisfy some criterion? For example, by generating non-symmetric product pairs, the test just checks if their prices add up to the voucher.</p></li>
+</ul>
+<p>If you rephrased the problem as ‘find all <em>C</em> that <em>T</em>’, or something similar, then <em>T</em> is the test, i.e. the criterion that candidates <em>C</em> must satisfy to be solutions.</p>
+</section>
+<section id="Solutions">
+<h2><span class="section-number">15.1.5. </span>Solutions<a class="headerlink" href="#Solutions" title="Link to this heading"></a></h2>
+<p>The final step is to think of what to do with each solution found.</p>
+<ul class="simple">
+<li><p>Does the problem ask for all, any one, or some of the solutions? If it doesn’t ask for all solutions, then the algorithm can stop when enough solutions are found, provided it’s not an optimisation problem. If it is, it can’t stop as there may be better solutions ahead.</p></li>
+<li><p>Does the problem ask for the number of solutions but not the solutions themselves? If so, the algorithm may not need to keep a collection of solutions.</p></li>
+<li><p>Is it an optimisation problem? If so, the algorithm must check if the new solution found is worse, as good, or better than the solutions so far and process it accordingly.</p></li>
+</ul>
+</section>
+<section id="Algorithm">
+<h2><span class="section-number">15.1.6. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p>The exhaustive search algorithm depends on the answers to the above questions, but it’s usually some variation on the basic generate-and-test template:</p>
+<ol class="arabic simple">
+<li><p>let <em>solutions</em> be the empty sequence</p></li>
+<li><p>for each <em>candidate</em> in <em>candidates</em>:</p>
+<ol class="arabic simple">
+<li><p>if <em>candidate</em> is a solution:</p>
+<ol class="arabic simple">
+<li><p>add <em>candidate</em> to <em>solutions</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>For example, if the problem asks only for the number of solutions, then the sequence of solutions is replaced by an integer counter that starts at zero. If the problem asks for the first 10 solutions, then the algorithm stops if the sequence reaches that length. If the problem asks for unique solutions, then they should be kept in a set instead of a sequence. If it’s a CSP, then step 2 probably iterates over all permutations or subsets, or has nested loops. And so on. Patterns of linear search
+that can be further adapted are in Sections <a class="reference internal" href="../05_TMA01-1/05_2_algorithms.html#Algorithms-and-complexity"><span class="std std-ref">5.2</span></a> and <a class="reference internal" href="../11_Search/11_1_linear.html"><span class="doc">11.1</span></a>.</p>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">15.1.7. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>The complexity of exhaustive search is usually the number of generated candidates multiplied by the complexity of generating and testing each one.</p>
+<p>In the worst case, the number of candidates is usually <em>n</em>, <em>n</em>! or 2ⁿ, where <em>n</em> is the size of the input collection. This depends on whether the candidates are respectively the input items themselves, or permutations or subsets thereof.</p>
+<p>Testing each candidate usually takes constant time or linear time in the size of the candidate. If the size of each candidate is bounded, e.g. if each candidate is a word in some language, then testing takes constant rather than linear time.</p>
+<p>Sorting can be done in log-linear time. Take that into account to decide whether it’s worth sorting the input before searching.</p>
+</section>
+<section id="Performance">
+<h2><span class="section-number">15.1.8. </span>Performance<a class="headerlink" href="#Performance" title="Link to this heading"></a></h2>
+<p>When measuring run-times, use the following table to check the algorithm has the expected complexity.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>If the run-time …</p></th>
+<th class="head"><p>when the input size …</p></th>
+<th class="head"><p>then the complexity is …</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>stays the same</p></td>
+<td><p>grows</p></td>
+<td><p>constant</p></td>
+</tr>
+<tr class="row-odd"><td><p>grows by a fixed amount</p></td>
+<td><p>doubles</p></td>
+<td><p>logarithmic</p></td>
+</tr>
+<tr class="row-even"><td><p>doubles</p></td>
+<td><p>doubles</p></td>
+<td><p>linear</p></td>
+</tr>
+<tr class="row-odd"><td><p>quadruples</p></td>
+<td><p>doubles</p></td>
+<td><p>quadratic</p></td>
+</tr>
+<tr class="row-even"><td><p>multiplies by 8</p></td>
+<td><p>doubles</p></td>
+<td><p>cubic</p></td>
+</tr>
+<tr class="row-odd"><td><p>grows by a fixed factor</p></td>
+<td><p>grows by 1</p></td>
+<td><p>exponential</p></td>
+</tr>
+<tr class="row-even"><td><p>grows by increasing factors</p></td>
+<td><p>grows by 1</p></td>
+<td><p>factorial</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="15-introduction.html" class="btn btn-neutral float-left" title="15. TMA 02 part 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="15_2_divide_conquer.html" class="btn btn-neutral float-right" title="15.2. Divide and conquer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

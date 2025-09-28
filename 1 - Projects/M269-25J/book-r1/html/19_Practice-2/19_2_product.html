@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>19.2. Dot product</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="19.3. Beams" href="19_3_beams.html" />
+    <link rel="prev" title="19.1. Jousting" href="19_1_jousting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="19-introduction.html">19. Practice 2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="19_1_jousting.html">19.1. Jousting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">19.2. Dot product</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Exercises">19.2.1. Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-19.2.1">Exercise 19.2.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-19.2.2">Exercise 19.2.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-19.2.3">Exercise 19.2.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="19_3_beams.html">19.3. Beams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19_4_up_down.html">19.4. Up and down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="19_5_knight.html">19.5. A knight goes places</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="19-introduction.html"><span class="section-number">19. </span>Practice 2</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">19.2. </span>Dot product</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Dot-product">
+<h1><span class="section-number">19.2. </span>Dot product<a class="headerlink" href="#Dot-product" title="Link to this heading"></a></h1>
+<p>The dot product of two equal-length sequences of integers <span class="math notranslate nohighlight">\(X = (x_1, \ldots, x_n)\)</span> and <span class="math notranslate nohighlight">\(Y = (y_1, \ldots, y_n)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[X\cdot Y = x_1×y_1 + x_2×y_2 + \cdots + x_n×y_n.\]</div>
+<p>Given two sequences with <em>n</em> &gt; 0, what’s the smallest dot product we could obtain, if we could rearrange the order of the numbers within each sequence?</p>
+<p>For example, the sequences (1, 2, –1) and (2, 6, 3) have dot product</p>
+<p>(1, 2, –1) · (2, 6, 3) = 2 + 12 + –3 = 11.</p>
+<p>But if we rearrange one or both sequences, the lowest dot product we get is 1. Various rearrangements lead to it, including</p>
+<p>(1, 2, –1) · (3, 2, 6) = 3 + 4 + –6 = 1</p>
+<p>and</p>
+<p>(–1, 2, 1) · (6, 2, 3) = −6 + 4 + 3 = 1.</p>
+<p>As a further example, if the sequences are (1, −1, 5, 0, 7) and (3, 7, −9, 2, 0) then the lowest dot product is –68, which can be obtained as follows, among other ways:</p>
+<p>(1, –1, 5, 0, 7) · (2, 7, 0, 3, –9) = 2 + –7 + 0 + 0 + –63 = –68.</p>
+<section id="Exercises">
+<h2><span class="section-number">19.2.1. </span>Exercises<a class="headerlink" href="#Exercises" title="Link to this heading"></a></h2>
+<section id="Exercise-19.2.1">
+<h3>Exercise 19.2.1<a class="headerlink" href="#Exercise-19.2.1" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Outline an exhaustive search algorithm to solve this problem.</p></li>
+<li><p>What’s the complexity for sequences of length <em>n</em>?</p></li>
+<li><p>Assuming the search generates and tests each candidate in a nanosecond, how long will it take for <em>n</em> = 20?</p></li>
+</ol>
+<p>Conclude whether exhaustive search is a practical approach for this problem.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_19_2_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_19_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-19.2.2">
+<h3>Exercise 19.2.2<a class="headerlink" href="#Exercise-19.2.2" title="Link to this heading"></a></h3>
+<p>When I presented greedy choices for the <a class="reference internal" href="../18_Greed/18_1_scheduling.html#Greedy-choices"><span class="std std-ref">interval scheduling problem</span></a>, I provided an informal rationale for each one: why that choice seemed a good idea. The goal was to maximise the number of non-overlapping intervals, so for example I chose at each step the interval with the fewest overlaps to reduce the number of intervals eliminated at each step.</p>
+<p>Present a greedy choice for the dot product minimisation problem and your rationale. You must explain which integer of <em>X</em> and which integer of <em>Y</em> you choose to multiply in each step, to attempt to minimise the overall sum.</p>
+<p>Your greedy choice must produce the correct result for the above examples but you’re not asked to prove it is correct for all inputs.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_19_2_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-19.2.3">
+<h3>Exercise 19.2.3<a class="headerlink" href="#Exercise-19.2.3" title="Link to this heading"></a></h3>
+<p>Implement and test a greedy algorithm based on your greedy choice. Complete the function header and docstring.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">min_dot_product</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="n">min_dot_product_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,        x,                 y,              smallest</span>
+    <span class="p">(</span><span class="s1">&#39;n = 3&#39;</span><span class="p">,</span>      <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>           <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;n = 5&#39;</span><span class="p">,</span>      <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>  <span class="o">-</span><span class="mi">68</span><span class="p">),</span>
+    <span class="c1"># your tests</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">min_dot_product</span><span class="p">,</span> <span class="n">min_dot_product_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_19_2_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_19_2_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="19_1_jousting.html" class="btn btn-neutral float-left" title="19.1. Jousting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="19_3_beams.html" class="btn btn-neutral float-right" title="19.3. Beams" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

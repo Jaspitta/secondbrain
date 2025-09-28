@@ -1,0 +1,790 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.4. Classification problems</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.5. Practice" href="03_5_exercises.html" />
+    <link rel="prev" title="3.3. Boolean expressions" href="03_3_expressions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="03-introduction.html">3. Booleans and selection</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="03_1_booleans.html">3.1. Booleans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_2_decision.html">3.2. Decision problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_3_expressions.html">3.3. Boolean expressions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.4. Classification problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-definition-and-instances">3.4.1. Problem definition and instances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">3.4.2. Algorithm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.4.1">Exercise 3.4.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.4.2">Exercise 3.4.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-3.4.3">Exercise 3.4.3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">3.4.3. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Code">3.4.4. Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Tests">3.4.5. Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Performance">3.4.6. Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Mistakes">3.4.7. Mistakes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03_5_exercises.html">3.5. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_6_summary.html">3.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="03-introduction.html"><span class="section-number">3. </span>Booleans and selection</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.4. </span>Classification problems</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Classification-problems">
+<h1><span class="section-number">3.4. </span>Classification problems<a class="headerlink" href="#Classification-problems" title="Link to this heading"></a></h1>
+<p>So far, all algorithms have been just sequences of instructions: first do this, then do this, next do that, etc. Most algorithms don’t execute all their instructions, only some of them, based on certain conditions. Programming languages have conditional statements that allow us to select which instructions to execute under which conditions. Let’s consider a classic problem that requires selection and conditions, stated as Boolean expressions. I follow again the same process to solve it.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 introduces selection in Block 1 Sections 4.3 and 4.4, and includes a more complicated version of the following problem in Block 2 Section 2.5.</p>
+</div>
+<section id="Problem-definition-and-instances">
+<h2><span class="section-number">3.4.1. </span>Problem definition and instances<a class="headerlink" href="#Problem-definition-and-instances" title="Link to this heading"></a></h2>
+<p>Given a mark (an integer from 0 to 100), we wish to award the corresponding pass grade, from 1 (distinction) to 5 (fail). This is a <strong>classification problem</strong>: each of the many possible input values is classified into one of a few categories. A decision problem is a classification problem with only two categories.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Question 19 of the TM112 Block 1 Quiz is a classification problem too: given the Richter magnitude of an earthquake, classify it as a minor, moderate or major earthquake. TM358 introduces machine learning algorithms for difficult classification problems.</p>
+</div>
+<p>Let’s assume that, in some fictitious module, the pass grade boundaries are 40, 50, 60 and 80. Marks on the boundaries are awarded the higher pass grade.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: grading</div>
+<div class="line"><strong>Inputs</strong>: <em>mark</em>, an integer</div>
+<div class="line"><strong>Preconditions</strong>: 0 ≤ <em>mark</em> ≤ 100</div>
+<div class="line"><strong>Output</strong>: <em>pass</em>, an integer</div>
+<div class="line"><strong>Postconditions</strong>:</div>
+</div>
+<ul class="simple">
+<li><p><em>pass</em> = 5 if 0 ≤ <em>mark</em> &lt; 40</p></li>
+<li><p><em>pass</em> = 4 if 40 ≤ <em>mark</em> &lt; 50</p></li>
+<li><p><em>pass</em> = 3 if 50 ≤ <em>mark</em> &lt; 60</p></li>
+<li><p><em>pass</em> = 2 if 60 ≤ <em>mark</em> &lt; 80</p></li>
+<li><p><em>pass</em> = 1 if 80 ≤ <em>mark</em> ≤ 100</p></li>
+</ul>
+<p>There’s no simple formula to transform a mark into a pass grade. It’s easier to write one condition per grade.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Functions that have different formulas for different intervals of the input values are called piecewise-defined functions in MST124 Unit 3 Section 1.3.</p>
+</div>
+<p>It’s easy to make a test table because…</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> The edge cases for a classification problem are the categories’ boundaries.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Case</p></th>
+<th class="head"><p><em>mark</em></p></th>
+<th class="head"><p><em>pass</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>lowest fail</p></td>
+<td><p>0</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>highest fail</p></td>
+<td><p>39</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>lowest pass 4</p></td>
+<td><p>40</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>highest pass 4</p></td>
+<td><p>49</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>lowest pass 3</p></td>
+<td><p>50</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>highest pass 3</p></td>
+<td><p>59</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>lowest merit</p></td>
+<td><p>60</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>highest merit</p></td>
+<td><p>79</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>lowest distinction</p></td>
+<td><p>80</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>highest distinction</p></td>
+<td><p>100</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="Algorithm">
+<h2><span class="section-number">3.4.2. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p>The algorithm for a classification problem is a sequence of statements of the form ‘if the input value is like this, then the category is that one’, which is essentially how the postconditions are expressed, making their translation to an algorithm rather easy.</p>
+<ol class="arabic simple">
+<li><p>if 0 ≤ <em>mark</em> &lt; 40:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 5</p></li>
+</ol>
+</li>
+<li><p>if 40 ≤ <em>mark</em> &lt; 50:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 4</p></li>
+</ol>
+</li>
+<li><p>if 50 ≤ <em>mark</em> &lt; 60:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 3</p></li>
+</ol>
+</li>
+<li><p>if 60 ≤ <em>mark</em> &lt; 80:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 2</p></li>
+</ol>
+</li>
+<li><p>if 80 ≤ <em>mark</em> ≤ 100:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 1</p></li>
+</ol>
+</li>
+</ol>
+<p>The algorithm simply follows the typographic convention in English of introducing sublists of items (here, instructions) with colons, and indenting them. We refer to individual steps as 1, 1.1, 2, 2.1, etc.</p>
+<p>This is a fine algorithm. It’s easy to check the algorithm is correct because it directly follows the postconditions, showing explicitly every category boundary. The conditions are mutually exclusive (at most one is true for each problem instance) and comprehensive (at least one is true for each problem instance). For any input value that satisfies the preconditions, exactly one condition is true, and this allows the output to be uniquely determined.</p>
+<p>However, the algorithm is not the most efficient. If the mark is, say, 30, only the first condition applies, but the remaining conditions are checked too, even though they’re false. A more efficient algorithm stops as soon as the grade is determined.</p>
+<ol class="arabic simple">
+<li><p>if 0 ≤ <em>mark</em> &lt; 40:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 5</p></li>
+</ol>
+</li>
+<li><p>otherwise if 40 ≤ <em>mark</em> &lt; 50:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 4</p></li>
+</ol>
+</li>
+<li><p>otherwise if 50 ≤ <em>mark</em> &lt; 60:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 3</p></li>
+</ol>
+</li>
+<li><p>otherwise if 60 ≤ <em>mark</em> &lt; 80:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 2</p></li>
+</ol>
+</li>
+<li><p>otherwise if 80 ≤ <em>mark</em> ≤ 100:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 1</p></li>
+</ol>
+</li>
+</ol>
+<p>The word ‘otherwise’ indicates that the next condition is checked only if the previous ones failed. This allows us to check fewer conditions. For example, if the second condition gets evaluated, it means the first one is false, i.e. the mark isn’t in the range 0–39. It’s therefore redundant to check if it’s greater or equal to 40 (because it is). The algorithm becomes:</p>
+<ol class="arabic simple">
+<li><p>if 0 ≤ <em>mark</em> &lt; 40:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 5</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 50:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 4</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 60:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 3</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 80:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 2</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> ≤ 100:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 1</p></li>
+</ol>
+</li>
+</ol>
+<p>We can omit the first part of the first check and all of the final check because 0 ≤ <em>mark</em> ≤ 100 is always true, due to the preconditions.</p>
+<ol class="arabic simple">
+<li><p>if <em>mark</em> &lt; 40:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 5</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 50:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 4</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 60:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 3</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 80:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 2</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 1</p></li>
+</ol>
+</li>
+</ol>
+<p>The last part of the algorithm states that if none of the previous cases applies then the grade must be a distinction.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Check input intervals from the lowest to the highest or from the highest to the lowest, so that you can simplify the conditions.</p>
+</div>
+<p>The following exercises show the importance of the order in which conditions are checked.</p>
+<section id="Exercise-3.4.1">
+<h3>Exercise 3.4.1<a class="headerlink" href="#Exercise-3.4.1" title="Link to this heading"></a></h3>
+<p>My algorithm, repeated below, does one comparison for a pass 5 mark and four comparisons for a pass 1 mark.</p>
+<ol class="arabic simple">
+<li><p>if <em>mark</em> &lt; 40:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 5</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 50:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 4</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 60:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 3</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 80:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 2</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 1</p></li>
+</ol>
+</li>
+</ol>
+<p>Change the algorithm so that the minimum number of comparisons is made for pass 1 marks, and the maximum number of comparisons is made for pass 5 marks. Do as few comparisons as possible.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_03_4_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_4_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-3.4.2">
+<h3>Exercise 3.4.2<a class="headerlink" href="#Exercise-3.4.2" title="Link to this heading"></a></h3>
+<p>Consider the following grading algorithm. Is it correct?</p>
+<ol class="arabic simple">
+<li><p>if 60 ≤ <em>mark</em> &lt; 80:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 2</p></li>
+</ol>
+</li>
+<li><p>otherwise if 0 ≤ <em>mark</em> &lt; 40:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 5</p></li>
+</ol>
+</li>
+<li><p>otherwise if 50 ≤ <em>mark</em> &lt; 60:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 3</p></li>
+</ol>
+</li>
+<li><p>otherwise if 80 ≤ <em>mark</em> ≤ 100:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 1</p></li>
+</ol>
+</li>
+<li><p>otherwise if 40 ≤ <em>mark</em> &lt; 50:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 4</p></li>
+</ol>
+</li>
+</ol>
+<p><a class="reference internal" href="../31_Hints/Hints_03_4_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_4_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-3.4.3">
+<h3>Exercise 3.4.3<a class="headerlink" href="#Exercise-3.4.3" title="Link to this heading"></a></h3>
+<p>Consider the following simplification of the above conditions.</p>
+<ol class="arabic simple">
+<li><p>if <em>mark</em> &lt; 80:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 2</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 40:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 5</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 60:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 3</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> ≤ 100:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 1</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 50:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 4</p></li>
+</ol>
+</li>
+</ol>
+<p>Explain why the algorithm is incorrect by showing <em>one</em> <strong>counter-example</strong>: a problem instance for which the algorithm produces the wrong output.</p>
+<p>Copy the text cell with the algorithm to below this paragraph and fix it. You can only change the conditions, not their order.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_03_4_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_03_4_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">3.4.3. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>The fourth version of the algorithm, the one just before the exercises, always does one assignment, but it may execute one to four comparisons, against 40, 50, 60 and 80 marks, depending on the input value. To handle these situations, complexity analysis distinguishes between best- and worst-case scenarios.</p>
+<p>A <strong>best-case scenario</strong> is a group of problem instances that lead to the algorithm doing the least work, i.e. running fastest. For the algorithm at hand, a best-case scenario is a mark from 0 to 39, as only one comparison is made. A <strong>worst-case scenario</strong> is a group of problem instances that require the algorithm to do the most work, i.e. running slowest. A worst-case scenario for this algorithm is a mark from 60 upwards, because it requires four comparisons. (Best and worst cases are for the
+algorithm, not for the student’s grade.)</p>
+<p>The algorithm does one assignment and one comparison in the best-case scenario. That’s a fixed number of constant-time operations, so the algorithm has <strong>best-case complexity</strong> Θ(1). In the worst-case scenario, the algorithm does one assignment and four comparisons, which takes constant time too. The <strong>worst-case complexity</strong> is also Θ(1). When an algorithm’s best- and worst-case complexities are the same, we simply state the algorithm’s complexity without any qualification. In this example, we
+just state that the algorithm has constant complexity.</p>
+<p>As you’ll see in later chapters, there may be different equivalent best-case (or worst-case) scenarios, so we tend to speak of <em>a</em> best- or worst-case scenario rather than <em>the</em> best- or worst-case scenario. All best- (or worst-) case scenarios necessarily have the same complexity, otherwise some scenarios would be better (respectively, worse) than others.</p>
+</section>
+<section id="Code">
+<h2><span class="section-number">3.4.4. </span>Code<a class="headerlink" href="#Code" title="Link to this heading"></a></h2>
+<p>Python’s syntax closely follows English, with ‘if’, ‘otherwise’ and ‘otherwise if’ being the keywords <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code>, respectively.</p>
+<p>Problem definitions indicate the output’s name so that postconditions can refer to it. Function headers don’t name the output, so I write instead ‘the output is 4’ or more simply ‘return 4’ in the docstring. I take the opportunity to rely on the preconditions, i.e. that marks go from 0 to 100, to slightly simplify the formulation of the postconditions.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">grading</span><span class="p">(</span><span class="n">mark</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the pass grade, from 1 to 5, for the given mark.</span>
+
+<span class="sd">    Preconditions: 0 &lt;= mark &lt;= 100</span>
+<span class="sd">    Postconditions:</span>
+<span class="sd">    - if mark &lt; 40, return 5</span>
+<span class="sd">    - if 40 &lt;= mark &lt; 50, return 4</span>
+<span class="sd">    - if 50 &lt;= mark &lt; 60, return 3</span>
+<span class="sd">    - if 60 &lt;= mark &lt; 80, return 2</span>
+<span class="sd">    - if mark &gt;= 80, return 1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mark</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">:</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">elif</span> <span class="n">mark</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="k">elif</span> <span class="n">mark</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">elif</span> <span class="n">mark</span> <span class="o">&lt;</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">grade</span>
+</pre></div>
+</div>
+</div>
+<p>We can immediately return the grade once it’s determined, which leads to another version:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">mark</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">5</span>
+<span class="k">if</span> <span class="n">mark</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">4</span>
+<span class="k">if</span> <span class="n">mark</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">3</span>
+<span class="k">if</span> <span class="n">mark</span> <span class="o">&lt;</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">2</span>
+<span class="k">return</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>In English, we write this algorithm as:</p>
+<ol class="arabic simple">
+<li><p>if mark &lt; 40:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 5</p></li>
+<li><p>stop</p></li>
+</ol>
+</li>
+<li><p>if mark &lt; 50:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 4</p></li>
+<li><p>stop</p></li>
+</ol>
+</li>
+<li><p>if mark &lt; 60:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 3</p></li>
+<li><p>stop</p></li>
+</ol>
+</li>
+<li><p>if mark &lt; 80:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 2</p></li>
+<li><p>stop</p></li>
+</ol>
+</li>
+<li><p>let <em>pass</em> be 1</p></li>
+</ol>
+<p>With the explicit ‘stop’ instruction we don’t need to use ‘otherwise’. For this example, I prefer to use ‘otherwise’ instead of ‘stop’, as it makes the algorithm shorter and easier to understand, in my view.</p>
+<p>Remember that our algorithms in English must assign a value to the output variable mentioned in the function definition template, whereas algorithms in Python can directly return the value, as there’s no output name in the Python function header.</p>
+<p>Some authors advocate having a single stopping point in an algorithm, usually implicit after the final step, as having several may make the algorithm harder to understand. In M269 you can use either ‘style’: one style may be more convenient for the algorithm you’re working on.</p>
+</section>
+<section id="Tests">
+<h2><span class="section-number">3.4.5. </span>Tests<a class="headerlink" href="#Tests" title="Link to this heading"></a></h2>
+<p>Previously, we called the function on each problem instance and manually checked if the output was the same as in the last column of the test table. We can use Boolean expressions to compare the returned grade against the expected one. It’s much faster and less error-prone to see if all outputs are true than to check if each output is the right grade.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">39</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">49</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">59</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">79</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grading</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+</section>
+<section id="Performance">
+<h2><span class="section-number">3.4.6. </span>Performance<a class="headerlink" href="#Performance" title="Link to this heading"></a></h2>
+<p>Remember that in the best-case scenario (any fail mark) only one comparison is made, whereas in the worst-case scenario (any distinction mark) four comparisons are made. For curiosity’s sake, let’s see the difference between the best- and the worst-case run-times.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 grading(0)
+<span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 grading(100)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+49.3 ns ± 0.367 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+73.2 ns ± 0.484 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+</pre></div></div>
+</div>
+<p>On my computer the second call doesn’t take four times longer to run, because most of the time goes into calling the function and returning from it, not in executing comparisons.</p>
+</section>
+<section id="Mistakes">
+<h2><span class="section-number">3.4.7. </span>Mistakes<a class="headerlink" href="#Mistakes" title="Link to this heading"></a></h2>
+<p>Writing <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code> instead of <code class="docutils literal notranslate"><span class="pre">elif</span></code> is a syntax error.</p>
+<p>If the conditions are not comprehensive, i.e. don’t cover all possible input values, then no output is computed for some problem instances.</p>
+<p>If the conditions are not mutually exclusive, i.e. they overlap for some input values, then some problem instances can be classified in more than one category. The algorithm will assign the category for the first condition that succeeds, so the order in which conditions are checked may lead to the correct answer for some inputs, but not for others. Consider again the algorithm of Exercise 3.4.3:</p>
+<ol class="arabic simple">
+<li><p>if <em>mark</em> &lt; 80:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 2</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 40:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 5</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 60:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 3</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> ≤ 100:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 1</p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>mark</em> &lt; 50:</p>
+<ol class="arabic simple">
+<li><p>let <em>pass</em> be 4</p></li>
+</ol>
+</li>
+</ol>
+<p>The conditions overlap, e.g. marks up to 40 satisfy all conditions, and due to the order they’re checked, marks below 60 get the wrong grade.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Write at least one test for each category, so that you’re more likely to catch missing and overlapping conditions.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="03_3_expressions.html" class="btn btn-neutral float-left" title="3.3. Boolean expressions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="03_5_exercises.html" class="btn btn-neutral float-right" title="3.5. Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

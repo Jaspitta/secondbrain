@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.7. Linked lists</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.8. Summary" href="06_8_summary.html" />
+    <link rel="prev" title="6.6. Using dynamic arrays" href="06_6_use_dyn_array.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="06-introduction.html">6. Implementing sequences</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="06_1_define_type.html">6.1. Defining data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_2_static_array.html">6.2. Static arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_3_develop_type.html">6.3. Developing data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_4_bounded.html">6.4. Bounded sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_5_dynamic_array.html">6.5. Dynamic arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_6_use_dyn_array.html">6.6. Using dynamic arrays</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.7. Linked lists</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Traversing-a-linked-list">6.7.1. Traversing a linked list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Inserting-an-item">6.7.2. Inserting an item</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-6.7.1">Exercise 6.7.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#The-LinkedSequence-class">6.7.3. The <code class="docutils literal notranslate"><span class="pre">LinkedSequence</span></code> class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-6.7.2-(optional)">Exercise 6.7.2 (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Linked-list-v.-array">6.7.4. Linked list v. array</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-6.7.3">Exercise 6.7.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06_8_summary.html">6.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="06-introduction.html"><span class="section-number">6. </span>Implementing sequences</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.7. </span>Linked lists</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Linked-lists">
+<h1><span class="section-number">6.7. </span>Linked lists<a class="headerlink" href="#Linked-lists" title="Link to this heading"></a></h1>
+<p>Arrays keep all data (or pointers to data) in contiguous memory to support constant-time access. Another approach to implementing sequences scatters the data over memory. There’s a reason and a method to this apparent madness.</p>
+<p>A <strong>linked list</strong> is a chain of <strong>nodes</strong>, each with an element of the sequence (or pointer to it) and a pointer to the next node. The first node is called the <strong>head</strong> of the linked list. The last node has a <strong>null pointer</strong>, as there’s no next node. The next figure shows a linked list with integers 0, 1 and 2. The X represents the null pointer and marks the end of the linked list.</p>
+<p id="fig-6.7.1"></p><p><a class="reference internal" href="../33_Figures/Figures_06_7.html#Figure-6.7.1"><span class="std std-ref">Figure 6.7.1</span></a></p>
+<img alt="Image 06_7_linked_list.png" src="../_images/06_7_linked_list.png" />
+<p>The <em>head</em> variable refers to the first node. If <em>head</em> is the null pointer, then the list is empty.</p>
+<section id="Traversing-a-linked-list">
+<h2><span class="section-number">6.7.1. </span>Traversing a linked list<a class="headerlink" href="#Traversing-a-linked-list" title="Link to this heading"></a></h2>
+<p>Traversing a collection means to go through the collection’s items, one by one. This is typically done with iteration: a for- or while-loop. (Chapter 12 will show how to traverse collections without iteration.)</p>
+<p>Assuming each node is an object with two instance variables <em>item</em> and <em>next</em>, then an algorithm to traverse a linked list and process each item is:</p>
+<ol class="arabic simple">
+<li><p>let <em>current</em> be <em>head</em></p></li>
+<li><p>while <em>current</em> isn’t the null pointer:</p>
+<ol class="arabic simple">
+<li><p>process <em>current.item</em></p></li>
+<li><p>let <em>current</em> be <em>current.next</em></p></li>
+</ol>
+</li>
+</ol>
+<p>Step 2.1 does whatever is needed for the problem at hand and step 2.2 updates the reference to now refer to the next node. If the linked list is empty, the step 2 condition is false and the loop doesn’t execute.</p>
+<p>This algorithm can be adapted to access the item at a given index of the sequence by replacing the while-loop with a for-loop. This means that accessing an item takes linear time with linked lists, more specifically Θ(<em>i</em>) to get the item at index <em>i</em>, whereas with arrays it takes constant time.</p>
+</section>
+<section id="Inserting-an-item">
+<h2><span class="section-number">6.7.2. </span>Inserting an item<a class="headerlink" href="#Inserting-an-item" title="Link to this heading"></a></h2>
+<p>The algorithm to insert an item <em>value</em> at position <em>index</em> is more subtle. Here’s an outline of it:</p>
+<blockquote>
+<div><p>First iterate over the linked list to obtain references to the nodes that will be before and after the new item. The ‘before’ node is at position <em>index</em> − 1; the ‘after’ node is at position <em>index</em>. Create a new node with the item to be inserted. Make the ‘before’ node point to the new node, and the new node point to the ‘after’ node. In this way the new node is now at position <em>index</em> and the ‘after’ node (and the rest of the list) has been ‘pushed’ one position up.</p>
+</div></blockquote>
+<p>To illustrate the algorithm, let’s insert integer 3 in the sequence (0, 1, 2) at index 2, i.e. the resulting sequence should be (0, 1, 3, 2).</p>
+<p>First we obtain references to the node at positions <em>index</em> − 1 and <em>index</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>before</em> be <em>head</em></p></li>
+<li><p>repeat <em>index</em> − 1 times:</p>
+<ol class="arabic simple">
+<li><p>let <em>before</em> be <em>before.next</em></p></li>
+</ol>
+</li>
+<li><p>let <em>after</em> be <em>before.next</em></p></li>
+</ol>
+<p>Next we create a new node with the item to be inserted but without a next node:</p>
+<ol class="arabic simple" start="4">
+<li><p>let <em>new</em> be a node with <em>item</em> = <em>value</em> and <em>next</em> = null pointer</p></li>
+</ol>
+<p>For our example the situation at this stage is:</p>
+<p id="fig-6.7.2"></p><p><a class="reference internal" href="../33_Figures/Figures_06_7.html#Figure-6.7.2"><span class="std std-ref">Figure 6.7.2</span></a></p>
+<img alt="Image 06_7_insert_1.png" src="../_images/06_7_insert_1.png" />
+<p>Finally we change the pointers to put the new node between <em>before</em> and <em>after</em>.</p>
+<ol class="arabic simple" start="5">
+<li><p>let <em>before.next</em> be <em>new</em></p></li>
+<li><p>let <em>new.next</em> be <em>after</em></p></li>
+</ol>
+<p id="fig-6.7.3"></p><p><a class="reference internal" href="../33_Figures/Figures_06_7.html#Figure-6.7.3"><span class="std std-ref">Figure 6.7.3</span></a></p>
+<img alt="Image 06_7_insert_2.png" src="../_images/06_7_insert_2.png" />
+<p>Once the algorithm knows where to insert the new item, the insertion itself takes constant time: no copying of values takes place.</p>
+<p>Let’s check the algorithm with our test table.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Case</p></th>
+<th class="head"><p>Pre-<em>values</em></p></th>
+<th class="head"><p><em>index</em></p></th>
+<th class="head"><p>Post-<em>values</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>length 0</p></td>
+<td><p>( )</p></td>
+<td><p>0</p></td>
+<td><p>(‘!’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>length 1, before</p></td>
+<td><p>( 0 )</p></td>
+<td><p>0</p></td>
+<td><p>(‘!’, 0)</p></td>
+</tr>
+<tr class="row-even"><td><p>length 1, after</p></td>
+<td><p>( 0 )</p></td>
+<td><p>1</p></td>
+<td><p>(0, ‘!’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>length 2, before</p></td>
+<td><p>(0, 1)</p></td>
+<td><p>0</p></td>
+<td><p>(‘!’, 0, 1)</p></td>
+</tr>
+<tr class="row-even"><td><p>length 2, middle</p></td>
+<td><p>(0, 1)</p></td>
+<td><p>1</p></td>
+<td><p>(0, ‘!’, 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>length 2, after</p></td>
+<td><p>(0, 1)</p></td>
+<td><p>2</p></td>
+<td><p>(0, 1, ‘!’)</p></td>
+</tr>
+</tbody>
+</table>
+<p>For the first test case (empty sequence), the <em>head</em> variable is the null pointer and so is <em>before</em> after step 1. Variable <em>index</em> has value zero, so the loop is skipped, because it can’t be executed minus one times. Step 3 tries to access instance variable <em>next</em> but <em>before</em> is not pointing to a node. This kind of error is called <strong>null pointer dereference</strong>: we’re trying to dereference (i.e. access the object pointed by) <em>before</em>, but <em>before</em> is not a valid pointer.</p>
+<p>A quick fix to the algorithm is to move step 4 (the creation of the new node) to the beginning and then handle empty and non-empty sequences separately.</p>
+<ol class="arabic simple">
+<li><p>let <em>new</em> be a node with <em>item</em> = <em>value</em> and <em>next</em> = null pointer</p></li>
+<li><p>if <em>head</em> is the null pointer:</p>
+<ol class="arabic simple">
+<li><p>let <em>head</em> be <em>new</em></p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>before</em> be <em>head</em></p></li>
+<li><p>repeat <em>index</em> − 1 times:</p>
+<ol class="arabic simple">
+<li><p>let <em>before</em> be <em>before.next</em></p></li>
+</ol>
+</li>
+<li><p>let <em>after</em> be <em>before.next</em></p></li>
+<li><p>let <em>before.next</em> be <em>new</em></p></li>
+<li><p>let <em>new.next</em> be <em>after</em></p></li>
+</ol>
+</li>
+</ol>
+<p>Let’s move on to the second test: inserting the item at the start of a sequence of length one. Is the algorithm correct for this case?</p>
+<hr class="docutils" />
+<p>Alas, it isn’t. If an item is inserted at the start, we must update the <em>head</em> variable to refer to the new node, but the algorithm never does so.</p>
+<p>We can fix the algorithm by treating this edge case separately. The current head node becomes the node after the new node, which in turn becomes the head node.</p>
+<ol class="arabic simple">
+<li><p>let <em>new</em> be a node with <em>item</em> = <em>value</em> and <em>next</em> = null pointer</p></li>
+<li><p>if <em>head</em> is the null pointer:</p>
+<ol class="arabic simple">
+<li><p>let <em>head</em> be <em>new</em></p></li>
+</ol>
+</li>
+<li><p>otherwise if <em>index</em> = 0:</p>
+<ol class="arabic simple">
+<li><p>let <em>after</em> be <em>head</em></p></li>
+<li><p>let <em>head</em> be <em>new</em></p></li>
+<li><p>let <em>new.next</em> be <em>after</em></p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>before</em> be <em>head</em></p></li>
+<li><p>repeat <em>index</em> − 1 times:</p>
+<ol class="arabic simple">
+<li><p>let <em>before</em> be <em>before.next</em></p></li>
+</ol>
+</li>
+<li><p>let <em>after</em> be <em>before.next</em></p></li>
+<li><p>let <em>before.next</em> be <em>new</em></p></li>
+<li><p>let <em>new.next</em> be <em>after</em></p></li>
+</ol>
+</li>
+</ol>
+<p>Let’s move on to the third test, which inserts the item at index one of a sequence of length one, i.e. it appends the item. Is the algorithm correct for this case?</p>
+<hr class="docutils" />
+<p>The sequence not being empty and the index not being zero, the algorithm executes step 1 and then step 4.1, making <em>before</em> refer to the first and only node in the linked list. The loop is repeated zero times, because <em>index</em> = 1. Step 4.3 sets <em>after</em> to be the null pointer. The situation is:</p>
+<p id="fig-6.7.4"></p><p><a class="reference internal" href="../33_Figures/Figures_06_7.html#Figure-6.7.4"><span class="std std-ref">Figure 6.7.4</span></a></p>
+<img alt="Image 06_7_append_1.png" src="../_images/06_7_append_1.png" />
+<p>Step 4.4 links the ‘before’ node to the new node. Step 4.5 has no practical effect, because the new node’s <em>next</em> variable is already the null pointer. The final situation is as follows. The algorithm correctly appends items.</p>
+<p id="fig-6.7.5"></p><p><a class="reference internal" href="../33_Figures/Figures_06_7.html#Figure-6.7.5"><span class="std std-ref">Figure 6.7.5</span></a></p>
+<img alt="Image 06_7_append_2.png" src="../_images/06_7_append_2.png" />
+<p>The algorithm works when there’s no node after the new node. This makes me realise that the part that handles insertions at the start (steps 3 to 3.3) also works for the empty list, when <em>head</em> and <em>after</em> are the null pointer. I can eliminate steps 2 and 2.1. I actually don’t need variable <em>after</em> and can reduce steps 3.1 to 3.3 and 4.3 to 4.5 to just two steps each. Here’s my final algorithm:</p>
+<ol class="arabic simple">
+<li><p>let <em>new</em> be a node with <em>item</em> = <em>value</em> and <em>next</em> = null pointer</p></li>
+<li><p>if <em>index</em> = 0:</p>
+<ol class="arabic simple">
+<li><p>let <em>new.next</em> be <em>head</em></p></li>
+<li><p>let <em>head</em> be <em>new</em></p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>before</em> be <em>head</em></p></li>
+<li><p>repeat <em>index</em> − 1 times:</p>
+<ol class="arabic simple">
+<li><p>let <em>before</em> be <em>before.next</em></p></li>
+</ol>
+</li>
+<li><p>let <em>new.next</em> be <em>before.next</em></p></li>
+<li><p>let <em>before.next</em> be <em>new</em></p></li>
+</ol>
+</li>
+</ol>
+<section id="Exercise-6.7.1">
+<h3>Exercise 6.7.1<a class="headerlink" href="#Exercise-6.7.1" title="Link to this heading"></a></h3>
+<p>Outline an algorithm to remove the item at a given position <em>index</em>.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_06_7_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_06_7_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="The-LinkedSequence-class">
+<h2><span class="section-number">6.7.3. </span>The <code class="docutils literal notranslate"><span class="pre">LinkedSequence</span></code> class<a class="headerlink" href="#The-LinkedSequence-class" title="Link to this heading"></a></h2>
+<p>Python doesn’t allow us to manipulate pointers (memory addresses) directly: we can only refer to objects via variables. The most natural choice is to represent a null pointer as a variable with value <code class="docutils literal notranslate"><span class="pre">None</span></code>, but any other object that hasn’t got instance variables named ‘next’ and ‘item’ can be used: in this way a null pointer dereference becomes an attribute error in Python.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">node</span><span class="o">.</span><span class="n">next</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[1], line 2</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> node <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">----&gt; 2</span> <span class="ansi-yellow-bg">node</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">next</span>
+
+<span class="ansi-red-fg">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;next&#39;
+</pre></div></div>
+</div>
+<p>The node objects are just data: they don’t have operations. Writing a class with two instance variables and four methods to access and modify the variables is overkill. Since nodes are only meaningful in the context of linked lists, I define a <code class="docutils literal notranslate"><span class="pre">Node</span></code> class <em>within</em> the <code class="docutils literal notranslate"><span class="pre">LinkedSequence</span></code> class, and let the methods of the latter access the instance variables of nodes. This saves us from writing four trivial methods while keeping nodes hidden from users of sequences. Since <code class="docutils literal notranslate"><span class="pre">Node</span></code> is within
+<code class="docutils literal notranslate"><span class="pre">LinkedSequence</span></code>, the constructor must be called by its full name: <code class="docutils literal notranslate"><span class="pre">LinkedSequence.Node(item)</span></code>.</p>
+<p>Here’s the class. Most methods of <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> are implemented by traversing the linked list as explained above.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_sequence
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LinkedSequence</span><span class="p">(</span><span class="n">Sequence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A linked list implementation of the sequence ADT.&quot;&quot;&quot;</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A node in a linked list.&quot;&quot;&quot;</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Initialise the node with the given item.&quot;&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">item</span> <span class="o">=</span> <span class="n">item</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise the sequence to be empty.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">capacity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return how many items the sequence can hold: infinite.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>  <span class="c1"># infinite capacity</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of items in the sequence.</span>
+
+<span class="sd">        Postconditions: 0 &lt;= self.length() &lt;= self.capacity()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="k">while</span> <span class="n">current</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">size</span> <span class="o">=</span> <span class="n">size</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">return</span> <span class="n">size</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the item at position index.</span>
+
+<span class="sd">        Preconditions: 0 &lt;= index &lt; self.length()</span>
+<span class="sd">        Postconditions: the output is the n-th item of self, with n = index + 1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="k">for</span> <span class="n">times</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>  <span class="c1"># noqa: B007</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">return</span> <span class="n">current</span><span class="o">.</span><span class="n">item</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replace the item at position index with the given one.</span>
+
+<span class="sd">        Preconditions: 0 &lt;= index &lt; self.length()</span>
+<span class="sd">        Postconditions: post-self.get_item(index) == item</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="k">for</span> <span class="n">times</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>  <span class="c1"># noqa: B007</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">current</span><span class="o">.</span><span class="n">item</span> <span class="o">=</span> <span class="n">item</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert item at position index.</span>
+
+<span class="sd">        Preconditions: 0 &lt;= index &lt;= self.length() &lt; self.capacity()</span>
+<span class="sd">        Postconditions: post-self is the sequence</span>
+<span class="sd">        pre-self.get_item(0), ..., pre-self.get_item(index - 1),</span>
+<span class="sd">        item, pre-self.get_item(index), ...,</span>
+<span class="sd">        pre-self.get_item(pre-self.length() - 1)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">LinkedSequence</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">new</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">new</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">before</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+            <span class="k">for</span> <span class="n">times</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># noqa: B007</span>
+                <span class="n">before</span> <span class="o">=</span> <span class="n">before</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">new</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">before</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">before</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">new</span>
+</pre></div>
+</div>
+</div>
+<p>And again, let’s test the operations.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_test
+
+<span class="n">test_init</span><span class="p">(</span><span class="n">LinkedSequence</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing length&quot;</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+    <span class="n">test_append</span><span class="p">(</span><span class="n">LinkedSequence</span><span class="p">(),</span> <span class="n">length</span><span class="p">)</span>
+    <span class="n">test_insert_start</span><span class="p">(</span><span class="n">LinkedSequence</span><span class="p">(),</span> <span class="n">length</span><span class="p">)</span>
+    <span class="n">test_set_item</span><span class="p">(</span><span class="n">LinkedSequence</span><span class="p">(),</span> <span class="n">length</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing length 0
+Testing length 1
+Testing length 2
+Testing length 3
+Testing length 4
+Testing length 5
+Testing length 6
+Testing length 7
+Testing length 8
+Testing length 9
+</pre></div></div>
+</div>
+<section id="Exercise-6.7.2-(optional)">
+<h3>Exercise 6.7.2 (optional)<a class="headerlink" href="#Exercise-6.7.2-(optional)" title="Link to this heading"></a></h3>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">remove</span></code> method to the <code class="docutils literal notranslate"><span class="pre">LinkedSequence</span></code> class and test it with this code:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing length&quot;</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+    <span class="n">test_remove</span><span class="p">(</span><span class="n">LinkedSequence</span><span class="p">(),</span> <span class="n">length</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="Linked-list-v.-array">
+<h2><span class="section-number">6.7.4. </span>Linked list v. array<a class="headerlink" href="#Linked-list-v.-array" title="Link to this heading"></a></h2>
+<p>The sequence ADT can be implemented with dynamic arrays and with linked lists. The choice depends on which operations we require to be most efficient. Here’s a table of the complexities for some operations on sequence <em>s</em> and index <em>i</em>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sequence operation</p></th>
+<th class="head"><p>Dynamic array</p></th>
+<th class="head"><p>Linked list</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>get item at <em>i</em></p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(<em>i</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>replace item at <em>i</em></p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(<em>i</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>insert at <em>i</em> = 0</p></td>
+<td><p>Θ(│<em>s</em>│)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>insert at <em>i</em> = │<em>s</em>│ (append)</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(│<em>s</em>│)</p></td>
+</tr>
+<tr class="row-even"><td><p>insert elsewhere</p></td>
+<td><p>Θ(│<em>s</em>│ − <em>i</em>)</p></td>
+<td><p>Θ(<em>i</em>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>The main advantage of arrays over linked lists is the constant-time access to items, whereas linked lists have to be traversed. Doing operations at the start of a list can be efficient, and we’ll take advantage of that in the next chapter, because linked lists don’t require copying items when inserting or removing one. Linked lists are never resized. They require more memory than arrays (one pointer per item), but dynamic arrays also waste memory when the size is lower than the capacity.</p>
+<p>Some operations on linked lists can become more efficient with extra data. The implementation above computes the length in linear time, by counting items while iterating over the linked list. It’s also possible to obtain the length in constant time, by adding an instance variable that is initially zero and is incremented (or decremented) when an item is inserted (or removed), as done with dynamic arrays. This is an example of a <strong>space–time tradeoff</strong>: we are willing to increase the memory usage
+of a linked list object to reduce the run-time of an operation.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Each data structure makes some operations more efficient than others. The best data structure for the problem at hand is the one that favours the operations we need more frequently.</p>
+</div>
+<section id="Exercise-6.7.3">
+<h3>Exercise 6.7.3<a class="headerlink" href="#Exercise-6.7.3" title="Link to this heading"></a></h3>
+<p>How could you make the append operation take constant time on linked lists?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_06_7_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_06_7_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="06_6_use_dyn_array.html" class="btn btn-neutral float-left" title="6.6. Using dynamic arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="06_8_summary.html" class="btn btn-neutral float-right" title="6.8. Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

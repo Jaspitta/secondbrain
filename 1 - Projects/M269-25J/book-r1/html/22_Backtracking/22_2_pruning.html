@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22.2. Prune the search space</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="22.3. Trackword" href="22_3_trackword.html" />
+    <link rel="prev" title="22.1. Generate sequences" href="22_1_sequences.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="22-introduction.html">22. Backtracking</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="22_1_sequences.html">22.1. Generate sequences</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">22.2. Prune the search space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Local-and-global-constraints">22.2.1. Local and global constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Avoid-visits">22.2.2. Avoid visits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="22_3_trackword.html">22.3. Trackword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_4_optimising.html">22.4. Optimise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_5_tsp.html">22.5. Back to the TSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_6_subsets.html">22.6. Generate subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_7_knapsack.html">22.7. Back to the knapsack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22_8_summary.html">22.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="22-introduction.html"><span class="section-number">22. </span>Backtracking</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">22.2. </span>Prune the search space</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Prune-the-search-space">
+<h1><span class="section-number">22.2. </span>Prune the search space<a class="headerlink" href="#Prune-the-search-space" title="Link to this heading"></a></h1>
+<p>Backtracking takes the brute-force search of the previous section and adds a simple but powerful idea: since the candidates are generated incrementally, one item at a time, stop extending a candidate as soon as it’s clear it won’t lead to a solution. This substantially reduces the number of candidates generated, making backtracking much more efficient than brute-force.</p>
+<p>Let’s see backtracking in action on the problem of the previous section: find all sequences of non-repeated numbers, taken from 1 to <em>n</em> &gt; 2, such that</p>
+<ol class="arabic simple">
+<li><p>the first and last numbers are at least <em>n</em> / 2 apart (range)</p></li>
+<li><p>the numbers are odd, even, odd, even, … (parity).</p></li>
+</ol>
+<p>The sequences don’t have to be permutations of 1 to <em>n</em>: they can include only some of the <em>n</em> numbers.</p>
+<p>Here again is the code that checks these constraints.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">satisfies_range</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if first and last numbers in candidate are at least n/2 apart.</span>
+
+<span class="sd">    Preconditions: candidate is a list of integers; n &gt; 2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">candidate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">candidate</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">satisfies_parity</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if candidate is an odd, even, odd, ... sequence.</span>
+
+<span class="sd">    Preconditions: candidate is a list of integers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">candidate</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">candidate</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<section id="Local-and-global-constraints">
+<h2><span class="section-number">22.2.1. </span>Local and global constraints<a class="headerlink" href="#Local-and-global-constraints" title="Link to this heading"></a></h2>
+<p>The key insight that enables pruning the search space is that the two constraints for this problem are of different nature. The range constraint involves the first and last numbers of the sequence and therefore can only be checked on the whole sequence: it’s a <strong>global constraint</strong>. The second constraint is about the parity of each number, independently of the other numbers: it’s a <strong>local constraint</strong>.</p>
+<p>If a partial candidate P doesn’t satisfy a global constraint, an extension of P may satisfy it because of the added items. For example, for <em>n</em> = 3 the sequence (1, 2) doesn’t satisfy the range constraint but (1, 2, 3) does. We therefore must keep extending a candidate that fails a global constraint.</p>
+<p>However, if partial candidate P doesn’t satisfy a local constraint, neither does any candidate C that extends P because the item in P that breaks the local constraint is also in C. For example, if P starts with an even number, or has two consecutive odd numbers, then so does any extension of P. This means that there’s no point in extending a partial candidate that violates a local constraint: it won’t lead to a solution.</p>
+<p>If a candidate fails the local constraints, a <strong>backtracking algorithm</strong> goes immediately back (hence its name) to a previous partial candidate and tries a different way to extend it.</p>
+<p>In terms of tree traversal, if a node has a candidate that fails the local constraints, a backtracking algorithm doesn’t traverse the subtree rooted at that node: it instead goes back to the node’s parent. From there it starts traversing the next sibling subtree. If there’s no sibling, the algorithm backtracks to the grandparent, and so on.</p>
+<p>The changes to the previous recursive generate-and-test algorithm are minor: I simply add a new base case. If the candidate fails the local constraints, the algorithm returns (backtracks) immediately instead of recursively extending the candidate.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">solutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add to solutions all valid permutations that extend candidate.</span>
+
+<span class="sd">    Preconditions: n &gt; 2 and</span>
+<span class="sd">    - candidate is a list of integers between 1 and n</span>
+<span class="sd">    - extensions is a set of integers between 1 and n</span>
+<span class="sd">    - candidate and extensions have no integer in common</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Visiting node&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">)</span>
+    <span class="c1"># base case 1: backtrack</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">satisfies_parity</span><span class="p">(</span><span class="n">candidate</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="c1"># base case 2: candidate is solution</span>
+    <span class="c1"># local constraint is satisfied, so only check global constraint</span>
+    <span class="k">if</span> <span class="n">satisfies_range</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">extensions</span> <span class="o">-</span> <span class="p">{</span><span class="n">item</span><span class="p">},</span> <span class="n">n</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The main function remains the same.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">valid_permutations</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all valid permutations of 1, ..., n in the order generated.&quot;&quot;&quot;</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">extensions</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># {1, ..., n}</span>
+    <span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">solutions</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solutions:&quot;</span><span class="p">,</span> <span class="n">valid_permutations</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Visiting node [] {1, 2, 3}
+Visiting node [1] {2, 3}
+Visiting node [1, 2] {3}
+Visiting node [1, 2, 3] set()
+Visiting node [1, 3] {2}
+Visiting node [2] {1, 3}
+Visiting node [3] {1, 2}
+Visiting node [3, 1] {2}
+Visiting node [3, 2] {1}
+Visiting node [3, 2, 1] set()
+Solutions: [[1, 2, 3], [3, 2, 1]]
+</pre></div></div>
+</div>
+<p>Now only 10 of the 16 nodes of the full tree are visited. As you can see, sequences (1, 3), (2) and (3, 1) aren’t further extended because they break the parity constraint.</p>
+<p>As suggested in <a class="reference internal" href="../15_TMA02-1/15_1_exhaustive_search.html#Generate"><span class="std std-ref">Chapter 15</span></a>, we can further reduce the search space by not even generating those sequences, since they will be rejected.</p>
+</section>
+<section id="Avoid-visits">
+<h2><span class="section-number">22.2.2. </span>Avoid visits<a class="headerlink" href="#Avoid-visits" title="Link to this heading"></a></h2>
+<p>The algorithm currently first extends a candidate and then checks whether it should backtrack. Since the local constraint applies to each number individually, we can check the parity of the chosen extension number <em>before</em> appending it to the sequence. In other words, instead of creating and visiting a node and then backtracking if needed, we avoid creating the node in the first place. This further prunes the search space.</p>
+<p>Here’s the new version, without repeating the docstring. The check for the local parity constraint moves to the for-loop: if the chosen number can extend the current sequence, it will.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">extend</span><span class="p">(</span><span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">extensions</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">solutions</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: D103</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Visiting node&quot;</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">extensions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">satisfies_range</span><span class="p">(</span><span class="n">candidate</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">candidate</span><span class="p">):</span>  <span class="c1"># added line</span>
+            <span class="n">extend</span><span class="p">(</span><span class="n">candidate</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">],</span> <span class="n">extensions</span> <span class="o">-</span> <span class="p">{</span><span class="n">item</span><span class="p">},</span> <span class="n">n</span><span class="p">,</span> <span class="n">solutions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Instead of an explicit base case that goes back to a previous candidate if the current one doesn’t satisfy the local constraint, the new version avoids extending candidates with items that fail the local constraint.</p>
+<p>The new auxiliary function checks the local constraint on a single number instead of a sequence and hence is simpler than <code class="docutils literal notranslate"><span class="pre">satisfies_parity</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">can_extend</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">candidate</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if extending candidate with item can lead to a solution.&quot;&quot;&quot;</span>
+    <span class="c1"># the number and the index where it will be must have different parity</span>
+    <span class="k">return</span> <span class="n">item</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span>
+
+
+<span class="n">valid_permutations</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Visiting node [] {1, 2, 3}
+Visiting node [1] {2, 3}
+Visiting node [1, 2] {3}
+Visiting node [1, 2, 3] set()
+Visiting node [3] {1, 2}
+Visiting node [3, 2] {1}
+Visiting node [3, 2, 1] set()
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1, 2, 3], [3, 2, 1]]
+</pre></div></div>
+</div>
+<p>As expected, no partial candidate with consecutive numbers of the same parity or starting with an even number is generated. Now only 7 of the 16 nodes are created and visited. The search space has more than halved.</p>
+<p>To emphasise how much more efficient backtracking can be, consider <em>n</em> = 10 and only complete candidates, i.e. permutations of the ten numbers. There are 5 × 9! ≈ 1.8 million permutations starting with one of the five even numbers (2, 4, 6, 8, 10) followed by a permutation of the other nine numbers. There are further 5 × 4 × 8! ≈ 800 thousand permutations starting with two consecutive odd numbers, followed by a permutation of the other eight numbers. Backtracking won’t generate these 2.6 million
+permutations and thousands of other ones with consecutive numbers of the same parity, whereas brute-force search generates all 10! ≈ 3.6 million permutations.</p>
+<p>To sum up, backtracking can efficiently find sequences of items subject to global and local constraints because it generates candidates incrementally. Global constraints are checked on all candidate sequences or only on the complete ones, depending on the problem. Local constraints are checked for each extension being considered, to avoid generating candidates that won’t lead to solutions. This usually prunes vast parts of the search space. If a problem has no local constraints then backtracking
+becomes brute-force search because all candidates have to be generated.</p>
+<p>The next section shows a typical problem that can be solved with backtracking.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="22_1_sequences.html" class="btn btn-neutral float-left" title="22.1. Generate sequences" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="22_3_trackword.html" class="btn btn-neutral float-right" title="22.3. Trackword" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

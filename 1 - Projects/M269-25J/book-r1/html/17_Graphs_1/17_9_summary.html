@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17.9. Summary</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="18. Greed" href="../18_Greed/18-introduction.html" />
+    <link rel="prev" title="17.8. Breadth- and depth-first search" href="17_8_bfs_dfs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="17-introduction.html">17. Graphs 1</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="17_1_modelling.html">17.1. Modelling with graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_2_concepts.html">17.2. Basic concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_3_edge_list.html">17.3. Edge list representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_4_adj_matrix.html">17.4. Adjacency matrix representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_5_adj_list.html">17.5. Adjacency list representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_6_classes.html">17.6. Classes for graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_7_traversal.html">17.7. Traversing a graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_8_bfs_dfs.html">17.8. Breadth- and depth-first search</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">17.9. Summary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Terminology">17.9.1. Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Data-structures">17.9.2. Data structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Traversals">17.9.3. Traversals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Python">17.9.4. Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="17-introduction.html"><span class="section-number">17. </span>Graphs 1</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">17.9. </span>Summary</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Summary">
+<h1><span class="section-number">17.9. </span>Summary<a class="headerlink" href="#Summary" title="Link to this heading"></a></h1>
+<p>A <strong>graph</strong> consists of a set of items called <strong>nodes</strong> and a set of pairs of nodes, called <strong>edges</strong>. Each edge connects a node with a different node and can be directed or undirected. A <strong>directed graph</strong> (or <strong>digraph</strong>) only has directed edges; an <strong>undirected graph</strong> only has undirected edges. Between each pair of nodes, there’s at most one undirected edge or two directed edges in opposing directions.</p>
+<p>A relation between pairs of items is a <strong>binary relation</strong>. A binary relation is <strong>symmetric</strong> if it’s reciprocal: if A is related to B, then B is related to A.</p>
+<p>Since edges connect pairs of nodes, graphs can model any set of entities and a binary relation over them. This includes many kinds of networks. We can use an undirected graph only if the relation is symmetric.</p>
+<section id="Terminology">
+<h2><span class="section-number">17.9.1. </span>Terminology<a class="headerlink" href="#Terminology" title="Link to this heading"></a></h2>
+<p>Two nodes are <strong>adjacent</strong> if connected by an edge. If there’s an edge from A to B, then A is an <strong>in-neighbour</strong> of B and B is an <strong>out-neighbour</strong> of A. An undirected edge is both from A to B and from B to A.</p>
+<p>A node’s <strong>neighbours</strong> are its adjacent nodes. The <strong>degree</strong> of a node is the number of edges attached to it.</p>
+<p>The <strong>in- and out-degree</strong> of a node are the number of its in- and out-neighbours, respectively. In an undirected graph, the in-neighbours and the out-neighbours of a node are the same, so its in- and out-degrees are the same as the degree.</p>
+<p>Every undirected graph can be represented as a digraph with twice the edges, by replacing each undirected edge with two opposing directed edges. Algorithms based on in- and out-neighbours and in- and out-degrees can thus be applied to directed <em>and</em> undirected graphs.</p>
+<p>A <strong>path</strong> of length <em>k</em> from node A to node B is a sequence of <em>k</em> + 1 nodes, starting with A and ending with B. There must be an edge from each node in the sequence to the next one. In addition, all nodes and edges in a path must be different. Node B is <strong>reachable</strong> from node A if there’s a path from A to B. A <strong>shortest path</strong> has the fewest possible edges among all paths from A to B.</p>
+<p>An undirected graph is <strong>connected</strong> if all pairs of nodes are mutually reachable; otherwise it’s <strong>disconnected</strong>. If there’s a node S from which all other nodes are reachable, then all nodes are mutually reachable via S: the graph is connected. A digraph is connected or disconnected if we obtain a connected or disconnected undirected graph when ignoring all edge directions.</p>
+<p>A <strong>cycle</strong> is a path with the exception that the first and last node are the same. A graph with at least one cycle is <strong>cyclic</strong>; otherwise it’s <strong>acyclic</strong>. The acronym <strong>DAG</strong> stands for directed acyclic graph. A <strong>tree</strong> is a connected acyclic undirected graph. In a tree, there’s a single path from one node to any other node. A tree with <em>n</em> nodes has <em>n</em> – 1 edges.</p>
+<p>The <strong>empty graph</strong> has neither nodes nor edges. A <strong>null graph</strong> has nodes but no edges. A <strong>path graph</strong> is a non-empty undirected graph that can be laid out in a line, with each node except the last connected to the next one. If we take a path graph with at least three nodes and connect the last node to the first, we obtain a cycle graph. A <strong>complete graph</strong> has all possible edges. A <strong>random graph</strong> has each possible edge with the same probability.</p>
+<p>A graph is <strong>dense</strong> if it has many of the possible edges; it’s <strong>sparse</strong> if it has few of the possible edges. There’s no precise definition to classify each graph as sparse, dense or neither. Complete graphs are the densest graphs; null graphs are the sparsest graphs.</p>
+<p>A <strong>subgraph</strong> of a graph G consists of only a subset of the nodes and edges of G.</p>
+</section>
+<section id="Data-structures">
+<h2><span class="section-number">17.9.2. </span>Data structures<a class="headerlink" href="#Data-structures" title="Link to this heading"></a></h2>
+<p>An <strong>edge list</strong> representation consists of one collection containing the nodes and one collection containing the edges. Several data structures are possible, depending on the type of the collections, e.g. sequences or sets, and how they are stored, e.g. as arrays, linked lists, lookup tables or hash tables.</p>
+<p>An <strong>adjacency matrix</strong> representation consists of an <em>n</em> by <em>n</em> matrix that represents all possible edges and a lookup table that maps the indices to nodes. The cell in the row for node A and in the column for node B is a Boolean indicating if there’s an edge from A to B. Adjacency matrices waste memory for sparse graphs and for undirected graphs.</p>
+<p>An <strong>adjacency list</strong> representation consists of a map where the keys are nodes and the values are their out-neighbours (and possibly their in-neighbours too). Each value is the adjacency list for the corresponding node. Several data structures are possible to store the map and each adjacency list. For example, the map can be implemented with a lookup table, hash table or BST, and an adjacency list can be represented as a sequence or a set.</p>
+<p>Of all these possibilities, the most efficient for most graphs is an adjacency list representation in which the map and the adjacency lists are stored in hash tables. This requires the representation of nodes to be hashable.</p>
+<p>In M269, the undirected and directed graph ADTs have the following operations with the listed worst-case complexities for undirected and directed graphs. When referring to graphs, we use <em>n</em> for the number of nodes and <em>e</em> for the number of edges.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Written as</p></th>
+<th class="head"><p>Undirected</p></th>
+<th class="head"><p>Directed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>new</p></td>
+<td><p>let G be an empty graph</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>has node</p></td>
+<td><p>A in G</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-even"><td><p>add node</p></td>
+<td><p>add A to G</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>remove node</p></td>
+<td><p>remove A from G</p></td>
+<td><p>Θ(<em>n</em>)</p></td>
+<td><p>Θ(<em>n</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>has edge</p></td>
+<td><p>(A, B) in G</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>add edge</p></td>
+<td><p>add (A, B) to G</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-even"><td><p>remove edge</p></td>
+<td><p>remove (A, B) from G</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>nodes</p></td>
+<td><p>nodes of G</p></td>
+<td><p>Θ(<em>n</em>)</p></td>
+<td><p>Θ(<em>n</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>edges</p></td>
+<td><p>edges of G</p></td>
+<td><p>Θ(<em>e</em>)</p></td>
+<td><p>Θ(<em>e</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>in-neighbours</p></td>
+<td><p>in-neighbours of A in G</p></td>
+<td><p>Θ(degree(A))</p></td>
+<td><p>Θ(<em>n</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>out-neighbours</p></td>
+<td><p>out-neighbours of A in G</p></td>
+<td><p>Θ(degree(A))</p></td>
+<td><p>Θ(out-degree(A))</p></td>
+</tr>
+<tr class="row-odd"><td><p>neighbours</p></td>
+<td><p>neighbours of A in G</p></td>
+<td><p>Θ(degree(A))</p></td>
+<td><p>Θ(<em>n</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>in-degree</p></td>
+<td><p>in-degree of A in G</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(<em>n</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>out-degree</p></td>
+<td><p>out-degree of A in G</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(1)</p></td>
+</tr>
+<tr class="row-even"><td><p>degree</p></td>
+<td><p>degree of A in G</p></td>
+<td><p>Θ(1)</p></td>
+<td><p>Θ(<em>n</em>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="Traversals">
+<h2><span class="section-number">17.9.3. </span>Traversals<a class="headerlink" href="#Traversals" title="Link to this heading"></a></h2>
+<p>A <strong>traversal</strong> of a graph starts from a given node and follows the outgoing edges to visit every node reachable from the start. The algorithm keeps a collection of yet-unprocessed edges. While the collection isn’t empty, it removes one edge from the collection. If it leads to a yet-unvisited node, the edge is followed, the node is visited, and its outgoing edges are added to the unprocessed collection.</p>
+<p>If the collection is a set, the traversal visits nodes in no particular order.</p>
+<p>If the collection is a FIFO sequence (queue), the nodes are visited in breadth-first order: first the out-neighbours of the start node, then their out-neighbours, and so on. This finds the shortest paths from the start node to each other reachable node.</p>
+<p>If the collection is a LIFO sequence (stack), the nodes are visited in depth-first order: first one out-neighbour of the start node, then one of its out-neighbours, etc.</p>
+<p>All three variants traverse an acyclic subgraph of the input graph. They all take constant time in the best case and Θ(<em>n</em> + <em>e</em>) in the worst case. They can all be used to decide if a non-empty undirected graph is connected and, in particular, a tree.</p>
+</section>
+<section id="Python">
+<h2><span class="section-number">17.9.4. </span>Python<a class="headerlink" href="#Python" title="Link to this heading"></a></h2>
+<p>Class <code class="docutils literal notranslate"><span class="pre">Hashable</span></code> in module <code class="docutils literal notranslate"><span class="pre">typing</span></code> can be used to annotate function parameters as being hashable objects.</p>
+<p>Function <code class="docutils literal notranslate"><span class="pre">random</span></code> in module <code class="docutils literal notranslate"><span class="pre">random</span></code> returns each time it’s called a random floating-point number from 0 (inclusive) to 1 (exclusive).</p>
+<p>Replacing <code class="docutils literal notranslate"><span class="pre">self.</span></code> with <code class="docutils literal notranslate"><span class="pre">super().</span></code> allows a subclass to call methods of its superclass.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="17_8_bfs_dfs.html" class="btn btn-neutral float-left" title="17.8. Breadth- and depth-first search" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../18_Greed/18-introduction.html" class="btn btn-neutral float-right" title="18. Greed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

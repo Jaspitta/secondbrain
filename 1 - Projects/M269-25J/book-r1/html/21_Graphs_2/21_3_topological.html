@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>21.3. Topological sort</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="21.4. State graphs" href="21_4_states.html" />
+    <link rel="prev" title="21.2. Directed graph components" href="21_2_di_components.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="21-introduction.html">21. Graphs 2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="21_1_un_components.html">21.1. Undirected graph components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_2_di_components.html">21.2. Directed graph components</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">21.3. Topological sort</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem">21.3.1. Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm-and-code">21.3.2. Algorithm and code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">21.3.3. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Exercises">21.3.4. Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-21.3.1">Exercise 21.3.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-21.3.2">Exercise 21.3.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-21.3.3">Exercise 21.3.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-21.3.4">Exercise 21.3.4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="21_4_states.html">21.4. State graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_5_practice.html">21.5. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_6_summary.html">21.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="21-introduction.html"><span class="section-number">21. </span>Graphs 2</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">21.3. </span>Topological sort</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Topological-sort">
+<h1><span class="section-number">21.3. </span>Topological sort<a class="headerlink" href="#Topological-sort" title="Link to this heading"></a></h1>
+<p>I mentioned in <a class="reference internal" href="../17_Graphs_1/17_1_modelling.html#Modelling-with-graphs"><span class="std std-ref">Section 17.1</span></a> that digraphs can represent scheduling constraints: an edge A ⟶ B states that task or event A must occur before task or event B. The example was the evaluation of formulas in spreadsheet cells. Here again is the cell dependency digraph. If cell A2 changes, the spreadsheet must first re-evaluate B2 and only then C2 because C2 depends on A2 and B2.</p>
+<p id="fig-21.3.1"></p><p><a class="reference internal" href="../33_Figures/Figures_21_3.html#Figure-21.3.1"><span class="std std-ref">Figure 21.3.1</span></a></p>
+<img alt="Image ../17_Graphs_1/17_1_cells.png" src="../_images/17_1_cells.png" />
+<section id="Problem">
+<h2><span class="section-number">21.3.1. </span>Problem<a class="headerlink" href="#Problem" title="Link to this heading"></a></h2>
+<p>Given a digraph, we want to know a possible schedule that indicates in which order to do the tasks or carry out the events represented by the nodes. Such a schedule is called a <strong>topological sort</strong> of the digraph: it’s a sequence of the graph’s nodes so that for every edge A⟶B, node A appears before node B in the sequence. If you can lay out a digraph so that every edge points from left to right, then a topological sort is obtained by reading the nodes from left to right.</p>
+<p>The spreadsheet graph above is laid out from left to right and so has topological sort (A2, B2, C2). That’s the only possible topological sort. For example, sequence (A2, C2, B2) isn’t a topological sort because C2 comes before B2, contrary to the order imposed by edge B2⟶C2.</p>
+<p>Some digraphs have multiple topological sorts. For example,</p>
+<p id="fig-21.3.2"></p><p><a class="reference internal" href="../33_Figures/Figures_21_3.html#Figure-21.3.2"><span class="std std-ref">Figure 21.3.2</span></a></p>
+<img alt="Image 21_3_many_sorts.png" src="../_images/21_3_many_sorts.png" />
+<p>has topological sorts (A, B, C, D), (A, C, B, D), (C, A, B, D), etc. Only the node permutations where B appears before A or D appears before C, like (B, A, C, D) and (D, A, B, C), aren’t topological sorts.</p>
+<p>A cyclic digraph, like the following one, has no topological sort.</p>
+<p id="fig-21.3.3"></p><p><a class="reference internal" href="../33_Figures/Figures_21_3.html#Figure-21.3.3"><span class="std std-ref">Figure 21.3.3</span></a></p>
+<img alt="Image 21_3_no_sort.png" src="../_images/21_3_no_sort.png" />
+<p>Any ordering of the nodes will go against one of the edges. For example, (A, B, C) isn’t a topological sort because C must appear before A due to edge C⟶A. No matter which node we choose to start the sequence, some other node must appear before it, so no topological sort is possible. There’s also a visual explanation. A graph with a cycle can’t be laid out with all edges pointing left to right, because there’s always a right-to-left edge to close the cycle.</p>
+<p>In summary, every acyclic digraph has at least one topological sort. We want to compute one of them, it doesn’t matter which.</p>
+<div class="line-block">
+<div class="line"><strong>Function:</strong> topological sort</div>
+<div class="line"><strong>Inputs:</strong> <em>graph</em>, a digraph</div>
+<div class="line"><strong>Preconditions</strong>: <em>graph</em> is acyclic</div>
+<div class="line"><strong>Output</strong>: <em>schedule</em>, a sequence of objects</div>
+<div class="line"><strong>Postconditions</strong>:</div>
+</div>
+<ul class="simple">
+<li><p><em>schedule</em> is a permutation of the <em>graph</em>’s nodes</p></li>
+<li><p>for every edge A⟶B in <em>graph</em>, A appears before B in <em>schedule</em></p></li>
+</ul>
+<p>Let’s construct the spreadsheet graph for testing.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_digraph
+
+<span class="n">spreadsheet</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">):</span>
+    <span class="n">spreadsheet</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="n">spreadsheet</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">)</span>
+<span class="n">spreadsheet</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">)</span>
+<span class="n">spreadsheet</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Algorithm-and-code">
+<h2><span class="section-number">21.3.2. </span>Algorithm and code<a class="headerlink" href="#Algorithm-and-code" title="Link to this heading"></a></h2>
+<p>The key idea to obtain a topological sort is that the first node we visit (the first task we schedule) must not have incoming edges, otherwise it would have to come after some other node. Let’s call the first visited node V.</p>
+<p>V has no incoming edges but it may have an outgoing edge V⟶B. Since V was visited first, it will come before all other nodes. The ordering imposed by edge V⟶B is therefore satisfied.</p>
+<p>If we remove all outgoing edges from V, to ‘discharge’ those order constraints, nodes that only depend on V will have no incoming edge anymore and can be visited next.</p>
+<p>The algorithm thus proceeds by visiting and removing nodes with in-degree zero: those nodes depend on no other node and can be scheduled next. Here’s the outline of what’s known as <strong>Kahn’s algorithm</strong>:</p>
+<blockquote>
+<div><p>Create an empty sequence. While there’s a node with in-degree zero, remove it from the graph and append it to the sequence. When the while-loop ends, return the sequence.</p>
+</div></blockquote>
+<p>It’s a greedy algorithm: at each step it chooses one of the ‘best’ remaining nodes – those without incoming edges.</p>
+<p>Let’s see the algorithm in action on the example graph. The next figure shows from left to right how each iteration removes one node and appends it to the sequence. We start with a digraph and the empty sequence. We finish with the empty graph and a topological sort. The numbers next to the nodes are their in-degrees.</p>
+<p id="fig-21.3.4"></p><p><a class="reference internal" href="../33_Figures/Figures_21_3.html#Figure-21.3.4"><span class="std std-ref">Figure 21.3.4</span></a></p>
+<img alt="Image 21_3_toposort.png" src="../_images/21_3_toposort.png" />
+<p>This version of the algorithm is not very good as it destroys the input graph. We can instead simulate the removal of nodes and how the in-degrees change. We store the initial in-degree of each node and simulate the removal of an edge A⟶B by decrementing the in-degree value of B. Here’s the new version of the algorithm applied to the example graph. This version only changes the in-degree values associated to the nodes: it doesn’t modify the graph. For example, the removal of A2 and its edges is
+simulated by decrementing the in-degrees of B2 and C2.</p>
+<p id="fig-21.3.5"></p><p><a class="reference internal" href="../33_Figures/Figures_21_3.html#Figure-21.3.5"><span class="std std-ref">Figure 21.3.5</span></a></p>
+<img alt="Image 21_3_kahn.png" src="../_images/21_3_kahn.png" />
+<p>Kahn’s algorithm can be reformulated as follows:</p>
+<blockquote>
+<div><p>Create an empty sequence. Compute and store the in-degree of each node. Put all zero-degree nodes in a collection of nodes to visit. While the collection isn’t empty, remove one node from it, append the node to the sequence and decrement the in-degree of the node’s out-neighbours. If an out-neighbour’s degree becomes zero, add that out-neighbour to the nodes to visit. When the while-loop ends, return the sequence.</p>
+</div></blockquote>
+<p>The collection of nodes to visit can be a set, queue or stack. The latter is the most efficient in terms of memory and run-time.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_stack
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_digraph.py</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a topological sort of graph.</span>
+
+<span class="sd">    Preconditions: graph is acyclic</span>
+<span class="sd">    Postconditions:</span>
+<span class="sd">    - the output is a permutation of the graph&#39;s nodes</span>
+<span class="sd">    - for every edge A -&gt; B, node A appears before B in the output</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">schedule</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># compute the initial in-degrees</span>
+    <span class="n">indegree</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+        <span class="n">indegree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+        <span class="n">indegree</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">indegree</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># compute the nodes that can be visited first</span>
+    <span class="n">to_visit</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">indegree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">to_visit</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">to_visit</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="n">to_visit</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">schedule</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">visited</span><span class="p">)</span>
+        <span class="c1"># simulate the removal of the visited node</span>
+        <span class="k">for</span> <span class="n">neighbour</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">neighbours</span><span class="p">(</span><span class="n">visited</span><span class="p">):</span>
+            <span class="n">indegree</span><span class="p">[</span><span class="n">neighbour</span><span class="p">]</span> <span class="o">=</span> <span class="n">indegree</span><span class="p">[</span><span class="n">neighbour</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">indegree</span><span class="p">[</span><span class="n">neighbour</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">to_visit</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">neighbour</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">schedule</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topological_sort</span><span class="p">(</span><span class="n">spreadsheet</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;A2&#39;, &#39;B2&#39;, &#39;C2&#39;]
+</pre></div></div>
+</div>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">21.3.3. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>The algorithm always goes through the whole graph and adds all nodes to the output sequence, so there’s no best- or worst-case scenario. The complexity can be broken down as follows:</p>
+<ul class="simple">
+<li><p>Go through the graph to construct the in-degree map: Θ(<em>n</em> + <em>e</em>).</p></li>
+<li><p>Do a linear search for the nodes with in-degree zero: Θ(<em>n</em>).</p></li>
+<li><p>Add each node to the <code class="docutils literal notranslate"><span class="pre">to_visit</span></code> set, remove it from the set and append it to the sequence: Θ(<em>n</em>).</p></li>
+<li><p>For each node, go through its out-neighbours: Θ(<em>e</em>), because visiting all neighbours of all nodes <a class="reference internal" href="../17_Graphs_1/17_7_traversal.html#Complexity"><span class="std std-ref">goes through all edges</span></a>.</p></li>
+</ul>
+<p>The complexity is given by the fastest-growing term: Θ(<em>n</em> + <em>e</em>).</p>
+</section>
+<section id="Exercises">
+<h2><span class="section-number">21.3.4. </span>Exercises<a class="headerlink" href="#Exercises" title="Link to this heading"></a></h2>
+<p>The following exercises show a different application of Kahn’s algorithm and ask you to consider the efficiency of alternative algorithms.</p>
+<section id="Exercise-21.3.1">
+<h3>Exercise 21.3.1<a class="headerlink" href="#Exercise-21.3.1" title="Link to this heading"></a></h3>
+<p>Alice remembers that the <code class="docutils literal notranslate"><span class="pre">DiGraph</span></code> class has a method to compute the in-degree. She simplifies the <code class="docutils literal notranslate"><span class="pre">topological_sort</span></code> code as follows. (The rest of the function remains the same.)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">indegree</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">to_visit</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="n">indegree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">indegree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">to_visit</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Is this more efficient than the original, unmodified code?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_21_3_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_21_3_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-21.3.2">
+<h3>Exercise 21.3.2<a class="headerlink" href="#Exercise-21.3.2" title="Link to this heading"></a></h3>
+<p>What happens if we ignore the preconditions of <code class="docutils literal notranslate"><span class="pre">topological_sort</span></code> and provide as input a cyclic digraph? Does the function stop with an error? Does it enter an infinite loop? If neither of those cases happen, what is the output?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_21_3_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_21_3_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-21.3.3">
+<h3>Exercise 21.3.3<a class="headerlink" href="#Exercise-21.3.3" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Based on the previous exercise, write and test a function that checks if a digraph is cyclic.</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_cyclic</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="n">DiGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if the graph has a cycle.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="n">digraph</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">()</span>  <span class="c1"># from Section 21.2.1</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="s2">&quot;ABCDEF&quot;</span><span class="p">:</span>
+    <span class="n">digraph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;AB&quot;</span><span class="p">,</span> <span class="s2">&quot;BC&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;DE&quot;</span><span class="p">):</span>  <span class="c1"># cycle A -&gt; B -&gt; C -&gt; A</span>
+    <span class="n">digraph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">is_cyclic_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,         graph,          is cyclic?</span>
+    <span class="p">(</span><span class="s1">&#39;has cycle&#39;</span><span class="p">,</span>   <span class="n">digraph</span><span class="p">,</span>        <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;no cycle&#39;</span><span class="p">,</span>    <span class="n">spreadsheet</span><span class="p">,</span>    <span class="kc">False</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">is_cyclic</span><span class="p">,</span> <span class="n">is_cyclic_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>What’s the worst-case scenario for your algorithm to decide whether a digraph is cyclic? What’s the worst-case complexity?</p></li>
+</ol>
+<p><a class="reference internal" href="../31_Hints/Hints_21_3_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_21_3_03.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-21.3.4">
+<h3>Exercise 21.3.4<a class="headerlink" href="#Exercise-21.3.4" title="Link to this heading"></a></h3>
+<p>Looking at the tests above, Bob realises a digraph is cyclic if and only if it has a strongly connected component with two or more nodes. He adapts the algorithm for computing the <a class="reference internal" href="21_2_di_components.html#Algorithm-and-complexity"><span class="std std-ref">strongly connected components</span></a> as follows:</p>
+<blockquote>
+<div><p>When computing the intersection of the <em>forward</em> and <em>backward</em> sets of nodes, check if the intersection’s size is larger than 1. If so, immediately return true: the digraph is cyclic. Otherwise continue the algorithm as normal. Return false after the loop goes through all nodes: the digraph is acyclic because each component has one node only.</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Explain why a cyclic digraph has a strongly connected component with more than one node.</p></li>
+<li><p>What’s the worst-case complexity of Bob’s algorithm? Is it worth using his algorithm instead of Kahn’s to check for cycles?</p></li>
+</ol>
+<p><a class="reference internal" href="../31_Hints/Hints_21_3_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_21_3_04.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="21_2_di_components.html" class="btn btn-neutral float-left" title="21.2. Directed graph components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="21_4_states.html" class="btn btn-neutral float-right" title="21.4. State graphs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.1. Problem definition</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.2. Algorithms and complexity" href="05_2_algorithms.html" />
+    <link rel="prev" title="5. TMA 01 part 1" href="05-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="05-introduction.html">5. TMA 01 part 1</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. Problem definition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-and-output-names">5.1.1. Problem and output names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Inputs-and-outputs">5.1.2. Inputs and outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Preconditions">5.1.3. Preconditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Postconditions">5.1.4. Postconditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Test-table">5.1.5. Test table</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05_2_algorithms.html">5.2. Algorithms and complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_3_coding_style.html">5.3. Coding style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="05-introduction.html"><span class="section-number">5. </span>TMA 01 part 1</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5.1. </span>Problem definition</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Problem-definition">
+<h1><span class="section-number">5.1. </span>Problem definition<a class="headerlink" href="#Problem-definition" title="Link to this heading"></a></h1>
+<p>The first stage of the process is to read the informal problem description and translate it into a succinct but precise problem definition. The first question to ask yourself is:</p>
+<ul class="simple">
+<li><p>What type of problem is it? Is it asking to</p>
+<ul>
+<li><p>check a property of the input? (decision problem)</p></li>
+<li><p>assign a category to each input? (classification problem)</p></li>
+<li><p>find one or more items satisfying some criteria? (search problem)</p></li>
+</ul>
+</li>
+</ul>
+<p>Remember that a search problem may not be stated as such.</p>
+<p>M269 problems are operations on some data, so the next question is:</p>
+<ul class="simple">
+<li><p>Is the operation a function in the mathematical sense, i.e. does it not modify its inputs?</p></li>
+</ul>
+<p>If it is, fill in this template:</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: the name of the function</div>
+<div class="line"><strong>Inputs</strong>: the name and type of each input variable</div>
+<div class="line"><strong>Preconditions</strong>: any conditions on the inputs</div>
+<div class="line"><strong>Output</strong>: the name and type of the output variable</div>
+<div class="line"><strong>Postconditions</strong>: how the output relates to the inputs</div>
+</div>
+<p>If it isn’t, fill in this one instead:</p>
+<div class="line-block">
+<div class="line"><strong>Operation</strong>: the name of the operation</div>
+<div class="line"><strong>Inputs/Outputs</strong>: the name and type of each variable that is modified</div>
+<div class="line"><strong>Inputs</strong>: the name and type of each input variable</div>
+<div class="line"><strong>Preconditions</strong>: any conditions on the inputs</div>
+<div class="line"><strong>Output</strong>: the name and type of the output variable</div>
+<div class="line"><strong>Postconditions</strong>: how the outputs relate to the inputs</div>
+</div>
+<p>In the second template, use pre-<em>x</em> and post-<em>x</em> in the postconditions to refer to the value of input/output variable <em>x</em> before and after the operation, respectively.</p>
+<p>Ask yourself the following questions to fill out the templates.</p>
+<section id="Problem-and-output-names">
+<h2><span class="section-number">5.1.1. </span>Problem and output names<a class="headerlink" href="#Problem-and-output-names" title="Link to this heading"></a></h2>
+<p>The problem name states what the function or operation does or produces. The names of the problem and output variable are often similar or related.</p>
+<ul class="simple">
+<li><p>What does the function/operation do? What does it produce?</p></li>
+<li><p>If it’s a decision problem, what yes/no question does it ask of the input?</p></li>
+<li><p>If it’s a search problem, what is being looked for?</p></li>
+</ul>
+</section>
+<section id="Inputs-and-outputs">
+<h2><span class="section-number">5.1.2. </span>Inputs and outputs<a class="headerlink" href="#Inputs-and-outputs" title="Link to this heading"></a></h2>
+<p>M269 problems usually have at most one input/output variable, which must be a mutable sequence, and exactly one output-only variable.</p>
+<ul class="simple">
+<li><p>In the problem description, what is given (input), what is asked for (output) and what changes (input/output)?</p></li>
+<li><p>Thinking backwards, what data is needed to compute the function’s output?</p></li>
+<li><p>If it’s a decision problem then the output is a Boolean, unless the description says otherwise. What does it represent when it’s true?</p></li>
+<li><p>If it’s a search problem, what kind of input sequence is searched?</p></li>
+<li><p>If it’s a categorisation problem, what are the possible categories?</p></li>
+<li><p>For each variable, what is its type?</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>If the value is …</p></th>
+<th class="head"><p>then use type …</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a number</p></td>
+<td><p>integer or real number</p></td>
+</tr>
+<tr class="row-odd"><td><p>a logical value</p></td>
+<td><p>Boolean</p></td>
+</tr>
+<tr class="row-even"><td><p>a text</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p>any sequence</p></td>
+<td><p>sequence</p></td>
+</tr>
+<tr class="row-even"><td><p>an immutable sequence</p></td>
+<td><p>tuple</p></td>
+</tr>
+<tr class="row-odd"><td><p>a mutable sequence</p></td>
+<td><p>list</p></td>
+</tr>
+<tr class="row-even"><td><p>any value</p></td>
+<td><p>object</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="Preconditions">
+<h2><span class="section-number">5.1.3. </span>Preconditions<a class="headerlink" href="#Preconditions" title="Link to this heading"></a></h2>
+<p>Not all of the following questions apply to every problem, but they help you not miss some typical preconditions.</p>
+<ul class="simple">
+<li><p>If the input is an integer:</p>
+<ul>
+<li><p>What are its smallest and largest values?</p></li>
+<li><p>Can it be zero? Can it only be positive, or negative, or odd?</p></li>
+<li><p>Does it have a unit?</p></li>
+</ul>
+</li>
+<li><p>If the input is a sequence:</p>
+<ul>
+<li><p>Can it be empty? Does it have a minimum or maximum length?</p></li>
+<li><p>Is it sorted? By which criterion? Is the order ascending or descending?</p></li>
+<li><p>Must the items be pairwise comparable? This may be necessary for search problems, e.g. to find the largest item.</p></li>
+<li><p>Are items unique or can there be duplicates?</p></li>
+<li><p>What are the preconditions on the items? For example:</p>
+<ul>
+<li><p>If the input is a list of integers, must they be positive?</p></li>
+<li><p>If the input is a string, can it only contain certain characters?</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Do the preconditions include output-only variables? If so, something’s wrong because preconditions only restrict the inputs.</p></li>
+</ul>
+</section>
+<section id="Postconditions">
+<h2><span class="section-number">5.1.4. </span>Postconditions<a class="headerlink" href="#Postconditions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>If it’s a decision problem, under which conditions is the output true?</p></li>
+<li><p>If it’s a classification problem then, for each category, what are the conditions for the input to belong to that category?</p></li>
+<li><p>If it’s a search problem, what are the search criteria?</p></li>
+<li><p>If an input is a sequence:</p>
+<ul>
+<li><p>What happens if it’s empty?</p></li>
+<li><p>What happens if it has odd length? What if it has even length?</p></li>
+</ul>
+</li>
+<li><p>If the output is a sequence:</p>
+<ul>
+<li><p>Can it be empty? Does it have a minimum or maximum length?</p></li>
+<li><p>Does it have to be a subsequence of an input sequence?</p></li>
+<li><p>Does it have be be sorted?</p></li>
+<li><p>What are the postconditions for its items?</p></li>
+</ul>
+</li>
+<li><p>Does every input occur in the postconditions? If not, the postconditions are still incomplete or the input can be removed, as it’s not necessary to compute the output.</p></li>
+</ul>
+</section>
+<section id="Test-table">
+<h2><span class="section-number">5.1.5. </span>Test table<a class="headerlink" href="#Test-table" title="Link to this heading"></a></h2>
+<p>Each test is a problem instance and its expected output, so depending on the pre- and postconditions, some of these questions may not apply, e.g. there may not be a largest input or output, or the input sequence can’t have items of different types.</p>
+<ul class="simple">
+<li><p>Does the test table have one column for the test case description, one column per input and one column for the output?</p></li>
+<li><p>Do the inputs of each test satisfy the preconditions? If not, you have to revise the test or the preconditions.</p></li>
+<li><p>Do the outputs of each test satisfy the postconditions? If not, you have to revise the test or the postconditions.</p></li>
+<li><p>Are there tests for the smallest and for the largest possible inputs?</p></li>
+<li><p>Are there tests for the smallest and for the largest possible output?</p></li>
+<li><p>For an input sequence, are there tests both for even and odd lengths, for different types of items, for sorted and unsorted sequences, and for sequences with no, some or all items of the same value?</p></li>
+<li><p>For a classification problem, is there a test for each category boundary?</p></li>
+<li><p>For a decision problem, are there tests with true and false outputs?</p></li>
+<li><p>For a search problem, are there tests for no, one, multiple and all items matching the search criteria?</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="05-introduction.html" class="btn btn-neutral float-left" title="5. TMA 01 part 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="05_2_algorithms.html" class="btn btn-neutral float-right" title="5.2. Algorithms and complexity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

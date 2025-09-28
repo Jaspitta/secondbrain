@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise 24.2.1 answer</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise 24.2.2 answer" href="Answers_24_2_02.html" />
+    <link rel="prev" title="30.19.2. Extra staff" href="Answers_24_2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="32-introduction.html">30. Answers</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Answers_02.html">30.1. Numbers and sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_03.html">30.2. Booleans and selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_04.html">30.3. Sequences and iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_06.html">30.4. Implementing sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_07.html">30.5. Stacks and queues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_08.html">30.6. Unordered collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_09.html">30.7. Practice 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_11.html">30.8. Exhaustive search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_12.html">30.9. Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_13.html">30.10. Divide and conquer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_14.html">30.11. Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_16.html">30.12. Rooted trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_17.html">30.13. Graphs 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_18.html">30.14. Greed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_19.html">30.15. Practice 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_21.html">30.16. Graphs 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_22.html">30.17. Backtracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_23.html">30.18. Dynamic Programming</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Answers_24.html">30.19. Practice 3</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Answers_24_1.html">30.19.1. Safe places</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="Answers_24_2.html">30.19.2. Extra staff</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Exercise 24.2.1 answer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Answers_24_2_02.html">Exercise 24.2.2 answer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Answers_24_2_03.html">Exercise 24.2.3 answer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Answers_24_3.html">30.19.3. Borrow a book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Answers_24_4.html">30.19.4. Levenshtein distance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Answers_24_5.html">30.19.5. Higher and higher</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_26.html">30.20. Complexity classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Answers_27.html">30.21. Computability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="32-introduction.html"><span class="section-number">30. </span>Answers</a></li>
+          <li class="breadcrumb-item"><a href="Answers_24.html"><span class="section-number">30.19. </span>Practice 3</a></li>
+          <li class="breadcrumb-item"><a href="Answers_24_2.html"><span class="section-number">30.19.2. </span>Extra staff</a></li>
+      <li class="breadcrumb-item active">Exercise 24.2.1 answer</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Exercise-24.2.1-answer">
+<h1>Exercise 24.2.1 answer<a class="headerlink" href="#Exercise-24.2.1-answer" title="Link to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p>Computing a topological sort, to do the tasks in the correct order.</p></li>
+<li><p>Kahn’s algorithm.</p></li>
+</ol>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Answers_24_2.html" class="btn btn-neutral float-left" title="30.19.2. Extra staff" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Answers_24_2_02.html" class="btn btn-neutral float-right" title="Exercise 24.2.2 answer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

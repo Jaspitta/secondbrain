@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>26.3. Reductions</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="26.4. Problem hardness" href="26_4_hardness.html" />
+    <link rel="prev" title="26.2. The P and NP classes" href="26_2_P_and_NP.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="26-introduction.html">26. Complexity classes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="26_1_tractable.html">26.1. Tractable and intractable problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_2_P_and_NP.html">26.2. The P and NP classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">26.3. Reductions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Median">26.3.1. Median</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Minimum-and-maximum">26.3.2. Minimum and maximum</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-26.3.1">Exercise 26.3.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Interval-scheduling">26.3.3. Interval scheduling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Reduction">Reduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Complexity">Complexity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Reduction-template">26.3.4. Reduction template</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-26.3.2">Exercise 26.3.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-26.3.3-(optional)">Exercise 26.3.3 (optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="26_4_hardness.html">26.4. Problem hardness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_5_theory_practice.html">26.5. Theory and Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="26_6_summary.html">26.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="26-introduction.html"><span class="section-number">26. </span>Complexity classes</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">26.3. </span>Reductions</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Reductions">
+<h1><span class="section-number">26.3. </span>Reductions<a class="headerlink" href="#Reductions" title="Link to this heading"></a></h1>
+<p>This section introduces problem reduction as an algorithmic technique. (The next section will show how to use problem reduction to classify problems.)</p>
+<p>Imagine I’m asked to write an algorithm for problem <em>Unsolved</em>. It just happens that I know of a similar problem <em>Solved</em> for which there is an algorithm. I can then write the following algorithm to handle <em>Unsolved</em>:</p>
+<ol class="arabic simple">
+<li><p>Transform the inputs of <em>Unsolved</em> into the inputs of <em>Solved</em>.</p></li>
+<li><p>Apply the known algorithm to obtain the output of <em>Solved</em>.</p></li>
+<li><p>Transform the output of <em>Solved</em> into the output of <em>Unsolved</em>.</p></li>
+</ol>
+<p>This algorithm is called a <strong>reduction</strong> of problem <em>Unsolved</em> to problem <em>Solved</em>.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> There are several kinds of reductions. This one is called a mapping reduction because it maps the inputs and output of one problem to those of another problem.</p>
+</div>
+<p>The next figure shows the reduction schematically. Each box is an algorithm, where IT and OT stand for input and output transformation. The numbers in the boxes are the corresponding steps above.</p>
+<p id="fig-26.3.1"></p><p><a class="reference internal" href="../33_Figures/Figures_26_3.html#Figure-26.3.1"><span class="std std-ref">Figure 26.3.1</span></a></p>
+<img alt="Image 26_3_reduction.png" src="../_images/26_3_reduction.png" />
+<p>The complexity of the algorithm for <em>Unsolved</em> is the sum of the complexities of the two transformations and of the algorithm for <em>Solved</em>. If transforming the inputs and output takes longer than the algorithm for <em>Solved</em>, then reducing <em>Unsolved</em> to <em>Solved</em> is not very helpful. However, if we find a problem <em>Solved</em> that makes the transformations easy and efficient, then reduction might be a good approach to quickly write an initial algorithm for <em>Unsolved</em>.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Normally we’re only interested in reducing problem <em>Unsolved</em> to problem <em>Solved</em> if the complexity of the transformations is lower than the complexity of <em>Solved</em>.</p>
+</div>
+<p>Let’s look at some examples.</p>
+<section id="Median">
+<h2><span class="section-number">26.3.1. </span>Median<a class="headerlink" href="#Median" title="Link to this heading"></a></h2>
+<p>Let’s assume that <em>Unsolved</em> is the problem of finding the median of a sequence of numbers. Since the median is the middle number (or the mean of two middle numbers) if they’re sorted, we can reduce the median problem to the sorting problem.</p>
+<p>The following code implements the reduction algorithm. I use generic variable names and some unnecessary assignments just to make the various steps of the reduction clearer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the median of the numbers.</span>
+
+<span class="sd">    Preconditions: numbers isn&#39;t empty</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># finding the median is the unsolved problem</span>
+    <span class="n">unsolved_input</span> <span class="o">=</span> <span class="n">numbers</span>
+
+    <span class="c1"># transform input of solved problem into input of unsolved problem</span>
+    <span class="n">solved_input</span> <span class="o">=</span> <span class="n">unsolved_input</span>
+
+    <span class="c1"># obtain output of solved problem by applying a known algorithm</span>
+    <span class="n">solved_output</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">solved_input</span><span class="p">)</span>
+
+    <span class="c1"># transform output of solved problem into output of unsolved problem</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">solved_output</span><span class="p">)</span>
+    <span class="n">middle</span> <span class="o">=</span> <span class="n">length</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="c1"># if the length is odd, the median is the middle number</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">unsolved_output</span> <span class="o">=</span> <span class="n">solved_output</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span>
+    <span class="c1"># otherwise it&#39;s the mean of the two middle numbers</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">solved_output</span><span class="p">[</span><span class="n">middle</span><span class="p">]</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">solved_output</span><span class="p">[</span><span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">unsolved_output</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">unsolved_output</span>
+</pre></div>
+</div>
+<p>The input transformation just passes the list of numbers to the sorting algorithm, in constant time. The output transformation is not as simple, as it has to distinguish odd- and even-length sequences, but it also takes constant time. Since both transformations take constant time, the complexity of this algorithm is the complexity of sorting: the median problem can be solved in log-linear time by reducing it to the sorting problem.</p>
+</section>
+<section id="Minimum-and-maximum">
+<h2><span class="section-number">26.3.2. </span>Minimum and maximum<a class="headerlink" href="#Minimum-and-maximum" title="Link to this heading"></a></h2>
+<p>Consider the problem of finding the smallest value of a non-empty sequence of comparable values. It’s similar to (it’s actually a special case of) the <a class="reference internal" href="../14_Sorting/14_7_quicksort_variants.html#Quickselect"><span class="std std-ref">selection problem</span></a>: return the <em>n</em>-th smallest value of a sequence with <em>n</em> or more values. There’s an efficient algorithm for this problem (quickselect), so we can reduce the problem of finding the smallest value to the problem of finding the <em>n</em>-th smallest.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">minimum</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the smallest item in items.</span>
+
+<span class="sd">    Preconditions:</span>
+<span class="sd">    - all items are pairwise comparable</span>
+<span class="sd">    - len(items) &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># transform minimum problem input to selection problem input</span>
+    <span class="n">solved_items</span> <span class="o">=</span> <span class="n">items</span>
+    <span class="n">solved_n</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># solve the selection problem</span>
+    <span class="n">solved_output</span> <span class="o">=</span> <span class="n">quick_select</span><span class="p">(</span><span class="n">solved_items</span><span class="p">,</span> <span class="n">solved_n</span><span class="p">)</span>
+    <span class="c1"># transform selection problem output to minimum problem output</span>
+    <span class="n">unsolved_output</span> <span class="o">=</span> <span class="n">solved_output</span>
+    <span class="k">return</span> <span class="n">unsolved_output</span>
+</pre></div>
+</div>
+<p>The input transformation adds the second parameter that the selection problem requires: finding the minimum is finding the first smallest value, so <em>n</em> = 1. The output transformation just passes on the output of the selection problem.</p>
+<p>The transformations take constant time and quickselect takes linear time, so the minimum can be found in linear time. Even though the reduction has the same complexity as a linear search for the minimum, the latter is a simpler and faster algorithm than quickselect.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> A reduction is often not the simplest algorithm for a problem.</p>
+</div>
+<section id="Exercise-26.3.1">
+<h3>Exercise 26.3.1<a class="headerlink" href="#Exercise-26.3.1" title="Link to this heading"></a></h3>
+<p>Reduce the problem of finding the maximum value in a non-empty sequence of comparable values to the selection problem. You only need to indicate how you would change the code above.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_26_3_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_26_3_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Interval-scheduling">
+<h2><span class="section-number">26.3.3. </span>Interval scheduling<a class="headerlink" href="#Interval-scheduling" title="Link to this heading"></a></h2>
+<p>To show that one problem reduces to another, we can write code as above, or just outline the input and output transformation algorithms. Here’s an example, using the <a class="reference internal" href="../18_Greed/18_1_scheduling.html#Interval-scheduling"><span class="std std-ref">interval scheduling</span></a> and <a class="reference internal" href="../11_Search/11_5_subsets.html#Exercise-11.5.1"><span class="std std-ref">maximal independent set</span></a> problems.</p>
+<div class="line-block">
+<div class="line"><strong>Operation</strong>: largest interval schedule</div>
+<div class="line"><strong>Inputs</strong>: <em>intervals</em>, a set of pairs of natural numbers</div>
+<div class="line"><strong>Preconditions</strong>: for every pair (<em>start</em>, <em>end</em>), <em>start</em> &lt; <em>end</em></div>
+<div class="line"><strong>Output</strong>: <em>schedule</em>, a set of pairs of natural numbers</div>
+<div class="line"><strong>Postconditions</strong>: <em>schedule</em> is a largest subset of <em>intervals</em> such that for any (<span class="math notranslate nohighlight">\(s_1\)</span>, <span class="math notranslate nohighlight">\(e_1\)</span>) ≠ (<span class="math notranslate nohighlight">\(s_2\)</span>, <span class="math notranslate nohighlight">\(e_2\)</span>) in <em>schedule</em>, either <span class="math notranslate nohighlight">\(e_1\)</span> &lt; <span class="math notranslate nohighlight">\(s_2\)</span> or <span class="math notranslate nohighlight">\(e_2\)</span> &lt; <span class="math notranslate nohighlight">\(s_1\)</span></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Operation</strong>: maximal independent set</div>
+<div class="line"><strong>Inputs</strong>: <em>items</em>, a set of objects; <em>incompatible</em>, a set of pairs of objects</div>
+<div class="line"><strong>Preconditions</strong>: every pair in <em>incompatible</em> consists of two different members of <em>items</em></div>
+<div class="line"><strong>Output</strong>: <em>compatible</em>, a set of objects</div>
+<div class="line"><strong>Postconditions</strong>: <em>compatible</em> is a largest subset of <em>items</em> that has no pair of elements from <em>incompatible</em></div>
+</div>
+<p>Previously, we reduced the specific problem of finding the minimum (or maximum) to the general problem of finding the <em>n</em>-th smallest value. The general problem had one extra input, <em>n</em>.</p>
+<p>Similarly, the interval scheduling problem is a specific version of the independent set problem: we want a largest subset of intervals that aren’t incompatible (overlapping). The incompatibility relation is implicitly given by the start and end times of the intervals, whereas the generic problem has an extra input indicating which elements are incompatible.</p>
+<p>If there’s an algorithm for a general problem we can usually reuse it to solve more specific problems.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> We can usually reduce a specific problem to a more general one.</p>
+</div>
+<section id="Reduction">
+<h3>Reduction<a class="headerlink" href="#Reduction" title="Link to this heading"></a></h3>
+<p>The next figure shows the reduction of the interval scheduling problem (<em>Unsolved</em>) to the maximal independent set problem (<em>Solved</em>), with their inputs and outputs.</p>
+<p id="fig-26.3.2"></p><p><a class="reference internal" href="../33_Figures/Figures_26_3.html#Figure-26.3.2"><span class="std std-ref">Figure 26.3.2</span></a></p>
+<img alt="Image 26_3_is_to_mis.png" src="../_images/26_3_is_to_mis.png" />
+<p>The input transformation algorithm constructs the inputs of the <em>Solved</em> problem (<em>items</em> and <em>incompatible</em>) from the inputs of the <em>Unsolved</em> problem (<em>intervals</em>) as follows:</p>
+<ol class="arabic simple">
+<li><p>let <em>items</em> be <em>intervals</em></p></li>
+<li><p>let <em>incompatible</em> be the empty set</p></li>
+<li><p>for every <em>interval 1</em> in <em>intervals</em>:</p>
+<ol class="arabic simple">
+<li><p>for every <em>interval 2</em> in <em>intervals</em>:</p>
+<ol class="arabic simple">
+<li><p>if <em>interval 1</em> ≠ <em>interval 2</em> and not compatible(<em>interval 1</em>, <em>interval 2</em>):</p>
+<ol class="arabic simple">
+<li><p>add (<em>interval 1</em>, <em>interval 2</em>) to <em>incompatible</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>The auxiliary function ‘compatible’ checks that one interval ends before the other one starts.</p>
+<p>Now the output transformation algorithm: it constructs the output of <em>Unsolved</em> (<em>schedule</em>) from the output of <em>Solved</em> (<em>compatible</em>).</p>
+<ol class="arabic simple">
+<li><p>let <em>schedule</em> be <em>compatible</em></p></li>
+</ol>
+<p>The input transformation constructs the set of overlapping pairs of intervals. The output transformation simply passes on the result: any algorithm that computes a maximal independent set also solves the interval scheduling problem, i.e. computes a largest subset of non-overlapping intervals, because the input <em>items</em> are the intervals and the <em>incompatible</em> pairs are the overlapping intervals.</p>
+</section>
+<section id="Complexity">
+<h3>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h3>
+<p>To determine the complexity of a reduction, we must add the complexities of the transformations and of the most efficient algorithm for problem <em>Solved</em>.</p>
+<p>What are the complexities of the input transformation and of the output transformation for the above reduction?</p>
+<hr class="docutils" />
+<p>The output transformation takes constant time. The input transformation generates all pairs of intervals in quadratic time and checks each one in constant time by just comparing the integer start and end times. So the input transformation has quadratic complexity in the number of intervals.</p>
+<p>The most efficient algorithm we know for the maximal independent set is <a class="reference internal" href="../32_Answers/Answers_11_5_01.html"><span class="doc">brute-force search</span></a>: go through the 2ⁿ subsets of the <em>n</em> <em>items</em>, from largest to smallest subset, and stop when a compatible subset is found.</p>
+<p>This means that problem reduction leads to an interval scheduling algorithm with exponential worst-case complexity. This is much worse than the log-linear greedy algorithm for interval scheduling.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Reduction may be a way of quickly obtaining an initial algorithm for a problem, but it may be a very inefficient algorithm.</p>
+</div>
+</section>
+</section>
+<section id="Reduction-template">
+<h2><span class="section-number">26.3.4. </span>Reduction template<a class="headerlink" href="#Reduction-template" title="Link to this heading"></a></h2>
+<p>If you are asked in a TMA to reduce a given <em>Unsolved</em> problem to a <em>Solved</em> problem of your choice, you have to indicate the name of your chosen problem, its inputs and output, and the input and output transformations. You can present the transformations as step-by-step algorithms or just outline them. We suggest you present a reduction as follows.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Unsolved</p></th>
+<th class="head"><p>Solved</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Problem</strong>:</p></td>
+<td><p>interval scheduling</p></td>
+<td><p>maximal independent set</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Input</strong>:</p></td>
+<td><p><em>intervals</em>, a set of integer pairs</p></td>
+<td><p><em>items</em>, a set of objects; <em>incompatible</em>, a set of pairs of objects</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output</strong>:</p></td>
+<td><p><em>schedule</em>, a set of integer pairs</p></td>
+<td><p><em>compatible</em>, a set of objects</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Input transformation</strong> (<em>Unsolved</em> to <em>Solved</em>): Let <em>items</em> be <em>intervals</em>. Let <em>incompatible</em> be the empty set. For each pair of intervals, if one starts before the other one ends, then add the pair to <em>incompatible</em>.</p>
+<p><strong>Output transformation</strong> (<em>Solved</em> to <em>Unsolved</em>): Let <em>schedule</em> be <em>compatible</em>.</p>
+<section id="Exercise-26.3.2">
+<h3>Exercise 26.3.2<a class="headerlink" href="#Exercise-26.3.2" title="Link to this heading"></a></h3>
+<p>Complete the template below to show how the problem of finding the maximum can be reduced to the sorting problem.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Problem</strong>:</p></td>
+<td><p>maximum</p></td>
+<td><p>sorting</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Input</strong>:</p></td>
+<td><p><em>items</em>, a sequence of objects</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output</strong>:</p></td>
+<td><p><em>largest</em>, an object</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Input transformation</strong> (<em>Unsolved</em> to <em>Solved</em>):</p>
+<p><strong>Output transformation</strong> (<em>Solved</em> to <em>Unsolved</em>):</p>
+<p>What is the complexity of your reduction?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_26_3_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_26_3_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-26.3.3-(optional)">
+<h3>Exercise 26.3.3 (optional)<a class="headerlink" href="#Exercise-26.3.3-(optional)" title="Link to this heading"></a></h3>
+<p>Describe the reductions of Sections 26.3.1 and 26.3.2 using the template.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="26_2_P_and_NP.html" class="btn btn-neutral float-left" title="26.2. The P and NP classes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="26_4_hardness.html" class="btn btn-neutral float-right" title="26.4. Problem hardness" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

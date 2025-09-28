@@ -5,7 +5,7 @@
   "triggerOnLoad": true,
   "isSyncing": false,
   "lastSyncFailed": false,
-  "lastSavedStatusID": 20510162,
+  "lastSavedStatusID": 22311154,
   "currentSyncStatusID": 0,
   "refreshBooks": true,
   "booksToRefresh": [],
@@ -60,7 +60,9 @@
     "Readwise/Articles/Meltdown.md": "50949917",
     "Readwise/Articles/þÿTopic 19 Application Security View as Single Page OU Online.md": "50975960",
     "Readwise/Articles/Spectre.md": "51005230",
-    "Readwise/Articles/Tomasulo.md": "51213292"
+    "Readwise/Articles/Tomasulo.md": "51213292",
+    "Readwise/Books/Platone, C'ho L'ansia..md": "54590780",
+    "Readwise/Articles/What Every Programmer Should Know About Memory.md": "54780740"
   },
   "reimportShowConfirmation": true
 }

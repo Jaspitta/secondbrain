@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.5. Searching subsets</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11.6. Practice" href="11_6_practice.html" />
+    <link rel="prev" title="11.4. Searching permutations" href="11_4_permutations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="11-introduction.html">11. Exhaustive search</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="11_1_linear.html">11.1. Linear search, again</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_2_factorisation.html">11.2. Factorisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_3_constraints.html">11.3. Constraint satisfaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_4_permutations.html">11.4. Searching permutations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.5. Searching subsets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem">11.5.1. Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">11.5.2. Algorithm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.5.1">Exercise 11.5.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">11.5.3. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Code">11.5.4. Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.5.2">Exercise 11.5.2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="11_6_practice.html">11.6. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_7_summary.html">11.7. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="11-introduction.html"><span class="section-number">11. </span>Exhaustive search</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11.5. </span>Searching subsets</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Searching-subsets">
+<h1><span class="section-number">11.5. </span>Searching subsets<a class="headerlink" href="#Searching-subsets" title="Link to this heading"></a></h1>
+<p>For the TSP, the order in which places are visited impacts the total cost and so the output must be a sequence. For other problems, the output is a set and we must generate subsets instead of permutations of a collection of items. Here’s one such problem.</p>
+<section id="Problem">
+<h2><span class="section-number">11.5.1. </span>Problem<a class="headerlink" href="#Problem" title="Link to this heading"></a></h2>
+<p>Many products (cars, dishwashers, etc.) are designed and manufactured as product lines with a set of configurable features, to reduce costs. Not all features are compatible with each other, e.g. the features ‘petrol engine’ and ‘diesel engine’ are mutually incompatible.</p>
+<p>Given the features and the pairs of incompatible features, how many different products can be made? This is another example of a CSP: the constraints are given as incompatible feature pairs.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> This is an adaptation of problem <a class="reference external" href="https://open.kattis.com/problems/geppetto">Geppetto</a>.</p>
+</div>
+<p>Here’s one possible definition of the problem. How each feature is represented (an integer, a string, etc.) is irrelevant.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: feasible products</div>
+<div class="line"><strong>Inputs</strong>: <em>features</em>, a set of objects; <em>incompatible</em>, a set of pairs of objects</div>
+<div class="line"><strong>Preconditions</strong>:</div>
+</div>
+<ul class="simple">
+<li><p><em>features</em> isn’t empty</p></li>
+<li><p>every pair in <em>incompatible</em> consists of two different objects in <em>features</em></p></li>
+<li><p>if <em>incompatible</em> has feature pair (A, B), then it hasn’t pair (B, A)</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><strong>Output</strong>: <em>products</em>, an integer</div>
+<div class="line"><strong>Postconditions</strong>: <em>products</em> is the number of non-empty subsets of <em>features</em> that don’t contain a pair of objects in <em>incompatible</em></div>
+</div>
+<p>The second precondition states that no feature is incompatible with itself. The third precondition prevents redundant incompatibility information.</p>
+<p>Let’s think about some tests. What are the edge cases?</p>
+<hr class="docutils" />
+<p>The smallest possible input is a single feature which therefore has no incompatibilities. Other edges cases (with more than one feature) are no incompatibilities and all features are mutually incompatible.</p>
+<p>To keep lines of code short, I represent features with integers instead of strings. I use tuples to represent pairs.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_tests</span>
+
+<span class="n">feasible_products_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,             features,     incompatible, products</span>
+    <span class="p">(</span><span class="s1">&#39;smallest input&#39;</span><span class="p">,</span>  <span class="p">{</span><span class="mi">1</span><span class="p">},</span>          <span class="p">{},</span>                 <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;all compatible&#39;</span><span class="p">,</span>  <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span>       <span class="p">{},</span>                 <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;no compatible&#39;</span><span class="p">,</span>   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span>       <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)},</span>           <span class="mi">2</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;some compatible&#39;</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)},</span>   <span class="mi">8</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">check_tests</span><span class="p">(</span><span class="n">feasible_products_tests</span><span class="p">,</span> <span class="p">[</span><span class="nb">set</span><span class="p">,</span> <span class="nb">set</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Error: in test &#34;smallest input&#34;, {} must have type set.
+Error: in test &#34;all compatible&#34;, {} must have type set.
+</pre></div></div>
+</div>
+<p>The ‘all compatible’ test has output 3 because there are two products with one feature each and one product with both features. The latter isn’t a feasible product when both features are incompatible, so there are only two single-feature products for the ‘no compatible’ test.</p>
+<p>Can you explain why there are eight feasible products for the last problem instance?</p>
+<hr class="docutils" />
+<p>There are four single-feature products and another four products with two features: one from the first incompatible pair and another from the second pair. Those four products have features 1 and 3, 1 and 4, 2 and 3, and 2 and 4. There are no products with three or four features as they would include two incompatible features.</p>
+</section>
+<section id="Algorithm">
+<h2><span class="section-number">11.5.2. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p>The problem can be solved with an exhaustive search: generate each non-empty subset of features and test whether it includes a pair of incompatible features. If not, we found a subset of compatible features and can increment the product counter. To check if a candidate feature subset is a solution, we make a linear search over all pairs of incompatible features and test if both are in the current candidate.</p>
+<p>The overall algorithm thus consists of an exhaustive search within an exhaustive search.</p>
+<p>In mathematics, a <strong>k-combination</strong> is a selection of <em>k</em> items from a collection, without considering the order in which they were selected. If the collection from which items are selected is a set, then a <em>k</em>-combination is a subset of size <em>k</em>. The 0-combination is the empty set.</p>
+<p>For this problem, <em>k</em> is the number of features to be put in the product. The algorithm has to generate and test all <em>k</em>-combinations, for each <em>k</em> from 1 to the total number of features.</p>
+<ol class="arabic simple">
+<li><p>let <em>products</em> be 0</p></li>
+<li><p>for each <em>k</em> from 1 to │<em>features</em>│:</p>
+<ol class="arabic simple">
+<li><p>for each <em>product</em> that is a <em>k</em>-combination of <em>features</em>:</p>
+<ol class="arabic simple">
+<li><p>if feasible(<em>product</em>, <em>incompatible</em>):</p>
+<ol class="arabic simple">
+<li><p>let <em>products</em> be <em>products</em> + 1</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Step 2.1.1 tests the current product candidate with an auxiliary Boolean function that does the linear search.</p>
+<section id="Exercise-11.5.1">
+<h3>Exercise 11.5.1<a class="headerlink" href="#Exercise-11.5.1" title="Link to this heading"></a></h3>
+<p>Copy the above algorithm and change it so that instead of the number of feasible products it computes a largest set of mutually compatible features. (This is known as the <strong>maximal independent set</strong> problem.) The output variable should be called <em>compatible</em>.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_11_5_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">11.5.3. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>When generating a subset, we have two choices for each item: either we put it in the subset or we don’t. This means there are 2ⁿ subsets of a set with <em>n</em> items.</p>
+<p>A simple rule of thumb is that <span class="math notranslate nohighlight">\(2^{10m} = (2^{10})^m = 1024^m\)</span> is about <span class="math notranslate nohighlight">\(1000^m\)</span>, so sets of 10, 20 and 30 items (<span class="math notranslate nohighlight">\(m\)</span> is 1, 2, and 3) have about a thousand, a million and a billion subsets, respectively.</p>
+<p>The algorithm does a linear search over the incompatible pairs for each subset. The worst-case complexity is therefore Θ(2ⁿ × │<em>incompatible</em>│), with <em>n</em> = │<em>features</em>│. The complexity is said to be <strong>exponential</strong> when it’s of the form <em>c</em>ⁿ, with <em>c</em> some constant greater than one and <em>n</em> the size of one of the inputs.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> MU123 Unit 13 and MST124 Unit 3 Section 4 introduce exponential functions.</p>
+</div>
+<p>Exponential algorithms with <em>c</em> = 2 become slow very fast, but not as fast as factorial algorithms, which take eons to finish even for very small inputs, assuming the hardware would last that long. Here’s a comparison of several functions.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>n</p></th>
+<th class="head"><p>n²</p></th>
+<th class="head"><p>n³</p></th>
+<th class="head"><p>2ⁿ</p></th>
+<th class="head"><p>n!</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>25</p></td>
+<td><p>125</p></td>
+<td><p>32</p></td>
+<td><p>120</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>100</p></td>
+<td><p>1,000</p></td>
+<td><p>1,024</p></td>
+<td><p>3,628,800</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>225</p></td>
+<td><p>3,375</p></td>
+<td><p>32,768</p></td>
+<td><p>1,307,674,368,000</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+<td><p>400</p></td>
+<td><p>8,000</p></td>
+<td><p>1,048,576</p></td>
+<td><p>2,432,902,008,176,640,000</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>625</p></td>
+<td><p>15,625</p></td>
+<td><p>33,554,432</p></td>
+<td><p>15,511,210,043,330,985,984,000,000</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, if generating and testing one subset of features takes 1 ms, then the exponential algorithm takes about 33.5 thousand seconds (that’s over 9 hours!) for 25 features, a rather small input value.</p>
+<p>If generating one tour and computing its cost also takes 1 ms, then the factorial exhaustive search algorithm for the TSP in the previous section takes</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span>
+
+<span class="n">MS_PER_YEAR</span> <span class="o">=</span> <span class="mi">365</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span>  <span class="c1"># milliseconds in a year</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">//</span> <span class="n">MS_PER_YEAR</span> <span class="o">//</span> <span class="mi">1000</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;billion years&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+491857 billion years
+</pre></div></div>
+</div>
+<p>to find the best tour to visit 25 places and return to the start place.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Algorithms with best-case exponential complexity can only be applied to very small input values. Algorithms with best-case factorial complexity are practically useless.</p>
+</div>
+</section>
+<section id="Code">
+<h2><span class="section-number">11.5.4. </span>Code<a class="headerlink" href="#Code" title="Link to this heading"></a></h2>
+<p>To generate subsets, we’ll use another function from the <code class="docutils literal notranslate"><span class="pre">itertools</span></code> module: <code class="docutils literal notranslate"><span class="pre">combinations</span></code>. It takes a collection of items and an integer <em>k</em>, and generates one by one all <em>k</em>-combinations of those items. Each combination is represented with a tuple although conceptually it’s a set. Here’s a simple example.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">combinations</span>
+
+<span class="n">items</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;some&quot;</span><span class="p">,</span> <span class="s2">&quot;words&quot;</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+()
+(&#39;some&#39;,)
+(&#39;words&#39;,)
+(&#39;some&#39;, &#39;words&#39;)
+</pre></div></div>
+</div>
+<p>Let’s implement the algorithm above.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">feasible_products</span><span class="p">(</span><span class="n">features</span><span class="p">:</span> <span class="nb">set</span><span class="p">,</span> <span class="n">incompatible</span><span class="p">:</span> <span class="nb">set</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the number of subsets of features without incompatibilities.</span>
+
+<span class="sd">    Preconditions:</span>
+<span class="sd">    - len(features) &gt; 0</span>
+<span class="sd">    - incompatible is a set of pairs of distinct elements of features</span>
+<span class="sd">    - if pair (a, b) is in incompatible, pair (b, a) isn&#39;t</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">feasible</span><span class="p">(</span><span class="n">product</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if product hasn&#39;t two incompatible features.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">incompatible</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">product</span> <span class="ow">and</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">product</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="n">products</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">feasible</span><span class="p">(</span><span class="n">product</span><span class="p">):</span>
+                <span class="n">products</span> <span class="o">=</span> <span class="n">products</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">products</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">feasible_products</span><span class="p">,</span> <span class="n">feasible_products_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing feasible_products...
+Tests finished: 4 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<section id="Exercise-11.5.2">
+<h3>Exercise 11.5.2<a class="headerlink" href="#Exercise-11.5.2" title="Link to this heading"></a></h3>
+<p>The <strong>0/1 knapsack</strong> problem, another classic optimisation problem, goes as follows. Given a set of items as weight–value pairs, and given the largest weight a rucksack can carry without bursting, find the highest-valued subset of items that can be packed.</p>
+<p>The name of the problem comes from the fact that the solution has 0 or 1 of each item.</p>
+<p>Outline an algorithm.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_11_5_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_11_5_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="11_4_permutations.html" class="btn btn-neutral float-left" title="11.4. Searching permutations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="11_6_practice.html" class="btn btn-neutral float-right" title="11.6. Practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

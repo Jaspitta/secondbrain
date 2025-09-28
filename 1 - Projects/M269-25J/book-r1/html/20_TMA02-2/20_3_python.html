@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20.3. Python</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="21. Graphs 2" href="../21_Graphs_2/21-introduction.html" />
+    <link rel="prev" title="20.2. Applying greed" href="20_2_greed.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="20-introduction.html">20. TMA 02 part 2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="20_1_graphs.html">20.1. Using graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20_2_greed.html">20.2. Applying greed</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">20.3. Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Language-constructs">20.3.1. Language constructs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Standard-library">20.3.2. Standard library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#M269-library">20.3.3. M269 library</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="20-introduction.html"><span class="section-number">20. </span>TMA 02 part 2</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">20.3. </span>Python</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Python">
+<h1><span class="section-number">20.3. </span>Python<a class="headerlink" href="#Python" title="Link to this heading"></a></h1>
+<p>Unless a TMA 02 question explicitly states otherwise, your code can only use the types, classes, methods, functions, statements, constants and code templates introduced in Chapters 2–19 of this book. Here’s a non-comprehensive index of them, in addition to Section <a class="reference internal" href="../10_TMA01-2/10_4_python.html"><span class="doc">10.4</span></a>.</p>
+<section id="Language-constructs">
+<h2><span class="section-number">20.3.1. </span>Language constructs<a class="headerlink" href="#Language-constructs" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>nested functions (<a class="reference internal" href="../11_Search/11_3_constraints.html#Code-and-performance"><span class="std std-ref">11.3.3</span></a>)</p></li>
+<li><p>types <code class="docutils literal notranslate"><span class="pre">Callable</span></code> (<a class="reference internal" href="../14_Sorting/14_3_insertion_sort.html#Iterative-version"><span class="std std-ref">14.3.2</span></a>) and <code class="docutils literal notranslate"><span class="pre">Hashable</span></code> (<a class="reference internal" href="../17_Graphs_1/17_6_classes.html#The-DiGraph-class"><span class="std std-ref">17.6.1</span></a>) in module <code class="docutils literal notranslate"><span class="pre">typing</span></code></p></li>
+</ul>
+</section>
+<section id="Standard-library">
+<h2><span class="section-number">20.3.2. </span>Standard library<a class="headerlink" href="#Standard-library" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>function <code class="docutils literal notranslate"><span class="pre">super()</span></code> (<a class="reference internal" href="../17_Graphs_1/17_6_classes.html#The-UndirectedGraph-class"><span class="std std-ref">17.6.2</span></a>)</p></li>
+<li><p>function <code class="docutils literal notranslate"><span class="pre">abs</span></code> (<a class="reference internal" href="../18_Greed/18_2_weighted_graph.html#Weighted-graphs"><span class="std std-ref">18.2</span></a>)</p></li>
+<li><p>method <code class="docutils literal notranslate"><span class="pre">pop</span></code> on sets (<a class="reference internal" href="../11_Search/11_2_factorisation.html#Compute-solutions"><span class="std std-ref">11.2.2</span></a>)</p></li>
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> (<a class="reference internal" href="../11_Search/11_2_factorisation.html#Sort-candidates"><span class="std std-ref">11.2.3</span></a>) and <code class="docutils literal notranslate"><span class="pre">factorial</span></code> (<a class="reference internal" href="../11_Search/11_4_permutations.html#Complexity"><span class="std std-ref">11.4.3</span></a>) in module <code class="docutils literal notranslate"><span class="pre">math</span></code></p></li>
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">permutations</span></code> (<a class="reference internal" href="../11_Search/11_4_permutations.html#Code"><span class="std std-ref">11.4.4</span></a>) and <code class="docutils literal notranslate"><span class="pre">combinations</span></code> (<a class="reference internal" href="../11_Search/11_5_subsets.html#Code"><span class="std std-ref">11.5.4</span></a>) in module <code class="docutils literal notranslate"><span class="pre">itertools</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code> argument for function <code class="docutils literal notranslate"><span class="pre">sorted</span></code> and method <code class="docutils literal notranslate"><span class="pre">sort</span></code> (<a class="reference internal" href="../14_Sorting/14_1_sort_prep.html#Sorting-in-Python"><span class="std std-ref">14.1.4</span></a>)</p></li>
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">shuffle</span></code> (<a class="reference internal" href="../14_Sorting/14_6_quicksort.html#Code-and-performance"><span class="std std-ref">14.6.3</span></a>) and <code class="docutils literal notranslate"><span class="pre">random</span></code> (<a class="reference internal" href="../17_Graphs_1/17_6_classes.html#Random-graphs"><span class="std std-ref">17.6.4</span></a>) in module <code class="docutils literal notranslate"><span class="pre">random</span></code></p></li>
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">heappush</span></code> and <code class="docutils literal notranslate"><span class="pre">heappop</span></code> in module <code class="docutils literal notranslate"><span class="pre">heapq</span></code> (<a class="reference internal" href="../16_Trees/16_6_heapsort.html#Heaps-in-Python"><span class="std std-ref">16.6.5</span></a>)</p></li>
+</ul>
+</section>
+<section id="M269-library">
+<h2><span class="section-number">20.3.3. </span>M269 library<a class="headerlink" href="#M269-library" title="Link to this heading"></a></h2>
+<p><strong>Recursion</strong> (file <code class="docutils literal notranslate"><span class="pre">m269_rec_list.py</span></code>):</p>
+<ul class="simple">
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">is_empty</span></code>, <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">tail</span></code> (<a class="reference internal" href="../12_Recursion/12_3_length.html#Code"><span class="std std-ref">12.3.2</span></a>) and <code class="docutils literal notranslate"><span class="pre">prepend</span></code> (<a class="reference internal" href="../12_Recursion/12_5_create_sequences.html#Prepend"><span class="std std-ref">12.5.1</span></a>)</p></li>
+</ul>
+<p><strong>Binary tree</strong> (file <code class="docutils literal notranslate"><span class="pre">m269_tree.py</span></code>):</p>
+<ul class="simple">
+<li><p>class <code class="docutils literal notranslate"><span class="pre">Tree</span></code> (<a class="reference internal" href="../16_Trees/16_1_binary.html#ADT-and-data-structure"><span class="std std-ref">16.1.2</span></a>)</p></li>
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">is_empty</span></code>, <code class="docutils literal notranslate"><span class="pre">join</span></code>, <code class="docutils literal notranslate"><span class="pre">leaf</span></code>, <code class="docutils literal notranslate"><span class="pre">is_leaf</span></code> (<a class="reference internal" href="../16_Trees/16_1_binary.html#ADT-and-data-structure"><span class="std std-ref">16.1.2</span></a>), <code class="docutils literal notranslate"><span class="pre">size</span></code> (<a class="reference internal" href="../16_Trees/16_2_algorithms.html#Divide-and-conquer"><span class="std std-ref">16.2.1</span></a>) and <code class="docutils literal notranslate"><span class="pre">write</span></code> (<a class="reference internal" href="../16_Trees/16_3_traversals.html#Pre-order-traversal"><span class="std std-ref">16.3.2</span></a>)</p></li>
+<li><p>constants <code class="docutils literal notranslate"><span class="pre">THREE</span></code>, <code class="docutils literal notranslate"><span class="pre">FOUR</span></code>, <code class="docutils literal notranslate"><span class="pre">FIVE</span></code>, <code class="docutils literal notranslate"><span class="pre">SIX</span></code>, <code class="docutils literal notranslate"><span class="pre">TPM</span></code>, <code class="docutils literal notranslate"><span class="pre">PMT</span></code>, <code class="docutils literal notranslate"><span class="pre">MPT</span></code> (example trees, <a class="reference internal" href="../16_Trees/16_1_binary.html#ADT-and-data-structure"><span class="std std-ref">16.1.2</span></a>)</p></li>
+</ul>
+<p><strong>Sorting</strong> (file <code class="docutils literal notranslate"><span class="pre">m269_sorting.py</span></code>):</p>
+<ul class="simple">
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">suit</span></code>, <code class="docutils literal notranslate"><span class="pre">value</span></code>, <code class="docutils literal notranslate"><span class="pre">suit_value</span></code>, <code class="docutils literal notranslate"><span class="pre">identity</span></code> (<a class="reference internal" href="../14_Sorting/14_1_sort_prep.html#Problem-instances"><span class="std std-ref">14.1.2</span></a>)</p></li>
+</ul>
+<p><strong>Directed graphs</strong> (file <code class="docutils literal notranslate"><span class="pre">m269_digraph.py</span></code>):</p>
+<ul class="simple">
+<li><p>class <code class="docutils literal notranslate"><span class="pre">DiGraph</span></code> (<a class="reference internal" href="../17_Graphs_1/17_6_classes.html#The-DiGraph-class"><span class="std std-ref">17.6.1</span></a>)</p></li>
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">bfs</span></code> (<a class="reference internal" href="../17_Graphs_1/17_8_bfs_dfs.html#Breadth-first-search"><span class="std std-ref">17.8.1</span></a>) and <code class="docutils literal notranslate"><span class="pre">dfs</span></code> (<a class="reference internal" href="../17_Graphs_1/17_8_bfs_dfs.html#Depth-first-search"><span class="std std-ref">17.8.2</span></a>)</p></li>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">WeightedDiGraph</span></code> (<a class="reference internal" href="../18_Greed/18_2_weighted_graph.html#Classes"><span class="std std-ref">18.2.2</span></a>)</p></li>
+<li><p>function <code class="docutils literal notranslate"><span class="pre">dijkstra</span></code> (<a class="reference internal" href="../18_Greed/18_4_shortest_path.html#Code"><span class="std std-ref">18.4.2</span></a>)</p></li>
+</ul>
+<p><strong>Undirected graphs</strong>:</p>
+<p>File <code class="docutils literal notranslate"><span class="pre">m269_ungraph.py</span></code>:</p>
+<ul class="simple">
+<li><p>class <code class="docutils literal notranslate"><span class="pre">UndirectedGraph</span></code> (<a class="reference internal" href="../17_Graphs_1/17_6_classes.html#The-UndirectedGraph-class"><span class="std std-ref">17.6.2</span></a>)</p></li>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">WeightedUndirectedGraph</span></code> (<a class="reference internal" href="../18_Greed/18_2_weighted_graph.html#Classes"><span class="std std-ref">18.2.2</span></a>)</p></li>
+<li><p>function <code class="docutils literal notranslate"><span class="pre">prim</span></code> (<a class="reference internal" href="../18_Greed/18_3_mst.html#Code"><span class="std std-ref">18.3.3</span></a>)</p></li>
+</ul>
+<p>File <code class="docutils literal notranslate"><span class="pre">m269_graphs.py</span></code>:</p>
+<ul class="simple">
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">null_graph</span></code>, <code class="docutils literal notranslate"><span class="pre">path_graph</span></code>, <code class="docutils literal notranslate"><span class="pre">cycle_graph</span></code>, <code class="docutils literal notranslate"><span class="pre">complete_graph</span></code> (<a class="reference internal" href="../17_Graphs_1/17_6_classes.html#Special-graphs"><span class="std std-ref">17.6.3</span></a>)</p></li>
+<li><p>function <code class="docutils literal notranslate"><span class="pre">random_graph</span></code> (<a class="reference internal" href="../17_Graphs_1/17_6_classes.html#Random-graphs"><span class="std std-ref">17.6.4</span></a>)</p></li>
+<li><p>constants <code class="docutils literal notranslate"><span class="pre">EMPTY_UG</span></code> (<a class="reference internal" href="../17_Graphs_1/17_6_classes.html#Special-graphs"><span class="std std-ref">17.6.3</span></a>), <code class="docutils literal notranslate"><span class="pre">RHOMBUS</span></code> (<a class="reference internal" href="../18_Greed/18_3_mst.html#Code"><span class="std std-ref">18.3.3</span></a>) and <code class="docutils literal notranslate"><span class="pre">DIJKSTRA</span></code> (<a class="reference internal" href="../18_Greed/18_4_shortest_path.html#Code"><span class="std std-ref">18.4.2</span></a>)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="20_2_greed.html" class="btn btn-neutral float-left" title="20.2. Applying greed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../21_Graphs_2/21-introduction.html" class="btn btn-neutral float-right" title="21. Graphs 2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

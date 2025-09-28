@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18.2. Weighted graphs</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="18.3. Minimum spanning tree" href="18_3_mst.html" />
+    <link rel="prev" title="18.1. Interval scheduling" href="18_1_scheduling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="18-introduction.html">18. Greed</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="18_1_scheduling.html">18.1. Interval scheduling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">18.2. Weighted graphs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Data-structures">18.2.1. Data structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Classes">18.2.2. Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="18_3_mst.html">18.3. Minimum spanning tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18_4_shortest_path.html">18.4. Shortest paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="18_5_summary.html">18.5. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="18-introduction.html"><span class="section-number">18. </span>Greed</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">18.2. </span>Weighted graphs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Weighted-graphs">
+<h1><span class="section-number">18.2. </span>Weighted graphs<a class="headerlink" href="#Weighted-graphs" title="Link to this heading"></a></h1>
+<p>The next examples of greedy algorithms will be on a new kind of graph, which this section introduces.</p>
+<p>A graph shows which pairs of entities are related. Often we want to quantify the relationships, e.g. how long it takes or how much it costs to travel from A to B.</p>
+<p>In a <strong>weighted</strong> graph, each edge has an associated number: its <strong>weight</strong>. The weight can represent distance, cost, duration, or anything else that’s relevant for the model. For example, a weighted social network could represent the strengths of friendships. This is not asked of users, as it’s unreliable and can be awkward, e.g. if Alice rates her friendship with Bob as 9 but Bob only rates it as 7. I imagine social media companies have their own secret friendship strength measure, e.g. based
+on mutual likes and posts, and use it to tailor recommendations, order the news feed, and in other features.</p>
+<p>Edge weights can be any floating point number or integer, but examples will use mostly small integers. Depending on the problem and algorithm, there may be some restrictions, e.g. the weights must be positive or within a certain range.</p>
+<p>For unweighted graphs, a shortest path between two nodes is a path with the fewest edges. For weighted graphs, a <strong>shortest path</strong> has the lowest sum of edge weights. For some reason, the term ‘lightest path’ hasn’t caught on …</p>
+<p>Sometimes the weights aren’t given in the problem and must be computed instead. For example, if nodes represent <em>x</em>–<em>y</em> points in a 2D space, the weights are usually some form of distance between them.</p>
+<p>In the next figure, the <strong>Manhattan distance</strong> (‘as the taxi drives’) between two points is <span class="math notranslate nohighlight">\(m = m_x + m_y\)</span> and the <strong>Euclidean distance</strong> (‘as the crow flies’) is obtained through the Pythagorean theorem: <span class="math notranslate nohighlight">\(e = \sqrt{m_x² + m_y²}\)</span>.</p>
+<p id="fig-18.2.1"></p><p><a class="reference internal" href="../33_Figures/Figures_18_2.html#Figure-18.2.1"><span class="std std-ref">Figure 18.2.1</span></a></p>
+<img alt="Image 18_2_distances.png" src="../_images/18_2_distances.png" />
+<p>More generally, for any two points <code class="docutils literal notranslate"><span class="pre">(x1,</span> <span class="pre">y1)</span></code> and <code class="docutils literal notranslate"><span class="pre">(x2,</span> <span class="pre">y2)</span></code> represented with Python tuples:</p>
+<ul class="simple">
+<li><p>the Manhattan distance is <code class="docutils literal notranslate"><span class="pre">abs(x1</span> <span class="pre">-</span> <span class="pre">x2)</span> <span class="pre">+</span> <span class="pre">abs(y1</span> <span class="pre">-</span> <span class="pre">y2)</span></code></p></li>
+<li><p>the Euclidean distance is <code class="docutils literal notranslate"><span class="pre">math.sqrt((x1</span> <span class="pre">-</span> <span class="pre">x2)</span> <span class="pre">**</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">(y1</span> <span class="pre">-</span> <span class="pre">y2)</span> <span class="pre">**</span> <span class="pre">2)</span></code>.</p></li>
+</ul>
+<p>The Python function <code class="docutils literal notranslate"><span class="pre">abs</span></code> returns the absolute value of an expression: if the value is negative, it returns its negation, otherwise it returns the value. For example, <code class="docutils literal notranslate"><span class="pre">abs(-5)</span></code> and <code class="docutils literal notranslate"><span class="pre">abs(5)</span></code> both return 5. The absolute value is necessary for the Manhattan distance from A to B to be the same as from B to A.</p>
+<p>Weighted graphs can be directed or undirected. You’ve seen the undirected weighted graph below when I introduced the <a class="reference internal" href="../11_Search/11_4_permutations.html#Problem"><span class="std std-ref">travelling salesman problem</span></a> (TSP): given a set of places and the costs of travelling between any two places, find a lowest-cost tour that visits all places once and returns to the start. Remember that for optimisation problems ‘cost’ is a generic term for the quantity being optimised: for the TSP it could be travel time or
+distance.</p>
+<p id="fig-18.2.2"></p><p><a class="reference internal" href="../33_Figures/Figures_18_2.html#Figure-18.2.2"><span class="std std-ref">Figure 18.2.2</span></a></p>
+<img alt="Image ../11_Search/11_4_tsp.png" src="../_images/11_4_tsp.png" />
+<p>Now that you know about some <a class="reference internal" href="../17_Graphs_1/17_2_concepts.html#On-graphs"><span class="std std-ref">basic graph concepts</span></a>, we can define the TSP as a graph problem. The TSP is the optimisation problem of finding a shortest path that is a tour for a given undirected weighted complete graph, where a tour is a cycle that includes all nodes.</p>
+<section id="Data-structures">
+<h2><span class="section-number">18.2.1. </span>Data structures<a class="headerlink" href="#Data-structures" title="Link to this heading"></a></h2>
+<p>To store a weighted graph we have the same choices as for unweighted graphs.</p>
+<p>To use an <a class="reference internal" href="../17_Graphs_1/17_3_edge_list.html#Edge-list-representation"><span class="std std-ref">edge list representation</span></a>, we represent edges as triples (<em>node1</em>, <em>node2</em>, <em>weight</em>) instead of pairs.</p>
+<p>To use an <a class="reference internal" href="../17_Graphs_1/17_4_adj_matrix.html#Adjacency-matrix-representation"><span class="std std-ref">adjacency matrix representation</span></a>, we replace the Booleans with integers or floats indicating the weights. If there’s no edge from A to B, we set the number in row A and column B to <a class="reference internal" href="../06_Implementing/06_8_summary.html#Python"><span class="std std-ref">infinity</span></a>. Here’s the table for the graph above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">inf</span>
+
+<span class="p">[</span>
+    <span class="p">[</span><span class="n">inf</span><span class="p">,</span>  <span class="mi">15</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span>   <span class="mi">5</span><span class="p">],</span>   <span class="c1"># distances from node 0</span>
+    <span class="p">[</span> <span class="mi">15</span><span class="p">,</span> <span class="n">inf</span><span class="p">,</span>  <span class="mi">30</span><span class="p">,</span>   <span class="mi">5</span><span class="p">],</span>   <span class="c1"># distances from node 1</span>
+    <span class="p">[</span> <span class="mi">10</span><span class="p">,</span>  <span class="mi">30</span><span class="p">,</span> <span class="n">inf</span><span class="p">,</span>  <span class="mi">10</span><span class="p">],</span>   <span class="c1"># distances from node 2</span>
+    <span class="p">[</span>  <span class="mi">5</span><span class="p">,</span>   <span class="mi">5</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="n">inf</span><span class="p">]</span>    <span class="c1"># distances from node 3</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>When solving the TSP with an exhaustive search of all possible tours, I represented the input graph as an adjacency matrix, because it’s complete, and filled the diagonal with zeros to indicate there’s no cost in travelling from a place to itself. The diagonal is never used for the TSP, so it doesn’t matter what values it has, but in general we must distinguish zero-weight edges from absent edges and therefore use infinity for the latter.</p>
+<p>To use an <a class="reference internal" href="../17_Graphs_1/17_5_adj_list.html#Adjacency-list-representation"><span class="std std-ref">adjacency list representation</span></a>, we must add information about the weights of the edges going to the out-neighbours. There are several ways of doing so. Let’s start with our representation of the unweighted version of the graph above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For the weighted graph, we could represent neighbours with pairs (<em>node</em>, <em>weight</em>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="p">{(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span>  <span class="mi">5</span><span class="p">)},</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span>  <span class="mi">5</span><span class="p">)},</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)},</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The representation states that there’s an edge from node 0 to node 1 with weight 15, to node 2 with weight 10, to node 3 with weight 5, and similarly for the other nodes.</p>
+<p>Checking if there’s an edge from A to B is done in constant time for the unweighted graph, because B can be looked up directly in the set of A’s neighbours. For the weighted graph, we must do a linear search over the pairs.</p>
+<p>If we represent the neighbours as a dictionary of nodes to the weights of the edges, we can still check for an edge (A, B) in constant time: is B a key in the dictionary associated with A?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span>  <span class="mi">5</span><span class="p">},</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span>  <span class="mi">5</span><span class="p">},</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span>  <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span>  <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>I haven’t done any space–time tradeoff. The second representation is better in terms of run-time <em>and</em> memory. Python implements sets and dictionaries with hash tables. The first representation uses a hash table where the keys are node–integer pairs and values are any object. The second representation uses a hash table where the keys are nodes and the values are integers. It uses fewer objects, and thus less space, than the first.</p>
+</section>
+<section id="Classes">
+<h2><span class="section-number">18.2.2. </span>Classes<a class="headerlink" href="#Classes" title="Link to this heading"></a></h2>
+<p>A weighted graph ADT has the same operations as for an unweighted graph, but the ‘add edge’ operation has an extra parameter for the weight, and there’s a new operation to return the weight of an edge.</p>
+<p>Again, I implement two classes, for directed and undirected graphs, the latter being a subclass of the former. The class for weighted digraphs is a subclass of its <a class="reference internal" href="../17_Graphs_1/17_6_classes.html#The-DiGraph-class"><span class="std std-ref">unweighted counterpart</span></a>, so that I can inherit methods that are unaffected by the change of data structure.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_digraph
+<span class="o">%</span><span class="k">run</span> -i ../m269_ungraph
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_digraph.py</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WeightedDiGraph</span><span class="p">(</span><span class="n">DiGraph</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A weighted directed graph with hashable node objects.</span>
+
+<span class="sd">    Edges are between different nodes.</span>
+<span class="sd">    There&#39;s at most one edge from one node to another.</span>
+<span class="sd">    Edges have weights, which can be floats or integers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add the node to the graph.</span>
+
+<span class="sd">        Preconditions: not self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c1"># a map of out-neighbours to weights</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">weight</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add edge start -&gt; end, with the given weight, to the graph.</span>
+
+<span class="sd">        If the edge already exists, set its weight.</span>
+
+<span class="sd">        Preconditions:</span>
+<span class="sd">        self.has_node(start) and self.has_node(end) and start != end</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">start</span><span class="p">][</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the weight of edge start -&gt; end or infinity if it doesn&#39;t exist.</span>
+
+<span class="sd">        Preconditions: self.has_node(start) and self.has_node(end)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">start</span><span class="p">][</span><span class="n">end</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove edge start -&gt; end from the graph.</span>
+
+<span class="sd">        If the edge doesn&#39;t exist, do nothing.</span>
+
+<span class="sd">        Preconditions: self.has_node(start) and self.has_node(end)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the graph&#39;s edges as a set of triples (start, end, weight).&quot;&quot;&quot;</span>
+        <span class="n">all_edges</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">:</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">all_edges</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">weight</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">all_edges</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">out_neighbours</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the out-neighbours of the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw the graph.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">is</span> <span class="n">WeightedDiGraph</span><span class="p">:</span>
+            <span class="n">graph</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">graph</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+        <span class="n">networkx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+            <span class="n">graph</span><span class="p">,</span>
+            <span class="n">pos</span><span class="p">,</span>
+            <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">node_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+            <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span>
+            <span class="n">font_size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">networkx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span>
+            <span class="n">graph</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">networkx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s create an example graph to see how weights are depicted.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="n">WeightedDiGraph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span><span class="n">node</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span><span class="p">,</span> <span class="n">node</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/18_Greed_18_2_weighted_graph_17_0.png" src="../_images/18_Greed_18_2_weighted_graph_17_0.png" />
+</div>
+</div>
+<p>Now the class for weighted undirected graphs, which is very similar to its <a class="reference internal" href="../17_Graphs_1/17_6_classes.html#The-UndirectedGraph-class"><span class="std std-ref">unweighted counterpart</span></a>: each undirected weighted edge is represented as two directed weighted edges, and there’s no distinction between in-degree, out-degree and degree, and likewise for neighbours.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_ungraph.py</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">WeightedUndirectedGraph</span><span class="p">(</span><span class="n">WeightedDiGraph</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A weighted undirected graph with hashable node objects.</span>
+
+<span class="sd">    There&#39;s at most one edge between two different nodes.</span>
+<span class="sd">    There are no edges between a node and itself.</span>
+<span class="sd">    Edges have weights, which may be integers or floats.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node1</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">node2</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">weight</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add an edge node1-node2 with the given weight to the graph.</span>
+
+<span class="sd">        If the edge already exists, set its weight.</span>
+
+<span class="sd">        Preconditions: self.has_node(node1) and self.has_node(node2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node2</span><span class="p">,</span> <span class="n">node1</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node1</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">node2</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove edge node1-node2 from the graph.</span>
+
+<span class="sd">        If the edge doesn&#39;t exist, do nothing.</span>
+
+<span class="sd">        Preconditions: self.has_node(node1) and self.has_node(node2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">node2</span><span class="p">,</span> <span class="n">node1</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the graph&#39;s edges as a set of triples (node1, node2, weight).</span>
+
+<span class="sd">        Postconditions: for every edge A-B,</span>
+<span class="sd">        the output has either (A, B, w) or (B, A, w) but not both</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">all_edges</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">:</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_edges</span><span class="p">:</span>
+                    <span class="n">all_edges</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">weight</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">all_edges</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">in_neighbours</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all nodes that are adjacent to the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_neighbours</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">neighbours</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all nodes that are adjacent to the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_neighbours</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">in_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of edges attached to the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of edges attached to the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="18_1_scheduling.html" class="btn btn-neutral float-left" title="18.1. Interval scheduling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="18_3_mst.html" class="btn btn-neutral float-right" title="18.3. Minimum spanning tree" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

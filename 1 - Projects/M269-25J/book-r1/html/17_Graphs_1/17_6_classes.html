@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17.6. Classes for graphs</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="17.7. Traversing a graph" href="17_7_traversal.html" />
+    <link rel="prev" title="17.5. Adjacency list representation" href="17_5_adj_list.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="17-introduction.html">17. Graphs 1</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="17_1_modelling.html">17.1. Modelling with graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_2_concepts.html">17.2. Basic concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_3_edge_list.html">17.3. Edge list representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_4_adj_matrix.html">17.4. Adjacency matrix representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_5_adj_list.html">17.5. Adjacency list representation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">17.6. Classes for graphs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#The-DiGraph-class">17.6.1. The <code class="docutils literal notranslate"><span class="pre">DiGraph</span></code> class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.6.1-(optional)">Exercise 17.6.1 (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#The-UndirectedGraph-class">17.6.2. The <code class="docutils literal notranslate"><span class="pre">UndirectedGraph</span></code> class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.6.2-(optional)">Exercise 17.6.2 (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Special-graphs">17.6.3. Special graphs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.6.3">Exercise 17.6.3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Random-graphs">17.6.4. Random graphs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="17_7_traversal.html">17.7. Traversing a graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_8_bfs_dfs.html">17.8. Breadth- and depth-first search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_9_summary.html">17.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="17-introduction.html"><span class="section-number">17. </span>Graphs 1</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">17.6. </span>Classes for graphs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Classes-for-graphs">
+<h1><span class="section-number">17.6. </span>Classes for graphs<a class="headerlink" href="#Classes-for-graphs" title="Link to this heading"></a></h1>
+<p>Looking at the worst-case complexities of the operations for the various graph data structures, using a map of sets of out-neighbours is a clear winner: all operations (except returning all edges) take at most linear time in the number of nodes. For some representations, the same operation is linear in the number of edges. This takes longer for most graphs, which have more edges than nodes.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> A graph algorithm with a complexity based on <em>n</em>, e.g. Θ(<em>n</em>²), is preferable to an algorithm with the same complexity based on <em>e</em>, e.g. Θ(<em>e</em>²), because <em>n</em> &lt; <em>e</em> for most graphs.</p>
+</div>
+<p>Having decided the ADT’s operations and how to represent graphs, I proceed to define two Python classes, for digraphs and for undirected graphs.</p>
+<section id="The-DiGraph-class">
+<h2><span class="section-number">17.6.1. </span>The <code class="docutils literal notranslate"><span class="pre">DiGraph</span></code> class<a class="headerlink" href="#The-DiGraph-class" title="Link to this heading"></a></h2>
+<p>My implementation of a digraph with an adjacency list representation is below. Nodes must be represented by hashable objects due to the use of a dictionary. Class <code class="docutils literal notranslate"><span class="pre">Hashable</span></code> in the <code class="docutils literal notranslate"><span class="pre">typing</span></code> module allows us to indicate which function parameters must be hashable.</p>
+<p>I’ve added a method to draw graphs, so that we can visually check them. The method uses the <a class="reference external" href="https://networkx.org/documentation">NetworkX</a> module, which is included in the M269 software but isn’t part of Python’s standard library.</p>
+<p>Make sure you understand all the code, except the draw method. You may wish to remind yourself of Python’s <a class="reference internal" href="../08_Unordered/08_5_summary.html"><span class="doc">dictionary and set operations</span></a>. If anything’s unclear, ask in the M269 forums or tutorials.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_digraph.py</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hashable</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DiGraph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A directed graph with hashable node objects.</span>
+
+<span class="sd">    Edges are between different nodes.</span>
+<span class="sd">    There&#39;s at most one edge from one node to another.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an empty graph.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c1"># a map of nodes to their out-neighbours</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if and only if the graph has the node.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if and only if edge start -&gt; end exists.</span>
+
+<span class="sd">        Preconditions: self.has_node(start) and self.has_node(end)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">end</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">start</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add the node to the graph.</span>
+
+<span class="sd">        Preconditions: not self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add edge start -&gt; end to the graph.</span>
+
+<span class="sd">        If the edge already exists, do nothing.</span>
+
+<span class="sd">        Preconditions:</span>
+<span class="sd">        self.has_node(start) and self.has_node(end) and start != end</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove the node and all its attached edges.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove edge start -&gt; end from the graph.</span>
+
+<span class="sd">        If the edge doesn&#39;t exist, do nothing.</span>
+
+<span class="sd">        Preconditions: self.has_node(start) and self.has_node(end)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the graph&#39;s nodes.&quot;&quot;&quot;</span>
+        <span class="n">all_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">:</span>
+            <span class="n">all_nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">all_nodes</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the graph&#39;s edges as a set of pairs (start, end).&quot;&quot;&quot;</span>
+        <span class="n">all_edges</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">end</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
+                <span class="n">all_edges</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">all_edges</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">out_neighbours</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the out-neighbours of the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>  <span class="c1"># return a copy</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">out_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of out-neighbours of the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">in_neighbours</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the in-neighbours of the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">start_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+                <span class="n">start_nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">start_nodes</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">in_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of in-neighbours of the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_neighbours</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">neighbours</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the in- and out-neighbours of the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_neighbours</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_neighbours</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of in- and out-going edges of the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw the graph.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">is</span> <span class="n">DiGraph</span><span class="p">:</span>
+            <span class="n">graph</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">graph</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+        <span class="n">networkx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+            <span class="n">graph</span><span class="p">,</span>
+            <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">node_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+            <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span>
+            <span class="n">font_size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Exercise-17.6.1-(optional)">
+<h3>Exercise 17.6.1 (optional)<a class="headerlink" href="#Exercise-17.6.1-(optional)" title="Link to this heading"></a></h3>
+<p>Here are some prompts to discuss your understanding of the code with others:</p>
+<ol class="arabic simple">
+<li><p>Why does the <code class="docutils literal notranslate"><span class="pre">out-neighbours</span></code> method waste memory and return a copy?</p></li>
+<li><p>The in- and out-degree are computed as the number of in- and out-neighbours. Why doesn’t the <code class="docutils literal notranslate"><span class="pre">degree</span></code> method just return the number of neighbours?</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">in_degree</span></code> method can be changed to run faster and use less memory. How?</p></li>
+<li><p>Why did I implement <code class="docutils literal notranslate"><span class="pre">remove_edge</span></code> so that it works for non-existing edges?</p></li>
+</ol>
+</section>
+</section>
+<section id="The-UndirectedGraph-class">
+<h2><span class="section-number">17.6.2. </span>The <code class="docutils literal notranslate"><span class="pre">UndirectedGraph</span></code> class<a class="headerlink" href="#The-UndirectedGraph-class" title="Link to this heading"></a></h2>
+<p>Since an undirected graph can be represented as a digraph with opposing edges between every pair of nodes, I implement a subclass of <code class="docutils literal notranslate"><span class="pre">DiGraph</span></code> to reuse the representation and methods.</p>
+<p>I must redefine the methods that add and remove edges, so that they also add and remove the opposite edge. Python’s <code class="docutils literal notranslate"><span class="pre">super()</span></code> function allows us to access the methods of the superclass. I must also reimplement other operations, to fit the <a class="reference internal" href="17_2_concepts.html#On-nodes-and-edges"><span class="std std-ref">definitions for undirected graphs</span></a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_ungraph.py</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hashable</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">UndirectedGraph</span><span class="p">(</span><span class="n">DiGraph</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An undirected graph with hashable node objects.</span>
+
+<span class="sd">    There&#39;s at most one edge between two different nodes.</span>
+<span class="sd">    There are no edges between a node and itself.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node1</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">node2</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add an undirected edge node1-node2 to the graph.</span>
+
+<span class="sd">        If the edge already exists, do nothing.</span>
+
+<span class="sd">        Preconditions: self.has_node(node1) and self.has_node(node2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node2</span><span class="p">,</span> <span class="n">node1</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node1</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">node2</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove edge node1-node2 from the graph.</span>
+
+<span class="sd">        If the edge doesn&#39;t exist, do nothing.</span>
+
+<span class="sd">        Preconditions: self.has_node(node1) and self.has_node(node2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">node2</span><span class="p">,</span> <span class="n">node1</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the graph&#39;s edges as a set of pairs.</span>
+
+<span class="sd">        Postconditions: for every edge A-B,</span>
+<span class="sd">        the output has either (A, B) or (B, A) but not both</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">all_edges</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">node1</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">node2</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">[</span><span class="n">node1</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">node2</span><span class="p">,</span> <span class="n">node1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_edges</span><span class="p">:</span>
+                    <span class="n">all_edges</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">all_edges</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">in_neighbours</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all nodes that are adjacent to the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_neighbours</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">neighbours</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all nodes that are adjacent to the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_neighbours</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">in_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of edges attached to the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Hashable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of edges attached to the node.</span>
+
+<span class="sd">        Preconditions: self.has_node(node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Exercise-17.6.2-(optional)">
+<h3>Exercise 17.6.2 (optional)<a class="headerlink" href="#Exercise-17.6.2-(optional)" title="Link to this heading"></a></h3>
+<p>You may wish to discuss the following with your study buddy or peers:</p>
+<ol class="arabic simple">
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">in_neighbours</span></code> and <code class="docutils literal notranslate"><span class="pre">neighbours</span></code> methods had been inherited instead of reimplemented, would they work for undirected graphs? If so, why did I reimplement them?</p></li>
+<li><p>Same questions, but for the <code class="docutils literal notranslate"><span class="pre">in_degree</span></code> and <code class="docutils literal notranslate"><span class="pre">degree</span></code> methods.</p></li>
+</ol>
+</section>
+</section>
+<section id="Special-graphs">
+<h2><span class="section-number">17.6.3. </span>Special graphs<a class="headerlink" href="#Special-graphs" title="Link to this heading"></a></h2>
+<p>We can now construct the <a class="reference internal" href="17_2_concepts.html#Special-graphs"><span class="std std-ref">special graphs</span></a> introduced earlier.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_graphs.py</span>
+
+<span class="n">EMPTY_UG</span> <span class="o">=</span> <span class="n">UndirectedGraph</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">null_graph</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UndirectedGraph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a graph with nodes 0, 1, ..., n-1 and no edges.</span>
+
+<span class="sd">    Preconditions: n &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">UndirectedGraph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">graph</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">path_graph</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UndirectedGraph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a graph with nodes 0, ..., n-1 and edges 0–1, 1–2, ....</span>
+
+<span class="sd">    Preconditions: n &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">null_graph</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">node</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">graph</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cycle_graph</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UndirectedGraph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a graph with nodes 0, ..., n-1 and edges 0–1, 1–2, ..., (n-1)–0.</span>
+
+<span class="sd">    Preconditions: n &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">path_graph</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">graph</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">complete_graph</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UndirectedGraph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a graph with nodes 0, ..., n-1 connected to each other.</span>
+
+<span class="sd">    Preconditions: n &gt; 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">null_graph</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">node1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">node2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">node1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">graph</span>
+</pre></div>
+</div>
+</div>
+<p>NetworkX draws graphs with the same <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> module I’ve used earlier to <a class="reference internal" href="../04_Iteration/04_8_practice.html#Images"><span class="std std-ref">process images</span></a>. We must tell Jupyter to draw the graphs in the notebook.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<p>If a code cell draws several graphs, only the last one is shown, so we must draw one graph per cell.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">null_graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/17_Graphs_1_17_6_classes_24_0.png" src="../_images/17_Graphs_1_17_6_classes_24_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/17_Graphs_1_17_6_classes_25_0.png" src="../_images/17_Graphs_1_17_6_classes_25_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cycle_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/17_Graphs_1_17_6_classes_26_0.png" src="../_images/17_Graphs_1_17_6_classes_26_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/17_Graphs_1_17_6_classes_27_0.png" src="../_images/17_Graphs_1_17_6_classes_27_0.png" />
+</div>
+</div>
+<p>A graph’s layout is computed from an initially random position of the nodes. Every time you run a cell that draws a graph, the layout may change.</p>
+<section id="Exercise-17.6.3">
+<h3>Exercise 17.6.3<a class="headerlink" href="#Exercise-17.6.3" title="Link to this heading"></a></h3>
+<p>Complete the function below.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">same_degree</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="n">UndirectedGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if all nodes have the same degree.</span>
+
+<span class="sd">    Preconditions: graph isn&#39;t empty</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="n">same_degree_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">#case,          graph,        same degree?</span>
+    <span class="p">(</span><span class="s1">&#39;null&#39;</span><span class="p">,</span>        <span class="n">null_graph</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>      <span class="kc">True</span><span class="p">),</span>  <span class="c1"># all have degree 0</span>
+    <span class="p">(</span><span class="s1">&#39;path 2&#39;</span><span class="p">,</span>      <span class="n">path_graph</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>      <span class="kc">True</span><span class="p">),</span>  <span class="c1"># all have degree 1</span>
+    <span class="p">(</span><span class="s1">&#39;path 3&#39;</span><span class="p">,</span>      <span class="n">path_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>     <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;cycle&#39;</span><span class="p">,</span>       <span class="n">cycle_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>     <span class="kc">True</span><span class="p">),</span>  <span class="c1"># all have degree 2</span>
+    <span class="p">(</span><span class="s1">&#39;complete&#39;</span><span class="p">,</span>    <span class="n">complete_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>  <span class="kc">True</span><span class="p">)</span>   <span class="c1"># all have degree 3</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">same_degree</span><span class="p">,</span> <span class="n">same_degree_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_17_6_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_17_6_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Random-graphs">
+<h2><span class="section-number">17.6.4. </span>Random graphs<a class="headerlink" href="#Random-graphs" title="Link to this heading"></a></h2>
+<p>To test graph algorithms, it’s useful to have less ‘predictable’ graphs. We can generate a random graph by including each edge with some probability <em>p</em>. (Remember that a probability is given by a real number from 0 to 1.)</p>
+<p>The higher the <em>p</em> chosen, the denser the resulting graph is, because of the larger likelihood for edges to be included. What graphs are generated for <em>p</em> = 0 and for <em>p</em> = 1?</p>
+<hr class="docutils" />
+<p>Those values of <em>p</em> generate a null graph and a complete graph, respectively.</p>
+<p>Let’s implement the approach, using function <code class="docutils literal notranslate"><span class="pre">random</span></code> in module <code class="docutils literal notranslate"><span class="pre">random</span></code> to generate a float from 0 (inclusive) to 1 (exclusive).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_graphs.py</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">random</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">random_graph</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">probability</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UndirectedGraph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a random graph with n nodes.</span>
+
+<span class="sd">    Each edge has the given probability of existing.</span>
+<span class="sd">    Preconditions: 0 &lt;= probability &lt;= 1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">null_graph</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">node1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">node2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">node1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">probability</span><span class="p">:</span>
+                <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">graph</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_graph</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># p = 0%: no edges</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/17_Graphs_1_17_6_classes_36_0.png" src="../_images/17_Graphs_1_17_6_classes_36_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_graph</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># p = 40%</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/17_Graphs_1_17_6_classes_37_0.png" src="../_images/17_Graphs_1_17_6_classes_37_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_graph</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># different graph for same n and p</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/17_Graphs_1_17_6_classes_38_0.png" src="../_images/17_Graphs_1_17_6_classes_38_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_graph</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># p = 100%: all edges</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/17_Graphs_1_17_6_classes_39_0.png" src="../_images/17_Graphs_1_17_6_classes_39_0.png" />
+</div>
+</div>
+<div class="admonition note">
+<p><strong>Info:</strong> Edgar Gilbert proposed this random graph generation approach in 1959.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="17_5_adj_list.html" class="btn btn-neutral float-left" title="17.5. Adjacency list representation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="17_7_traversal.html" class="btn btn-neutral float-right" title="17.7. Traversing a graph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

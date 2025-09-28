@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.7. Reversal</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.8. Optional practice" href="04_8_practice.html" />
+    <link rel="prev" title="4.6. Lists" href="04_6_lists.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="04-introduction.html">4. Sequences and iteration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04_1_sequences.html">4.1. The Sequence ADT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_2_strings.html">4.2. Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_3_iteration.html">4.3. Iteration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_4_search.html">4.4. Linear search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_5_tuples.html">4.5. Tuples and tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_6_lists.html">4.6. Lists</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.7. Reversal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-definition">4.7.1. Problem definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-instances">4.7.2. Problem instances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">4.7.3. Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">4.7.4. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Code">4.7.5. Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Tests">4.7.6. Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Performance">4.7.7. Performance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.7.1">Exercise 4.7.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.7.2">Exercise 4.7.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.7.3">Exercise 4.7.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.7.4">Exercise 4.7.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.7.5">Exercise 4.7.5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.7.6">Exercise 4.7.6</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.7.7">Exercise 4.7.7</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04_8_practice.html">4.8. Optional practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_9_summary.html">4.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="04-introduction.html"><span class="section-number">4. </span>Sequences and iteration</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.7. </span>Reversal</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Reversal">
+<h1><span class="section-number">4.7. </span>Reversal<a class="headerlink" href="#Reversal" title="Link to this heading"></a></h1>
+<p>This section presents a single problem, reversing a sequence, to further illustrate sequences, iteration and the problem-solving process.</p>
+<section id="Problem-definition">
+<h2><span class="section-number">4.7.1. </span>Problem definition<a class="headerlink" href="#Problem-definition" title="Link to this heading"></a></h2>
+<p>This is the definition from the <a class="reference internal" href="04_6_lists.html#Exercise-4.6.1"><span class="std std-ref">previous section</span></a>.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: reverse sequence</div>
+<div class="line"><strong>Inputs</strong>: <em>values</em>, a sequence</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>reverse</em>, a sequence</div>
+<div class="line"><strong>Postconditions</strong>: <em>reverse</em> = (<em>values</em>[│ <em>values</em> │ - 1], <em>values</em>[│ <em>values</em> │ - 2], …, <em>values</em>[1], <em>values</em>[0])</div>
+</div>
+<p>With the Python operations we have seen so far, it’s impossible to write a Python function that reverses any sequence, be it a string, tuple or list. We have to restrict the problem to a particular data type. I’ll solve it for lists and I’ll leave strings to you as an exercise. (Tuples are handled similarly.)</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: reverse list</div>
+<div class="line"><strong>Inputs</strong>: <em>values</em>, a list</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>reverse</em>, a list</div>
+<div class="line"><strong>Postconditions</strong>: <em>reverse</em> = [<em>values</em>[│ <em>values</em> │ - 1], <em>values</em>[│ <em>values</em> │ - 2], …, <em>values</em>[1], <em>values</em>[0]]</div>
+</div>
+<p>Since this function is for a Python data type, I use Python’s notation (square brackets for lists) in the postcondition.</p>
+</section>
+<section id="Problem-instances">
+<h2><span class="section-number">4.7.2. </span>Problem instances<a class="headerlink" href="#Problem-instances" title="Link to this heading"></a></h2>
+<p>I have to think of some problem instances to test the function. The smallest possible inputs are always edge cases and must be included in the test table. For this example, it’s the empty list. If the preconditions allow the empty sequence, then a sequence with a single item is an edge case too: it’s the smallest non-empty sequence.</p>
+<p>For problems about sequences, it’s often convenient to test sequences of odd and even length, because the middle element of a list of odd length may be treated differently. In this problem, the middle member is the only one that has the same position in the reverse list.</p>
+<p>Test cases for sequences should also include, if the preconditions allow, duplicate and unique items, and values of different types.</p>
+<p>When thinking about problem instances, put your hacker hat on: you’re trying to break the algorithm to reveal it’s incorrect. Throw curveballs: think of valid inputs that most people wouldn’t dream of when reading the problem description. You don’t need large inputs to properly test an algorithm. An algorithm is often incorrect because it failed to consider a particular case, e.g. all items in a sequence being the same. Such cases can be covered with small inputs. When it comes to problem
+instances for testing, think small, think wildly. (But not too wildly: all test cases must satisfy the preconditions.)</p>
+<p>So far, we wrote test tables in Markdown and translated them to one code cell per test case. We can now write them directly in Python, as a list (or tuple) of test cases, each represented by a list or tuple. I prefer to write test tables as a list of tuples, so that I can later append a test case if I forgot one, but you can use any combination you prefer.</p>
+<p>The table’s name is the operation’s name followed by <code class="docutils literal notranslate"><span class="pre">_tests</span></code>. Each row is the test case description (a string), followed by the input values and ending with the expected output value. The column headings are a comment instead of a row; you’ll see why when we get to the actual testing.</p>
+<p>Here’s a possible table for the reversal problem. It includes odd- and even-length lists, values of different types, and lists with duplicate items.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reverse_list_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,             values,             reverse</span>
+    <span class="p">(</span><span class="s1">&#39;empty list&#39;</span><span class="p">,</span>      <span class="p">[],</span>                 <span class="p">[]</span>              <span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;length 1&#39;</span><span class="p">,</span>        <span class="p">[</span><span class="mi">4</span><span class="p">],</span>                <span class="p">[</span><span class="mi">4</span><span class="p">]</span>             <span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;length 2&#39;</span><span class="p">,</span>        <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>          <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>       <span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;length 5&#39;</span><span class="p">,</span>        <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>    <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;same items&#39;</span><span class="p">,</span>      <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>       <span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">algoesup</span></code> module, part of the M269 software, has a function <code class="docutils literal notranslate"><span class="pre">check_tests</span></code> that checks if the test table is well formed. It takes two arguments: the table and a list with the types of the inputs and output. In this example, there’s only one input (a list to be reversed) and the output is also a list (the reversed one), so we write:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">algoesup</span>
+
+<span class="n">algoesup</span><span class="o">.</span><span class="n">check_tests</span><span class="p">(</span><span class="n">reverse_list_tests</span><span class="p">,</span> <span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+OK: the test table passed the automatic checks.
+</pre></div></div>
+</div>
+<p>When we need a function <code class="docutils literal notranslate"><span class="pre">f</span></code> from a module <code class="docutils literal notranslate"><span class="pre">m</span></code>, we can write <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">m</span> <span class="pre">import</span> <span class="pre">f</span></code> to directly refer to <code class="docutils literal notranslate"><span class="pre">f</span></code>, instead of writing <code class="docutils literal notranslate"><span class="pre">m.f</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_tests</span>
+
+<span class="n">check_tests</span><span class="p">(</span><span class="n">reverse_list_tests</span><span class="p">,</span> <span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">list</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+OK: the test table passed the automatic checks.
+</pre></div></div>
+</div>
+<p>Function <code class="docutils literal notranslate"><span class="pre">check_tests</span></code> only spots structural mistakes, like the table not being a list or tuple of tests, or a test not starting with a string describing the test case. Even if the table is OK, the tests may be wrong. For example, the checks won’t spot if the expected output is wrong.</p>
+</section>
+<section id="Algorithm">
+<h2><span class="section-number">4.7.3. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p>Sometimes the best way to come up with an algorithm is to think how we’d do it manually. And I literally mean with our hands.</p>
+<p>The reverse operation takes one list and produces another one. Lists have to be processed item by item. I use my left index finger to point at the item being processed in the input list and my right index finger to point to the position where that item should be put in the output list.</p>
+<p>Initially, my left finger points at the first item of <em>values</em> and my right finger points to an empty <em>reverse</em> list. Let’s use the length 2 test case.</p>
+<p id="fig-4.7.1"></p><p><a class="reference internal" href="../33_Figures/Figures_04_7.html#Figure-4.7.1"><span class="std std-ref">Figure 4.7.1</span></a></p>
+<img alt="Image 04_7_reverse_1.png" src="../_images/04_7_reverse_1.png" />
+<p>The first two steps are obvious: insert the item pointed by the left finger into the empty list and move the left finger to the next item.</p>
+<p id="fig-4.7.2"></p><p><a class="reference internal" href="../33_Figures/Figures_04_7.html#Figure-4.7.2"><span class="std std-ref">Figure 4.7.2</span></a></p>
+<img alt="Image 04_7_reverse_2.png" src="../_images/04_7_reverse_2.png" />
+<p>The second item of <em>values</em> should be inserted at the start of <em>reverse</em>, hence I can keep the right finger where it is.</p>
+<p id="fig-4.7.3"></p><p><a class="reference internal" href="../33_Figures/Figures_04_7.html#Figure-4.7.3"><span class="std std-ref">Figure 4.7.3</span></a></p>
+<img alt="Image 04_7_reverse_3.png" src="../_images/04_7_reverse_3.png" />
+<p>If the input list were longer, I would continue in the same way. Each item of <em>values</em> has to be inserted at index 0 of <em>reverse</em> to push the previous items to the right. I’m ready to write the algorithm:</p>
+<ol class="arabic simple">
+<li><p>let <em>reverse</em> be the empty list</p></li>
+<li><p>for each <em>item</em> in <em>values</em>:</p>
+<ol class="arabic simple">
+<li><p>insert <em>item</em> at index 0 of <em>reverse</em></p></li>
+</ol>
+</li>
+</ol>
+<p>Before implementing this algorithm, let’s check it works for the edge cases. Does it work for lists of length 0 and 1?</p>
+<hr class="docutils" />
+<p>Yes, it does. The loop is executed as often as the length of the input list, so the output is the same as the input for lists of length 0 and 1.</p>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">4.7.4. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>I can ignore step 1 because it takes constant time. Step 2 is executed │<em>values</em>│ times. The complexity of inserting an item at index <em>i</em> in a list of length <em>l</em> is Θ(<em>l</em> - <em>i</em>). In step 3, <em>i</em> = 0, so that step has complexity Θ(│<em>reverse</em>│): it shifts all items in <em>reverse</em> up to make space for a new item at index 0. The complexity of the loop is hence │<em>values</em>│ × Θ(│<em>reverse</em>│) = Θ(│<em>values</em>│ × │<em>reverse</em>│). Unfortunately, I can’t write it like that because <em>reverse</em>
+isn’t an input. Fortunately, │<em>reverse</em>│ = │<em>values</em>│ because reversing a list doesn’t change its length. The algorithm has quadratic complexity: Θ(│<em>values</em>│²).</p>
+</section>
+<section id="Code">
+<h2><span class="section-number">4.7.5. </span>Code<a class="headerlink" href="#Code" title="Link to this heading"></a></h2>
+<p>The translation of the function definition and the algorithm to Python is:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">reverse_list</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the same items as values, in inverse order.</span>
+
+<span class="sd">    Postconditions: the output is</span>
+<span class="sd">    [values[-1], values [-2], ..., values[1], values[0]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">reverse</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="n">reverse</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">reverse</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Tests">
+<h2><span class="section-number">4.7.6. </span>Tests<a class="headerlink" href="#Tests" title="Link to this heading"></a></h2>
+<p>Having put the test cases in a table, we can automatically run all tests, instead of manually writing one code cell for each. This is done by function <code class="docutils literal notranslate"><span class="pre">algoesup.test</span></code>, which takes the function to be tested and the table of tests.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">reverse_list</span><span class="p">,</span> <span class="n">reverse_list_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing reverse_list...
+Tests finished: 5 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">test</span></code> function goes through each row of the test table, extracts the case description, the input and the expected output, calls the <code class="docutils literal notranslate"><span class="pre">reverse_list</span></code> function on that input and compares the result to the expected output. If the actual and expected outputs differ, the test fails and is reported.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">test</span></code> function checks the test table before running the tests, but does fewer checks than <code class="docutils literal notranslate"><span class="pre">check_tests</span></code>, namely it doesn’t check the types of the tests’ inputs and output. Despite this, I will use mostly function <code class="docutils literal notranslate"><span class="pre">test</span></code> to check the table, and only call <code class="docutils literal notranslate"><span class="pre">check_tests</span></code> when <code class="docutils literal notranslate"><span class="pre">test</span></code> can’t be used, namely when I’ve yet to write the function to be tested.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> The <code class="docutils literal notranslate"><span class="pre">algoesup</span></code> module was written by former M269 student Michael Snowden and myself, to support the writing of algorithmic essays in Jupyter notebooks. If you have the time, I recommend you write an essay on a problem of your choice, to practice M269 concepts and your communication skills. See our <a class="reference external" href="https://dsa-ou.github.io/algoesup">website</a> for example essays, essay templates, and guidance to get you started.</p>
+</div>
+</section>
+<section id="Performance">
+<h2><span class="section-number">4.7.7. </span>Performance<a class="headerlink" href="#Performance" title="Link to this heading"></a></h2>
+<p>An algorithm with quadratic complexity takes much longer than an algorithm with linear complexity. Let’s assume an algorithm with complexity Θ(<em>e</em>) does exactly <em>e</em> operations, each taking one microsecond. Here are the run-times for various input sizes <em>n</em>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>n</em></p></th>
+<th class="head"><p>Θ(1)</p></th>
+<th class="head"><p>Θ(<em>n</em>)</p></th>
+<th class="head"><p>Θ(<em>n</em>²)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>1 µs</p></td>
+<td><p>10 µs</p></td>
+<td><p>100 µs</p></td>
+</tr>
+<tr class="row-odd"><td><p>1,000</p></td>
+<td><p>1 µs</p></td>
+<td><p>1 ms</p></td>
+<td><p>1 s</p></td>
+</tr>
+<tr class="row-even"><td><p>2,000</p></td>
+<td><p>1 µs</p></td>
+<td><p>2 ms</p></td>
+<td><p>4 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>2,000,000</p></td>
+<td><p>1 µs</p></td>
+<td><p>2 s</p></td>
+<td><p>4,000,000 s = 46 days</p></td>
+</tr>
+</tbody>
+</table>
+<p>When the input size doubles, a linear algorithm takes double the time, but a quadratic algorithm takes 2² = 4 times as long. If the input is a thousand times as long then a linear algorithm takes a thousand times as long, but a quadratic algorithm takes 1000² = 1,000,000 times as long!</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> When the input size doubles, the run-time of algorithms with constant, linear and quadratic complexity respectively stays the same, doubles or quadruples.</p>
+</div>
+<p>To measure the run-times of quadratic algorithms we can’t use very large inputs, unless we’re prepared to wait quite a bit.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">measurement</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>  <span class="c1"># list [0, 1, 2, ..., size-1]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reversing&quot;</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="s2">&quot;numbers:&quot;</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 5 reverse_list(numbers)
+    <span class="n">size</span> <span class="o">=</span> <span class="n">size</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Reversing 10 numbers:
+264 ns ± 1.09 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+Reversing 20 numbers:
+499 ns ± 3.2 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+Reversing 40 numbers:
+1.13 μs ± 6.59 ns per loop (mean ± std. dev. of 5 runs, 1,000,000 loops each)
+Reversing 80 numbers:
+3.33 μs ± 24.7 ns per loop (mean ± std. dev. of 5 runs, 100,000 loops each)
+Reversing 160 numbers:
+9.91 μs ± 28.4 ns per loop (mean ± std. dev. of 5 runs, 100,000 loops each)
+Reversing 320 numbers:
+31.9 μs ± 192 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+Reversing 640 numbers:
+111 μs ± 309 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+Reversing 1280 numbers:
+409 μs ± 2.12 μs per loop (mean ± std. dev. of 5 runs, 1,000 loops each)
+Reversing 2560 numbers:
+1.58 ms ± 19.7 μs per loop (mean ± std. dev. of 5 runs, 1,000 loops each)
+Reversing 5120 numbers:
+6.18 ms ± 30.2 μs per loop (mean ± std. dev. of 5 runs, 100 loops each)
+</pre></div></div>
+</div>
+<p>On my machine the run-times start quadrupling for the larger values: the run-times for very small inputs are not a reliable indication of complexity. I should have started with a size of, say, 500, and do fewer than ten measurements.</p>
+<section id="Exercise-4.7.1">
+<h3>Exercise 4.7.1<a class="headerlink" href="#Exercise-4.7.1" title="Link to this heading"></a></h3>
+<p>Write a more efficient algorithm to produce a reverse list. (The next exercise asks you to justify why it’s more efficient.)</p>
+<p><a class="reference internal" href="../31_Hints/Hints_04_7_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_7_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.7.2">
+<h3>Exercise 4.7.2<a class="headerlink" href="#Exercise-4.7.2" title="Link to this heading"></a></h3>
+<p>Analyse the complexity of your algorithm, showing that it’s more efficient than the original algorithm.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_04_7_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.7.3">
+<h3>Exercise 4.7.3<a class="headerlink" href="#Exercise-4.7.3" title="Link to this heading"></a></h3>
+<p>Translate your algorithm to Python and test it.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">reverse_list_2</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the same items as values, in inverse order.</span>
+
+<span class="sd">    This is a more efficient version of reverse_list.</span>
+<span class="sd">    Postconditions: the output is</span>
+<span class="sd">    [values[-1], values [-2], ..., values[1], values[0]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># replace with your function body</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">reverse_list_2</span><span class="p">,</span> <span class="n">reverse_list_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_04_7_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_7_03.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.7.4">
+<h3>Exercise 4.7.4<a class="headerlink" href="#Exercise-4.7.4" title="Link to this heading"></a></h3>
+<p>Write a reversal algorithm for when <em>values</em> and <em>reverse</em> are strings.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_04_7_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_7_04.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.7.5">
+<h3>Exercise 4.7.5<a class="headerlink" href="#Exercise-4.7.5" title="Link to this heading"></a></h3>
+<p>What is the complexity of your reversal algorithm for strings?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_04_7_05.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_7_05.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.7.6">
+<h3>Exercise 4.7.6<a class="headerlink" href="#Exercise-4.7.6" title="Link to this heading"></a></h3>
+<p>Write an algorithm in English that reverses a list <strong>in-place</strong>, i.e. without creating a new list. There’s a single input/output variable <em>values</em>. (See the solution to <a class="reference internal" href="04_6_lists.html#Exercise-4.6.1"><span class="std std-ref">Exercise 4.6.1</span></a>.) Think with your hands.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_04_7_06.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_7_06.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.7.7">
+<h3>Exercise 4.7.7<a class="headerlink" href="#Exercise-4.7.7" title="Link to this heading"></a></h3>
+<p>Implement your algorithm in the next code cell and run it.</p>
+<p>Note that the header indicates that the function returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. That’s Python’s way of saying that it returns nothing, because the reversal is done in-place. Like <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code> is both a value (that can be compared with the equality and inequality operations) and a keyword (so that it can’t be used as a variable name by mistake). In Python, all functions that haven’t a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">reverse_in_place</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write the docstring.&quot;&quot;&quot;</span>
+    <span class="c1"># replace this with your code</span>
+    <span class="c1"># modify `values` variable and do NOT use a return statement</span>
+
+
+<span class="c1"># `algoesup.test` can only test functions that return values,</span>
+<span class="c1"># so I&#39;ve written the testing code for you</span>
+<span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">reverse_list_tests</span><span class="p">:</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">reverse</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">reverse_in_place</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">values</span> <span class="o">!=</span> <span class="n">reverse</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;FAILED:&quot;</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s2">&quot;instead of&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tests finished.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../32_Answers/Answers_04_7_07.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="04_6_lists.html" class="btn btn-neutral float-left" title="4.6. Lists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04_8_practice.html" class="btn btn-neutral float-right" title="4.8. Optional practice" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

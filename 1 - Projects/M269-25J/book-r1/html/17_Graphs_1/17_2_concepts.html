@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17.2. Basic concepts</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="17.3. Edge list representation" href="17_3_edge_list.html" />
+    <link rel="prev" title="17.1. Modelling with graphs" href="17_1_modelling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="17-introduction.html">17. Graphs 1</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="17_1_modelling.html">17.1. Modelling with graphs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">17.2. Basic concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#On-nodes-and-edges">17.2.1. On nodes and edges</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.2.1">Exercise 17.2.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#On-graphs">17.2.2. On graphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Special-graphs">17.2.3. Special graphs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.2.2">Exercise 17.2.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.2.3">Exercise 17.2.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-17.2.4">Exercise 17.2.4</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ADT">17.2.4. ADT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="17_3_edge_list.html">17.3. Edge list representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_4_adj_matrix.html">17.4. Adjacency matrix representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_5_adj_list.html">17.5. Adjacency list representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_6_classes.html">17.6. Classes for graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_7_traversal.html">17.7. Traversing a graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_8_bfs_dfs.html">17.8. Breadth- and depth-first search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="17_9_summary.html">17.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="17-introduction.html"><span class="section-number">17. </span>Graphs 1</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">17.2. </span>Basic concepts</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Basic-concepts">
+<h1><span class="section-number">17.2. </span>Basic concepts<a class="headerlink" href="#Basic-concepts" title="Link to this heading"></a></h1>
+<p>Before I introduce the graph ADT and associated data structures and algorithms, we need a bit more jargon, to facilitate communication. I use the same graphs as before to illustrate the concepts.</p>
+<p id="fig-17.2.1"></p><p><a class="reference internal" href="../33_Figures/Figures_17_2.html#Figure-17.2.1"><span class="std std-ref">Figure 17.2.1</span></a></p>
+<img alt="Image 17_1_un_directed.png" src="../_images/17_1_un_directed.png" />
+<section id="On-nodes-and-edges">
+<h2><span class="section-number">17.2.1. </span>On nodes and edges<a class="headerlink" href="#On-nodes-and-edges" title="Link to this heading"></a></h2>
+<p>Two nodes are <strong>adjacent</strong> if they’re connected by an edge. Nodes 2 and 4 are adjacent; ‘Alice’ and ‘Chan’ aren’t. The <strong>neighbours</strong> of a node are all the nodes adjacent to it. The neighbours of node 1 are nodes 2 and 4.</p>
+<p>In a digraph, if there’s a edge from A to B, which we write as the pair (A, B), then A is an <strong>in-neighbour</strong> of B and B an <strong>out-neighbour</strong> of A. Node 4 has two out-neighbours and no in-neighbour.</p>
+<p>The <strong>degree</strong> of a node is the number of edges attached to it, e.g. ‘Alice’ has degree 2. In a digraph, a node’s <strong>out-degree</strong> is the number of outgoing edges and its <strong>in-degree</strong> is the number of incoming edges. Node 1 has out-degree 1 and in-degree 2; it therefore has degree 3.</p>
+<p>Although the distinction between in- and out-neighbours and between in- and out-degrees only makes sense for digraphs, I’ll use the terms for undirected graphs too, to simplify explanations.</p>
+<p>In undirected graphs, edges (A, B) and (B, A) are the same, i.e. each edge can be seen as both outgoing and incoming, so the in- and the out-neighbours are the same as the neighbours and the in- and out-degree are the same as the degree. For example, ‘Alice’ and ‘Bob’ are both the in-neighbours and the out-neighbours of ‘David’. Therefore the in-degree, out-degree and degree of ‘David’ are all 2.</p>
+<p>In a digraph, the degree of a node is the sum of its in- and out- degrees. In an undirected graph, it’s half the sum, because each edge counts both as incoming and outgoing.</p>
+<p>What are the degrees of nodes ‘Chan’ and 3 in the above graphs?</p>
+<hr class="docutils" />
+<p>Node ‘Chan’ has degree one and node 3 has degree zero.</p>
+<section id="Exercise-17.2.1">
+<h3>Exercise 17.2.1<a class="headerlink" href="#Exercise-17.2.1" title="Link to this heading"></a></h3>
+<p>An advertising agency wants to advertise a product in some train stations. They give you the undirected graph of all the train stations in your country, with edges representing direct trains between them. The names of stations were replaced with numbers, to avoid bias by anyone working on the dataset. You’re asked to produce a set of the train station(s) where the advert is likely to be seen by more people than in other stations.</p>
+<p>Complete the following sentence:</p>
+<p>I would select those nodes that … because …</p>
+<p><a class="reference internal" href="../31_Hints/Hints_17_2_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_17_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="On-graphs">
+<h2><span class="section-number">17.2.2. </span>On graphs<a class="headerlink" href="#On-graphs" title="Link to this heading"></a></h2>
+<p>A <strong>path</strong> from node <em>first</em> to node <em>last</em> is a sequence of distinct nodes</p>
+<p>(<em>first</em>, <em>second</em>, <em>third</em>, …, <em>penultimate</em>, <em>last</em>)</p>
+<p>such that edges (<em>first</em>, <em>second</em>), (<em>second</em>, <em>third</em>), …, (<em>penultimate</em>, <em>last</em>) exist and are distinct. To put it bluntly, a path doesn’t waste time going twice through a node or edge. The <strong>length</strong> of a path is the number of edges. Node B is <strong>reachable</strong> from node A if there’s a path from A to B.</p>
+<p>There may be multiple paths between the same nodes, e.g. (4, 1) and (4, 2, 1) are both paths from 4 to 1 in the example digraph. For most practical problems, we’re interested in a <strong>shortest path</strong>, with the fewest edges.</p>
+<p>In the undirected graph, sequence (‘Alice’, ‘Bob’, ‘Alice’) isn’t a path because it repeats one node and one edge. Sequence (‘Alice’, ‘David’, ‘Bob’, ‘Chan’) is a path of length 3.</p>
+<p>In the digraph, (1, 2, 1) isn’t a path because, although it has no duplicate edges, it repeats node 1. Sequence (1, 4, 2) isn’t a path either because edge (1, 4) doesn’t exist.</p>
+<p>A undirected graph is <strong>connected</strong> if there’s one node, let’s call it S, from which all other nodes are reachable; otherwise it’s <strong>disconnected</strong>. It follows that in a connected undirected graph all nodes are mutually reachable. To see why, consider any two nodes A and B. There’s a path from S to A and one from S to B because the graph is connected. Since edges are undirected, the reverse paths from A to S and from B to S exist too. So, the paths from A to B via S and from B to A via S exist,
+proving that any nodes A and B are mutually reachable.</p>
+<p>A digraph is connected (or disconnected) if, when removing the edge directions, we get a connected (or disconnected) undirected graph. The example digraph is disconnected because there’s no path from or to node 3. We’ll look at connectivity in digraphs <a class="reference internal" href="../21_Graphs_2/21_2_di_components.html#Directed-graph-components"><span class="std std-ref">later</span></a>.</p>
+<p>A <strong>cycle</strong> is a path except that the first and last nodes are the same. Since paths don’t repeat edges, neither do cycles. Sequence (‘Alice’, ‘Bob’, ‘Alice’) isn’t a cycle in the undirected graph, because it repeats one edge, but (‘Alice’, ‘Bob’, ‘David’, ‘Alice’) is. Sequence (1, 2, 1) is a cycle in the digraph, because it doesn’t repeat edges.</p>
+<p>A graph is <strong>acyclic</strong> if it has no cycles. A directed acyclic graph is abbreviated <strong>DAG</strong>.</p>
+<p>The previous chapter introduced several kinds of rooted trees. We can now see them as special kinds of graphs. A <strong>tree</strong> is a connected acyclic undirected graph. A tree is <a class="reference internal" href="../16_Trees/16-introduction.html#Rooted-trees"><span class="std std-ref">rooted</span></a> if one of its nodes is designated as the root. The neighbours of the root are the root’s children, their neighbours are the nodes in level 2 of the rooted tree, and so on. The next figure shows on the left a tree and on the right the same tree rooted at node E.</p>
+<p id="fig-17.2.2"></p><p><a class="reference internal" href="../33_Figures/Figures_17_2.html#Figure-17.2.2"><span class="std std-ref">Figure 17.2.2</span></a></p>
+<img alt="Image 17_2_tree.png" src="../_images/17_2_tree.png" />
+<p>In graphs, and therefore in trees, the neighbours of a node are in no particular order. In a rooted tree, one of the neighbours is the parent, but the other neighbours, the children, still aren’t ordered. A <a class="reference internal" href="../16_Trees/16_1_binary.html#Binary-tree"><span class="std std-ref">binary tree</span></a> is a rooted tree with ordered children: there’s a left and a right child.</p>
+<p>In a rooted tree there’s a single path from any start node <em>S</em> to any other final node <em>F</em>: go up from <em>S</em> to the deepest common ancestor of <em>S</em> and <em>F</em> and then go down to <em>F</em>. For the tree rooted in E, the path from A to D goes through their deepest common ancestor, which happens to be the root: A, B, E, D. Since every tree can be transformed into a hierarchical tree by designating a root, it follows that in any tree there’s a single path from any node to any other node. Another way to see
+that this must be so is to imagine there are two different paths from A to B. Then we could go from A to B following one path and return from B to A following the reverse of the other path. This would lead to a cycle, contrary to the assumption of being a tree.</p>
+<p>A rooted tree with <em>n</em> nodes has <em>n</em> – 1 edges, because each node except the root has a single edge to its parent. Since every tree can become a rooted tree, all trees have one edge less than the number of nodes.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> In M269, in the context of graphs, <em>n</em> refers to the number of nodes and <em>e</em> to the number of edges.</p>
+</div>
+<p>A graph is <strong>dense</strong> if it has many of the possible edges; it is <strong>sparse</strong> if it has few of the possible edges. The higher the ratio of edges to nodes, the denser the graph. Some graphs are clearly sparse, others are clearly dense, but for some it’s in the eye of the beholder.</p>
+<p>Trees are sparse because they have fewer edges than nodes, i.e. the edge/node ratio is less than one. Most large real-world networks have far more edges than nodes but nevertheless are clearly sparse because they have a tiny fraction of the possible edges. For example, in a city’s road network, a junction typically only connects to three or four of the hundreds of junctions in the city, and in a social network we have very few friends among the millions of users.</p>
+</section>
+<section id="Special-graphs">
+<h2><span class="section-number">17.2.3. </span>Special graphs<a class="headerlink" href="#Special-graphs" title="Link to this heading"></a></h2>
+<p>The following graphs rarely occur when modelling real networks, but they’re useful edge cases to test algorithms.</p>
+<p>The <strong>empty graph</strong> has no nodes and hence no edges. A <strong>null graph</strong> is a non-empty graph without edges.</p>
+<p>A <strong>path graph</strong> is a non-empty undirected graph in which the nodes can be numbered sequentially and the edges are between nodes 1 and 2, nodes 2 and 3, and so on. Path graphs are trees. If you extract a path from an undirected graph, you obtain a path graph.</p>
+<p>A <strong>cycle graph</strong> is an undirected graph with at least three nodes. It’s obtained from a path graph by connecting the last node to the first. Cycle graphs are cyclic, hence their name.</p>
+<p>A <strong>complete graph</strong> is an undirected graph where each node is connected to every other one.</p>
+<p>The next figure shows the null, path and complete graphs with one to four nodes, and the cycle graphs with three and four nodes. I haven’t labelled the nodes.</p>
+<p id="fig-17.2.3"></p><p><a class="reference internal" href="../33_Figures/Figures_17_2.html#Figure-17.2.3"><span class="std std-ref">Figure 17.2.3</span></a></p>
+<img alt="Image 17_2_special.png" src="../_images/17_2_special.png" />
+<p>Note that some graphs are special in multiple ways, e.g. the graph with a single node is a null, path and complete graph, and the cycle graph with three nodes is also complete.</p>
+<p>A cycle graph with one node would have an edge connecting the node to itself. A cycle graph with two nodes would have two edges between them. Neither situation is allowed by our undirected graph definition, so in M269 cycle graphs have at least three nodes.</p>
+<section id="Exercise-17.2.2">
+<h3>Exercise 17.2.2<a class="headerlink" href="#Exercise-17.2.2" title="Link to this heading"></a></h3>
+<p>What are the degrees of the nodes in a</p>
+<ol class="arabic simple">
+<li><p>null</p></li>
+<li><p>path</p></li>
+<li><p>cycle</p></li>
+<li><p>complete</p></li>
+</ol>
+<p>graph with <em>n</em> &gt; 0 nodes (and <em>n</em> ≥ 3 for cycle graphs)?</p>
+<p><a class="reference internal" href="../32_Answers/Answers_17_2_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-17.2.3">
+<h3>Exercise 17.2.3<a class="headerlink" href="#Exercise-17.2.3" title="Link to this heading"></a></h3>
+<p>What is the number of edges in a</p>
+<ol class="arabic simple">
+<li><p>path</p></li>
+<li><p>cycle</p></li>
+<li><p>complete</p></li>
+</ol>
+<p>graph with <em>n</em> &gt; 0 nodes (and <em>n</em> ≥ 3 for cycle graphs)? For each graph, write an expression based on <em>n</em>.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_17_2_03.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-17.2.4">
+<h3>Exercise 17.2.4<a class="headerlink" href="#Exercise-17.2.4" title="Link to this heading"></a></h3>
+<p>Is a</p>
+<ol class="arabic simple">
+<li><p>null</p></li>
+<li><p>path</p></li>
+<li><p>cycle</p></li>
+<li><p>complete</p></li>
+</ol>
+<p>graph with many nodes sparse or dense?</p>
+<p><a class="reference internal" href="../32_Answers/Answers_17_2_04.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="ADT">
+<h2><span class="section-number">17.2.4. </span>ADT<a class="headerlink" href="#ADT" title="Link to this heading"></a></h2>
+<p>Each of the above concepts can be turned into an operation for a graph ADT, e.g. an operation to check if two given nodes are mutually reachable, but the basic operations required are those on nodes and edges. Here are they for a digraph ADT:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Effect</p></th>
+<th class="head"><p>In algorithms</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>new</p></td>
+<td><p>create an empty graph</p></td>
+<td><p>let <em>g</em> be an empty graph</p></td>
+</tr>
+<tr class="row-odd"><td><p>has node</p></td>
+<td><p>check if node <em>a</em> exists</p></td>
+<td><p><em>a</em> in <em>g</em></p></td>
+</tr>
+<tr class="row-even"><td><p>add node</p></td>
+<td><p>add a node <em>a</em> to a graph</p></td>
+<td><p>add <em>a</em> to <em>g</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>remove node</p></td>
+<td><p>remove a node and its edges</p></td>
+<td><p>remove <em>a</em> from <em>g</em></p></td>
+</tr>
+<tr class="row-even"><td><p>has edge</p></td>
+<td><p>check if an edge exists</p></td>
+<td><p>(<em>a</em>, <em>b</em>) in <em>g</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>add edge</p></td>
+<td><p>add a directed edge</p></td>
+<td><p>add (<em>a</em>, <em>b</em>) to <em>g</em></p></td>
+</tr>
+<tr class="row-even"><td><p>remove edge</p></td>
+<td><p>remove a directed edge</p></td>
+<td><p>remove (<em>a</em>, <em>b</em>) from <em>g</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>nodes</p></td>
+<td><p>return the set of all nodes</p></td>
+<td><p>nodes of <em>g</em></p></td>
+</tr>
+<tr class="row-even"><td><p>edges</p></td>
+<td><p>return the set of all directed edges</p></td>
+<td><p>edges of <em>g</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>in-neighbours</p></td>
+<td><p>return a node’s set of in-neighbours</p></td>
+<td><p>in-neighbours of <em>a</em> in <em>g</em></p></td>
+</tr>
+<tr class="row-even"><td><p>out-neighbours</p></td>
+<td><p>return a node’s set of out-neighbours</p></td>
+<td><p>out-neighbours of <em>a</em> in <em>g</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>neighbours</p></td>
+<td><p>return the union of the in- and out-neighbours</p></td>
+<td><p>neighbours of <em>a</em> in <em>g</em></p></td>
+</tr>
+<tr class="row-even"><td><p>in-degree</p></td>
+<td><p>return the in-degree of a node</p></td>
+<td><p>in-degree of <em>a</em> in <em>g</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>out-degree</p></td>
+<td><p>return the out-degree of a node</p></td>
+<td><p>out-degree of <em>a</em> in <em>g</em></p></td>
+</tr>
+<tr class="row-even"><td><p>degree</p></td>
+<td><p>return the sum of the in- and out-degree</p></td>
+<td><p>degree of <em>a</em> in <em>g</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>The undirected graph ADT has the same operations, but some have a different effect because they operate on undirected rather than directed edges:</p>
+<ul class="simple">
+<li><p>the operations on neighbours and degrees return the same set or the same number, for the same node</p></li>
+<li><p>the operations to add or remove an edge must add and remove the opposing edge too.</p></li>
+</ul>
+<p>As an example of how graph algorithms will be written, here’s a simple one, to isolate a given <em>node</em> in an undirected graph.</p>
+<ol class="arabic simple">
+<li><p>for each <em>neighbour</em> in neighbours of <em>node</em> in <em>graph</em>:</p>
+<ol class="arabic simple">
+<li><p>remove edge (<em>node</em>, <em>neighbour</em>)</p></li>
+</ol>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="17_1_modelling.html" class="btn btn-neutral float-left" title="17.1. Modelling with graphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="17_3_edge_list.html" class="btn btn-neutral float-right" title="17.3. Edge list representation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

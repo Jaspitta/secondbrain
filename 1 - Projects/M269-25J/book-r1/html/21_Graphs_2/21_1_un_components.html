@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>21.1. Undirected graph components</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="21.2. Directed graph components" href="21_2_di_components.html" />
+    <link rel="prev" title="21. Graphs 2" href="21-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="21-introduction.html">21. Graphs 2</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">21.1. Undirected graph components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-definition-and-instances">21.1.1. Problem definition and instances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm-and-complexity">21.1.2. Algorithm and complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Code-and-tests">21.1.3. Code and tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-21.1.1">Exercise 21.1.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-21.1.2">Exercise 21.1.2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="21_2_di_components.html">21.2. Directed graph components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_3_topological.html">21.3. Topological sort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_4_states.html">21.4. State graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_5_practice.html">21.5. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="21_6_summary.html">21.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="21-introduction.html"><span class="section-number">21. </span>Graphs 2</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">21.1. </span>Undirected graph components</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Undirected-graph-components">
+<h1><span class="section-number">21.1. </span>Undirected graph components<a class="headerlink" href="#Undirected-graph-components" title="Link to this heading"></a></h1>
+<p>Sometimes we want to know if there’s a path between two given nodes, but the actual path, if it exists, is of little relevance. For example, if bad weather brings power cables down, we want to know for each residential or industrial area if it’s connected to a generator. We don’t need the path from the generator to the area: we only want to know whether it exists, to determine the cut-off areas.</p>
+<p>The more general problem is to compute, for a given graph, its various separate subgraphs of mutually reachable nodes. The problem is slightly different for undirected and directed graphs, so let’s first look at the former. Consider the following undirected graph.</p>
+<p id="fig-21.1.1"></p><p><a class="reference internal" href="../33_Figures/Figures_21_1.html#Figure-21.1.1"><span class="std std-ref">Figure 21.1.1</span></a></p>
+<img alt="Image 21_1_components.png" src="../_images/21_1_components.png" />
+<p>It has three subgraphs of connected nodes. One subgraph consists of nodes A, B, C and their edges, another of nodes D and E and their edge, and the third has node F by itself. Each of these subgraphs is called a <strong>connected component</strong> of the whole graph.</p>
+<p>A component of an undirected graph is a largest possible connected subgraph. For example, edge A–B and its nodes aren’t a component: while they form a connected subgraph, it isn’t as large as possible because we can add node C and edge A–C to get a larger connected subgraph. There are no further edges for nodes A, B and C, so they (and their edges) form a component: there’s no larger connected subgraph they’re part of.</p>
+<p>In other words, a connected component of an undirected graph is a largest set of nodes that are mutually reachable together with all their edges. For example, if the above graph had edge B–C, the component would be subgraph A–B–C–A: omitting any of the edges between those nodes would lead to a subgraph that isn’t the largest possible.</p>
+<section id="Problem-definition-and-instances">
+<h2><span class="section-number">21.1.1. </span>Problem definition and instances<a class="headerlink" href="#Problem-definition-and-instances" title="Link to this heading"></a></h2>
+<p>The general problem we want to solve is: given an undirected graph and two nodes A and B, is there a path between them? Are they mutually reachable? In the power grid example, we want to know if electricity can flow from a generator A to a residential or industrial estate B and back.</p>
+<p>Since components are subgraphs of mutually reachable nodes, to answer the question we compute the components and then check if A and B are in the same component. For example, in the graph above, A and E are in different components, so they’re not mutually reachable.</p>
+<p>We need an ADT that associates each node with the component that it’s in: that’s the map ADT. The easiest way to label the components is to number them from 1 onwards. Here’s the precise problem definition.</p>
+<div class="line-block">
+<div class="line"><strong>Function:</strong> connected components</div>
+<div class="line"><strong>Inputs:</strong> <em>graph</em>, an undirected graph</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>component</em>, a map of objects to integers</div>
+<div class="line"><strong>Postconditions</strong>:</div>
+</div>
+<ul class="simple">
+<li><p><em>component</em> maps the nodes of <em>graph</em> to the integers from 1 to the number of connected components in <em>graph</em></p></li>
+<li><p><em>component</em>(<em>a</em>) = <em>component</em>(<em>b</em>) if and only if nodes <em>a</em> and <em>b</em> are mutually reachable</p></li>
+</ul>
+<p>To create some graphs for testing, I must first load the necessary code. Since breadth- and depth-first search use queues and stacks, it’s safest to always load the queue and stack implementations too, even if we end up not traversing graphs.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_digraph
+<span class="o">%</span><span class="k">run</span> -i ../m269_ungraph
+<span class="o">%</span><span class="k">run</span> -i ../m269_queue
+<span class="o">%</span><span class="k">run</span> -i ../m269_stack
+</pre></div>
+</div>
+</div>
+<p>Let’s create the above graph to later test the computation of components.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">undirected</span> <span class="o">=</span> <span class="n">UndirectedGraph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="s2">&quot;ABCDEF&quot;</span><span class="p">:</span>
+    <span class="n">undirected</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="n">undirected</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="n">undirected</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">undirected</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We also need to test with edge cases: a graph with the fewest possible components and a graph with the most components. Describe two such graphs and how many components they have.</p>
+<hr class="docutils" />
+<p>A null graph (without edges) has the most components: one per node. A connected graph has the fewest components: only one.</p>
+<p>We already have functions to <a class="reference internal" href="../17_Graphs_1/17_6_classes.html#Special-graphs"><span class="std std-ref">generate null and connected graphs</span></a>. We’ll use them later to create problem instances for testing.</p>
+</section>
+<section id="Algorithm-and-complexity">
+<h2><span class="section-number">21.1.2. </span>Algorithm and complexity<a class="headerlink" href="#Algorithm-and-complexity" title="Link to this heading"></a></h2>
+<p>The key idea to compute the components is that traversing an undirected graph from node A visits all nodes reachable from A, and therefore visits all nodes in the same component as A.</p>
+<p>To compute all components, we repeatedly traverse the graph from each node that hasn’t been assigned to a component yet. Each traversal adds the nodes it visits to a new component. Here’s an outline of the algorithm:</p>
+<blockquote>
+<div><p>Create an empty map. Initialise a component counter with 1. Go through each node in the graph. If the node is in the map, we already know its component, so do nothing. Otherwise, do any graph traversal from that node. Add all nodes returned by the traversal to the map, associated to the current component counter. Then increment the counter. After going through all nodes, return the map.</p>
+</div></blockquote>
+<p>The complexity can be analysed as follows. Remember that <em>n</em> and <em>e</em> refer to the number of nodes and edges in a graph.</p>
+<ul class="simple">
+<li><p>Checking if a node is in the map takes constant time if the map is implemented with a hash table. So checking all <em>n</em> nodes takes Θ(<em>n</em>).</p></li>
+<li><p>The counter increments take Θ(1) in the best case and Θ(<em>n</em>) in the worst case, because that’s the least and most number of components, as seen earlier.</p></li>
+<li><p>Each traversal only visits part of the graph, but together the traversals visit every node and edge once. They’re equivalent to a single traversal of the whole graph, which has complexity Θ(<em>n</em> + <em>e</em>) (<a class="reference internal" href="../17_Graphs_1/17_7_traversal.html#Complexity"><span class="std std-ref">Section 17.7.2</span></a>).</p></li>
+</ul>
+<p>Considering only the fastest-growing term, we can say that the complexity of the algorithm is Θ(<em>n</em> + <em>e</em>). This is both the best- and worst-case complexity, because the whole graph is traversed to find all components.</p>
+</section>
+<section id="Code-and-tests">
+<h2><span class="section-number">21.1.3. </span>Code and tests<a class="headerlink" href="#Code-and-tests" title="Link to this heading"></a></h2>
+<p>In translating the algorithm outline to Python we must remember that our <a class="reference internal" href="../17_Graphs_1/17_7_traversal.html#Second-algorithm"><span class="std std-ref">traversal functions</span></a> return the tree of all paths from the start node. We must add each tree node to the map.</p>
+<p>Any traversal will work. The code below uses depth-first search (DFS). You can replace it with breadth-first search (BFS) and confirm you get the same components.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code is also in m269_ungraph.py</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">connected_components</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="n">UndirectedGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the connected components of graph.</span>
+
+<span class="sd">    Postconditions: the output maps each node to its component,</span>
+<span class="sd">    numbered from 1 onwards.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">component</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">component</span><span class="p">:</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">reached</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+                <span class="n">component</span><span class="p">[</span><span class="n">reached</span><span class="p">]</span> <span class="o">=</span> <span class="n">counter</span>
+            <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">component</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s test the code with the example graph.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">connected_components</span><span class="p">(</span><span class="n">undirected</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;E&#39;: 1, &#39;D&#39;: 1, &#39;C&#39;: 2, &#39;B&#39;: 2, &#39;A&#39;: 2, &#39;F&#39;: 3}
+</pre></div></div>
+</div>
+<p>As expected, it finds the three components: nodes A, B and C, nodes D and E, and node F by itself.</p>
+<p>Let’s test with the edge cases. Remember that the graphs that <code class="docutils literal notranslate"><span class="pre">m269_graphs.py</span></code> generates have nodes 0, 1, 2, …, <em>n</em> – 1.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_graphs
+
+<span class="c1"># most components: no node has neighbours</span>
+<span class="n">connected_components</span><span class="p">(</span><span class="n">null_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{0: 1, 1: 2, 2: 3, 3: 4, 4: 5}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fewest components: a connected graph; could be cycle graph or complete graph</span>
+<span class="n">connected_components</span><span class="p">(</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{0: 1, 1: 1, 2: 1, 3: 1, 4: 1}
+</pre></div></div>
+</div>
+<p>As expected, every node of the null graph is in a separate component and all nodes of a connected graph are in the same component.</p>
+<section id="Exercise-21.1.1">
+<h3>Exercise 21.1.1<a class="headerlink" href="#Exercise-21.1.1" title="Link to this heading"></a></h3>
+<p>This exercise asks you to apply your knowledge of how connected components are computed to create a bespoke algorithm for a particular problem.</p>
+<p>Consider again the power grid example. Implement the next function, which returns the set of nodes not connected to any power source node.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">disconnected</span><span class="p">(</span><span class="n">graph</span><span class="p">:</span> <span class="n">UndirectedGraph</span><span class="p">,</span> <span class="n">sources</span><span class="p">:</span> <span class="nb">set</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all nodes not connected to any of the sources.</span>
+
+<span class="sd">    Preconditions: sources is a non-empty subset of the graph&#39;s nodes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="n">disconnected</span><span class="p">(</span><span class="n">undirected</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">})</span>  <span class="c1"># you should obtain {&#39;D&#39;, &#39;E&#39;, &#39;F&#39;}</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_21_1_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_21_1_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-21.1.2">
+<h3>Exercise 21.1.2<a class="headerlink" href="#Exercise-21.1.2" title="Link to this heading"></a></h3>
+<p>The following is an exercise in modelling a situation. There’s no right or wrong answer.</p>
+<p>A government agency wants to know which train stations are critical: that is, which stations would cause the most disruption if, due to accident or incident, they had to be closed and no trains could start, terminate or pass through those stations.</p>
+<p>Given a connected undirected graph representing the train network, how would you define the critical nodes, based on the notion of components?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_21_1_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_21_1_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="21-introduction.html" class="btn btn-neutral float-left" title="21. Graphs 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="21_2_di_components.html" class="btn btn-neutral float-right" title="21.2. Directed graph components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

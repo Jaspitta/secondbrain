@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.1. Linear search, again</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11.2. Factorisation" href="11_2_factorisation.html" />
+    <link rel="prev" title="11. Exhaustive search" href="11-introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="11-introduction.html">11. Exhaustive search</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.1. Linear search, again</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Basic-search">11.1.1. Basic search</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.1.1">Exercise 11.1.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.1.2">Exercise 11.1.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.1.3">Exercise 11.1.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.1.4">Exercise 11.1.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.1.5">Exercise 11.1.5</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Simultaneous-and-successive-searches">11.1.2. Simultaneous and successive searches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Sorted-candidates">11.1.3. Sorted candidates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-11.1.6">Exercise 11.1.6</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="11_2_factorisation.html">11.2. Factorisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_3_constraints.html">11.3. Constraint satisfaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_4_permutations.html">11.4. Searching permutations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_5_subsets.html">11.5. Searching subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_6_practice.html">11.6. Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_7_summary.html">11.7. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="11-introduction.html"><span class="section-number">11. </span>Exhaustive search</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11.1. </span>Linear search, again</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Linear-search,-again">
+<h1><span class="section-number">11.1. </span>Linear search, again<a class="headerlink" href="#Linear-search,-again" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../04_Iteration/04_4_search.html#Linear-search"><span class="std std-ref">Section 4.4</span></a> introduced linear search as ‘an algorithm that goes systematically through the sequence and checks each element’. This section provides a more general treatment.</p>
+<section id="Basic-search">
+<h2><span class="section-number">11.1.1. </span>Basic search<a class="headerlink" href="#Basic-search" title="Link to this heading"></a></h2>
+<p>Linear search is a special case of exhaustive search in which the collection of candidates is given: generating candidates is simply iterating over the collection. Like for any generate-and-test algorithm, the test part of linear search may involve one or more candidates. For example, to find the best solution, the test involves comparing two candidates: the current one and the best candidate found so far.</p>
+<p>At this point you may wish to skim again the algorithmic patterns in <a class="reference internal" href="../05_TMA01-1/05_2_algorithms.html#Linear-search"><span class="std std-ref">Section 5.2</span></a> for finding all solutions, some solutions and the best solution.</p>
+<p>Linear searches can be done on any sequence, set or map of candidates. A linear search over a stack or a priority queue destroys it, because we must remove items one by one to iterate over the collection. That’s not an issue if the input collection isn’t needed after the search. However, in general it’s best to avoid modifying the input and so we’d need to search a copy of the input.</p>
+<section id="Exercise-11.1.1">
+<h3>Exercise 11.1.1<a class="headerlink" href="#Exercise-11.1.1" title="Link to this heading"></a></h3>
+<p>We can do a linear search over a queue without making a copy of the input collection, but not over a priority queue. Why?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_11_1_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_11_1_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-11.1.2">
+<h3>Exercise 11.1.2<a class="headerlink" href="#Exercise-11.1.2" title="Link to this heading"></a></h3>
+<p>Linear search has that name because it always has linear complexity in the worst case. True or false?</p>
+<p><a class="reference internal" href="../32_Answers/Answers_11_1_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-11.1.3">
+<h3>Exercise 11.1.3<a class="headerlink" href="#Exercise-11.1.3" title="Link to this heading"></a></h3>
+<p>Here’s an algorithmic pattern for finding all solutions. It’s formulated in more general terms than the corresponding one in Section 5.2.</p>
+<ol class="arabic simple">
+<li><p>let <em>solutions</em> be an empty collection</p></li>
+<li><p>for each <em>candidate</em> in <em>candidates</em>:</p>
+<ol class="arabic simple">
+<li><p>if <em>candidate</em> satisfies all search conditions:</p>
+<ol class="arabic simple">
+<li><p>add <em>candidate</em> to <em>solutions</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>A pattern abstracts several similar algorithms. Here, step 1 doesn’t indicate the type of the output collection, step 2 doesn’t specify how each candidate is obtained, step 2.1 doesn’t detail the test, and step 2.1.1 doesn’t say which operation is used to add a candidate to the solutions.</p>
+<p>Make one or more steps more detailed, to obtain a pattern for linear searches that output solutions in the order they’re found.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_11_1_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_11_1_03.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-11.1.4">
+<h3>Exercise 11.1.4<a class="headerlink" href="#Exercise-11.1.4" title="Link to this heading"></a></h3>
+<p>Here’s the algorithmic pattern once more.</p>
+<ol class="arabic simple">
+<li><p>let <em>solutions</em> be an empty collection</p></li>
+<li><p>for each <em>candidate</em> in <em>candidates</em>:</p>
+<ol class="arabic simple">
+<li><p>if <em>candidate</em> satisfies all search conditions:</p>
+<ol class="arabic simple">
+<li><p>add <em>candidate</em> to <em>solutions</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Modify one or more steps to get a pattern for linear searches that don’t output repeated solutions. Solutions don’t have to be in the order they’re found.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_11_1_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_11_1_04.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-11.1.5">
+<h3>Exercise 11.1.5<a class="headerlink" href="#Exercise-11.1.5" title="Link to this heading"></a></h3>
+<p>For this exercise, assume the collection of candidates isn’t empty. The next pattern finds <em>one</em> best solution.</p>
+<ol class="arabic simple">
+<li><p>let <em>best</em> be the first of <em>candidates</em></p></li>
+<li><p>for each <em>candidate</em> in <em>candidates</em>:</p>
+<ol class="arabic simple">
+<li><p>if <em>candidate</em> is better than <em>best</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>best</em> be <em>candidate</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Modify or add steps to obtain a pattern for a linear search that finds <em>all</em> equally best solutions. You can write ‘… is as good as …’ to check if two candidates are equally good. The equally best solutions may be in any order and may be duplicated, so don’t specify the type of the output collection.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_11_1_05.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_11_1_05.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Simultaneous-and-successive-searches">
+<h2><span class="section-number">11.1.2. </span>Simultaneous and successive searches<a class="headerlink" href="#Simultaneous-and-successive-searches" title="Link to this heading"></a></h2>
+<p>You may remember the decision problem of checking if a string represents a <a class="reference internal" href="../04_Iteration/04_4_search.html#Valid-password"><span class="std std-ref">valid password</span></a>. It was solved with two simultaneous linear searches over the candidates (the string’s characters): a search for a lowercase letter and a search for a digit. Each search uses a Boolean to record whether it was successful. When both Booleans become true, the simultaneous search stops: the string is a valid password.</p>
+<p>Simultaneous linear searches allow us to check if the input collection, rather than an individual item, satisfies the conditions. In this example, no character can be a lowercase letter and a digit. The algorithmic pattern for simultaneous linear searches is also in <a class="reference internal" href="../05_TMA01-1/05_2_algorithms.html#Linear-search"><span class="std std-ref">Section 5.2</span></a>.</p>
+<p>We can also search for each condition separately instead of simultaneously, i.e. do separate searches for a lowercase letter and for a digit. Doing one linear search for each condition is less efficient than doing a single pass over the input collection, but has other advantages. First, each linear search becomes simpler. Second, the searches can be allocated to different CPUs and executed in parallel. The time waiting for a result may not be much longer than for a single pass. Third, separate
+linear search functions for general conditions can be reused, making future search problems easier to solve.</p>
+<p>If we design each linear search so that the input and output collections, i.e. <em>candidates</em> and <em>solutions</em> in the above pattern, are of the same type, then we can find the candidates that satisfy all conditions with successive separate searches, in which the solutions of one search are the candidates of the next search. This approach views searching as <strong>filtering</strong> the candidate collection: the conditions filter away those candidates that don’t satisfy them, while the other candidates ‘pass
+through’ to the solutions collection.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 Block 2 Sections 2.1.3 and 2.3 introduce filtering and searching, respectively, and their connection. The algorithmic patterns in both sections are less general versions of the linear search patterns in M269.</p>
+</div>
+<p>For example, to find all white t-shirts costing less than £20 in a store, we can use three filters, i.e. three separate general linear searches: find all products of a given colour, find all products of a given kind, and find all products below a given price. Each filter takes and produces a collection of products, so they can be applied one after the other.</p>
+<p>The order of the filters doesn’t matter to obtain a correct result but we should apply them so that they <strong>prune</strong> the search space quickly for subsequent filters to go through as few candidates as possible. For example, a store is likely to have many more cheap products and white products than t-shirts, so searching first for t-shirts will lead to a small collection to search for white products costing less than £20.</p>
+<p>Let’s assume the filters are implemented with functions named ‘colour’, ‘kind’ and ‘price’. Besides the input collection of products they have a string or integer argument to indicate which colour, kind or price to filter for. The successive filtering algorithm for the above example is:</p>
+<ol class="arabic simple">
+<li><p>let <em>shirts</em> be kind(<em>store</em>, ‘t-shirt’)</p></li>
+<li><p>let <em>white shirts</em> be colour(<em>shirts</em>, ‘white’)</p></li>
+<li><p>let <em>cheap white shirts</em> be price(<em>white shirts</em>, 20)</p></li>
+</ol>
+<p>Note how the output collection of a linear search is the input of the next one.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> The order in which you test conditions doesn’t matter for correctness but may have a great impact on efficiency.</p>
+</div>
+</section>
+<section id="Sorted-candidates">
+<h2><span class="section-number">11.1.3. </span>Sorted candidates<a class="headerlink" href="#Sorted-candidates" title="Link to this heading"></a></h2>
+<p>Consider again finding all white t-shirts under £20 in a store, using the basic linear search algorithm pattern at the start of this section, which checks each candidate against all conditions. What are the best- and worst-case scenarios? (Their complexities may be the same.)</p>
+<hr class="docutils" />
+<p>The best case, when the linear search does the least work, is for step 2.1.1 of the pattern (adding the current candidate to the solutions) to never execute. This happens when <em>no</em> candidate satisfies the conditions, i.e. the store has no white t-shirts under £20. In the worst case, step 2.1.1 is always executed. This happens when <em>all</em> candidates satisfy the conditions, i.e. the store has nothing but white t-shirts under £20.</p>
+<p>In both cases, the search goes through all candidates: it can’t stop early, as there might be more solutions ahead. However, if the candidates are comparable, we can sort them to know when no further solutions are possible. For example, if the products are sorted by ascending price, then as soon as the current candidate costs more than £20, we can stop searching because any remaining candidates cost even more and hence won’t be solutions.</p>
+<section id="Exercise-11.1.6">
+<h3>Exercise 11.1.6<a class="headerlink" href="#Exercise-11.1.6" title="Link to this heading"></a></h3>
+<p>What are the best- and worst-case scenarios for finding all white t-shirts under £20, if the candidates (store products) are in ascending price order?</p>
+<p><a class="reference internal" href="../32_Answers/Answers_11_1_06.html"><span class="doc">Answer</span></a></p>
+<p>Best and worst cases rarely happen with real data, but sorting can nevertheless reduce the average run-time. We must sort and search the candidate collection so that the solutions (if there are any) appear early. For example, to find white products, we can sort products by ascending or descending colour names. If the order is ascending, then ‘white’ will appear towards the end of the sequence, so we must search backwards from the highest to the lowest index. If the order is descending, then
+white products appear towards the start of the sequence and we must search from lowest to highest index. For both orders, we’re searching colours from ‘z’ to ‘a’ and stop as soon as the colour comes alphabetically before ‘white’, e.g. ‘violet’.</p>
+<p>Sorting can also help find the best candidate if we can sort the candidates by the criterion that is being optimised. For example, if we want to find the cheapest white t-shirt, and the products are in ascending price order, then we can stop as soon as we find a white t-shirt, as it must be the cheapest of them all. If candidates were unsorted, we’d always have to search the whole collection.</p>
+<p>We can combine sorting and successive filtering. If we want all cheapest white t-shirts, we can first filter by kind and second by colour, then sort by price, and finally select all products that have the same price as the first one. Why is it more efficient to filter before sorting than the other way around?</p>
+<hr class="docutils" />
+<p>We’re only interested in the prices of white t-shirts, of which there are only a few compared to all products in the store. Sorting all products by price before filtering them would be a waste of time, especially if sorting takes quadratic time.</p>
+<p>Since sorting takes longer than searching, even for the example given it’s best to avoid it: a linear search for all cheapest products after filtering for white t-shirts will do the job in linear time.</p>
+<p>However, if the same optimisation criterion is used over and over again, like finding the cheapest black shoes, the cheapest blue dresses, etc., then it’s worth sorting all products by that criterion before any searches. The aim is again to spread the cost of one operation over multiple other operations. For <a class="reference internal" href="../06_Implementing/06_6_use_dyn_array.html#Using-dynamic-arrays"><span class="std std-ref">dynamic arrays</span></a>, the cost of copying a static array to a larger one is spread over the cost of inserting several items;
+here we spread the cost of sorting over the cost of linear searches.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="11-introduction.html" class="btn btn-neutral float-left" title="11. Exhaustive search" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="11_2_factorisation.html" class="btn btn-neutral float-right" title="11.2. Factorisation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

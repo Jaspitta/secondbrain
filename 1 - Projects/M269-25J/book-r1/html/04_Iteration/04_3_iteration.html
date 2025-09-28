@@ -1,0 +1,620 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.3. Iteration</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.4. Linear search" href="04_4_search.html" />
+    <link rel="prev" title="4.2. Strings" href="04_2_strings.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="04-introduction.html">4. Sequences and iteration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04_1_sequences.html">4.1. The Sequence ADT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_2_strings.html">4.2. Strings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.3. Iteration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#For-loops">4.3.1. For-loops</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.3.1">Exercise 4.3.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#While-loops">4.3.2. While-loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Repeat-loops">4.3.3. Repeat-loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Nested-loops">4.3.4. Nested loops</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04_4_search.html">4.4. Linear search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_5_tuples.html">4.5. Tuples and tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_6_lists.html">4.6. Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_7_reverse.html">4.7. Reversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_8_practice.html">4.8. Optional practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_9_summary.html">4.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="04-introduction.html"><span class="section-number">4. </span>Sequences and iteration</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.3. </span>Iteration</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Iteration">
+<h1><span class="section-number">4.3. </span>Iteration<a class="headerlink" href="#Iteration" title="Link to this heading"></a></h1>
+<p>There are two main ways of repeating instructions: a for-loop executes the instructions a fixed number of times; a while-loop repeatedly executes the instructions while a condition is true. Python supports both kinds of loops. I’ll cover them through very simple examples that focus on how to express iteration in English and in Python. Full problems are left for a later section.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 introduces iteration in Block 1: for-loops in Section 2.2 and while-loops in Section 4.5.</p>
+</div>
+<section id="For-loops">
+<h2><span class="section-number">4.3.1. </span>For-loops<a class="headerlink" href="#For-loops" title="Link to this heading"></a></h2>
+<p>Here’s an algorithm that displays some text vertically, one character per line:</p>
+<ol class="arabic simple">
+<li><p>let <em>text</em> be ‘hello’</p></li>
+<li><p>for each <em>character</em> in <em>text</em>:</p>
+<ol class="arabic simple">
+<li><p>print <em>character</em></p></li>
+</ol>
+</li>
+</ol>
+<p>This is translated to Python by just dropping the word ‘each’:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+<span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h
+e
+l
+l
+o
+</pre></div></div>
+</div>
+<p>Python’s for-loop can only iterate over sequences. So, if we want to iterate over some numbers, we must create an integer sequence in Python. Python’s <code class="docutils literal notranslate"><span class="pre">range</span></code> data type represents a sequence of consecutive integers. The corresponding constructor <code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">end)</span></code> creates the sequence <code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">start+1</span></code>, …, <code class="docutils literal notranslate"><span class="pre">end-1</span></code>. The constructor behaves like the slicing operation: the start number is included, but the end number isn’t. This means that the sequence is empty if <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">&gt;=</span> <span class="pre">end</span></code>.</p>
+<p>Here’s a simple algorithm that prints some even numbers:</p>
+<ol class="arabic simple">
+<li><p>for each <em>number</em> from 1 to 5:</p>
+<ol class="arabic simple">
+<li><p>print 2 × <em>number</em></p></li>
+</ol>
+</li>
+</ol>
+<p>This is translated to Python as follows:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>  <span class="c1"># the end number is set one higher</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+4
+6
+8
+10
+</pre></div></div>
+</div>
+<p>Some further examples:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-2
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>  <span class="c1"># no output if start = end</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># no output if start &gt; end</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>  <span class="c1"># start = 0 if omitted</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+1
+2
+3
+</pre></div></div>
+</div>
+<p>Since the upper bound is excluded, and the lower bound is zero by default, <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">index</span> <span class="pre">in</span> <span class="pre">range(len(s))</span></code> iterates over the indices of string <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+h
+e
+l
+l
+o
+</pre></div></div>
+</div>
+<p>The corresponding English algorithm is:</p>
+<ol class="arabic simple">
+<li><p>let <em>text</em> be ‘hello’</p></li>
+<li><p>for each <em>index</em> from 0 to │<em>text</em>│ - 1:</p>
+<ol class="arabic simple">
+<li><p>print <em>text</em>[<em>index</em>]</p></li>
+</ol>
+</li>
+</ol>
+<p>It’s possible to iterate backwards. Here’s a countdown algorithm:</p>
+<ol class="arabic simple">
+<li><p>for each <em>number</em> from 10 down to 1:</p>
+<ol class="arabic simple">
+<li><p>print <em>number</em></p></li>
+</ol>
+</li>
+</ol>
+<p>This can be translated to Python like so:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+</pre></div></div>
+</div>
+<p>The third argument of <code class="docutils literal notranslate"><span class="pre">range</span></code> is the stepwise increment or decrement between consecutive numbers in the sequence, e.g. <code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">end)</span></code> is shorthand for <code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">end,</span> <span class="pre">1)</span></code>. The end number is always excluded from the sequence, so here we must say the end is zero. Without the -1, the loop wouldn’t execute, as the start (10) is larger than the end (0).</p>
+<section id="Exercise-4.3.1">
+<h3>Exercise 4.3.1<a class="headerlink" href="#Exercise-4.3.1" title="Link to this heading"></a></h3>
+<p>Change step 2 of this algorithm so that the string is printed backwards, character by character.</p>
+<ol class="arabic simple">
+<li><p>let <em>text</em> be ‘hello’</p></li>
+<li><p>for each <em>index</em> from 0 to │<em>text</em>│ - 1:</p>
+<ol class="arabic simple">
+<li><p>print <em>text</em>[<em>index</em>]</p></li>
+</ol>
+</li>
+</ol>
+<p>Translate step 2 of your algorithm to Python.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">():</span>  <span class="c1"># put the correct arguments in</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[9], line 2</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> text <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">hello</span><span style="color: rgb(175,0,0)">&#34;</span>
+<span class="ansi-green-fg">----&gt; 2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> index <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">range</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>:  <span style="color: rgb(95,135,135)"># put the correct arguments in</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     <span style="color: rgb(0,135,0)">print</span>(text[index])
+
+<span class="ansi-red-fg">TypeError</span>: range expected at least 1 argument, got 0
+</pre></div></div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_04_3_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_3_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="While-loops">
+<h2><span class="section-number">4.3.2. </span>While-loops<a class="headerlink" href="#While-loops" title="Link to this heading"></a></h2>
+<p>A for-loop executes a fixed number of times, while a while-loop executes as long as some condition is true. Strictly speaking, for-loops are unnecessary because something like</p>
+<ol class="arabic simple">
+<li><p>for <em>number</em> from <em>start</em> to <em>end</em>:</p>
+<ol class="arabic simple">
+<li><p>do something with <em>number</em></p></li>
+</ol>
+</li>
+</ol>
+<p>can be rewritten as:</p>
+<ol class="arabic simple">
+<li><p>let <em>number</em> be <em>start</em></p></li>
+<li><p>while <em>number</em> ≤ <em>end</em>:</p>
+<ol class="arabic simple">
+<li><p>do something with <em>number</em></p></li>
+<li><p>let <em>number</em> be <em>number</em> + 1</p></li>
+</ol>
+</li>
+</ol>
+<p>However, it’s best to use for-loops rather than while-loops when the number of iterations is fixed, as for-loops make that clearer.</p>
+<p>Consider the problem of writing all the positive even numbers until some limit <em>highest</em>, given as input. We don’t know in advance how many numbers to print, so a while-loop is the natural choice.</p>
+<ol class="arabic simple">
+<li><p>let <em>number</em> be 2</p></li>
+<li><p>while <em>number</em> ≤ <em>highest</em>:</p>
+<ol class="arabic simple">
+<li><p>print <em>number</em></p></li>
+<li><p>let <em>number</em> be <em>number</em> + 2</p></li>
+</ol>
+</li>
+</ol>
+<p>This translates directly to Python:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">highest</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># or some other value</span>
+<span class="n">number</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">while</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="n">highest</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+4
+6
+</pre></div></div>
+</div>
+<p>For this particular problem, it’s possible to use a for-loop in Python, making use of the stepwise increment of the <code class="docutils literal notranslate"><span class="pre">range</span></code> constructor.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">highest</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">highest</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>  <span class="c1"># 2 to highest in steps of 2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2
+4
+6
+</pre></div></div>
+</div>
+<p>In general, for ‘open-ended’ iterations we must use a while-loop. For example, consider printing the outstanding mortgage, until it’s paid off. Let’s assume the inputs are the annual rate (a percentage), the monthly fixed payment, and the starting mortgage. Every month we must add the interest and deduct the payment, like so:</p>
+<ol class="arabic simple">
+<li><p>while <em>mortgage</em> ≠ 0:</p>
+<ol class="arabic simple">
+<li><p>let <em>interest</em> be <em>mortgage</em> × <em>rate</em> / 12</p></li>
+<li><p>let <em>mortgage</em> be <em>mortgage</em> + <em>interest</em> - <em>payment</em></p></li>
+<li><p>print <em>mortgage</em></p></li>
+</ol>
+</li>
+</ol>
+<p>Contrary to for-loops, while-loops may never stop. If the mortgage never becomes exactly zero, which is likely, we have an <strong>infinite loop</strong>. For this problem, to avoid looping forever we must guarantee that the mortgage decreases, i.e. have the precondition <em>payment</em> &gt; <em>mortgage</em> × <em>rate</em> / 12, and change the while condition to <em>mortgage</em> &gt; 0.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> The mortgage problem and infinite loops are introduced in TM112 Block 1 Section 4.5.</p>
+</div>
+</section>
+<section id="Repeat-loops">
+<h2><span class="section-number">4.3.3. </span>Repeat-loops<a class="headerlink" href="#Repeat-loops" title="Link to this heading"></a></h2>
+<p>Sometimes we want to repeat some instructions a fixed number of times. In those cases we use a ‘repeat <em>n</em> times’ loop, like this one:</p>
+<ol class="arabic simple">
+<li><p>repeat 3 times:</p>
+<ol class="arabic simple">
+<li><p>print ‘echo…’</p></li>
+</ol>
+</li>
+</ol>
+<p>Python doesn’t have this kind of loop, so it must be translated to a for-loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">times</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;echo...&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It takes a moment to realise that the variable isn’t used within the loop. The English description makes this much clearer by not having a variable at all.</p>
+<p>A repeat-until loop iterates at least once, until a condition becomes true. There’s always at least one mortgage payment, so we can use a repeat-until loop.</p>
+<ol class="arabic simple">
+<li><p>repeat:</p>
+<ol class="arabic simple">
+<li><p>let <em>interest</em> be <em>mortgage</em> × <em>rate</em> / 12</p></li>
+<li><p>let <em>mortgage</em> be <em>mortgage</em> + <em>interest</em> - <em>payment</em></p></li>
+<li><p>print <em>mortgage</em></p></li>
+</ol>
+</li>
+<li><p>until <em>mortgage</em> ≤ 0</p></li>
+</ol>
+<p>The Boolean expression in a while-loop is a continuation condition (if it’s true, the loop carries on), whereas the Boolean expression in a repeat-until loop is a stopping condition (if it’s true, the loop stops). Every repeat-until loop can be written as a while-loop:</p>
+<ol class="arabic simple">
+<li><p>repeat:</p>
+<ol class="arabic simple">
+<li><p>do something</p></li>
+</ol>
+</li>
+<li><p>until <em>condition</em></p></li>
+</ol>
+<p>is equivalent to</p>
+<ol class="arabic simple">
+<li><p>let <em>stop</em> be false</p></li>
+<li><p>while not <em>stop</em>:</p>
+<ol class="arabic simple">
+<li><p>do something</p></li>
+<li><p>let <em>stop</em> be <em>condition</em></p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="Nested-loops">
+<h2><span class="section-number">4.3.4. </span>Nested loops<a class="headerlink" href="#Nested-loops" title="Link to this heading"></a></h2>
+<p>Any instructions can be executed repeatedly, including other loops. Writing the times table up to some input number <em>n</em> requires nested loops.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 introduces nested loops and a times table program in Block 1 Section 2.5.</p>
+</div>
+<ol class="arabic simple">
+<li><p>for each <em>left</em> from 1 to <em>n</em>:</p>
+<ol class="arabic simple">
+<li><p>for each <em>right</em> from 1 to <em>n</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>product</em> be <em>left</em> × <em>right</em></p></li>
+<li><p>print <em>left</em> ‘×’ <em>right</em> ‘=’ <em>product</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Step 1.1 is executed for each value of <em>left</em>, so the successive products are 1×1, 1×2, …, 1×<em>n</em>, 2×1, …, 2×<em>n</em>, 3×1, etc. Step 1.1.2 prints each line of the table, e.g. ‘2 × 3 = 6’.</p>
+<p>Steps 1.1.1 and 1.1.2 take constant time and are executed <em>n</em> × <em>n</em> times. The overall run-time is proportional to <em>n</em>². We say the algorithm has <strong>quadratic complexity</strong>: Θ(<em>n</em>²). More generally, if a loop does <em>i</em> iterations and each iteration has complexity Θ(<em>e</em>), then the loop has complexity Θ(<em>i</em> × <em>e</em>). In this example, the inner loop has complexity <em>n</em> × Θ(1) = Θ(<em>n</em>) and the outer loop has complexity <em>n</em> × Θ(<em>n</em>) = Θ(<em>n</em>²).</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> The complexity of a loop is the number of iterations multiplied by the complexity of the body of the loop.</p>
+</div>
+<p>Here’s the corresponding Python code:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># or some other positive integer</span>
+<span class="k">for</span> <span class="n">left</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">product</span> <span class="o">=</span> <span class="n">left</span> <span class="o">*</span> <span class="n">right</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">product</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1 x 1 = 1
+1 x 2 = 2
+1 x 3 = 3
+2 x 1 = 2
+2 x 2 = 4
+2 x 3 = 6
+3 x 1 = 3
+3 x 2 = 6
+3 x 3 = 9
+</pre></div></div>
+</div>
+<p>Like <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">print</span></code> can take one or more arguments. It prints them separated by spaces. Arguments can be any integer, Boolean or string expressions, so the last argument can be the multiplication expression. Moreover, when there are no arguments, <code class="docutils literal notranslate"><span class="pre">print</span></code> produces an empty line. Putting all this together, here’s a more pleasing program and result.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># or some other positive integer</span>
+<span class="k">for</span> <span class="n">left</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">left</span> <span class="o">*</span> <span class="n">right</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1 x 1 = 1
+1 x 2 = 2
+1 x 3 = 3
+
+2 x 1 = 2
+2 x 2 = 4
+2 x 3 = 6
+
+3 x 1 = 3
+3 x 2 = 6
+3 x 3 = 9
+
+</pre></div></div>
+</div>
+<p>The indentation makes the first <code class="docutils literal notranslate"><span class="pre">print</span></code> part of the inner loop and the second one part of the outer loop.</p>
+<p>It’s possible to have more than two nested loops and to have while-loops within for-loops and vice versa.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="04_2_strings.html" class="btn btn-neutral float-left" title="4.2. Strings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04_4_search.html" class="btn btn-neutral float-right" title="4.4. Linear search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

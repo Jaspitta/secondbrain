@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12.6. Avoiding slicing</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12.7. Multiple recursion" href="12_7_multiple.html" />
+    <link rel="prev" title="12.5. Creating sequences" href="12_5_create_sequences.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="12-introduction.html">12. Recursion</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="12_1_factorial.html">12.1. The factorial function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_2_integers.html">12.2. Recursion on integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_3_length.html">12.3. Length of a sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_4_inspect_sequences.html">12.4. Inspecting sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_5_create_sequences.html">12.5. Creating sequences</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">12.6. Avoiding slicing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-definition">12.6.1. Problem definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Recursive-definition">12.6.2. Recursive definition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-12.6.1">Exercise 12.6.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-12.6.2">Exercise 12.6.2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Code">12.6.3. Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-12.6.3">Exercise 12.6.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="12_7_multiple.html">12.7. Multiple recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_8_summary.html">12.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="12-introduction.html"><span class="section-number">12. </span>Recursion</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">12.6. </span>Avoiding slicing</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Avoiding-slicing">
+<h1><span class="section-number">12.6. </span>Avoiding slicing<a class="headerlink" href="#Avoiding-slicing" title="Link to this heading"></a></h1>
+<p>Recursive algorithms that use the tail operation on arrays aren’t very efficient because it takes linear time to slice an array.</p>
+<p>To avoid slicing, we add two parameters to the recursive function: the start and end indices of the slice to be processed. Each recursive call reduces the range of the indices instead of creating a new smaller sequence. In other words, we keep track of the slice but don’t extract it from the sequence. Let’s see an example.</p>
+<section id="Problem-definition">
+<h2><span class="section-number">12.6.1. </span>Problem definition<a class="headerlink" href="#Problem-definition" title="Link to this heading"></a></h2>
+<p>Consider the <a class="reference internal" href="../04_Iteration/04_1_sequences.html#Membership"><span class="std std-ref">membership function</span></a>.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: membership</div>
+<div class="line"><strong>Inputs</strong>: <em>items</em>, a sequence; <em>item</em>, an object</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>exists</em>, a Boolean</div>
+<div class="line"><strong>Postconditions</strong>: <em>exists</em> is true if and only if there’s an integer <em>index</em> such that <em>items</em>[<em>index</em>] = <em>item</em></div>
+</div>
+<p>A more general membership operation allows the user to specify in which slice of the input sequence the item should be searched.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: slice membership</div>
+<div class="line"><strong>Inputs</strong>: <em>items</em>, a sequence; <em>item</em>, an object; <em>start</em>, an integer; <em>end</em>, an integer</div>
+<div class="line"><strong>Preconditions</strong>: 0 ≤ <em>start</em> ≤ <em>end</em> ≤ │<em>items</em>│</div>
+<div class="line"><strong>Output</strong>: <em>exists</em>, a Boolean</div>
+<div class="line"><strong>Postconditions</strong>: <em>exists</em> is true if and only if there’s an integer <em>index</em> such that <em>items</em>[<em>index</em>] = <em>item</em> and <em>start</em> ≤ <em>index</em> &lt; <em>end</em></div>
+</div>
+<p>This new operation can be seen as a combination of the <a class="reference internal" href="../04_Iteration/04_1_sequences.html#Slicing"><span class="std std-ref">slicing</span></a> and membership operations. As such, it has the same preconditions as the slicing operation and follows the same convention of not including the end item in the slice.</p>
+<p>The less general membership function can now be defined more simply: the item exists in the sequence if it exists in the slice comprising the whole sequence.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: membership</div>
+<div class="line"><strong>Inputs</strong>: <em>items</em>, a sequence; <em>item</em>, an object</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>exists</em>, a Boolean</div>
+<div class="line"><strong>Postconditions</strong>: <em>exists</em> = slice membership(<em>items</em>, <em>item</em>, 0, │<em>items</em>│)</div>
+</div>
+</section>
+<section id="Recursive-definition">
+<h2><span class="section-number">12.6.2. </span>Recursive definition<a class="headerlink" href="#Recursive-definition" title="Link to this heading"></a></h2>
+<p>For the recursive definitions, I use the shorter function name ‘has’ instead of ‘membership’.</p>
+<p>Function has(<em>items</em>, <em>item</em>) was defined as follows in <a class="reference internal" href="12_4_inspect_sequences.html#Membership"><span class="std std-ref">Section 12.4.2</span></a>:</p>
+<ul class="simple">
+<li><p>if <em>items</em> is empty: has(<em>items</em>, <em>item</em>) = false</p></li>
+<li><p>otherwise if <em>item</em> is head(<em>items</em>): has(<em>items</em>, <em>item</em>) = true</p></li>
+<li><p>otherwise: has(<em>items</em>, <em>item</em>) = has(tail(<em>items</em>), <em>item</em>).</p></li>
+</ul>
+<p>The new function slice_has(<em>items</em>, <em>item</em>, <em>start</em>, <em>end</em>) is defined in a similar way, but works on the slice given by the start and end indices instead of the whole sequence. The first base case is for the slice to be empty.</p>
+<ul class="simple">
+<li><p>if <em>start</em> = <em>end</em>: slice_has(<em>items</em>, <em>item</em>, <em>start</em>, <em>end</em>) = false</p></li>
+</ul>
+<p>The second base case is for the head of the slice to be the sought item.</p>
+<ul class="simple">
+<li><p>otherwise if <em>items</em>[<em>start</em>] = <em>item</em>: slice_has(<em>items</em>, <em>item</em>, <em>start</em>, <em>end</em>) = true</p></li>
+</ul>
+<p>The recurrence relation looks for the item in the tail of the slice, i.e. after the current <em>start</em> index.</p>
+<ul class="simple">
+<li><p>otherwise: slice_has(<em>items</em>, <em>item</em>, <em>start</em>, <em>end</em>) = slice_has(<em>items</em>, <em>item</em>, <em>start</em> + 1, <em>end</em>)</p></li>
+</ul>
+<p>The recurrence relation is progressing towards the first base case, as it should: increasing the start index gets it closer to being equal to the end index.</p>
+<section id="Exercise-12.6.1">
+<h3>Exercise 12.6.1<a class="headerlink" href="#Exercise-12.6.1" title="Link to this heading"></a></h3>
+<p>Here again is the algorithmic pattern for a <a class="reference internal" href="12_5_create_sequences.html#Linear-search"><span class="std std-ref">recursive linear search</span></a> that outputs all items from the input sequence <em>candidates</em> which satisfy some conditions.</p>
+<ol class="arabic simple">
+<li><p>if <em>candidates</em> is empty:</p>
+<ol class="arabic simple">
+<li><p>let <em>solutions</em> be ()</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>solutions</em> be search(tail(<em>candidates</em>))</p></li>
+<li><p>if head(<em>candidates</em>) satisfies the conditions:</p>
+<ol class="arabic simple">
+<li><p>let <em>solutions</em> be prepend(head(<em>candidates</em>), <em>solutions</em>)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Modify the pattern so that it implements the function search(<em>candidates</em>, <em>start</em>, <em>end</em>), which only searches the slice <em>candidates</em>[<em>start</em>:<em>end</em>]. The precondition is 0 ≤ <em>start</em> ≤ <em>end</em> ≤ │<em>numbers</em>│.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_12_6_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_12_6_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-12.6.2">
+<h3>Exercise 12.6.2<a class="headerlink" href="#Exercise-12.6.2" title="Link to this heading"></a></h3>
+<p>Here again is the recursive definition of the maximum operation on a non-empty sequence of numbers.</p>
+<ul class="simple">
+<li><p>if length(<em>numbers</em>) = 1: maximum(<em>numbers</em>) = head(<em>numbers</em>)</p></li>
+<li><p>otherwise: maximum(<em>numbers</em>) = max(head(<em>numbers</em>), maximum(tail(<em>numbers</em>)))</p></li>
+</ul>
+<p>Write a recursive definition for a function maximum(<em>numbers</em>, <em>start</em>, <em>end</em>) that returns the largest number in the slice <em>numbers</em>[<em>start</em>:<em>end</em>]. The precondition is 0 ≤ <em>start</em> &lt; <em>end</em> ≤ │<em>numbers</em>│.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_12_6_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_12_6_02.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Code">
+<h2><span class="section-number">12.6.3. </span>Code<a class="headerlink" href="#Code" title="Link to this heading"></a></h2>
+<p>The algorithm and code directly follow the recursive definition, so I skip the algorithm.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">slice_has</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if item is a member of slice items[start:end].</span>
+
+<span class="sd">    Preconditions: 0 &lt;= start &lt;= end &lt;= len(items)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">elif</span> <span class="n">items</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">==</span> <span class="n">item</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">slice_has</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">has</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if item is a member of items.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">slice_has</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
+
+
+<span class="n">has_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,         items,   item,  has?</span>
+    <span class="p">(</span><span class="s1">&#39;empty list&#39;</span><span class="p">,</span>  <span class="p">[],</span>         <span class="mi">3</span><span class="p">,</span>  <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;last member&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>  <span class="mi">3</span><span class="p">,</span>  <span class="kc">True</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;not member&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>  <span class="mi">4</span><span class="p">,</span>  <span class="kc">False</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">has</span><span class="p">,</span> <span class="n">has_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing has...
+Tests finished: 3 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<p>If for some reason we don’t want to provide the <code class="docutils literal notranslate"><span class="pre">slice_has</span></code> function to the user, we can hide it by nesting it inside the main <code class="docutils literal notranslate"><span class="pre">has</span></code> function. I introduced inner functions in <a class="reference internal" href="../11_Search/11_3_constraints.html#Code-and-performance"><span class="std std-ref">Section 11.3.3</span></a> to test a candidate for complicated conditions. An inner function can access the arguments of the outer function. Here, the sequence being searched and the sought item are never modified, so we don’t have to constantly pass them to each
+recursive call. The code becomes slightly shorter.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">has</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if and only if item is a member of items.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">in_slice</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if and only if item is in slice items[start:end].</span>
+
+<span class="sd">        Preconditions: 0 &lt;= start &lt;= end &lt;= len(items)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">items</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">==</span> <span class="n">item</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">in_slice</span><span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">in_slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
+
+
+<span class="n">test</span><span class="p">(</span><span class="n">has</span><span class="p">,</span> <span class="n">has_tests</span><span class="p">)</span>  <span class="c1"># run against the same tests</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing has...
+Tests finished: 3 passed (100%), 0 failed.
+</pre></div></div>
+</div>
+<section id="Exercise-12.6.3">
+<h3>Exercise 12.6.3<a class="headerlink" href="#Exercise-12.6.3" title="Link to this heading"></a></h3>
+<p>Implement the maximum function, as defined in the previous exercise, using an inner function.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">maximum</span><span class="p">(</span><span class="n">numbers</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the largest number in numbers.</span>
+
+<span class="sd">    Preconditions: numbers is a non-empty list of integers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="n">maximum_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,             numbers,       maximum</span>
+    <span class="p">(</span><span class="s1">&#39;shortest input&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="mi">5</span><span class="p">],</span>                <span class="mi">5</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;all equal&#39;</span><span class="p">,</span>       <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>          <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;ascending&#39;</span><span class="p">,</span>       <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>         <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;descending&#39;</span><span class="p">,</span>      <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>          <span class="mi">4</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;unsorted&#39;</span><span class="p">,</span>        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>    <span class="mi">4</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">maximum</span><span class="p">,</span> <span class="n">maximum_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../32_Answers/Answers_12_6_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="12_5_create_sequences.html" class="btn btn-neutral float-left" title="12.5. Creating sequences" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="12_7_multiple.html" class="btn btn-neutral float-right" title="12.7. Multiple recursion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

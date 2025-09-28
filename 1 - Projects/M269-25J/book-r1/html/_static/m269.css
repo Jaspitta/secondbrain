@@ -1,0 +1,9 @@
+/* m269.css
+
+Style file for the generated HMTL version of the book.
+*/
+
+/* By default, horizontal lines are light grey. Change to black. */
+hr.docutils {
+    border-top: 1px solid black;
+}

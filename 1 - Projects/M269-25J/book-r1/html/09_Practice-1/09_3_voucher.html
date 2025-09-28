@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9.3. Voucher</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9.4. Trains" href="09_4_trains.html" />
+    <link rel="prev" title="9.2. Election" href="09_2_election.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="09-introduction.html">9. Practice 1</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="09_1_pangram.html">9.1. Pangram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_2_election.html">9.2. Election</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.3. Voucher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm-and-complexity">9.3.1. Algorithm and complexity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-9.3.1">Exercise 9.3.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-9.3.2">Exercise 9.3.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-9.3.3">Exercise 9.3.3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Code-and-tests">9.3.2. Code and tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-9.3.4">Exercise 9.3.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-9.3.5">Exercise 9.3.5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="09_4_trains.html">9.4. Trains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_5_sms.html">9.5. SMS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="09-introduction.html"><span class="section-number">9. </span>Practice 1</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">9.3. </span>Voucher</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Voucher">
+<h1><span class="section-number">9.3. </span>Voucher<a class="headerlink" href="#Voucher" title="Link to this heading"></a></h1>
+<p>Given a list of products in a store and their prices, we want to know all product pairs that can be bought by spending exactly a certain amount.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pairs</span><span class="p">(</span><span class="n">store</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">voucher</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return all pairs of products that together cost voucher.</span>
+
+<span class="sd">    A product is represented by a string–integer tuple:</span>
+<span class="sd">    the product&#39;s name and its positive price.</span>
+<span class="sd">    Store is a list of products.</span>
+<span class="sd">    The output is a set of product pairs (tuples).</span>
+
+<span class="sd">    Preconditions: voucher &gt; 0</span>
+
+<span class="sd">    Postconditions: for each (p1, p2) in the output,</span>
+<span class="sd">    - p1 and p2 occur in store</span>
+<span class="sd">    - p1 doesn&#39;t occur after p2 in store</span>
+<span class="sd">    - the price of p1 + the price of p2 == voucher</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+
+<span class="n">F1</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;food&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">F2</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;food&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">F5</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;food&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">F6</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;food&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">T5</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;toy&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">pairs_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># case,         store,          voucher, results</span>
+    <span class="p">(</span><span class="s1">&#39;0 products&#39;</span><span class="p">,</span>  <span class="p">[],</span>             <span class="mi">5</span><span class="p">,</span>       <span class="nb">set</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;1 product&#39;</span><span class="p">,</span>   <span class="p">[</span><span class="n">F5</span><span class="p">],</span>           <span class="mi">5</span><span class="p">,</span>       <span class="nb">set</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;no pair&#39;</span><span class="p">,</span>     <span class="p">[</span><span class="n">F1</span><span class="p">,</span><span class="n">F5</span><span class="p">,</span><span class="n">F2</span><span class="p">,</span><span class="n">F6</span><span class="p">],</span>  <span class="mi">9</span><span class="p">,</span>       <span class="nb">set</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;1 pair&#39;</span><span class="p">,</span>      <span class="p">[</span><span class="n">F1</span><span class="p">,</span><span class="n">F5</span><span class="p">,</span><span class="n">F2</span><span class="p">,</span><span class="n">F6</span><span class="p">],</span>  <span class="mi">3</span><span class="p">,</span>       <span class="p">{(</span><span class="n">F1</span><span class="p">,</span><span class="n">F2</span><span class="p">)}),</span>
+    <span class="p">(</span><span class="s1">&#39;2 pairs&#39;</span><span class="p">,</span>     <span class="p">[</span><span class="n">F1</span><span class="p">,</span><span class="n">F5</span><span class="p">,</span><span class="n">F2</span><span class="p">,</span><span class="n">F6</span><span class="p">],</span>  <span class="mi">7</span><span class="p">,</span>       <span class="p">{(</span><span class="n">F1</span><span class="p">,</span><span class="n">F6</span><span class="p">),</span> <span class="p">(</span><span class="n">F5</span><span class="p">,</span> <span class="n">F2</span><span class="p">)}),</span>
+    <span class="p">(</span><span class="s1">&#39;same price&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="n">F1</span><span class="p">,</span><span class="n">F5</span><span class="p">,</span><span class="n">F2</span><span class="p">,</span><span class="n">T5</span><span class="p">],</span>  <span class="mi">10</span><span class="p">,</span>      <span class="p">{(</span><span class="n">F5</span><span class="p">,</span><span class="n">F5</span><span class="p">),</span> <span class="p">(</span><span class="n">F5</span><span class="p">,</span><span class="n">T5</span><span class="p">),</span> <span class="p">(</span><span class="n">T5</span><span class="p">,</span><span class="n">T5</span><span class="p">)})</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">pairs_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Algorithm-and-complexity">
+<h2><span class="section-number">9.3.1. </span>Algorithm and complexity<a class="headerlink" href="#Algorithm-and-complexity" title="Link to this heading"></a></h2>
+<section id="Exercise-9.3.1">
+<h3>Exercise 9.3.1<a class="headerlink" href="#Exercise-9.3.1" title="Link to this heading"></a></h3>
+<p>Outline an algorithm and its ADT(s) to solve this problem in Θ(│<em>store</em>│) time in the best case.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_09_3_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_09_3_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-9.3.2">
+<h3>Exercise 9.3.2<a class="headerlink" href="#Exercise-9.3.2" title="Link to this heading"></a></h3>
+<p>Explain why your algorithm has the desired best-case complexity.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_09_3_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_09_3_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-9.3.3">
+<h3>Exercise 9.3.3<a class="headerlink" href="#Exercise-9.3.3" title="Link to this heading"></a></h3>
+<p>What’s the worst-case complexity of your algorithm?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_09_3_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_09_3_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Code-and-tests">
+<h2><span class="section-number">9.3.2. </span>Code and tests<a class="headerlink" href="#Code-and-tests" title="Link to this heading"></a></h2>
+<section id="Exercise-9.3.4">
+<h3>Exercise 9.3.4<a class="headerlink" href="#Exercise-9.3.4" title="Link to this heading"></a></h3>
+<p>What’s the best way of implementing the ADT used?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_09_3_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_09_3_04.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-9.3.5">
+<h3>Exercise 9.3.5<a class="headerlink" href="#Exercise-9.3.5" title="Link to this heading"></a></h3>
+<p>Implement and test your approach. You don’t need to add tests.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_09_3_05.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="09_2_election.html" class="btn btn-neutral float-left" title="9.2. Election" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="09_4_trains.html" class="btn btn-neutral float-right" title="9.4. Trains" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

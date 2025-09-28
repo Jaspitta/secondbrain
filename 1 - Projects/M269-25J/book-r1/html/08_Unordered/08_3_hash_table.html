@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8.3. Hash tables</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.4. Sets" href="08_4_set.html" />
+    <link rel="prev" title="8.2. Dictionaries" href="08_2_dictionary.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="08-introduction.html">8. Unordered collections</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="08_1_map.html">8.1. Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_2_dictionary.html">8.2. Dictionaries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.3. Hash tables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#With-separate-chaining">8.3.1. With separate chaining</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-8.3.1">Exercise 8.3.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Hash-functions">8.3.2. Hash functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Unhashable-values">8.3.3. Unhashable values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">8.3.4. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Implementation">8.3.5. Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-8.3.2">Exercise 8.3.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-8.3.3">Exercise 8.3.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="08_4_set.html">8.4. Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_5_summary.html">8.5. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="08-introduction.html"><span class="section-number">8. </span>Unordered collections</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">8.3. </span>Hash tables</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Hash-tables">
+<h1><span class="section-number">8.3. </span>Hash tables<a class="headerlink" href="#Hash-tables" title="Link to this heading"></a></h1>
+<p>Maps can be implemented with <a class="reference internal" href="08_1_map.html#Lookup-tables"><span class="std std-ref">lookup tables</span></a> if the keys are known in advance, so that we can write a bespoke hash function that computes the index for each key. Different keys must be translated to different indices because each position of the lookup table only has one value of the map.</p>
+<p>In a bilingual dictionary, any string can be a key (word of the language). When there’s a potential infinite number of keys, it’s impossible to guarantee that each associated value ends up in a different position of a finite table. A simple modification of the lookup table can handle this: we allow multiple key–value pairs per index.</p>
+<section id="With-separate-chaining">
+<h2><span class="section-number">8.3.1. </span>With separate chaining<a class="headerlink" href="#With-separate-chaining" title="Link to this heading"></a></h2>
+<p>Consider a map of strings (names of employees) to integers (their phone extensions). If we know the employees’ names, we can create a lookup table with as many entries as employees and a hash function that returns a distinct index for each employee. Adding, removing and replacing extensions involves obtaining the index and then putting, removing or replacing the integer at that position. Here’s a small diagram for three employees Alice, Bob and Carol, for which the hash function returns 0, 1 and
+2, respectively.</p>
+<p id="fig-8.3.1"></p><p><a class="reference internal" href="../33_Figures/Figures_08_3.html#Figure-8.3.1"><span class="std std-ref">Figure 8.3.1</span></a></p>
+<img alt="Image 08_3_no_collision.png" src="../_images/08_3_no_collision.png" />
+<p>If instead the hash function has to return an index for <em>any</em> string, it may happen that for these particular strings the function returns 1 for ‘Alice’ and ‘Bob’ and 0 for ‘Carol’. The lookup table then contains a sequence of employee-extension pairs at each position, with the empty sequence at index 2.</p>
+<p id="fig-8.3.2"></p><p><a class="reference internal" href="../33_Figures/Figures_08_3.html#Figure-8.3.2"><span class="std std-ref">Figure 8.3.2</span></a></p>
+<img alt="Image 08_3_slots_3.png" src="../_images/08_3_slots_3.png" />
+<p>A <strong>hash table</strong> with <strong>separate chaining</strong> is a lookup table with a sequence of key–value pairs at each position of the table. Each sequence is called a <strong>slot</strong> of the hash table.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Many authors use the term ‘bucket’ instead of ‘slot’.</p>
+</div>
+<p>Here’s the same hash table using Python lists.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>   <span class="c1"># lookup table</span>
+    <span class="p">[(</span><span class="s1">&#39;Carol&#39;</span><span class="p">,</span> <span class="mi">599</span><span class="p">)],</span>               <span class="c1"># first slot</span>
+    <span class="p">[(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="mi">407</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="mi">312</span><span class="p">)],</span> <span class="c1"># second slot</span>
+    <span class="p">[]</span>                              <span class="c1"># third slot</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[(&#39;Carol&#39;, 599)], [(&#39;Bob&#39;, 407), (&#39;Alice&#39;, 312)], []]
+</pre></div></div>
+</div>
+<p>Each map operation involves obtaining the index for the given key and then doing a linear search for that key in the slot at that index. If the key is in the map, it must be in <em>that</em> slot: no other slot has to be searched.</p>
+<section id="Exercise-8.3.1">
+<h3>Exercise 8.3.1<a class="headerlink" href="#Exercise-8.3.1" title="Link to this heading"></a></h3>
+<p>The keys are used by the hash function to know which slot a value is in. Why do hash tables store the keys and not just the values?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_08_3_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_08_3_01.html"><span class="doc">Answer</span></a></p>
+<p>Ideally, we want each slot to be very short so that the linear search of a slot effectively takes constant time. If the table has length 1, there’s a single slot with all key–value pairs. If the table has length 2, then each slot has half the pairs, assuming the hash function distributes them equally among the slots. If the table has length 3, each slot has (hopefully) one-third of the pairs, and so on. The longer the table, the shorter each slot is likely to be. The ratio between the number of
+pairs (size of the map) and the number of slots (size of the table) is the <strong>load factor</strong> of the hash table. The load factor is the average (mean) length of the slots. The example above has load factor 3 / 3 = 1: three items for three slots. The mean length of each slot is 1. If there are 2 pairs and 4 slots, then the load factor and mean slot length are 0.5.</p>
+<p>The lower the load factor, the higher the likelihood that each slot has at most one pair, which is ideal for performance. Unfortunately, the lower the load factor, the more empty slots the table has, which wastes memory. For example, a load factor of 0.1 means that 9 of 10 slots are empty, if the pairs are uniformly distributed. Space–time tradeoffs pop up everywhere in algorithms and data structures.</p>
+<p>One way to get acceptable performance <em>and</em> memory usage is to use a dynamic array for the table and implement a growth-and-shrink policy that keeps the load factor within a desired range. For example, to keep the load factor between 0.5 and 1, we double the table length when adding a pair would make the load go over 1, and reduce the length when removing a pair would make the load drop below 0.5. Whenever the number of slots changes, the indices are recomputed for all keys to redistribute the
+pairs among the new (more or fewer) slots.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Hash tables with open addressing use less memory than separate chaining because they have at most one key–value pair per position of the lookup table. However, the algorithms to implement the map operations are more complicated. M269 doesn’t cover this variant of hash tables.</p>
+</div>
+<div class="admonition note">
+<p><strong>Info:</strong> Some texts use ‘dictionary’ as a synonym for ‘hash table’. In M269, a hash table is a data structure and dictionary is a Python data type.</p>
+</div>
+</section>
+</section>
+<section id="Hash-functions">
+<h2><span class="section-number">8.3.2. </span>Hash functions<a class="headerlink" href="#Hash-functions" title="Link to this heading"></a></h2>
+<p>If a hash function is to return an index for each key, it must know the length of the table. What happens in practice is that hash functions are generic, independent of the table size, and return a potentially very large integer <em>h</em> for the key. The map operations then transform <em>h</em> into a valid index. The easiest way is to use the modulo operation to obtain the remainder of <em>h</em> divided by the table length <em>L</em>. This results in an integer from 0 to <em>L</em> − 1.</p>
+<p>Consider the earlier example and assume that <em>h</em> is 4 for ‘Alice’, 7 for ‘Bob’ and 3 and for ‘Carol’. With <em>L</em> = 3 we obtain the key-to-index assignment as shown earlier: ‘Alice’ and ‘Bob’ are put in slot 4 mod 3 = 7 mod 3 = 1 and ‘Carol’ in slot 3 mod 3 = 0. If the table is resized to <em>L</em> = 6, then ‘Alice’ and ‘Carol’ are expected to be in slots 4 and 3 respectively (their hash value <em>h</em> doesn’t change) and thus have to be put there.</p>
+<p id="fig-8.3.3"></p><p><a class="reference internal" href="../33_Figures/Figures_08_3.html#Figure-8.3.3"><span class="std std-ref">Figure 8.3.3</span></a></p>
+<img alt="Image 08_3_slots_6.png" src="../_images/08_3_slots_6.png" />
+<p>When resizing a hash table we can’t copy the slots wholesale to the same indices in the new static array, as we do for normal dynamic arrays: subsequent searches for keys would search the wrong slots and not find the keys! Therefore, when resizing a hash table, all indices have to be recomputed. This is not only useful to better redistribute the pairs when the table grows: it’s essential for the map operations to work correctly.</p>
+<p>Writing a hash function for a particular key type is dead easy. Here’s one for strings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hash_string</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>It’s a rubbish function of course. It will put all keys in the first position of the table and all map operations will take linear time in the size of the map.</p>
+<p>Here’s a slightly less worse hash function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hash_string</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This one puts all strings of the same length in the same slot. In most applications, the length of strings doesn’t vary much. For example, if strings are English (or even German) words in common usage, then a hash table using this function would only have its first ~20 slots occupied.</p>
+<p>This hash function is much better:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hash_string</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a hash number for the string.&quot;&quot;&quot;</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="n">product</span> <span class="o">=</span> <span class="n">product</span> <span class="o">*</span> <span class="nb">ord</span><span class="p">(</span><span class="n">character</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">product</span>
+</pre></div>
+</div>
+</div>
+<p>The function takes each character into account. Strings that differ by a single character have different hash values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hash_string</span><span class="p">(</span><span class="s2">&quot;algorithm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1885244446448213760
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hash_string</span><span class="p">(</span><span class="s2">&quot;algorythm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2172519790668893952
+</pre></div></div>
+</div>
+<p>But strings that are permutations of each other have the same hash value.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hash_string</span><span class="p">(</span><span class="s2">&quot;logarithm&quot;</span><span class="p">)</span>  <span class="c1"># same as for &#39;algorithm&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1885244446448213760
+</pre></div></div>
+</div>
+<p>This will lead to a <strong>collision</strong>: the different keys will be put in the same slot.</p>
+<p>The last function takes linear time in the length of the string. For short strings, this is equivalent to constant time, but if strings can have thousands of characters, e.g. they are whole documents, then a more efficient function may be needed.</p>
+<p>Writing hash functions is easy; writing efficient hash functions that reduce collisions is hard. Hashing algorithms are quite mathematical and not covered in M269, but as always there’s plenty of information online if you’re curious.</p>
+<p>Python has implemented hash functions for numbers, Booleans, strings and tuples. They can all be called via the generic <code class="docutils literal notranslate"><span class="pre">hash</span></code> function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">hash</span><span class="p">(</span><span class="s2">&quot;algorithm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-4858703937316695362
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">hash</span><span class="p">(</span><span class="s2">&quot;logarithm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-7962428355740776657
+</pre></div></div>
+</div>
+<p>For security reasons, the hash values for strings are different between interpreter sessions. If you run the two cells above, you will get values different from mine; if you restart your notebook kernel and run the cells, you will get further different values.</p>
+</section>
+<section id="Unhashable-values">
+<h2><span class="section-number">8.3.3. </span>Unhashable values<a class="headerlink" href="#Unhashable-values" title="Link to this heading"></a></h2>
+<p>You may be wondering: if Python provides a hash function for tuples, why doesn’t it provide one for lists?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">hash</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+529344067295497451
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">hash</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[9], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">hash</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">2</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">3</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">TypeError</span>: unhashable type: &#39;list&#39;
+</pre></div></div>
+</div>
+<p>Imagine I could use lists as keys, like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">occupant</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">office</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Main building&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>   <span class="c1"># building and office number</span>
+<span class="n">occupant</span><span class="p">[</span><span class="n">office</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span>
+</pre></div>
+</div>
+<p>Lists are mutable, so I can change the name of the building: <code class="docutils literal notranslate"><span class="pre">office[0]</span> <span class="pre">=</span> <span class="pre">'Headquarters'</span></code>. If I now try to obtain the occupant with the lookup operation (<code class="docutils literal notranslate"><span class="pre">occupant[office]</span></code>), what will happen?</p>
+<hr class="docutils" />
+<p>The interpreter will compute the hash value of the office but since the office name changed, the hash value will almost certainly be different. The lookup operation will search for the office in the wrong slot, not find the key and raise an error.</p>
+<p>If I try to look up the old key, the correct slot will be searched but since the key has changed, the linear search won’t find a match and raise an error again.</p>
+<p>In summary, if a key is modified after it was inserted in the hash table, then neither the old nor the new key can be found again, because the new key is in the slot computed for the old key. To avoid this problem, Python doesn’t provide hash functions for lists and dictionaries, because they can be changed.</p>
+<p>Some other languages do allow mutable values to be used as map keys. One way to achieve that is to put in the map a copy of the key, not a reference to the key object as Python does, so that any change to the key after the insertion does not affect the copy that is already in the map.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Hash functions are also used in cryptography and to check if a file has been tampered with. Hash functions for encrypting or ‘fingerprinting’ files have different requirements than those for hash tables.</p>
+</div>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">8.3.4. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>Looking up, adding, removing or replacing a value in a map can take a while if any (or all!) of this happens:</p>
+<ul class="simple">
+<li><p>the hash function takes linear time in the size of a key and keys are large</p></li>
+<li><p>the hash function leads to many collisions</p></li>
+<li><p>the actual keys used in the application are somehow ‘skewed’ and lead to many collisions</p></li>
+<li><p>the resize policy is poor and leads to frequent reconstruction of the table.</p></li>
+</ul>
+<p>Even if a hashing algorithm is linear in the size of the key, for the purposes of M269 we assume that keys have a small bounded length and thus we consider hashing to take constant time.</p>
+<p>In the worst case, all keys end up in the same slot and every map operation takes linear time in the size of the map. In the best case, each slot has a small bounded number of key–value pairs and each map operation takes constant time.</p>
+<p>We assume that the resize policy leads to constant time for each map operation.</p>
+<p>To sum up, for most applications of maps, keys are short and general resize policies and hashing algorithms are good enough to obtain map operations with constant time. That’s why hash tables are a widely used ‘workhorse’ data structure, including for implementing Python’s dictionaries.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Java’s class <code class="docutils literal notranslate"><span class="pre">java.util.HashMap</span></code> also implements maps using hash tables.</p>
+</div>
+<p>Like for sequences, the complexity of the equality operation is constant in the best case (when the maps have different sizes) and linear in the size of either map in the worst case, because the maps have to be compared one pair at a time.</p>
+</section>
+<section id="Implementation">
+<h2><span class="section-number">8.3.5. </span>Implementation<a class="headerlink" href="#Implementation" title="Link to this heading"></a></h2>
+<p>Here’s a partial implementation of a map, using a hash table with separate chaining.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HashMap</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An unordered collection of key-value pairs.</span>
+
+<span class="sd">    Keys must be unique and hashable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># The hash table is a dynamic array of slots.</span>
+    <span class="c1"># Each slot is a dynamic array of key-value pairs.</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an empty map.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slots</span> <span class="o">=</span> <span class="p">[[]]</span>  <span class="c1"># start with 1 slot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">has</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if and only if key is in the map.</span>
+
+<span class="sd">        Preconditions: key is hashable</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">)</span>
+        <span class="n">slot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="c1"># linear search of the key in the only slot it can be</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">slot</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Grow the dictionary if necessary.</span>
+
+<span class="sd">        Postconditions:</span>
+<span class="sd">        if pre-self has load factor 1, post-self has load factor 0.5</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">capacity</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">capacity</span><span class="p">:</span>
+            <span class="c1"># new hash table with double the slots, all empty</span>
+            <span class="n">new_capacity</span> <span class="o">=</span> <span class="n">capacity</span> <span class="o">*</span> <span class="mi">2</span>
+            <span class="n">new_slots</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">each_slot</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">new_capacity</span><span class="p">):</span>  <span class="c1"># noqa: B007</span>
+                <span class="n">new_slots</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+            <span class="c1"># put each pair in the correct slot in the new table</span>
+            <span class="k">for</span> <span class="n">slot</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">slot</span><span class="p">:</span>
+                    <span class="n">index</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">%</span> <span class="n">new_capacity</span>
+                    <span class="n">new_slots</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
+            <span class="c1"># use the new hash table</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slots</span> <span class="o">=</span> <span class="n">new_slots</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">associate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Associate value to key in the map.</span>
+
+<span class="sd">        Preconditions: key is hashable</span>
+<span class="sd">        Postconditions: looking up key in self returns value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grow</span><span class="p">()</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">)</span>
+        <span class="n">slot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slots</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">slot</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
+                <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="k">return</span>
+        <span class="n">slot</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s have a peek at how the hash table changes as new pairs are added. The following constructs a hash table of Unicode codes to characters.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characters</span> <span class="o">=</span> <span class="n">HashMap</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s2">&quot;algorithm&quot;</span><span class="p">:</span>
+    <span class="n">characters</span><span class="o">.</span><span class="n">associate</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">letter</span><span class="p">),</span> <span class="n">letter</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">characters</span><span class="o">.</span><span class="n">slots</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s2">&quot;moralgith&quot;</span><span class="p">:</span>  <span class="c1"># test membership operation</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">characters</span><span class="o">.</span><span class="n">has</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">letter</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error: missing&quot;</span><span class="p">,</span> <span class="n">letter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[[97, &#39;a&#39;]]]
+[[[108, &#39;l&#39;]], [[97, &#39;a&#39;]]]
+[[[108, &#39;l&#39;]], [[97, &#39;a&#39;]], [], [[103, &#39;g&#39;]]]
+[[[108, &#39;l&#39;]], [[97, &#39;a&#39;]], [], [[103, &#39;g&#39;], [111, &#39;o&#39;]]]
+[[], [[97, &#39;a&#39;]], [[114, &#39;r&#39;]], [], [[108, &#39;l&#39;]], [], [], [[103, &#39;g&#39;], [111, &#39;o&#39;]]]
+[[], [[97, &#39;a&#39;], [105, &#39;i&#39;]], [[114, &#39;r&#39;]], [], [[108, &#39;l&#39;]], [], [], [[103, &#39;g&#39;], [111, &#39;o&#39;]]]
+[[], [[97, &#39;a&#39;], [105, &#39;i&#39;]], [[114, &#39;r&#39;]], [], [[108, &#39;l&#39;], [116, &#39;t&#39;]], [], [], [[103, &#39;g&#39;], [111, &#39;o&#39;]]]
+[[[104, &#39;h&#39;]], [[97, &#39;a&#39;], [105, &#39;i&#39;]], [[114, &#39;r&#39;]], [], [[108, &#39;l&#39;], [116, &#39;t&#39;]], [], [], [[103, &#39;g&#39;], [111, &#39;o&#39;]]]
+[[], [[97, &#39;a&#39;]], [[114, &#39;r&#39;]], [], [[116, &#39;t&#39;]], [], [], [[103, &#39;g&#39;]], [[104, &#39;h&#39;]], [[105, &#39;i&#39;]], [], [], [[108, &#39;l&#39;]], [[109, &#39;m&#39;]], [], [[111, &#39;o&#39;]]]
+</pre></div></div>
+</div>
+<p>Note how pairs move around as the table grows. For example, ‘l’ and its code move across slots 0, 4 and 12. Pairs that are in the same slot for a while, like ‘g’ and ‘o’, end up in separate slots when the table gets larger.</p>
+<section id="Exercise-8.3.2">
+<h3>Exercise 8.3.2<a class="headerlink" href="#Exercise-8.3.2" title="Link to this heading"></a></h3>
+<p>Some Python interpreters also store the hash value of each key in the table, i.e. each slot has hash–key–value triples rather than key–value pairs. Can you think why?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_08_3_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_08_3_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-8.3.3">
+<h3>Exercise 8.3.3<a class="headerlink" href="#Exercise-8.3.3" title="Link to this heading"></a></h3>
+<p>Suppose I didn’t implement the method to grow the hash table and instead initialised the table with one thousand slots. Would this map implementation still work if the load factor goes above 1?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_08_3_03.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_08_3_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="08_2_dictionary.html" class="btn btn-neutral float-left" title="8.2. Dictionaries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="08_4_set.html" class="btn btn-neutral float-right" title="8.4. Sets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

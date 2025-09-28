@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.7. Complexity</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.8. Run-times" href="02_8_time.html" />
+    <link rel="prev" title="2.6. Functions in Python" href="02_6_py_functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="02-introduction.html">2. Numbers and sequence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="02_1_numbers.html">2.1. Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_2_operations.html">2.2. Arithmetic operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_3_expressions.html">2.3. Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_4_assignments.html">2.4. Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_5_maths_functions.html">2.5. Functions in mathematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_6_py_functions.html">2.6. Functions in Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.7. Complexity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Constant-complexity">2.7.1. Constant complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Linear-complexity">2.7.2. Linear complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Mistakes">2.7.3. Mistakes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-2.7.1">Exercise 2.7.1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02_8_time.html">2.8. Run-times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_9_summary.html">2.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="02-introduction.html"><span class="section-number">2. </span>Numbers and sequence</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.7. </span>Complexity</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Complexity">
+<h1><span class="section-number">2.7. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h1>
+<p>We want algorithms to be correct <em>and</em> fast, especially on large inputs. The run-time of an algorithm, implemented as a Python function, depends on the hardware, operating system and Python interpreter we’re using, and whether other processes are running in the background, like checking for software updates.</p>
+<p>Computer scientists found a way of talking about algorithms that is independent of all these factors. Instead of getting bogged down with the exact run-times for particular input values, we look at how the run-times increase for ever-larger inputs. In other words, what we really want to know is how well (or not) an algorithm copes with growing inputs.</p>
+<section id="Constant-complexity">
+<h2><span class="section-number">2.7.1. </span>Constant complexity<a class="headerlink" href="#Constant-complexity" title="Link to this heading"></a></h2>
+<p>The algorithms that best cope with growing inputs are those where the run-time stays roughly the same, no matter how small or large the input is. Such algorithms are said to have constant run-time or <strong>constant complexity</strong>. The term ‘constant’ doesn’t mean that the run-time stays <em>exactly</em> the same for all inputs: it means that it doesn’t grow.</p>
+<p>The <strong>complexity</strong> of an algorithm is the growth rate of its run-times as inputs get larger, when executed on the same computational environment (hardware, operating system, programming language and interpreter). The complexity is <em>not</em> about how fast the algorithm runs. For example, an addition algorithm that would take a whole day to find out the sum of 3 and 4 but also takes one day (in the same environment) to add two 500-digit numbers would have constant complexity. A constant complexity
+algorithm may be slow, but it won’t get slower for larger inputs.</p>
+<p>A simple way to see if an algorithm has constant complexity is to implement the algorithm in some computational environment, run it with ever larger inputs, measure the run-times and see if they remain more or less the same. A better approach is to determine the complexity of an algorithm before implementing it, from its English description. This prevents wasting effort in coding and testing algorithms that turn out to be inefficient. To determine the complexity of an algorithm we have to agree
+on the complexity of each operation it uses.</p>
+<p>M269 covers general-purpose algorithms, not specialised ones that require humongous numbers with hundreds of digits, like in cryptography. Even though Python supports arbitrarily large integers, 64-bit integers and floats are large enough for our purposes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">63</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># largest 64-bit integer; 1 bit is for the sign</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+9223372036854775807
+</pre></div></div>
+</div>
+<p>Modern processors can do arithmetic operations on two 64-bit numbers with a single hardware instruction, so for M269’s purposes we can assume that all <a class="reference internal" href="02_2_operations.html#Arithmetic-operations"><span class="std std-ref">arithmetic operations</span></a> (except exponentiation, which I explain later) have constant complexity. We’re <em>not</em> assuming that, for example, multiplication takes the same time as addition, but rather that adding 3 and 7 takes about the same time as adding 3 million and 7 million, and that
+multiplying 3 and 7 takes about the same time as multiplying 3 million and 7 million.</p>
+<p>We also assume that assignments and return statements have constant complexity because the work required is always the same, no matter how small or large the value being named or returned is. To be clear, we’re not assuming that <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">expression</span></code> or <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">expression</span></code> always takes the same time, as that will depend on the expression. However, once the expression is evaluated, assigning the value to a name or returning the value is a constant-time operation.</p>
+<p>If each instruction always takes some fixed amount of time, and the number of instructions is fixed, i.e. doesn’t depend on the inputs, then the overall time the algorithm takes is also fixed. For example, floor(<em>x</em> × <em>y</em> / <em>z</em>) consists of three constant-time arithmetic operations, so the evaluation of the expression also takes constant time. Multiplication, division and computing the floor all take different times, but each takes a fixed time, independent of the values of its operands, so the
+overall time is also fixed.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> An algorithm that executes a fixed number of operations, each with constant complexity, has constant complexity.</p>
+</div>
+<p>The <strong>Big-Theta notation</strong> states the complexity in a concise and precise way. If the run-time is constant, we say that the algorithm has complexity Θ(1), or takes Θ(1) time, or has run-time Θ(1). The Θ(1) notation informally means ‘proportional to 1’, which is a roundabout way of saying ‘constant’ because a value that is proportional to a constant (1 in this case) is also constant. While constant complexity could also be written as Θ(2), Θ(57) or with any other fixed value, the convention is to
+write Θ(1).</p>
+</section>
+<section id="Linear-complexity">
+<h2><span class="section-number">2.7.2. </span>Linear complexity<a class="headerlink" href="#Linear-complexity" title="Link to this heading"></a></h2>
+<p>In primary school we learned an algorithm that adds two arbitrarily large integers digit by digit, from right to left, carrying over 1 from one addition to the next when necessary. Since adding two digits (possibly with a carry over) takes constant time, the time to add two integers is directly proportional to the number of digits of the longest integer, e.g. 222 + 88 requires three digit additions, which are (from right to left) 2 + 8, 2 + 8 + 1 carry over, and 2 + 1 carry over. If the number
+of digits of the longest integer doubles, then addition will take double the time.</p>
+<p>Algorithms where the run-time grows proportionally to the value or size of the inputs have <strong>linear complexity</strong> or take linear time. The <strong>size</strong> of an input is, strictly speaking, how much memory it occupies. Since the memory allocated to an integer may vary across computational environments, we use a proxy measure. For the purposes of M269, the size of integer <em>n</em>, written │<em>n</em>│, is the number of its decimal digits, e.g. │102│ = 3.</p>
+<p>If the run-time is constant, then it doesn’t depend on the inputs, but for linear-time algorithms we have to state how their run-time exactly depends on the inputs. For example, the school algorithm for <em>x</em> + <em>y</em> is linear in max(│<em>x</em>│, │<em>y</em>│), i.e. its run-time is proportional to the largest size of the two integers being added.</p>
+<p>The Big-Theta notation Θ(…) indicates that an algorithm’s run-time is proportional to …, so we can simply state: the complexity of the school addition algorithm for integer inputs <em>x</em> and <em>y</em> is Θ(max(│<em>x</em>│, │<em>y</em>│)).</p>
+<p>The school addition algorithm works for arbitrary large integers, but in M269 we only use 64-bit integers, which have at most 19 decimal digits (see the largest 64-bit above). So, even if computer hardware were to use the school algorithm for adding <em>x</em> and <em>y</em>, the complexity would be at most Θ(max(│<em>x</em>│, │<em>y</em>│)) = Θ(max(19, 19)) = Θ(19) = Θ(1). In other words, while adding arbitrary large integers takes linear time, adding integers with a bounded number of digits (like 64 binary digits
+or 19 decimal digits) takes constant time, because the run-time won’t grow beyond what it takes to process two operands that are the largest 64-bit numbers.</p>
+<p>Likewise, we can expect subtraction, multiplication, division and modulo to take longer the more digits they need to process. However, by assuming that we will only deal with 64-bit numbers we can treat them all as constant-time operations.</p>
+<p>Let’s now consider exponentiation. (Remember that we <a class="reference internal" href="02_2_operations.html#On-integers"><span class="std std-ref">don’t use negative exponents</span></a> in M269.) For integers <em>x</em> and <em>y</em>, with <em>y</em> ≥ 0 , we have <span class="math notranslate nohighlight">\(x^y = 1×x×x×\ldots×x\)</span>. Hence <em>x</em>⁰ = 1 requires zero multiplications, <em>x</em>¹ = 1 × <em>x</em> = <em>x</em> requires one multiplication and in general <span class="math notranslate nohighlight">\(x^y\)</span> requires <em>y</em> multiplications. If each multiplication takes constant time and if <em>y</em> doubles in value (not size!), then the number of multiplications
+(and therefore the run-time) also doubles. The exponentiation algorithm is therefore linear in the value of the exponent, not in the number of its digits. We write that the complexity of <span class="math notranslate nohighlight">\(x^y\)</span> is Θ(<em>y</em>).</p>
+<p>If the complexity of exponentiation depended on the <em>size</em> of the exponent, then we’d know there would be at most 19 multiplications and we could treat exponentiation as a constant-time operation, like we did for the other arithmetic operations. But since the number of multiplications depends on the <em>value</em> of the exponent, even if its size remains fixed, e.g. at 4 decimal digits, the number of multiplications (and therefore the run-time) keeps growing, e.g. from 1000 to 9999.</p>
+<p>Actually, it takes constant time to compute <span class="math notranslate nohighlight">\(x^y\)</span> when <em>y</em> = 0, because no multiplication is done. So the complexity of the algorithm varies: it’s constant for <em>y</em> = 0 and linear for <em>y</em> &gt; 0. When the complexity is different for small inputs, we just ignore it, because we’re only interested in how an algorithm behaves for large inputs. So, we keep stating that the complexity of exponentiation is linear in the exponent’s value, even though it’s constant for one small exponent.</p>
+<p>To sum up, Θ(<em>e</em>), where <em>e</em> is an expression involving zero or more of the input variables, means that the run-time is proportional to <em>e</em> for large inputs. (It may or not be proportional to <em>e</em> for small inputs.)</p>
+<p>Note that we assumed that multiplication takes constant time. In reality, as we keep multiplying with a 64-bit number <em>x</em>, at some point the intermediate result may not fit into 64 bits and we can’t assume that each further multiplication takes constant time. So, for arbitrary integers <em>x</em> and <em>y</em>, exponentiation by repeated multiplication actually takes more than linear complexity. However, complexity analysis is a back of the envelope calculation to approximately predict the growth of
+run-times, so we’re entitled to make some simplifying assumptions, as long as we clearly state them.</p>
+</section>
+<section id="Mistakes">
+<h2><span class="section-number">2.7.3. </span>Mistakes<a class="headerlink" href="#Mistakes" title="Link to this heading"></a></h2>
+<p>I wrote that <em>e</em> involves zero or more input variables because an algorithm’s complexity either doesn’t depend at all on the inputs (constant complexity) or depends on one or more of the inputs. The variables that appear in the complexity expression must always be some or all of the input variables, otherwise the complexity isn’t defined. For example, if a function definition starts like this:</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: secret operation</div>
+<div class="line"><strong>Inputs</strong>: <em>left</em>, an integer; <em>right</em>: an integer</div>
+</div>
+<p>then I can’t write that an algorithm for this function has complexity Θ(<em>x</em>) or Θ(max(<em>l</em>, <em>r</em>)) or Θ(│<em>y</em>│) because none of those variables are defined: they don’t refer to any of the inputs. I must write Θ(<em>left</em>) or Θ(max(<em>left</em>, <em>right</em>)) or Θ(│<em>right</em>│) or whatever the complexity is.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Many texts always use the variable <em>n</em> in Big-Theta expressions, without making clear to what the variable refers. Don’t follow their example.</p>
+</div>
+<p>Another common mistake is to confuse the size and the value of an integer. For example, if the complexity of <span class="math notranslate nohighlight">\(x^y\)</span> were Θ(│<em>y</em>│), then it would mean that the complexity is linear in the size of the exponent. If that were so, <span class="math notranslate nohighlight">\(x^{44}\)</span> would take double the time to compute as <span class="math notranslate nohighlight">\(x^{4}\)</span>, because │44│ = 2 and │4│ = 1, when in fact it takes 11 times longer, because <span class="math notranslate nohighlight">\(x^{44}\)</span> requires 44 multiplications whereas <span class="math notranslate nohighlight">\(x^{4}\)</span> requires four. The complexity of exponentiation is
+linear in the value (not the size!) of the exponent, i.e. it is Θ(<em>y</em>), not Θ(│<em>y</em>│).</p>
+<section id="Exercise-2.7.1">
+<h3>Exercise 2.7.1<a class="headerlink" href="#Exercise-2.7.1" title="Link to this heading"></a></h3>
+<p>Here again is an algorithm for the circumference, where <em>radius</em> is the input variable and <em>length</em> is the output variable.</p>
+<ol class="arabic simple">
+<li><p>let <em>diameter</em> be 2 × <em>radius</em></p></li>
+<li><p>let <em>length</em> be π × <em>diameter</em></p></li>
+</ol>
+<p>What is the complexity of this algorithm? State it in words and with Big-Theta notation.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_02_7_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_02_7_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02_6_py_functions.html" class="btn btn-neutral float-left" title="2.6. Functions in Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="02_8_time.html" class="btn btn-neutral float-right" title="2.8. Run-times" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

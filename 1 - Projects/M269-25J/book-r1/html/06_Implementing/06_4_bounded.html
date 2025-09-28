@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.4. Bounded sequences</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.5. Dynamic arrays" href="06_5_dynamic_array.html" />
+    <link rel="prev" title="6.3. Developing data types" href="06_3_develop_type.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="06-introduction.html">6. Implementing sequences</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="06_1_define_type.html">6.1. Defining data types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_2_static_array.html">6.2. Static arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_3_develop_type.html">6.3. Developing data types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.4. Bounded sequences</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Outlining-algorithms">6.4.1. Outlining algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Insertion">6.4.2. Insertion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#The-BoundedSequence-class">6.4.3. The <code class="docutils literal notranslate"><span class="pre">BoundedSequence</span></code> class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-6.4.1">Exercise 6.4.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-6.4.2">Exercise 6.4.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-6.4.3-(optional)">Exercise 6.4.3 (optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06_5_dynamic_array.html">6.5. Dynamic arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_6_use_dyn_array.html">6.6. Using dynamic arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_7_linked_list.html">6.7. Linked lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_8_summary.html">6.8. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="06-introduction.html"><span class="section-number">6. </span>Implementing sequences</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.4. </span>Bounded sequences</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Bounded-sequences">
+<h1><span class="section-number">6.4. </span>Bounded sequences<a class="headerlink" href="#Bounded-sequences" title="Link to this heading"></a></h1>
+<p>Using a static array, we can implement the sequence ADT for bounded sequences, because static arrays can’t grow. The capacity of the sequence is the length of the static array. We must keep track of the sequence’s current length, so that we know which positions on the static array are occupied by sequence elements and which ones are available for the sequence to grow. We can’t assume that the value <code class="docutils literal notranslate"><span class="pre">None</span></code> represents an available position, because <code class="docutils literal notranslate"><span class="pre">None</span></code> is a potentially valid item of a
+sequence.</p>
+<p>The next figure shows the data structures (a static array for the items and an integer for the size) for a sequence of length three and capacity five, with values <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code> and <code class="docutils literal notranslate"><span class="pre">0.2</span></code>. The static array was initialised with five pointers to the same <code class="docutils literal notranslate"><span class="pre">None</span></code> object, two of which have been replaced. The size of the sequence is also the index of the next available position because indices start at zero. To illustrate this, I write the indices below the array. As I wrote earlier, indices
+are also a form of reference.</p>
+<p id="fig-6.4.1"></p><p><a class="reference internal" href="../33_Figures/Figures_06_4.html#Figure-6.4.1"><span class="std std-ref">Figure 6.4.1</span></a></p>
+<img alt="Image 06_4_bounded.png" src="../_images/06_4_bounded.png" />
+<p>Most sequence operations are straightforward to implement for bounded sequences, by iterating over one or two static arrays (the input and output sequences). The insert and remove methods require a bit more care. I will implement insertion: the removal algorithm is largely symmetric. Before that, let’s take a little detour.</p>
+<section id="Outlining-algorithms">
+<h2><span class="section-number">6.4.1. </span>Outlining algorithms<a class="headerlink" href="#Outlining-algorithms" title="Link to this heading"></a></h2>
+<p>In verbal and written communication with colleagues, algorithms are often presented in a succinct way, just outlining the steps they carry out. This is often sufficient to be able to implement the algorithm. For example, here’s how I’d outline the algorithm for the <code class="docutils literal notranslate"><span class="pre">__str__</span></code> method in the abstract <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> class:</p>
+<blockquote>
+<div><p>The algorithm converts the sequence to a list, which is then converted to a string. To obtain the list, it starts by creating an empty list. It goes through the items in the sequence, appending each to the list. The list is converted to a string with the <code class="docutils literal notranslate"><span class="pre">str</span></code> function.</p>
+</div></blockquote>
+<p>Algorithms are commands for the computer to execute, so if you prefer, you can outline them in the imperative tense. Here’s the same example:</p>
+<blockquote>
+<div><p>Convert the sequence to a list and then convert the list to a string. To obtain the list, first create an empty list, then go through the items in the sequence, appending each to the list. Convert the list to a string with the <code class="docutils literal notranslate"><span class="pre">str</span></code> function.</p>
+</div></blockquote>
+<p>When outlining algorithms, you can assume the reader or listener already knows the problem, i.e. what the inputs and output are and what the algorithm is supposed to accomplish. It’s good practice to first give a ‘bird’s eye view’ of the algorithm, describing its various stages or phases, and then detail each one. This helps the reader or listener see the wood for the trees. An outline that sounds like reading the code aloud is not effective communication: it’s too detailed and it overwhelms the
+recipient because they must keep many details in their head to follow the outline.</p>
+<p>For subtle or complicated algorithms, the outline should help the reader or listener understand not just what the algorithm does but also why it works. So do try to explain the rationale of any hairy part of an algorithm.</p>
+<p>The outline has to be tailored to the knowledge level of the recipient. The above outlines are Greek to most people, or Latin if they happen to speak Greek. In M269, the recipient is your tutor or a fellow student, so you can assume they have the same knowledge as you.</p>
+<p>Like everything else, outlining algorithms requires practice. If you have a study buddy, call them, outline an algorithm in this book and have them critique your outline, e.g. if it’s missing important details or if it’s too detailed or confusing. If your buddy can follow your outline just by listening to it, without looking at the algorithm in their copy of the book, then it’s probably a good one. You can also post and critique outlines in the M269 forums, e.g. of alternative solutions to the
+book’s exercises.</p>
+<p>With this in mind, let’s tackle the insert operation.</p>
+</section>
+<section id="Insertion">
+<h2><span class="section-number">6.4.2. </span>Insertion<a class="headerlink" href="#Insertion" title="Link to this heading"></a></h2>
+<p>As usual, before designing an algorithm, we must think of problem instances. For this operation, the edge cases are lists with length zero and one, and inserting an item at the first, last and after the last index. The latter corresponds to appending the item. The table columns are the variables in the operation definition: <em>values</em> is the input/output sequence; <em>value</em> and <em>index</em> are the item to be inserted and its position. The item to be inserted is not relevant, so I use the same for all
+test cases. This saves me from writing a very repetitive column for <em>value</em>. Remember that we write abstract sequences within parentheses.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Case</p></th>
+<th class="head"><p>Pre-<em>values</em></p></th>
+<th class="head"><p><em>index</em></p></th>
+<th class="head"><p>Post-<em>values</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>length 0</p></td>
+<td><p>( )</p></td>
+<td><p>0</p></td>
+<td><p>(‘!’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>length 1, before</p></td>
+<td><p>( 0 )</p></td>
+<td><p>0</p></td>
+<td><p>(‘!’, 0)</p></td>
+</tr>
+<tr class="row-even"><td><p>length 1, after</p></td>
+<td><p>( 0 )</p></td>
+<td><p>1</p></td>
+<td><p>(0, ‘!’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>length 2, before</p></td>
+<td><p>(0, 1)</p></td>
+<td><p>0</p></td>
+<td><p>(‘!’, 0, 1)</p></td>
+</tr>
+<tr class="row-even"><td><p>length 2, middle</p></td>
+<td><p>(0, 1)</p></td>
+<td><p>1</p></td>
+<td><p>(0, ‘!’, 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>length 2, after</p></td>
+<td><p>(0, 1)</p></td>
+<td><p>2</p></td>
+<td><p>(0, 1, ‘!’)</p></td>
+</tr>
+</tbody>
+</table>
+<p>We can assume the bounded sequence has capacity for at least one more item. The algorithm must somehow ‘push’ the items from the given index one position to the right, to then put the item at the position given by the index. Let’s take one problem instance to help visualise the process. I choose the fourth test case, inserting at the start of a length 2 sequence, before handling the possibly trickier case of inserting in an empty sequence or inserting at the end.</p>
+<p>The sequence is (0, 1). To obtain the end result (‘!’, 0, 1) I must copy each item to the next position up. I can’t start by copying the first item, as it would overwrite the value there and lose it forever: (0, 0). I must start copying from the end:</p>
+<ul class="simple">
+<li><p>(0, 1, 1): copy the last item to the vacant position</p></li>
+<li><p>(0, 0, 1): copy the first item to the next position</p></li>
+<li><p>(‘!’, 0, 1): put the new item in the input position.</p></li>
+</ul>
+<p>Here’s a possible outline of the algorithm:</p>
+<blockquote>
+<div><p>Go through the items backwards, from the last one to the one at the given index, and copy each item to the next position. Put the given item at the given index.</p>
+</div></blockquote>
+<p>From this, I can write an algorithm in English. I can’t iterate backwards over items, but I can iterate downwards over integers.</p>
+<ol class="arabic simple">
+<li><p>for each <em>position</em> from │<em>values</em>│ − 1 down to <em>index</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>values</em>[<em>position</em> + 1] be <em>values</em>[<em>position</em>]</p></li>
+</ol>
+</li>
+<li><p>let <em>values</em>[<em>index</em>] be <em>value</em></p></li>
+</ol>
+<p>Step 1.1 copies each item one position up, i.e. to the right.</p>
+<p>Before moving on to implementing this algorithm in Python, let’s check it works for the other test cases. The penultimate case (inserting in the middle) is similar to inserting at the start. All other cases (first, third and last) append an item. Does the algorithm work for them?</p>
+<hr class="docutils" />
+<p>The item is appended when <em>index</em> = │<em>values</em>│. In that case, the loop doesn’t execute because the start position is larger than the end position. The item is immediately put in its position.</p>
+<p>The complexity of this algorithm is as stated in <a class="reference internal" href="../04_Iteration/04_6_lists.html#Modifying-sequences"><span class="std std-ref">Section 4.6.1</span></a>: Θ(1) when appending and Θ(│<em>values</em>│ − <em>index</em>) otherwise.</p>
+</section>
+<section id="The-BoundedSequence-class">
+<h2><span class="section-number">6.4.3. </span>The <code class="docutils literal notranslate"><span class="pre">BoundedSequence</span></code> class<a class="headerlink" href="#The-BoundedSequence-class" title="Link to this heading"></a></h2>
+<p>Translating the insertion algorithm to code requires one more detail: incrementing the size variable, because we’re dealing with concrete data structures and not abstract sequences.</p>
+<p>Here’s an implementation of the abstract class methods for bounded sequences. In Python we write <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">A(B):</span></code> to define <em>A</em> as a subclass of <em>B</em>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_array
+<span class="o">%</span><span class="k">run</span> -i ../m269_sequence
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BoundedSequence</span><span class="p">(</span><span class="n">Sequence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A sequence with a fixed capacity.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an empty sequence that can hold &#39;capacity&#39; items.</span>
+
+<span class="sd">        Preconditions: capacity &gt;= 0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">StaticArray</span><span class="p">(</span><span class="n">capacity</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">capacity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return how many items the sequence can hold.</span>
+
+<span class="sd">        Postconditions: the output is the value set at creation time</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of items in the sequence.</span>
+
+<span class="sd">        Postconditions: 0 &lt;= self.length() &lt;= self.capacity()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the item at position index.</span>
+
+<span class="sd">        Preconditions: 0 &lt;= index &lt; self.length()</span>
+<span class="sd">        Postconditions: the output is the n-th item of self, with n = index + 1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replace the item at position index with the given one.</span>
+
+<span class="sd">        Preconditions: 0 &lt;= index &lt; self.length()</span>
+<span class="sd">        Postconditions: post-self.get_item(index) == item</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">set_item</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert item at position index.</span>
+
+<span class="sd">        Preconditions: 0 &lt;= index &lt;= self.length() &lt; self.capacity()</span>
+<span class="sd">        Postconditions: post-self is the sequence</span>
+<span class="sd">        pre-self.get_item(0), ..., pre-self.get_item(index - 1),</span>
+<span class="sd">        item, pre-self.get_item(index), ...,</span>
+<span class="sd">        pre-self.get_item(pre-self.length() - 1)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">set_item</span><span class="p">(</span><span class="n">position</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">get_item</span><span class="p">(</span><span class="n">position</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">set_item</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<p>The following example uses the <code class="docutils literal notranslate"><span class="pre">append</span></code> and <code class="docutils literal notranslate"><span class="pre">__str__</span></code> methods, provided by the abstract superclass.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="n">BoundedSequence</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;ready&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;go!&quot;</span><span class="p">):</span>
+    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Can have&quot;</span><span class="p">,</span> <span class="n">items</span><span class="o">.</span><span class="n">capacity</span><span class="p">()</span> <span class="o">-</span> <span class="n">items</span><span class="o">.</span><span class="n">length</span><span class="p">(),</span> <span class="s2">&quot;more items.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[]
+[&#39;ready&#39;]
+[&#39;ready&#39;, &#39;set&#39;]
+[&#39;ready&#39;, &#39;set&#39;, &#39;go!&#39;]
+Can have 2 more items.
+</pre></div></div>
+</div>
+<p>Let’s run the tests created in the previous section, for different capacities and lengths. Each test takes an empty bounded sequence of some capacity and grows it to a given length.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> -i ../m269_test
+
+<span class="k">for</span> <span class="n">capacity</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing capacity&quot;</span><span class="p">,</span> <span class="n">capacity</span><span class="p">)</span>
+    <span class="n">test_init</span><span class="p">(</span><span class="n">BoundedSequence</span><span class="p">(</span><span class="n">capacity</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">capacity</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing length&quot;</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+        <span class="n">test_append</span><span class="p">(</span><span class="n">BoundedSequence</span><span class="p">(</span><span class="n">capacity</span><span class="p">),</span> <span class="n">length</span><span class="p">)</span>
+        <span class="n">test_insert_start</span><span class="p">(</span><span class="n">BoundedSequence</span><span class="p">(</span><span class="n">capacity</span><span class="p">),</span> <span class="n">length</span><span class="p">)</span>
+        <span class="n">test_set_item</span><span class="p">(</span><span class="n">BoundedSequence</span><span class="p">(</span><span class="n">capacity</span><span class="p">),</span> <span class="n">length</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Testing capacity 0
+Testing length 0
+Testing capacity 1
+Testing length 0
+Testing length 1
+Testing capacity 2
+Testing length 0
+Testing length 1
+Testing length 2
+insert at 0: n-th item FAILED for [0, None] : None instead of 1
+Testing capacity 3
+Testing length 0
+Testing length 1
+Testing length 2
+insert at 0: n-th item FAILED for [0, None] : None instead of 1
+Testing length 3
+insert at 0: n-th item FAILED for [0, None, None] : None instead of 1
+insert at 0: n-th item FAILED for [0, None, None] : None instead of 2
+</pre></div></div>
+</div>
+<p>Oh dear! The test for inserting at the start failed for lists longer than one. In all cases the resulting sequence is 0 followed by <code class="docutils literal notranslate"><span class="pre">None</span></code>, instead of being 0, 1, 2, …</p>
+<section id="Exercise-6.4.1">
+<h3>Exercise 6.4.1<a class="headerlink" href="#Exercise-6.4.1" title="Link to this heading"></a></h3>
+<p>Explain the error and how to fix it. (By the way, this was a genuine error: I didn’t do it on purpose.)</p>
+<p><a class="reference internal" href="../31_Hints/Hints_06_4_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_06_4_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-6.4.2">
+<h3>Exercise 6.4.2<a class="headerlink" href="#Exercise-6.4.2" title="Link to this heading"></a></h3>
+<p>Fix the error in the <code class="docutils literal notranslate"><span class="pre">insert</span></code> method. Rerun the tests.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_06_4_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-6.4.3-(optional)">
+<h3>Exercise 6.4.3 (optional)<a class="headerlink" href="#Exercise-6.4.3-(optional)" title="Link to this heading"></a></h3>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">remove</span></code> method to the <code class="docutils literal notranslate"><span class="pre">BoundedSequence</span></code> class above. Run its code cell again, then run these tests:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">capacity</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing capacity&quot;</span><span class="p">,</span> <span class="n">capacity</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">capacity</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing length&quot;</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>
+        <span class="n">test_remove</span><span class="p">(</span><span class="n">BoundedSequence</span><span class="p">(</span><span class="n">capacity</span><span class="p">),</span> <span class="n">length</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../31_Hints/Hints_06_4_03.html"><span class="doc">Hint</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="06_3_develop_type.html" class="btn btn-neutral float-left" title="6.3. Developing data types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="06_5_dynamic_array.html" class="btn btn-neutral float-right" title="6.5. Dynamic arrays" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

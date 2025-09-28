@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10.4. Python</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Exhaustive search" href="../11_Search/11-introduction.html" />
+    <link rel="prev" title="10.3. Coding style" href="10_3_coding_style.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="10-introduction.html">10. TMA 01 part 2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="10_1_collections.html">10.1. Using collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_2_algorithms.html">10.2. Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_3_coding_style.html">10.3. Coding style</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10.4. Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Language-constructs">10.4.1. Language constructs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Built-in-types">10.4.2. Built-in types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Numbers">Numbers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Booleans">Booleans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Sequences">Sequences</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Dictionaries">Dictionaries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Sets">Sets</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Standard-library">10.4.3. Standard library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Other">10.4.4. Other</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#M269-Library">10.4.5. M269 Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Testing">Testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Ordered-collections">Ordered collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Image-manipulation">Image manipulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="10-introduction.html"><span class="section-number">10. </span>TMA 01 part 2</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">10.4. </span>Python</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Python">
+<h1><span class="section-number">10.4. </span>Python<a class="headerlink" href="#Python" title="Link to this heading"></a></h1>
+<p>Unless a TMA 01 question explicitly states otherwise, your code can only use the types, classes, methods, functions, statements, constants and code templates introduced in Chapters 2–9 of this book. Here’s a non-comprehensive index of them.</p>
+<section id="Language-constructs">
+<h2><span class="section-number">10.4.1. </span>Language constructs<a class="headerlink" href="#Language-constructs" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>statements: assignment (<a class="reference internal" href="../02_Sequence/02_4_assignments.html#Assignments"><span class="std std-ref">2.4</span></a>), selection (<a class="reference internal" href="../03_Selection/03_4_classification.html#Code"><span class="std std-ref">3.4.4</span></a>), for- and while-loops (<a class="reference internal" href="../04_Iteration/04_3_iteration.html#Iteration"><span class="std std-ref">4.3</span></a>), <code class="docutils literal notranslate"><span class="pre">import</span></code> (<a class="reference internal" href="../02_Sequence/02_1_numbers.html#int-and-float-literals"><span class="std std-ref">2.1.2</span></a>), <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">import</span></code> (<a class="reference internal" href="../04_Iteration/04_7_reverse.html#Tests"><span class="std std-ref">4.7</span></a>), <code class="docutils literal notranslate"><span class="pre">pass</span></code> (<a class="reference internal" href="../06_Implementing/06_3_develop_type.html#Abstract-classes"><span class="std std-ref">6.3.1</span></a>), <code class="docutils literal notranslate"><span class="pre">return</span></code>
+(<a class="reference internal" href="../02_Sequence/02_6_py_functions.html#Functions-in-Python"><span class="std std-ref">2.6</span></a>)</p></li>
+<li><p>defining functions (<a class="reference internal" href="../02_Sequence/02_6_py_functions.html#Functions-in-Python"><span class="std std-ref">2.6</span></a>), including docstrings and type annotations</p></li>
+<li><p>IPython commands <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> (<a class="reference internal" href="../02_Sequence/02_8_time.html#Run-times"><span class="std std-ref">2.8</span></a>) and <code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">-i</span></code> (<a class="reference internal" href="../04_Iteration/04_7_reverse.html#Tests"><span class="std std-ref">4.7.6</span></a>)</p></li>
+<li><p>defining classes (<a class="reference internal" href="../06_Implementing/06_1_define_type.html#Classes"><span class="std std-ref">6.1.3</span></a>)</p></li>
+</ul>
+</section>
+<section id="Built-in-types">
+<h2><span class="section-number">10.4.2. </span>Built-in types<a class="headerlink" href="#Built-in-types" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>operators <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code> (<a class="reference internal" href="../03_Selection/03_3_expressions.html#Comparisons"><span class="std std-ref">3.3.1</span></a>)</p></li>
+</ul>
+<section id="Numbers">
+<h3>Numbers<a class="headerlink" href="#Numbers" title="Link to this heading"></a></h3>
+<p>Types <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code>:</p>
+<ul class="simple">
+<li><p>integer literals like <code class="docutils literal notranslate"><span class="pre">1234567</span></code></p></li>
+<li><p>float literals like <code class="docutils literal notranslate"><span class="pre">5432.1</span></code> (<a class="reference internal" href="../02_Sequence/02_1_numbers.html#int-and-float-literals"><span class="std std-ref">2.1.2</span></a>)</p></li>
+<li><p>arithmetic operators <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> (unary and binary), <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">/</span></code> (<a class="reference internal" href="../02_Sequence/02_2_operations.html#On-int-and-float"><span class="std std-ref">2.2.3</span></a>)</p></li>
+<li><p>comparison operators <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> (<a class="reference internal" href="../03_Selection/03_3_expressions.html#Comparisons"><span class="std std-ref">3.3.1</span></a>)</p></li>
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> (<a class="reference internal" href="../02_Sequence/02_2_operations.html#On-int-and-float"><span class="std std-ref">2.2.3</span></a>)</p></li>
+<li><p>operators <code class="docutils literal notranslate"><span class="pre">//</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code> on integers only (<a class="reference internal" href="../02_Sequence/02_2_operations.html#On-int"><span class="std std-ref">2.2.5</span></a>)</p></li>
+</ul>
+</section>
+<section id="Booleans">
+<h3>Booleans<a class="headerlink" href="#Booleans" title="Link to this heading"></a></h3>
+<p>Type <code class="docutils literal notranslate"><span class="pre">bool</span></code> (<a class="reference internal" href="../03_Selection/03_1_booleans.html#The-bool-type"><span class="std std-ref">3.1.3</span></a>):</p>
+<ul class="simple">
+<li><p>literals <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p>operators <code class="docutils literal notranslate"><span class="pre">not</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code></p></li>
+</ul>
+</section>
+<section id="Sequences">
+<h3>Sequences<a class="headerlink" href="#Sequences" title="Link to this heading"></a></h3>
+<p>Types <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code> (<a class="reference internal" href="../04_Iteration/04_9_summary.html#Sequence-operations"><span class="std std-ref">4.9.1</span></a>):</p>
+<ul class="simple">
+<li><p>function <code class="docutils literal notranslate"><span class="pre">len</span></code></p></li>
+<li><p>operators <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code></p></li>
+<li><p>indexing and slicing: <code class="docutils literal notranslate"><span class="pre">s[index]</span></code>, <code class="docutils literal notranslate"><span class="pre">s[index1:index2]</span></code>, <code class="docutils literal notranslate"><span class="pre">s[index1:]</span></code>, <code class="docutils literal notranslate"><span class="pre">s[:index2]</span></code></p></li>
+</ul>
+<p>Operations on any sequence of comparable items (<a class="reference internal" href="../04_Iteration/04_9_summary.html#Sequence-operations"><span class="std std-ref">4.9.1</span></a>):</p>
+<ul class="simple">
+<li><p>comparison operators <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, etc.</p></li>
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code></p></li>
+<li><p>function <code class="docutils literal notranslate"><span class="pre">sorted</span></code> with optional parameter <code class="docutils literal notranslate"><span class="pre">reverse</span></code></p></li>
+</ul>
+<p>Operations on lists (<a class="reference internal" href="../04_Iteration/04_6_lists.html#Modifying-lists"><span class="std std-ref">4.6.4</span></a>):</p>
+<ul class="simple">
+<li><p>assignment <code class="docutils literal notranslate"><span class="pre">s[index]</span> <span class="pre">=</span> <span class="pre">new_value</span></code></p></li>
+<li><p>methods <code class="docutils literal notranslate"><span class="pre">insert</span></code>, <code class="docutils literal notranslate"><span class="pre">append</span></code>, <code class="docutils literal notranslate"><span class="pre">pop</span></code></p></li>
+<li><p>method <code class="docutils literal notranslate"><span class="pre">sort</span></code> (with optional parameter <code class="docutils literal notranslate"><span class="pre">reverse</span></code>) if the items are comparable</p></li>
+</ul>
+<p>Sequence literals and constructors (<a class="reference internal" href="../17_Graphs_1/17_9_summary.html#Python"><span class="std std-ref">4.9.3</span></a>):</p>
+<ul class="simple">
+<li><p>strings: <code class="docutils literal notranslate"><span class="pre">'...'</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;...&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">'''...'''</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;...&quot;&quot;&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">str(expression)</span></code></p></li>
+<li><p>ranges: <code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">end,</span> <span class="pre">step)</span></code></p></li>
+<li><p>lists: <code class="docutils literal notranslate"><span class="pre">[item1,</span> <span class="pre">item2,</span> <span class="pre">...]</span></code>, <code class="docutils literal notranslate"><span class="pre">list(a_sequence)</span></code></p></li>
+<li><p>tuples: <code class="docutils literal notranslate"><span class="pre">(item,)</span></code>, <code class="docutils literal notranslate"><span class="pre">(item1,</span> <span class="pre">item2,</span> <span class="pre">...)</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple(a_sequence)</span></code></p></li>
+</ul>
+</section>
+<section id="Dictionaries">
+<h3>Dictionaries<a class="headerlink" href="#Dictionaries" title="Link to this heading"></a></h3>
+<p>Type <code class="docutils literal notranslate"><span class="pre">dict</span></code> (<a class="reference internal" href="../08_Unordered/08_2_dictionary.html#Dictionaries"><span class="std std-ref">8.2</span></a>):</p>
+<ul class="simple">
+<li><p>operators <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code></p></li>
+<li><p>function <code class="docutils literal notranslate"><span class="pre">len</span></code></p></li>
+<li><p>method <code class="docutils literal notranslate"><span class="pre">pop</span></code></p></li>
+<li><p>index with <code class="docutils literal notranslate"><span class="pre">d[key]</span></code> and assign with <code class="docutils literal notranslate"><span class="pre">d[key]</span> <span class="pre">=</span> <span class="pre">value</span></code></p></li>
+<li><p>iterate with <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">key</span> <span class="pre">in</span> <span class="pre">d:</span></code> or <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">(key,</span> <span class="pre">value)</span> <span class="pre">in</span> <span class="pre">d.items():</span></code></p></li>
+</ul>
+</section>
+<section id="Sets">
+<h3>Sets<a class="headerlink" href="#Sets" title="Link to this heading"></a></h3>
+<p>Type <code class="docutils literal notranslate"><span class="pre">set</span></code> (<a class="reference internal" href="../08_Unordered/08_4_set.html#Sets-in-Python"><span class="std std-ref">8.4.2</span></a>):</p>
+<ul class="simple">
+<li><p>function <code class="docutils literal notranslate"><span class="pre">len</span></code></p></li>
+<li><p>methods <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">discard</span></code>, <code class="docutils literal notranslate"><span class="pre">union</span></code>, <code class="docutils literal notranslate"><span class="pre">intersection</span></code>, <code class="docutils literal notranslate"><span class="pre">difference</span></code></p></li>
+<li><p>operators <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> and all comparisons</p></li>
+</ul>
+</section>
+</section>
+<section id="Standard-library">
+<h2><span class="section-number">10.4.3. </span>Standard library<a class="headerlink" href="#Standard-library" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">print</span></code> (<a class="reference internal" href="../02_Sequence/02_4_assignments.html#Algorithms"><span class="std std-ref">2.4.1</span></a>), <code class="docutils literal notranslate"><span class="pre">help</span></code> (<a class="reference internal" href="../02_Sequence/02_6_py_functions.html#Documentation"><span class="std std-ref">2.6.1</span></a>), <code class="docutils literal notranslate"><span class="pre">ord</span></code> (<a class="reference internal" href="../08_Unordered/08_1_map.html#Lookup-tables"><span class="std std-ref">8.1.3</span></a>), <code class="docutils literal notranslate"><span class="pre">hash</span></code>(<a class="reference internal" href="../08_Unordered/08_3_hash_table.html#Hash-functions"><span class="std std-ref">8.3.2</span></a>)</p></li>
+<li><p>function <code class="docutils literal notranslate"><span class="pre">floor</span></code> (<a class="reference internal" href="../02_Sequence/02_2_operations.html#On-float"><span class="std std-ref">2.2.4</span></a>) in module <code class="docutils literal notranslate"><span class="pre">math</span></code></p></li>
+<li><p>constants <code class="docutils literal notranslate"><span class="pre">pi</span></code> (<a class="reference internal" href="../02_Sequence/02_1_numbers.html#int-and-float-literals"><span class="std std-ref">2.1.2</span></a>) and <code class="docutils literal notranslate"><span class="pre">inf</span></code> (<a class="reference internal" href="../06_Implementing/06_3_develop_type.html#Abstract-classes"><span class="std std-ref">6.3.1</span></a>) in module <code class="docutils literal notranslate"><span class="pre">math</span></code></p></li>
+</ul>
+</section>
+<section id="Other">
+<h2><span class="section-number">10.4.4. </span>Other<a class="headerlink" href="#Other" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">check_tests</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> (<a class="reference internal" href="../04_Iteration/04_7_reverse.html#Reversal"><span class="std std-ref">4.7</span></a>) in module <code class="docutils literal notranslate"><span class="pre">algoesup</span></code></p></li>
+</ul>
+</section>
+<section id="M269-Library">
+<h2><span class="section-number">10.4.5. </span>M269 Library<a class="headerlink" href="#M269-Library" title="Link to this heading"></a></h2>
+<p>The following files are in the <code class="docutils literal notranslate"><span class="pre">notebooks</span></code> subfolder of your book’s folder.</p>
+<section id="Testing">
+<h3>Testing<a class="headerlink" href="#Testing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>function <code class="docutils literal notranslate"><span class="pre">check</span></code> (<a class="reference internal" href="../06_Implementing/06_2_static_array.html#Testing-methods"><span class="std std-ref">6.2.3</span></a>) in file <code class="docutils literal notranslate"><span class="pre">m269_test.py</span></code></p></li>
+</ul>
+</section>
+<section id="Ordered-collections">
+<h3>Ordered collections<a class="headerlink" href="#Ordered-collections" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>classes <code class="docutils literal notranslate"><span class="pre">StaticArray</span></code> (<a class="reference internal" href="../06_Implementing/06_2_static_array.html#The-StaticArray-class"><span class="std std-ref">6.2.2</span></a>) and <code class="docutils literal notranslate"><span class="pre">DynamicArray</span></code> (<a class="reference internal" href="../06_Implementing/06_5_dynamic_array.html#The-DynamicArray-class"><span class="std std-ref">6.5.1</span></a>) in file <code class="docutils literal notranslate"><span class="pre">m269_array.py</span></code></p></li>
+<li><p>classes <code class="docutils literal notranslate"><span class="pre">Sequence</span></code> (<a class="reference internal" href="../06_Implementing/06_3_develop_type.html#Abstract-classes"><span class="std std-ref">6.3.1</span></a>) and <code class="docutils literal notranslate"><span class="pre">ArraySequence</span></code> (<a class="reference internal" href="../06_Implementing/06_6_use_dyn_array.html#The-ArraySequence-class"><span class="std std-ref">6.6.2</span></a>) in file <code class="docutils literal notranslate"><span class="pre">m269_sequence.py</span></code></p></li>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">ArrayPriorityQueue</span></code> (<a class="reference internal" href="../07_Ordered/07_4_priority_queue.html#With-dynamic-arrays:-version-2"><span class="std std-ref">7.6.2</span></a>) in file <code class="docutils literal notranslate"><span class="pre">m269_priority.py</span></code></p></li>
+<li><p>classes <code class="docutils literal notranslate"><span class="pre">Stack</span></code> (<a class="reference internal" href="../07_Ordered/07_1_stack.html#Implementing-with-an-array"><span class="std std-ref">7.1.2</span></a>) and <code class="docutils literal notranslate"><span class="pre">LinkedListStack</span></code> (<a class="reference internal" href="../07_Ordered/07_1_stack.html#Implementing-with-a-linked-list"><span class="std std-ref">7.1.3</span></a>) in file <code class="docutils literal notranslate"><span class="pre">m269_stack.py</span></code></p></li>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">Queue</span></code> (<a class="reference internal" href="../07_Ordered/07_3_queue.html#Queues-with-linked-lists"><span class="std std-ref">7.3.3</span></a>) in file <code class="docutils literal notranslate"><span class="pre">m269_queue.py</span></code></p></li>
+</ul>
+</section>
+<section id="Image-manipulation">
+<h3>Image manipulation<a class="headerlink" href="#Image-manipulation" title="Link to this heading"></a></h3>
+<p>File <code class="docutils literal notranslate"><span class="pre">m269_image.py</span></code> (<a class="reference internal" href="../04_Iteration/04_8_practice.html#Images"><span class="std std-ref">4.8.6</span></a>):</p>
+<ul class="simple">
+<li><p>functions <code class="docutils literal notranslate"><span class="pre">new_image</span></code>, <code class="docutils literal notranslate"><span class="pre">load_image</span></code>, <code class="docutils literal notranslate"><span class="pre">save_image</span></code>, <code class="docutils literal notranslate"><span class="pre">show_image</span></code>, <code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">height</span></code></p></li>
+<li><p>constants <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">G</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">BLACK</span></code>, <code class="docutils literal notranslate"><span class="pre">WHITE</span></code>, <code class="docutils literal notranslate"><span class="pre">SILVER</span></code>, <code class="docutils literal notranslate"><span class="pre">NAVY</span></code>, etc.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="10_3_coding_style.html" class="btn btn-neutral float-left" title="10.3. Coding style" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../11_Search/11-introduction.html" class="btn btn-neutral float-right" title="11. Exhaustive search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

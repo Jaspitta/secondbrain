@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13.2. Decrease by half</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="13.3. Variable decrease" href="13_3_variable_decrease.html" />
+    <link rel="prev" title="13.1. Decrease by one" href="13_1_decrease_one.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="13-introduction.html">13. Divide and conquer</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="13_1_decrease_one.html">13.1. Decrease by one</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13.2. Decrease by half</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Problem">13.2.1. Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm">13.2.2. Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Complexity">13.2.3. Complexity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Code-and-performance">13.2.4. Code and performance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="13_3_variable_decrease.html">13.3. Variable decrease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_4_binary_search.html">13.4. Binary search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_5_variants.html">13.5. Binary search variants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_6_divide.html">13.6. Divide and conquer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_7_summary.html">13.7. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="13-introduction.html"><span class="section-number">13. </span>Divide and conquer</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">13.2. </span>Decrease by half</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Decrease-by-half">
+<h1><span class="section-number">13.2. </span>Decrease by half<a class="headerlink" href="#Decrease-by-half" title="Link to this heading"></a></h1>
+<p>Progressing towards the base case one item at a time is slow. This and the next section show more efficient decrease-and-conquer algorithms that decrease the input each time by a substantial amount.</p>
+<p>One way is to decrease the input by a <strong>constant factor</strong> <em>f</em> rather than by a constant amount <em>a</em>, i.e. the size or value is reduced to <em>n</em> / <em>f</em> rather than <em>n</em> – <em>a</em>. Usually <em>f</em> = 2, i.e. the input is decreased by half.</p>
+<section id="Problem">
+<h2><span class="section-number">13.2.1. </span>Problem<a class="headerlink" href="#Problem" title="Link to this heading"></a></h2>
+<p>Consider the <a class="reference internal" href="../02_Sequence/02_2_operations.html#On-integers"><span class="std std-ref">exponentiation operation</span></a>: compute <span class="math notranslate nohighlight">\(b^{n}\)</span> for integers <em>b</em> (the base) and <em>n</em> (the exponent), with non-negative <em>n</em>.</p>
+<p>A decrease-by-one definition is similar to the factorial:</p>
+<ul class="simple">
+<li><p>if <em>n</em> = 0: <span class="math notranslate nohighlight">\(b^{n} = 1\)</span></p></li>
+<li><p>if <em>n</em> &gt; 0: <span class="math notranslate nohighlight">\(b^{n} = b^{n-1} \times b\)</span>.</p></li>
+</ul>
+<p>This effectively multiplies <em>b</em> by itself <em>n</em> times, in linear time. The algorithm follows directly from the recursive definition, so I skip to the code. For the mathematical notation, it’s convenient to have single-letter variable names, but when writing code they should be descriptive.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">power_by_one</span><span class="p">(</span><span class="n">base</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">exponent</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the base to the power of the exponent.</span>
+
+<span class="sd">    Preconditions: exponent &gt;= 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">exponent</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">power_by_one</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exponent</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">base</span>
+
+
+<span class="n">power_by_one</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="o">**</span><span class="mi">20</span>  <span class="c1"># test with Python&#39;s power operator</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+</section>
+<section id="Algorithm">
+<h2><span class="section-number">13.2.2. </span>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h2>
+<p>Using some properties of exponentiation, we can halve the exponent instead of decreasing it by one, to do fewer multiplications. For example, 4⁶ = 4³ × 4³. Assuming 4³ requires three multiplications, we need four instead of six multiplications to obtain 4⁶. By halving the exponent we get twice the same expression and only compute it once. If the exponent is odd, we need one extra multiplication, e.g. 4⁵ = 4² × 4² × 4. The general recursive definition is:</p>
+<ul class="simple">
+<li><p>if <em>n</em> = 0: <span class="math notranslate nohighlight">\(b^{n} = 1\)</span></p></li>
+<li><p>if <em>n</em> &gt; 0 and is even: <span class="math notranslate nohighlight">\(b^{n} = b^{n/2} × b^{n/2}\)</span></p></li>
+<li><p>if <em>n</em> is odd: <span class="math notranslate nohighlight">\(b^{n} = b^{(n-1)/2} \times b^{(n-1)/2} \times b\)</span>.</p></li>
+</ul>
+<p>The definition has one base case and two recurrence relations. They cover all possible values of <em>n</em>. For example, if <em>n</em> = 1 then the last case applies and we have <em>b</em>¹ = <em>b</em>⁰ × <em>b</em>⁰ × <em>b</em> = 1 × 1 × <em>b</em> = <em>b</em>.</p>
+<p>Here’s the algorithm, with an auxiliary variable for the subsolution to avoid recomputing it.</p>
+<ol class="arabic simple">
+<li><p>if <em>n</em> = 0:</p>
+<ol class="arabic simple">
+<li><p>let <em>solution</em> be 1</p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>subsolution</em> be power(<em>b</em>, floor(<em>n</em> / 2))</p></li>
+<li><p>if <em>n</em> mod 2 = 0:</p>
+<ol class="arabic simple">
+<li><p>let <em>solution</em> be <em>subsolution</em> × <em>subsolution</em></p></li>
+</ol>
+</li>
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>solution</em> be <em>subsolution</em> × <em>subsolution</em> × <em>b</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>The last steps could also be written as:</p>
+<ol class="arabic simple" start="2">
+<li><p>otherwise:</p>
+<ol class="arabic simple">
+<li><p>let <em>subsolution</em> be power(<em>b</em>, floor(<em>n</em> / 2))</p></li>
+<li><p>let <em>solution</em> be <em>subsolution</em> × <em>subsolution</em></p></li>
+<li><p>if <em>n</em> mod 2 = 1:</p>
+<ol class="arabic simple">
+<li><p>let <em>solution</em> be <em>solution</em> × <em>b</em></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>I prefer the first alternative: its intent is clearer, in my opinion.</p>
+</section>
+<section id="Complexity">
+<h2><span class="section-number">13.2.3. </span>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h2>
+<p>Each recursive call takes constant time because it does at most four arithmetic operations: integer division, modulo and one or two multiplications. The complexity is therefore <em>r</em> × Θ(1) = Θ(<em>r</em>), where <em>r</em> is the number of recursive calls.</p>
+<p>Each extra recursive call can handle up to double the value of the exponent. With <em>r</em> recursive calls, the algorithm can handle any <em>n</em> up to <span class="math notranslate nohighlight">\(2^r\)</span>. You’ve seen this exponential growth rate <a class="reference internal" href="../11_Search/11_5_subsets.html#Complexity"><span class="std std-ref">before</span></a>: every item added to a set doubles the number of subsets the set has.</p>
+<p>What we’re really interested in is the inverse relationship: how <span class="math notranslate nohighlight">\(r\)</span> grows in terms of the input <span class="math notranslate nohighlight">\(n\)</span>. The inverse of the exponential is the logarithm: <span class="math notranslate nohighlight">\(\log_b b^y = y\)</span> for any real number <span class="math notranslate nohighlight">\(b &gt; 1\)</span>. The notation <span class="math notranslate nohighlight">\(\log_b n\)</span> is read ‘logarithm of <span class="math notranslate nohighlight">\(n\)</span> to base <span class="math notranslate nohighlight">\(b\)</span>’. For this problem, <span class="math notranslate nohighlight">\(n = 2^r\)</span>, so <span class="math notranslate nohighlight">\(\log_2 n = \log_2 2^r = r\)</span>. We say that the exponentiation algorithm has <strong>logarithmic complexity</strong> Θ(<span class="math notranslate nohighlight">\(\log_2 n\)</span>).</p>
+<p>Actually, the base of the logarithm doesn’t matter for complexity analysis because it has been shown that the logarithms of the same number in different bases only differ by a constant factor. Thus, <span class="math notranslate nohighlight">\(\log_a n\)</span> and <span class="math notranslate nohighlight">\(\log_b n\)</span> have the same growth rate for any bases <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, and we just write Θ(<span class="math notranslate nohighlight">\(\log n\)</span>) without any base.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> Logarithms are covered in MU123 Unit 13 Sections 4 and 5, and in MST124 Unit 3 Section 4.</p>
+</div>
+<p>The safest way to analyse recursive algorithms is to write the recursive definition of T and see which pattern it follows. For this algorithm we have:</p>
+<ul class="simple">
+<li><p>if <em>n</em> = 0: T(n) = Θ(1)</p></li>
+<li><p>if <em>n</em> &gt; 0: T(n) = T(floor(<em>n</em> / 2)) + Θ(1).</p></li>
+</ul>
+<p>Whether the algorithm halves an even exponent or halves and rounds down an odd exponent makes no difference to the complexity, so we can simply write T(<em>n</em>) = T(<em>n</em> / 2) + Θ(1). It has been proven that such a recursive definition leads to T(<em>n</em>) = Θ(log <em>n</em>).</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If T(0) = Θ(1) and T(<em>n</em>) = T(<em>n</em> / 2) + Θ(1), then T(<em>n</em>) = Θ(log <em>n</em>).</p>
+</div>
+<p>When introducing <a class="reference internal" href="../02_Sequence/02_8_time.html#Checking-growth-rates"><span class="std std-ref">run-time measurements</span></a>, I noted that although we assumed <span class="math notranslate nohighlight">\(b^{n}\)</span> to take Θ(<em>n</em>) to do <em>n</em> constant-time multiplications, Python’s interpreter took less than linear time to compute it. We henceforth assume exponentiation takes logarithmic time in <em>n</em>.</p>
+</section>
+<section id="Code-and-performance">
+<h2><span class="section-number">13.2.4. </span>Code and performance<a class="headerlink" href="#Code-and-performance" title="Link to this heading"></a></h2>
+<p>Let’s implement the decrease-by-half approach.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">power_by_half</span><span class="p">(</span><span class="n">base</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">exponent</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the base to the power of the exponent.</span>
+
+<span class="sd">    Preconditions: exponent &gt;= 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">exponent</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">subsolution</span> <span class="o">=</span> <span class="n">power_by_half</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exponent</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">exponent</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">subsolution</span> <span class="o">*</span> <span class="n">subsolution</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">subsolution</span> <span class="o">*</span> <span class="n">subsolution</span> <span class="o">*</span> <span class="n">base</span>
+
+
+<span class="n">power_by_half</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="o">**</span><span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>Since the complexity depends on the exponent only, to measure the run-time I use always the same base, start with a not too small exponent and double it each time.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exponent</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">while</span> <span class="n">exponent</span> <span class="o">&lt;=</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 5 -n 10_000 power_by_one(3, exponent)
+    <span class="n">exponent</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">exponent</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.21 μs ± 246 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+1.83 μs ± 45 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+3.86 μs ± 13.4 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+10.5 μs ± 133 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+</pre></div></div>
+</div>
+<p>The doubling of the run-time confirms the algorithm is linear in the exponent. Now the decrease-by-half approach.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exponent</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">while</span> <span class="n">exponent</span> <span class="o">&lt;=</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="o">%</span><span class="k">timeit</span> -r 5 -n 10_000 power_by_half(3, exponent)
+    <span class="n">exponent</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">exponent</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+342 ns ± 4.37 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+413 ns ± 1.22 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+496 ns ± 0.582 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+592 ns ± 0.717 ns per loop (mean ± std. dev. of 5 runs, 10,000 loops each)
+</pre></div></div>
+</div>
+<p>The run-time increases by a fixed amount each time because doubling the exponent requires a single extra multiplication.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> If doubling the input size increases the run-time by a fixed amount, then the complexity is logarithmic.</p>
+</div>
+<p>An exponential function with integer base greater than one grows very fast; the logarithm function with the same base thus grows very slowly. For example, <span class="math notranslate nohighlight">\(2^{20}\)</span> is about one million, so computing <span class="math notranslate nohighlight">\(b^{1,000,000}\)</span> takes just <span class="math notranslate nohighlight">\(\log_2\)</span> 1,000,000 ≈ 20 recursive calls! Even if each one does two multiplications (the worst case), 40 multiplications is far better than doing a million of them. The efficiency gain is tremendous, even compared to a linear algorithm. If you find a
+logarithmic algorithm for a problem, you’re on to a winner.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="13_1_decrease_one.html" class="btn btn-neutral float-left" title="13.1. Decrease by one" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="13_3_variable_decrease.html" class="btn btn-neutral float-right" title="13.3. Variable decrease" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

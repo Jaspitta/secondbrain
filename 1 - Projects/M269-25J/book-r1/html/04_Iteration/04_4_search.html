@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.4. Linear search</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.5. Tuples and tables" href="04_5_tuples.html" />
+    <link rel="prev" title="4.3. Iteration" href="04_3_iteration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="04-introduction.html">4. Sequences and iteration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04_1_sequences.html">4.1. The Sequence ADT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_2_strings.html">4.2. Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_3_iteration.html">4.3. Iteration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.4. Linear search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Finding-characters">4.4.1. Finding characters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Problem-definition-and-instances">Problem definition and instances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Algorithm">Algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Complexity">Complexity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Code-and-tests">Code and tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Performance">Performance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Valid-password">4.4.2. Valid password</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.4.1">Exercise 4.4.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.4.2">Exercise 4.4.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.4.3">Exercise 4.4.3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Complexity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.4.4">Exercise 4.4.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-4.4.5">Exercise 4.4.5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04_5_tuples.html">4.5. Tuples and tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_6_lists.html">4.6. Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_7_reverse.html">4.7. Reversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_8_practice.html">4.8. Optional practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_9_summary.html">4.9. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08_Unordered/08-introduction.html">8. Unordered collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="04-introduction.html"><span class="section-number">4. </span>Sequences and iteration</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.4. </span>Linear search</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Linear-search">
+<h1><span class="section-number">4.4. </span>Linear search<a class="headerlink" href="#Linear-search" title="Link to this heading"></a></h1>
+<p>Many problems using sequences are <strong>search problems</strong>: they involve finding one or more elements of the sequence that satisfy some condition. Such problems can be solved with a <strong>linear search</strong>, an algorithm that goes systematically through the sequence and checks each element. This section shows some examples of linear searches at work and <em>en passant</em> illustrates some finer points of the problem-solving process.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 Block 2 Section 2.3 introduces search problems and algorithmic patterns for them.</p>
+</div>
+<section id="Finding-characters">
+<h2><span class="section-number">4.4.1. </span>Finding characters<a class="headerlink" href="#Finding-characters" title="Link to this heading"></a></h2>
+<p>Imagine that we have a non-empty string with one or more sentences, each ending with a full stop. We’re asked to create a new string with just the first sentence.</p>
+<p>Although this isn’t formulated as a search problem, it involves a search: finding the first full stop in the string. Once we know its index, we simply take the slice up to that index: that’s the first sentence.</p>
+<div class="admonition warning">
+<p><strong>Note:</strong> Even if a problem isn’t stated as a search problem, think whether doing a search could solve it.</p>
+</div>
+<section id="Problem-definition-and-instances">
+<h3>Problem definition and instances<a class="headerlink" href="#Problem-definition-and-instances" title="Link to this heading"></a></h3>
+<p>Let’s take the opportunity to define the more general problem of finding the first occurrence of a given character in a given string.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: first index</div>
+<div class="line"><strong>Inputs</strong>: <em>text</em>, a string; <em>character</em>, a string</div>
+<div class="line"><strong>Preconditions</strong>: │<em>character</em>│ = 1</div>
+<div class="line"><strong>Output</strong>: <em>index</em>, an integer</div>
+<div class="line"><strong>Postconditions</strong>: if <em>character</em> in <em>text</em>, <em>index</em> is the smallest integer such that <em>text</em>[<em>index</em>] = <em>character</em>, otherwise <em>index</em> = │<em>text</em>│</div>
+</div>
+<p>Search problems often have postconditions of the form ‘… is the first / last / smallest / largest … such that …’ or similar. To indicate that the character doesn’t occur in the text, the output is set to an impossible index.</p>
+<p>For the test table, I need to think of edge cases. An input sequence with the smallest allowed length is always an edge case. I also need to create tests for different options of where and how often <em>character</em> occurs in <em>text</em>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Case</p></th>
+<th class="head"><p><em>text</em></p></th>
+<th class="head"><p><em>character</em></p></th>
+<th class="head"><p><em>index</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>smallest input</p></td>
+<td><p>‘’</p></td>
+<td><p>‘a’</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>occurs at start</p></td>
+<td><p>‘all’</p></td>
+<td><p>‘a’</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>occurs in the middle</p></td>
+<td><p>‘abracadabra’</p></td>
+<td><p>‘c’</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>occurs at the end</p></td>
+<td><p>‘hi!’</p></td>
+<td><p>‘!’</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>multiple occurrences</p></td>
+<td><p>‘abracadabra’</p></td>
+<td><p>‘b’</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>no occurrence</p></td>
+<td><p>‘abracadabra’</p></td>
+<td><p>‘k’</p></td>
+<td><p>11</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="Algorithm">
+<h3>Algorithm<a class="headerlink" href="#Algorithm" title="Link to this heading"></a></h3>
+<p>The linear search algorithm simply goes through all the indices of the text and stops when it finds the character. The output is the index at which it stopped. Otherwise, the postconditions tell us the output is the length of the string.</p>
+<ol class="arabic simple">
+<li><p>for each <em>index</em> from 0 to │<em>text</em>│ - 1:</p>
+<ol class="arabic simple">
+<li><p>if <em>text</em>[<em>index</em>] = <em>character</em>:</p>
+<ol class="arabic simple">
+<li><p>stop</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>let <em>index</em> be │<em>text</em>│</p></li>
+</ol>
+</section>
+<section id="Complexity">
+<h3>Complexity<a class="headerlink" href="#Complexity" title="Link to this heading"></a></h3>
+<p>Whenever there’s a stop statement within a loop, we must think of best- and worst-case scenarios: under which conditions does the algorithm stop the earliest and stop the latest?</p>
+<p>For this algorithm, the loop can stop in its first iteration if the first character of the text is the sought character. In that case step 1.1, which takes constant time, is executed once, so the algorithm has best-case complexity Θ(1).</p>
+<p>In a worst-case scenario the algorithm goes through all characters. This may happen because the character doesn’t occur at all or only in the last position. Step 1.1 is executed │<em>text</em>│ times; the worst-case complexity is Θ(│<em>text</em>│).</p>
+<p>The complexity of linear search algorithms is often, but not always, constant in the best case and linear in the size of the sequence in the worst case.</p>
+</section>
+<section id="Code-and-tests">
+<h3>Code and tests<a class="headerlink" href="#Code-and-tests" title="Link to this heading"></a></h3>
+<p>The translation to Python makes use of the <code class="docutils literal notranslate"><span class="pre">range</span></code> constructor. We must not forget that the end of the range isn’t included and so must be one higher (or lower, if iterating backwards) than we need.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">first_index</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">character</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the lowest index of character in text.</span>
+
+<span class="sd">    Preconditions: len(character) = 1</span>
+<span class="sd">    Postconditions: if text includes character, then the output is</span>
+<span class="sd">    the lowest index such that text[index] = character,</span>
+<span class="sd">    otherwise the output is len(text)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">character</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">index</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_index</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_index</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_index</span><span class="p">(</span><span class="s2">&quot;abracadabra&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_index</span><span class="p">(</span><span class="s2">&quot;hi!&quot;</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_index</span><span class="p">(</span><span class="s2">&quot;abracadabra&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_index</span><span class="p">(</span><span class="s2">&quot;abracadabra&quot;</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">11</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+</section>
+<section id="Performance">
+<h3>Performance<a class="headerlink" href="#Performance" title="Link to this heading"></a></h3>
+<p>To illustrate the use of repeated concatenation, let’s check that the worst-case complexity is linear in the size of the input string. A worst-case scenario is for the sought character to not occur.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="s2">&quot;blah&quot;</span>  <span class="c1"># start with a not too short string</span>
+<span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 first_index(text, &#39;!&#39;)
+<span class="n">text</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">*</span> <span class="s2">&quot;blah&quot;</span>
+<span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 first_index(text, &#39;!&#39;)
+<span class="n">text</span> <span class="o">=</span> <span class="mi">400</span> <span class="o">*</span> <span class="s2">&quot;blah&quot;</span>
+<span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 first_index(text, &#39;!&#39;)
+<span class="n">text</span> <span class="o">=</span> <span class="mi">800</span> <span class="o">*</span> <span class="s2">&quot;blah&quot;</span>
+<span class="o">%</span><span class="k">timeit</span> -r 3 -n 1000 first_index(text, &#39;!&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+12.4 μs ± 1.45 μs per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+20.5 μs ± 836 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+42.5 μs ± 406 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+87.5 μs ± 169 ns per loop (mean ± std. dev. of 3 runs, 1,000 loops each)
+</pre></div></div>
+</div>
+<p>On my computer, the run-time roughly doubles as the input size doubles, thereby confirming that the worst-case complexity is linear.</p>
+</section>
+</section>
+<section id="Valid-password">
+<h2><span class="section-number">4.4.2. </span>Valid password<a class="headerlink" href="#Valid-password" title="Link to this heading"></a></h2>
+<p>Consider the problem of deciding whether a given string is a valid password, which we take to mean having at least one lowercase letter and one digit. To keep the example short, I focus on the problem definition, algorithm and complexity only.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: valid password</div>
+<div class="line"><strong>Inputs</strong>: <em>password</em>, a string</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>is valid</em>, a Boolean</div>
+<div class="line"><strong>Postconditions</strong>: <em>is valid</em> if and only if <em>password</em> contains a digit and a lowercase letter</div>
+</div>
+<p>There are two conditions to be satisfied, so we should write at least four tests, with inputs that satisfy both, neither or just one of the conditions.</p>
+<section id="Exercise-4.4.1">
+<h3>Exercise 4.4.1<a class="headerlink" href="#Exercise-4.4.1" title="Link to this heading"></a></h3>
+<p>Write a test table. Add rows as necessary.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Case</p></th>
+<th class="head"><p><em>password</em></p></th>
+<th class="head"><p><em>is valid</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="../31_Hints/Hints_04_4_01.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_4_01.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="id1">
+<h3>Algorithm<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>This is a decision problem that can be solved by searching for two characters with certain properties. We can use linear search again, as long as we remember if we found a lowercase letter and a digit so far. There are only two states for each, found or not found, so Boolean variables will do. This problem doesn’t require keeping track of indices, so we can iterate over the string directly.</p>
+<ol class="arabic simple">
+<li><p>let <em>has letter</em> be false</p></li>
+<li><p>let <em>has digit</em> be false</p></li>
+<li><p>for each <em>character</em> in <em>password</em>:</p>
+<ol class="arabic simple">
+<li><p>if ‘0’ ≤ <em>character</em> ≤ ‘9’:</p>
+<ol class="arabic simple">
+<li><p>let <em>has digit</em> be true</p></li>
+</ol>
+</li>
+<li><p>if ‘a’ ≤ <em>character</em> ≤ ‘z’:</p>
+<ol class="arabic simple">
+<li><p>let <em>has letter</em> be true</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>let <em>is valid</em> be <em>has digit</em> and <em>has letter</em></p></li>
+</ol>
+<p>This is a typical use of Boolean variables as <strong>flags</strong>. A flag is ‘raised’, i.e. the Boolean is set to true, when some condition occurs and it stays raised to remember that the condition occurred. The use of Boolean flags is common in searches.</p>
+</section>
+<section id="Exercise-4.4.2">
+<h3>Exercise 4.4.2<a class="headerlink" href="#Exercise-4.4.2" title="Link to this heading"></a></h3>
+<p>Explain whether the following algorithm is correct.</p>
+<ol class="arabic simple">
+<li><p>let <em>has letter</em> be false</p></li>
+<li><p>let <em>has digit</em> be false</p></li>
+<li><p>for each <em>character</em> in <em>password</em>:</p>
+<ol class="arabic simple">
+<li><p>let <em>has digit</em> be ‘0’ ≤ <em>character</em> ≤ ‘9’</p></li>
+<li><p>let <em>has letter</em> be ‘a’ ≤ <em>character</em> ≤ ‘z’</p></li>
+</ol>
+</li>
+<li><p>let <em>is valid</em> be <em>has digit</em> and <em>has letter</em></p></li>
+</ol>
+<p><a class="reference internal" href="../31_Hints/Hints_04_4_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_4_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.4.3">
+<h3>Exercise 4.4.3<a class="headerlink" href="#Exercise-4.4.3" title="Link to this heading"></a></h3>
+<p>The algorithm goes through the whole string even if a lowercase letter and digit appear early on in the string. Alice and Bob are modifying the algorithm to stop as soon as it can. This is Alice’s algorithm:</p>
+<ol class="arabic simple">
+<li><p>let <em>has letter</em> be false</p></li>
+<li><p>let <em>has digit</em> be false</p></li>
+<li><p>for each <em>character</em> in <em>password</em>:</p>
+<ol class="arabic simple">
+<li><p>if ‘0’ ≤ <em>character</em> ≤ ‘9’:</p>
+<ol class="arabic simple">
+<li><p>let <em>has digit</em> be true</p></li>
+</ol>
+</li>
+<li><p>if ‘a’ ≤ <em>character</em> ≤ ‘z’:</p>
+<ol class="arabic simple">
+<li><p>let <em>has letter</em> be true</p></li>
+</ol>
+</li>
+<li><p>if <em>has digit</em> and <em>has letter</em>:</p>
+<ol class="arabic simple">
+<li><p>stop</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>let <em>is valid</em> be <em>has digit</em> and <em>has letter</em></p></li>
+</ol>
+<p>This is Bob’s algorithm:</p>
+<ol class="arabic simple">
+<li><p>let <em>has letter</em> be false</p></li>
+<li><p>let <em>has digit</em> be false</p></li>
+<li><p>for each <em>character</em> in <em>password</em>:</p>
+<ol class="arabic simple">
+<li><p>if ‘0’ ≤ <em>character</em> ≤ ‘9’:</p>
+<ol class="arabic simple">
+<li><p>let <em>has digit</em> be true</p></li>
+</ol>
+</li>
+<li><p>if ‘a’ ≤ <em>character</em> ≤ ‘z’:</p>
+<ol class="arabic simple">
+<li><p>let <em>has letter</em> be true</p></li>
+</ol>
+</li>
+<li><p>let <em>is valid</em> be <em>has digit</em> and <em>has letter</em></p></li>
+<li><p>if <em>is valid</em>:</p>
+<ol class="arabic simple">
+<li><p>stop</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>For each algorithm, explain whether it’s correct or not.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_04_4_03.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="id2">
+<h3>Complexity<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>The complexity of an algorithm is an indication of how its run-time grows for increasingly large inputs. By definition, a constant-time step doesn’t make the run-time grow and so doesn’t contribute to the complexity of the algorithm. We can thus ignore all constant-time steps when analysing the complexity. Well, not quite all: we can’t ignore if and stop statements, because they affect how the algorithm behaves. For the original algorithm, and Alice’s, we ignore steps 1, 2, 3.1.1, 3.2.1 and 4.
+(Bob’s algorithm doesn’t have a step 4: we ignore step 3.3 instead.)</p>
+<p>The ‘partial’ algorithm</p>
+<ol class="arabic simple" start="3">
+<li><p>for each <em>character</em> in <em>password</em>:</p>
+<ol class="arabic simple">
+<li><p>if ‘0’ ≤ <em>character</em> ≤ ‘9’:</p></li>
+<li><p>if ‘a’ ≤ <em>character</em> ≤ ‘z’:</p></li>
+</ol>
+</li>
+</ol>
+<p>has exactly the same complexity as the complete algorithm. Both if-statements take constant time, as each does one or two comparisons. Whether the current character is a letter, digit or something else, each iteration takes constant time. The complexity is thus linear in the number of iterations, which is the length of the input string: Θ(│<em>password</em>│).</p>
+<p>As mentioned before, the complexity of an algorithm is not about the run-times for particular problem instances, but rather about the growth of the run-times for instances with increasingly large values or sizes. Therefore, a scenario is a <em>collection</em> of problem instances with increasing sizes or values: a scenario is not a <em>single</em> problem instance. Even though this algorithm does the least work for the empty string, because the loop is skipped, the empty string is <em>not</em> a best-case scenario.</p>
+</section>
+<section id="Exercise-4.4.4">
+<h3>Exercise 4.4.4<a class="headerlink" href="#Exercise-4.4.4" title="Link to this heading"></a></h3>
+<p>What are best- and worst-case scenarios for a linear search algorithm that stops as soon as it knows the password is valid?</p>
+<p><a class="reference internal" href="../31_Hints/Hints_04_4_04.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_04_4_04.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-4.4.5">
+<h3>Exercise 4.4.5<a class="headerlink" href="#Exercise-4.4.5" title="Link to this heading"></a></h3>
+<p>Implement and test the password-validation function. You can choose the original algorithm or the more efficient version that stops early.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace this with your code</span>
+</pre></div>
+</div>
+</div>
+<p>Add code cells for the tests.</p>
+<p><a class="reference internal" href="../32_Answers/Answers_04_4_05.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="04_3_iteration.html" class="btn btn-neutral float-left" title="4.3. Iteration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04_5_tuples.html" class="btn btn-neutral float-right" title="4.5. Tuples and tables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

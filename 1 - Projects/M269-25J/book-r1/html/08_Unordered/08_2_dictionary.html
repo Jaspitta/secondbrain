@@ -1,0 +1,670 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8.2. Dictionaries</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/m269.css?v=4f7d186f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.3. Hash tables" href="08_3_hash_table.html" />
+    <link rel="prev" title="8.1. Maps" href="08_1_map.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            M269
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_Introduction/01-introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_Sequence/02-introduction.html">2. Numbers and sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03_Selection/03-introduction.html">3. Booleans and selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_Iteration/04-introduction.html">4. Sequences and iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_TMA01-1/05-introduction.html">5. TMA 01 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_Implementing/06-introduction.html">6. Implementing sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07_Ordered/07-introduction.html">7. Stacks and queues</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="08-introduction.html">8. Unordered collections</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="08_1_map.html">8.1. Maps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.2. Dictionaries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Mistakes">8.2.1. Mistakes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-8.2.1">Exercise 8.2.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Using-dictionaries">8.2.2. Using dictionaries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-8.2.2">Exercise 8.2.2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Exercise-8.2.3">Exercise 8.2.3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="08_3_hash_table.html">8.3. Hash tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_4_set.html">8.4. Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="08_5_summary.html">8.5. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../09_Practice-1/09-introduction.html">9. Practice 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10_TMA01-2/10-introduction.html">10. TMA 01 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11_Search/11-introduction.html">11. Exhaustive search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12_Recursion/12-introduction.html">12. Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../13_Divide/13-introduction.html">13. Divide and conquer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14_Sorting/14-introduction.html">14. Sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15_TMA02-1/15-introduction.html">15. TMA 02 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16_Trees/16-introduction.html">16. Rooted trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17_Graphs_1/17-introduction.html">17. Graphs 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18_Greed/18-introduction.html">18. Greed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19_Practice-2/19-introduction.html">19. Practice 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20_TMA02-2/20-introduction.html">20. TMA 02 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21_Graphs_2/21-introduction.html">21. Graphs 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22_Backtracking/22-introduction.html">22. Backtracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23_Dynamic_Programming/23-introduction.html">23. Dynamic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24_Practice-3/24-introduction.html">24. Practice 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25_TMA03-1/25-introduction.html">25. TMA 03 part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26_Complexity_classes/26-introduction.html">26. Complexity classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27_Computability/27-introduction.html">27. Computability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28_TMA03-2/28-introduction.html">28. TMA 03 part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31_Hints/31-introduction.html">29. Hints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32_Answers/32-introduction.html">30. Answers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33_Figures/33-introduction.html">31. Figures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">M269</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="08-introduction.html"><span class="section-number">8. </span>Unordered collections</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">8.2. </span>Dictionaries</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Dictionaries">
+<h1><span class="section-number">8.2. </span>Dictionaries<a class="headerlink" href="#Dictionaries" title="Link to this heading"></a></h1>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">dict</span></code> class implements a restricted form of maps. In M269, ‘dictionary’ (without any further qualification) refers to an object of type <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p>
+<div class="admonition note">
+<p><strong>Info:</strong> TM112 introduces Python dictionaries in Block 3 Section 2.1. Some texts use ‘dictionary’ as a synonym for ‘map’.</p>
+</div>
+<p>The operations are written in Python as follows, using the familiar list notation, but using keys instead of 0, 1, 2, etc. as ‘indices’:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operation</p></th>
+<th class="head"><p>Python</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>new</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">dict()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>size</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">len(d)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>membership</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">in</span> <span class="pre">d</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>associate</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">d[key]</span> <span class="pre">=</span> <span class="pre">value</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>lookup</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">d[key]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>delete</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">d.pop(key)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Like for lists, the <code class="docutils literal notranslate"><span class="pre">pop</span></code> method returns the associated value, and the negation of membership can be written <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">d</span></code>.</p>
+<p>We can represent the bilingual dictionary with a Python dictionary in which the keys are strings and the values are lists of strings.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt_to_en</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c1"># Portuguese to English dictionary</span>
+<span class="n">pt_to_en</span><span class="p">[</span><span class="s2">&quot;alface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lattice&quot;</span><span class="p">]</span>
+<span class="n">pt_to_en</span><span class="p">[</span><span class="s2">&quot;alface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lettuce&quot;</span><span class="p">]</span>  <span class="c1"># replace wrong entry</span>
+<span class="n">pt_to_en</span><span class="p">[</span><span class="s2">&quot;carro&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">]</span>
+<span class="n">pt_to_en</span><span class="p">[</span><span class="s2">&quot;andar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;floor&quot;</span><span class="p">,</span> <span class="s2">&quot;walk&quot;</span><span class="p">]</span>
+<span class="s2">&quot;carro&quot;</span> <span class="ow">in</span> <span class="n">pt_to_en</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>Dictionaries are iterable.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">pt_to_en</span><span class="p">:</span>  <span class="c1"># iterate over the keys</span>
+    <span class="k">for</span> <span class="n">translation</span> <span class="ow">in</span> <span class="n">pt_to_en</span><span class="p">[</span><span class="n">word</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s2">&quot;means&quot;</span><span class="p">,</span> <span class="n">translation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+alface means lettuce
+carro means car
+andar means floor
+andar means walk
+</pre></div></div>
+</div>
+<p>Python’s implementation of maps guarantees that keys are iterated in the same order they were added or last updated, but you shouldn’t rely on that in your M269 algorithms to keep them working with any implementation of the map ADT.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">items</span></code> method returns a list-like object of tuples, one for each key–value pair. It’s mostly used in for-loops.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pt_to_en</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">translation</span> <span class="ow">in</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s2">&quot;means&quot;</span><span class="p">,</span> <span class="n">translation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+alface means lettuce
+carro means car
+andar means floor
+andar means walk
+</pre></div></div>
+</div>
+<p>Python allows the following shorthand notation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">translations</span><span class="p">)</span> <span class="ow">in</span> <span class="n">pt_to_en</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">translation</span> <span class="ow">in</span> <span class="n">translations</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s2">&quot;means&quot;</span><span class="p">,</span> <span class="n">translation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+alface means lettuce
+carro means car
+andar means floor
+andar means walk
+</pre></div></div>
+</div>
+<p>Dictionary literals are written as comma-separated pairs within curly braces. A colon separates each key from the corresponding value. Here’s a shorter way of defining the bilingual dictionary.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt_to_en</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;alface&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;lettuce&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;carro&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;andar&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;floor&#39;</span><span class="p">,</span> <span class="s1">&#39;walk&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p><strong>Note:</strong> The empty dictionary can be written as <code class="docutils literal notranslate"><span class="pre">{}</span></code>, but in M269 we use <code class="docutils literal notranslate"><span class="pre">dict()</span></code> instead, to avoid confusion with another data type, to be introduced later.</p>
+</div>
+<p>Dictionary keys may be integers that, unlike list indices, don’t have to be consecutive. Here’s a dictionary of addresses. The keys are the house numbers; the values are the residents’ names.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">our_houses</span> <span class="o">=</span> <span class="p">{</span><span class="mi">23</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>We can check if two dictionaries have the same key–value pairs or not with the (in)equality operators. In a dictionary, the key–value pairs are in no particular order.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">our_street</span> <span class="o">=</span> <span class="p">{</span><span class="mi">45</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">}</span>
+<span class="n">our_street</span> <span class="o">==</span> <span class="n">our_houses</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">our_street</span> <span class="o">!=</span> <span class="p">{</span><span class="mi">45</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">:</span> <span class="s2">&quot;Alissa&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>Like sequences, maps may be nested, i.e. the value associated to a key may be a map. For the bilingual dictionary, this could be used to distinguish the meanings of a word. For example, if ‘andar’ is used as a noun, then its translation is ‘floor’, whereas if ‘andar’ is used as a verb, then its translation is ‘walk’.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt2en</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;alface&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;noun&#39;</span><span class="p">:</span> <span class="s1">&#39;lettuce&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;carro&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;noun&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;andar&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;noun&#39;</span><span class="p">:</span> <span class="s1">&#39;floor&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span><span class="p">:</span> <span class="s1">&#39;walk&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>We access inner dictionary values in the same way as nested list items.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inner_dictionary</span> <span class="o">=</span> <span class="n">pt2en</span><span class="p">[</span><span class="s2">&quot;andar&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">inner_dictionary</span><span class="p">[</span><span class="s2">&quot;verb&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pt2en</span><span class="p">[</span><span class="s2">&quot;andar&quot;</span><span class="p">][</span><span class="s2">&quot;verb&quot;</span><span class="p">])</span>  <span class="c1"># shorter alternative</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+walk
+walk
+</pre></div></div>
+</div>
+<section id="Mistakes">
+<h2><span class="section-number">8.2.1. </span>Mistakes<a class="headerlink" href="#Mistakes" title="Link to this heading"></a></h2>
+<p>Accessing or deleting a non-existent key raises an error.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pt_to_en</span><span class="p">[</span><span class="s2">&quot;car&quot;</span><span class="p">]</span>  <span class="c1"># &#39;car&#39; is among the values, not the keys</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[11], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">pt_to_en</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">car</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">]</span>  <span style="color: rgb(95,135,135)"># &#39;car&#39; is among the values, not the keys</span>
+
+<span class="ansi-red-fg">KeyError</span>: &#39;car&#39;
+</pre></div></div>
+</div>
+<p>Dictionaries only retrieve data and check membership by key, not by value.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;carro&quot;</span> <span class="ow">in</span> <span class="n">pt_to_en</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;car&quot;</span> <span class="ow">in</span> <span class="n">pt_to_en</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<p>Keys can’t be added or removed while iterating over a dictionary.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roman_to_arabic</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;I&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">roman_to_arabic</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">roman_to_arabic</span><span class="p">[</span><span class="n">key</span> <span class="o">+</span> <span class="s2">&quot;I&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">RuntimeError</span>                              Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[14], line 2</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> roman_to_arabic <span style="color: rgb(98,98,98)">=</span> {<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">I</span><span style="color: rgb(175,0,0)">&#34;</span>: <span style="color: rgb(98,98,98)">1</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">V</span><span style="color: rgb(175,0,0)">&#34;</span>: <span style="color: rgb(98,98,98)">5</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">X</span><span style="color: rgb(175,0,0)">&#34;</span>: <span style="color: rgb(98,98,98)">10</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">L</span><span style="color: rgb(175,0,0)">&#34;</span>: <span style="color: rgb(98,98,98)">50</span>}
+<span class="ansi-green-fg">----&gt; 2</span> <span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">for</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,0,255)">in</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">roman_to_arabic</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">items</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">roman_to_arabic</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">I</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1</span>
+
+<span class="ansi-red-fg">RuntimeError</span>: dictionary changed size during iteration
+</pre></div></div>
+</div>
+<p>You may however change the values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stock</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;trousers&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;t-shirt&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;dress&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">stock</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>  <span class="c1"># noqa: B007</span>
+    <span class="n">stock</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># all sold out</span>
+<span class="n">stock</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;trousers&#39;: 0, &#39;t-shirt&#39;: 0, &#39;dress&#39;: 0}
+</pre></div></div>
+</div>
+<p>Dictionaries implement a restricted map ADT: keys can only be of types for which there’s a hash function and that doesn’t include lists and dictionaries. For example, consider a map of office building pairs to the names of their occupants. The keys can’t be lists:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employee_by_location</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># occupants of each building&#39;s offices</span>
+    <span class="p">[</span><span class="s2">&quot;Main building&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">]:</span> <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Chan&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Annex&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span> <span class="p">[</span><span class="s2">&quot;Bob&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[16], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> employee_by_location <span style="color: rgb(98,98,98)">=</span> {  <span style="color: rgb(95,135,135)"># occupants of each building&#39;s offices</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>     [<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Main building</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(98,98,98)">4</span>]: [<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Alice</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Chan</span><span style="color: rgb(175,0,0)">&#34;</span>],
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     [<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Annex</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(98,98,98)">3</span>]: [<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Bob</span><span style="color: rgb(175,0,0)">&#34;</span>],
+<span class="ansi-green-intense-fg ansi-bold">      4</span> }
+
+<span class="ansi-red-fg">TypeError</span>: unhashable type: &#39;list&#39;
+</pre></div></div>
+</div>
+<p>We get an error: lists are unhashable and thus the wrong type of key. The keys must be tuples:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employee_by_location</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="s1">&#39;Main building&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Chan&#39;</span><span class="p">],</span>
+    <span class="p">(</span><span class="s1">&#39;Annex&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Using a list or a dictionary as part of a key also leads to an error. For example, <code class="docutils literal notranslate"><span class="pre">('Bob',</span> <span class="pre">[1,</span> <span class="pre">'Jan',</span> <span class="pre">1970])</span></code> and <code class="docutils literal notranslate"><span class="pre">('Bob',</span> <span class="pre">{'day':</span> <span class="pre">1,</span> <span class="pre">'month:</span> <span class="pre">'1',</span> <span class="pre">'year':</span> <span class="pre">1970})</span></code> aren’t valid Python keys, but <code class="docutils literal notranslate"><span class="pre">('Bob',</span> <span class="pre">'1</span> <span class="pre">Jan</span> <span class="pre">1970')</span></code> and <code class="docutils literal notranslate"><span class="pre">('Bob',</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1970))</span></code> are. Fortunately, most applications of dictionaries don’t need complicated keys: integers, strings or tuples of both will suffice.</p>
+<p>I explain in the next section why tuples are hashable but why lists aren’t.</p>
+<section id="Exercise-8.2.1">
+<h3>Exercise 8.2.1<a class="headerlink" href="#Exercise-8.2.1" title="Link to this heading"></a></h3>
+<p>Why can’t we create a bilingual dictionary like this?</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bilingual</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">bilingual</span><span class="p">[</span><span class="s2">&quot;alface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;lettuce&quot;</span>
+<span class="n">bilingual</span><span class="p">[</span><span class="s2">&quot;carro&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;car&quot;</span>
+<span class="n">bilingual</span><span class="p">[</span><span class="s2">&quot;andar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;floor&quot;</span>
+<span class="n">bilingual</span><span class="p">[</span><span class="s2">&quot;andar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;walk&quot;</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../32_Answers/Answers_08_2_01.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+<section id="Using-dictionaries">
+<h2><span class="section-number">8.2.2. </span>Using dictionaries<a class="headerlink" href="#Using-dictionaries" title="Link to this heading"></a></h2>
+<p>To further illustrate the dictionary operations, let’s consider the problem of inverting a map, i.e. swapping keys and values, for bilingual dictionaries.</p>
+<div class="line-block">
+<div class="line"><strong>Function</strong>: invert</div>
+<div class="line"><strong>Inputs</strong>: <em>original</em>, a map with strings as keys and sequences of strings as values</div>
+<div class="line"><strong>Preconditions</strong>: true</div>
+<div class="line"><strong>Output</strong>: <em>inverted</em>, a map with strings as keys and sequences of strings as values</div>
+<div class="line"><strong>Postconditions:</strong> <em>inverted</em>(<em>word</em>) has <em>translation</em> if and only if <em>original</em>(<em>translation</em>) has <em>word</em></div>
+</div>
+<p>The postconditions state that string <em>a</em> translates to string <em>b</em> in the inverted map if and only if <em>b</em> translates to <em>a</em> in the original map.</p>
+<p>For testing I will use an empty map (edge case) and the Portuguese–English dictionary. The inversion of the former is the empty map; the inversion of the latter is:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key (English)</p></th>
+<th class="head"><p>Value (Portuguese)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>‘lettuce’</p></td>
+<td><p>(‘alface’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘car’</p></td>
+<td><p>(‘carro’)</p></td>
+</tr>
+<tr class="row-even"><td><p>‘walk’</p></td>
+<td><p>(‘andar’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘floor’</p></td>
+<td><p>(‘andar’)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Unfortunately, this isn’t a very good test because the inverted dictionary doesn’t have multiple Portuguese translations for the same English word. Let’s add another translation of ‘floor’: ‘chão’. Since I have to change the Portuguese–English dictionary anyhow, I add an edge case for the value: an empty sequence, i.e. I add a Portuguese word but no English translation. Here are the two new dictionaries: the input and the expected output.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key (Portuguese)</p></th>
+<th class="head"><p>Value (English)</p></th>
+<th class="head"><p>Key (English)</p></th>
+<th class="head"><p>Value (Portuguese)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>‘alface’</p></td>
+<td><p>(‘lettuce’)</p></td>
+<td><p>‘lettuce’</p></td>
+<td><p>(‘alface’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘carro’</p></td>
+<td><p>(‘car’)</p></td>
+<td><p>‘car’</p></td>
+<td><p>(‘carro’)</p></td>
+</tr>
+<tr class="row-even"><td><p>‘andar’</p></td>
+<td><p>(‘floor’, ‘walk’)</p></td>
+<td><p>‘walk’</p></td>
+<td><p>(‘andar’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘chão’</p></td>
+<td><p>(‘floor’)</p></td>
+<td><p>‘floor’</p></td>
+<td><p>(‘andar’, ‘chão’)</p></td>
+</tr>
+<tr class="row-even"><td><p>‘saudade’</p></td>
+<td><p>()</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="Exercise-8.2.2">
+<h3>Exercise 8.2.2<a class="headerlink" href="#Exercise-8.2.2" title="Link to this heading"></a></h3>
+<p>Outline an algorithm that creates the right-hand side dictionary from the one on the left-hand side.</p>
+<p><a class="reference internal" href="../31_Hints/Hints_08_2_02.html"><span class="doc">Hint</span></a> <a class="reference internal" href="../32_Answers/Answers_08_2_02.html"><span class="doc">Answer</span></a></p>
+</section>
+<section id="Exercise-8.2.3">
+<h3>Exercise 8.2.3<a class="headerlink" href="#Exercise-8.2.3" title="Link to this heading"></a></h3>
+<p>Implement the algorithm to replace <code class="docutils literal notranslate"><span class="pre">pass</span></code> in the function below. You don’t need to add further tests.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">algoesup</span><span class="w"> </span><span class="kn">import</span> <span class="n">test</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">invert</span><span class="p">(</span><span class="n">original</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the inverted dictionary.</span>
+
+<span class="sd">    In both dictionaries, the keys are strings and</span>
+<span class="sd">    the values are lists of strings.</span>
+
+<span class="sd">    Postconditions:</span>
+<span class="sd">    word1 in output[word2] if and only if word2 in original[word1]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">inverted</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">inverted</span>
+
+
+<span class="n">pt_to_en</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;carro&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;andar&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;floor&#39;</span><span class="p">,</span> <span class="s1">&#39;walk&#39;</span><span class="p">],</span>     <span class="c1"># as in &#39;second floor&#39;</span>
+    <span class="s1">&#39;chão&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;floor&#39;</span><span class="p">],</span>              <span class="c1"># as in &#39;wooden floor&#39;</span>
+    <span class="s1">&#39;saudade&#39;</span><span class="p">:</span> <span class="p">[]</span>                   <span class="c1"># translation omitted</span>
+<span class="p">}</span>
+
+<span class="n">en_to_pt</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;car&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;carro&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;walk&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;andar&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;floor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;andar&#39;</span><span class="p">,</span> <span class="s1">&#39;chão&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">invert_tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">#case,              a_to_b,             inverted</span>
+    <span class="p">(</span><span class="s1">&#39;no words&#39;</span><span class="p">,</span>        <span class="nb">dict</span><span class="p">(),</span>             <span class="nb">dict</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;pt_to_en&#39;</span><span class="p">,</span>        <span class="n">pt_to_en</span><span class="p">,</span>           <span class="n">en_to_pt</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">test</span><span class="p">(</span><span class="n">invert</span><span class="p">,</span> <span class="n">invert_tests</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference internal" href="../32_Answers/Answers_08_2_03.html"><span class="doc">Answer</span></a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="08_1_map.html" class="btn btn-neutral float-left" title="8.1. Maps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="08_3_hash_table.html" class="btn btn-neutral float-right" title="8.3. Hash tables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020–2025 The Open University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
